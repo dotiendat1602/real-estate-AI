@@ -14,7 +14,23 @@ from app.rag.chain import RagChain
 router = APIRouter()
 
 _embeddings = build_embeddings()
-_vs = build_pgvector_store(_embeddings)
+_vs = None
+
+async def initialize_vector_store():
+    """Khởi tạo async vector store - gọi từ startup event"""
+    global _vs
+    if _vs is None:
+        _vs = build_pgvector_store(_embeddings)
+        # Trigger async init
+        await _vs.__apost_init__()
+    return _vs
+
+def get_vector_store():
+    """Lấy vector store đã được khởi tạo"""
+    global _vs
+    if _vs is None:
+        raise RuntimeError("Vector store not initialized. Call initialize_vector_store() first.")
+    return _vs
 
 def build_llm() -> ChatOpenAI:
     model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
@@ -39,7 +55,8 @@ class ChatResponse(BaseModel):
 
 @router.post("/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest):
-    retriever = build_retriever(_vs, k=req.topK, filters=req.filters)
+    vs = get_vector_store()
+    retriever = build_retriever(vs, k=req.topK, filters=req.filters)
 
     llm = build_llm()
     chain = RagChain(llm=llm, retriever=retriever)

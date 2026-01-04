@@ -31,7 +31,14 @@ async def main():
             "topK": 12,
         }
         r2 = await client.post(f"{AI_BASE}/api/chat", json=q)
-        print("CHAT:", r2.status_code, r2.json())
+        print("CHAT STATUS:", r2.status_code)
+        print("CHAT RESPONSE:", r2.text[:500])
+        
+        # Chỉ parse JSON nếu status code là 200
+        if r2.status_code == 200:
+            print("CHAT JSON:", r2.json())
+        else:
+            print("CHAT ERROR - Full response:", r2.text)
 
 if __name__ == "__main__":
     asyncio.run(main())

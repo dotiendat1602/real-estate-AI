@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import os
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 
 def build_embeddings() -> HuggingFaceEmbeddings:
     model_name = os.getenv("EMBED_MODEL", "intfloat/multilingual-e5-small")

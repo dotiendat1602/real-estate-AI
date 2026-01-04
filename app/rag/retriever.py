@@ -9,13 +9,15 @@ def build_pgvector_store(embeddings) -> PGVector:
     if not db_url:
         raise RuntimeError("DATABASE_URL is missing")
 
-    collection_name = os.getenv("PGVECTOR_COLLECTION", "estatein_posts")
+    collection_name = os.getenv("PGVECTOR_COLLECTION", "post_embeddings")
 
     return PGVector(
         connection=db_url,
         embeddings=embeddings,
         collection_name=collection_name,
         use_jsonb=True,
+        async_mode=True,
+        create_extension=False,
     )
 
 def build_retriever(vs: PGVector, k: int = 12, filters: dict | None = None) -> VectorStoreRetriever:

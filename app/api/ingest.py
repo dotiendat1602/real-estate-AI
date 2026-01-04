@@ -13,8 +13,22 @@ from app.utils.chunking import build_splitter
 router = APIRouter()
 
 _embeddings = build_embeddings()
-_vs = build_pgvector_store(_embeddings)
+_vs = None
 _splitter = build_splitter()
+
+async def initialize_vector_store():
+    """Khởi tạo async vector store"""
+    global _vs
+    if _vs is None:
+        _vs = build_pgvector_store(_embeddings)
+        await _vs.__apost_init__()
+    return _vs
+
+def get_vector_store():
+    global _vs
+    if _vs is None:
+        raise RuntimeError("Vector store not initialized.")
+    return _vs
 
 class IngestPost(BaseModel):
     postId: int
@@ -29,6 +43,8 @@ async def ingest_posts(req: IngestRequest):
     if not req.posts:
         return {"ok": True, "ingestedChunks": 0}
 
+    vs = get_vector_store()
+    
     docs: list[Document] = []
     for p in req.posts:
         text = (p.content or "").strip()
@@ -47,6 +63,5 @@ async def ingest_posts(req: IngestRequest):
     if not docs:
         return {"ok": True, "ingestedChunks": 0}
 
-    # add_documents sync; chạy trong threadpool nếu bạn muốn async “đúng nghĩa”
-    ids = _vs.add_documents(docs)
+    ids = await vs.aadd_documents(docs)
     return {"ok": True, "ingestedChunks": len(ids)}
