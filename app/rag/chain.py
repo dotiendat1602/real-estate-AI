@@ -17,16 +17,63 @@ class ChatResult:
 
 def detect_lang(text: str) -> str:
     """
-    Very lightweight language detection:
-    - If Vietnamese diacritics appear -> Vietnamese
-    - Else -> English
+    Robust language detection for Vietnamese (including no-diacritic text).
+
+    Strategy:
+    1) Use langid to classify. If it says 'vi' -> Vietnamese.
+    2) If uncertain or very short, use heuristics:
+       - Vietnamese diacritics -> Vietnamese
+       - Common Vietnamese function words (no diacritics) -> Vietnamese
+       - Else -> English
     """
     t = (text or "").strip()
     if not t:
         return "English"
 
+    # 1) Try langid (local)
+    try:
+        import langid
+        lang, score = langid.classify(t)
+        # langid returns ISO 639-1 like "vi", "en"
+        if lang == "vi":
+            return "Vietnamese"
+        if lang == "en":
+            # vẫn có thể sai nếu câu rất ngắn, xử lý ở heuristic bên dưới
+            pass
+    except Exception:
+        # nếu lib chưa cài hoặc lỗi runtime -> fallback heuristic
+        pass
+
+    lower = t.lower()
+
+    # 2) Heuristic: diacritics
     vi_chars = "ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ"
-    if any(c in t.lower() for c in vi_chars):
+    if any(c in lower for c in vi_chars):
+        return "Vietnamese"
+
+    # 3) Heuristic: Vietnamese stop-words without diacritics (very common)
+    # NOTE: choose words that rarely appear in English.
+    vi_markers = {
+        "toi", "ban", "minh", "muon", "can", "tim", "kiem", "nha", "dat", "canho",
+        "gia", "bao", "nhieu", "o", "tai", "quan", "huyen", "phuong", "duong",
+        "dien", "tich", "phong", "ngu", "phap", "ly", "so", "do", "hop", "dong",
+        "gan", "trung", "tam", "khoang", "trieu", "ty",
+        "co", "khong", "neu", "thi", "va", "voi", "cho", "xin", "giup",
+    }
+
+    # tokenize đơn giản theo whitespace + strip punctuation
+    tokens = []
+    for w in lower.replace("\n", " ").split():
+        w = "".join(ch for ch in w if ch.isalnum())
+        if w:
+            tokens.append(w)
+
+    if not tokens:
+        return "English"
+
+    hit = sum(1 for w in tokens if w in vi_markers)
+    # nếu câu ngắn, chỉ cần 1-2 marker là đủ
+    if hit >= 2 or (len(tokens) <= 6 and hit >= 1):
         return "Vietnamese"
 
     return "English"
