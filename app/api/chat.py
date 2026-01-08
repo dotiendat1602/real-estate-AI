@@ -9,6 +9,7 @@ from langchain_openai import ChatOpenAI
 
 from app.rag.embedder import build_embeddings
 from app.rag.retriever import build_pgvector_store, build_retriever
+from app.rag.filter_extractor import extract_filters_from_query
 from app.rag.chain import RagChain
 
 router = APIRouter()
@@ -46,20 +47,29 @@ def build_llm() -> ChatOpenAI:
 class ChatRequest(BaseModel):
     userId: Optional[int] = None
     message: str = Field(min_length=1)
-    filters: dict[str, Any] = Field(default_factory=dict)
     topK: int = Field(default=int(os.getenv("TOP_K_DEFAULT", "12")), ge=1, le=50)
 
 class ChatResponse(BaseModel):
     answer: str
     citations: list[dict[str, Any]]
+    extractedFilters: dict[str, Any] = Field(default_factory=dict)
 
 @router.post("/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest):
     vs = get_vector_store()
-    retriever = build_retriever(vs, k=req.topK, filters=req.filters)
 
     llm = build_llm()
+    filters = await extract_filters_from_query(req.message, llm)
+    print(f"Extracted filters: {filters}")
+
+    retriever = build_retriever(vs, k=req.topK, filters=filters)
+    print(f"Using topK={req.topK} for retrieval.")
+    print(f"retriever: {retriever}")
     chain = RagChain(llm=llm, retriever=retriever)
 
     result = await chain.run(req.message)
-    return ChatResponse(answer=result.answer, citations=result.citations)
+    return ChatResponse(
+        answer=result.answer,
+        citations=result.citations,
+        extractedFilters=filters
+    )

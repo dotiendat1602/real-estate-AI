@@ -8,3 +8,9 @@ python -m venv .venv
 
 pip install -U pip
 pip install -e .
+
+ ```
+### Run project
+```bash
+python -m app.main
+```
