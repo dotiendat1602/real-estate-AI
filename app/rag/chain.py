@@ -6,7 +6,7 @@ from typing import Any
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
 
-from app.rag.prompt import prompt
+from ..rag.prompt import prompt
 
 
 @dataclass
@@ -81,17 +81,34 @@ def detect_lang(text: str) -> str:
 
 def _build_citations(docs: list[Document]) -> list[dict[str, Any]]:
     out = []
+    seen_post_ids = set()
+    
     for d in docs:
         md = d.metadata or {}
-        out.append(
-            {
-                "postId": md.get("postId"),
-                # retriever thường không trả score mặc định => có thể None
-                "score": md.get("score"),
-                "metadata": md,
-                "snippet": (d.page_content or "")[:240],
-            }
-        )
+        post_id = md.get("postId")
+        
+        # Deduplicate by postId (avoid showing same post multiple times)
+        if post_id and post_id in seen_post_ids:
+            continue
+        
+        if post_id:
+            seen_post_ids.add(post_id)
+        
+        out.append({
+            "postId": post_id,
+            "propertyId": md.get("propertyId"),
+            "postType": md.get("postType"),
+            "categoryName": md.get("categoryName"),
+            "city": md.get("city"),
+            "district": md.get("district"),
+            "ward": md.get("ward"),
+            "price": md.get("price"),
+            "area": md.get("area"),
+            "bedrooms": md.get("bedrooms"),
+            "amenities": md.get("amenities", []),
+            "snippet": (d.page_content or "")[:300],  # Tăng snippet length
+        })
+    
     return out
 
 

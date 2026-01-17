@@ -7,10 +7,10 @@ from pydantic import BaseModel, Field
 
 from langchain_openai import ChatOpenAI
 
-from app.rag.embedder import build_embeddings
-from app.rag.retriever import build_pgvector_store, build_retriever
-from app.rag.filter_extractor import extract_filters_from_query
-from app.rag.chain import RagChain
+from ..rag.embedder import build_embeddings
+from ..rag.retriever import build_pgvector_store, build_retriever
+from ..rag.filter_extractor import extract_filters_from_query
+from ..rag.chain import RagChain
 
 router = APIRouter()
 

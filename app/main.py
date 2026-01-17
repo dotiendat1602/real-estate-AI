@@ -7,10 +7,10 @@ from fastapi import FastAPI
 from dotenv import load_dotenv
 load_dotenv()
 
-from app.utils.logging import setup_logging
-from app.api.health import router as health_router
-from app.api.chat import router as chat_router
-from app.api.ingest import router as ingest_router
+from .utils.logging import setup_logging
+from .api.health import router as health_router
+from .api.chat import router as chat_router
+from .api.ingest import router as ingest_router
 
 setup_logging()
 
