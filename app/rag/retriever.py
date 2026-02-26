@@ -5,14 +5,14 @@ from langchain_postgres import PGVector
 from langchain_core.vectorstores import VectorStoreRetriever
 
 def build_pgvector_store(embeddings) -> PGVector:
-    db_url = os.getenv("DATABASE_URL", "")
-    if not db_url:
-        raise RuntimeError("DATABASE_URL is missing")
+    pgvector_url = os.getenv("PGVECTOR_URL", "")
+    if not pgvector_url:
+        raise RuntimeError("PGVECTOR_URL is missing")
 
     collection_name = os.getenv("PGVECTOR_COLLECTION", "post_embeddings")
 
     return PGVector(
-        connection=db_url,
+        connection=pgvector_url,
         embeddings=embeddings,
         collection_name=collection_name,
         use_jsonb=True,

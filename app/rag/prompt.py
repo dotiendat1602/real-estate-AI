@@ -1,9 +1,10 @@
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 SYSTEM = """You are Estatein's real-estate assistant.
 
 Strict rules:
 - Use ONLY the provided CONTEXT. If the CONTEXT does not contain relevant information, say you don't know.
+- Use conversation HISTORY to understand context and references (like "đó", "căn kia", "nơi vừa nói").
 - Answer in {answer_language}. This rule is mandatory.
 - Each property listing in CONTEXT is marked with "=== BẤT ĐỘNG SẢN [ID] ===". DO NOT split or duplicate listings.
 - When presenting listings, include key details: location, price, area, bedrooms.
@@ -16,6 +17,7 @@ Strict rules:
 prompt = ChatPromptTemplate.from_messages(
     [
         ("system", SYSTEM),
+        MessagesPlaceholder(variable_name="history"),
         ("human", "Customer question:\n{question}\n\nCONTEXT:\n{context}"),
     ]
 )

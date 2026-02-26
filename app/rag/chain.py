@@ -106,7 +106,7 @@ def _build_citations(docs: list[Document]) -> list[dict[str, Any]]:
             "area": md.get("area"),
             "bedrooms": md.get("bedrooms"),
             "amenities": md.get("amenities", []),
-            "snippet": (d.page_content or "")[:300],  # Tăng snippet length
+            "snippet": (d.page_content or "")[:300],
         })
     
     return out
@@ -130,6 +130,7 @@ class RagChain:
             {
                 "question": lambda x: x["question"],
                 "context": lambda x: x["context"],
+                "history": lambda x: x["history"],
                 "answer_language": lambda x: x["answer_language"],
             }
             | prompt
@@ -137,7 +138,10 @@ class RagChain:
             | StrOutputParser()
         )
 
-    async def run(self, question: str) -> ChatResult:
+    async def run(self, question: str, history: list = None) -> ChatResult:
+        if history is None:
+            history = []
+            
         docs: list[Document] = await self.retriever.ainvoke(question)
         context = _format_docs(docs)
 
@@ -147,6 +151,7 @@ class RagChain:
             {
                 "question": question,
                 "context": context,
+                "history": history,
                 "answer_language": answer_language,
             }
         )

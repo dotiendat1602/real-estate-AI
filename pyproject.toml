@@ -21,6 +21,7 @@ dependencies = [
   "langchain-openai>=0.2.0",
   "openai>=1.0.0",
   "langid>=1.1.6",
+  "alembic>=1.7",
 ]
 description = "RAG AI service for Estatein using FastAPI + pgvector"
 name = "estatein-ai-service"

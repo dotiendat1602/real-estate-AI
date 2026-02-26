@@ -4,7 +4,6 @@ import os
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 
 DATABASE_URL = os.getenv("DATABASE_URL", "")
-
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL is missing. Please set it in .env")
 
@@ -12,6 +11,11 @@ engine = create_async_engine(
     DATABASE_URL,
     echo=False,
     pool_pre_ping=True,
+    connect_args={
+        "server_settings": {
+            "search_path": "ai,public"
+        }
+    },
 )
 
 AsyncSessionLocal = async_sessionmaker(
