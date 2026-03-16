@@ -169,8 +169,8 @@ async def update_post_embeddings(post_id: int, req: UpdatePostRequest):
         await session.commit()
     
     # 2. Tạo embeddings mới
-    text = (req.content or "").strip()
-    if not text:
+    content_text = (req.content or "").strip()
+    if not content_text:
         return {
             "ok": True, 
             "postId": post_id,
@@ -179,7 +179,7 @@ async def update_post_embeddings(post_id: int, req: UpdatePostRequest):
         }
     
     vs = get_vector_store()
-    chunks = _splitter.split_text(text)
+    chunks = _splitter.split_text(content_text)
     
     docs: list[Document] = []
     for idx, chunk in enumerate(chunks):

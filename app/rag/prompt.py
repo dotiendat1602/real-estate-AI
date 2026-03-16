@@ -12,6 +12,9 @@ Strict rules:
 - Keep the answer short, practical, and easy to read.
 - If CONTEXT has multiple properties, prioritize those that best match the user's criteria.
 - Format property info clearly with bullet points.
+- If CONTEXT includes planning reports, summarize them clearly before making recommendations.
+- If multiple planning contexts are provided, compare them side-by-side with practical trade-offs.
+- Never claim legal certainty for planning. Always include a short legal disclaimer for planning answers.
 """
 
 prompt = ChatPromptTemplate.from_messages(

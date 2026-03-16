@@ -11,6 +11,7 @@ from .utils.logging import setup_logging
 from .api.health import router as health_router
 from .api.chat import router as chat_router
 from .api.ingest import router as ingest_router
+from .api.planning import router as planning_router
 
 setup_logging()
 
@@ -46,6 +47,7 @@ def create_app() -> FastAPI:
     app.include_router(health_router)
     app.include_router(chat_router, prefix="/api")
     app.include_router(ingest_router, prefix="/api")
+    app.include_router(planning_router, prefix="/api")
 
     return app
 

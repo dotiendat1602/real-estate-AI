@@ -138,12 +138,14 @@ class RagChain:
             | StrOutputParser()
         )
 
-    async def run(self, question: str, history: list = None) -> ChatResult:
+    async def run(self, question: str, history: list = None, extra_context: str = "") -> ChatResult:
         if history is None:
             history = []
             
         docs: list[Document] = await self.retriever.ainvoke(question)
         context = _format_docs(docs)
+        if extra_context:
+            context = f"{context}\n\n{extra_context}" if context else extra_context
 
         answer_language = detect_lang(question)
 
