@@ -4,17 +4,17 @@ import os
 from langchain_postgres import PGVector
 from langchain_core.vectorstores import VectorStoreRetriever
 
-def build_pgvector_store(embeddings) -> PGVector:
+def build_pgvector_store(embeddings, collection_name: str | None = None) -> PGVector:
     pgvector_url = os.getenv("PGVECTOR_URL", "")
     if not pgvector_url:
         raise RuntimeError("PGVECTOR_URL is missing")
 
-    collection_name = os.getenv("PGVECTOR_COLLECTION", "post_embeddings")
+    resolved_collection = collection_name or os.getenv("PGVECTOR_COLLECTION", "post_embeddings")
 
     return PGVector(
         connection=pgvector_url,
         embeddings=embeddings,
-        collection_name=collection_name,
+        collection_name=resolved_collection,
         use_jsonb=True,
         async_mode=True,
         create_extension=False,
@@ -49,8 +49,18 @@ def build_metadata_filter(filters: dict) -> dict:
     
     pgvector_filter = {}
     
-    # Exact match filters - chỉ thêm nếu có trong filters
-    exact_match_fields = ['city', 'district', 'postType', 'bedrooms']
+    # Exact match filters - chi them neu co trong filters
+    exact_match_fields = [
+        'city',
+        'district',
+        'postType',
+        'bedrooms',
+        'documentScope',
+        'documentType',
+        'dossierCode',
+        'chunkType',
+        'propertyId',
+    ]
     for field in exact_match_fields:
         if field in filters:
             pgvector_filter[field] = filters[field]
@@ -76,10 +86,23 @@ def build_metadata_filter(filters: dict) -> dict:
     
     if area_filter:
         pgvector_filter['area'] = area_filter
+
+    # Range/equality filter for plan year.
+    if 'planYear' in filters:
+        pgvector_filter['planYear'] = filters['planYear']
+
+    # Optional IN filter for chunk types.
+    if isinstance(filters.get('chunkTypes'), list) and filters['chunkTypes']:
+        pgvector_filter['chunkType'] = {'$in': filters['chunkTypes']}
     
     return pgvector_filter
 
-def build_retriever(vs: PGVector, k: int = 12, filters: dict | None = None) -> VectorStoreRetriever:
+def build_retriever(
+    vs: PGVector,
+    k: int = 12,
+    filters: dict | None = None,
+    base_filter: dict | None = None,
+) -> VectorStoreRetriever:
     """
     Build retriever with dynamic metadata filtering.
     
@@ -95,13 +118,17 @@ def build_retriever(vs: PGVector, k: int = 12, filters: dict | None = None) -> V
     """
     search_kwargs = {"k": k}
     
+    merged_filter: dict = {}
+    if base_filter:
+        merged_filter.update(base_filter)
+
     if filters:
-        pgvector_filter = build_metadata_filter(filters)
-        
-        if pgvector_filter:
-            search_kwargs["filter"] = pgvector_filter
-            print(f"[Retriever] Applying PGVector filter: {pgvector_filter}")
-        else:
-            print(f"[Retriever] No valid metadata filters to apply")
+        merged_filter.update(build_metadata_filter(filters))
+
+    if merged_filter:
+        search_kwargs["filter"] = merged_filter
+        print(f"[Retriever] Applying PGVector filter: {merged_filter}")
+    elif filters:
+        print("[Retriever] No valid metadata filters to apply")
     
     return vs.as_retriever(search_type="similarity", search_kwargs=search_kwargs)

@@ -22,6 +22,8 @@ dependencies = [
   "openai>=1.0.0",
   "langid>=1.1.6",
   "alembic>=1.7",
+  "pypdf>=5.4.0",
+  "docling>=2.26.0",
 ]
 description = "RAG AI service for Estatein using FastAPI + pgvector"
 name = "estatein-ai-service"

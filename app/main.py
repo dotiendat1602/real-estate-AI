@@ -25,9 +25,10 @@ async def lifespan(app: FastAPI):
     
     # Khởi tạo vector store
     print("Initializing vector store...")
-    from app.api import chat, ingest
+    from app.api import chat, ingest, planning
     await chat.initialize_vector_store()
     await ingest.initialize_vector_store()
+    await planning.initialize_vector_store()
     
     print("=" * 80)
     print("Application startup complete!")
