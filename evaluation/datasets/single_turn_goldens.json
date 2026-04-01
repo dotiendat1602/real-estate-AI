@@ -1,0 +1,852 @@
+[
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=16, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 16
+    },
+    "id": "ST_EASY_001"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-HoanKiem-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=16, dossierCode=HN-HoanKiem-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 16
+    },
+    "id": "ST_EASY_002"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Trong thành phố Hà Nội, tài liệu quy hoạch này đang nói về quận/huyện nào?",
+    "expected_output_outline": [
+      "Nêu đúng district: quận Hoàn Kiếm",
+      "Không thêm địa danh ngoài dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=16, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 16
+    },
+    "id": "ST_EASY_003"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực quận Hoàn Kiếm thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=16, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 16
+    },
+    "id": "ST_EASY_004"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở quận Hoàn Kiếm được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=16, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 16
+    },
+    "id": "ST_EASY_005"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại quận Cầu Giấy, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=24, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 24
+    },
+    "id": "ST_EASY_006"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Cầu Giấy, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-CauGiay-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=24, dossierCode=HN-CauGiay-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 24
+    },
+    "id": "ST_EASY_007"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực quận Cầu Giấy thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=24, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 24
+    },
+    "id": "ST_EASY_008"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở quận Cầu Giấy được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=24, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, district=Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 24
+    },
+    "id": "ST_EASY_009"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại quận Long Biên, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=32, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Long Biên, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 32
+    },
+    "id": "ST_EASY_010"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Long Biên, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-LongBien-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=32, dossierCode=HN-LongBien-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Long Biên, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 32
+    },
+    "id": "ST_EASY_011"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực quận Long Biên thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=32, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 quận Long Biên, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 32
+    },
+    "id": "ST_EASY_012"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở quận Long Biên được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=32, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên, district=Kế hoạch sử dụng đất năm 2025 quận Long Biên, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 32
+    },
+    "id": "ST_EASY_013"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại quận Bắc Từ Liêm, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=50, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 50
+    },
+    "id": "ST_EASY_014"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Bắc Từ Liêm, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-BacTuLiem-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=50, dossierCode=HN-BacTuLiem-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 50
+    },
+    "id": "ST_EASY_015"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực quận Bắc Từ Liêm thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=50, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 50
+    },
+    "id": "ST_EASY_016"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở quận Bắc Từ Liêm được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=50, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm, district=Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 50
+    },
+    "id": "ST_EASY_017"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại quận Hai Bà Trưng, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=90, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 90
+    },
+    "id": "ST_EASY_018"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hai Bà Trưng, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-HaiBaTrung-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=90, dossierCode=HN-HaiBaTrung-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 90
+    },
+    "id": "ST_EASY_019"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực quận Hai Bà Trưng thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=90, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 90
+    },
+    "id": "ST_EASY_020"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở quận Hai Bà Trưng được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=90, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng, district=Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 90
+    },
+    "id": "ST_EASY_021"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại huyện Hoài Đức, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=93, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 93
+    },
+    "id": "ST_EASY_022"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại huyện Hoài Đức, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-HoaiDuc-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=93, dossierCode=HN-HoaiDuc-KH2025, district=Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 93
+    },
+    "id": "ST_EASY_023"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực huyện Hoài Đức thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=93, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 93
+    },
+    "id": "ST_EASY_024"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở huyện Hoài Đức được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=93, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức, district=Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 93
+    },
+    "id": "ST_EASY_025"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại thị xã Sơn Tây, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=109, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 109
+    },
+    "id": "ST_EASY_026"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại thị xã Sơn Tây, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-SonTay-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=109, dossierCode=HN-SonTay-KH2025, district=Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 109
+    },
+    "id": "ST_EASY_027"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực thị xã Sơn Tây thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=109, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 109
+    },
+    "id": "ST_EASY_028"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở thị xã Sơn Tây được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=109, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây, district=Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 109
+    },
+    "id": "ST_EASY_029"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại quận Hà Đông, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=113, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Hà Đông, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hà Đông"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 113
+    },
+    "id": "ST_EASY_030"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hà Đông, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-HaDong-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=113, dossierCode=HN-HaDong-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Hà Đông, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 113
+    },
+    "id": "ST_EASY_031"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực quận Hà Đông thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=113, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 quận Hà Đông, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hà Đông"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 113
+    },
+    "id": "ST_EASY_032"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở quận Hà Đông được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hà Đông",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=113, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hà Đông, district=Kế hoạch sử dụng đất năm 2025 quận Hà Đông, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 113
+    },
+    "id": "ST_EASY_033"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại quận Ba Đình, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=139, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Ba Đình, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 139
+    },
+    "id": "ST_EASY_034"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Ba Đình, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-BaDinh-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=139, dossierCode=HN-BaDinh-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Ba Đình, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 139
+    },
+    "id": "ST_EASY_035"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực quận Ba Đình thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=139, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 quận Ba Đình, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 139
+    },
+    "id": "ST_EASY_036"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở quận Ba Đình được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=139, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình, district=Kế hoạch sử dụng đất năm 2025 quận Ba Đình, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 139
+    },
+    "id": "ST_EASY_037"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại huyện Đan Phượng, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=141, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 141
+    },
+    "id": "ST_EASY_038"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại huyện Đan Phượng, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-DanPhuong-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=141, dossierCode=HN-DanPhuong-KH2025, district=Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 141
+    },
+    "id": "ST_EASY_039"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực huyện Đan Phượng thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=141, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 141
+    },
+    "id": "ST_EASY_040"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở huyện Đan Phượng được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=141, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, district=Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 141
+    },
+    "id": "ST_EASY_041"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại quận Tây Hồ, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=142, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Tây Hồ, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 142
+    },
+    "id": "ST_EASY_042"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Tây Hồ, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-TayHo-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=142, dossierCode=HN-TayHo-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Tây Hồ, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 142
+    },
+    "id": "ST_EASY_043"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực quận Tây Hồ thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=142, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 quận Tây Hồ, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 142
+    },
+    "id": "ST_EASY_044"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở quận Tây Hồ được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=142, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ, district=Kế hoạch sử dụng đất năm 2025 quận Tây Hồ, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 142
+    },
+    "id": "ST_EASY_045"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 tại huyện Quốc Oai, thành phố Hà Nội đang áp dụng cho năm nào?",
+    "expected_output_outline": [
+      "Nêu đúng planYear: 2025",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "planningDocumentId=148, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 148
+    },
+    "id": "ST_EASY_046"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại huyện Quốc Oai, thành phố Hà Nội là gì?",
+    "expected_output_outline": [
+      "Nêu đúng dossierCode: HN-QuocOai-KH2025",
+      "Trả lời ngắn gọn, đúng metadata"
+    ],
+    "context": [
+      "planningDocumentId=148, dossierCode=HN-QuocOai-KH2025, district=Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 148
+    },
+    "id": "ST_EASY_047"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Khu vực huyện Quốc Oai thuộc thành phố nào theo tài liệu quy hoạch này?",
+    "expected_output_outline": [
+      "Nêu đúng city: thành phố Hà Nội",
+      "Trả lời một ý chính, không suy đoán"
+    ],
+    "context": [
+      "planningDocumentId=148, city=Ha Noi, district=Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai, thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 148
+    },
+    "id": "ST_EASY_048"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở huyện Quốc Oai được không?",
+    "expected_output_outline": [
+      "Nêu đúng title: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai",
+      "Không diễn giải thêm ngoài metadata"
+    ],
+    "context": [
+      "planningDocumentId=148, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai, district=Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai, thành phố Hà Nội, city=Ha Noi"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 148
+    },
+    "id": "ST_EASY_049"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Tin Căn hộ ở Phường Bến Nghé, Quận 1, Hồ Chí Minh (diện tích 75 m2, giá 6500000000) là dạng SALE hay RENT vậy?",
+    "expected_output_outline": [
+      "Nêu đúng postType: SALE",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "postId=1, postType=SALE"
+    ],
+    "target_metadata": {
+      "postId": 1
+    },
+    "id": "ST_EASY_050"
+  }
+]

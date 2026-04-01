@@ -1,0 +1,1202 @@
+[
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 55 m2, giá 3650000000), mình phải ưu tiên quy hoạch của huyện Hoài Đức hơn tài liệu của thị xã Sơn Tây?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=95, planYear=2025, dossierCode=HN-HoaiDuc-KH2025, district=huyện Hoài Đức, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức - thành phố Hà Nội",
+      "planningB: planningDocumentId=109, planYear=2025, dossierCode=HN-SonTay-KH2025, district=thị xã Sơn Tây, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây",
+      "planningC: planningDocumentId=113, planYear=2025, dossierCode=HN-HaDong-KH2025, district=quận Hà Đông, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hà Đông",
+      "post: postId=41, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=3650000000, area=55, bedrooms=2"
+    ],
+    "id": "MT_HARD_WHY_001"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 55 m2, giá 3650000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức - thành phố Hà Nội\" và một tài liệu ở quận Hà Đông, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=95, planYear=2025, dossierCode=HN-HoaiDuc-KH2025, district=huyện Hoài Đức, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức - thành phố Hà Nội",
+      "planningB: planningDocumentId=109, planYear=2025, dossierCode=HN-SonTay-KH2025, district=thị xã Sơn Tây, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây",
+      "planningC: planningDocumentId=113, planYear=2025, dossierCode=HN-HaDong-KH2025, district=quận Hà Đông, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hà Đông",
+      "post: postId=41, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=3650000000, area=55, bedrooms=2"
+    ],
+    "id": "MT_HARD_WHY_002"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 55 m2, giá 3650000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (huyện Hoài Đức, thị xã Sơn Tây) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=95, planYear=2025, dossierCode=HN-HoaiDuc-KH2025, district=huyện Hoài Đức, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức - thành phố Hà Nội",
+      "planningB: planningDocumentId=109, planYear=2025, dossierCode=HN-SonTay-KH2025, district=thị xã Sơn Tây, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây",
+      "planningC: planningDocumentId=113, planYear=2025, dossierCode=HN-HaDong-KH2025, district=quận Hà Đông, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hà Đông",
+      "post: postId=41, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=3650000000, area=55, bedrooms=2"
+    ],
+    "id": "MT_HARD_WHY_003"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 156 m2, giá 70000000), mình phải ưu tiên quy hoạch của thị xã Sơn Tây hơn tài liệu của quận Hà Đông?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=111, planYear=2025, dossierCode=HN-SonTay-KH2025, district=thị xã Sơn Tây, city=thành phố Hà Nội, title=Danh mục công trình, dự án trong năm kế hoạch 2025 của thị xã Sơn Tây",
+      "planningB: planningDocumentId=113, planYear=2025, dossierCode=HN-HaDong-KH2025, district=quận Hà Đông, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hà Đông",
+      "planningC: planningDocumentId=139, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "post: postId=73, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=70000000, area=156, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_004"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hà Đông\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 156 m2, giá 70000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Danh mục công trình, dự án trong năm kế hoạch 2025 của thị xã Sơn Tây\" và một tài liệu ở quận Ba Đình, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=111, planYear=2025, dossierCode=HN-SonTay-KH2025, district=thị xã Sơn Tây, city=thành phố Hà Nội, title=Danh mục công trình, dự án trong năm kế hoạch 2025 của thị xã Sơn Tây",
+      "planningB: planningDocumentId=113, planYear=2025, dossierCode=HN-HaDong-KH2025, district=quận Hà Đông, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hà Đông",
+      "planningC: planningDocumentId=139, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "post: postId=73, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=70000000, area=156, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_005"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 156 m2, giá 70000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (thị xã Sơn Tây, quận Hà Đông) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=111, planYear=2025, dossierCode=HN-SonTay-KH2025, district=thị xã Sơn Tây, city=thành phố Hà Nội, title=Danh mục công trình, dự án trong năm kế hoạch 2025 của thị xã Sơn Tây",
+      "planningB: planningDocumentId=113, planYear=2025, dossierCode=HN-HaDong-KH2025, district=quận Hà Đông, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hà Đông",
+      "planningC: planningDocumentId=139, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "post: postId=73, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=70000000, area=156, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_006"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 70 m2, giá 16000000), mình phải ưu tiên quy hoạch của quận Ba Đình hơn tài liệu của huyện Đan Phượng?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=139, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningB: planningDocumentId=141, planYear=2025, dossierCode=HN-DanPhuong-KH2025, district=huyện Đan Phượng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng",
+      "planningC: planningDocumentId=142, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "post: postId=77, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=16000000, area=70, bedrooms=2"
+    ],
+    "id": "MT_HARD_WHY_007"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 70 m2, giá 16000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình\" và một tài liệu ở quận Tây Hồ, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=139, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningB: planningDocumentId=141, planYear=2025, dossierCode=HN-DanPhuong-KH2025, district=huyện Đan Phượng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng",
+      "planningC: planningDocumentId=142, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "post: postId=77, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=16000000, area=70, bedrooms=2"
+    ],
+    "id": "MT_HARD_WHY_008"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 70 m2, giá 16000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (quận Ba Đình, huyện Đan Phượng) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=139, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningB: planningDocumentId=141, planYear=2025, dossierCode=HN-DanPhuong-KH2025, district=huyện Đan Phượng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng",
+      "planningC: planningDocumentId=142, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "post: postId=77, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=16000000, area=70, bedrooms=2"
+    ],
+    "id": "MT_HARD_WHY_009"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 39 m2, giá 11000000), mình phải ưu tiên quy hoạch của huyện Quốc Oai hơn tài liệu của quận Tây Hồ?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=148, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai",
+      "planningB: planningDocumentId=150, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "planningC: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "post: postId=82, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=11000000, area=39, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_010"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Tây Hồ\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 39 m2, giá 11000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai\" và một tài liệu ở quận Hoàn Kiếm, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=148, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai",
+      "planningB: planningDocumentId=150, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "planningC: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "post: postId=82, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=11000000, area=39, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_011"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 39 m2, giá 11000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (huyện Quốc Oai, quận Tây Hồ) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=148, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai",
+      "planningB: planningDocumentId=150, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "planningC: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "post: postId=82, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=11000000, area=39, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_012"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 45 m2, giá 5000000), mình phải ưu tiên quy hoạch của quận Tây Hồ hơn tài liệu của huyện Quốc Oai?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=150, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "planningB: planningDocumentId=153, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội",
+      "planningC: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "post: postId=83, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=5000000, area=45, bedrooms=1"
+    ],
+    "id": "MT_HARD_WHY_013"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 45 m2, giá 5000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Tây Hồ\" và một tài liệu ở quận Hoàn Kiếm, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=150, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "planningB: planningDocumentId=153, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội",
+      "planningC: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "post: postId=83, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=5000000, area=45, bedrooms=1"
+    ],
+    "id": "MT_HARD_WHY_014"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 45 m2, giá 5000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (quận Tây Hồ, huyện Quốc Oai) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=150, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "planningB: planningDocumentId=153, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội",
+      "planningC: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "post: postId=83, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=5000000, area=45, bedrooms=1"
+    ],
+    "id": "MT_HARD_WHY_015"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 77.5 m2, giá 8867000000000), mình phải ưu tiên quy hoạch của quận Long Biên hơn tài liệu của quận Bắc Từ Liêm?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "planningB: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "planningC: planningDocumentId=90, planYear=2025, dossierCode=HN-HaiBaTrung-KH2025, district=quận Hai Bà Trưng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng",
+      "post: postId=120, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=8867000000000, area=77.5, bedrooms=2"
+    ],
+    "id": "MT_HARD_WHY_016"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 77.5 m2, giá 8867000000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên\" và một tài liệu ở quận Hai Bà Trưng, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "planningB: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "planningC: planningDocumentId=90, planYear=2025, dossierCode=HN-HaiBaTrung-KH2025, district=quận Hai Bà Trưng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng",
+      "post: postId=120, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=8867000000000, area=77.5, bedrooms=2"
+    ],
+    "id": "MT_HARD_WHY_017"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 77.5 m2, giá 8867000000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (quận Long Biên, quận Bắc Từ Liêm) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "planningB: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "planningC: planningDocumentId=90, planYear=2025, dossierCode=HN-HaiBaTrung-KH2025, district=quận Hai Bà Trưng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng",
+      "post: postId=120, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=8867000000000, area=77.5, bedrooms=2"
+    ],
+    "id": "MT_HARD_WHY_018"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 64 m2, giá 11000000000), mình phải ưu tiên quy hoạch của quận Bắc Từ Liêm hơn tài liệu của quận Hai Bà Trưng?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "planningB: planningDocumentId=90, planYear=2025, dossierCode=HN-HaiBaTrung-KH2025, district=quận Hai Bà Trưng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng",
+      "planningC: planningDocumentId=93, planYear=2025, dossierCode=HN-HoaiDuc-KH2025, district=huyện Hoài Đức, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức",
+      "post: postId=122, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=11000000000, area=64, bedrooms=1"
+    ],
+    "id": "MT_HARD_WHY_019"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 64 m2, giá 11000000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm\" và một tài liệu ở huyện Hoài Đức, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "planningB: planningDocumentId=90, planYear=2025, dossierCode=HN-HaiBaTrung-KH2025, district=quận Hai Bà Trưng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng",
+      "planningC: planningDocumentId=93, planYear=2025, dossierCode=HN-HoaiDuc-KH2025, district=huyện Hoài Đức, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức",
+      "post: postId=122, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=11000000000, area=64, bedrooms=1"
+    ],
+    "id": "MT_HARD_WHY_020"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 64 m2, giá 11000000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (quận Bắc Từ Liêm, quận Hai Bà Trưng) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "planningB: planningDocumentId=90, planYear=2025, dossierCode=HN-HaiBaTrung-KH2025, district=quận Hai Bà Trưng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng",
+      "planningC: planningDocumentId=93, planYear=2025, dossierCode=HN-HoaiDuc-KH2025, district=huyện Hoài Đức, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Hoài Đức",
+      "post: postId=122, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=11000000000, area=64, bedrooms=1"
+    ],
+    "id": "MT_HARD_WHY_021"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 125 m2, giá 35000000), mình phải ưu tiên quy hoạch của huyện Quốc Oai hơn tài liệu của quận Hoàn Kiếm?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=153, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội",
+      "planningB: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "planningC: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "post: postId=142, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=35000000, area=125, bedrooms=3"
+    ],
+    "id": "MT_HARD_WHY_022"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 125 m2, giá 35000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội\" và một tài liệu ở quận Cầu Giấy, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=153, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội",
+      "planningB: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "planningC: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "post: postId=142, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=35000000, area=125, bedrooms=3"
+    ],
+    "id": "MT_HARD_WHY_023"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 125 m2, giá 35000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (huyện Quốc Oai, quận Hoàn Kiếm) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=153, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội",
+      "planningB: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "planningC: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "post: postId=142, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=35000000, area=125, bedrooms=3"
+    ],
+    "id": "MT_HARD_WHY_024"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 85 m2, giá 21000000), mình phải ưu tiên quy hoạch của huyện Quốc Oai hơn tài liệu của quận Hoàn Kiếm?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=154, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Bản đồ kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - Chi tiết",
+      "planningB: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "planningC: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "post: postId=143, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=21000000, area=85, bedrooms=3"
+    ],
+    "id": "MT_HARD_WHY_025"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 85 m2, giá 21000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Bản đồ kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - Chi tiết\" và một tài liệu ở quận Cầu Giấy, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=154, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Bản đồ kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - Chi tiết",
+      "planningB: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "planningC: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "post: postId=143, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=21000000, area=85, bedrooms=3"
+    ],
+    "id": "MT_HARD_WHY_026"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 85 m2, giá 21000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (huyện Quốc Oai, quận Hoàn Kiếm) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=154, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Bản đồ kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - Chi tiết",
+      "planningB: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "planningC: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "post: postId=143, postType=RENT, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=21000000, area=85, bedrooms=3"
+    ],
+    "id": "MT_HARD_WHY_027"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 67 m2, giá 14000000000), mình phải ưu tiên quy hoạch của quận Hoàn Kiếm hơn tài liệu của quận Cầu Giấy?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=17, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội",
+      "planningB: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "planningC: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "post: postId=146, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=14000000000, area=67, bedrooms=4"
+    ],
+    "id": "MT_HARD_WHY_028"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 67 m2, giá 14000000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội\" và một tài liệu ở quận Long Biên, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=17, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội",
+      "planningB: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "planningC: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "post: postId=146, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=14000000000, area=67, bedrooms=4"
+    ],
+    "id": "MT_HARD_WHY_029"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 67 m2, giá 14000000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (quận Hoàn Kiếm, quận Cầu Giấy) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=17, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội",
+      "planningB: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "planningC: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "post: postId=146, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=14000000000, area=67, bedrooms=4"
+    ],
+    "id": "MT_HARD_WHY_030"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 71.9 m2, giá 23600000000), mình phải ưu tiên quy hoạch của quận Cầu Giấy hơn tài liệu của quận Long Biên?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "planningB: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "planningC: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "post: postId=147, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=23600000000, area=71.9, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_031"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 71.9 m2, giá 23600000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy\" và một tài liệu ở quận Bắc Từ Liêm, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "planningB: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "planningC: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "post: postId=147, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=23600000000, area=71.9, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_032"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 71.9 m2, giá 23600000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (quận Cầu Giấy, quận Long Biên) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "planningB: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "planningC: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "post: postId=147, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=23600000000, area=71.9, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_033"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 70 m2, giá 31800000000), mình phải ưu tiên quy hoạch của quận Ba Đình hơn tài liệu của huyện Đan Phượng?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=139, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningB: planningDocumentId=141, planYear=2025, dossierCode=HN-DanPhuong-KH2025, district=huyện Đan Phượng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng",
+      "planningC: planningDocumentId=142, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "post: postId=164, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=31800000000, area=70, bedrooms=6"
+    ],
+    "id": "MT_HARD_WHY_034"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 70 m2, giá 31800000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình\" và một tài liệu ở quận Tây Hồ, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=139, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningB: planningDocumentId=141, planYear=2025, dossierCode=HN-DanPhuong-KH2025, district=huyện Đan Phượng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng",
+      "planningC: planningDocumentId=142, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "post: postId=164, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=31800000000, area=70, bedrooms=6"
+    ],
+    "id": "MT_HARD_WHY_035"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 70 m2, giá 31800000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (quận Ba Đình, huyện Đan Phượng) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=139, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningB: planningDocumentId=141, planYear=2025, dossierCode=HN-DanPhuong-KH2025, district=huyện Đan Phượng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng",
+      "planningC: planningDocumentId=142, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "post: postId=164, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=31800000000, area=70, bedrooms=6"
+    ],
+    "id": "MT_HARD_WHY_036"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 30 m2, giá 7000000000), mình phải ưu tiên quy hoạch của huyện Đan Phượng hơn tài liệu của quận Ba Đình?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=144, planYear=2025, dossierCode=HN-DanPhuong-KH2025, district=huyện Đan Phượng, city=thành phố Hà Nội, title=Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng",
+      "planningB: planningDocumentId=146, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningC: planningDocumentId=148, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai",
+      "post: postId=167, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=7000000000, area=30, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_037"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Ba Đình\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 30 m2, giá 7000000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng\" và một tài liệu ở huyện Quốc Oai, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=144, planYear=2025, dossierCode=HN-DanPhuong-KH2025, district=huyện Đan Phượng, city=thành phố Hà Nội, title=Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng",
+      "planningB: planningDocumentId=146, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningC: planningDocumentId=148, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai",
+      "post: postId=167, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=7000000000, area=30, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_038"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 30 m2, giá 7000000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (huyện Đan Phượng, quận Ba Đình) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=144, planYear=2025, dossierCode=HN-DanPhuong-KH2025, district=huyện Đan Phượng, city=thành phố Hà Nội, title=Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng",
+      "planningB: planningDocumentId=146, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningC: planningDocumentId=148, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai",
+      "post: postId=167, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=7000000000, area=30, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_039"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 85 m2, giá 18000000000), mình phải ưu tiên quy hoạch của quận Long Biên hơn tài liệu của quận Bắc Từ Liêm?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "planningB: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "planningC: planningDocumentId=90, planYear=2025, dossierCode=HN-HaiBaTrung-KH2025, district=quận Hai Bà Trưng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng",
+      "post: postId=178, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=18000000000, area=85, bedrooms=22"
+    ],
+    "id": "MT_HARD_WHY_040"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 85 m2, giá 18000000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên\" và một tài liệu ở quận Hai Bà Trưng, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "planningB: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "planningC: planningDocumentId=90, planYear=2025, dossierCode=HN-HaiBaTrung-KH2025, district=quận Hai Bà Trưng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng",
+      "post: postId=178, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=18000000000, area=85, bedrooms=22"
+    ],
+    "id": "MT_HARD_WHY_041"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 85 m2, giá 18000000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (quận Long Biên, quận Bắc Từ Liêm) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "planningB: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "planningC: planningDocumentId=90, planYear=2025, dossierCode=HN-HaiBaTrung-KH2025, district=quận Hai Bà Trưng, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hai Bà Trưng",
+      "post: postId=178, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=18000000000, area=85, bedrooms=22"
+    ],
+    "id": "MT_HARD_WHY_042"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 50 m2, giá 7650000000), mình phải ưu tiên quy hoạch của quận Ba Đình hơn tài liệu của huyện Quốc Oai?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=146, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningB: planningDocumentId=148, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai",
+      "planningC: planningDocumentId=150, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "post: postId=197, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=7650000000, area=50, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_043"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 50 m2, giá 7650000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Ba Đình\" và một tài liệu ở quận Tây Hồ, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=146, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningB: planningDocumentId=148, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai",
+      "planningC: planningDocumentId=150, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "post: postId=197, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=7650000000, area=50, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_044"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 50 m2, giá 7650000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (quận Ba Đình, huyện Quốc Oai) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=146, planYear=2025, dossierCode=HN-BaDinh-KH2025, district=quận Ba Đình, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Ba Đình",
+      "planningB: planningDocumentId=148, planYear=2025, dossierCode=HN-QuocOai-KH2025, district=huyện Quốc Oai, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai",
+      "planningC: planningDocumentId=150, planYear=2025, dossierCode=HN-TayHo-KH2025, district=quận Tây Hồ, city=thành phố Hà Nội, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "post: postId=197, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=7650000000, area=50, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_045"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 100 m2, giá 2000000000), mình phải ưu tiên quy hoạch của quận Hoàn Kiếm hơn tài liệu của quận Cầu Giấy?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "planningB: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "planningC: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "post: postId=203, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=2000000000, area=100, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_046"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 100 m2, giá 2000000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm\" và một tài liệu ở quận Long Biên, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "planningB: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "planningC: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "post: postId=203, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=2000000000, area=100, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_047"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao thông tin giá/diện tích chưa đủ để kết luận, rồi hỏi tiếp vì sao cần gắn với nhiều văn bản quy hoạch để suy luận logic.",
+    "expected_outcome": "Bot giải thích rõ giới hạn của metadata bất động sản đơn lẻ và lý do phải kết hợp nhiều tài liệu quy hoạch trước khi đánh giá.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao chỉ nhìn giá, diện tích và số phòng ngủ của tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 100 m2, giá 2000000000) vẫn chưa đủ để đánh giá rủi ro quy hoạch?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao cần ghép thêm ít nhất hai văn bản quy hoạch (quận Hoàn Kiếm, quận Cầu Giấy) để suy luận một cách logic hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=quận Hoàn Kiếm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm",
+      "planningB: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "planningC: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "post: postId=203, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=2000000000, area=100, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_048"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi lý do ưu tiên tài liệu quy hoạch đúng khu vực, rồi hỏi thêm lý do cần kiểm chứng đa tiêu chí trước khi kết luận.",
+    "expected_outcome": "Bot lập luận rõ vì sao phải ưu tiên tài liệu khớp location và vì sao cần đối chiếu planYear/dossierCode trước khi đưa nhận định cho tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao khi thẩm định tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 100 m2, giá 2800000000), mình phải ưu tiên quy hoạch của quận Cầu Giấy hơn tài liệu của quận Long Biên?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy vì sao chỉ khớp quận thôi vẫn chưa đủ, mà còn phải kiểm tra thêm planYear và dossierCode trước khi đưa khuyến nghị?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "planningB: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "planningC: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "post: postId=205, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=2800000000, area=100, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_049"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "cross_planning_real_estate",
+    "scenario": "Người dùng hỏi vì sao không thể suy luận từ một văn bản quy hoạch đơn lẻ, sau đó yêu cầu giải thích logic kiểm tra chéo nhiều nguồn.",
+    "expected_outcome": "Bot nêu được rủi ro của suy luận một nguồn và giải thích cách so sánh chéo nhiều tài liệu cùng với metadata tin bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nếu chỉ đọc mỗi \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên\" thì kết luận cho tin Căn hộ thiếu thông tin vị trí cụ thể (diện tích 100 m2, giá 2800000000) có thể bị thiên lệch?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu phải kiểm tra chéo với \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy\" và một tài liệu ở quận Bắc Từ Liêm, vì sao mức độ tin cậy lại cao hơn?"
+      }
+    ],
+    "context": [
+      "planningA: planningDocumentId=24, planYear=2025, dossierCode=HN-CauGiay-KH2025, district=quận Cầu Giấy, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "planningB: planningDocumentId=32, planYear=2025, dossierCode=HN-LongBien-KH2025, district=quận Long Biên, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "planningC: planningDocumentId=50, planYear=2025, dossierCode=HN-BacTuLiem-KH2025, district=quận Bắc Từ Liêm, city=thành phố Hà Nội, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "post: postId=205, postType=SALE, categoryName=Căn hộ, city=N/A, district=N/A, ward=N/A, price=2800000000, area=100, bedrooms=N/A"
+    ],
+    "id": "MT_HARD_WHY_050"
+  }
+]

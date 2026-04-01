@@ -1,0 +1,12 @@
+runtime:
+  top_k: 12
+  max_history_turns: 6
+  default_domain: real_estate
+  judge_phase: offline_eval
+versions:
+  prompt_version: rag_prompt_v1
+  retriever_version: pgvector_similarity_v1
+  chunking_version: chunking_v1
+reporting:
+  save_raw_results: true
+  include_trace: true

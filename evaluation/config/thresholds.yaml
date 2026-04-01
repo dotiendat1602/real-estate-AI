@@ -1,0 +1,7 @@
+single_turn:
+  contextual_relevancy: 0.75
+  faithfulness: 0.80
+  answer_relevancy: 0.80
+  intent_helpfulness_geval: 0.75
+conversation:
+  conversational_geval: 0.75

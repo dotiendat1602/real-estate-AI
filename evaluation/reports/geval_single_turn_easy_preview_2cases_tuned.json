@@ -1,0 +1,332 @@
+{
+  "run_id": "85e8b2fe-f2e5-4bf6-99a1-9e1405698ad3",
+  "created_at": "2026-04-01T05:21:14.107151+00:00",
+  "phase": "single_turn",
+  "judge": {
+    "judge": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini",
+      "temperature": 0.0,
+      "max_tokens": 1024,
+      "timeout_seconds": 60,
+      "max_retries": 2
+    }
+  },
+  "thresholds": {
+    "single_turn": {
+      "contextual_relevancy": 0.75,
+      "faithfulness": 0.8,
+      "answer_relevancy": 0.8,
+      "intent_helpfulness_geval": 0.75
+    },
+    "conversation": {
+      "conversational_geval": 0.75
+    }
+  },
+  "settings": {
+    "runtime": {
+      "top_k": 12,
+      "max_history_turns": 6,
+      "default_domain": "real_estate",
+      "judge_phase": "offline_eval"
+    },
+    "versions": {
+      "prompt_version": "rag_prompt_v1",
+      "retriever_version": "pgvector_similarity_v1",
+      "chunking_version": "chunking_v1"
+    },
+    "reporting": {
+      "save_raw_results": true,
+      "include_trace": true
+    }
+  },
+  "summary": {
+    "cases": 2,
+    "difficulties": {
+      "easy": 2
+    },
+    "domains": {
+      "land_use_planning": 2
+    }
+  },
+  "deepeval_result": {
+    "test_results": [
+      {
+        "name": "test_case_1",
+        "success": false,
+        "metrics_data": [
+          {
+            "name": "Contextual Relevancy",
+            "threshold": 0.75,
+            "success": false,
+            "score": 0.6363636363636364,
+            "reason": "The score is 0.64 because the context does include the exact dossier code, such as '[dossier_code=HN-HoanKiem-KH2025]' and 'title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội', but much of the surrounding text is unrelated metadata or off-topic content, e.g. '[document_type=unknown]', '[chunk_type=text]', and 'UBND phường Đồng Xuân, Hàng Bài, Chương Dương, Lý Thái Tổ, Cửa Nam diễn tập chiến đấu...'. So it is partially relevant, but not fully focused on the requested dossier code.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdicts\": [\n            {\n                \"statement\": \"[document_scope=planning]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[document_type=unknown]\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement '[document_type=unknown]' does not provide the dossier code requested by the input.\"\n            },\n            {\n                \"statement\": \"[city=Ha Noi]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[district=K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm, th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[plan_year=2025]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[chunk_type=text]\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement '[chunk_type=text]' is metadata about the chunk type and is not relevant to the input asking for the dossier code.\"\n            },\n            {\n                \"statement\": \"[dossier_code=HN-HoanKiem-KH2025]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[title=B\\u00e1o c\\u00e1o thuy\\u1ebft minh t\\u1ed5ng h\\u1ee3p K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm - th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"UBND ph\\u01b0\\u1eddng \\u0110\\u1ed3ng Xu\\u00e2n, H\\u00e0ng B\\u00e0i, Ch\\u01b0\\u01a1ng D\\u01b0\\u01a1ng, L\\u00fd Th\\u00e1i T\\u1ed5, C\\u1eeda Nam di\\u1ec5n t\\u1eadp chi\\u1ebfn \\u0111\\u1ea5u ph\\u01b0\\u1eddng trong khu v\\u1ef1c ph\\u00f2ng th\\u1ee7 n\\u0103m 2024, b\\u1ea3o \\u0111\\u1ea3m an to\\u00e0n tuy\\u1ec7t \\u0111\\u1ed1i v\\u1ec1 m\\u1ecdi m\\u1eb7t; t\\u1ed5 ch\\u1ee9c t\\u1ed5ng k\\u1ebft di\\u1ec5n t\\u1eadp chi\\u1ebfn \\u0111\\u1ea5u ph\\u01b0\\u1eddng trong khu v\\u1ef1c ph\\u00f2ng th\\u1ee7. T\\u1ed5 ch\\u1ee9c H\\u1ed9i thao Qu\\u1ed1c ph\\u00f2ng l\\u1ef1c l\\u01b0\\u1ee3ng D\\u00e2n qu\\u00e2n t\\u1ef1 v\\u1ec7 qu\\u1eadn Ho\\u00e0n Ki\\u1ec3m n\\u0103m 2024; \\u0110\\u1ea1i h\\u1ed9i thi \\u0111ua quy\\u1ebft th\\u1eafng l\\u1ef1c l\\u01b0\\u1ee3ng v\\u0169 trang qu\\u1eadn Ho\\u00e0n\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement 'UBND ph\\u01b0\\u1eddng \\u0110\\u1ed3ng Xu\\u00e2n, H\\u00e0ng B\\u00e0i, Ch\\u01b0\\u01a1ng D\\u01b0\\u01a1ng, L\\u00fd Th\\u00e1i T\\u1ed5, C\\u1eeda Nam di\\u1ec5n t\\u1eadp chi\\u1ebfn \\u0111\\u1ea5u ph\\u01b0\\u1eddng trong khu v\\u1ef1c ph\\u00f2ng th\\u1ee7 n\\u0103m 2024...' is unrelated to the dossier code requested in the input.\"\n            }\n        ]\n    },\n    {\n        \"verdicts\": [\n            {\n                \"statement\": \"document_scope=planning\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"document_type=unknown\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"city=Ha Noi\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"district=K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm, th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"plan_year=2025\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"chunk_type=text\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"dossier_code=HN-HoanKiem-KH2025\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"title=B\\u00e1o c\\u00e1o thuy\\u1ebft minh t\\u1ed5ng h\\u1ee3p K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm - th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"c\\u00f4ng nh\\u1eadn l\\u1ea1i Chu\\u1ea9n qu\\u1ed1c gia v\\u1edbi c\\u00e1c tr\\u01b0 \\u1eddng: m\\u1ea7m non Tu\\u1ed5i Hoa, m\\u1eabu gi\\u00e1o M\\u1ea7m Non A, m\\u1ea7m non Quang Trung, ti\\u1ec3u h\\u1ecdc Ph\\u00fac T\\u00e2n, ti\\u1ec3u h\\u1ecdc Tr\\u1ea7n Qu\\u1ed1c To\\u1ea3n, THCS Thanh Quan.\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement about schools and national standards is unrelated to the input asking for the dossier code; the irrelevant parts are \\\"c\\u00f4ng nh\\u1eadn l\\u1ea1i Chu\\u1ea9n qu\\u1ed1c gia v\\u1edbi c\\u00e1c tr\\u01b0 \\u1eddng: m\\u1ea7m non Tu\\u1ed5i Hoa, m\\u1eabu gi\\u00e1o M\\u1ea7m Non A, m\\u1ea7m non Quang Trung, ti\\u1ec3u h\\u1ecdc Ph\\u00fac T\\u00e2n, ti\\u1ec3u h\\u1ecdc Tr\\u1ea7n Qu\\u1ed1c To\\u1ea3n, THCS Thanh Quan.\\\"\"\n            },\n            {\n                \"statement\": \"T\\u1ed5 ch\\u1ee9c t\\u1ed1t H\\u1ed9i kh\\u1ecfe Ph\\u00f9 \\u0110\\u1ed5ng qu\\u1eadn Ho\\u00e0n Ki\\u1ec3m l\\u1ea7n th\\u1ee9 X n\\u0103m h\\u1ecdc 2023 -2024; tham gia H\\u1ed9i kho\\u1ebb Ph\\u1ee7 \\u0110\\u1ed3ng c\\u1ea5p Th\\u00e0nh ph\\u1ed1 v\\u00e0 Qu\\u1ed1c gia.\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement about sports events is unrelated to the input asking for the dossier code; the irrelevant parts are \\\"T\\u1ed5 ch\\u1ee9c t\\u1ed1t H\\u1ed9i kh\\u1ecfe Ph\\u00f9 \\u0110\\u1ed5ng qu\\u1eadn Ho\\u00e0n Ki\\u1ec3m l\\u1ea7n th\\u1ee9 X n\\u0103m h\\u1ecdc 2023 -2024; tham gia H\\u1ed9i kho\\u1ebb Ph\\u1ee7 \\u0110\\u1ed3ng c\\u1ea5p Th\\u00e0nh ph\\u1ed1 v\\u00e0 Qu\\u1ed1c gia.\\\"\"\n            },\n            {\n                \"statement\": \"T\\u1ed5 ch\\u1ee9c \\u0110\\u1ea1i h\\u1ed9i Khuy\\u1ebfn h\\u1ecdc qu\\u1eadn Ho \\u00e0n Ki\\u1ebfm nhi\\u1ec7m k\\u1ef3 2024- 2029.\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement about an education promotion congress is unrelated to the input asking for the dossier code; the irrelevant parts are \\\"T\\u1ed5 ch\\u1ee9c \\u0110\\u1ea1i h\\u1ed9i Khuy\\u1ebfn h\\u1ecdc qu\\u1eadn Ho \\u00e0n Ki\\u1ebfm nhi\\u1ec7m k\\u1ef3 2024- 2029.\\\"\"\n            },\n            {\n                \"statement\": \"Ra m\\u1eaft Kh\\u00f4ng gian ph\\u00e1t huy gi\\u00e1 tr\\u1ecb v\\u0103n h\\u00f3a l\\u1ecbch s\\u1eed \\u201cH\\u1ed9i truy\\u1ec1n b \\u00e1 ch\\u1eef Qu\\u1ed1c ng\\u1eef v\\u00e0 danh nh\\u00e2n Nguy\\u1ec5n V\\u0103n T \\u1ed1; t\\u1ed5 ch\\u1ee9c T\\u1ecda \\u0111\\u00e0m l\\u1ecbch s\\u1eed ch\\u1eef Qu\\u1ed1c ng \\u1eef t\\u1ea1i \\u0111\\u1ecba \\u0111i\\u1ec3m 47 H\\u00e0ng Qu\\u1ea1t.\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement about cultural-history activities is unrelated to the input asking for the dossier code; the irrelevant parts are \\\"Ra m\\u1eaft Kh\\u00f4ng gian ph\\u00e1t huy gi\\u00e1 tr\\u1ecb v\\u0103n h\\u00f3a l\\u1ecbch s\\u1eed \\u201cH\\u1ed9i truy\\u1ec1n b \\u00e1 ch\\u1eef Qu\\u1ed1c ng\\u1eef v\\u00e0 danh nh\\u00e2n Nguy\\u1ec5n V\\u0103n T \\u1ed1; t\\u1ed5 ch\\u1ee9c T\\u1ecda \\u0111\\u00e0m l\\u1ecbch s\\u1eed ch\\u1eef Qu\\u1ed1c ng \\u1eef t\\u1ea1i \\u0111\\u1ecba \\u0111i\\u1ec3m 47 H\\u00e0ng Qu\\u1ea1t.\\\"\"\n            },\n            {\n                \"statement\": \"T\\u1ed5 ch\\u1ee9c c\\u00e1c ch\\u01b0\\u01a1ng tr \\u00ecnh k\\u1ef7 ni\\u1ec7m 42 n\\u0103m ng\\u00e0y Nh\\u00e0\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement about commemorative programs is unrelated to the input asking for the dossier code; the irrelevant parts are \\\"T\\u1ed5 ch\\u1ee9c c\\u00e1c ch\\u01b0\\u01a1ng tr \\u00ecnh k\\u1ef7 ni\\u1ec7m 42 n\\u0103m ng\\u00e0y Nh\\u00e0\\\"\"\n            }\n        ]\n    }\n]"
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.8,
+            "success": true,
+            "score": 1.0,
+            "reason": "The score is 1.00 because there are no contradictions, so the actual output appears fully faithful to the retrieval context.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"UBND phường Đồng Xuân, Hàng Bài, Chương Dương, Lý Thái Tổ và Cửa Nam tổ chức diễn tập chiến đấu phường trong khu vực phòng thủ năm 2024.\",\n    \"Việc diễn tập chiến đấu phường trong khu vực phòng thủ năm 2024 được bảo đảm an toàn tuyệt đối về mọi mặt.\",\n    \"Các phường nêu trên tổ chức tổng kết diễn tập chiến đấu phường trong khu vực phòng thủ.\",\n    \"Quận Hoàn Kiếm tổ chức Hội thao Quốc phòng lực lượng Dân quân tự vệ quận Hoàn Kiếm năm 2024.\",\n    \"Quận Hoàn Kiếm tổ chức Đại hội thi đua quyết thắng lực lượng vũ trang quận Hoàn Kiếm.\",\n    \"Một số trường trên địa bàn được công nhận lại Chuẩn quốc gia, gồm mầm non Tuổi Hoa, mẫu giáo Mầm Non A, mầm non Quang Trung, tiểu học Phúc Tân, tiểu học Trần Quốc Toản và THCS Thanh Quan.\",\n    \"Quận Hoàn Kiếm tổ chức tốt Hội khỏe Phù Đổng lần thứ X năm học 2023-2024.\",\n    \"Quận Hoàn Kiếm tham gia Hội khỏe Phù Đổng cấp Thành phố và Quốc gia.\",\n    \"Quận Hoàn Kiếm tổ chức Đại hội Khuyến học nhiệm kỳ 2024-2029.\",\n    \"Quận Hoàn Kiếm ra mắt Không gian phát huy giá trị văn hóa lịch sử “Hội truyền bá chữ Quốc ngữ và danh nhân Nguyễn Văn Tố”.\",\n    \"Quận Hoàn Kiếm tổ chức tọa đàm lịch sử chữ Quốc ngữ tại địa điểm 47 Hàng Quạt.\",\n    \"Quận Hoàn Kiếm tổ chức các chương trình kỷ niệm 42 năm ngày Nhà nước.\"\n] \n \nClaims:\n[\n    \"Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là HN-HoanKiem-KH2025.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"idk\",\n        \"reason\": \"Retrieval context does not mention any land-use plan for 2025 or the dossier code HN-HoanKiem-KH2025, so the claim cannot be verified from the provided facts.\"\n    }\n]"
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.8,
+            "success": true,
+            "score": 1.0,
+            "reason": "The score is 1.00 because the response fully addresses the question about the land-use plan dossier code for 2025 in Hoàn Kiếm District, Hanoi, with no irrelevant statements included. It is already at the highest possible relevancy.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Statements:\n[\n    \"Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là HN-HoanKiem-KH2025.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]"
+          },
+          {
+            "name": "Intent Coverage & Helpfulness [GEval]",
+            "threshold": 0.75,
+            "success": false,
+            "score": 0.2,
+            "reason": "Actual Output trả lời đúng trực tiếp câu hỏi về mã hồ sơ và bám đúng địa danh/năm được nêu trong Input. Tuy nhiên, đây là một thông tin rất cụ thể nhưng không có nguồn hay dấu hiệu xác minh, trong khi Input không cung cấp dữ liệu nền để khẳng định chắc chắn; đáng ra cần nêu giới hạn hoặc yêu cầu làm rõ nếu không có căn cứ. Nội dung cũng khá ngắn gọn và không lan man.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Criteria:\nDanh gia xem actual_output co xu ly dung intent cua nguoi dung,\nbao phu cac rang buoc quan trong trong input va conversation history,\ntrau chuot nhung khong lan man,\nco de xuat next step hop ly khi can,\nva khi thieu du lieu thi phai noi ro gioi han/hoi lam ro thay vi phong doan. \n \nEvaluation Steps:\n[\n    \"So sánh Actual Output với Input để xác định có xử lý đúng intent chính của người dùng hay không; nếu Input có ngữ cảnh hội thoại, kiểm tra xem Actual Output có bám đúng ngữ cảnh đó không.\",\n    \"Kiểm tra xem Actual Output có bao phủ đầy đủ các ràng buộc quan trọng trong Input và conversation history hay không; nếu bỏ sót điểm then chốt thì đánh giá là chưa đạt.\",\n    \"Đánh giá mức độ súc tích và liên quan: Actual Output cần trau chuốt nhưng không lan man, không thêm thông tin ngoài phạm vi Input.\",\n    \"Nếu Input thiếu dữ liệu hoặc có điểm mơ hồ, Actual Output պետք phải nêu rõ giới hạn hoặc đặt câu hỏi làm rõ; chỉ chấp nhận đề xuất next step khi nó hợp lý và phù hợp với nhu cầu trong Input.\"\n] \n \nRubric:\nNone \n \nScore: 0.2"
+          },
+          {
+            "name": "Domain-grounded Correctness [GEval]",
+            "threshold": 0.75,
+            "success": true,
+            "score": 1.0,
+            "reason": "Actual Output nêu đúng mã hồ sơ dossierCode HN-HoanKiem-KH2025, khớp trực tiếp với Retrieval Context và Expected Output. Câu trả lời ngắn gọn, đúng metadata, không thêm thông tin ngoài ngữ cảnh như giá, diện tích hay pháp lý.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Criteria:\nDanh gia xem cau tra loi co bam sat retrieval context trong domain bat dong san va quy hoach.\nPhat nang neu bot tu bo sung gia, dien tich, phap ly, vi tri, loai dat,\nhoac ket luan qua muc do tin cay khi retrieval context chua du. \n \nEvaluation Steps:\n[\n    \"So sánh Input với Retrieval Context để xác định câu hỏi đang yêu cầu thông tin gì trong domain bất động sản và quy hoạch, và liệu context có đủ dữ liệu để trả lời hay không.\",\n    \"Đối chiếu Actual Output với Retrieval Context và Expected Output để kiểm tra câu trả lời có bám sát nội dung được cung cấp, không tự ý thêm giá, diện tích, pháp lý, vị trí, loại đất hoặc chi tiết ngoài context.\",\n    \"Đánh giá mức độ nhất quán giữa Actual Output và Expected Output: nếu Expected Output chỉ là suy luận hạn chế hoặc từ chối do thiếu dữ liệu, thì Actual Output phải thể hiện đúng mức độ thận trọng tương ứng.\",\n    \"Phạt nếu Actual Output kết luận quá mức độ tin cậy so với Retrieval Context, hoặc trả lời như thể có đủ thông tin trong khi context không cung cấp đủ căn cứ.\"\n] \n \nRubric:\nNone \n \nScore: 1.0"
+          }
+        ],
+        "conversational": false,
+        "multimodal": false,
+        "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là gì?",
+        "actual_output": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là **HN-HoanKiem-KH2025**.",
+        "expected_output": "Nêu đúng dossierCode: HN-HoanKiem-KH2025\nTrả lời ngắn gọn, đúng metadata",
+        "context": [
+          "planningDocumentId=16, dossierCode=HN-HoanKiem-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi"
+        ],
+        "retrieval_context": [
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nUBND phường Đồng Xuân, Hàng Bài, Chương Dương, Lý Thái Tổ, Cửa Nam\ndiễn tập chiến đấu phường trong khu vực phòng thủ năm 2024, bảo đảm an toàn\ntuyệt đối về mọi mặt; tổ chức tổng kết diễn tập chiến đấu phường trong khu vực\nphòng thủ. Tổ chức Hội thao Quốc phòng lực lượng Dân quân tự vệ quận Hoàn\nKiểm năm 2024; Đại hội thi đua quyết thắng lực lượng vũ trang quận Hoàn",
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\ncông nhận lại Chuẩn quốc gia với các trư ờng: mầm non Tuổi Hoa, mẫu giáo\nMầm Non A, mầm non Quang Trung, tiểu học Phúc Tân, tiểu học Trần Quốc\nToản, THCS Thanh Quan. Tổ chức tốt Hội khỏe Phù Đổng quận Hoàn Kiểm lần\nthứ X năm học 2023 -2024; tham gia Hội khoẻ Phủ Đồng cấp Thành phố và\nQuốc gia. Tổ chức Đại hội Khuyến học quận Ho àn Kiếm nhiệm kỳ 2024- 2029.\nRa mắt Không gian phát huy giá trị văn hóa lịch sử “Hội truyền b á chữ Quốc\nngữ và danh nhân Nguyễn Văn T ố; tổ chức Tọa đàm lịch sử chữ Quốc ng ữ tại\nđịa điểm 47 Hàng Quạt. Tổ chức các chương tr ình kỷ niệm 42 năm ngày Nhà"
+        ],
+        "turns": null,
+        "additional_metadata": null
+      },
+      {
+        "name": "test_case_0",
+        "success": false,
+        "metrics_data": [
+          {
+            "name": "Contextual Relevancy",
+            "threshold": 0.75,
+            "success": false,
+            "score": 0.5319148936170213,
+            "reason": "The score is 0.53 because most of the retrieved text is just planning metadata and section headings like \"[plan_year=2025]\" and \"III. LẬP KẾ HOẠCH SỬ DỤNG ĐẤT NĂM 2025\", while many other parts are unrelated details such as \"công nhận lại Chuẩn quốc gia với các trường...\" and \"Tổ chức tốt Hội khỏe Phù Đổng quận Hoàn Kiếm lần thứ X năm học 2023 -2024\". It does contain some directly relevant cues about the plan year, but the context is mixed with a lot of irrelevant content, so the match is only moderate.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdicts\": [\n            {\n                \"statement\": \"c\\u00f4ng nh\\u1eadn l\\u1ea1i Chu\\u1ea9n qu\\u1ed1c gia v\\u1edbi c\\u00e1c tr\\u01b0\\u1eddng: m\\u1ea7m non Tu\\u1ed5i Hoa, m\\u1eabu gi\\u00e1o M\\u1ea7m Non A, m\\u1ea7m non Quang Trung, ti\\u1ec3u h\\u1ecdc Ph\\u00fac T\\u00e2n, ti\\u1ec3u h\\u1ecdc Tr\\u1ea7n Qu\\u1ed1c To\\u1ea3n, THCS Thanh Quan.\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement is about school accreditation activities and does not answer the input about the land-use plan year; the irrelevant part is \\\"c\\u00f4ng nh\\u1eadn l\\u1ea1i Chu\\u1ea9n qu\\u1ed1c gia v\\u1edbi c\\u00e1c tr\\u01b0\\u1eddng...\\\".\"\n            },\n            {\n                \"statement\": \"T\\u1ed5 ch\\u1ee9c t\\u1ed1t H\\u1ed9i kh\\u1ecfe Ph\\u00f9 \\u0110\\u1ed5ng qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm l\\u1ea7n th\\u1ee9 X n\\u0103m h\\u1ecdc 2023 -2024; tham gia H\\u1ed9i kho\\u1ebb Ph\\u1ee7 \\u0110\\u1ed3ng c\\u1ea5p Th\\u00e0nh ph\\u1ed1 v\\u00e0 Qu\\u1ed1c gia.\",\n                \"verdict\": \"no\",\n                \"reason\": \"This is about sports events and school-year activities, not the year the land-use plan applies to; the irrelevant part is \\\"T\\u1ed5 ch\\u1ee9c t\\u1ed1t H\\u1ed9i kh\\u1ecfe Ph\\u00f9 \\u0110\\u1ed5ng qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm l\\u1ea7n th\\u1ee9 X n\\u0103m h\\u1ecdc 2023 -2024\\\".\"\n            },\n            {\n                \"statement\": \"T\\u1ed5 ch\\u1ee9c \\u0110\\u1ea1i h\\u1ed9i Khuy\\u1ebfn h\\u1ecdc qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm nhi\\u1ec7m k\\u1ef3 2024-2029.\",\n                \"verdict\": \"no\",\n                \"reason\": \"This concerns an education promotion congress term, which is unrelated to the question about the applicable year of the 2025 land-use plan; the irrelevant part is \\\"T\\u1ed5 ch\\u1ee9c \\u0110\\u1ea1i h\\u1ed9i Khuy\\u1ebfn h\\u1ecdc qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm nhi\\u1ec7m k\\u1ef3 2024-2029\\\".\"\n            },\n            {\n                \"statement\": \"Ra m\\u1eaft Kh\\u00f4ng gian ph\\u00e1t huy gi\\u00e1 tr\\u1ecb v\\u0103n h\\u00f3a l\\u1ecbch s\\u1eed \\u201cH\\u1ed9i truy\\u1ec1n b\\u00e1 ch\\u1eef Qu\\u1ed1c ng\\u1eef v\\u00e0 danh nh\\u00e2n Nguy\\u1ec5n V\\u0103n T\\u1ed1; t\\u1ed5 ch\\u1ee9c T\\u1ecda \\u0111\\u00e0m l\\u1ecbch s\\u1eed ch\\u1eef Qu\\u1ed1c ng\\u1eef t\\u1ea1i \\u0111\\u1ecba \\u0111i\\u1ec3m 47 H\\u00e0ng Qu\\u1ea1t.\",\n                \"verdict\": \"no\",\n                \"reason\": \"This statement describes cultural-history activities and not the plan year asked in the input; the irrelevant part is \\\"Ra m\\u1eaft Kh\\u00f4ng gian ph\\u00e1t huy gi\\u00e1 tr\\u1ecb v\\u0103n h\\u00f3a l\\u1ecbch s\\u1eed...\\\".\"\n            },\n            {\n                \"statement\": \"T\\u1ed5 ch\\u1ee9c c\\u00e1c ch\\u01b0\\u01a1ng tr\\u00ecnh k\\u1ef7 ni\\u1ec7m 42 n\\u0103m ng\\u00e0y Nh\\u00e0\",\n                \"verdict\": \"no\",\n                \"reason\": \"This is an incomplete statement about commemorative programs and does not relate to the land-use plan year; the irrelevant part is \\\"T\\u1ed5 ch\\u1ee9c c\\u00e1c ch\\u01b0\\u01a1ng tr\\u00ecnh k\\u1ef7 ni\\u1ec7m 42 n\\u0103m ng\\u00e0y Nh\\u00e0\\\".\"\n            }\n        ]\n    },\n    {\n        \"verdicts\": [\n            {\n                \"statement\": \"[document_scope=planning]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[document_type=unknown]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[city=Ha Noi]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[district=K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm, th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[plan_year=2025]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[chunk_type=text]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[dossier_code=HN-HoanKiem-KH2025]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[title=B\\u00e1o c\\u00e1o thuy\\u1ebft minh t\\u1ed5ng h\\u1ee3p K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm - th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"UBND ph\\u01b0\\u1eddng \\u0110\\u1ed3ng Xu\\u00e2n, H\\u00e0ng B\\u00e0i, Ch\\u01b0\\u01a1ng D\\u01b0\\u01a1ng, L\\u00fd Th\\u00e1i T\\u1ed5, C\\u1eeda Nam di\\u1ec5n t\\u1eadp chi\\u1ebfn \\u0111\\u1ea5u ph\\u01b0\\u1eddng trong khu v\\u1ef1c ph\\u00f2ng th\\u1ee7 n\\u0103m 2024, b\\u1ea3o \\u0111\\u1ea3m an to\\u00e0n tuy\\u1ec7t \\u0111\\u1ed1i v\\u1ec1 m\\u1ecdi m\\u1eb7t; t\\u1ed5 ch\\u1ee9c t\\u1ed5ng k\\u1ebft di\\u1ec5n t\\u1eadp chi\\u1ebfn \\u0111\\u1ea5u ph\\u01b0\\u1eddng trong khu v\\u1ef1c ph\\u00f2ng th\\u1ee7.\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement is about \\\"di\\u1ec5n t\\u1eadp chi\\u1ebfn \\u0111\\u1ea5u ph\\u01b0\\u1eddng trong khu v\\u1ef1c ph\\u00f2ng th\\u1ee7 n\\u0103m 2024\\\" and related military training, which is not relevant to the question about what year the land-use plan applies to.\"\n            },\n            {\n                \"statement\": \"T\\u1ed5 ch\\u1ee9c H\\u1ed9i thao Qu\\u1ed1c ph\\u00f2ng l\\u1ef1c l\\u01b0\\u1ee3ng D\\u00e2n qu\\u00e2n t\\u1ef1 v\\u1ec7 qu\\u1eadn Ho\\u00e0n Ki\\u1ec3m n\\u0103m 2024; \\u0110\\u1ea1i h\\u1ed9i thi \\u0111ua quy\\u1ebft th\\u1eafng l\\u1ef1c l\\u01b0\\u1ee3ng v\\u0169 trang qu\\u1eadn Ho\\u00e0n\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement discusses \\\"H\\u1ed9i thao Qu\\u1ed1c ph\\u00f2ng... n\\u0103m 2024\\\" and \\\"\\u0110\\u1ea1i h\\u1ed9i thi \\u0111ua quy\\u1ebft th\\u1eafng\\\", which are unrelated to the land-use plan year being asked about.\"\n            }\n        ]\n    },\n    {\n        \"verdicts\": [\n            {\n                \"statement\": \"[document_scope=planning]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[document_type=unknown]\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"[document_type=unknown]\\\" is not relevant to the input question about which year the 2025 land-use plan in Ho\\u00e0n Ki\\u1ebfm district applies to.\"\n            },\n            {\n                \"statement\": \"[city=Ha Noi]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[district=K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm, th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[plan_year=2025]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[chunk_type=text]\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"[chunk_type=text]\\\" is metadata about the format of the context, not relevant to the input question.\"\n            },\n            {\n                \"statement\": \"[dossier_code=HN-HoanKiem-KH2025]\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"[dossier_code=HN-HoanKiem-KH2025]\\\" is an internal code and does not help answer what year the plan applies to.\"\n            },\n            {\n                \"statement\": \"[title=B\\u00e1o c\\u00e1o thuy\\u1ebft minh t\\u1ed5ng h\\u1ee3p K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm - th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"II. K\\u1ebeT QU\\u1ea2 TH\\u1ef0C HI\\u1ec6N K\\u1ebe HO\\u1ea0CH S\\u1eec D\\u1ee4NG \\u0110\\u1ea4T N\\u0102M 2024 .......................... 20\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"2.1. Hi\\u1ec7n tr\\u1ea1ng s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t theo t\\u1eebng lo\\u1ea1i \\u0111\\u1ea5t ...................................................................... 20\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"2.1. Hi\\u1ec7n tr\\u1ea1ng s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t theo t\\u1eebng lo\\u1ea1i \\u0111\\u1ea5t\\\" is about current land-use status, which is not directly relevant to the question about the year the 2025 plan applies to.\"\n            },\n            {\n                \"statement\": \"2.2. K\\u1ebft qu\\u1ea3 th\\u1ef1c hi\\u1ec7n k\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m tr\\u01b0\\u1edbc....................................................... 25\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"2.2. \\u0110\\u00e1nh gi\\u00e1 nh\\u1eefng t\\u1ed3n t\\u1ea1i trong th\\u1ef1c hi\\u1ec7n k\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m tr\\u01b0\\u1edbc ................... 27\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"\\u0110\\u00e1nh gi\\u00e1 nh\\u1eefng t\\u1ed3n t\\u1ea1i trong th\\u1ef1c hi\\u1ec7n k\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m tr\\u01b0\\u1edbc\\\" concerns evaluation of shortcomings in the previous plan, not the applicable year of the 2025 plan.\"\n            },\n            {\n                \"statement\": \"2.3. \\u0110\\u00e1nh gi\\u00e1 nguy\\u00ean nh\\u00e2n c\\u1ee7a t\\u1ed3n t\\u1ea1i trong th\\u1ef1c hi\\u1ec7n k\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m tr\\u01b0\\u1edbc .. 28\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"\\u0110\\u00e1nh gi\\u00e1 nguy\\u00ean nh\\u00e2n c\\u1ee7a t\\u1ed3n t\\u1ea1i trong th\\u1ef1c hi\\u1ec7n k\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m tr\\u01b0\\u1edbc\\\" is about causes of past shortcomings and is not relevant to the input question.\"\n            },\n            {\n                \"statement\": \"III. L\\u1eacP K\\u1ebe HO\\u1ea0CH S\\u1eec D\\u1ee4NG \\u0110\\u1ea4T N\\u0102M 2025 ........................................................... 28\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"3.1. Ch\\u1ec9 ti\\u00eau s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t ......................................................................................................... 28\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"Ch\\u1ec9 ti\\u00eau s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t\\\" is a subsection detail and does not answer which year the plan applies to.\"\n            },\n            {\n                \"statement\": \"3.2. Nhu c\\u1ea7u s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t cho c\\u00e1c ng\\u00e0nh, l\\u0129nh v\\u1ef1c ................................................................ 29\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"Nhu c\\u1ea7u s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t cho c\\u00e1c ng\\u00e0nh, l\\u0129nh v\\u1ef1c\\\" is a subsection detail and is not directly relevant to the input question.\"\n            },\n            {\n                \"statement\": \"3.3. T\\u1ed5ng h\\u1ee3p c\\u00e2n \\u0111\\u1ed1i nhu c\\u1ea7u s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t ........................................................................... 32\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"T\\u1ed5ng h\\u1ee3p c\\u00e2n \\u0111\\u1ed1i nhu c\\u1ea7u s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t\\\" is a subsection detail and does not indicate the applicable year of the plan.\"\n            },\n            {\n                \"statement\": \"3.4. Di\\u1ec7n t\\u00edch c\\u00e1c lo\\u1ea1i \\u0111\\u1ea5t c\\u1ea7n chuy\\u1ec3n m\\u1ee5c \\u0111\\u00edch ................................................................... 36\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"Di\\u1ec7n t\\u00edch c\\u00e1c lo\\u1ea1i \\u0111\\u1ea5t c\\u1ea7n chuy\\u1ec3n m\\u1ee5c \\u0111\\u00edch\\\" is a subsection detail and is not relevant to the question about the plan year.\"\n            },\n            {\n                \"statement\": \"3.5. Di\\u1ec7n t\\u00edch \\u0111\\u1ea5t c\\u1ea7n thu h\\u1ed3i .................................................................................................. 36\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"Di\\u1ec7n t\\u00edch \\u0111\\u1ea5t c\\u1ea7n thu h\\u1ed3i\\\" is a subsection detail and does not answer what year the plan applies to.\"\n            },\n            {\n                \"statement\": \"3.6. Di\\u1ec7n t\\u00edch \\u0111\\u1ea5t ch\\u01b0a s\\u1eed d\\u1ee5ng \\u0111\\u01b0a v\\u00e0o s\\u1eed d\\u1ee5ng ................................................................. 36\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"Di\\u1ec7n t\\u00edch \\u0111\\u1ea5t ch\\u01b0a s\\u1eed d\\u1ee5ng \\u0111\\u01b0a v\\u00e0o s\\u1eed d\\u1ee5ng\\\" is a subsection detail and is not relevant to the input question.\"\n            },\n            {\n                \"statement\": \"3.7. Danh m\\u1ee5c c\\u00e1c c\\u00f4ng tr\\u00ecnh, d\\u1ef1 \\u00e1n trong n\\u0103m k\\u1ebf ho\\u1ea1ch ................................................... 36\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            }\n        ]\n    },\n    {\n        \"verdicts\": [\n            {\n                \"statement\": \"[document_scope=planning]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[document_type=unknown]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[city=Ha Noi]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[district=K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm, th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[plan_year=2025]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[chunk_type=text]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[dossier_code=HN-HoanKiem-KH2025]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[title=B\\u00e1o c\\u00e1o thuy\\u1ebft minh t\\u1ed5ng h\\u1ee3p K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm - th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"+ Chuy\\u1ec3n sang \\u0111\\u1ea5t x\\u00e2y d\\u1ef1ng tr\\u1ee5 s\\u1edf c\\u01a1 quan 0,02 ha.\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"+ Chuy\\u1ec3n sang \\u0111\\u1ea5t x\\u00e2y d\\u1ef1ng tr\\u1ee5 s\\u1edf c\\u01a1 quan 0,02 ha.\\\" is a specific land-use change detail and does not answer the input question about the plan being applied for which year.\"\n            },\n            {\n                \"statement\": \"B\\u1ea3ng. Ph\\u00e2n b\\u1ed5 di\\u1ec7n t\\u00edch \\u0111\\u1ea5t \\u1edf t\\u1ea1i \\u0111\\u00f4 th\\u1ecb tr\\u00ean \\u0111\\u1ecba b\\u00e0n c\\u00e1c ph\\u01b0\\u1eddng\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"B\\u1ea3ng. Ph\\u00e2n b\\u1ed5 di\\u1ec7n t\\u00edch \\u0111\\u1ea5t \\u1edf t\\u1ea1i \\u0111\\u00f4 th\\u1ecb tr\\u00ean \\u0111\\u1ecba b\\u00e0n c\\u00e1c ph\\u01b0\\u1eddng\\\" is about land area allocation by wards, which is not relevant to identifying the year the plan applies to.\"\n            },\n            {\n                \"statement\": \"TT Ph\\u01b0\\u1eddng \\u0110\\u1ea5t \\u1edf t\\u1ea1i \\u0111\\u00f4 th\\u1ecb (ha) TT Ph\\u01b0\\u1eddng \\u0110\\u1ea5t \\u1edf t\\u1ea1i \\u0111\\u00f4 th\\u1ecb (ha)\",\n                \"verdict\": \"no\",\n                \"reason\": \"The statement \\\"TT Ph\\u01b0\\u1eddng \\u0110\\u1ea5t \\u1edf t\\u1ea1i \\u0111\\u00f4 th\\u1ecb (ha) TT Ph\\u01b0\\u1eddng \\u0110\\u1ea5t \\u1edf t\\u1ea1i \\u0111\\u00f4 th\\u1ecb (ha)\\\" is a table header about urban residential land area and does not address the plan year.\"\n            }\n        ]\n    }\n]"
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.8,
+            "success": true,
+            "score": 1.0,
+            "reason": "The score is 1.00 because there are no contradictions, so the actual output appears fully faithful to the retrieval context.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"The document is a report titled \"Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội\".\",\n    \"The document concerns the 2025 land-use plan for Hoàn Kiếm District in Hanoi.\",\n    \"The document includes a section on the results of implementing the 2024 land-use plan.\",\n    \"The document lists subsections about current land-use status, results of the previous year's plan, limitations, and causes of those limitations.\",\n    \"The document includes a section on planning land use for 2025.\",\n    \"The 2025 planning section includes land-use targets, land demand by sectors and fields, balance of land demand, land area to be converted, land area to be recovered, unused land to be put into use, and a list of projects for the plan year.\",\n    \"The text mentions recognition of national standards for several schools, including Tuổi Hoa kindergarten, Mầm Non A preschool, Quang Trung kindergarten, Phúc Tân primary school, Trần Quốc Toản primary school, and Thanh Quan lower secondary school.\",\n    \"The text states that the Hoàn Kiếm District Phù Đổng Sports Festival was organized successfully for the 2023-2024 school year.\",\n    \"The text states that Hoàn Kiếm District participated in the city-level and national Phù Đổng Sports Festival.\",\n    \"The text states that the Hoàn Kiếm District Scholarship Association held its 2024-2029 congress.\",\n    \"The text mentions the launch of a cultural-historical space related to the \"Hội truyền bá chữ Quốc ngữ\" and Nguyễn Văn Tố.\",\n    \"The text states that a seminar on the history of Quốc ngữ was organized at 47 Hàng Quạt.\",\n    \"The text states that combat drills were conducted by the wards Đồng Xuân, Hàng Bài, Chương Dương, Lý Thái Tổ, and Cửa Nam in the defensive zone in 2024.\",\n    \"The text states that the combat drills were organized with absolute safety in all aspects.\",\n    \"The text states that a summary of the ward combat drills in the defensive zone was organized.\",\n    \"The text states that the district organized the 2024 National Defense Sports Competition for the militia and self-defense forces.\",\n    \"The text states that the district organized the emulation congress for victory of the armed forces in 2024.\",\n    \"The text states that 0.02 hectares were converted to land for construction of a government agency headquarters.\",\n    \"The text includes a table on the allocation of urban residential land area by ward in the district.\"\n] \n \nClaims:\n[\n    \"Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm 2025.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]"
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.8,
+            "success": true,
+            "score": 1.0,
+            "reason": "The score is 1.00 because the response is fully relevant to the question and contains no irrelevant statements. It directly addresses the requested information without adding off-topic content, so it deserves the highest score.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Statements:\n[\n    \"Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm 2025.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]"
+          },
+          {
+            "name": "Intent Coverage & Helpfulness [GEval]",
+            "threshold": 0.75,
+            "success": true,
+            "score": 1.0,
+            "reason": "Actual Output correctly answers the intent of the Vietnamese question by stating that the land-use plan for 2025 in Hoàn Kiếm district applies to year 2025. It is concise, directly addresses the query, and does not omit any key requirement or introduce unsupported details.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Criteria:\nDanh gia xem actual_output co xu ly dung intent cua nguoi dung,\nbao phu cac rang buoc quan trong trong input va conversation history,\ntrau chuot nhung khong lan man,\nco de xuat next step hop ly khi can,\nva khi thieu du lieu thi phai noi ro gioi han/hoi lam ro thay vi phong doan. \n \nEvaluation Steps:\n[\n    \"Kiểm tra Actual Output có hiểu đúng intent của Input và phù hợp với ngữ cảnh trong conversation history hay không.\",\n    \"Đối chiếu xem Actual Output có bao phủ đầy đủ các ràng buộc quan trọng trong Input và lịch sử hội thoại, không bỏ sót yêu cầu chính.\",\n    \"Đánh giá mức độ trau chuốt của Actual Output: rõ ràng, ngắn gọn, không lan man, và có đề xuất next step hợp lý khi cần.\",\n    \"Nếu Input thiếu dữ liệu hoặc mơ hồ, kiểm tra Actual Output có nêu rõ giới hạn và/hoặc đặt câu hỏi làm rõ thay vì tự suy đoán hay phỏng đoán.\"\n] \n \nRubric:\nNone \n \nScore: 1.0"
+          },
+          {
+            "name": "Domain-grounded Correctness [GEval]",
+            "threshold": 0.75,
+            "success": true,
+            "score": 1.0,
+            "reason": "Actual Output bám sát Retrieval Context và Expected Output khi xác định đúng planYear là 2025 cho kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, Hà Nội. Không có suy diễn thêm về giá, diện tích, pháp lý hay vị trí ngoài thông tin context, và kết luận phù hợp với mức độ chắc chắn của dữ liệu cung cấp.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Criteria:\nDanh gia xem cau tra loi co bam sat retrieval context trong domain bat dong san va quy hoach.\nPhat nang neu bot tu bo sung gia, dien tich, phap ly, vi tri, loai dat,\nhoac ket luan qua muc do tin cay khi retrieval context chua du. \n \nEvaluation Steps:\n[\n    \"So sánh Input với Retrieval Context để xác định câu hỏi có thuộc domain bất động sản/quy hoạch và chỉ dùng các thông tin thực sự có trong context.\",\n    \"Đối chiếu Actual Output với Expected Output và Retrieval Context để kiểm tra mức độ bám sát nội dung được cung cấp; ưu tiên câu trả lời không suy diễn ngoài context.\",\n    \"Phạt nếu Actual Output tự bổ sung các chi tiết như giá, diện tích, pháp lý, vị trí, loại đất khi Retrieval Context không nêu rõ hoặc không đủ chắc chắn.\",\n    \"Phạt nếu Actual Output đưa ra kết luận quá mức độ tin cậy so với Retrieval Context; chỉ chấp nhận kết luận phù hợp với mức độ đầy đủ của context và đúng với Expected Output.\"\n] \n \nRubric:\nNone \n \nScore: 1.0"
+          }
+        ],
+        "conversational": false,
+        "multimodal": false,
+        "input": "Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm nào?",
+        "actual_output": "Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm 2025.",
+        "expected_output": "Nêu đúng planYear: 2025\nKhông suy đoán nếu thiếu dữ liệu",
+        "context": [
+          "planningDocumentId=16, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm"
+        ],
+        "retrieval_context": [
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\ncông nhận lại Chuẩn quốc gia với các trư ờng: mầm non Tuổi Hoa, mẫu giáo\nMầm Non A, mầm non Quang Trung, tiểu học Phúc Tân, tiểu học Trần Quốc\nToản, THCS Thanh Quan. Tổ chức tốt Hội khỏe Phù Đổng quận Hoàn Kiểm lần\nthứ X năm học 2023 -2024; tham gia Hội khoẻ Phủ Đồng cấp Thành phố và\nQuốc gia. Tổ chức Đại hội Khuyến học quận Ho àn Kiếm nhiệm kỳ 2024- 2029.\nRa mắt Không gian phát huy giá trị văn hóa lịch sử “Hội truyền b á chữ Quốc\nngữ và danh nhân Nguyễn Văn T ố; tổ chức Tọa đàm lịch sử chữ Quốc ng ữ tại\nđịa điểm 47 Hàng Quạt. Tổ chức các chương tr ình kỷ niệm 42 năm ngày Nhà",
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nUBND phường Đồng Xuân, Hàng Bài, Chương Dương, Lý Thái Tổ, Cửa Nam\ndiễn tập chiến đấu phường trong khu vực phòng thủ năm 2024, bảo đảm an toàn\ntuyệt đối về mọi mặt; tổ chức tổng kết diễn tập chiến đấu phường trong khu vực\nphòng thủ. Tổ chức Hội thao Quốc phòng lực lượng Dân quân tự vệ quận Hoàn\nKiểm năm 2024; Đại hội thi đua quyết thắng lực lượng vũ trang quận Hoàn",
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nII. KẾT QUẢ THỰC HIỆN KẾ HOẠCH SỬ DỤNG ĐẤT NĂM 2024 .......................... 20\n2.1. Hiện trạng sử dụng đất theo từng loại đất ...................................................................... 20\n2.2. Kết quả thực hiện kế hoạch sử dụng đất năm trước....................................................... 25\n2.2. Đánh giá những tồn tại trong thực hiện kế hoạch sử dụng đất năm trước ................... 27\n2.3. Đánh giá nguyên nhân của tồn tại trong thực hiện kế hoạch sử dụng đất năm trước .. 28\nIII. LẬP KẾ HOẠCH SỬ DỤNG ĐẤT NĂM 2025 ........................................................... 28\n3.1. Chỉ tiêu sử dụng đất ......................................................................................................... 28\n3.2. Nhu cầu sử dụng đất cho các ngành, lĩnh vực ................................................................ 29\n3.3. Tổng hợp cân đối nhu cầu sử dụng đất ........................................................................... 32\n3.4. Diện tích các loại đất cần chuyển mục đích ................................................................... 36\n3.5. Diện tích đất cần thu hồi .................................................................................................. 36\n3.6. Diện tích đất chưa sử dụng đưa vào sử dụng ................................................................. 36\n3.7. Danh mục các công trình, dự án trong năm kế hoạch ................................................... 36",
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\n+ Chuyển sang đất xây dựng trụ sở cơ quan 0,02 ha.\nBảng. Phân bổ diện tích đất ở tại đô thị trên địa bàn các phường\nTT Phường Đất ở tại đô\nthị (ha) TT Phường Đất ở tại đô\nthị (ha)"
+        ],
+        "turns": null,
+        "additional_metadata": null
+      }
+    ],
+    "confident_link": null,
+    "test_run_id": null
+  },
+  "traces": [
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "land_use_planning",
+        "input": "Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm nào?",
+        "expected_output_outline": [
+          "Nêu đúng planYear: 2025",
+          "Không suy đoán nếu thiếu dữ liệu"
+        ],
+        "context": [
+          "planningDocumentId=16, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm"
+        ],
+        "target_metadata": {
+          "planningDocumentId": 16
+        },
+        "id": "ST_EASY_001"
+      },
+      "trace": {
+        "input": "Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm nào?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\ncông nhận lại Chuẩn quốc gia với các trư ờng: mầm non Tuổi Hoa, mẫu giáo\nMầm Non A, mầm non Quang Trung, tiểu học Phúc Tân, tiểu học Trần Quốc\nToản, THCS Thanh Quan. Tổ chức tốt Hội khỏe Phù Đổng quận Hoàn Kiểm lần\nthứ X năm học 2023 -2024; tham gia Hội khoẻ Phủ Đồng cấp Thành phố và\nQuốc gia. Tổ chức Đại hội Khuyến học quận Ho àn Kiếm nhiệm kỳ 2024- 2029.\nRa mắt Không gian phát huy giá trị văn hóa lịch sử “Hội truyền b á chữ Quốc\nngữ và danh nhân Nguyễn Văn T ố; tổ chức Tọa đàm lịch sử chữ Quốc ng ữ tại\nđịa điểm 47 Hàng Quạt. Tổ chức các chương tr ình kỷ niệm 42 năm ngày Nhà",
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nUBND phường Đồng Xuân, Hàng Bài, Chương Dương, Lý Thái Tổ, Cửa Nam\ndiễn tập chiến đấu phường trong khu vực phòng thủ năm 2024, bảo đảm an toàn\ntuyệt đối về mọi mặt; tổ chức tổng kết diễn tập chiến đấu phường trong khu vực\nphòng thủ. Tổ chức Hội thao Quốc phòng lực lượng Dân quân tự vệ quận Hoàn\nKiểm năm 2024; Đại hội thi đua quyết thắng lực lượng vũ trang quận Hoàn",
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nII. KẾT QUẢ THỰC HIỆN KẾ HOẠCH SỬ DỤNG ĐẤT NĂM 2024 .......................... 20\n2.1. Hiện trạng sử dụng đất theo từng loại đất ...................................................................... 20\n2.2. Kết quả thực hiện kế hoạch sử dụng đất năm trước....................................................... 25\n2.2. Đánh giá những tồn tại trong thực hiện kế hoạch sử dụng đất năm trước ................... 27\n2.3. Đánh giá nguyên nhân của tồn tại trong thực hiện kế hoạch sử dụng đất năm trước .. 28\nIII. LẬP KẾ HOẠCH SỬ DỤNG ĐẤT NĂM 2025 ........................................................... 28\n3.1. Chỉ tiêu sử dụng đất ......................................................................................................... 28\n3.2. Nhu cầu sử dụng đất cho các ngành, lĩnh vực ................................................................ 29\n3.3. Tổng hợp cân đối nhu cầu sử dụng đất ........................................................................... 32\n3.4. Diện tích các loại đất cần chuyển mục đích ................................................................... 36\n3.5. Diện tích đất cần thu hồi .................................................................................................. 36\n3.6. Diện tích đất chưa sử dụng đưa vào sử dụng ................................................................. 36\n3.7. Danh mục các công trình, dự án trong năm kế hoạch ................................................... 36",
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\n+ Chuyển sang đất xây dựng trụ sở cơ quan 0,02 ha.\nBảng. Phân bổ diện tích đất ở tại đô thị trên địa bàn các phường\nTT Phường Đất ở tại đô\nthị (ha) TT Phường Đất ở tại đô\nthị (ha)"
+        ],
+        "retrieved_doc_ids": [
+          "17_text_90",
+          "17_text_103",
+          "17_text_12",
+          "17_text_219"
+        ],
+        "retrieval_scores": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "actual_output": "Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm 2025.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 12,
+          "filters": {
+            "city": "Thành phố Hà Nội",
+            "district": "Quận Hoàn Kiếm"
+          },
+          "planning_auto_context_used": true,
+          "planning_docs_count": 4,
+          "generated_at": "2026-04-01T05:21:03.394874+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "land_use_planning",
+        "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là gì?",
+        "expected_output_outline": [
+          "Nêu đúng dossierCode: HN-HoanKiem-KH2025",
+          "Trả lời ngắn gọn, đúng metadata"
+        ],
+        "context": [
+          "planningDocumentId=16, dossierCode=HN-HoanKiem-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi"
+        ],
+        "target_metadata": {
+          "planningDocumentId": 16
+        },
+        "id": "ST_EASY_002"
+      },
+      "trace": {
+        "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là gì?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nUBND phường Đồng Xuân, Hàng Bài, Chương Dương, Lý Thái Tổ, Cửa Nam\ndiễn tập chiến đấu phường trong khu vực phòng thủ năm 2024, bảo đảm an toàn\ntuyệt đối về mọi mặt; tổ chức tổng kết diễn tập chiến đấu phường trong khu vực\nphòng thủ. Tổ chức Hội thao Quốc phòng lực lượng Dân quân tự vệ quận Hoàn\nKiểm năm 2024; Đại hội thi đua quyết thắng lực lượng vũ trang quận Hoàn",
+          "[document_scope=planning]\n[document_type=unknown]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[chunk_type=text]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\ncông nhận lại Chuẩn quốc gia với các trư ờng: mầm non Tuổi Hoa, mẫu giáo\nMầm Non A, mầm non Quang Trung, tiểu học Phúc Tân, tiểu học Trần Quốc\nToản, THCS Thanh Quan. Tổ chức tốt Hội khỏe Phù Đổng quận Hoàn Kiểm lần\nthứ X năm học 2023 -2024; tham gia Hội khoẻ Phủ Đồng cấp Thành phố và\nQuốc gia. Tổ chức Đại hội Khuyến học quận Ho àn Kiếm nhiệm kỳ 2024- 2029.\nRa mắt Không gian phát huy giá trị văn hóa lịch sử “Hội truyền b á chữ Quốc\nngữ và danh nhân Nguyễn Văn T ố; tổ chức Tọa đàm lịch sử chữ Quốc ng ữ tại\nđịa điểm 47 Hàng Quạt. Tổ chức các chương tr ình kỷ niệm 42 năm ngày Nhà"
+        ],
+        "retrieved_doc_ids": [
+          "17_text_103",
+          "17_text_90"
+        ],
+        "retrieval_scores": [
+          null,
+          null
+        ],
+        "actual_output": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là **HN-HoanKiem-KH2025**.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 12,
+          "filters": {
+            "city": "Hà Nội",
+            "district": "Hoàn Kiếm"
+          },
+          "planning_auto_context_used": true,
+          "planning_docs_count": 2,
+          "generated_at": "2026-04-01T05:21:06.632948+00:00"
+        }
+      }
+    }
+  ]
+}

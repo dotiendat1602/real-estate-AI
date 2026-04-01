@@ -47,7 +47,7 @@ def build_metadata_filter(filters: dict) -> dict:
     if not filters:
         return {}
     
-    pgvector_filter = {}
+    clauses: list[dict] = []
     
     # Exact match filters - chi them neu co trong filters
     exact_match_fields = [
@@ -63,39 +63,52 @@ def build_metadata_filter(filters: dict) -> dict:
     ]
     for field in exact_match_fields:
         if field in filters:
-            pgvector_filter[field] = filters[field]
+            clauses.append({field: filters[field]})
     
     # Range filters for price
     # Metadata trong DB có field 'price' (giá trị thực của post)
     # User query có thể có 'priceMin' hoặc 'priceMax'
-    price_filter = {}
     if 'priceMin' in filters:
-        price_filter['$gte'] = filters['priceMin']  # price >= priceMin
+        clauses.append({'price': {'$gte': filters['priceMin']}})
     if 'priceMax' in filters:
-        price_filter['$lte'] = filters['priceMax']  # price <= priceMax
-    
-    if price_filter:
-        pgvector_filter['price'] = price_filter
+        clauses.append({'price': {'$lte': filters['priceMax']}})
     
     # Range filters for area
-    area_filter = {}
     if 'areaMin' in filters:
-        area_filter['$gte'] = filters['areaMin']
+        clauses.append({'area': {'$gte': filters['areaMin']}})
     if 'areaMax' in filters:
-        area_filter['$lte'] = filters['areaMax']
-    
-    if area_filter:
-        pgvector_filter['area'] = area_filter
+        clauses.append({'area': {'$lte': filters['areaMax']}})
 
     # Range/equality filter for plan year.
     if 'planYear' in filters:
-        pgvector_filter['planYear'] = filters['planYear']
+        clauses.append({'planYear': filters['planYear']})
 
     # Optional IN filter for chunk types.
     if isinstance(filters.get('chunkTypes'), list) and filters['chunkTypes']:
-        pgvector_filter['chunkType'] = {'$in': filters['chunkTypes']}
-    
-    return pgvector_filter
+        clauses.append({'chunkType': {'$in': filters['chunkTypes']}})
+
+    if not clauses:
+        return {}
+    if len(clauses) == 1:
+        return clauses[0]
+    return {'$and': clauses}
+
+
+def _merge_pgvector_filters(*filters: dict | None) -> dict:
+    clauses: list[dict] = []
+    for filter_item in filters:
+        if not filter_item:
+            continue
+        if len(filter_item) == 1 and '$and' in filter_item and isinstance(filter_item['$and'], list):
+            clauses.extend(filter_item['$and'])
+            continue
+        clauses.append(filter_item)
+
+    if not clauses:
+        return {}
+    if len(clauses) == 1:
+        return clauses[0]
+    return {'$and': clauses}
 
 def build_retriever(
     vs: PGVector,
@@ -118,12 +131,9 @@ def build_retriever(
     """
     search_kwargs = {"k": k}
     
-    merged_filter: dict = {}
-    if base_filter:
-        merged_filter.update(base_filter)
-
-    if filters:
-        merged_filter.update(build_metadata_filter(filters))
+    base_pg_filter = build_metadata_filter(base_filter or {}) if base_filter else {}
+    query_pg_filter = build_metadata_filter(filters or {}) if filters else {}
+    merged_filter: dict = _merge_pgvector_filters(base_pg_filter, query_pg_filter)
 
     if merged_filter:
         search_kwargs["filter"] = merged_filter

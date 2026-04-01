@@ -1,0 +1,316 @@
+{
+  "run_id": "7444c3d0-2a65-4beb-9a3a-56ceb4186fdf",
+  "created_at": "2026-04-01T05:43:26.529126+00:00",
+  "phase": "single_turn",
+  "judge": {
+    "judge": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini",
+      "temperature": 0.0,
+      "max_tokens": 1024,
+      "timeout_seconds": 60,
+      "max_retries": 2
+    }
+  },
+  "thresholds": {
+    "single_turn": {
+      "contextual_relevancy": 0.75,
+      "faithfulness": 0.8,
+      "answer_relevancy": 0.8,
+      "intent_helpfulness_geval": 0.75
+    },
+    "conversation": {
+      "conversational_geval": 0.75
+    }
+  },
+  "settings": {
+    "runtime": {
+      "top_k": 12,
+      "max_history_turns": 6,
+      "default_domain": "real_estate",
+      "judge_phase": "offline_eval"
+    },
+    "versions": {
+      "prompt_version": "rag_prompt_v1",
+      "retriever_version": "pgvector_similarity_v1",
+      "chunking_version": "chunking_v1"
+    },
+    "reporting": {
+      "save_raw_results": true,
+      "include_trace": true
+    }
+  },
+  "summary": {
+    "cases": 2,
+    "difficulties": {
+      "easy": 2
+    },
+    "domains": {
+      "land_use_planning": 2
+    }
+  },
+  "deepeval_result": {
+    "test_results": [
+      {
+        "name": "test_case_1",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Relevancy",
+            "threshold": 0.75,
+            "success": true,
+            "score": 1.0,
+            "reason": "The score is 1.00 because the retrieval context directly matches the input, including '[city=Ha Noi]', '[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]', '[plan_year=2025]', and '[dossier_code=HN-HoanKiem-KH2025]'. Great match!",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdicts\": [\n            {\n                \"statement\": \"[document_scope=planning]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[city=Ha Noi]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[district=K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm, th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[plan_year=2025]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[dossier_code=HN-HoanKiem-KH2025]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[title=B\\u00e1o c\\u00e1o thuy\\u1ebft minh t\\u1ed5ng h\\u1ee3p K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm - th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            }\n        ]\n    }\n]"
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.8,
+            "success": true,
+            "score": 1.0,
+            "reason": "The score is 1.00 because there are no contradictions, so the actual output appears fully faithful to the retrieval context.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"The document scope is planning.\",\n    \"The city mentioned is Ha Noi.\",\n    \"The district mentioned is Hoàn Kiếm district in Hanoi.\",\n    \"The document concerns the land use plan for 2025 in Hoàn Kiếm district, Hanoi.\",\n    \"The plan year is 2025.\",\n    \"The dossier code is HN-HoanKiem-KH2025.\",\n    \"The title of the document is \"Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội\".\"\n] \n \nClaims:\n[\n    \"Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là HN-HoanKiem-KH2025.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]"
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.8,
+            "success": true,
+            "score": 1.0,
+            "reason": "The score is 1.00 because the response is fully relevant to the question and contains no irrelevant statements. It directly addresses the requested land-use plan dossier code for Hoàn Kiếm District, Hanoi, so there is nothing to lower the score.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Statements:\n[\n    \"Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là HN-HoanKiem-KH2025.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]"
+          },
+          {
+            "name": "Intent Coverage & Helpfulness [GEval]",
+            "threshold": 0.75,
+            "success": true,
+            "score": 1.0,
+            "reason": "The response correctly retrieves and states the exact dossierCode from the retrieval context: HN-HoanKiem-KH2025. It is short, direct, and matches the expected metadata-only answer without unsupported additions.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Criteria:\nDanh gia xem actual_output co xu ly dung intent cua nguoi dung,\nbao phu cac rang buoc quan trong trong input va conversation history,\ntrau chuot nhung khong lan man,\nco de xuat next step hop ly khi can,\nva khi thieu du lieu thi phai noi ro gioi han/hoi lam ro thay vi phong doan.\nNeu expected_output yeu cau tra loi metadata truc tiep va retrieval context co du thong tin,\nthi tra loi ngan gon, truc tiep la dat; khong bat buoc them cau hoi lam ro. \n \nEvaluation Steps:\n[\n    \"Compare the Input and conversation history to identify the user’s intent, required constraints, and any missing information that must be respected in the answer.\",\n    \"Check whether the Actual Output matches the Expected Output in content, scope, and format, especially when the Expected Output asks for direct metadata retrieval; if Retrieval Context contains the needed data, a short direct answer is sufficient.\",\n    \"Verify that the Actual Output uses the Retrieval Context correctly: it should rely on retrieved facts when available, avoid unsupported guesses, and explicitly state limits or ask clarifying questions when the context is insufficient.\",\n    \"Judge overall quality by confirming the Actual Output is concise but complete, covers important constraints from the Input, and offers a reasonable next step only when needed without being verbose or drifting off-topic.\"\n] \n \nRubric:\nNone \n \nScore: 1.0"
+          },
+          {
+            "name": "Domain-grounded Correctness [GEval]",
+            "threshold": 0.75,
+            "success": true,
+            "score": 1.0,
+            "reason": "Actual Output trả lời đúng mã hồ sơ dossierCode là HN-HoanKiem-KH2025, khớp hoàn toàn với Retrieval Context và Expected Output. Câu trả lời ngắn gọn, chỉ nêu đúng metadata cần hỏi, không thêm thông tin ngoài ngữ cảnh như giá, diện tích hay pháp lý.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Criteria:\nDanh gia xem cau tra loi co bam sat retrieval context trong domain bat dong san va quy hoach.\nPhat nang neu bot tu bo sung gia, dien tich, phap ly, vi tri, loai dat,\nhoac ket luan qua muc do tin cay khi retrieval context chua du. \n \nEvaluation Steps:\n[\n    \"So sánh Input với Retrieval Context để xác định câu hỏi đang yêu cầu thông tin gì trong domain bất động sản và quy hoạch, và liệu context có đủ dữ liệu để trả lời hay không.\",\n    \"Đối chiếu Actual Output với Retrieval Context và Expected Output để kiểm tra câu trả lời có bám sát nội dung được cung cấp, không tự ý thêm giá, diện tích, pháp lý, vị trí, loại đất hoặc chi tiết ngoài context.\",\n    \"Đánh giá mức độ nhất quán giữa Actual Output và Expected Output: nếu Expected Output chỉ là suy luận hạn chế hoặc từ chối khi thiếu dữ liệu, thì Actual Output phải phản ánh đúng mức độ chắc chắn đó.\",\n    \"Phạt nếu Actual Output kết luận quá mức độ tin cậy so với Retrieval Context, hoặc trả lời sai lệch/thiếu bám sát so với Expected Output dù Input yêu cầu thông tin cụ thể.\"\n] \n \nRubric:\nNone \n \nScore: 1.0"
+          }
+        ],
+        "conversational": false,
+        "multimodal": false,
+        "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là gì?",
+        "actual_output": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là HN-HoanKiem-KH2025.",
+        "expected_output": "Nêu đúng dossierCode: HN-HoanKiem-KH2025\nTrả lời ngắn gọn, đúng metadata",
+        "context": [
+          "planningDocumentId=16, dossierCode=HN-HoanKiem-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi"
+        ],
+        "retrieval_context": [
+          "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]"
+        ],
+        "turns": null,
+        "additional_metadata": null
+      },
+      {
+        "name": "test_case_0",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Relevancy",
+            "threshold": 0.75,
+            "success": true,
+            "score": 1.0,
+            "reason": "The score is 1.00 because the retrieval context directly matches the input, including '[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]' and '[plan_year=2025]'. Great match!",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdicts\": [\n            {\n                \"statement\": \"[document_scope=planning]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[city=Ha Noi]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[district=K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm, th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[plan_year=2025]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[dossier_code=HN-HoanKiem-KH2025]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            },\n            {\n                \"statement\": \"[title=B\\u00e1o c\\u00e1o thuy\\u1ebft minh t\\u1ed5ng h\\u1ee3p K\\u1ebf ho\\u1ea1ch s\\u1eed d\\u1ee5ng \\u0111\\u1ea5t n\\u0103m 2025 qu\\u1eadn Ho\\u00e0n Ki\\u1ebfm - th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i]\",\n                \"verdict\": \"yes\",\n                \"reason\": null\n            }\n        ]\n    }\n]"
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.8,
+            "success": true,
+            "score": 1.0,
+            "reason": "The score is 1.00 because there are no contradictions, so the actual output appears fully faithful to the retrieval context.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"The document is a report titled \"Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội\".\",\n    \"The document concerns land-use planning for the year 2025.\",\n    \"The planning area is Hoàn Kiếm District.\",\n    \"Hoàn Kiếm District is in Hà Nội city.\",\n    \"The document scope is planning.\",\n    \"The city mentioned in the document is Hà Nội.\",\n    \"The plan year is 2025.\",\n    \"The dossier code is HN-HoanKiem-KH2025.\"\n] \n \nClaims:\n[\n    \"Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm 2025.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]"
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.8,
+            "success": true,
+            "score": 1.0,
+            "reason": "The score is 1.00 because the response stays fully focused on the question about which year the 2025 land-use plan for Hoàn Kiếm applies to, with no irrelevant statements.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Statements:\n[\n    \"Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm 2025.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]"
+          },
+          {
+            "name": "Intent Coverage & Helpfulness [GEval]",
+            "threshold": 0.75,
+            "success": true,
+            "score": 1.0,
+            "reason": "The response correctly identifies the plan year as 2025, matching the retrieved metadata [plan_year=2025] and the expected direct answer. It is concise and does not introduce unsupported assumptions, so it aligns well with the retrieval context and the instruction not to speculate.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Criteria:\nDanh gia xem actual_output co xu ly dung intent cua nguoi dung,\nbao phu cac rang buoc quan trong trong input va conversation history,\ntrau chuot nhung khong lan man,\nco de xuat next step hop ly khi can,\nva khi thieu du lieu thi phai noi ro gioi han/hoi lam ro thay vi phong doan.\nNeu expected_output yeu cau tra loi metadata truc tiep va retrieval context co du thong tin,\nthi tra loi ngan gon, truc tiep la dat; khong bat buoc them cau hoi lam ro. \n \nEvaluation Steps:\n[\n    \"Compare the Input and conversation history to identify the user’s true intent, required constraints, and any missing information that must be respected in the response.\",\n    \"Check whether the Actual Output matches the Expected Output in content, scope, and format; if the Expected Output asks for direct metadata and the Retrieval Context contains it, a short direct answer is sufficient.\",\n    \"Verify that the Actual Output uses the Retrieval Context correctly: it should include relevant retrieved facts when available, avoid unsupported assumptions, and explicitly state limits or ask clarifying questions when the context is insufficient.\",\n    \"Judge overall quality by confirming the Actual Output is concise but complete, addresses important constraints from the Input/history, and offers a reasonable next step only when needed.\"\n] \n \nRubric:\nNone \n \nScore: 1.0"
+          },
+          {
+            "name": "Domain-grounded Correctness [GEval]",
+            "threshold": 0.75,
+            "success": true,
+            "score": 1.0,
+            "reason": "Actual Output bám sát Retrieval Context khi nêu đúng plan_year là 2025, phù hợp với trường [plan_year=2025] và tiêu đề tài liệu. Không có suy đoán thêm về giá, diện tích, pháp lý hay vị trí ngoài dữ liệu truy xuất, nên đáp ứng đúng yêu cầu của Expected Output.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Criteria:\nDanh gia xem cau tra loi co bam sat retrieval context trong domain bat dong san va quy hoach.\nPhat nang neu bot tu bo sung gia, dien tich, phap ly, vi tri, loai dat,\nhoac ket luan qua muc do tin cay khi retrieval context chua du. \n \nEvaluation Steps:\n[\n    \"So sánh Input với Retrieval Context để xác định câu hỏi có thuộc domain bất động sản/quy hoạch và những thông tin nào thực sự được cung cấp trong ngữ cảnh.\",\n    \"Đối chiếu Actual Output với Retrieval Context và Expected Output để kiểm tra câu trả lời có bám sát dữ liệu đã truy xuất hay không, đặc biệt với giá, diện tích, pháp lý, vị trí, loại đất.\",\n    \"Đánh giá xem Actual Output có tự ý bổ sung thông tin ngoài Retrieval Context hoặc kết luận vượt quá mức độ tin cậy khi ngữ cảnh chưa đủ hay không; nếu có thì xem là lỗi.\",\n    \"Kết luận mức độ đúng/sai bằng cách ưu tiên tính nhất quán giữa Actual Output và Retrieval Context, đồng thời kiểm tra Expected Output có phản ánh đúng phạm vi thông tin được phép suy ra từ ngữ cảnh hay không.\"\n] \n \nRubric:\nNone \n \nScore: 1.0"
+          }
+        ],
+        "conversational": false,
+        "multimodal": false,
+        "input": "Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm nào?",
+        "actual_output": "Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm 2025.",
+        "expected_output": "Nêu đúng planYear: 2025\nKhông suy đoán nếu thiếu dữ liệu",
+        "context": [
+          "planningDocumentId=16, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm"
+        ],
+        "retrieval_context": [
+          "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]"
+        ],
+        "turns": null,
+        "additional_metadata": null
+      }
+    ],
+    "confident_link": null,
+    "test_run_id": null
+  },
+  "traces": [
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "land_use_planning",
+        "input": "Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm nào?",
+        "expected_output_outline": [
+          "Nêu đúng planYear: 2025",
+          "Không suy đoán nếu thiếu dữ liệu"
+        ],
+        "context": [
+          "planningDocumentId=16, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm"
+        ],
+        "target_metadata": {
+          "planningDocumentId": 16
+        },
+        "id": "ST_EASY_001"
+      },
+      "trace": {
+        "input": "Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm nào?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]"
+        ],
+        "retrieved_doc_ids": [
+          "17_text_12"
+        ],
+        "retrieval_scores": [
+          null
+        ],
+        "actual_output": "Kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội đang áp dụng cho năm 2025.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 12,
+          "filters": {
+            "city": "Hà Nội",
+            "district": "Hoàn Kiếm"
+          },
+          "planning_auto_context_used": true,
+          "planning_docs_count": 1,
+          "generated_at": "2026-04-01T05:43:18.071943+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "land_use_planning",
+        "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là gì?",
+        "expected_output_outline": [
+          "Nêu đúng dossierCode: HN-HoanKiem-KH2025",
+          "Trả lời ngắn gọn, đúng metadata"
+        ],
+        "context": [
+          "planningDocumentId=16, dossierCode=HN-HoanKiem-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi"
+        ],
+        "target_metadata": {
+          "planningDocumentId": 16
+        },
+        "id": "ST_EASY_002"
+      },
+      "trace": {
+        "input": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là gì?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]"
+        ],
+        "retrieved_doc_ids": [
+          "17_text_90"
+        ],
+        "retrieval_scores": [
+          null
+        ],
+        "actual_output": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 tại quận Hoàn Kiếm, thành phố Hà Nội là HN-HoanKiem-KH2025.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 12,
+          "filters": {
+            "city": "Hà Nội",
+            "district": "Hoàn Kiếm"
+          },
+          "planning_auto_context_used": true,
+          "planning_docs_count": 1,
+          "generated_at": "2026-04-01T05:43:22.200112+00:00"
+        }
+      }
+    }
+  ]
+}

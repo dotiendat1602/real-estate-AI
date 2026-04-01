@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import logging
 import os
+import time
 from typing import Any, Optional
 
 from fastapi import APIRouter
@@ -15,6 +17,7 @@ from ..rag.embedder import build_embeddings
 from ..rag.retriever import build_pgvector_store, build_retriever
 
 router = APIRouter()
+_logger = logging.getLogger(__name__)
 
 _embeddings = build_embeddings()
 _vs = None
@@ -204,13 +207,24 @@ async def get_ingested_planning_document_chunks(planning_document_id: int, limit
 @router.post("/planning/ingest-documents")
 async def ingest_planning_documents(req: PlanningIngestRequest):
     if not req.documents:
+        _logger.info("Planning ingest request completed with no documents.")
         return {"ok": True, "ingestedChunks": 0, "items": []}
+
+    request_started = time.monotonic()
+    _logger.info(
+        "Planning ingest request started. documents=%s replace_existing=%s skip_if_exists=%s",
+        len(req.documents),
+        req.replaceExisting,
+        req.skipIfExists,
+    )
 
     vs = get_vector_store()
     result_items: list[dict[str, Any]] = []
     total_ingested = 0
+    failed_documents = 0
 
     for item in req.documents:
+        doc_started = time.monotonic()
         if req.replaceExisting:
             async with AsyncSessionLocal() as session:
                 deleted = await session.execute(
@@ -240,6 +254,14 @@ async def ingest_planning_documents(req: PlanningIngestRequest):
                 exists_row = existed.first()
 
             if exists_row:
+                elapsed_ms = int((time.monotonic() - doc_started) * 1000)
+                _logger.info(
+                    "Planning ingest document skipped. planning_document_id=%s reason=%s deleted_chunks=%s elapsed_ms=%s",
+                    item.planningDocumentId,
+                    "already_ingested",
+                    deleted_count,
+                    elapsed_ms,
+                )
                 result_items.append(
                     {
                         "planningDocumentId": item.planningDocumentId,
@@ -268,14 +290,100 @@ async def ingest_planning_documents(req: PlanningIngestRequest):
             raw_meta=item.rawMeta,
         )
 
-        docs, counts = await build_planning_documents(payload)
+        try:
+            docs, counts = await build_planning_documents(payload)
+        except RuntimeError as exc:
+            failed_documents += 1
+            _logger.exception(
+                "Planning ingest runtime error. planning_document_id=%s source_url=%s",
+                item.planningDocumentId,
+                str(item.sourceUrl),
+            )
+            result_items.append(
+                {
+                    "planningDocumentId": item.planningDocumentId,
+                    "title": item.title,
+                    "deletedChunks": deleted_count,
+                    "ingestedChunks": 0,
+                    "textChunks": 0,
+                    "tableChunks": 0,
+                    "skipped": True,
+                    "reason": "runtime_error",
+                    "error": str(exc),
+                }
+            )
+            continue
+        except Exception as exc:
+            failed_documents += 1
+            _logger.exception(
+                "Planning ingest unexpected error. planning_document_id=%s source_url=%s",
+                item.planningDocumentId,
+                str(item.sourceUrl),
+            )
+            result_items.append(
+                {
+                    "planningDocumentId": item.planningDocumentId,
+                    "title": item.title,
+                    "deletedChunks": deleted_count,
+                    "ingestedChunks": 0,
+                    "textChunks": 0,
+                    "tableChunks": 0,
+                    "skipped": True,
+                    "reason": "unexpected_error",
+                    "error": str(exc),
+                }
+            )
+            continue
+
         if docs:
-            ids = await vs.aadd_documents(docs)
-            ingested_count = len(ids)
+            try:
+                ids = await vs.aadd_documents(docs)
+                ingested_count = len(ids)
+            except Exception as exc:
+                failed_documents += 1
+                _logger.exception(
+                    "Planning ingest failed while storing embeddings. planning_document_id=%s source_url=%s",
+                    item.planningDocumentId,
+                    str(item.sourceUrl),
+                )
+                result_items.append(
+                    {
+                        "planningDocumentId": item.planningDocumentId,
+                        "title": item.title,
+                        "deletedChunks": deleted_count,
+                        "ingestedChunks": 0,
+                        "textChunks": counts["textChunks"],
+                        "tableChunks": counts["tableChunks"],
+                        "skipped": True,
+                        "reason": "vector_store_error",
+                        "error": str(exc),
+                    }
+                )
+                continue
         else:
             ingested_count = 0
 
         total_ingested += ingested_count
+        timed_out = bool(counts.get("timedOut"))
+        reason = (
+            "processing_timeout"
+            if ingested_count == 0 and timed_out
+            else ("no_extractable_content" if ingested_count == 0 else None)
+        )
+
+        elapsed_ms = int((time.monotonic() - doc_started) * 1000)
+        _logger.info(
+            "Planning ingest document completed. planning_document_id=%s deleted_chunks=%s ingested_chunks=%s text_chunks=%s table_chunks=%s skipped=%s reason=%s elapsed_ms=%s",
+            item.planningDocumentId,
+            deleted_count,
+            ingested_count,
+            counts["textChunks"],
+            counts["tableChunks"],
+            ingested_count == 0,
+            reason,
+            elapsed_ms,
+        )
+
         result_items.append(
             {
                 "planningDocumentId": item.planningDocumentId,
@@ -284,11 +392,28 @@ async def ingest_planning_documents(req: PlanningIngestRequest):
                 "ingestedChunks": ingested_count,
                 "textChunks": counts["textChunks"],
                 "tableChunks": counts["tableChunks"],
-                "skipped": False,
+                "skipped": ingested_count == 0,
+                "reason": reason,
             }
         )
 
-    return {"ok": True, "ingestedChunks": total_ingested, "items": result_items}
+    ok = failed_documents == 0
+    elapsed_ms = int((time.monotonic() - request_started) * 1000)
+    _logger.info(
+        "Planning ingest request completed. ok=%s documents=%s failed_documents=%s ingested_chunks=%s elapsed_ms=%s",
+        ok,
+        len(req.documents),
+        failed_documents,
+        total_ingested,
+        elapsed_ms,
+    )
+
+    return {
+        "ok": failed_documents == 0,
+        "ingestedChunks": total_ingested,
+        "failedDocuments": failed_documents,
+        "items": result_items,
+    }
 
 
 @router.post("/planning/explain", response_model=PlanningExplainResponse)

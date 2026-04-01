@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any
+import re
+import unicodedata
 
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
@@ -13,6 +15,73 @@ from ..rag.prompt import prompt
 class ChatResult:
     answer: str
     citations: list[dict[str, Any]]
+
+
+_PLANNING_FACT_MARKERS = [
+    "ke hoach su dung dat",
+    "quy hoach",
+    "ma ho so",
+    "dossier",
+    "nam nao",
+    "ap dung",
+    "khu vuc nao",
+    "quan nao",
+    "huyen nao",
+]
+
+
+def _normalize_text(text: str) -> str:
+    lowered = (text or "").lower()
+    lowered = unicodedata.normalize("NFD", lowered)
+    lowered = "".join(ch for ch in lowered if unicodedata.category(ch) != "Mn")
+    lowered = re.sub(r"[^a-z0-9\s]", " ", lowered)
+    lowered = re.sub(r"\s+", " ", lowered)
+    return lowered.strip()
+
+
+def _is_planning_fact_question(question: str) -> bool:
+    q = _normalize_text(question)
+    return any(marker in q for marker in _PLANNING_FACT_MARKERS)
+
+
+def _looks_uncertain_or_no_data(answer: str) -> bool:
+    a = _normalize_text(answer)
+    signals = [
+        "không biết",
+        "khong biet",
+        "không có trong context",
+        "khong co trong context",
+        "không đủ dữ liệu",
+        "khong du du lieu",
+        "i don't know",
+        "insufficient",
+        "not enough information",
+    ]
+    return any(signal in a for signal in signals)
+
+
+def postprocess_answer(question: str, answer: str) -> str:
+    if not answer:
+        return answer
+
+    cleaned = answer.strip()
+
+    # Remove common generic trailing invites that hurt factual relevancy metrics.
+    generic_tail_patterns = [
+        r"\s*Nếu bạn cần thêm[^.!?]*[.!?]?\s*$",
+        r"\s*Nếu cần thêm[^.!?]*[.!?]?\s*$",
+        r"\s*If you need more information[^.!?]*[.!?]?\s*$",
+    ]
+    for pattern in generic_tail_patterns:
+        cleaned = re.sub(pattern, "", cleaned, flags=re.IGNORECASE).strip()
+
+    if not _is_planning_fact_question(question):
+        return cleaned
+
+    if _looks_uncertain_or_no_data(cleaned):
+        return cleaned
+
+    return cleaned
 
 
 def detect_lang(text: str) -> str:
@@ -173,5 +242,7 @@ class RagChain:
                 "answer_language": answer_language,
             }
         )
+
+        answer = postprocess_answer(question, answer)
 
         return ChatResult(answer=answer, citations=_build_citations(docs))

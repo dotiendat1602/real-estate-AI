@@ -1,0 +1,418 @@
+{
+  "run_id": "ec249b2d-5b15-427c-a960-71fc4e61e998",
+  "created_at": "2026-04-01T05:29:34.398345+00:00",
+  "phase": "conversation",
+  "judge": {
+    "judge": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini",
+      "temperature": 0.0,
+      "max_tokens": 1024,
+      "timeout_seconds": 60,
+      "max_retries": 2
+    }
+  },
+  "thresholds": {
+    "single_turn": {
+      "contextual_relevancy": 0.75,
+      "faithfulness": 0.8,
+      "answer_relevancy": 0.8,
+      "intent_helpfulness_geval": 0.75
+    },
+    "conversation": {
+      "conversational_geval": 0.75
+    }
+  },
+  "settings": {
+    "runtime": {
+      "top_k": 12,
+      "max_history_turns": 6,
+      "default_domain": "real_estate",
+      "judge_phase": "offline_eval"
+    },
+    "versions": {
+      "prompt_version": "rag_prompt_v1",
+      "retriever_version": "pgvector_similarity_v1",
+      "chunking_version": "chunking_v1"
+    },
+    "reporting": {
+      "save_raw_results": true,
+      "include_trace": true
+    }
+  },
+  "summary": {
+    "cases": 2,
+    "difficulties": {
+      "easy": 2
+    },
+    "domains": {
+      "land_use_planning": 2
+    }
+  },
+  "deepeval_result": {
+    "test_results": [
+      {
+        "name": "conversational_test_case_1",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Conversational Consistency [Conversational GEval]",
+            "threshold": 0.75,
+            "success": true,
+            "score": 1.0,
+            "reason": "The assistant correctly answers each user question using the stated document title, identifying the area as quận Hoàn Kiếm, thành phố Hà Nội and the applicable year as 2025. It remains consistent across turns, does not contradict earlier content, and responds appropriately without needing clarification because the questions are specific and unambiguous.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Criteria:\nDanh gia toan bo hoi thoai xem chatbot co nho va duy tri rang buoc da neu,\nco cap nhat cau tra loi khi nguoi dung bo sung dieu kien,\nco giai thich ly do thay doi goi y,\nco hoi lam ro khi du lieu thieu,\nva tranh mau thuan giua cac luot. \n \nEvaluation Steps:\n[\n    \"For each turn, compare the assistant’s Content against the user’s Content to check whether the assistant correctly remembers and applies all previously stated constraints, assumptions, and requirements; the Role should be appropriate to the turn (e.g., ask clarifying questions when needed, answer when enough information is available).\",\n    \"Check whether the assistant updates its Content when the user adds new conditions, and whether it explicitly explains why any recommendation, answer, or suggestion changed; the Role should reflect responsiveness and adaptation rather than repeating earlier output unchanged.\",\n    \"Evaluate whether the assistant asks for clarification when the user’s Content is incomplete or ambiguous, instead of guessing; the Role should be that of a careful assistant seeking missing information before proceeding.\",\n    \"Assess the full conversation for consistency: the assistant’s Content should not contradict earlier turns, should maintain all stated constraints throughout, and the overall Role should remain coherent and helpful across the dialogue.\"\n] \n \nRubric:\nNone"
+          }
+        ],
+        "conversational": true,
+        "multimodal": null,
+        "input": null,
+        "actual_output": null,
+        "expected_output": null,
+        "context": null,
+        "retrieval_context": null,
+        "turns": [
+          {
+            "role": "user",
+            "content": "Mình đang xem tài liệu \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm\", tài liệu này nói về khu vực nào vậy?",
+            "order": 0,
+            "user_id": null,
+            "retrieval_context": null,
+            "tools_called": null,
+            "additional_metadata": null,
+            "comments": null
+          },
+          {
+            "role": "assistant",
+            "content": "Tài liệu \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm\" nói về khu vực quận Hoàn Kiếm, thành phố Hà Nội.",
+            "order": 1,
+            "user_id": null,
+            "retrieval_context": null,
+            "tools_called": null,
+            "additional_metadata": null,
+            "comments": null
+          },
+          {
+            "role": "user",
+            "content": "Kế hoạch trong tài liệu đó áp dụng cho năm nào?",
+            "order": 2,
+            "user_id": null,
+            "retrieval_context": null,
+            "tools_called": null,
+            "additional_metadata": null,
+            "comments": null
+          },
+          {
+            "role": "assistant",
+            "content": "Kế hoạch trong tài liệu đó áp dụng cho năm 2025.",
+            "order": 3,
+            "user_id": null,
+            "retrieval_context": null,
+            "tools_called": null,
+            "additional_metadata": null,
+            "comments": null
+          }
+        ],
+        "additional_metadata": null
+      },
+      {
+        "name": "conversational_test_case_0",
+        "success": false,
+        "metrics_data": [
+          {
+            "name": "Conversational Consistency [Conversational GEval]",
+            "threshold": 0.75,
+            "success": false,
+            "score": 0.6542071193116717,
+            "reason": "The assistant responds appropriately to both user turns and maintains consistency: it answers the planning year as 2025, then provides the requested hồ sơ code for that same plan without contradicting earlier content. It also adapts to the new user request rather than repeating the prior answer. However, the conversation does not show clarification handling for potentially ambiguous source information, and the assistant does not explain why the added detail changed or how it was derived, so the fulfillment is strong but not complete.",
+            "strict_mode": false,
+            "evaluation_model": "gpt-5.4-mini",
+            "error": null,
+            "evaluation_cost": null,
+            "verbose_logs": "Criteria:\nDanh gia toan bo hoi thoai xem chatbot co nho va duy tri rang buoc da neu,\nco cap nhat cau tra loi khi nguoi dung bo sung dieu kien,\nco giai thich ly do thay doi goi y,\nco hoi lam ro khi du lieu thieu,\nva tranh mau thuan giua cac luot. \n \nEvaluation Steps:\n[\n    \"For each turn, compare the assistant’s Content against the user’s Content to check whether the assistant correctly remembers and applies all previously stated constraints, assumptions, and requirements; the Role should be appropriate to the turn (e.g., ask clarifying questions when needed, answer when enough information is available).\",\n    \"Check whether the assistant updates its Content when the user adds new conditions, and whether it explicitly explains why any recommendation, answer, or suggestion changed; the Role should reflect responsiveness and adaptation rather than repeating earlier output unchanged.\",\n    \"Evaluate whether the assistant asks for clarification when the user’s Content is incomplete or ambiguous, instead of guessing; the Role should be that of a careful assistant seeking missing information before proceeding.\",\n    \"Assess the full conversation for consistency: the assistant’s Content should not contradict earlier turns, should maintain all stated constraints throughout, and the overall Role should remain coherent and helpful across the dialogue.\"\n] \n \nRubric:\nNone"
+          }
+        ],
+        "conversational": true,
+        "multimodal": null,
+        "input": null,
+        "actual_output": null,
+        "expected_output": null,
+        "context": null,
+        "retrieval_context": null,
+        "turns": [
+          {
+            "role": "user",
+            "content": "Cho mình hỏi thông tin quy hoạch sử dụng đất ở quận Hoàn Kiếm, kế hoạch này áp dụng năm nào?",
+            "order": 0,
+            "user_id": null,
+            "retrieval_context": null,
+            "tools_called": null,
+            "additional_metadata": null,
+            "comments": null
+          },
+          {
+            "role": "assistant",
+            "content": "Kế hoạch sử dụng đất ở quận Hoàn Kiếm áp dụng vào năm 2025.",
+            "order": 1,
+            "user_id": null,
+            "retrieval_context": null,
+            "tools_called": null,
+            "additional_metadata": null,
+            "comments": null
+          },
+          {
+            "role": "user",
+            "content": "Cho mình xin luôn mã hồ sơ của kế hoạch đó nhé.",
+            "order": 2,
+            "user_id": null,
+            "retrieval_context": null,
+            "tools_called": null,
+            "additional_metadata": null,
+            "comments": null
+          },
+          {
+            "role": "assistant",
+            "content": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm là HN-HoanKiem-KH2025.",
+            "order": 3,
+            "user_id": null,
+            "retrieval_context": null,
+            "tools_called": null,
+            "additional_metadata": null,
+            "comments": null
+          }
+        ],
+        "additional_metadata": null
+      }
+    ],
+    "confident_link": null,
+    "test_run_id": null
+  },
+  "traces": [
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "land_use_planning",
+        "scenario": "Người dùng hỏi tự nhiên về quy hoạch theo khu vực rồi hỏi tiếp mã hồ sơ.",
+        "expected_outcome": "Bot trả đúng planYear và dossierCode theo đúng tài liệu đã truy xuất.",
+        "turns": [
+          {
+            "role": "user",
+            "content": "Cho mình hỏi thông tin quy hoạch sử dụng đất ở quận Hoàn Kiếm, kế hoạch này áp dụng năm nào?"
+          },
+          {
+            "role": "user",
+            "content": "Cho mình xin luôn mã hồ sơ của kế hoạch đó nhé."
+          }
+        ],
+        "context": [
+          "planningDocumentId=16, planYear=2025, dossierCode=HN-HoanKiem-KH2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm"
+        ],
+        "id": "MT_EASY_001"
+      },
+      "trace": {
+        "conversation_id": "MT_EASY_001",
+        "turns": [
+          {
+            "input": "Cho mình hỏi thông tin quy hoạch sử dụng đất ở quận Hoàn Kiếm, kế hoạch này áp dụng năm nào?",
+            "conversation_history_used": [],
+            "rewritten_query": null,
+            "retrieval_context": [
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nII. KẾT QUẢ THỰC HIỆN KẾ HOẠCH SỬ DỤNG ĐẤT NĂM 2024 .......................... 20",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nKiểm năm 2024; Đại hội thi đua quyết thắng lực lượng vũ trang quận Hoàn",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nđiểm lập kế hoạch sử dụng đất hằng năm .............................................................................. 18",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm]"
+            ],
+            "retrieved_doc_ids": [
+              "17_text_12",
+              "17_text_103",
+              "17_text_11",
+              "16_text_6"
+            ],
+            "retrieval_scores": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "actual_output": "Kế hoạch sử dụng đất ở quận Hoàn Kiếm áp dụng vào năm 2025.",
+            "metadata": {
+              "llm_model": "gpt-4o-mini",
+              "judge_phase": "offline_eval",
+              "prompt_version": "rag_prompt_v1",
+              "retriever_version": "pgvector_similarity_v1",
+              "chunking_version": "chunking_v1",
+              "top_k": 12,
+              "filters": {
+                "district": "Hoàn Kiếm"
+              },
+              "planning_auto_context_used": true,
+              "planning_docs_count": 4,
+              "generated_at": "2026-04-01T05:29:18.327557+00:00"
+            }
+          },
+          {
+            "input": "Cho mình xin luôn mã hồ sơ của kế hoạch đó nhé.",
+            "conversation_history_used": [
+              {
+                "role": "user",
+                "content": "Cho mình hỏi thông tin quy hoạch sử dụng đất ở quận Hoàn Kiếm, kế hoạch này áp dụng năm nào?"
+              },
+              {
+                "role": "assistant",
+                "content": "Kế hoạch sử dụng đất ở quận Hoàn Kiếm áp dụng vào năm 2025."
+              }
+            ],
+            "rewritten_query": null,
+            "retrieval_context": [
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nKiểm năm 2024; Đại hội thi đua quyết thắng lực lượng vũ trang quận Hoàn",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nIII. LẬP KẾ HOẠCH SỬ DỤNG ĐẤT NĂM 2025 ........................................................... 28",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\n3. Mục đích, yêu cầu của việc lập kế hoạch sử dụng đất ........................................................ 3",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\ncao, cũng giống như các quận khác của Thủ đô, quận Hoàn Kiếm đang phải đối"
+            ],
+            "retrieved_doc_ids": [
+              "17_text_103",
+              "17_text_12",
+              "17_text_11",
+              "17_text_106"
+            ],
+            "retrieval_scores": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "actual_output": "Mã hồ sơ của kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm là HN-HoanKiem-KH2025.",
+            "metadata": {
+              "llm_model": "gpt-4o-mini",
+              "judge_phase": "offline_eval",
+              "prompt_version": "rag_prompt_v1",
+              "retriever_version": "pgvector_similarity_v1",
+              "chunking_version": "chunking_v1",
+              "top_k": 12,
+              "filters": {},
+              "planning_auto_context_used": true,
+              "planning_docs_count": 4,
+              "generated_at": "2026-04-01T05:29:22.553180+00:00"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "land_use_planning",
+        "scenario": "Người dùng nêu tên tài liệu trước, sau đó hỏi năm áp dụng.",
+        "expected_outcome": "Bot giữ đúng tài liệu theo title và trả lời đúng khu vực + planYear.",
+        "turns": [
+          {
+            "role": "user",
+            "content": "Mình đang xem tài liệu \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm\", tài liệu này nói về khu vực nào vậy?"
+          },
+          {
+            "role": "user",
+            "content": "Kế hoạch trong tài liệu đó áp dụng cho năm nào?"
+          }
+        ],
+        "context": [
+          "planningDocumentId=16, planYear=2025, district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội, city=Ha Noi, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm"
+        ],
+        "id": "MT_EASY_002"
+      },
+      "trace": {
+        "conversation_id": "MT_EASY_002",
+        "turns": [
+          {
+            "input": "Mình đang xem tài liệu \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm\", tài liệu này nói về khu vực nào vậy?",
+            "conversation_history_used": [],
+            "rewritten_query": null,
+            "retrieval_context": [
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm]\nHoàn Kiếm 0,0100 Hoàn",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nIII. LẬP KẾ HOẠCH SỬ DỤNG ĐẤT NĂM 2025 ........................................................... 28",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nKiểm năm 2024; Đại hội thi đua quyết thắng lực lượng vũ trang quận Hoàn",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nCăn cứ Kế hoạch phát tri ển kinh t ế xã hội, Kế hoạch đầu tư công trung"
+            ],
+            "retrieved_doc_ids": [
+              "16_text_71",
+              "17_text_12",
+              "17_text_103",
+              "17_text_45"
+            ],
+            "retrieval_scores": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "actual_output": "Tài liệu \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm\" nói về khu vực quận Hoàn Kiếm, thành phố Hà Nội.",
+            "metadata": {
+              "llm_model": "gpt-4o-mini",
+              "judge_phase": "offline_eval",
+              "prompt_version": "rag_prompt_v1",
+              "retriever_version": "pgvector_similarity_v1",
+              "chunking_version": "chunking_v1",
+              "top_k": 12,
+              "filters": {
+                "district": "Hoàn Kiếm"
+              },
+              "planning_auto_context_used": true,
+              "planning_docs_count": 4,
+              "generated_at": "2026-04-01T05:29:27.064469+00:00"
+            }
+          },
+          {
+            "input": "Kế hoạch trong tài liệu đó áp dụng cho năm nào?",
+            "conversation_history_used": [
+              {
+                "role": "user",
+                "content": "Mình đang xem tài liệu \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm\", tài liệu này nói về khu vực nào vậy?"
+              },
+              {
+                "role": "assistant",
+                "content": "Tài liệu \"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm\" nói về khu vực quận Hoàn Kiếm, thành phố Hà Nội."
+              }
+            ],
+            "rewritten_query": null,
+            "retrieval_context": [
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nĐến năm 2025, diện tích đất sử dụng vào mục đích công cộng của quận là",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nIII. LẬP KẾ HOẠCH SỬ DỤNG ĐẤT NĂM 2025 ........................................................... 28",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nKiểm năm 2024; Đại hội thi đua quyết thắng lực lượng vũ trang quận Hoàn",
+              "[document_scope=planning]\n[city=Ha Noi]\n[district=Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, thành phố Hà Nội]\n[plan_year=2025]\n[dossier_code=HN-HoanKiem-KH2025]\n[title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội]\nCăn cứ Kế hoạch phát tri ển kinh t ế xã hội, Kế hoạch đầu tư công trung"
+            ],
+            "retrieved_doc_ids": [
+              "17_text_224",
+              "17_text_12",
+              "17_text_103",
+              "17_text_45"
+            ],
+            "retrieval_scores": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "actual_output": "Kế hoạch trong tài liệu đó áp dụng cho năm 2025.",
+            "metadata": {
+              "llm_model": "gpt-4o-mini",
+              "judge_phase": "offline_eval",
+              "prompt_version": "rag_prompt_v1",
+              "retriever_version": "pgvector_similarity_v1",
+              "chunking_version": "chunking_v1",
+              "top_k": 12,
+              "filters": {},
+              "planning_auto_context_used": true,
+              "planning_docs_count": 4,
+              "generated_at": "2026-04-01T05:29:30.555178+00:00"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -27,15 +27,68 @@ _planning_vs = None
 _PLANNING_KEYWORDS = [
     "quy hoach",
     "quy hoạch",
+    "quy hoach su dung dat",
+    "quy hoạch sử dụng đất",
     "ke hoach su dung dat",
     "kế hoạch sử dụng đất",
+    "ke hoach",
+    "kế hoạch",
     "khsd",
+    "khsdd",
+    "khsdđ",
     "thong tin quy hoach",
     "thông tin quy hoạch",
     "loai dat",
     "loại đất",
+    "thua dat",
+    "thửa đất",
+    "to ban do",
+    "tờ bản đồ",
+    "muc dich su dung dat",
+    "mục đích sử dụng đất",
     "quy hoach do thi",
     "quy hoạch đô thị",
+]
+
+_PLANNING_STRUCTURAL_TERMS = [
+    "thua dat",
+    "to ban do",
+    "quy hoach",
+    "ke hoach su dung dat",
+    "muc dich su dung dat",
+    "loai dat",
+    "dat o",
+    "hanh lang",
+    "chi gioi",
+]
+
+_PLANNING_DISTRICT_STOPWORDS = {
+    "ke",
+    "hoach",
+    "su",
+    "dung",
+    "dat",
+    "nam",
+    "quan",
+    "huyen",
+    "thi",
+    "xa",
+    "thanh",
+    "pho",
+}
+
+_PLANNING_FACT_MARKERS = [
+    "ma ho so",
+    "dossier",
+    "dossier code",
+    "dossiercode",
+    "ap dung cho nam nao",
+    "nam nao",
+    "thuoc khu vuc nao",
+    "khu vuc nao",
+    "quan nao",
+    "huyen nao",
+    "la gi",
 ]
 
 _HANOI_DISTRICT_ALIASES: dict[str, list[str]] = {
@@ -69,7 +122,18 @@ def _normalize_nl(text: str) -> str:
 
 def _has_planning_intent(message: str) -> bool:
     normalized = _normalize_nl(message)
-    return any(_normalize_nl(keyword) in normalized for keyword in _PLANNING_KEYWORDS)
+    if any(_normalize_nl(keyword) in normalized for keyword in _PLANNING_KEYWORDS):
+        return True
+
+    has_structural_term = any(term in normalized for term in _PLANNING_STRUCTURAL_TERMS)
+    if not has_structural_term:
+        return False
+
+    # If user mentions land/planning structural terms plus either district hint
+    # or plan year, treat it as planning intent even without exact keyword phrases.
+    has_district_hint = _extract_district_from_message(message) is not None
+    has_plan_year = _extract_plan_year_from_message(message) is not None
+    return has_district_hint or has_plan_year
 
 
 def _extract_district_from_message(message: str) -> Optional[str]:
@@ -96,6 +160,328 @@ def _extract_plan_year_from_message(message: str) -> Optional[int]:
     return None
 
 
+def _extract_district_from_history(history_messages: Optional[list[dict[str, Any]]]) -> Optional[str]:
+    if not history_messages:
+        return None
+
+    for item in reversed(history_messages):
+        role = str(item.get("role") or "").strip().lower()
+        if role != "user":
+            continue
+        district = _extract_district_from_message(str(item.get("content") or ""))
+        if district:
+            return district
+
+    for item in reversed(history_messages):
+        district = _extract_district_from_message(str(item.get("content") or ""))
+        if district:
+            return district
+    return None
+
+
+def _extract_plan_year_from_history(history_messages: Optional[list[dict[str, Any]]]) -> Optional[int]:
+    if not history_messages:
+        return None
+
+    for item in reversed(history_messages):
+        role = str(item.get("role") or "").strip().lower()
+        if role != "user":
+            continue
+        year = _extract_plan_year_from_message(str(item.get("content") or ""))
+        if year is not None:
+            return year
+
+    for item in reversed(history_messages):
+        year = _extract_plan_year_from_message(str(item.get("content") or ""))
+        if year is not None:
+            return year
+    return None
+
+
+def _is_planning_fact_query(message: str) -> bool:
+    normalized = _normalize_nl(message)
+    if not normalized:
+        return False
+    if not _has_planning_intent(message):
+        return False
+    return any(marker in normalized for marker in _PLANNING_FACT_MARKERS)
+
+
+def _district_tokens(district: Optional[str]) -> list[str]:
+    if not district:
+        return []
+
+    canonical = district.strip()
+    variants: list[str] = [canonical]
+    variants.extend(_HANOI_DISTRICT_ALIASES.get(canonical, []))
+
+    out: list[str] = []
+    seen: set[str] = set()
+    for item in variants:
+        normalized = _normalize_nl(item)
+        for token in normalized.split():
+            if len(token) < 2 or token in _PLANNING_DISTRICT_STOPWORDS:
+                continue
+            if token in seen:
+                continue
+            seen.add(token)
+            out.append(token)
+    return out
+
+
+def _planning_doc_haystack(doc: Document) -> str:
+    md = doc.metadata or {}
+    parts = [
+        str(md.get("district") or ""),
+        str(md.get("title") or ""),
+        str(md.get("dossierCode") or ""),
+        str(md.get("city") or ""),
+        (doc.page_content or "")[:450],
+    ]
+    return _normalize_nl(" ".join(parts))
+
+
+def _doc_matches_district(doc: Document, district: Optional[str]) -> bool:
+    if not district:
+        return True
+
+    tokens = _district_tokens(district)
+    if not tokens:
+        return True
+
+    haystack = _planning_doc_haystack(doc)
+    return all(token in haystack for token in tokens)
+
+
+def _doc_matches_plan_year(doc: Document, plan_year: Optional[int]) -> bool:
+    if plan_year is None:
+        return True
+
+    md = doc.metadata or {}
+    raw_year = md.get("planYear")
+    if raw_year is not None:
+        try:
+            return int(raw_year) == int(plan_year)
+        except Exception:
+            pass
+
+    return str(plan_year) in _planning_doc_haystack(doc)
+
+
+def _planning_doc_score(doc: Document, message: str, district: Optional[str], plan_year: Optional[int]) -> float:
+    md = doc.metadata or {}
+    msg_norm = _normalize_nl(message)
+    score = 0.0
+
+    if _doc_matches_district(doc, district):
+        score += 120.0
+    elif district:
+        score -= 80.0
+
+    if _doc_matches_plan_year(doc, plan_year):
+        score += 24.0
+    elif plan_year is not None:
+        score -= 16.0
+
+    chunk_type = str(md.get("chunkType") or "").lower().strip()
+    if chunk_type == "text":
+        score += 2.0
+
+    if "ma ho so" in msg_norm or "dossier" in msg_norm:
+        if md.get("dossierCode"):
+            score += 14.0
+
+    if "nam nao" in msg_norm or "ap dung" in msg_norm:
+        if str(plan_year or "") and str(plan_year) in _planning_doc_haystack(doc):
+            score += 8.0
+
+    q_terms = _tokenize(message)
+    t_terms = _tokenize(
+        " ".join(
+            [
+                str(md.get("title") or ""),
+                str(md.get("district") or ""),
+                (doc.page_content or "")[:240],
+            ]
+        )
+    )
+    score += min(len(q_terms.intersection(t_terms)), 10) * 0.4
+    return score
+
+
+def _district_code_fragment(district: Optional[str]) -> str:
+    if not district:
+        return ""
+    ascii_text = _strip_accents(district)
+    parts = re.split(r"[^A-Za-z0-9]+", ascii_text)
+    cleaned = [p for p in parts if p]
+    return "".join(token[:1].upper() + token[1:] for token in cleaned)
+
+
+def _planning_query_candidates(message: str, district: Optional[str], plan_year: Optional[int]) -> list[str]:
+    candidates: list[str] = [message]
+
+    if district and plan_year is not None:
+        candidates.append(f"Kế hoạch sử dụng đất năm {plan_year} quận {district}")
+        candidates.append(f"Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm {plan_year} quận {district}")
+    elif district:
+        candidates.append(f"Kế hoạch sử dụng đất quận {district}")
+
+    if district and plan_year is not None:
+        district_code = _district_code_fragment(district)
+        if district_code:
+            candidates.append(f"HN-{district_code}-KH{plan_year}")
+
+    out: list[str] = []
+    seen: set[str] = set()
+    for candidate in candidates:
+        normalized = _normalize_nl(candidate)
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        out.append(candidate)
+    return out
+
+
+def _select_relevant_content_lines(
+    text: str,
+    message: str,
+    district: Optional[str],
+    plan_year: Optional[int],
+    *,
+    max_lines: int,
+) -> list[str]:
+    if max_lines <= 0:
+        return []
+
+    if not text:
+        return []
+
+    q_terms = _tokenize(message)
+    district_tokens = set(_district_tokens(district))
+    year_token = str(plan_year) if plan_year is not None else ""
+
+    scored: list[tuple[float, str]] = []
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if line.startswith("[") and line.endswith("]"):
+            continue
+
+        norm = _normalize_nl(line)
+        if not norm:
+            continue
+
+        line_terms = _tokenize(line)
+        score = 0.0
+        score += min(len(q_terms.intersection(line_terms)), 8) * 1.6
+
+        if district_tokens and all(token in norm for token in district_tokens):
+            score += 5.0
+
+        if year_token and year_token in norm:
+            score += 3.5
+
+        if score > 0:
+            scored.append((score, line))
+
+    scored.sort(key=lambda item: item[0], reverse=True)
+
+    out: list[str] = []
+    seen_norm: set[str] = set()
+    for _, line in scored:
+        normalized = _normalize_nl(line)
+        if normalized in seen_norm:
+            continue
+        seen_norm.add(normalized)
+        out.append(line)
+        if len(out) >= max_lines:
+            break
+    return out
+
+
+def _compact_planning_doc(
+    doc: Document,
+    message: str,
+    district: Optional[str],
+    plan_year: Optional[int],
+    *,
+    fact_query: bool,
+) -> Document:
+    md = doc.metadata or {}
+
+    lines: list[str] = ["[document_scope=planning]"]
+    if md.get("city"):
+        lines.append(f"[city={md.get('city')}]")
+    if md.get("district"):
+        lines.append(f"[district={md.get('district')}]")
+    if md.get("planYear") is not None:
+        lines.append(f"[plan_year={md.get('planYear')}]")
+    if md.get("dossierCode"):
+        lines.append(f"[dossier_code={md.get('dossierCode')}]")
+    if md.get("title"):
+        lines.append(f"[title={md.get('title')}]")
+
+    excerpt_max_lines = 0 if fact_query else 4
+    excerpt_lines = _select_relevant_content_lines(
+        doc.page_content or "",
+        message,
+        district,
+        plan_year,
+        max_lines=excerpt_max_lines,
+    )
+    lines.extend(excerpt_lines)
+
+    compact_content = "\n".join(lines)
+    return Document(page_content=compact_content, metadata=md)
+
+
+def _compact_planning_docs(
+    docs: list[Document],
+    message: str,
+    district: Optional[str],
+    plan_year: Optional[int],
+    *,
+    fact_query: bool,
+) -> list[Document]:
+    out: list[Document] = []
+    seen: set[str] = set()
+
+    for doc in docs:
+        compacted = _compact_planning_doc(doc, message, district, plan_year, fact_query=fact_query)
+        key = _normalize_nl(compacted.page_content)
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(compacted)
+
+    return out
+
+
+def _dedupe_planning_docs(docs: list[Document]) -> list[Document]:
+    out: list[Document] = []
+    seen: set[str] = set()
+
+    for doc in docs:
+        md = doc.metadata or {}
+        key = "|".join(
+            [
+                str(md.get("planningDocumentId") or ""),
+                str(md.get("chunkType") or ""),
+                str(md.get("globalChunkIndex") if md.get("globalChunkIndex") is not None else md.get("chunkIndex") or ""),
+                str(md.get("pageNumber") or ""),
+                (doc.page_content or "")[:80],
+            ]
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(doc)
+
+    return out
+
+
 def _district_candidates(district: Optional[str]) -> list[str]:
     if not district:
         return []
@@ -114,49 +500,105 @@ def _district_candidates(district: Optional[str]) -> list[str]:
     return out
 
 
-async def _retrieve_planning_docs_for_nl_query(planning_vs, message: str, top_k: int) -> list[Document]:
-    district = _extract_district_from_message(message)
+async def _retrieve_planning_docs_for_nl_query(
+    planning_vs,
+    message: str,
+    top_k: int,
+    history_messages: Optional[list[dict[str, Any]]] = None,
+) -> list[Document]:
+    district = _extract_district_from_message(message) or _extract_district_from_history(history_messages)
     plan_year = _extract_plan_year_from_message(message)
+    if plan_year is None:
+        plan_year = _extract_plan_year_from_history(history_messages)
 
-    district_values = _district_candidates(district)
+    fact_query = _is_planning_fact_query(message)
+    final_k = max(2, min(top_k, 4 if fact_query else 8))
+    probe_k = max(12, min(36, final_k * 4))
+    chunk_types = ["text"] if fact_query else ["text", "table"]
+
+    query_candidates = _planning_query_candidates(message, district, plan_year)
 
     base_candidates: list[dict[str, Any]] = []
-    if district_values and plan_year is not None:
-        base_candidates.append(
-            {
-                "documentScope": "planning",
-                "district": {"$in": district_values},
-                "planYear": plan_year,
-            }
-        )
-    if district_values:
-        base_candidates.append(
-            {
-                "documentScope": "planning",
-                "district": {"$in": district_values},
-            }
-        )
     if plan_year is not None:
-        base_candidates.append(
-            {
-                "documentScope": "planning",
-                "planYear": plan_year,
-            }
-        )
-
+        base_candidates.append({"documentScope": "planning", "planYear": plan_year})
     base_candidates.append({"documentScope": "planning"})
+
+    best_fallback: list[Document] = []
 
     for base_filter in base_candidates:
         planning_retriever = build_retriever(
             planning_vs,
-            k=max(6, min(top_k, 12)),
-            filters={"chunkTypes": ["text", "table"]},
+            k=probe_k,
+            filters={"chunkTypes": chunk_types},
             base_filter=base_filter,
         )
-        planning_docs: list[Document] = await planning_retriever.ainvoke(message)
-        if planning_docs:
-            print(f"[PlanningNL] Retrieved {len(planning_docs)} docs with base_filter={base_filter}")
-            return planning_docs
+
+        docs: list[Document] = []
+        for query_text in query_candidates:
+            pulled = await planning_retriever.ainvoke(query_text)
+            if pulled:
+                docs.extend(pulled)
+
+        if not docs:
+            continue
+
+        deduped = _dedupe_planning_docs(docs)
+        ranked = sorted(
+            deduped,
+            key=lambda d: _planning_doc_score(d, message, district, plan_year),
+            reverse=True,
+        )
+
+        strict = [d for d in ranked if _doc_matches_district(d, district) and _doc_matches_plan_year(d, plan_year)]
+        if strict:
+            selected = strict[:final_k]
+            selected = _compact_planning_docs(
+                selected,
+                message,
+                district,
+                plan_year,
+                fact_query=fact_query,
+            )
+            print(
+                "[PlanningNL] Retrieved "
+                f"{len(selected)} strict docs (district={district or 'N/A'}, year={plan_year or 'N/A'}) "
+                f"with base_filter={base_filter}"
+            )
+            return selected
+
+        relaxed = [d for d in ranked if _doc_matches_district(d, district)]
+        if relaxed:
+            selected = relaxed[:final_k]
+            selected = _compact_planning_docs(
+                selected,
+                message,
+                district,
+                plan_year,
+                fact_query=fact_query,
+            )
+            print(
+                "[PlanningNL] Retrieved "
+                f"{len(selected)} district-matched docs (district={district or 'N/A'}, year={plan_year or 'N/A'}) "
+                f"with base_filter={base_filter}"
+            )
+            return selected
+
+        if not best_fallback:
+            best_fallback = ranked[:final_k]
+
+    if best_fallback:
+        compact_fallback = _compact_planning_docs(
+            best_fallback,
+            message,
+            district,
+            plan_year,
+            fact_query=fact_query,
+        )
+        print(
+            "[PlanningNL] Falling back to broad planning docs "
+            f"(district={district or 'N/A'}, year={plan_year or 'N/A'})"
+        )
+        return compact_fallback
 
     print("[PlanningNL] No planning documents found for NL query")
     return []
@@ -303,23 +745,35 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
     # Lấy lịch sử 6 tin nhắn gần nhất
     history = await history_manager.get_messages(session_id, limit=6)
     
-    vs = get_vector_store()
-
     llm = build_llm()
     
     filters = await extract_filters_from_query(req.message, llm)
     print(f"Extracted filters: {filters}")
 
-    retriever = build_retriever(vs, k=req.topK, filters=filters)
+    extra_context = ""
+    planning_citations: list[dict[str, Any]] = []
+    planning_docs: list[Document] = []
+    use_planning_mode = bool(req.planningContexts) or _has_planning_intent(req.message)
+
+    if use_planning_mode:
+        print("Planning mode enabled for retrieval.")
+        planning_vs = get_planning_vector_store()
+        planning_retriever = build_retriever(
+            planning_vs,
+            k=max(6, min(req.topK, 12)),
+            filters={"chunkTypes": ["text", "table"]},
+            base_filter={"documentScope": "planning"},
+        )
+        retriever = planning_retriever
+    else:
+        vs = get_vector_store()
+        retriever = build_retriever(vs, k=req.topK, filters=filters)
+
     print(f"Using topK={req.topK} for retrieval.")
     print(f"retriever: {retriever}")
     chain = RagChain(llm=llm, retriever=retriever)
 
-    extra_context = ""
-    planning_citations: list[dict[str, Any]] = []
-    planning_docs: list[Document] = []
     planning_vs = get_planning_vector_store()
-
     if req.planningContexts:
         lines: list[str] = ["=== PLANNING REPORT CONTEXT (BACKEND STORED) ==="]
         for ctx in req.planningContexts:
@@ -363,10 +817,15 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
             extra_context = f"{extra_context}\n\n=== PLANNING VECTOR CONTEXT ===\n{planning_text}" if extra_context else planning_text
             planning_citations = _build_planning_citations(planning_docs)
 
-    elif _has_planning_intent(req.message):
+    elif use_planning_mode:
         district = _extract_district_from_message(req.message)
         plan_year = _extract_plan_year_from_message(req.message)
-        planning_docs = await _retrieve_planning_docs_for_nl_query(planning_vs, req.message, req.topK)
+        planning_docs = await _retrieve_planning_docs_for_nl_query(
+            planning_vs,
+            req.message,
+            req.topK,
+            history_messages=history,
+        )
 
         if planning_docs:
             planning_text = "\n\n".join(d.page_content for d in planning_docs if d.page_content)
