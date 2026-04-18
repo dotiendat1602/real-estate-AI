@@ -1,0 +1,239 @@
+[
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các dự án chưa thực hiện được trong năm 2024 được đưa vào kế hoạch sử dụng đất năm 2025 như thế nào?",
+    "expected_output_outline": [
+      "Nêu được đây là các dự án chuyển tiếp từ năm 2024 sang năm 2025",
+      "Trả lời đúng có 21 dự án với diện tích 4,1325 ha",
+      "Có thể nêu 1-2 ví dụ như phố Vọng Hà, phố Hàm Tử Quan, THPT Việt Đức",
+      "Không nhầm với dự án đăng ký mới"
+    ],
+    "context": [
+      "source=report_2025, section=3.2.1.a, transferredProjects2024to2025=21, transferredArea=4.1325 ha",
+      "source=report_2025, table=Bảng 6, examples=Chỉnh trang phố Vọng Hà|Chỉnh trang phố Hàm Tử Quan|Xây dựng cải tạo THPT Việt Đức"
+    ],
+    "target_metadata": {
+      "transferredProjectsCount": 21,
+      "transferredProjectsAreaHa": 4.1325,
+      "planningDocumentId": 17
+    },
+    "id": "ST_MEDIUM_026"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Tiến độ giải phóng mặt bằng của Dự án thành phần 1.1 phục vụ đường Vành đai 4 đoạn qua quận Hà Đông được thực hiện như thế nào?",
+    "expected_output_outline": [
+      "Nêu được tổng diện tích đất thu hồi là 685.425,88 m2",
+      "Nêu được quận đã thẩm định, phê duyệt phương án bồi thường hỗ trợ tái định cư đối với 66,7 ha đất của 1.823 tổ chức, hộ gia đình",
+      "Nêu được tổng số tiền phê duyệt là 778,05 tỷ đồng, đạt tỷ lệ 97,6%",
+      "Có thể nhắc thêm công tác di chuyển 1.563/1.582 ngôi mộ đã hoàn thành"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, pages=14-15, vanhDai4RecoveryArea=685425.88 m2, approvedCompensationArea=66.7 ha, affectedEntities=1823, approvedAmount=778.05 billion VND, progress=97.6%, gravesMoved=1563/1582"
+    ],
+    "target_metadata": {
+      "recoveryAreaM2": 685425.88,
+      "approvedCompensationAreaHa": 66.7,
+      "affectedEntities": 1823,
+      "approvedAmountBillionVND": 778.05,
+      "planningDocumentId": 137
+    },
+    "id": "ST_MEDIUM_033"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Chỉ tiêu sử dụng đất năm 2025 của quận Cầu Giấy biến động như thế nào so với năm 2024?",
+    "expected_output_outline": [
+      "Nêu được đất nông nghiệp giảm 7,97 ha",
+      "Nêu được đất phi nông nghiệp tăng 7,99 ha",
+      "Nêu được đất chưa sử dụng giảm 0,02 ha",
+      "Có thể nói thêm đất trồng cây lâu năm giảm mạnh và là nguồn chính chuyển sang đất phi nông nghiệp"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, landBalance2025=NNP 19.34 from 27.31|PNN 1207.92 from 1199.93|CSD 16.61 from 16.63"
+    ],
+    "target_metadata": {
+      "agriculturalChangeHa": -7.97,
+      "nonAgriculturalChangeHa": 7.99,
+      "unusedLandChangeHa": -0.02,
+      "planningDocumentId": 63
+    },
+    "id": "ST_MEDIUM_036"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Theo báo cáo thuyết minh, danh mục công trình, dự án năm 2025 của thị xã Sơn Tây được cấu thành như thế nào?",
+    "expected_output_outline": [
+      "Nêu được theo báo cáo thuyết minh có 80 danh mục, công trình, dự án với diện tích 550,29 ha",
+      "Nêu được 59 dự án thuộc danh mục thu hồi đất, chuyển mục đích đất trồng lúa đã được HĐND thành phố thông qua, diện tích 406,81 ha",
+      "Nêu được 21 dự án đưa vào kế hoạch sử dụng đất, diện tích 143,49 ha",
+      "Không nhầm đây là số liệu đăng ký trong báo cáo với số liệu phê duyệt chính thức trong quyết định"
+    ],
+    "context": [
+      "source=report_son_tay_2025, registeredProjects=80, registeredArea=550.29 ha, HDDNDProjects=59, HDDNDArea=406.81 ha, addedToPlanProjects=21, addedToPlanArea=143.49 ha"
+    ],
+    "target_metadata": {
+      "registeredProjects2025": 80,
+      "registeredArea2025Ha": 550.29,
+      "HDDNDProjects": 59,
+      "addedToPlanProjects": 21,
+      "planningDocumentId": 110
+    },
+    "id": "ST_MEDIUM_038"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các chỉ tiêu sử dụng đất năm 2025 của thị xã Sơn Tây biến động như thế nào so với hiện trạng ước tính năm 2024?",
+    "expected_output_outline": [
+      "Nêu được đất nông nghiệp giảm từ 5.347,70 ha xuống 5.228,42 ha",
+      "Nêu được đất phi nông nghiệp tăng từ 6.352,29 ha lên 6.471,80 ha",
+      "Nêu được đất chưa sử dụng giảm từ 19,92 ha xuống 19,69 ha",
+      "Có thể kết luận xu hướng là giảm đất nông nghiệp, tăng đất phi nông nghiệp, giảm nhẹ đất chưa sử dụng"
+    ],
+    "context": [
+      "source=report_son_tay_2025, land2024=NNP 5347.70|PNN 6352.29|CSD 19.92",
+      "source=report_son_tay_2025, land2025=NNP 5228.42|PNN 6471.80|CSD 19.69"
+    ],
+    "target_metadata": {
+      "agricultural2024Ha": 5347.7,
+      "agricultural2025Ha": 5228.42,
+      "nonAgricultural2024Ha": 6352.29,
+      "nonAgricultural2025Ha": 6471.8,
+      "unused2024Ha": 19.92,
+      "unused2025Ha": 19.69,
+      "planningDocumentId": 110
+    },
+    "id": "ST_MEDIUM_040"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Kết quả thực hiện Kế hoạch sử dụng đất năm 2024 của thị xã Sơn Tây được phản ánh như thế nào ở nhóm dự án đã thực hiện và nhóm dự án chuyển tiếp sang 2025?",
+    "expected_output_outline": [
+      "Nêu được tổng số dự án được UBND thành phố phê duyệt năm 2024 là 115 dự án, diện tích đăng ký 872,20 ha",
+      "Nêu được nhóm đã thực hiện và dự kiến thực hiện đến 31/12/2024 là 64 dự án, diện tích 345,66 ha",
+      "Nêu được nhóm chưa tổ chức thực hiện và chuyển tiếp sang 2025 là 42 dự án, diện tích 509,26 ha",
+      "Không tự suy diễn thêm các nhóm khác nếu tài liệu không yêu cầu"
+    ],
+    "context": [
+      "source=report_son_tay_2025, approvedProjects2024=115, approvedArea2024=872.20 ha, implemented2024=64, implementedArea2024=345.66 ha, carriedForward2025=42, carriedForwardArea2025=509.26 ha"
+    ],
+    "target_metadata": {
+      "approvedProjects2024": 115,
+      "implemented2024": 64,
+      "carriedForward2025": 42,
+      "planningDocumentId": 110
+    },
+    "id": "ST_MEDIUM_041"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các chỉ tiêu sử dụng đất năm 2025 của quận Hai Bà Trưng biến động như thế nào so với hiện trạng năm 2024?",
+    "expected_output_outline": [
+      "Nêu được đất nông nghiệp giảm từ 8,75 ha xuống 8,1451 ha",
+      "Nêu được đất phi nông nghiệp tăng từ 1.016,98 ha lên 1.017,5857 ha",
+      "Nêu được đất chưa sử dụng giữ nguyên 0,13 ha",
+      "Có thể nói thêm phần giảm của đất nông nghiệp chủ yếu chuyển sang đất xây dựng công trình sự nghiệp"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, land2024=NNP 8.75|PNN 1016.98|CSD 0.13",
+      "source=report_hai_ba_trung_2025, land2025=NNP 8.1451|PNN 1017.5857|CSD 0.13",
+      "source=report_hai_ba_trung_2025, agriculturalDecreaseReason=chuyển sang đất xây dựng công trình sự nghiệp"
+    ],
+    "target_metadata": {
+      "agricultural2024Ha": 8.75,
+      "agricultural2025Ha": 8.1451,
+      "nonAgricultural2024Ha": 1016.98,
+      "nonAgricultural2025Ha": 1017.5857,
+      "unused2024Ha": 0.13,
+      "unused2025Ha": 0.13,
+      "planningDocumentId": 91
+    },
+    "id": "ST_MEDIUM_042"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Kết quả thực hiện các công trình, dự án trong Kế hoạch sử dụng đất năm 2024 của quận Hai Bà Trưng được phân loại như thế nào?",
+    "expected_output_outline": [
+      "Nêu được tổng số dự án trong kế hoạch năm 2024 là 39 dự án",
+      "Nêu được 21 dự án đã thực hiện với diện tích 5,9358 ha",
+      "Nêu được 18 dự án chưa tổ chức thực hiện với diện tích 6,0361 ha",
+      "Có thể nói thêm trong 21 dự án đã thực hiện có 12 dự án đã có quyết định thu hồi/giao/chuyển mục đích và 9 dự án đã cắm mốc giới hoặc có quyết định một phần"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, totalProjects2024=39, implemented2024=21, implementedArea2024=5.9358 ha, notImplemented2024=18, notImplementedArea2024=6.0361 ha, implementedBreakdown=12 projects with decisions + 9 projects with markers_or_partial_decisions"
+    ],
+    "target_metadata": {
+      "totalProjects2024": 39,
+      "implemented2024": 21,
+      "implementedArea2024Ha": 5.9358,
+      "notImplemented2024": 18,
+      "notImplementedArea2024Ha": 6.0361,
+      "planningDocumentId": 91
+    },
+    "id": "ST_MEDIUM_043"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các chỉ tiêu sử dụng đất năm 2025 của quận Hoàng Mai biến động như thế nào so với hiện trạng năm 2024?",
+    "expected_output_outline": [
+      "Nêu được đất nông nghiệp giảm từ 803,81 ha xuống 742,08 ha",
+      "Nêu được đất phi nông nghiệp tăng từ 3.215,40 ha lên 3.277,14 ha",
+      "Nêu được quận không còn đất chưa sử dụng ở cả năm 2024 và trong kế hoạch 2025",
+      "Có thể kết luận xu hướng chính là giảm đất nông nghiệp và tăng đất phi nông nghiệp"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, agricultural2024=803.81 ha, nonAgricultural2024=3215.40 ha, unused2024=0 ha",
+      "source=report_hoang_mai_2025, agricultural2025=742.08 ha, nonAgricultural2025=3277.14 ha, unused2025=0 ha"
+    ],
+    "target_metadata": {
+      "agricultural2024Ha": 803.81,
+      "agricultural2025Ha": 742.08,
+      "nonAgricultural2024Ha": 3215.4,
+      "nonAgricultural2025Ha": 3277.14,
+      "unused2024Ha": 0,
+      "unused2025Ha": 0,
+      "planningDocumentId": 133
+    },
+    "id": "ST_MEDIUM_046"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Công tác giải phóng mặt bằng trên địa bàn quận Hoàng Mai trong năm 2024 được triển khai như thế nào?",
+    "expected_output_outline": [
+      "Nêu được quận đang triển khai GPMB 45 dự án",
+      "Nêu được đã ban hành thông báo thu hồi đất 1.571 hộ, điều tra 1.106 hộ, xác nhận nguồn gốc đất 1.311 hộ",
+      "Nêu được đã lập 1.593 phương án dự thảo và phê duyệt 1.195 phương án chính thức với số tiền 368,5 tỷ đồng",
+      "Có thể nhắc thêm quận đã thực hiện cưỡng chế, phá dỡ và vận động người dân bàn giao mặt bằng ở một số dự án trọng điểm"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, GPMB2024=45 projects, notices=1571 households, surveyed=1106 households, originConfirmed=1311 households, draftPlans=1593, approvedPlans=1195, compensation=368.5 tỷ đồng"
+    ],
+    "target_metadata": {
+      "GPMBProjects2024": 45,
+      "notices": 1571,
+      "approvedPlans": 1195,
+      "planningDocumentId": 133
+    },
+    "id": "ST_MEDIUM_047"
+  }
+]

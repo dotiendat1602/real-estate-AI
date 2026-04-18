@@ -5,19 +5,22 @@ from typing import Any
 from .metric_helpers import safe_metric_init
 
 
-def build_rag_metrics(thresholds: dict[str, Any], judge_model: str | None = None) -> list[Any]:
+def build_rag_metrics(thresholds: dict[str, Any], judge_model: Any | None = None) -> list[Any]:
     from deepeval.metrics import (
         AnswerRelevancyMetric,
-        ContextualRelevancyMetric,
+        ContextualRecallMetric,
         FaithfulnessMetric,
     )
 
     st = thresholds.get("single_turn", {})
+    contextual_recall_threshold = float(
+        st.get("contextual_recall", st.get("contextual_relevancy", 0.75))
+    )
 
     metrics = [
         safe_metric_init(
-            ContextualRelevancyMetric,
-            threshold=float(st.get("contextual_relevancy", 0.75)),
+            ContextualRecallMetric,
+            threshold=contextual_recall_threshold,
             model=judge_model,
         ),
         safe_metric_init(

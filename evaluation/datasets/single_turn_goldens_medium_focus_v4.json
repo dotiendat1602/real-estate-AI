@@ -1,0 +1,173 @@
+[
+    {
+        "difficulty":  "medium",
+        "question_type":  "how",
+        "domain":  "real_estate",
+        "input":  "Sau khi kế hoạch sử dụng đất năm 2025 được phê duyệt, UBND quận Hoàn Kiếm phải triển khai và giám sát như thế nào?",
+        "expected_output_outline":  [
+                                        "Nêu được các việc chính: công bố công khai kế hoạch, thực hiện thu hồi đất đúng kế hoạch, kiểm tra và xử lý vi phạm",
+                                        "Nêu được yêu cầu cân đối nguồn vốn và tổ chức thực hiện chặt chẽ",
+                                        "Có thể bổ sung mốc báo cáo kết quả trước ngày 15/10/2025",
+                                        "Không nói sang thủ tục ngoài các trách nhiệm được quyết định nêu"
+                                    ],
+        "context":  [
+                        "source=decision_2025, section=Điều 2.1, duties=publicize plan|recover land according to approved plan|inspect implementation|handle violations|ensure feasibility|balance capital sources|report before 15/10/2025"
+                    ],
+        "target_metadata":  {
+                                "reportDeadline":  "15/10/2025",
+                                "planningDocumentId":  16
+                            },
+        "id":  "ST_MEDIUM_027"
+    },
+    {
+        "difficulty":  "medium",
+        "question_type":  "how",
+        "domain":  "real_estate",
+        "input":  "22 dự án trong kế hoạch sử dụng đất năm 2025 được phân nhóm như thế nào theo việc phải hay không phải báo cáo HĐND Thành phố?",
+        "expected_output_outline":  [
+                                        "Nêu đúng 16 dự án thuộc nhóm đã được HĐND Thành phố thông qua tại Nghị quyết 69/NQ-HĐND",
+                                        "Nêu đúng 6 dự án không thuộc đối tượng phải thông qua HĐND Thành phố",
+                                        "Có thể nói thêm trong 6 dự án đó có 5 dự án chuyển tiếp lâu năm và 1 dự án đăng ký mới",
+                                        "Không đảo lộn số lượng giữa hai nhóm"
+                                    ],
+        "context":  [
+                        "source=report_2025, section=3.7, projectsApprovedByHDDND=16, area=3.6425 ha, projectsNotNeedHDDND=6, area=0.4976 ha",
+                        "source=report_2025, section=3.7, notNeedHDDNDBreakdown=5 continuing projects older than 2 years + 1 new project"
+                    ],
+        "target_metadata":  {
+                                "approvedByCityCouncil":  16,
+                                "notNeedCityCouncil":  6,
+                                "planningDocumentId":  17
+                            },
+        "id":  "ST_MEDIUM_028"
+    },
+    {
+        "difficulty":  "medium",
+        "question_type":  "how",
+        "domain":  "real_estate",
+        "input":  "Sau khi Kế hoạch sử dụng đất năm 2025 được phê duyệt, UBND quận Hà Đông phải triển khai như thế nào?",
+        "expected_output_outline":  [
+                                        "Nêu được các việc chính: công bố công khai kế hoạch, thực hiện thu hồi đất đúng kế hoạch, kiểm tra giám sát và xử lý vi phạm",
+                                        "Nêu được yêu cầu cân đối nguồn vốn và tổ chức thực hiện chặt chẽ theo chỉ tiêu đã được phê duyệt",
+                                        "Có thể nhắc thêm trách nhiệm rà soát, đánh giá khả năng thực hiện các dự án trong năm",
+                                        "Không bổ sung thủ tục ngoài những gì quyết định nêu"
+                                    ],
+        "context":  [
+                        "source=decision_ha_dong_2025, page=2, districtDuties=publicize plan|recover land according to plan|inspect and handle violations|balance capital|organize implementation tightly|review feasibility of projects"
+                    ],
+        "target_metadata":  {
+                                "responsibleAgency":  "UBND quận Hà Đông",
+                                "planningDocumentId":  113
+                            },
+        "id":  "ST_MEDIUM_030"
+    },
+    {
+        "difficulty":  "medium",
+        "question_type":  "how",
+        "domain":  "real_estate",
+        "input":  "Chỉ tiêu thu hồi đất và chuyển mục đích sử dụng đất năm 2025 của quận Hà Đông được thể hiện như thế nào?",
+        "expected_output_outline":  [
+                                        "Nêu được đất nông nghiệp cần thu hồi là 55,76 ha",
+                                        "Nêu được đất phi nông nghiệp cần thu hồi là 29,66 ha",
+                                        "Nêu được diện tích đất nông nghiệp chuyển sang đất phi nông nghiệp là 55,76 ha",
+                                        "Không gộp nhầm thu hồi đất với chuyển mục đích sử dụng đất"
+                                    ],
+        "context":  [
+                        "source=report_ha_dong_2025, page=4, agriculturalLandRecovery2025=55.76 ha, nonAgriculturalLandRecovery2025=29.66 ha, agriculturalToNonAgriculturalConversion2025=55.76 ha"
+                    ],
+        "target_metadata":  {
+                                "agriculturalLandRecovery2025Ha":  55.76,
+                                "nonAgriculturalLandRecovery2025Ha":  29.66,
+                                "agriculturalToNonAgriculturalConversion2025Ha":  55.76,
+                                "planningDocumentId":  137
+                            },
+        "id":  "ST_MEDIUM_031"
+    },
+    {
+        "difficulty":  "medium",
+        "question_type":  "how",
+        "domain":  "real_estate",
+        "input":  "22 công trình, dự án trong Kế hoạch sử dụng đất năm 2025 của quận Cầu Giấy được hình thành như thế nào?",
+        "expected_output_outline":  [
+                                        "Nêu được 21 công trình, dự án là các dự án chuyển tiếp từ kế hoạch năm trước",
+                                        "Nêu được 1 công trình là dự án đăng ký mới năm 2025",
+                                        "Có thể nói thêm trong 21 dự án chuyển tiếp có 12 dự án thuộc nhóm HĐND thành phố thông qua và 9 dự án không nằm danh mục Nghị quyết HĐND Thành phố",
+                                        "Không đảo lộn số lượng giữa dự án chuyển tiếp và dự án mới"
+                                    ],
+        "context":  [
+                        "source=report_cau_giay_2025, continuedProjects2025=21, continuedArea=27.41 ha",
+                        "source=report_cau_giay_2025, newProjects2025=1, newArea=0.95 ha",
+                        "source=report_cau_giay_2025, continuedBreakdown=12 projects in HĐND list + 9 projects outside HĐND list"
+                    ],
+        "target_metadata":  {
+                                "continuedProjects2025":  21,
+                                "newProjects2025":  1,
+                                "planningDocumentId":  63
+                            },
+        "id":  "ST_MEDIUM_034"
+    },
+    {
+        "difficulty":  "medium",
+        "question_type":  "how",
+        "domain":  "real_estate",
+        "input":  "Sau khi Kế hoạch sử dụng đất năm 2025 được phê duyệt, UBND quận Cầu Giấy phải triển khai như thế nào?",
+        "expected_output_outline":  [
+                                        "Nêu được các việc chính: công bố công khai kế hoạch, thực hiện thu hồi đất đúng kế hoạch, kiểm tra và xử lý vi phạm",
+                                        "Nêu được yêu cầu cân đối nguồn vốn và tổ chức thực hiện chặt chẽ theo các chỉ tiêu đã được phê duyệt",
+                                        "Nêu được với dự án thuộc khoản 4 Điều 67 Luật Đất đai 2024 mà phải thu hồi đất thì quận phải công bố công khai phạm vi thu hồi đất theo tiến độ dự án",
+                                        "Có thể nhắc thêm hạn báo cáo kết quả trước ngày 15/10/2025"
+                                    ],
+        "context":  [
+                        "source=decision_cau_giay_2025, districtDuties=publicize plan|recover land according to plan|inspect and handle violations|balance capital|organize implementation|publicize land acquisition boundary for certain projects|report before 15/10/2025"
+                    ],
+        "target_metadata":  {
+                                "reportDeadline":  "15/10/2025",
+                                "planningDocumentId":  61
+                            },
+        "id":  "ST_MEDIUM_035"
+    },
+    {
+        "difficulty":  "medium",
+        "question_type":  "how",
+        "domain":  "real_estate",
+        "input":  "Theo báo cáo thuyết minh, các dự án năm 2025 của thị xã Sơn Tây được phân nhóm như thế nào theo trường hợp thu hồi đất và không thu hồi đất?",
+        "expected_output_outline":  [
+                                        "Nêu được nhóm dự án thuộc Điều 78 và 79 Luật Đất đai là 62 dự án, diện tích 154,69 ha",
+                                        "Nêu được trong đó có 59 dự án chuyển tiếp và 3 dự án đăng ký mới",
+                                        "Nêu được nhóm không thuộc trường hợp thu hồi đất là 18 dự án, diện tích 108,62 ha",
+                                        "Nêu được trong nhóm này có 17 dự án chuyển tiếp và 1 dự án đăng ký mới"
+                                    ],
+        "context":  [
+                        "source=report_son_tay_2025, article7879Projects=62, article7879Area=154.69 ha, article7879Continued=59, article7879New=3",
+                        "source=report_son_tay_2025, noRecoveryProjects=18, noRecoveryArea=108.62 ha, noRecoveryContinued=17, noRecoveryNew=1"
+                    ],
+        "target_metadata":  {
+                                "article7879Projects":  62,
+                                "article7879AreaHa":  154.69,
+                                "noRecoveryProjects":  18,
+                                "noRecoveryAreaHa":  108.62,
+                                "planningDocumentId":  110
+                            },
+        "id":  "ST_MEDIUM_039"
+    },
+    {
+        "difficulty":  "medium",
+        "question_type":  "how",
+        "domain":  "real_estate",
+        "input":  "Sau khi Kế hoạch sử dụng đất năm 2025 được phê duyệt, UBND quận Hai Bà Trưng phải triển khai như thế nào?",
+        "expected_output_outline":  [
+                                        "Nêu được các nhiệm vụ chính như công bố công khai kế hoạch, thực hiện thu hồi đất đúng kế hoạch, kiểm tra giám sát và xử lý vi phạm",
+                                        "Nêu được quận phải cân đối nguồn vốn để bảo đảm tính khả thi",
+                                        "Nêu được quận phải tổ chức thực hiện chặt chẽ theo các chỉ tiêu đã được phê duyệt",
+                                        "Có thể nhắc thêm hạn báo cáo kết quả thực hiện trước ngày 15/10/2025"
+                                    ],
+        "context":  [
+                        "source=decision_hai_ba_trung_2025, districtDuties=publicize plan|recover land according to plan|inspect and handle violations|balance capital|organize implementation tightly|report before 15/10/2025"
+                    ],
+        "target_metadata":  {
+                                "reportDeadline":  "15/10/2025",
+                                "planningDocumentId":  90
+                            },
+        "id":  "ST_MEDIUM_044"
+    }
+]

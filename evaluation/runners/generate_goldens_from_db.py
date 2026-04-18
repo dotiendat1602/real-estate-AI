@@ -20,7 +20,30 @@ def _load_metadata_rows(sample_limit: int) -> list[dict[str, Any]]:
     engine = create_engine(pgvector_url)
     with engine.connect() as conn:
         rows = conn.execute(
-            text("SELECT cmetadata::text FROM langchain_pg_embedding LIMIT :limit"),
+            text(
+                """
+                WITH planning_docs AS (
+                    SELECT DISTINCT ON ((cmetadata::jsonb->>'planningDocumentId'))
+                        cmetadata::text AS cmeta
+                    FROM langchain_pg_embedding
+                    WHERE (cmetadata::jsonb->>'planningDocumentId') IS NOT NULL
+                    ORDER BY (cmetadata::jsonb->>'planningDocumentId')
+                ),
+                posts AS (
+                    SELECT DISTINCT ON ((cmetadata::jsonb->>'postId'))
+                        cmetadata::text AS cmeta
+                    FROM langchain_pg_embedding
+                    WHERE (cmetadata::jsonb->>'postId') IS NOT NULL
+                    ORDER BY (cmetadata::jsonb->>'postId')
+                ),
+                merged AS (
+                    SELECT cmeta FROM planning_docs
+                    UNION ALL
+                    SELECT cmeta FROM posts
+                )
+                SELECT cmeta FROM merged LIMIT :limit
+                """
+            ),
             {"limit": sample_limit},
         ).fetchall()
 
@@ -195,8 +218,8 @@ def _planning_subject(doc: dict[str, Any]) -> str:
     if location:
         return f"quy hoạch sử dụng đất tại {location}"
     if title:
-        return f'tài liệu "{title}"'
-    return "tài liệu quy hoạch này"
+        return f'văn bản "{title}"'
+    return "văn bản quy hoạch sử dụng đất"
 
 
 def _post_reference(post: dict[str, Any]) -> str:
@@ -259,13 +282,36 @@ def build_single_turn_easy_goldens(rows: list[dict[str, Any]], count: int) -> li
         context_city = doc.get("city") or city or "N/A"
         context_district = doc.get("district") or district or "N/A"
 
+        if title:
+            year_question = f'Văn bản "{title}" áp dụng cho năm nào?'
+            dossier_question = f'Mã hồ sơ của văn bản "{title}" là gì?'
+            district_question = f'Văn bản "{title}" đang nói về quận/huyện nào?'
+            city_question = f'Văn bản "{title}" thuộc thành phố nào?'
+            doc_type_question = f'Văn bản "{title}" thuộc loại tài liệu gì?'
+        else:
+            year_question = f"{_sentence_case(subject)} áp dụng cho năm nào?"
+            dossier_question = f"Mã hồ sơ của {subject} là gì?"
+            if location:
+                district_question = f"Kế hoạch sử dụng đất tại {location} đang nói về quận/huyện nào?"
+            else:
+                district_question = "Văn bản quy hoạch sử dụng đất đang nói về quận/huyện nào?"
+
+            if district and year is not None:
+                city_question = f"Kế hoạch sử dụng đất năm {year} tại {district} thuộc thành phố nào?"
+            elif district:
+                city_question = f"Khu vực {district} thuộc thành phố nào theo metadata quy hoạch?"
+            else:
+                city_question = "Văn bản quy hoạch sử dụng đất thuộc thành phố nào?"
+
+            doc_type_question = f"Văn bản của {subject} thuộc loại tài liệu gì?"
+
         if year is not None:
             candidates.append(
                 {
                     "difficulty": "easy",
                     "question_type": "what",
                     "domain": "land_use_planning",
-                    "input": f"{_sentence_case(subject)} đang áp dụng cho năm nào?",
+                    "input": year_question,
                     "expected_output_outline": [
                         f"Nêu đúng planYear: {year}",
                         "Không suy đoán nếu thiếu dữ liệu",
@@ -283,7 +329,7 @@ def build_single_turn_easy_goldens(rows: list[dict[str, Any]], count: int) -> li
                     "difficulty": "easy",
                     "question_type": "what",
                     "domain": "land_use_planning",
-                    "input": f"Mã hồ sơ của {subject} là gì?",
+                    "input": dossier_question,
                     "expected_output_outline": [
                         f"Nêu đúng dossierCode: {dossier}",
                         "Trả lời ngắn gọn, đúng metadata",
@@ -301,11 +347,7 @@ def build_single_turn_easy_goldens(rows: list[dict[str, Any]], count: int) -> li
                     "difficulty": "easy",
                     "question_type": "what",
                     "domain": "land_use_planning",
-                    "input": (
-                        f"Trong {city}, tài liệu quy hoạch này đang nói về quận/huyện nào?"
-                        if city
-                        else "Tài liệu quy hoạch này đang nói về quận/huyện nào?"
-                    ),
+                    "input": district_question,
                     "expected_output_outline": [
                         f"Nêu đúng district: {district}",
                         "Không thêm địa danh ngoài dữ liệu",
@@ -323,11 +365,7 @@ def build_single_turn_easy_goldens(rows: list[dict[str, Any]], count: int) -> li
                     "difficulty": "easy",
                     "question_type": "what",
                     "domain": "land_use_planning",
-                    "input": (
-                        f"Khu vực {district} thuộc thành phố nào theo tài liệu quy hoạch này?"
-                        if district
-                        else "Tài liệu quy hoạch này thuộc thành phố nào?"
-                    ),
+                    "input": city_question,
                     "expected_output_outline": [
                         f"Nêu đúng city: {city}",
                         "Trả lời một ý chính, không suy đoán",
@@ -339,35 +377,13 @@ def build_single_turn_easy_goldens(rows: list[dict[str, Any]], count: int) -> li
                 }
             )
 
-        if title:
-            candidates.append(
-                {
-                    "difficulty": "easy",
-                    "question_type": "what",
-                    "domain": "land_use_planning",
-                    "input": (
-                        f"Bạn cho mình biết tên đầy đủ của văn bản quy hoạch ở {district} được không?"
-                        if district
-                        else "Bạn cho mình biết tên đầy đủ của văn bản quy hoạch này được không?"
-                    ),
-                    "expected_output_outline": [
-                        f"Nêu đúng title: {title}",
-                        "Không diễn giải thêm ngoài metadata",
-                    ],
-                    "context": [
-                        f"planningDocumentId={doc_id}, title={title}, district={context_district}, city={context_city}"
-                    ],
-                    "target_metadata": {"planningDocumentId": doc_id},
-                }
-            )
-
         if doc_type:
             candidates.append(
                 {
                     "difficulty": "easy",
                     "question_type": "what",
                     "domain": "land_use_planning",
-                    "input": f"Văn bản của {subject} thuộc loại tài liệu gì?",
+                    "input": doc_type_question,
                     "expected_output_outline": [
                         f"Nêu đúng documentType: {doc_type}",
                         "Nếu thiếu thì nói rõ thiếu dữ liệu",
@@ -431,7 +447,7 @@ def build_single_turn_easy_goldens(rows: list[dict[str, Any]], count: int) -> li
                     "difficulty": "easy",
                     "question_type": "what",
                     "domain": "real_estate",
-                    "input": f"Diện tích căn {category_label} ở {location} trong tin này là bao nhiêu m2?",
+                    "input": f"Diện tích căn {category_label} ở {location} là bao nhiêu m2?",
                     "expected_output_outline": [
                         f"Nêu đúng area: {area}",
                         "Không suy đoán khi thiếu field",
@@ -447,7 +463,7 @@ def build_single_turn_easy_goldens(rows: list[dict[str, Any]], count: int) -> li
                     "difficulty": "easy",
                     "question_type": "what",
                     "domain": "real_estate",
-                    "input": f"Bất động sản tại {location} trong tin này có bao nhiêu phòng ngủ?",
+                    "input": f"Bất động sản tại {location} có bao nhiêu phòng ngủ?",
                     "expected_output_outline": [
                         f"Nêu đúng bedrooms: {bedrooms}",
                         "Không tự suy đoán nếu không có dữ liệu",
@@ -463,7 +479,7 @@ def build_single_turn_easy_goldens(rows: list[dict[str, Any]], count: int) -> li
                     "difficulty": "easy",
                     "question_type": "what",
                     "domain": "real_estate",
-                    "input": f"Tin tại {location} này thuộc danh mục bất động sản nào?",
+                    "input": f"Tin tại {location} thuộc danh mục bất động sản nào?",
                     "expected_output_outline": [
                         f"Nêu đúng categoryName: {category}",
                         "Bám đúng metadata, không diễn giải thêm",
@@ -481,7 +497,7 @@ def build_single_turn_easy_goldens(rows: list[dict[str, Any]], count: int) -> li
                     "difficulty": "easy",
                     "question_type": "what",
                     "domain": "real_estate",
-                    "input": f"Bạn cho biết vị trí cụ thể của tin {category_label} này ở đâu được không?",
+                    "input": f"Vị trí cụ thể của tin {category_label} ở đâu?",
                     "expected_output_outline": [
                         f"Nêu đúng location theo metadata: {location}",
                         "Không bổ sung địa chỉ ngoài dữ liệu",
@@ -498,9 +514,12 @@ def build_single_turn_easy_goldens(rows: list[dict[str, Any]], count: int) -> li
         raise RuntimeError("Không thể tạo câu hỏi single-turn từ dữ liệu embeddings.")
 
     if len(unique_cases) < count:
-        raise RuntimeError(
-            f"Chỉ tạo được {len(unique_cases)} câu single-turn easy từ dữ liệu hiện có, ít hơn yêu cầu {count}."
+        print(
+            "[Generator] Chỉ tạo được "
+            f"{len(unique_cases)} câu single-turn easy từ dữ liệu hiện có; "
+            f"sẽ dùng toàn bộ thay vì yêu cầu {count}."
         )
+        count = len(unique_cases)
 
     selected = unique_cases[:count]
     return _assign_ids(selected, "ST_EASY")

@@ -1,0 +1,26 @@
+[
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao hai phường Chương Dương và Phúc Tân được nhấn mạnh trong giải pháp quản lý đất đai?",
+    "expected_output_outline": [
+      "Nêu được đây là 2 phường nằm ngoài đê sông Hồng",
+      "Nêu được yêu cầu bảo đảm an toàn hành lang đê, hành lang thoát lũ, hành lang cầu và chống lấn chiếm bờ bãi sông Hồng",
+      "Có thể bổ sung các biện pháp như kiểm tra thu hồi đất sử dụng sai mục đích và khảo sát đất bãi giữa để kiến nghị sử dụng dịch vụ du lịch",
+      "Không suy diễn sang nguyên nhân khác ngoài báo cáo"
+    ],
+    "context": [
+      "source=report_2025, section=IV giải pháp mục 4, wardsOutsideDike=Chương Dương|Phúc Tân",
+      "source=report_2025, section=IV giải pháp mục 4, managementNeeds=protect dike corridor|floodway corridor|bridge corridor|prevent encroachment|inspect misuse|consider service tourism use for mid-river agricultural land"
+    ],
+    "target_metadata": {
+      "wards": [
+        "Chương Dương",
+        "Phúc Tân"
+      ],
+      "planningDocumentId": 17
+    },
+    "id": "ST_HARD_029"
+  }
+]

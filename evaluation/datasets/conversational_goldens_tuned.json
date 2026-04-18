@@ -1,0 +1,1036 @@
+[
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá trước rồi hỏi tiếp số phòng ngủ của căn nhà Trương Định.",
+    "expected_outcome": "Bot trả đúng giá bán và đúng số phòng ngủ của cùng một bất động sản.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Cho mình hỏi căn nhà ở ngõ 281 Trương Định giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Thế nhà này có mấy phòng ngủ?"
+      }
+    ],
+    "context": [
+      "postId=146, propertyId=145, postType=SALE, categoryName=Căn hộ, title=Chính chủ bán nhà Trương Định 67m2 5T mặt tiền 5m 2 ngõ oto vào nhà chỉ hơn 14 tỷ, price=14000000000, area=67, bedrooms=4, bathrooms=3, furnishing=FULLY_FURNISHED, address=ngõ 281 Đường Trương Định Phường Tương Mai Quận Hoàng Mai Hà Nội"
+    ],
+    "id": "MT_EASY_001"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá thuê rồi hỏi tiếp thời hạn thuê tối thiểu của nhà ở Thịnh Hào 3.",
+    "expected_outcome": "Bot trả đúng giá thuê và đúng thời hạn thuê tối thiểu là 2 năm.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Nhà cho thuê ở 54/98 Thịnh Hào 3 giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Còn thời gian thuê tối thiểu là bao lâu?"
+      }
+    ],
+    "context": [
+      "postId=289, propertyId=288, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà riêng 54/98 Thịnh Hào 3 13 triệu 45m2 6PN 3WC, price=13000000, area=45, bedrooms=6, bathrooms=3, direction=Nam, furnishing=PARTLY_FURNISHED, address=54/98 Thịnh Hào 3 đường Tôn Đức Thắng Phường Ô Chợ Dừa Hà Nội, minRentalPeriod=2 years"
+    ],
+    "id": "MT_EASY_002"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi số căn hộ mini rồi hỏi tiếp địa chỉ khu vực Nhổn.",
+    "expected_outcome": "Bot giữ đúng tham chiếu hội thoại và trả đúng số căn hộ mini cùng vị trí.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Nhà nguyên căn ở Nhổn này được thiết kế thành mấy căn hộ mini?"
+      },
+      {
+        "role": "user",
+        "content": "Địa chỉ của căn này ở đâu vậy?"
+      }
+    ],
+    "context": [
+      "postId=295, propertyId=294, postType=RENT, categoryName=Căn hộ, title=Chính chủ cho thuê nguyên căn đã thiết kế phù hợp cho thuê 7 căn hộ mini tại Nhổn, price=25000000, area=45, bedrooms=7, bathrooms=7, furnishing=PARTLY_FURNISHED, address=ngõ 27 Đường Nhổn Phường Cầu Diễn Quận Nam Từ Liêm Hà Nội, miniApartments=7"
+    ],
+    "id": "MT_EASY_003"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi số phòng ngủ rồi hỏi tiếp tình trạng nội thất của nhà Quang Tiến.",
+    "expected_outcome": "Bot trả đúng số phòng ngủ và đúng tình trạng nội thất FULLY_FURNISHED.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Nhà cho thuê ở phố Quang Tiến có mấy phòng ngủ?"
+      },
+      {
+        "role": "user",
+        "content": "Thế nội thất của nhà này là gì?"
+      }
+    ],
+    "context": [
+      "postId=290, propertyId=289, postType=RENT, categoryName=Căn hộ, title=Chính chủ cho thuê nhà 5 tầng ở phố Quang Tiến Tây Mỗ Từ Liêm Hà Nội, price=16000000, area=38, bedrooms=3, bathrooms=4, direction=Đông, furnishing=FULLY_FURNISHED, address=Khu đô thị Đại Mỗ Hà Nội Đường Quang Tiến Phường Đại Mỗ Quận Nam Từ Liêm Hà Nội"
+    ],
+    "id": "MT_EASY_004"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá thuê rồi hỏi tiếp số phòng ngủ của nhà phố Thanh Nhàn.",
+    "expected_outcome": "Bot trả đúng giá thuê và số phòng ngủ theo đúng tin đăng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Nhà cho thuê ở phố Thanh Nhàn giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Nhà này có mấy phòng ngủ?"
+      }
+    ],
+    "context": [
+      "postId=294, propertyId=293, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà riêng tại phố Thanh Nhàn Hà Nội, price=7000000, area=34, bedrooms=2, bathrooms=2, furnishing=FULLY_FURNISHED, address=ngõ 285 phố Thanh Nhàn Đường Thanh Nhàn Phường Thanh Nhàn Quận Hai Bà Trưng Hà Nội"
+    ],
+    "id": "MT_EASY_005"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi diện tích rồi hỏi tiếp quận của lô đất Vườn Đào.",
+    "expected_outcome": "Bot trả đúng diện tích và quận Tây Hồ của cùng lô đất.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Lô đất D3 khu Vườn Đào đối diện Lotte Mall có diện tích bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Lô này nằm ở quận nào?"
+      }
+    ],
+    "context": [
+      "postId=240, propertyId=239, postType=SALE, categoryName=Căn hộ, title=Bán đất lô D3 khu Vườn Đào 270m2 ngay ngã tư đối diện Lotte Mall, price=189000000000, area=270, direction=Tây, address=685 Đường Lạc Long Quân Phường Phú Thượng Quận Tây Hồ Hà Nội"
+    ],
+    "id": "MT_EASY_006"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá thuê rồi hỏi tiếp quy định không cho thuê ngắn ngày của nhà Giảng Võ.",
+    "expected_outcome": "Bot trả đúng giá thuê và nêu đúng rằng nhà không cho dịch vụ lưu trú ngắn ngày hoặc Airbnb.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Nhà nguyên căn ở Giảng Võ cho thuê giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Còn hình thức thuê ngắn ngày như Airbnb thì sao?"
+      }
+    ],
+    "context": [
+      "postId=272, propertyId=271, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà riêng chính chủ tại Giảng Võ, price=30000000, area=65, bedrooms=5, bathrooms=4, furnishing=PARTLY_FURNISHED, address=Phố Giảng Võ Phường Giảng Võ Quận Ba Đình Hà Nội, restriction=Không cho thuê dịch vụ lưu trú ngắn ngày Airbnb"
+    ],
+    "id": "MT_EASY_007"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi diện tích trước rồi hỏi tiếp công năng phù hợp của mặt bằng Trần Thái Tông.",
+    "expected_outcome": "Bot trả đúng diện tích 91 m2 và nêu đúng một số mô hình sử dụng phù hợp theo mô tả.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Mặt bằng ở 2A ngõ 76 Trần Thái Tông có diện tích bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Mặt bằng này phù hợp làm gì?"
+      }
+    ],
+    "context": [
+      "postId=292, propertyId=291, postType=RENT, categoryName=Căn hộ, title=Chính chủ cần cho thuê nhà số 2A ngõ 76 Trần Thái Tông Cầu Giấy Hà Nội, price=16000000, area=91, address=Số 2A ngõ 76 Trần Thái Tông Cầu Giấy Hà Nội, suitableUses=văn phòng|studio|spa|salon tóc|nha khoa|trung tâm tiếng Anh|lớp học|showroom|coffe"
+    ],
+    "id": "MT_EASY_008"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá thuê rồi hỏi tiếp tiện ích nổi bật là thang máy của nhà Dương Nội.",
+    "expected_outcome": "Bot trả đúng giá thuê và xác nhận đúng là nhà có thang máy.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Nhà 7 tầng ở đất dịch vụ Dương Nội cho thuê giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Nhà này có thang máy không?"
+      }
+    ],
+    "context": [
+      "postId=300, propertyId=299, postType=RENT, categoryName=Căn hộ, title=Cho thuê gấp nhà riêng 7 tầng có THANG MÁY 7PN 7WC 55m2 tại đất dịch vụ Dương Nội 20 triệu VND, price=20000000, area=55, bedrooms=7, bathrooms=7, furnishing=PARTLY_FURNISHED, direction=Đông, address=Khu đất dịch vụ 27 28 Dương Nội Phường Dương Nội Quận Hà Đông Hà Nội"
+    ],
+    "id": "MT_EASY_009"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi diện tích rồi hỏi tiếp một mục đích sử dụng phù hợp của văn phòng Nguyễn Văn Cừ.",
+    "expected_outcome": "Bot trả đúng diện tích và nêu đúng các mô hình như văn phòng, spa, thời trang hoặc ngân hàng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Văn phòng ở 526-528 Nguyễn Văn Cừ có diện tích bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Không gian này phù hợp dùng cho mô hình gì?"
+      }
+    ],
+    "context": [
+      "postId=299, propertyId=298, postType=RENT, categoryName=Căn hộ, title=Cho thuê văn phòng 526-528 Nguyễn Văn Cừ phường Bồ Đề Hà Nội, price=30000000, area=217, furnishing=PARTLY_FURNISHED, address=Số 526+528 Đường Nguyễn Văn Cừ Phường Gia Thụy Quận Long Biên Hà Nội, suitableUses=văn phòng|spa|thời trang|ngân hàng"
+    ],
+    "id": "MT_EASY_010"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá bán rồi hỏi tiếp tình trạng nội thất của căn hộ Quận 1.",
+    "expected_outcome": "Bot trả đúng giá bán và đúng nội thất FULLY_FURNISHED.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Căn hộ 2 phòng ngủ ở Quận 1 bán giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Còn nội thất của căn này là gì?"
+      }
+    ],
+    "context": [
+      "postId=1, propertyId=1, postType=SALE, categoryName=Căn hộ, title=Bán căn hộ 2PN Quận 1 full nội thất, price=6500000000, area=75, bedrooms=2, bathrooms=2, direction=Đông Nam, furnishing=FULLY_FURNISHED, district=Quận 1, ward=Phường Bến Nghé, city=Hồ Chí Minh"
+    ],
+    "id": "MT_EASY_011"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi diện tích rồi hỏi tiếp thời gian thuê tối thiểu của căn H1 Nguyễn Công Trứ.",
+    "expected_outcome": "Bot trả đúng diện tích 45 m2 và thời hạn thuê tối thiểu 1 năm.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Căn ở H1 tập thể Nguyễn Công Trứ có diện tích bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Thời gian thuê tối thiểu của căn này là bao lâu?"
+      }
+    ],
+    "context": [
+      "postId=83, propertyId=82, postType=RENT, categoryName=Căn hộ, title=Cho thuê CC 45m2 5 triệu VND tại H1 tập thể Nguyễn Công Trứ Quận Hai Bà Trưng Hà Nội, price=5000000, area=45, bedrooms=1, bathrooms=1, direction=Nam, address=H1 tập thể Nguyễn Công Trứ Đường Nguyễn Công Trứ Phường Phố Huế Quận Hai Bà Trưng Hà Nội, minRentalPeriod=1 year"
+    ],
+    "id": "MT_EASY_012"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá rồi hỏi tiếp số tầng tối đa được xây của lô đất Đồng Mai.",
+    "expected_outcome": "Bot trả đúng giá 7,65 tỷ và mức cấp phép xây lên đến 6 tầng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Lô đất LK16-41 khu 2 Đồng Mai giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Lô này được phép xây tối đa mấy tầng?"
+      }
+    ],
+    "context": [
+      "postId=197, propertyId=196, postType=SALE, categoryName=Căn hộ, title=Bán lô LK16 41 khu 2 đất dịch vụ Đồng Mai Yên Nghĩa giá 7,65 tỷ, price=7650000000, area=50, address=Khu dịch vụ Đồng Mai Đường Vành Đai 4 Phường Đồng Mai Quận Hà Đông Hà Nội, extra=được cấp phép xây lên đến 6 tầng"
+    ],
+    "id": "MT_EASY_013"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá thuê rồi hỏi tiếp thời gian thuê tối thiểu của nhà Nghi Tàm.",
+    "expected_outcome": "Bot trả đúng giá thuê và đúng mốc tối thiểu 6 tháng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Nhà ở ngõ 276 Nghi Tàm cho thuê giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Thế tối thiểu phải thuê bao lâu?"
+      }
+    ],
+    "context": [
+      "postId=291, propertyId=290, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà riêng tại ngõ 276 Nghi Tàm 18 triệu 60m2 5PN 3WC, price=18000000, area=60, bedrooms=5, bathrooms=3, furnishing=PARTLY_FURNISHED, address=ngõ 276 đường Nghi Tàm Phường Tứ Liên Quận Tây Hồ Hà Nội, minRentalPeriod=6 months"
+    ],
+    "id": "MT_EASY_014"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá trước rồi hỏi tiếp việc căn Trung Yên có phù hợp hộ gia đình không.",
+    "expected_outcome": "Bot trả đúng giá thuê 20 triệu và nêu đúng rằng tin này không phù hợp ở hộ gia đình theo mô tả.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Nhà số 38 khu Trung Yên giá thuê bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Nhà này có phù hợp cho hộ gia đình thuê ở không?"
+      }
+    ],
+    "context": [
+      "postId=298, propertyId=297, postType=RENT, categoryName=Căn hộ, title=Số nhà 38 khu Trung Yên 20 triệu tháng chính chủ cho thuê nhà 5 tầng vị trí đẹp, price=20000000, area=80, address=Đường Trung Yên Phường Trung Hòa Quận Cầu Giấy Hà Nội, restriction=Không ở hộ gia đình"
+    ],
+    "id": "MT_EASY_015"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi diện tích rồi hỏi tiếp tình trạng có thể vào ở ngay của nhà Lê Quang Đạo.",
+    "expected_outcome": "Bot trả đúng diện tích và nêu đúng rằng khách có thể vào ở luôn.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Nhà ở ngõ 54 Lê Quang Đạo có diện tích bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Khách có thể vào ở luôn không?"
+      }
+    ],
+    "context": [
+      "postId=297, propertyId=296, postType=RENT, categoryName=Căn hộ, title=Cần cho hộ gia đình thuê nhà tại ngõ 54 Lê Quang Đạo Mỹ Đình Nam Từ Liêm Hà Nội, price=16000000, area=45, bedrooms=6, bathrooms=3, address=Đường Lê Quang Đạo Phường Phú Đô Quận Nam Từ Liêm Hà Nội, moveInReady=yes"
+    ],
+    "id": "MT_EASY_016"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá thuê rồi hỏi tiếp nội thất của căn 2PN 1VS ở Vinhomes D'Capitale.",
+    "expected_outcome": "Bot trả đúng giá thuê và đúng tình trạng FULLY_FURNISHED.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Căn 2 phòng ngủ 1 vệ sinh ở Vinhomes D'Capitale giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Nội thất của căn này là gì?"
+      }
+    ],
+    "context": [
+      "postId=77, propertyId=76, postType=RENT, categoryName=Căn hộ, project=Vinhomes DCapitale, variant=2PN 1VS, price=16000000, area=70, bedrooms=2, bathrooms=1, direction=Tây, furnishing=FULLY_FURNISHED, address=Vinhomes DCapitale Đường Trần Duy Hưng Phường Trung Hòa Quận Cầu Giấy Hà Nội"
+    ],
+    "id": "MT_EASY_017"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi số phòng ngủ rồi hỏi tiếp giá thuê của căn Orchard Park View.",
+    "expected_outcome": "Bot trả đúng số phòng ngủ và giá thuê 21 triệu một tháng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Căn hộ Orchard Park View này có mấy phòng ngủ?"
+      },
+      {
+        "role": "user",
+        "content": "Thế giá thuê là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "postId=143, propertyId=142, postType=RENT, categoryName=Căn hộ, title=Cho thuê căn hộ Orchard Park View 3PN 2WC full nội thất giá 21 triệu tháng, price=21000000, area=85, bedrooms=3, bathrooms=2, furnishing=FULLY_FURNISHED, address=Căn hộ Orchard Park View Đường Hồng Hà Phường 9 Quận Phú Nhuận Hồ Chí Minh"
+    ],
+    "id": "MT_EASY_018"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá thuê rồi hỏi tiếp hướng của nhà vườn Phan Kế Bính.",
+    "expected_outcome": "Bot trả đúng giá thuê và đúng hướng Nam.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Nhà vườn ở Phan Kế Bính cho thuê giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Nhà này hướng gì?"
+      }
+    ],
+    "context": [
+      "postId=293, propertyId=292, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà vườn 163m2 Phan Kế Bính 3 tầng hợp ở và kinh doanh, price=42000000, area=163, bedrooms=6, direction=Nam, address=Đường Phan Kế Bính Phường Cống Vị Quận Ba Đình Hà Nội"
+    ],
+    "id": "MT_EASY_019"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi diện tích rồi hỏi tiếp hướng của lô B8 đấu giá Tuần Châu.",
+    "expected_outcome": "Bot trả đúng diện tích 95.7 m2 và hướng Nam.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Lô B8 đấu giá Tuần Châu ở Sài Sơn có diện tích bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Hướng của lô này là gì?"
+      }
+    ],
+    "context": [
+      "postId=250, propertyId=249, postType=SALE, categoryName=Căn hộ, title=Lô B8 đấu giá Tuần Châu Sài Sơn Quốc Oai 95,7m2 có 2 mặt tiền, price=9280000000, area=95.7, direction=Nam, address=Đường vành đai Tuần Châu Sunny Garden City Đường ĐT 421B Xã Sài Sơn Huyện Quốc Oai Hà Nội"
+    ],
+    "id": "MT_EASY_020"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá bán rồi hỏi tiếp pháp lý của lô đất Phú Cát.",
+    "expected_outcome": "Bot trả đúng giá bán 2,8 tỷ và pháp lý sổ đỏ mới nhất 2026, công chứng ngay.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Lô đất ở Phú Cát gần công nghệ cao Hòa Lạc giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Còn pháp lý của lô này là gì?"
+      }
+    ],
+    "context": [
+      "postId=205, propertyId=204, postType=SALE, categoryName=Căn hộ, title=Đất Hòa Lạc đầu tư giá F0 full thổ cư vị trí cực đẹp sát khu công nghệ cao, price=2800000000, area=100, address=Xã Phú Cát Huyện Quốc Oai Hà Nội, legalStatus=sổ đỏ mới nhất 2026 công chứng ngay"
+    ],
+    "id": "MT_EASY_021"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi số phòng rồi hỏi tiếp dòng tiền hàng tháng của tòa CHDV Ngọc Hà.",
+    "expected_outcome": "Bot trả đúng 22 phòng và dòng tiền khoảng 150 triệu một tháng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Tòa CHDV ở Ngọc Hà có bao nhiêu phòng?"
+      },
+      {
+        "role": "user",
+        "content": "Dòng tiền mỗi tháng của tòa này là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "postId=178, propertyId=177, postType=SALE, categoryName=Căn hộ, title=Siêu ngon nhà dòng tiền CCMN CHDV Ba Đình Ngọc Hà 85m2 22PKK cao cấp dòng tiền 150tr, price=18000000000, area=85, bedrooms=22, bathrooms=22, furnishing=FULLY_FURNISHED, address=Phường Ngọc Hà Quận Ba Đình Hà Nội, monthlyCashflow=150000000"
+    ],
+    "id": "MT_EASY_022"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá của biến thể căn 55m2 rồi hỏi tiếp tên dự án.",
+    "expected_outcome": "Bot trả đúng giá 3,65 tỷ và đúng dự án Vinhomes Ocean Park 1.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Căn 55m2 loại 2PN + 1VS giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Căn đó thuộc dự án nào?"
+      }
+    ],
+    "context": [
+      "postId=41, propertyId=40, postType=SALE, categoryName=Căn hộ, project=Vinhomes Ocean Park 1, variant=55m2 2PN+1VS, price=3650000000, area=55, bedrooms=2, bathrooms=1, furnishing=FULLY_FURNISHED, address=Vinhomes Ocean Park Gia Lâm Xã Dương Xá Huyện Gia Lâm Hà Nội"
+    ],
+    "id": "MT_EASY_023"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi diện tích rồi hỏi tiếp hướng cửa chính của căn hộ Keangnam.",
+    "expected_outcome": "Bot trả đúng diện tích 156 m2 và hướng cửa chính là Đông.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Căn hộ ở Keangnam Hanoi Landmark Tower có diện tích bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Hướng cửa chính của căn này là gì?"
+      }
+    ],
+    "context": [
+      "postId=73, propertyId=72, postType=RENT, categoryName=Căn hộ, title=Liên hệ Em Han để thuê căn hộ tại Keangnam Hanoi Landmark Tower, price=70000000, area=156, bedrooms=3, bathrooms=2, mainDoorDirection=Đông, balconyDirection=Đông Bắc, furnishing=FULLY_FURNISHED, address=Keangnam Hanoi Landmark Tower Đường Phạm Hùng Phường Mễ Trì Quận Nam Từ Liêm Hà Nội"
+    ],
+    "id": "MT_EASY_024"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi giá thuê trước rồi hỏi tiếp dự án của căn 3 phòng ngủ The Estella.",
+    "expected_outcome": "Bot trả đúng giá thuê 35 triệu và đúng tên dự án The Estella.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Căn hộ 3 phòng ngủ này cho thuê giá bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Căn này thuộc dự án nào vậy?"
+      }
+    ],
+    "context": [
+      "postId=142, propertyId=141, postType=RENT, categoryName=Căn hộ, title=Cho thuê căn hộ 3 phòng ngủ The Estella không nội thất giá thuê 35 triệu trống sẵn vào ngay, price=35000000, area=125, bedrooms=3, bathrooms=2, project=The Estella, address=The Estella Đường Xa Lộ Hà Nội Phường An Phú Quận 2 Hồ Chí Minh"
+    ],
+    "id": "MT_EASY_025"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi số lượng dự án trong kế hoạch 2025 rồi hỏi tiếp tổng diện tích của toàn bộ danh mục.",
+    "expected_outcome": "Bot trả lời đúng 22 dự án và ở lượt sau nêu đúng tổng diện tích 4,14 ha, không nhầm với số liệu năm 2024.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Kế hoạch sử dụng đất năm 2025 của quận Hoàn Kiếm có bao nhiêu công trình, dự án?"
+      },
+      {
+        "role": "user",
+        "content": "Tổng diện tích của toàn bộ danh mục đó là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=decision_2025, section=Điều 1, totalProjects2025=22, totalArea=4.14 ha",
+      "source=report_2025, section=3.7, totalProjects2025=22, totalArea=4.14 ha"
+    ],
+    "id": "MT_EASY_026"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi dự án đăng ký mới duy nhất, rồi hỏi tiếp địa điểm cụ thể của dự án đó.",
+    "expected_outcome": "Bot xác định đúng dự án xây dựng trạm y tế phường Chương Dương và trả lời đúng vị trí 38 phố Chương Dương Độ, phường Chương Dương.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Dự án đăng ký mới duy nhất trong kế hoạch sử dụng đất năm 2025 là gì?"
+      },
+      {
+        "role": "user",
+        "content": "Dự án đó nằm ở đâu?"
+      }
+    ],
+    "context": [
+      "source=report_2025, section=3.2.2, newProject=Xây dựng trạm y tế phường Chương Dương, area=0.0076 ha",
+      "source=decision_2025, appendix, projectIndex=22, location=38 phố Chương Dương Độ, phường Chương Dương"
+    ],
+    "id": "MT_EASY_027"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi còn đất chưa sử dụng hay không, rồi hỏi tiếp diện tích đất chưa sử dụng là bao nhiêu.",
+    "expected_outcome": "Bot trả lời nhất quán rằng quận không còn đất chưa sử dụng và diện tích là 0 ha.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Năm 2025 quận Hoàn Kiếm có còn đất chưa sử dụng không?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy diện tích đất chưa sử dụng là bao nhiêu ha?"
+      }
+    ],
+    "context": [
+      "source=report_2025, section=3.3.3, unusedLand2025=0 ha",
+      "source=report_2025, section=3.6, noUnusedLandOnDistrict"
+    ],
+    "id": "MT_EASY_028"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi các công trình cấp thành phố trên địa bàn quận năm 2025, rồi hỏi tiếp những công trình nào là ga đường sắt đô thị.",
+    "expected_outcome": "Bot liệt kê đúng 3 công trình cấp thành phố; ở lượt sau chỉ ra đúng 2 công trình ga C10 và ga S12 là các ga đường sắt đô thị.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Các công trình cấp thành phố trên địa bàn quận Hoàn Kiếm trong năm 2025 gồm những gì?"
+      },
+      {
+        "role": "user",
+        "content": "Trong số đó, công trình nào là các ga đường sắt đô thị?"
+      }
+    ],
+    "context": [
+      "source=report_2025, section=3.1, cityLevelProjects=Trụ sở Bộ Công an 44 Yết Kiêu|Ga C10 tuyến số 2|Ga S12 tuyến số 3"
+    ],
+    "id": "MT_EASY_029"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi số lượng dự án trong kế hoạch sử dụng đất 2025 của quận Hà Đông, rồi hỏi tiếp tổng diện tích của toàn bộ danh mục.",
+    "expected_outcome": "Bot trả lời đúng 38 dự án và ở lượt sau nêu đúng tổng diện tích là 266,72 ha.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Kế hoạch sử dụng đất năm 2025 của quận Hà Đông có bao nhiêu công trình, dự án?"
+      },
+      {
+        "role": "user",
+        "content": "Tổng diện tích của các dự án đó là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=decision_ha_dong_2025, page=2, totalProjects2025=38, totalArea=266.72 ha"
+    ],
+    "id": "MT_EASY_030"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi diện tích tự nhiên của quận Hà Đông, rồi hỏi tiếp số phường của quận.",
+    "expected_outcome": "Bot nêu đúng diện tích tự nhiên 4.964,23 ha và trả lời đúng quận có 17 phường.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Quận Hà Đông có diện tích tự nhiên bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Quận có bao nhiêu đơn vị hành chính cấp phường?"
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=5, naturalArea=4964.23 ha, wards=17"
+    ],
+    "id": "MT_EASY_031"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi diện tích đất nông nghiệp phải thu hồi năm 2025, rồi hỏi tiếp diện tích đất phi nông nghiệp phải thu hồi.",
+    "expected_outcome": "Bot trả lời đúng 55,76 ha đất nông nghiệp và 29,66 ha đất phi nông nghiệp.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Năm 2025 quận Hà Đông phải thu hồi bao nhiêu đất nông nghiệp?"
+      },
+      {
+        "role": "user",
+        "content": "Còn đất phi nông nghiệp phải thu hồi là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=4, agriculturalLandRecovery2025=55.76 ha, nonAgriculturalLandRecovery2025=29.66 ha"
+    ],
+    "id": "MT_EASY_032"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi kết quả đấu giá quyền sử dụng đất, rồi hỏi tiếp tổng diện tích các thửa đất trúng đấu giá.",
+    "expected_outcome": "Bot trả lời đúng đã có 27 thửa đất được đấu giá thành công với 21 khách hàng cá nhân trúng đấu giá; lượt sau nêu đúng tổng diện tích là 1.658,7 m2.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Quận Hà Đông đã đấu giá thành công bao nhiêu thửa đất ở trong đợt nêu trong báo cáo?"
+      },
+      {
+        "role": "user",
+        "content": "Tổng diện tích các thửa đất đó là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=14, auctionResult=27 plots|21 winners|1658.7 m2"
+    ],
+    "id": "MT_EASY_033"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi số lượng công trình, dự án trong Kế hoạch sử dụng đất năm 2025 của quận Cầu Giấy, rồi hỏi tiếp tổng diện tích của toàn bộ danh mục.",
+    "expected_outcome": "Bot trả lời đúng 22 dự án và ở lượt sau nêu đúng tổng diện tích là 28,36 ha.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Kế hoạch sử dụng đất năm 2025 của quận Cầu Giấy có bao nhiêu công trình, dự án?"
+      },
+      {
+        "role": "user",
+        "content": "Tổng diện tích của các dự án đó là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=decision_cau_giay_2025, totalProjects2025=22, totalArea=28.36 ha"
+    ],
+    "id": "MT_EASY_034"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi dự án đăng ký mới duy nhất trong năm 2025, rồi hỏi tiếp dự án đó nằm ở phường nào.",
+    "expected_outcome": "Bot xác định đúng dự án Trường THPT công lập tại ô đất ký hiệu F/THPT1 và trả lời đúng vị trí là phường Mai Dịch.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Dự án đăng ký mới duy nhất trong kế hoạch sử dụng đất năm 2025 của quận Cầu Giấy là gì?"
+      },
+      {
+        "role": "user",
+        "content": "Dự án đó nằm ở phường nào?"
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, newProject2025=Trường THPT công lập tại ô đất ký hiệu F/THPT1, phường Mai Dịch, area=0.95 ha"
+    ],
+    "id": "MT_EASY_035"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi đất chưa sử dụng nào sẽ được đưa vào sử dụng trong năm 2025, rồi hỏi tiếp diện tích đó dùng cho mục đích gì.",
+    "expected_outcome": "Bot trả lời đúng có 0,02 ha đất chưa sử dụng được đưa vào sử dụng; ở lượt sau nêu đúng là để sử dụng vào đất ở tại đô thị cho dự án đấu giá 4 lô đất khu X4 phường Mai Dịch.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Trong năm 2025 quận Cầu Giấy sẽ đưa bao nhiêu đất chưa sử dụng vào sử dụng?"
+      },
+      {
+        "role": "user",
+        "content": "Diện tích đó sẽ được dùng vào mục đích gì?"
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, unusedLandToUse2025=0.02 ha, landType=ODT, relatedProject=đấu giá 04 lô đất khu X4 phường Mai Dịch"
+    ],
+    "id": "MT_EASY_036"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi diện tích đất cần thu hồi năm 2025, rồi hỏi tiếp riêng đất phi nông nghiệp cần thu hồi bao nhiêu.",
+    "expected_outcome": "Bot nêu đúng đất nông nghiệp cần thu hồi là 4,77 ha; ở lượt sau nêu đúng đất phi nông nghiệp cần thu hồi là 1,63 ha.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Năm 2025 quận Cầu Giấy cần thu hồi bao nhiêu đất nông nghiệp?"
+      },
+      {
+        "role": "user",
+        "content": "Còn đất phi nông nghiệp cần thu hồi là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, agriculturalRecovery2025=4.77 ha, nonAgriculturalRecovery2025=1.63 ha"
+    ],
+    "id": "MT_EASY_037"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi theo Quyết định phê duyệt thì Kế hoạch sử dụng đất năm 2025 của thị xã Sơn Tây có bao nhiêu dự án, rồi hỏi tiếp tổng diện tích của kế hoạch.",
+    "expected_outcome": "Bot trả lời đúng 78 dự án và ở lượt sau nêu đúng tổng diện tích 469,29 ha; không nhầm với 80 dự án là số liệu đăng ký trong báo cáo.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Theo Quyết định phê duyệt, Kế hoạch sử dụng đất năm 2025 của thị xã Sơn Tây có bao nhiêu dự án?"
+      },
+      {
+        "role": "user",
+        "content": "Tổng diện tích của các dự án đó là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=decision_son_tay_2025, approvedProjects=78, approvedArea=469.29 ha"
+    ],
+    "id": "MT_EASY_038"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi diện tích tự nhiên của thị xã Sơn Tây, rồi hỏi tiếp số đơn vị hành chính.",
+    "expected_outcome": "Bot nêu đúng diện tích tự nhiên 11.719,91 ha và trả lời đúng có 15 đơn vị hành chính, gồm 9 phường và 6 xã.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Thị xã Sơn Tây có tổng diện tích tự nhiên là bao nhiêu?"
+      },
+      {
+        "role": "user",
+        "content": "Thị xã có bao nhiêu đơn vị hành chính?"
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, naturalArea=11719.91 ha, administrativeUnits=15, wards=9, communes=6"
+    ],
+    "id": "MT_EASY_039"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi tổng diện tích đất cần thu hồi năm 2025, rồi hỏi tiếp riêng phần đất nông nghiệp và đất phi nông nghiệp.",
+    "expected_outcome": "Bot trả lời đúng tổng diện tích thu hồi là 137,48 ha; ở lượt sau tách đúng 119,43 ha đất nông nghiệp và 18,05 ha đất phi nông nghiệp.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Năm 2025, thị xã Sơn Tây cần thu hồi tổng cộng bao nhiêu đất?"
+      },
+      {
+        "role": "user",
+        "content": "Trong đó đất nông nghiệp và đất phi nông nghiệp lần lượt là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, totalRecovery2025=137.48 ha, agriculturalRecovery2025=119.43 ha, nonAgriculturalRecovery2025=18.05 ha"
+    ],
+    "id": "MT_EASY_040"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi đất chưa sử dụng được đưa vào sử dụng trong năm 2025 là bao nhiêu, rồi hỏi tiếp đây có phải toàn bộ quỹ đất chưa sử dụng của thị xã hay không.",
+    "expected_outcome": "Bot trả lời đúng 0,23 ha được đưa vào sử dụng; ở lượt sau phân biệt đúng đây không phải toàn bộ đất chưa sử dụng, vì diện tích đất chưa sử dụng còn lại năm 2025 là 19,69 ha.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Năm 2025, thị xã Sơn Tây dự kiến đưa bao nhiêu đất chưa sử dụng vào sử dụng?"
+      },
+      {
+        "role": "user",
+        "content": "Đó có phải là toàn bộ quỹ đất chưa sử dụng của thị xã không?"
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, unusedLandToUse2025=0.23 ha, unusedLandRemaining2025=19.69 ha"
+    ],
+    "id": "MT_EASY_041"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi theo Quyết định phê duyệt thì Kế hoạch sử dụng đất năm 2025 của quận Hai Bà Trưng có bao nhiêu dự án, rồi hỏi tiếp tổng diện tích của kế hoạch.",
+    "expected_outcome": "Bot trả lời đúng 32 dự án và ở lượt sau nêu đúng tổng diện tích 8,6915 ha.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Theo Quyết định phê duyệt, Kế hoạch sử dụng đất năm 2025 của quận Hai Bà Trưng có bao nhiêu dự án?"
+      },
+      {
+        "role": "user",
+        "content": "Tổng diện tích của các dự án đó là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=decision_hai_ba_trung_2025, approvedProjects=32, approvedArea=8.6915 ha"
+    ],
+    "id": "MT_EASY_042"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi hai dự án nào thuộc khoản 4 Điều 67 Luật Đất đai, rồi hỏi tiếp dự án nào có phần đất ở tái định cư.",
+    "expected_outcome": "Bot nêu đúng 2 dự án là Mở rộng Nhà tang lễ Quốc gia số 5 Trần Thánh Tông và Mở rộng trụ sở làm việc Bộ Công an tại số 30 Trần Bình Trọng - 58 Trần Nhân Tông; lượt sau trả lời đúng dự án Nhà tang lễ có khoảng 0,0972 ha đất ở tái định cư.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hai dự án nào thuộc trường hợp khoản 4 Điều 67 Luật Đất đai được tiếp tục thực hiện trong năm 2025 ở quận Hai Bà Trưng?"
+      },
+      {
+        "role": "user",
+        "content": "Dự án nào trong hai dự án đó có phần đất ở tái định cư?"
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, article67Project1=Mở rộng Nhà tang lễ Quốc gia số 5 Trần Thánh Tông, area=1.2030 ha, resettlementLand=0.0972 ha",
+      "source=report_hai_ba_trung_2025, article67Project2=Đầu tư xây dựng Mở rộng trụ sở làm việc Bộ Công an tại số 30 Trần Bình Trọng - 58 Trần Nhân Tông, area=0.04 ha"
+    ],
+    "id": "MT_EASY_043"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi tổng diện tích đất cần thu hồi trong năm 2025, rồi hỏi tiếp phần đất nông nghiệp và đất phi nông nghiệp tương ứng.",
+    "expected_outcome": "Bot nêu đúng tổng diện tích thu hồi là 5,6811 ha; lượt sau tách đúng 0,6088 ha đất nông nghiệp và 5,0723 ha đất phi nông nghiệp.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Trong năm 2025, quận Hai Bà Trưng cần thu hồi tổng cộng bao nhiêu đất?"
+      },
+      {
+        "role": "user",
+        "content": "Trong đó đất nông nghiệp và đất phi nông nghiệp là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, totalRecovery2025=5.6811 ha, agriculturalRecovery2025=0.6088 ha, nonAgriculturalRecovery2025=5.0723 ha"
+    ],
+    "id": "MT_EASY_044"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi có đưa đất chưa sử dụng vào sử dụng trong năm 2025 không, rồi hỏi tiếp diện tích đất chưa sử dụng năm 2025 có thay đổi so với 2024 không.",
+    "expected_outcome": "Bot trả lời đúng là không có diện tích đất chưa sử dụng đưa vào sử dụng; ở lượt sau nêu đúng đất chưa sử dụng năm 2025 không biến động, vẫn là 0,13 ha.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Trong kế hoạch sử dụng đất năm 2025, quận Hai Bà Trưng có đưa đất chưa sử dụng vào sử dụng không?"
+      },
+      {
+        "role": "user",
+        "content": "Diện tích đất chưa sử dụng năm 2025 có thay đổi so với năm 2024 không?"
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, unusedLandToUse2025=0 ha, unusedLand2024=0.13 ha, unusedLand2025=0.13 ha"
+    ],
+    "id": "MT_EASY_045"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi theo Quyết định phê duyệt thì Kế hoạch sử dụng đất năm 2025 của quận Hoàng Mai có bao nhiêu dự án, rồi hỏi tiếp tổng diện tích của kế hoạch.",
+    "expected_outcome": "Bot trả lời đúng 116 dự án và ở lượt sau nêu đúng tổng diện tích 356,8603 ha.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Theo Quyết định phê duyệt, Kế hoạch sử dụng đất năm 2025 của quận Hoàng Mai có bao nhiêu dự án?"
+      },
+      {
+        "role": "user",
+        "content": "Tổng diện tích của các dự án đó là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=decision_hoang_mai_2025, approvedProjects=116, approvedArea=356.8603 ha"
+    ],
+    "id": "MT_EASY_046"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi hiện trạng năm 2024 quận Hoàng Mai còn đất chưa sử dụng hay không, rồi hỏi tiếp diện tích đất nông nghiệp và đất phi nông nghiệp.",
+    "expected_outcome": "Bot trả lời đúng là không còn đất chưa sử dụng; ở lượt sau nêu đúng 803,81 ha đất nông nghiệp và 3.215,40 ha đất phi nông nghiệp.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hiện trạng năm 2024, quận Hoàng Mai còn đất chưa sử dụng không?"
+      },
+      {
+        "role": "user",
+        "content": "Vậy diện tích đất nông nghiệp và đất phi nông nghiệp năm 2024 là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, agricultural2024=803.81 ha, nonAgricultural2024=3215.40 ha, unused2024=0 ha"
+    ],
+    "id": "MT_EASY_047"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi trong năm 2025 quận Hoàng Mai cần thu hồi bao nhiêu đất nông nghiệp, rồi hỏi tiếp đây có phải là toàn bộ diện tích thu hồi của kế hoạch không.",
+    "expected_outcome": "Bot trả lời đúng 50,84 ha đất nông nghiệp; ở lượt sau phân biệt đúng đây chỉ là phần đất nông nghiệp cần thu hồi, không phải toàn bộ diện tích các dự án trong kế hoạch.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Trong năm 2025, quận Hoàng Mai cần thu hồi bao nhiêu đất nông nghiệp?"
+      },
+      {
+        "role": "user",
+        "content": "Đó có phải là toàn bộ diện tích của kế hoạch sử dụng đất năm 2025 không?"
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, agriculturalRecovery2025=50.84 ha",
+      "source=decision_hoang_mai_2025, approvedArea=356.8603 ha"
+    ],
+    "id": "MT_EASY_048"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi dự án xây dựng trường tiểu học Yên Sở tại ô C3/TH2 nằm ở phường nào, rồi hỏi tiếp diện tích kế hoạch của dự án.",
+    "expected_outcome": "Bot trả lời đúng dự án thuộc phường Yên Sở; ở lượt sau nêu đúng diện tích kế hoạch là 1,44 ha.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Dự án xây dựng trường tiểu học Yên Sở tại ô C3/TH2 nằm ở phường nào?"
+      },
+      {
+        "role": "user",
+        "content": "Diện tích kế hoạch của dự án đó là bao nhiêu?"
+      }
+    ],
+    "context": [
+      "source=project_list_hoang_mai_2025, project=Xây dựng trường tiểu học Yên Sở tại ô C3/TH2, ward=Yên Sở, area=1.44 ha"
+    ],
+    "id": "MT_EASY_049"
+  }
+]

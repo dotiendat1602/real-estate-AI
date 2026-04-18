@@ -1,6 +1,11 @@
 runtime:
-  top_k: 12
+  top_k: 16
   max_history_turns: 6
+  eval_context_max_docs: 4
+  planning_eval_context_max_docs: 12
+  eval_context_max_chars_per_doc: 1400
+  eval_explanatory_max_docs: 6
+  eval_explanatory_max_chars_per_doc: 2200
   default_domain: real_estate
   judge_phase: offline_eval
 versions:

@@ -1,0 +1,257 @@
+[
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Gi? b?n l? ??t n?n H?a L?c di?n t?ch 100m2 trong tin C?T gi? ??u t? F0 l? bao nhi?u?",
+    "expected_output_outline": [
+      "N?u ??ng gi? b?n: 2.000.000.000 VN?",
+      "C? th? n?u th?m di?n t?ch 100 m?",
+      "X?c ??nh ??ng ??y l? tin c?n b?n"
+    ],
+    "context": [
+      "postId=203, propertyId=202, postType=SALE, categoryName=C?n h?, title=C?T ??t n?n H?a L?c gi? ??u t? F0 DT 100m2 - 300m2 nhi?u v? tr? ??p v? uy t?n, price=2000000000, area=100, direction=T?y, address=???ng ?CT08(H?a L?c) X? T?n X? Huy?n Th?ch Th?t H? N?i, highlights=g?n khu c?ng ngh? cao H?a L?c|c?ch FPT 5 ph?t|ph? h?p ??u t? ho?c x?y d?ng nh? ?"
+    ],
+    "target_metadata": {
+      "postId": 203,
+      "propertyId": 202
+    },
+    "id": "ST_EASY_023"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Pháp lý của lô đất ở Phú Cát gần công nghệ cao Hòa Lạc là gì?",
+    "expected_output_outline": [
+      "Nêu đúng thông tin pháp lý: sổ đỏ mới nhất 2026, công chứng ngay"
+    ],
+    "context": [
+      "postId=205, propertyId=204, postType=SALE, categoryName=Căn hộ, title=Đất Hòa Lạc đầu tư giá F0 full thổ cư vị trí cực đẹp sát khu công nghệ cao, price=2800000000, area=100, address=Xã Phú Cát Huyện Quốc Oai Hà Nội, legalStatus=sổ đỏ mới nhất 2026 công chứng ngay"
+    ],
+    "target_metadata": {
+      "postId": 205,
+      "propertyId": 204
+    },
+    "id": "ST_EASY_021"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Giá thuê căn hộ 3 phòng ngủ The Estella là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng giá thuê: 35.000.000 VNĐ"
+    ],
+    "context": [
+      "postId=142, propertyId=141, postType=RENT, categoryName=Căn hộ, title=Cho thuê căn hộ 3 phòng ngủ The Estella không nội thất giá thuê 35 triệu trống sẵn vào ngay, price=35000000, area=125, bedrooms=3, bathrooms=2, project=The Estella, address=The Estella Đường Xa Lộ Hà Nội Phường An Phú Quận 2 Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 142,
+      "propertyId": 141
+    },
+    "id": "ST_EASY_025"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Kế hoạch sử dụng đất năm 2025 của quận Hoàn Kiếm có bao nhiêu công trình, dự án?",
+    "expected_output_outline": [
+      "Trả lời đúng là 22 công trình, dự án",
+      "Có thể nêu thêm tổng diện tích là 4,14 ha",
+      "Không nhầm sang 28 dự án của kế hoạch năm 2024"
+    ],
+    "context": [
+      "source=decision_2025, section=Điều 1, totalProjects2025=22, totalArea=4.14 ha",
+      "source=report_2025, section=3.7, totalProjects2025=22, totalArea=4.14 ha"
+    ],
+    "target_metadata": {
+      "totalProjects2025": 22,
+      "totalArea2025Ha": 4.14,
+      "planningDocumentId": 16
+    },
+    "id": "ST_EASY_026"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Dự án đăng ký mới duy nhất trong kế hoạch sử dụng đất năm 2025 của quận Hoàn Kiếm là gì?",
+    "expected_output_outline": [
+      "Nêu đúng tên dự án là Xây dựng trạm y tế phường Chương Dương, quận Hoàn Kiếm",
+      "Có thể nêu thêm diện tích 0,0076 ha",
+      "Không kể nhầm các dự án chuyển tiếp là dự án đăng ký mới"
+    ],
+    "context": [
+      "source=report_2025, section=3.2.2, newProjects2025=1, projectName=Xây dựng trạm y tế phường Chương Dương, area=0.0076 ha, location=38 phố Chương Dương Độ",
+      "source=decision_2025, appendix, projectIndex=22, projectName=Xây dựng trạm y tế phường Chương Dương, area=0.0076 ha"
+    ],
+    "target_metadata": {
+      "projectName": "Xây dựng trạm y tế phường Chương Dương, quận Hoàn Kiếm",
+      "areaHa": 0.0076,
+      "planningDocumentId": 17
+    },
+    "id": "ST_EASY_027"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Các công trình cấp thành phố trên địa bàn quận Hoàn Kiếm trong năm 2025 gồm những gì?",
+    "expected_output_outline": [
+      "Liệt kê đúng 3 công trình cấp thành phố",
+      "Gồm Trụ sở Bộ Công an 44 Yết Kiêu, ga C10 tuyến số 2, ga S12 tuyến số 3",
+      "Không thêm công trình khác ngoài danh sách tài liệu nêu"
+    ],
+    "context": [
+      "source=report_2025, section=3.1, cityLevelProjects=Trụ sở Bộ Công an 44 Yết Kiêu|Ga C10 tuyến Nam Thăng Long - Trần Hưng Đạo (Tuyến số 2)|Ga S12 tuyến Nhổn - Ga Hà Nội (Tuyến số 3)"
+    ],
+    "target_metadata": {
+      "cityLevelProjectsCount": 3,
+      "planningDocumentId": 17
+    },
+    "id": "ST_EASY_029"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Quận Hà Đông đang tập trung giải phóng mặt bằng cho những dự án trọng điểm nào do Thành phố giao?",
+    "expected_output_outline": [
+      "Liệt kê đúng các dự án trọng điểm được nêu trong báo cáo",
+      "Gồm Dự án thành phần 1.1 phục vụ GPMB đường Vành đai 4 đoạn qua quận Hà Đông",
+      "Gồm Dự án Cải thiện hệ thống tiêu nước khu vực phía Tây thành phố Hà Nội (Trạm bơm tiêu Yên Nghĩa)",
+      "Gồm Dự án Cải tạo nâng cấp quốc lộ 6 đoạn Ba La - Xuân Mai"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, pages=14-16, keyProjects=Vanh dai 4|Tram bom tieu Yen Nghia|Quoc lo 6 Ba La Xuan Mai"
+    ],
+    "target_metadata": {
+      "keyProjectsCount": 3,
+      "planningDocumentId": 137
+    },
+    "id": "ST_EASY_033"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Quận Hà Đông có diện tích tự nhiên và số đơn vị hành chính cấp phường là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích tự nhiên 4.964,23 ha",
+      "Nêu đúng quận có 17 đơn vị hành chính cấp phường",
+      "Không suy diễn thêm các số liệu khác ngoài tài liệu"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=5, naturalArea=4964.23 ha, wards=17"
+    ],
+    "target_metadata": {
+      "naturalAreaHa": 4964.23,
+      "wards": 17,
+      "planningDocumentId": 137
+    },
+    "id": "ST_EASY_031"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Năm 2025 quận Hà Đông dự kiến thu hồi bao nhiêu đất nông nghiệp và bao nhiêu đất phi nông nghiệp?",
+    "expected_output_outline": [
+      "Trả lời đúng đất nông nghiệp thu hồi là 55,76 ha",
+      "Trả lời đúng đất phi nông nghiệp thu hồi là 29,66 ha",
+      "Không nhầm với chỉ tiêu chuyển mục đích sử dụng đất"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=4, agriculturalLandRecovery2025=55.76 ha, nonAgriculturalLandRecovery2025=29.66 ha"
+    ],
+    "target_metadata": {
+      "agriculturalLandRecovery2025Ha": 55.76,
+      "nonAgriculturalLandRecovery2025Ha": 29.66,
+      "planningDocumentId": 137
+    },
+    "id": "ST_EASY_032"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Dự án đăng ký mới duy nhất trong kế hoạch sử dụng đất năm 2025 của quận Cầu Giấy là gì?",
+    "expected_output_outline": [
+      "Nêu đúng tên dự án là Trường THPT công lập tại ô đất ký hiệu F/THPT1, phường Mai Dịch",
+      "Có thể nêu thêm diện tích 0,95 ha",
+      "Không nhầm với các dự án chuyển tiếp từ năm 2024"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, newProject2025=Trường THPT công lập tại ô đất ký hiệu F/THPT1, phường Mai Dịch, area=0.95 ha",
+      "source=decision_cau_giay_2025, appendix, projectIndex=11, projectName=Trường THPT công lập tại ô đất ký hiệu F/THPT1, phường Mai Dịch"
+    ],
+    "target_metadata": {
+      "projectName": "Trường THPT công lập tại ô đất ký hiệu F/THPT1, phường Mai Dịch",
+      "areaHa": 0.95,
+      "planningDocumentId": 63
+    },
+    "id": "ST_EASY_035"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Trong năm 2025, thị xã Sơn Tây cần thu hồi tổng cộng bao nhiêu đất?",
+    "expected_output_outline": [
+      "Trả lời đúng tổng diện tích đất cần thu hồi là 137,48 ha",
+      "Có thể nêu thêm đất nông nghiệp là 119,43 ha và đất phi nông nghiệp là 18,05 ha",
+      "Không nhầm với diện tích cần chuyển mục đích trong năm kế hoạch"
+    ],
+    "context": [
+      "source=report_son_tay_2025, totalRecovery2025=137.48 ha, agriculturalRecovery2025=119.43 ha, nonAgriculturalRecovery2025=18.05 ha"
+    ],
+    "target_metadata": {
+      "totalRecovery2025Ha": 137.48,
+      "agriculturalRecovery2025Ha": 119.43,
+      "nonAgriculturalRecovery2025Ha": 18.05,
+      "planningDocumentId": 110
+    },
+    "id": "ST_EASY_040"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Theo Quyết định phê duyệt, Kế hoạch sử dụng đất năm 2025 của quận Hai Bà Trưng có bao nhiêu công trình, dự án?",
+    "expected_output_outline": [
+      "Trả lời đúng là 32 dự án",
+      "Có thể nêu thêm tổng diện tích là 8,6915 ha",
+      "Không trả lời theo số dự án của riêng một phụ lục thành phần"
+    ],
+    "context": [
+      "source=decision_hai_ba_trung_2025, approvedProjects=32, approvedArea=8.6915 ha"
+    ],
+    "target_metadata": {
+      "approvedProjects2025": 32,
+      "approvedArea2025Ha": 8.6915,
+      "planningDocumentId": 90
+    },
+    "id": "ST_EASY_042"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Hai dự án nào thuộc trường hợp quy định tại khoản 4 Điều 67 Luật Đất đai được tiếp tục thực hiện trong năm 2025 ở quận Hai Bà Trưng?",
+    "expected_output_outline": [
+      "Nêu đúng dự án Mở rộng Nhà tang lễ Quốc gia số 5 Trần Thánh Tông",
+      "Nêu đúng dự án Đầu tư xây dựng Mở rộng trụ sở làm việc Bộ Công an tại số 30 Trần Bình Trọng - 58 Trần Nhân Tông",
+      "Không nhầm các dự án này với nhóm dự án theo Điều 78 và Điều 79"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, article67Projects=Mở rộng Nhà tang lễ Quốc gia số 5 Trần Thánh Tông|Đầu tư xây dựng Mở rộng trụ sở làm việc Bộ Công an tại số 30 Trần Bình Trọng - 58 Trần Nhân Tông"
+    ],
+    "target_metadata": {
+      "article67ProjectCount": 2,
+      "planningDocumentId": 91
+    },
+    "id": "ST_EASY_043"
+  }
+]

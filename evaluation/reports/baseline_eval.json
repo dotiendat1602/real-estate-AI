@@ -1,4 +1,0 @@
-{
-  "status": "not-run",
-  "note": "Run evaluation.runners.run_single_turn_eval and evaluation.runners.run_conversation_eval to generate baseline outputs."
-}

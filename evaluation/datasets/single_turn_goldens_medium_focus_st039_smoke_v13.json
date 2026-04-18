@@ -1,0 +1,26 @@
+[
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Theo báo cáo thuyết minh, các dự án năm 2025 của thị xã Sơn Tây được phân nhóm như thế nào theo trường hợp thu hồi đất và không thu hồi đất?",
+    "expected_output_outline": [
+      "Nêu được nhóm dự án thuộc Điều 78 và 79 Luật Đất đai là 62 dự án, diện tích 154,69 ha",
+      "Nêu được trong đó có 59 dự án chuyển tiếp và 3 dự án đăng ký mới",
+      "Nêu được nhóm không thuộc trường hợp thu hồi đất là 18 dự án, diện tích 108,62 ha",
+      "Nêu được trong nhóm này có 17 dự án chuyển tiếp và 1 dự án đăng ký mới"
+    ],
+    "context": [
+      "source=report_son_tay_2025, article7879Projects=62, article7879Area=154.69 ha, article7879Continued=59, article7879New=3",
+      "source=report_son_tay_2025, noRecoveryProjects=18, noRecoveryArea=108.62 ha, noRecoveryContinued=17, noRecoveryNew=1"
+    ],
+    "target_metadata": {
+      "article7879Projects": 62,
+      "article7879AreaHa": 154.69,
+      "noRecoveryProjects": 18,
+      "noRecoveryAreaHa": 108.62,
+      "planningDocumentId": 110
+    },
+    "id": "ST_MEDIUM_039"
+  }
+]

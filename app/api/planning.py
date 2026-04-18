@@ -12,6 +12,7 @@ from sqlalchemy import text
 from ..api.chat import build_llm
 from ..db.pgvector import AsyncSessionLocal
 from ..planning.ingestion import PlanningIngestPayload, build_planning_documents
+from ..planning.metadata import canonicalize_planning_district
 from ..rag.chain import RagChain
 from ..rag.embedder import build_embeddings
 from ..rag.retriever import build_pgvector_store, build_retriever
@@ -430,12 +431,20 @@ async def explain_planning(req: PlanningExplainRequest):
         "propertyId": req.propertyId,
     }
 
-    district = req.summary.dossierName or None
+    district = canonicalize_planning_district(
+        req.summary.dossierName,
+        title=req.summary.dossierName,
+        dossier_code=req.summary.dossierCode,
+    )
     plan_year = None
     for d in req.documents:
         if d.rawMeta and isinstance(d.rawMeta, dict):
             if not district and d.rawMeta.get("district"):
-                district = d.rawMeta.get("district")
+                district = canonicalize_planning_district(
+                    d.rawMeta.get("district"),
+                    title=d.title,
+                    dossier_code=req.summary.dossierCode,
+                )
             if d.rawMeta.get("planYear"):
                 try:
                     plan_year = int(d.rawMeta.get("planYear"))

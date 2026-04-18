@@ -1,0 +1,204 @@
+[
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các dự án chưa thực hiện được trong năm 2024 được đưa vào kế hoạch sử dụng đất năm 2025 như thế nào?",
+    "expected_output_outline": [
+      "Nêu được đây là các dự án chuyển tiếp từ năm 2024 sang năm 2025",
+      "Trả lời đúng có 21 dự án với diện tích 4,1325 ha",
+      "Có thể nêu 1-2 ví dụ như phố Vọng Hà, phố Hàm Tử Quan, THPT Việt Đức",
+      "Không nhầm với dự án đăng ký mới"
+    ],
+    "context": [
+      "source=report_2025, section=3.2.1.a, transferredProjects2024to2025=21, transferredArea=4.1325 ha",
+      "source=report_2025, table=Bảng 6, examples=Chỉnh trang phố Vọng Hà|Chỉnh trang phố Hàm Tử Quan|Xây dựng cải tạo THPT Việt Đức"
+    ],
+    "target_metadata": {
+      "transferredProjectsCount": 21,
+      "transferredProjectsAreaHa": 4.1325,
+      "planningDocumentId": 17
+    },
+    "id": "ST_MEDIUM_026"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Theo báo cáo thuyết minh, danh mục công trình, dự án năm 2025 của thị xã Sơn Tây được cấu thành như thế nào?",
+    "expected_output_outline": [
+      "Nêu được theo báo cáo thuyết minh có 80 danh mục, công trình, dự án với diện tích 550,29 ha",
+      "Nêu được 59 dự án thuộc danh mục thu hồi đất, chuyển mục đích đất trồng lúa đã được HĐND thành phố thông qua, diện tích 406,81 ha",
+      "Nêu được 21 dự án đưa vào kế hoạch sử dụng đất, diện tích 143,49 ha",
+      "Không nhầm đây là số liệu đăng ký trong báo cáo với số liệu phê duyệt chính thức trong quyết định"
+    ],
+    "context": [
+      "source=report_son_tay_2025, registeredProjects=80, registeredArea=550.29 ha, HDDNDProjects=59, HDDNDArea=406.81 ha, addedToPlanProjects=21, addedToPlanArea=143.49 ha"
+    ],
+    "target_metadata": {
+      "registeredProjects2025": 80,
+      "registeredArea2025Ha": 550.29,
+      "HDDNDProjects": 59,
+      "addedToPlanProjects": 21,
+      "planningDocumentId": 110
+    },
+    "id": "ST_MEDIUM_038"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Kết quả thực hiện Kế hoạch sử dụng đất năm 2024 của thị xã Sơn Tây được phản ánh như thế nào ở nhóm dự án đã thực hiện và nhóm dự án chuyển tiếp sang 2025?",
+    "expected_output_outline": [
+      "Nêu được tổng số dự án được UBND thành phố phê duyệt năm 2024 là 115 dự án, diện tích đăng ký 872,20 ha",
+      "Nêu được nhóm đã thực hiện và dự kiến thực hiện đến 31/12/2024 là 64 dự án, diện tích 345,66 ha",
+      "Nêu được nhóm chưa tổ chức thực hiện và chuyển tiếp sang 2025 là 42 dự án, diện tích 509,26 ha",
+      "Không tự suy diễn thêm các nhóm khác nếu tài liệu không yêu cầu"
+    ],
+    "context": [
+      "source=report_son_tay_2025, approvedProjects2024=115, approvedArea2024=872.20 ha, implemented2024=64, implementedArea2024=345.66 ha, carriedForward2025=42, carriedForwardArea2025=509.26 ha"
+    ],
+    "target_metadata": {
+      "approvedProjects2024": 115,
+      "implemented2024": 64,
+      "carriedForward2025": 42,
+      "planningDocumentId": 110
+    },
+    "id": "ST_MEDIUM_041"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các chỉ tiêu sử dụng đất năm 2025 của quận Hoàng Mai biến động như thế nào so với hiện trạng năm 2024?",
+    "expected_output_outline": [
+      "Nêu được đất nông nghiệp giảm từ 803,81 ha xuống 742,08 ha",
+      "Nêu được đất phi nông nghiệp tăng từ 3.215,40 ha lên 3.277,14 ha",
+      "Nêu được quận không còn đất chưa sử dụng ở cả năm 2024 và trong kế hoạch 2025",
+      "Có thể kết luận xu hướng chính là giảm đất nông nghiệp và tăng đất phi nông nghiệp"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, agricultural2024=803.81 ha, nonAgricultural2024=3215.40 ha, unused2024=0 ha",
+      "source=report_hoang_mai_2025, agricultural2025=742.08 ha, nonAgricultural2025=3277.14 ha, unused2025=0 ha"
+    ],
+    "target_metadata": {
+      "agricultural2024Ha": 803.81,
+      "agricultural2025Ha": 742.08,
+      "nonAgricultural2024Ha": 3215.4,
+      "nonAgricultural2025Ha": 3277.14,
+      "unused2024Ha": 0,
+      "unused2025Ha": 0,
+      "planningDocumentId": 133
+    },
+    "id": "ST_MEDIUM_046"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao hai phường Chương Dương và Phúc Tân được nhấn mạnh trong giải pháp quản lý đất đai?",
+    "expected_output_outline": [
+      "Nêu được đây là 2 phường nằm ngoài đê sông Hồng",
+      "Nêu được yêu cầu bảo đảm an toàn hành lang đê, hành lang thoát lũ, hành lang cầu và chống lấn chiếm bờ bãi sông Hồng",
+      "Có thể bổ sung các biện pháp như kiểm tra thu hồi đất sử dụng sai mục đích và khảo sát đất bãi giữa để kiến nghị sử dụng dịch vụ du lịch",
+      "Không suy diễn sang nguyên nhân khác ngoài báo cáo"
+    ],
+    "context": [
+      "source=report_2025, section=IV giải pháp mục 4, wardsOutsideDike=Chương Dương|Phúc Tân",
+      "source=report_2025, section=IV giải pháp mục 4, managementNeeds=protect dike corridor|floodway corridor|bridge corridor|prevent encroachment|inspect misuse|consider service tourism use for mid-river agricultural land"
+    ],
+    "target_metadata": {
+      "wards": [
+        "Chương Dương",
+        "Phúc Tân"
+      ],
+      "planningDocumentId": 17
+    },
+    "id": "ST_HARD_029"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao phường Mai Dịch là địa bàn trọng điểm trong Kế hoạch sử dụng đất năm 2025 của quận Cầu Giấy?",
+    "expected_output_outline": [
+      "Nêu được phần lớn đất nông nghiệp còn lại, đặc biệt đất trồng cây lâu năm, tập trung tại Mai Dịch",
+      "Nêu được hầu hết chỉ tiêu thu hồi đất nông nghiệp, chuyển mục đích từ đất trồng cây lâu năm và dự án đăng ký mới đều tập trung tại Mai Dịch",
+      "Có thể dẫn chứng các dự án lớn như mở rộng trụ sở Bộ Công an số 47 Phạm Văn Đồng, Trường THPT công lập F/THPT1, Khu đô thị thành phố giao lưu, Trung tâm Pháp y Hà Nội",
+      "Không suy đoán nguyên nhân ngoài các dữ kiện được nêu"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, agriculturalLand2025Distribution=Mai Dịch 16.03 ha",
+      "source=report_cau_giay_2025, recoveryAndConversionFocus=agricultural recovery 4.77 ha and agricultural-to-non-agricultural conversion concentrated at Mai Dịch",
+      "source=report_cau_giay_2025, majorProjectsAtMaiDich=Bo Cong an 47 Pham Van Dong|F/THPT1|Khu do thi thanh pho giao luu|Trung tam Phap y Ha Noi"
+    ],
+    "target_metadata": {
+      "focusWard": "Mai Dịch",
+      "planningDocumentId": 63
+    },
+    "id": "ST_HARD_035"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao quận Cầu Giấy cần dành thêm đất cho dịch vụ, giao thông và nhà ở đô thị trong giai đoạn tới?",
+    "expected_output_outline": [
+      "Nêu được Cầu Giấy là quận nội thành, cửa ngõ phía Tây của Hà Nội, có hạ tầng khá phát triển và khả năng thu hút vốn, nhân lực, khoa học công nghệ",
+      "Nêu được kinh tế quận phát triển theo hướng tăng nhanh thương mại, dịch vụ nên nhu cầu đất cho trung tâm thương mại, khách sạn, dịch vụ tài chính, du lịch tăng",
+      "Nêu được tốc độ đô thị hóa cao và tăng dân số cơ học gây áp lực lớn lên nhu cầu giao thông, hạ tầng kỹ thuật và nhà ở",
+      "Không suy diễn ngoài phần đánh giá nguồn lực của quận"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, districtResources=western gateway|good transport|attract capital and human resources",
+      "source=report_cau_giay_2025, developmentPressure=growing service economy|need more land for transport infrastructure|urbanization and mechanical population growth increase housing demand"
+    ],
+    "target_metadata": {
+      "topic": "why_more_land_needed_for_services_transport_housing",
+      "planningDocumentId": 63
+    },
+    "id": "ST_HARD_037"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao nhiều dự án trong kế hoạch sử dụng đất năm 2024 của thị xã Sơn Tây phải chuyển tiếp sang năm 2025?",
+    "expected_output_outline": [
+      "Nêu được nguyên nhân về thủ tục: phê duyệt báo cáo kinh tế kỹ thuật, đo đạc hiện trạng, xác định nguồn gốc đất, lập phương án đền bù, công bố công khai quy hoạch dự án",
+      "Có thể nêu thêm quy mô lớn của danh mục đấu giá cho thuê đất nông nghiệp công ích và các dự án đề xuất thu hút đầu tư làm tăng diện tích chuyển tiếp",
+      "Không quy kết các nguyên nhân ngoài tài liệu",
+      "Có thể dẫn lại số liệu nhóm chuyển tiếp tương ứng nếu cần"
+    ],
+    "context": [
+      "source=report_son_tay_2025, carriedForwardReasons=approval procedures|site measurement|land origin determination|compensation plan|public disclosure of planning",
+      "source=report_son_tay_2025, carriedForwardScale=42 projects 509.26 ha, large share from auction of public agricultural land and investment-attraction proposals"
+    ],
+    "target_metadata": {
+      "topic": "reasons_for_2024_projects_carried_forward",
+      "planningDocumentId": 110
+    },
+    "id": "ST_HARD_040"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao quận Hoàng Mai phải đặc biệt chú trọng hạ tầng thoát nước và giao thông khi lập kế hoạch sử dụng đất?",
+    "expected_output_outline": [
+      "Nêu được Hoàng Mai là vùng trũng phía Nam nội thành, địa hình thấp dần từ Bắc xuống Nam và từ Tây sang Đông",
+      "Nêu được quận có 4 sông tiêu chính gồm Tô Lịch, Lừ, Sét và Kim Ngưu cùng nhiều hồ lớn như Yên Sở, Linh Đàm, Đền Lừ",
+      "Nêu được điều này làm công tác tiêu thoát nước, chống úng ngập và tổ chức hạ tầng kỹ thuật trở thành nhu cầu quan trọng",
+      "Không suy diễn ngoài các đặc điểm tự nhiên và hạ tầng đã nêu trong tài liệu"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, topography=low-lying southern inner district|slope north to south and west to east",
+      "source=report_hoang_mai_2025, hydrology=To Lich river|Lu river|Set river|Kim Nguu river|Yen So lake|Linh Dam lake|Den Lu lake"
+    ],
+    "target_metadata": {
+      "topic": "drainage_and_transport_need",
+      "planningDocumentId": 133
+    },
+    "id": "ST_HARD_047"
+  }
+]

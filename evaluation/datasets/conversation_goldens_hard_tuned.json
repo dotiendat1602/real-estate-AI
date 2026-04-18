@@ -1,0 +1,1054 @@
+[
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao căn nhà Trương Định phù hợp cho gia đình ở lâu dài, rồi hỏi tiếp các chi tiết làm căn cứ.",
+    "expected_outcome": "Bot nêu đúng nhiều lý do như số phòng, nội thất, khả năng ô tô vào nhà; lượt sau chỉ ra đúng các chi tiết làm căn cứ mà không suy đoán thêm.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Gia đình mình đang tìm chỗ ở lâu dài, vì sao căn nhà ở ngõ 281 Trương Định này lại được xem là phù hợp?"
+      },
+      {
+        "role": "user",
+        "content": "Những chi tiết nào trong tin đăng cho thấy điều đó?"
+      }
+    ],
+    "context": [
+      "postId=146, propertyId=145, listingType=Cần bán, title=Chính chủ bán nhà Trương Định 67m2 5T mặt tiền 5m 2 ngõ oto vào nhà, price=14000000000 VND, area=67 m2, bedrooms=4, bathrooms=3, furnishing=FULLY_FURNISHED, address=ngõ 281 Đường Trương Định Phường Tương Mai Quận Hoàng Mai Hà Nội, highlights=2 mặt ngõ|oto 7 chỗ vào nhà|ngõ oto quay đầu"
+    ],
+    "id": "MT_HARD_001"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhà Thịnh Hào 3 hợp cho gia đình đông người hoặc nhóm ở dài hạn, rồi hỏi tiếp căn cứ cụ thể.",
+    "expected_outcome": "Bot tổng hợp đúng các lý do về số phòng, công năng và thời hạn thuê; lượt sau trích ra đúng các chi tiết hỗ trợ kết luận.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhà cho thuê ở 54/98 Thịnh Hào 3 được xem là hợp cho gia đình đông người hoặc nhóm ở dài hạn?"
+      },
+      {
+        "role": "user",
+        "content": "Cụ thể những chi tiết nào làm bạn kết luận như vậy?"
+      }
+    ],
+    "context": [
+      "postId=289, propertyId=288, listingType=Cho thuê, title=Cho thuê nhà riêng 54/98 Thịnh Hào 3, price=13000000 VND, area=45 m2, bedrooms=6, bathrooms=3, furnishing=PARTLY_FURNISHED, minRentalPeriod=2 years, address=54/98 Thịnh Hào 3 đường Tôn Đức Thắng Phường Ô Chợ Dừa Hà Nội, highlights=4 tầng|ngõ vào rộng 3m|mặt tiền 4m|phù hợp gia đình hoặc nhóm ở lâu dài"
+    ],
+    "id": "MT_HARD_002"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhà tại Nhổn hợp để khai thác căn hộ mini, rồi hỏi tiếp chi tiết nào chứng minh điều đó.",
+    "expected_outcome": "Bot giải thích đúng dựa trên cấu trúc 7 căn hộ mini độc lập và khu vực có nhu cầu thuê cao; lượt sau nêu đúng chi tiết chứng minh.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhà nguyên căn tại Nhổn lại được xem là hợp để khai thác theo mô hình căn hộ mini?"
+      },
+      {
+        "role": "user",
+        "content": "Tin đăng có những chi tiết nào chứng minh điều đó?"
+      }
+    ],
+    "context": [
+      "postId=295, propertyId=294, listingType=Cho thuê, title=Chính chủ cho thuê nguyên căn thiết kế phù hợp cho thuê 7 căn hộ mini tại Nhổn, price=25000000 VND, area=45 m2, bedrooms=7, bathrooms=7, furnishing=PARTLY_FURNISHED, address=ngõ 27 Đường Nhổn Phường Cầu Diễn Quận Nam Từ Liêm Hà Nội, highlights=4 tầng + 1 tầng thượng|7 căn hộ mini độc lập|mỗi phòng có vệ sinh và bếp riêng|khu dân cư đông đúc"
+    ],
+    "id": "MT_HARD_003"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhà Quang Tiến thuận tiện cho gia đình, rồi hỏi tiếp tiện ích xung quanh hỗ trợ nhận định đó.",
+    "expected_outcome": "Bot nêu đúng các lý do về công năng, nội thất và tiện ích xung quanh; lượt sau chỉ ra đúng các tiện ích liên quan.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhà ở phố Quang Tiến, Tây Mỗ được xem là thuận tiện cho sinh hoạt gia đình?"
+      },
+      {
+        "role": "user",
+        "content": "Những tiện ích xung quanh nào hỗ trợ cho nhận định đó?"
+      }
+    ],
+    "context": [
+      "postId=290, propertyId=289, listingType=Cho thuê, title=Chính chủ cho thuê nhà 5 tầng ở phố Quang Tiến Tây Mỗ, price=16000000 VND, area=38 m2, bedrooms=3, bathrooms=4, direction=Đông, furnishing=FULLY_FURNISHED, address=Khu đô thị Đại Mỗ Hà Nội Đường Quang Tiến Phường Đại Mỗ Quận Nam Từ Liêm Hà Nội, highlights=5 tầng|trường cấp 1 và 3 cách 500m|bệnh viện và Aeon Mall Hà Đông cách khoảng 2km"
+    ],
+    "id": "MT_HARD_004"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhà phố Thanh Nhàn hợp cho người học tập hoặc đi làm trung tâm, rồi hỏi tiếp các điểm vị trí liên quan.",
+    "expected_outcome": "Bot giải thích đúng bằng các chi tiết về vị trí gần trường, chợ và bệnh viện; lượt sau tiếp tục nêu đúng căn cứ vị trí.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhà ở phố Thanh Nhàn được xem là hợp với người học tập hoặc đi làm khu trung tâm?"
+      },
+      {
+        "role": "user",
+        "content": "Những điểm vị trí nào trong tin đăng cho thấy điều đó?"
+      }
+    ],
+    "context": [
+      "postId=294, propertyId=293, listingType=Cho thuê, title=Cho thuê nhà riêng tại phố Thanh Nhàn Hà Nội, price=7000000 VND, area=34 m2, bedrooms=2, bathrooms=2, furnishing=FULLY_FURNISHED, address=ngõ 285 phố Thanh Nhàn Đường Thanh Nhàn Phường Thanh Nhàn Quận Hai Bà Trưng Hà Nội, highlights=gần Bách Kinh Xây|gần Bệnh viện Bạch Mai và Thanh Nhàn|chợ đối diện"
+    ],
+    "id": "MT_HARD_005"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao lô đất Vườn Đào có sức hút đầu tư, rồi hỏi tiếp những yếu tố vị trí nổi bật nhất.",
+    "expected_outcome": "Bot nêu đúng các lý do về vị trí, kết nối và độ hiếm quỹ đất; lượt sau nhấn đúng các điểm vị trí nổi bật nhất.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao lô đất D3 khu Vườn Đào đối diện Lotte Mall lại được xem là có sức hút đầu tư cao?"
+      },
+      {
+        "role": "user",
+        "content": "Nếu chỉ chọn vài yếu tố vị trí nổi bật nhất thì đó là gì?"
+      }
+    ],
+    "context": [
+      "postId=240, propertyId=239, listingType=Cần bán, title=Bán đất lô D3 khu Vườn Đào 270m2 ngay ngã tư đối diện Lotte Mall, price=189000000000 VND, area=270 m2, direction=Tây, address=685 Đường Lạc Long Quân Phường Phú Thượng Quận Tây Hồ Hà Nội, highlights=đối diện Lotte Mall West Lake Hanoi|3 phút ra Hồ Tây|5 phút sang Ciputra|15 phút tới Nội Bài|khan hiếm quỹ đất"
+    ],
+    "id": "MT_HARD_006"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhà Giảng Võ không phù hợp Airbnb hay văn phòng đông người, rồi hỏi tiếp tin đăng ghi rõ những hạn chế nào.",
+    "expected_outcome": "Bot trả lời đúng theo các hạn chế ghi rõ trong tin; lượt sau chỉ ra đúng các mô hình bị loại trừ.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhà ở Giảng Võ lại không phù hợp cho Airbnb hoặc văn phòng đông người?"
+      },
+      {
+        "role": "user",
+        "content": "Tin đăng ghi rõ những hạn chế nào vậy?"
+      }
+    ],
+    "context": [
+      "postId=272, propertyId=271, listingType=Cho thuê, title=Cho thuê nhà riêng chính chủ tại Giảng Võ, price=30000000 VND, area=65 m2, bedrooms=5, bathrooms=4, furnishing=PARTLY_FURNISHED, address=Phố Giảng Võ Phường Giảng Võ Quận Ba Đình Hà Nội, highlights=4 tầng|phù hợp gia đình hoặc văn phòng nhỏ|không văn phòng đông người|không căn hộ cho thuê lẻ|không Airbnb"
+    ],
+    "id": "MT_HARD_007"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao mặt bằng Trần Thái Tông phù hợp nhiều mô hình kinh doanh, rồi hỏi tiếp các đặc điểm mặt bằng hỗ trợ kết luận.",
+    "expected_outcome": "Bot giải thích đúng bằng các đặc điểm 2 mặt tiền, ô tô đỗ cửa, khu sầm uất và không gian dễ setup; lượt sau nêu đúng căn cứ.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao mặt bằng ở số 2A ngõ 76 Trần Thái Tông có thể hợp với nhiều mô hình kinh doanh khác nhau?"
+      },
+      {
+        "role": "user",
+        "content": "Cụ thể đặc điểm nào của mặt bằng hỗ trợ kết luận đó?"
+      }
+    ],
+    "context": [
+      "postId=292, propertyId=291, listingType=Cho thuê, title=Chính chủ cần cho thuê nhà số 2A ngõ 76 Trần Thái Tông Cầu Giấy Hà Nội, price=16000000 VND, area=91 m2, address=Số 2A ngõ 76 Trần Thái Tông Cầu Giấy Hà Nội, highlights=căn góc 2 mặt tiền|ô tô đỗ tận cửa|khu vực sầm uất|phù hợp văn phòng studio spa salon nha khoa trung tâm tiếng Anh lớp học showroom coffe"
+    ],
+    "id": "MT_HARD_008"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhà Dương Nội hợp để vừa ở vừa làm việc, rồi hỏi tiếp chi tiết nào thể hiện rõ điều đó.",
+    "expected_outcome": "Bot nêu đúng các lý do như nhiều tầng, nhiều phòng, có thang máy và đường rộng; lượt sau chỉ ra đúng các chi tiết then chốt.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhà 7 tầng ở đất dịch vụ Dương Nội lại được xem là hợp để vừa ở vừa làm việc?"
+      },
+      {
+        "role": "user",
+        "content": "Chi tiết nào trong tin đăng thể hiện rõ điều đó nhất?"
+      }
+    ],
+    "context": [
+      "postId=300, propertyId=299, listingType=Cho thuê, title=Cho thuê gấp nhà riêng 7 tầng có thang máy 7PN 7WC 55m2 tại đất dịch vụ Dương Nội, price=20000000 VND, area=55 m2, bedrooms=7, bathrooms=7, direction=Đông, furnishing=PARTLY_FURNISHED, address=Khu đất dịch vụ 27 28 Dương Nội Phường Dương Nội Quận Hà Đông Hà Nội, highlights=7 tầng|có thang máy|đường vào rộng 11m|gần Aeon Hà Đông 1km|phù hợp làm văn phòng hoặc bán hàng online kết hợp ở"
+    ],
+    "id": "MT_HARD_009"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao văn phòng Nguyễn Văn Cừ phù hợp vận hành chuyên nghiệp, rồi hỏi tiếp các hạng mục kỹ thuật đi kèm.",
+    "expected_outcome": "Bot giải thích đúng dựa trên diện tích lớn và hạ tầng kỹ thuật vận hành; lượt sau liệt kê đúng các hạng mục như điều hòa trung tâm, PCCC, thang máy, bảo vệ.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao văn phòng ở 526-528 Nguyễn Văn Cừ được xem là phù hợp cho vận hành kinh doanh chuyên nghiệp?"
+      },
+      {
+        "role": "user",
+        "content": "Những hạng mục kỹ thuật nào đi kèm để hỗ trợ điều đó?"
+      }
+    ],
+    "context": [
+      "postId=299, propertyId=298, listingType=Cho thuê, title=Cho thuê văn phòng 526-528 Nguyễn Văn Cừ phường Bồ Đề Hà Nội, price=30000000 VND, area=217 m2, furnishing=PARTLY_FURNISHED, address=Số 526+528 Đường Nguyễn Văn Cừ Phường Gia Thụy Quận Long Biên Hà Nội, highlights=1 tầng hầm|10 tầng nổi|điều hòa trung tâm|PCCC thành phố cấp|thang máy|bảo vệ 24/24|phù hợp văn phòng spa thời trang ngân hàng"
+    ],
+    "id": "MT_HARD_010"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao căn hộ Quận 1 thuận tiện cho cuộc sống cao cấp trung tâm, rồi hỏi tiếp tiện ích nội khu nào hỗ trợ kết luận đó.",
+    "expected_outcome": "Bot nêu đúng các lý do về vị trí trung tâm, full nội thất và tiện ích nội khu; lượt sau chỉ ra đúng các tiện ích liên quan.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao căn hộ 2 phòng ngủ ở Quận 1 được xem là thuận tiện cho cuộc sống cao cấp trong trung tâm?"
+      },
+      {
+        "role": "user",
+        "content": "Tiện ích nội khu nào là căn cứ rõ nhất cho nhận định đó?"
+      }
+    ],
+    "context": [
+      "postId=1, propertyId=1, listingType=Cần bán, title=Bán căn hộ 2PN Quận 1 full nội thất, price=6500000000 VND, area=75 m2, bedrooms=2, bathrooms=2, direction=Đông Nam, furnishing=FULLY_FURNISHED, city=Hồ Chí Minh, ward=Phường Bến Nghé, district=Quận 1, amenities=Máy lạnh|Tủ âm tường|Ban công|Hồ bơi|Phòng gym|Thang máy|Camera an ninh|Khóa từ|Bãi giữ xe ô tô"
+    ],
+    "id": "MT_HARD_011"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao căn H1 Nguyễn Công Trứ hợp với người thuê ngân sách thấp, rồi hỏi tiếp các căn cứ giá và vị trí.",
+    "expected_outcome": "Bot giải thích đúng bằng giá thuê, diện tích và vị trí xung quanh; lượt sau nêu đúng các căn cứ chính.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao căn H1 tập thể Nguyễn Công Trứ được xem là hợp với người thuê có ngân sách thấp?"
+      },
+      {
+        "role": "user",
+        "content": "Những căn cứ chính về giá và vị trí là gì?"
+      }
+    ],
+    "context": [
+      "postId=83, propertyId=82, listingType=Cho thuê, title=Cho thuê CC 45m2 tại H1 tập thể Nguyễn Công Trứ, price=5000000 VND, area=45 m2, bedrooms=1, bathrooms=1, direction=Nam, address=H1 tập thể Nguyễn Công Trứ Đường Nguyễn Công Trứ Phường Phố Huế Quận Hai Bà Trưng Hà Nội, highlights=gần công viên Thống Nhất|gần công viên Tuổi trẻ Thủ đô|gần WinMart|gần bệnh viện lớn|minRentalPeriod=1 year"
+    ],
+    "id": "MT_HARD_012"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao lô đất Đồng Mai có tiềm năng phát triển tốt, rồi hỏi tiếp yếu tố pháp lý và hạ tầng nào quan trọng nhất.",
+    "expected_outcome": "Bot nêu đúng các lý do về hạ tầng, khả năng xây dựng và pháp lý; lượt sau làm rõ đúng các yếu tố quan trọng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao lô đất khu dịch vụ Đồng Mai được xem là có tiềm năng phát triển tốt?"
+      },
+      {
+        "role": "user",
+        "content": "Yếu tố pháp lý và hạ tầng nào quan trọng nhất ở đây?"
+      }
+    ],
+    "context": [
+      "postId=197, propertyId=196, listingType=Cần bán, title=Bán lô LK16-41 khu 2 đất dịch vụ Đồng Mai Yên Nghĩa, price=7650000000 VND, area=50 m2, address=Khu dịch vụ Đồng Mai Đường Vành Đai 4 Phường Đồng Mai Quận Hà Đông Hà Nội, highlights=đường trước nhà rộng 6m|2 bên vỉa hè 2.5m|cấp phép xây lên đến 6 tầng|sổ đỏ cất két|gần Vành Đai 4 và Quốc Lộ 6"
+    ],
+    "id": "MT_HARD_013"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhà Nghi Tàm vừa thoáng vừa tiện di chuyển, rồi hỏi tiếp những chi tiết nào trong tin đăng cho thấy điều đó.",
+    "expected_outcome": "Bot giải thích đúng bằng các chi tiết về cửa sổ, ban công, ô tô đỗ cửa và giao thông công cộng; lượt sau chỉ ra đúng bằng chứng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhà ở ngõ 276 Nghi Tàm lại được xem là vừa thoáng vừa thuận tiện đi lại?"
+      },
+      {
+        "role": "user",
+        "content": "Những chi tiết nào trong tin đăng cho thấy điều đó?"
+      }
+    ],
+    "context": [
+      "postId=291, propertyId=290, listingType=Cho thuê, title=Cho thuê nhà riêng tại ngõ 276 Nghi Tàm, price=18000000 VND, area=60 m2, bedrooms=5, bathrooms=3, furnishing=PARTLY_FURNISHED, address=ngõ 276 đường Nghi Tàm Phường Tứ Liên Quận Tây Hồ Hà Nội, highlights=phòng nào cũng có cửa sổ lớn hoặc ban công|ô tô đỗ cửa|bus cách 1 phút đi bộ|gần công viên Bách Thảo|gần bệnh viện"
+    ],
+    "id": "MT_HARD_014"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhà Trung Yên hợp văn phòng hoặc đào tạo hơn ở gia đình, rồi hỏi tiếp các dòng mô tả liên quan.",
+    "expected_outcome": "Bot nêu đúng các lý do công năng và hạn chế đối tượng thuê; lượt sau trích đúng các mô tả hỗ trợ kết luận.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhà số 38 khu Trung Yên lại phù hợp cho văn phòng hoặc đào tạo hơn là ở gia đình?"
+      },
+      {
+        "role": "user",
+        "content": "Dòng mô tả nào trong tin đăng cho thấy điều đó rõ nhất?"
+      }
+    ],
+    "context": [
+      "postId=298, propertyId=297, listingType=Cho thuê, title=Số nhà 38 khu Trung Yên chính chủ cho thuê nhà 5 tầng, price=20000000 VND, area=80 m2, address=Đường Trung Yên Phường Trung Hòa Quận Cầu Giấy Hà Nội, highlights=thiết kế chuẩn văn phòng công ty|đường hè ô tô tránh nhau|trước nhà đỗ được nhiều ô tô|phù hợp dạy học văn phòng trung tâm ngoại ngữ spa nhà trẻ|không ở hộ gia đình|không làm nhà nghỉ"
+    ],
+    "id": "MT_HARD_015"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhà Lê Quang Đạo có thể vừa ở vừa kinh doanh nhỏ, rồi hỏi tiếp chi tiết nào hỗ trợ nhận định đó.",
+    "expected_outcome": "Bot giải thích đúng bằng cấu trúc nhà, đủ đồ, khả năng kinh doanh tầng 1 và vào ở luôn; lượt sau nêu đúng chi tiết.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhà ở ngõ 54 Lê Quang Đạo có thể vừa để ở vừa kinh doanh nhỏ?"
+      },
+      {
+        "role": "user",
+        "content": "Chi tiết nào trong tin đăng hỗ trợ kết luận này?"
+      }
+    ],
+    "context": [
+      "postId=297, propertyId=296, listingType=Cho thuê, title=Cần cho hộ gia đình thuê nhà tại ngõ 54 Lê Quang Đạo Mỹ Đình Nam Từ Liêm Hà Nội, price=16000000 VND, area=45 m2, bedrooms=6, bathrooms=3, address=Đường Lê Quang Đạo Phường Phú Đô Quận Nam Từ Liêm Hà Nội, highlights=4 tầng|3 vệ sinh|nhà đủ đồ|có thể kinh doanh buôn bán tầng 1|vào ở luôn|ngay cạnh sân vận động Mỹ Đình|gần nhiều chung cư mini và cửa hàng nhỏ"
+    ],
+    "id": "MT_HARD_016"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao căn 2PN 1VS ở Vinhomes D'Capitale dùng linh hoạt để ở hoặc làm việc, rồi hỏi tiếp căn cứ cụ thể.",
+    "expected_outcome": "Bot nêu đúng các lý do về diện tích, số phòng, full nội thất và dòng mô tả 'làm văn phòng cực hợp'; lượt sau viện dẫn đúng căn cứ.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao căn 2PN 1VS tại Vinhomes D'Capitale lại được xem là linh hoạt để ở hoặc làm việc?"
+      },
+      {
+        "role": "user",
+        "content": "Căn cứ cụ thể nào trong tin đăng cho thấy tính linh hoạt đó?"
+      }
+    ],
+    "context": [
+      "postId=77, propertyId=76, listingType=Cho thuê, project=Vinhomes DCapitale, variant=2PN 1VS, price=16000000 VND, area=70 m2, bedrooms=2, bathrooms=1, direction=Tây, furnishing=FULLY_FURNISHED, address=Vinhomes DCapitale Đường Trần Duy Hưng Phường Trung Hòa Quận Cầu Giấy Hà Nội, highlights=làm văn phòng cực hợp|full nội thất"
+    ],
+    "id": "MT_HARD_017"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao lô đất Chi Đông hợp để ở hoặc kinh doanh, rồi hỏi tiếp điểm mạnh nào về pháp lý và giao thông.",
+    "expected_outcome": "Bot giải thích đúng bằng mặt tiền, đường rộng, sổ đỏ sẵn sàng và kết nối giao thông; lượt sau nêu đúng các điểm mạnh tương ứng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao lô đất Chi Đông được xem là phù hợp để ở hoặc kinh doanh?"
+      },
+      {
+        "role": "user",
+        "content": "Điểm mạnh nào về pháp lý và giao thông đáng chú ý nhất?"
+      }
+    ],
+    "context": [
+      "postId=225, propertyId=224, listingType=Cần bán, title=Đất nền bán gấp Chi Đông 13,6 tỷ 206.7m2 mặt tiền 7m đường 18m, price=13600000000 VND, area=206.7 m2, frontage=7 m, roadWidth=18 m, address=Chi Đông Đường Cao tốc Thăng Long Nội Bài Thị trấn Chi Đông Mê Linh Hà Nội, highlights=pháp lý đầy đủ|sổ đỏ sẵn sàng|cách trung tâm Hà Nội 20km|cách Nội Bài 5km"
+    ],
+    "id": "MT_HARD_018"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao căn Orchard Park View hợp với người di chuyển sân bay thường xuyên, rồi hỏi tiếp các tiện ích đi kèm.",
+    "expected_outcome": "Bot nêu đúng lý do về khoảng cách sân bay, full nội thất và tiện ích nội khu; lượt sau tiếp tục chỉ ra đúng các tiện ích.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao căn hộ Orchard Park View lại hợp với người cần di chuyển sân bay thường xuyên?"
+      },
+      {
+        "role": "user",
+        "content": "Ngoài yếu tố sân bay thì còn tiện ích nào hỗ trợ cho lựa chọn này?"
+      }
+    ],
+    "context": [
+      "postId=143, propertyId=142, listingType=Cho thuê, title=Cho thuê căn hộ Orchard Park View 3PN 2WC full nội thất, price=21000000 VND, area=85 m2, bedrooms=3, bathrooms=2, furnishing=FULLY_FURNISHED, address=Căn hộ Orchard Park View Đường Hồng Hà Phường 9 Quận Phú Nhuận Hồ Chí Minh, highlights=cách sân bay Tân Sơn Nhất 5 phút|bảo vệ và lễ tân 24/7|hồ bơi|gym|siêu thị"
+    ],
+    "id": "MT_HARD_019"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhà vườn Phan Kế Bính có thể kết hợp ở và kinh doanh, rồi hỏi tiếp cách bố trí nhà hỗ trợ điều đó.",
+    "expected_outcome": "Bot giải thích đúng bằng diện tích lớn, sân vườn, showroom và mô tả cho phép ở kết hợp kinh doanh; lượt sau chỉ ra đúng cách bố trí.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhà vườn ở Phan Kế Bính có thể kết hợp ở và kinh doanh?"
+      },
+      {
+        "role": "user",
+        "content": "Cách bố trí nhà trong tin đăng hỗ trợ điều đó như thế nào?"
+      }
+    ],
+    "context": [
+      "postId=293, propertyId=292, listingType=Cho thuê, title=Cho thuê nhà vườn 163m2 Phan Kế Bính 3 tầng hợp ở và kinh doanh, price=42000000 VND, area=163 m2, bedrooms=6, direction=Nam, address=Đường Phan Kế Bính Phường Cống Vị Quận Ba Đình Hà Nội, highlights=có sân và vườn cây xanh|3 tầng|1 showroom rộng|ở kết hợp kinh doanh|phù hợp showroom cá nhân trung tâm Anh ngữ spa"
+    ],
+    "id": "MT_HARD_020"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao lô B8 Tuần Châu Sài Sơn hợp để xây ở, rồi hỏi tiếp chi tiết nào về vị trí và hạ tầng hỗ trợ nhận định đó.",
+    "expected_outcome": "Bot nêu đúng các lý do về hai mặt thoáng, đường ô tô tránh và tiện ích xung quanh; lượt sau chỉ ra đúng các chi tiết hạ tầng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao lô B8 đấu giá Tuần Châu, Sài Sơn lại được xem là hợp để xây ở?"
+      },
+      {
+        "role": "user",
+        "content": "Chi tiết nào về vị trí và hạ tầng hỗ trợ cho nhận định đó?"
+      }
+    ],
+    "context": [
+      "postId=250, propertyId=249, listingType=Cần bán, title=Lô B8 đấu giá Tuần Châu Sài Sơn Quốc Oai 95,7m2 có 2 mặt tiền, price=9280000000 VND, area=95.7 m2, direction=Nam, address=Đường vành đai Tuần Châu Sunny Garden City Đường ĐT 421B Xã Sài Sơn Huyện Quốc Oai Hà Nội, highlights=2 mặt thoáng trước sau|đường 2 oto tránh|đối diện trường cấp 3|gần cấp 1 cấp 2 chợ trạm y tế"
+    ],
+    "id": "MT_HARD_021"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao lô đất Phú Cát Hòa Lạc sẵn sàng cho đầu tư, rồi hỏi tiếp các căn cứ về pháp lý và vị trí.",
+    "expected_outcome": "Bot giải thích đúng bằng full thổ cư, sổ đỏ mới nhất, công chứng ngay và vị trí gần khu công nghệ cao; lượt sau nêu đúng căn cứ.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao lô đất ở Phú Cát gần khu công nghệ cao Hòa Lạc lại được xem là sẵn sàng cho đầu tư?"
+      },
+      {
+        "role": "user",
+        "content": "Các căn cứ về pháp lý và vị trí ở đây là gì?"
+      }
+    ],
+    "context": [
+      "postId=205, propertyId=204, listingType=Cần bán, title=Đất Hòa Lạc đầu tư giá F0 full thổ cư vị trí cực đẹp sát khu công nghệ cao, price=2800000000 VND, area=100 m2, address=Xã Phú Cát Huyện Quốc Oai Hà Nội, highlights=full thổ cư|đường trải nhựa rộng 2 ô tô tránh|gần khu công nghệ cao Hòa Lạc|gần Đại học Quốc Gia|gần QL21 mở rộng 80m|sổ đỏ mới nhất 2026 công chứng ngay"
+    ],
+    "id": "MT_HARD_022"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao tòa CHDV Ngọc Hà là tài sản dòng tiền mạnh, rồi hỏi tiếp chi tiết nào trong tin đăng chứng minh rõ nhất.",
+    "expected_outcome": "Bot nêu đúng các lý do về 22 phòng, đang cho thuê full, dòng tiền 150 triệu và PCCC; lượt sau xác định đúng chi tiết mạnh nhất.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao tòa CHDV ở Ngọc Hà được xem là tài sản dòng tiền mạnh?"
+      },
+      {
+        "role": "user",
+        "content": "Chi tiết nào trong tin đăng chứng minh rõ nhất cho nhận định đó?"
+      }
+    ],
+    "context": [
+      "postId=178, propertyId=177, listingType=Cần bán, title=Siêu ngon nhà dòng tiền CCMN CHDV Ba Đình Ngọc Hà 85m2 22 phòng dòng tiền 150tr, price=18000000000 VND, area=85 m2, bedrooms=22, bathrooms=22, furnishing=FULLY_FURNISHED, address=Phường Ngọc Hà Quận Ba Đình Hà Nội, highlights=22 phòng cao cấp|dòng tiền 150 triệu|đang cho thuê full|PCCC đầy đủ"
+    ],
+    "id": "MT_HARD_023"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao căn 55m2 ở Vinhomes Ocean Park hợp nhu cầu ở thực, rồi hỏi tiếp yếu tố nào khiến căn này dễ tiếp cận hơn.",
+    "expected_outcome": "Bot giải thích đúng bằng diện tích, cấu hình 2PN1VS, mức giá và pháp lý; lượt sau chỉ ra đúng yếu tố hỗ trợ quyết định ở thực.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao căn 55m2 loại 2PN + 1VS ở Vinhomes Ocean Park lại được xem là hợp với nhu cầu ở thực?"
+      },
+      {
+        "role": "user",
+        "content": "Yếu tố nào khiến căn này dễ tiếp cận hơn cho người mua ở thực?"
+      }
+    ],
+    "context": [
+      "postId=41, propertyId=40, listingType=Cần bán, project=Vinhomes Ocean Park 1, variant=55m2 2PN+1VS, price=3650000000 VND, area=55 m2, bedrooms=2, bathrooms=1, furnishing=FULLY_FURNISHED, address=Vinhomes Ocean Park Gia Lâm Xã Dương Xá Huyện Gia Lâm Hà Nội, highlights=phù hợp ở thực hoặc đầu tư cho thuê|hỗ trợ pháp lý sang tên sổ đỏ chính chủ"
+    ],
+    "id": "MT_HARD_024"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao căn hộ Keangnam đáp ứng nhu cầu sống cao cấp, rồi hỏi tiếp các tiện ích xung quanh hỗ trợ kết luận.",
+    "expected_outcome": "Bot nêu đúng các lý do về diện tích lớn, full nội thất và tiện ích xung quanh; lượt sau chỉ ra đúng nhóm tiện ích liên quan.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao căn hộ ở Keangnam Hanoi Landmark Tower được xem là đáp ứng nhu cầu sống cao cấp?"
+      },
+      {
+        "role": "user",
+        "content": "Những tiện ích xung quanh nào hỗ trợ cho nhận định đó?"
+      }
+    ],
+    "context": [
+      "postId=73, propertyId=72, listingType=Cho thuê, title=Liên hệ để thuê căn hộ tại Keangnam Hanoi Landmark Tower, price=70000000 VND, area=156 m2, furnishing=FULLY_FURNISHED, address=Keangnam Hanoi Landmark Tower Đường Phạm Hùng Phường Mễ Trì Quận Nam Từ Liêm Hà Nội, highlights=hướng cửa chính Đông|ban công Đông Bắc|gần bệnh viện|gần siêu thị|gần công viên"
+    ],
+    "id": "MT_HARD_025"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao quận phải lập Kế hoạch sử dụng đất năm 2025, rồi hỏi tiếp những hoạt động quản lý đất đai nào cần căn cứ vào kế hoạch này.",
+    "expected_outcome": "Bot nêu đúng cả lý do pháp lý lẫn lý do quản lý thực tiễn; ở lượt sau chỉ ra được các hoạt động như thu hồi đất, giao đất, cho thuê đất, cho phép chuyển mục đích sử dụng đất.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hoàn Kiếm cần lập Kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Những hoạt động quản lý đất đai nào trong tài liệu cho thấy kế hoạch này là căn cứ bắt buộc?"
+      }
+    ],
+    "context": [
+      "source=report_2025, section=Đặt vấn đề mục 1, legalNeed=annual district land-use planning under Land Law 2024",
+      "source=report_2025, section=Đặt vấn đề mục 1, legalFunctions=basis for land recovery|land allocation|land lease|change of land use purpose"
+    ],
+    "id": "MT_HARD_026"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhiều dự án năm 2024 phải chuyển tiếp sang 2025, rồi hỏi tiếp nguyên nhân khách quan và chủ quan được nêu trong báo cáo.",
+    "expected_outcome": "Bot giải thích đúng việc nhiều dự án chưa xong GPMB hoặc thủ tục; lượt sau tách bạch được nguyên nhân khách quan và chủ quan theo đúng báo cáo.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhiều dự án của năm 2024 phải chuyển tiếp sang kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Báo cáo nêu những nguyên nhân khách quan và chủ quan nào?"
+      }
+    ],
+    "context": [
+      "source=report_2025, section=2.2, status=many projects had not completed GPMB and legal procedures",
+      "source=report_2025, section=2.3, objectiveCauses=legal overlap and compensation policy difficulties",
+      "source=report_2025, section=2.3, subjectiveCauses=lack of capital/resources and weak implementation determination"
+    ],
+    "id": "MT_HARD_027"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao báo cáo cho rằng kế hoạch 2025 có khả năng thực hiện cao, rồi hỏi tiếp những nguồn lực nào của thành phố và quận hỗ trợ nhận định đó.",
+    "expected_outcome": "Bot lập luận đúng từ phần đánh giá nguồn lực, không trả lời chung chung; lượt sau chỉ ra được cả nguồn lực của thành phố và lợi thế riêng của quận Hoàn Kiếm.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao báo cáo cho rằng các dự án trong Kế hoạch sử dụng đất năm 2025 của quận Hoàn Kiếm có khả năng thực hiện cao?"
+      },
+      {
+        "role": "user",
+        "content": "Cụ thể, những nguồn lực nào của thành phố và của quận hỗ trợ cho nhận định đó?"
+      }
+    ],
+    "context": [
+      "source=report_2025, section=1.3, cityResources=large development capital|investment authority|high urban land commercial value",
+      "source=report_2025, section=1.3, districtResources=center location|transport connectivity|trade tourism service potential",
+      "source=report_2025, section=1.3, conclusion=projects in 2025 plan have high feasibility"
+    ],
+    "id": "MT_HARD_028"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao Chương Dương và Phúc Tân được nhấn mạnh trong giải pháp quản lý đất đai, rồi hỏi tiếp các biện pháp quản lý cụ thể được nêu cho hai phường này.",
+    "expected_outcome": "Bot nêu đúng lý do hai phường nằm ngoài đê sông Hồng và liên quan đến hành lang đê, thoát lũ, bờ bãi sông; lượt sau liệt kê đúng các biện pháp kiểm tra, thu hồi đất sử dụng sai mục đích, khảo sát đất bãi giữa và kiến nghị phương án sử dụng phù hợp.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao hai phường Chương Dương và Phúc Tân được nhấn mạnh trong giải pháp quản lý đất đai?"
+      },
+      {
+        "role": "user",
+        "content": "Các biện pháp quản lý cụ thể nào được nêu cho hai phường này?"
+      }
+    ],
+    "context": [
+      "source=report_2025, section=IV giải pháp mục 4, wardsOutsideDike=Chương Dương|Phúc Tân",
+      "source=report_2025, section=IV giải pháp mục 4, measures=protect dike and flood corridors|prevent encroachment|inspect misuse|recover land for traffic or resettlement|survey mid-river agricultural land for service tourism proposal"
+    ],
+    "id": "MT_HARD_029"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao quận Hà Đông cần lập Kế hoạch sử dụng đất năm 2025, rồi hỏi tiếp kế hoạch này là căn cứ cho những hoạt động nào.",
+    "expected_outcome": "Bot nêu đúng cả lý do pháp lý và lý do quản lý thực tiễn; ở lượt sau chỉ ra đúng các hoạt động như giao đất, cho thuê đất, cho phép chuyển mục đích sử dụng đất.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hà Đông cần lập Kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Kế hoạch này là căn cứ trực tiếp cho những hoạt động nào?"
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=1, necessity=annual district land use plan under Land Law 2024, managementPurpose=avoid arbitrary or wasteful land use",
+      "source=report_ha_dong_2025, page=1, legalFunctions=land allocation|land lease|change of land use purpose"
+    ],
+    "id": "MT_HARD_030"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao môi trường là vấn đề cần lưu ý trong việc sử dụng đất ở Hà Đông, rồi hỏi tiếp những nguồn ô nhiễm cụ thể nào được báo cáo nhấn mạnh.",
+    "expected_outcome": "Bot giải thích đúng việc môi trường nước và không khí đều đang chịu áp lực từ đô thị hóa, công nghiệp và giao thông; lượt sau chỉ ra đúng các nguồn ô nhiễm như nước thải sinh hoạt, công nghiệp, hoạt động làng nghề, bụi và khí thải giao thông.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao môi trường là vấn đề cần lưu ý khi xem xét việc sử dụng đất ở quận Hà Đông?"
+      },
+      {
+        "role": "user",
+        "content": "Báo cáo nhấn mạnh những nguồn ô nhiễm cụ thể nào?"
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, pages=8-9, environmentalIssues=surface water pollution|lake and canal pollution|air quality degradation",
+      "source=report_ha_dong_2025, page=9, pollutionSources=urbanization|industry|domestic wastewater|industrial wastewater|craft villages|traffic dust and emissions"
+    ],
+    "id": "MT_HARD_031"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao công tác GPMB và lập phương án bồi thường, hỗ trợ, tái định cư cho các dự án trọng điểm ở Hà Đông còn khó, rồi hỏi tiếp cụ thể các vướng mắc pháp lý nằm ở đâu.",
+    "expected_outcome": "Bot nêu đúng nguyên nhân chung là hệ thống pháp luật đất đai mới có hiệu lực gây khó trong áp dụng; lượt sau tách được các vướng mắc về giá đất cụ thể, hạn mức giao đất tái định cư và hướng dẫn bồi thường công trình, di chuyển mộ.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao công tác giải phóng mặt bằng và xây dựng phương án bồi thường, hỗ trợ, tái định cư cho các dự án trọng điểm ở quận Hà Đông còn gặp khó khăn?"
+      },
+      {
+        "role": "user",
+        "content": "Cụ thể các vướng mắc pháp lý được nêu là gì?"
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=15, generalDifficulty=new Land Law 2024 and related regulations create implementation obstacles",
+      "source=report_ha_dong_2025, page=15, legalBottlenecks=specific land price determination|no resettlement land quota in Decision 56/2024/QD-UBND|lack of detailed rules for compensation of structures and grave relocation"
+    ],
+    "id": "MT_HARD_032"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao Hà Đông được xem là có tiềm năng phát triển du lịch và dịch vụ văn hóa, rồi hỏi tiếp những di sản và làng nghề nào hỗ trợ nhận định đó.",
+    "expected_outcome": "Bot nêu đúng cơ sở từ tài nguyên nhân văn phong phú, số lượng di tích lớn và giá trị lễ hội làng nghề; ở lượt sau nêu đúng các dẫn chứng như 142 di tích, 51 di tích cấp quốc gia, 41 di tích cấp tỉnh/thành phố, làng lụa Vạn Phúc và làng rèn Đa Sỹ.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hà Đông được xem là có tiềm năng phát triển du lịch và dịch vụ gắn với văn hóa?"
+      },
+      {
+        "role": "user",
+        "content": "Cụ thể những di sản và làng nghề nào trong báo cáo hỗ trợ cho nhận định đó?"
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=8, heritageCount=142, nationalRanked=51, cityProvincialRanked=41",
+      "source=report_ha_dong_2025, page=8, supportingAssets=festivals|Nguyen Trai monument|Van Phuc silk village|Da Sy forging village"
+    ],
+    "id": "MT_HARD_033"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao quận Cầu Giấy cần lập Kế hoạch sử dụng đất năm 2025, rồi hỏi tiếp kế hoạch này là căn cứ trực tiếp cho những hoạt động nào.",
+    "expected_outcome": "Bot nêu đúng cả lý do pháp lý và lý do quản lý thực tiễn; ở lượt sau chỉ ra đúng các hoạt động như thu hồi đất, giao đất, cho thuê đất và chuyển mục đích sử dụng đất.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Cầu Giấy cần lập Kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Kế hoạch này là căn cứ trực tiếp cho những hoạt động nào?"
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, necessity=implement Land Law 2024|use land efficiently|avoid waste and overlap|protect environment",
+      "source=report_cau_giay_2025, legalFunctions=land recovery|land allocation|land lease|change of land use purpose"
+    ],
+    "id": "MT_HARD_034"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao phường Mai Dịch là địa bàn trọng điểm trong Kế hoạch sử dụng đất năm 2025 của quận Cầu Giấy, rồi hỏi tiếp những dự án nào cho thấy điều đó rõ nhất.",
+    "expected_outcome": "Bot giải thích đúng do phần lớn đất nông nghiệp còn lại và nhiều chỉ tiêu thu hồi, chuyển mục đích tập trung tại Mai Dịch; ở lượt sau nêu được các ví dụ phù hợp như mở rộng trụ sở Bộ Công an 47 Phạm Văn Đồng, Trường THPT công lập F/THPT1, Khu đô thị thành phố giao lưu, Trung tâm Pháp y Hà Nội.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao phường Mai Dịch là địa bàn trọng điểm trong Kế hoạch sử dụng đất năm 2025 của quận Cầu Giấy?"
+      },
+      {
+        "role": "user",
+        "content": "Những dự án nào cho thấy điều đó rõ nhất?"
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, MaiDichFocus=remaining agricultural land concentrated here|most conversions and recoveries concentrated here",
+      "source=report_cau_giay_2025, majorProjectsAtMaiDich=Bo Cong an 47 Pham Van Dong|F/THPT1|Khu do thi thanh pho giao luu|Trung tam Phap y Ha Noi"
+    ],
+    "id": "MT_HARD_035"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhiều dự án trong Kế hoạch sử dụng đất năm 2024 của quận Cầu Giấy chưa hoàn thành hoặc bị hủy bỏ, rồi hỏi tiếp các nguyên nhân cụ thể được báo cáo nêu ra.",
+    "expected_outcome": "Bot nêu đúng các khó khăn về vốn, giải phóng mặt bằng, ngân sách và chất lượng dự án; ở lượt sau tách được các nguyên nhân cụ thể theo báo cáo.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhiều dự án trong Kế hoạch sử dụng đất năm 2024 của quận Cầu Giấy chưa hoàn thành hoặc bị hủy bỏ?"
+      },
+      {
+        "role": "user",
+        "content": "Cụ thể báo cáo nêu những nguyên nhân nào?"
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, causes=economic fluctuations and rising costs|difficult GPMB|limited budget|weak project quality and forecasting|inaccurate land demand registration"
+    ],
+    "id": "MT_HARD_036"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao quận Cầu Giấy cần dành thêm đất cho dịch vụ, giao thông và nhà ở đô thị, rồi hỏi tiếp áp lực nào đang khiến nhu cầu đó tăng cao.",
+    "expected_outcome": "Bot lập luận đúng từ phần đánh giá nguồn lực của quận: vị trí cửa ngõ phía Tây, hạ tầng tốt, phát triển mạnh thương mại dịch vụ và đô thị hóa; ở lượt sau nêu được các áp lực như tăng dân số cơ học, tăng nhu cầu nhà ở, giao thông và hạ tầng xã hội.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Cầu Giấy cần dành thêm đất cho dịch vụ, giao thông và nhà ở đô thị trong giai đoạn tới?"
+      },
+      {
+        "role": "user",
+        "content": "Những áp lực nào đang khiến nhu cầu đó tăng cao?"
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, districtResources=western gateway|good infrastructure|service economy growth|urbanization",
+      "source=report_cau_giay_2025, pressureFactors=mechanical population growth|housing demand|transport infrastructure demand|need for more cultural and social infrastructure"
+    ],
+    "id": "MT_HARD_037"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao thị xã Sơn Tây cần lập Kế hoạch sử dụng đất năm 2025, rồi hỏi tiếp kế hoạch này là căn cứ trực tiếp cho những quyết định nào.",
+    "expected_outcome": "Bot nêu đúng ý nghĩa pháp lý và quản lý của kế hoạch sử dụng đất; ở lượt sau chỉ ra đúng các quyết định như giao đất, thu hồi đất, cho thuê đất, chuyển mục đích sử dụng đất.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao thị xã Sơn Tây cần lập Kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Kế hoạch này là căn cứ trực tiếp cho những quyết định nào?"
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, necessity=legal basis for land management|efficient land use|prevent waste and environmental imbalance",
+      "source=report_son_tay_2025, directDecisions=land allocation|land recovery|land lease|change of land use purpose"
+    ],
+    "id": "MT_HARD_038"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao thị xã Sơn Tây có nhiều lợi thế để phát triển du lịch và dịch vụ, rồi hỏi tiếp những tài nguyên, di tích và định hướng nào hỗ trợ nhận định đó.",
+    "expected_outcome": "Bot giải thích đúng từ vị trí, tài nguyên nhân văn, hồ và cảnh quan, cùng định hướng đô thị vệ tinh văn hóa lịch sử; ở lượt sau nêu được các ví dụ tiêu biểu như thành cổ Sơn Tây, làng cổ Đường Lâm, đền Và, chùa Mía, hồ Đồng Mô, hồ Xuân Khanh.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao thị xã Sơn Tây được xem là có nhiều lợi thế để phát triển du lịch và dịch vụ?"
+      },
+      {
+        "role": "user",
+        "content": "Những tài nguyên, di tích và định hướng nào trong tài liệu hỗ trợ cho nhận định đó?"
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, strengths=trung tâm văn hóa xứ Đoài|nhiều di tích|nhiều sông hồ|đô thị vệ tinh văn hóa lịch sử và du lịch nghỉ dưỡng",
+      "source=report_son_tay_2025, examples=thành cổ Sơn Tây|làng cổ Đường Lâm|đền Và|chùa Mía|lăng Ngô Quyền|hồ Đồng Mô|hồ Xuân Khanh"
+    ],
+    "id": "MT_HARD_039"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhiều dự án trong kế hoạch sử dụng đất năm 2024 của thị xã Sơn Tây phải chuyển tiếp sang năm 2025, rồi hỏi tiếp các nguyên nhân cụ thể được nêu trong tài liệu.",
+    "expected_outcome": "Bot nêu đúng việc nhiều dự án còn vướng thủ tục và khối lượng công việc chuẩn bị; ở lượt sau liệt kê đúng các nguyên nhân như phê duyệt báo cáo kinh tế kỹ thuật, đo đạc hiện trạng, xác định nguồn gốc đất, lập phương án đền bù và công bố công khai quy hoạch.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhiều dự án trong kế hoạch sử dụng đất năm 2024 của thị xã Sơn Tây phải chuyển tiếp sang năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Cụ thể những nguyên nhân nào được nêu trong tài liệu?"
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, carriedForward2025=42 projects, area=509.26 ha",
+      "source=report_son_tay_2025, carriedForwardReasons=phê duyệt báo cáo kinh tế kỹ thuật|đo đạc hiện trạng|xác định nguồn gốc đất|lập phương án đền bù|công bố công khai quy hoạch dự án"
+    ],
+    "id": "MT_HARD_040"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao yếu tố môi trường phải được cân nhắc kỹ trong sử dụng đất ở thị xã Sơn Tây, rồi hỏi tiếp những dấu hiệu ô nhiễm nào trong báo cáo là đáng chú ý nhất.",
+    "expected_outcome": "Bot lập luận đúng vì tài liệu cho thấy đã xuất hiện áp lực môi trường từ nước mặt, nước ngầm, không khí và chất thải; ở lượt sau nêu được các dấu hiệu đáng chú ý như nước mặt ô nhiễm BOD5/COD/TSS/Amoni/Photphat, nước ngầm ô nhiễm Amoni và H2S vượt chuẩn gần bãi rác.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao yếu tố môi trường phải được cân nhắc kỹ trong việc sử dụng đất ở thị xã Sơn Tây?"
+      },
+      {
+        "role": "user",
+        "content": "Những dấu hiệu ô nhiễm nào trong báo cáo là đáng chú ý nhất?"
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, environmentalPressures=surface water pollution|groundwater pollution by Amoni|air pollution by H2S near dump|solid waste pressure",
+      "source=report_son_tay_2025, keyIndicators=BOD5|COD|TSS|Amoni|Photphat|H2S"
+    ],
+    "id": "MT_HARD_041"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao quận Hai Bà Trưng cần lập Kế hoạch sử dụng đất năm 2025, rồi hỏi tiếp kế hoạch này là căn cứ cho những quyết định nào.",
+    "expected_outcome": "Bot nêu đúng ý nghĩa pháp lý và quản lý của kế hoạch sử dụng đất; ở lượt sau chỉ ra đúng các quyết định như giao đất, cho thuê đất, chuyển mục đích sử dụng đất và phục vụ cân đối thu chi liên quan đến đất.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hai Bà Trưng cần lập Kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Kế hoạch này là căn cứ cho những quyết định nào?"
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, necessity=legal basis for land management|limit waste and overlap|protect environment|support budget balancing",
+      "source=report_hai_ba_trung_2025, directBasis=land allocation|land lease|change of land use purpose|support socio-economic, defense and security goals"
+    ],
+    "id": "MT_HARD_042"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao quận Hai Bà Trưng chịu áp lực lớn về nhu cầu đất, rồi hỏi tiếp những nhóm nhu cầu nào đang tạo áp lực rõ nhất.",
+    "expected_outcome": "Bot giải thích đúng từ tăng trưởng thương mại dịch vụ, đô thị hóa, tăng dân số cơ học và quỹ đất hạn hẹp; ở lượt sau nêu được các nhóm nhu cầu chính như thương mại dịch vụ, giao thông, nhà ở đô thị và công trình văn hóa phúc lợi công cộng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hai Bà Trưng chịu áp lực lớn về nhu cầu đất cho phát triển đô thị?"
+      },
+      {
+        "role": "user",
+        "content": "Những nhóm nhu cầu nào đang tạo áp lực rõ nhất lên quỹ đất của quận?"
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, landPressure=trade_service growth|rapid urbanization|population pressure|limited land fund",
+      "source=report_hai_ba_trung_2025, pressureGroups=commerce and services|transport infrastructure|urban housing|cultural and public welfare facilities"
+    ],
+    "id": "MT_HARD_043"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao nhiều dự án năm 2024 phải chuyển tiếp sang năm 2025, rồi hỏi tiếp tài liệu nêu các nguyên nhân cụ thể nào.",
+    "expected_outcome": "Bot nêu đúng việc còn nhiều vướng mắc về thủ tục, quy hoạch và giải phóng mặt bằng; ở lượt sau liệt kê đúng các nguyên nhân chính như bất cập giữa quy hoạch, thủ tục đầu tư phức tạp, PCCC, GPMB, xác nhận nguồn gốc đất, chỉ giới đường đỏ, chính sách bồi thường và khó khăn kinh tế xã hội.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhiều công trình, dự án trong kế hoạch sử dụng đất năm 2024 của quận Hai Bà Trưng phải chuyển tiếp sang năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Cụ thể tài liệu nêu những nguyên nhân nào?"
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, carryoverProjects2025=28",
+      "source=report_hai_ba_trung_2025, reasons=planning inconsistencies|complex procedures|PCCC approvals|detailed appraisal procedures|GPMB difficulties|inheritance and land origin verification|lack of consensus|red-line approval issues|compensation policy limits|economic-social difficulties"
+    ],
+    "id": "MT_HARD_044"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao yếu tố môi trường phải được cân nhắc kỹ khi sử dụng đất ở quận Hai Bà Trưng, rồi hỏi tiếp những vấn đề môi trường nổi bật nhất là gì.",
+    "expected_outcome": "Bot lập luận đúng từ áp lực bụi, tiếng ồn, mùi, ô nhiễm nước và chất thải trong bối cảnh quận nội thành đông dân; ở lượt sau nêu đúng các vấn đề nổi bật như ô nhiễm không khí dọc các tuyến giao thông lớn, ô nhiễm sông Kim Ngưu - sông Sét và tình trạng rác thải, chất thải xây dựng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao yếu tố môi trường phải được cân nhắc kỹ khi sử dụng đất ở quận Hai Bà Trưng?"
+      },
+      {
+        "role": "user",
+        "content": "Những vấn đề môi trường nổi bật nhất trong tài liệu là gì?"
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, environmentalIssues=air pollution|noise|odor|water pollution|waste pressure",
+      "source=report_hai_ba_trung_2025, hotspots=major traffic corridors|construction sites|Kim Nguu river|Set river|open drainage and lakes affected by waste"
+    ],
+    "id": "MT_HARD_045"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao quận Hoàng Mai cần lập Kế hoạch sử dụng đất năm 2025, rồi hỏi tiếp kế hoạch này là căn cứ cho những hoạt động nào.",
+    "expected_outcome": "Bot nêu đúng ý nghĩa pháp lý và quản lý của kế hoạch sử dụng đất; ở lượt sau chỉ ra đúng các hoạt động như giao đất, cho thuê đất, phân bổ quỹ đất và phục vụ phát triển kinh tế - xã hội, an ninh, quốc phòng.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hoàng Mai cần lập Kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Kế hoạch này là căn cứ cho những hoạt động nào?"
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, necessity=legal basis for land management|basis for land allocation and lease|serve socio-economic security defense needs|use land efficiently|limit waste"
+    ],
+    "id": "MT_HARD_046"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao quận Hoàng Mai phải đặc biệt chú trọng hạ tầng thoát nước và giao thông khi lập kế hoạch sử dụng đất, rồi hỏi tiếp những đặc điểm tự nhiên nào trong tài liệu hỗ trợ nhận định đó.",
+    "expected_outcome": "Bot giải thích đúng vì quận là vùng trũng thấp, có nhiều sông tiêu và hồ lớn nên nhu cầu thoát nước, chống ngập và hạ tầng kỹ thuật rất quan trọng; ở lượt sau nêu được các yếu tố như sông Tô Lịch, Lừ, Sét, Kim Ngưu cùng các hồ Yên Sở, Linh Đàm, Đền Lừ.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hoàng Mai phải đặc biệt chú trọng hạ tầng thoát nước và giao thông khi lập kế hoạch sử dụng đất?"
+      },
+      {
+        "role": "user",
+        "content": "Những đặc điểm tự nhiên nào trong tài liệu hỗ trợ cho nhận định đó?"
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, topography=low-lying area in southern inner Hanoi|slope north to south and west to east",
+      "source=report_hoang_mai_2025, riversAndLakes=To Lich|Lu|Set|Kim Nguu|Yen So lake|Linh Dam lake|Den Lu lake"
+    ],
+    "id": "MT_HARD_047"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao công tác giải phóng mặt bằng là một khâu rất trọng điểm trong thực hiện kế hoạch sử dụng đất của quận Hoàng Mai, rồi hỏi tiếp tài liệu nêu những dự án lớn nào cho thấy điều đó.",
+    "expected_outcome": "Bot nêu đúng vì số lượng dự án, số hộ và khối lượng phương án bồi thường rất lớn, nhiều dự án phụ thuộc trực tiếp vào GPMB; ở lượt sau chỉ ra đúng các ví dụ như đường Tam Trinh, Nam hồ Linh Đàm giai đoạn II, đường nối Đồng Tàu đến Giải Phóng, trường Tiểu học Lĩnh Nam hoặc các dự án tại Định Công.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao công tác giải phóng mặt bằng là một khâu rất trọng điểm trong việc thực hiện kế hoạch sử dụng đất của quận Hoàng Mai?"
+      },
+      {
+        "role": "user",
+        "content": "Tài liệu nêu những dự án lớn nào cho thấy điều đó?"
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, GPMB2024=45 projects, notices=1571 households, approvedPlans=1195, compensation=368.5 tỷ đồng",
+      "source=report_hoang_mai_2025, keyProjects=đường Tam Trinh|Nam hồ Linh Đàm giai đoạn II|đường nối Đồng Tàu đến Giải Phóng|trường Tiểu học Lĩnh Nam|các dự án trường học Định Công"
+    ],
+    "id": "MT_HARD_048"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Người dùng hỏi vì sao quận Hoàng Mai phải tăng cường quản lý đô thị, trật tự xây dựng và môi trường song song với kế hoạch sử dụng đất, rồi hỏi tiếp các số liệu nào trong tài liệu củng cố cho nhận định đó.",
+    "expected_outcome": "Bot lập luận đúng vì đô thị hóa mạnh, nhiều công trình xây dựng, vi phạm trật tự đô thị và áp lực môi trường, hạ tầng; ở lượt sau nêu được các số liệu như 1.610 công trình được kiểm tra, 16 công trình vi phạm trật tự xây dựng, 14.803 trường hợp vi phạm trật tự đô thị bị xử lý và 175 vụ vi phạm môi trường.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hoàng Mai phải tăng cường quản lý đô thị, trật tự xây dựng và môi trường song song với kế hoạch sử dụng đất?"
+      },
+      {
+        "role": "user",
+        "content": "Những số liệu nào trong tài liệu củng cố cho nhận định đó?"
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, constructionChecks=1610, buildingViolations=16, urbanOrderViolations=14803, environmentalViolations=175, wasteCollection=100% daily"
+    ],
+    "id": "MT_HARD_049"
+  }
+]

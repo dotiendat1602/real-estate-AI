@@ -1,24 +1,22 @@
 from __future__ import annotations
 
 import io
-import importlib
 import logging
 import os
 import re
-import tempfile
 import time
 from dataclasses import dataclass
 from typing import Any
 
 import httpx
 from langchain_core.documents import Document
-from pypdf import PdfReader, PdfWriter
+from pypdf import PdfReader
 
+from .metadata import canonicalize_planning_district
 from ..utils.chunking import build_splitter
 
 _splitter = build_splitter(chunk_size=1500, chunk_overlap=120)
 _logger = logging.getLogger(__name__)
-_docling_disabled_due_bad_alloc = False
 
 
 def _resolve_bool_env(name: str, default: bool) -> bool:
@@ -53,51 +51,12 @@ def _resolve_http_verify() -> bool | str:
     return ca_bundle
 
 
-def _resolve_docling_max_pages() -> int:
-    raw = os.getenv("PLANNING_DOCLING_MAX_PAGES", "20").strip()
-    try:
-        value = int(raw)
-        return max(0, value)
-    except Exception:
-        return 20
-
-
-def _resolve_docling_enabled() -> bool:
-    return _resolve_bool_env("PLANNING_DOCLING_ENABLED", True)
-
-
-def _resolve_docling_max_pdf_bytes() -> int:
-    raw = os.getenv("PLANNING_DOCLING_MAX_PDF_BYTES", "15728640").strip()
-    try:
-        value = int(raw)
-        return max(0, value)
-    except Exception:
-        return 15728640
-
-
-def _resolve_docling_disable_after_bad_alloc() -> bool:
-    return _resolve_bool_env("PLANNING_DOCLING_DISABLE_AFTER_BAD_ALLOC", True)
-
-
-def _resolve_docling_batch_pages() -> int:
-    raw = os.getenv("PLANNING_DOCLING_BATCH_PAGES", "6").strip()
-    try:
-        value = int(raw)
-        return max(0, value)
-    except Exception:
-        return 6
-
-
 def _resolve_ssl_allow_insecure_fallback() -> bool:
     return _resolve_bool_env("PLANNING_INGEST_SSL_ALLOW_INSECURE_FALLBACK", False)
 
 
 def _resolve_pdf_ocr_fallback_enabled() -> bool:
     return _resolve_bool_env("PLANNING_PDF_OCR_FALLBACK_ENABLED", True)
-
-
-def _resolve_scan_pdf_use_docling_first() -> bool:
-    return _resolve_bool_env("PLANNING_SCANNED_PDF_USE_DOCLING_FIRST", False)
 
 
 def _resolve_pdf_ocr_max_pages() -> int:
@@ -116,6 +75,19 @@ def _resolve_pdf_ocr_render_scale() -> float:
         return max(0.5, min(value, 3.0))
     except Exception:
         return 1.25
+
+
+def _resolve_pdf_text_quality_min_score() -> float:
+    raw = os.getenv("PLANNING_PDF_TEXT_QUALITY_MIN_SCORE", "0.42").strip()
+    try:
+        value = float(raw)
+        return max(0.0, min(value, 1.0))
+    except Exception:
+        return 0.42
+
+
+def _resolve_pdf_force_ocr_on_low_quality() -> bool:
+    return _resolve_bool_env("PLANNING_PDF_FORCE_OCR_ON_LOW_QUALITY", True)
 
 
 def _resolve_ingest_soft_timeout_seconds() -> int:
@@ -155,7 +127,15 @@ def _extract_rapidocr_lines(ocr_output: Any) -> list[str]:
     if not isinstance(txts, list):
         return []
 
-    return [_clean_text(line) for line in txts if isinstance(line, str) and _clean_text(line)]
+    cleaned_lines: list[str] = []
+    for raw_line in txts:
+        if not isinstance(raw_line, str):
+            continue
+        cleaned = _clean_text(raw_line)
+        if cleaned:
+            cleaned_lines.append(cleaned)
+
+    return cleaned_lines
 
 
 def _ocr_lines_with_stripes(ocr_engine: Any, arr: Any) -> list[str]:
@@ -207,20 +187,17 @@ class PlanningIngestPayload:
     raw_meta: dict[str, Any] | None = None
 
 
-def _extract_pdf_text(binary: bytes) -> str:
+def _extract_pdf_text_and_pages(binary: bytes) -> tuple[str, list[str]]:
     reader = PdfReader(io.BytesIO(binary))
-    pages: list[str] = []
-    for page in reader.pages:
-        pages.append(page.extract_text() or "")
-    return "\n\n".join(pages).strip()
+    raw_pages: list[str] = []
+    cleaned_pages: list[str] = []
 
-
-def _extract_pdf_pages(binary: bytes) -> list[str]:
-    reader = PdfReader(io.BytesIO(binary))
-    pages: list[str] = []
     for page in reader.pages:
-        pages.append(_clean_text(page.extract_text() or ""))
-    return pages
+        raw_text = page.extract_text() or ""
+        raw_pages.append(raw_text)
+        cleaned_pages.append(_clean_text(raw_text))
+
+    return "\n\n".join(raw_pages).strip(), cleaned_pages
 
 
 def _clean_text(text: str) -> str:
@@ -234,6 +211,34 @@ def _normalize_for_match(text: str) -> str:
     value = _clean_text(text).lower()
     value = re.sub(r"\s+", " ", value)
     return value.strip()
+
+
+def _estimate_pdf_text_quality(page_texts: list[str], cleaned_text: str) -> float:
+    if not page_texts and not cleaned_text:
+        return 0.0
+
+    total_pages = max(1, len(page_texts))
+    non_empty_pages = sum(1 for page in page_texts if len(_clean_text(page)) >= 40)
+    coverage_score = min(1.0, non_empty_pages / total_pages)
+
+    sample = (cleaned_text or "")[:120000]
+    if not sample:
+        return round(max(0.0, min(coverage_score * 0.25, 1.0)), 3)
+
+    non_space_chars = max(1, sum(1 for ch in sample if not ch.isspace()))
+    alpha_ratio = sum(1 for ch in sample if ch.isalpha()) / non_space_chars
+    replacement_ratio = sample.count("\ufffd") / max(1, len(sample))
+    control_ratio = sum(1 for ch in sample if ord(ch) < 32 and ch not in "\n\r\t") / max(1, len(sample))
+
+    avg_chars_per_page = len(cleaned_text) / max(1, total_pages)
+    density_score = min(1.0, avg_chars_per_page / 900.0)
+    alpha_score = min(1.0, alpha_ratio / 0.45)
+    noise_penalty = min(1.0, (replacement_ratio * 18.0) + (control_ratio * 30.0))
+
+    score = (coverage_score * 0.35) + (density_score * 0.35) + (alpha_score * 0.30)
+    score *= (1.0 - (noise_penalty * 0.60))
+
+    return round(max(0.0, min(score, 1.0)), 3)
 
 
 def _build_page_line_maps(page_texts: list[str]) -> list[dict[str, Any]]:
@@ -321,155 +326,6 @@ def _locate_chunk_line_span(
     return None, None, None
 
 
-def _safe_meta_get(obj: Any, keys: list[str], default: Any = None) -> Any:
-    if obj is None:
-        return default
-
-    if isinstance(obj, dict):
-        for key in keys:
-            if key in obj and obj[key] is not None:
-                return obj[key]
-        return default
-
-    for key in keys:
-        value = getattr(obj, key, None)
-        if value is not None:
-            return value
-    return default
-
-
-def _safe_chunk_text(obj: Any) -> str:
-    value = _safe_meta_get(obj, ["text", "chunk_text", "content", "chunkText"], "")
-    if isinstance(value, str) and value.strip():
-        return value.strip()
-    return str(obj).strip()
-
-
-def _is_docling_table(chunk: Any, text: str) -> bool:
-    meta = _safe_meta_get(chunk, ["meta", "metadata"], None)
-    label_value = _safe_meta_get(meta, ["label", "labels", "item_type", "content_type", "kind"], "")
-    labels = ""
-    if isinstance(label_value, list):
-        labels = " ".join(str(x).lower() for x in label_value)
-    else:
-        labels = str(label_value).lower()
-
-    if "table" in labels:
-        return True
-    return _is_table_chunk(text)
-
-
-def _extract_docling_page_number(chunk: Any) -> int | None:
-    meta = _safe_meta_get(chunk, ["meta", "metadata"], None)
-
-    candidates = [
-        _safe_meta_get(meta, ["page_no", "page", "page_number", "start_page"], None),
-        _safe_meta_get(chunk, ["page_no", "page", "page_number", "start_page"], None),
-    ]
-
-    for candidate in candidates:
-        if candidate is None:
-            continue
-        try:
-            page_value = int(candidate)
-            if page_value > 0:
-                return page_value
-        except Exception:
-            continue
-
-    return None
-
-
-def _docling_structural_chunks(binary: bytes, page_offset: int = 0) -> list[dict[str, Any]]:
-    global _docling_disabled_due_bad_alloc
-
-    if not _resolve_docling_enabled():
-        return []
-
-    if _docling_disabled_due_bad_alloc and _resolve_docling_disable_after_bad_alloc():
-        return []
-
-    try:
-        chunking_module = importlib.import_module("docling.chunking")
-        converter_module = importlib.import_module("docling.document_converter")
-        HierarchicalChunker = getattr(chunking_module, "HierarchicalChunker")
-        HybridChunker = getattr(chunking_module, "HybridChunker")
-        DocumentConverter = getattr(converter_module, "DocumentConverter")
-    except Exception:
-        return []
-
-    temp_path: str | None = None
-    try:
-        fd, path = tempfile.mkstemp(suffix=".pdf")
-        os.close(fd)
-        temp_path = path
-
-        with open(temp_path, "wb") as f:
-            f.write(binary)
-
-        converter = DocumentConverter()
-        conv_result = converter.convert(temp_path)
-        document = getattr(conv_result, "document", None)
-        if document is None:
-            return []
-
-        chunks_out: list[dict[str, Any]] = []
-        for chunker in (HybridChunker(), HierarchicalChunker()):
-            chunk_iter = None
-            if hasattr(chunker, "chunk"):
-                chunk_iter = chunker.chunk(document)
-            elif callable(chunker):
-                chunk_iter = chunker(document)
-
-            if chunk_iter is None:
-                continue
-
-            seen_texts: set[str] = set()
-            for chunk in chunk_iter:
-                chunk_text = _clean_text(_safe_chunk_text(chunk))
-                if not chunk_text:
-                    continue
-
-                page_number = _extract_docling_page_number(chunk)
-
-                dedupe_key = _normalize_for_match(chunk_text)
-                if not dedupe_key or dedupe_key in seen_texts:
-                    continue
-                seen_texts.add(dedupe_key)
-
-                chunks_out.append(
-                    {
-                        "content": chunk_text,
-                        "chunkType": "table" if _is_docling_table(chunk, chunk_text) else "text",
-                        "pageNumber": (page_number + page_offset) if isinstance(page_number, int) else None,
-                        "chunker": chunker.__class__.__name__,
-                    }
-                )
-
-            if chunks_out:
-                return chunks_out
-    except Exception as exc:
-        # Any Docling parsing issue should gracefully fall back to splitter-based chunking.
-        message = str(exc).lower()
-        if "bad_alloc" in message and _resolve_docling_disable_after_bad_alloc():
-            _docling_disabled_due_bad_alloc = True
-            _logger.warning(
-                "Docling reported bad_alloc. Disabling Docling for this process and switching to fallback chunking.",
-                exc_info=True,
-            )
-        else:
-            _logger.warning("Docling conversion failed. Falling back to splitter-based chunking.", exc_info=True)
-        return []
-    finally:
-        if temp_path and os.path.exists(temp_path):
-            try:
-                os.remove(temp_path)
-            except Exception:
-                pass
-
-    return []
-
-
 def _dedupe_structural_chunks(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     out: list[dict[str, Any]] = []
     seen: set[str] = set()
@@ -486,59 +342,120 @@ def _dedupe_structural_chunks(items: list[dict[str, Any]]) -> list[dict[str, Any
     return out
 
 
-def _docling_structural_chunks_batched(
-    binary: bytes,
-    total_pages: int,
-    deadline_monotonic: float | None = None,
-) -> tuple[list[dict[str, Any]], bool]:
-    if not _resolve_docling_enabled():
-        return [], False
+def _looks_like_continuation_lead(line: str) -> bool:
+    normalized = _normalize_for_match(line)
+    if not normalized:
+        return False
 
-    if _docling_disabled_due_bad_alloc and _resolve_docling_disable_after_bad_alloc():
-        return [], False
+    if re.match(r"^(?:[-+*]|\d+[\.)]?)\s*", normalized):
+        return True
+    if re.match(r"^(?:tong|trong do|cu the|gom|la|dat|du an|cong trinh|ha)\b", normalized):
+        return True
+    return False
 
-    batch_pages = _resolve_docling_batch_pages()
-    if batch_pages <= 0 or total_pages <= 0 or total_pages <= batch_pages:
-        if deadline_monotonic is not None and time.monotonic() >= deadline_monotonic:
-            return [], True
-        return _docling_structural_chunks(binary), False
 
-    try:
-        reader = PdfReader(io.BytesIO(binary))
-    except Exception:
-        if deadline_monotonic is not None and time.monotonic() >= deadline_monotonic:
-            return [], True
-        return _docling_structural_chunks(binary), False
+def _ends_with_continuation_signal(text: str) -> bool:
+    normalized = _normalize_for_match(text)
+    if not normalized:
+        return False
 
-    all_chunks: list[dict[str, Any]] = []
-    timed_out = False
-    for start in range(0, total_pages, batch_pages):
-        if deadline_monotonic is not None and time.monotonic() >= deadline_monotonic:
-            timed_out = True
-            _logger.warning(
-                "Docling batching reached soft timeout. Returning partial chunks. processed_pages=%s total_pages=%s",
-                start,
-                total_pages,
+    return any(
+        normalized.endswith(marker)
+        for marker in (
+            "la",
+            "gom",
+            "gom:",
+            "cu the",
+            "cu the:",
+            "trong do",
+            "trong do:",
+        )
+    ) or normalized.endswith(":")
+
+
+def _is_structurally_weak_chunk(item: dict[str, Any]) -> bool:
+    content = _clean_text(str(item.get("content") or ""))
+    if not content:
+        return True
+
+    normalized = _normalize_for_match(content)
+    lines = [line.strip() for line in content.splitlines() if line.strip()]
+    if not lines:
+        return True
+
+    if len(lines) == 1 and re.fullmatch(r"\d+", normalized):
+        return True
+
+    if len(lines) <= 2 and len(normalized.split()) <= 6:
+        if not re.search(r"\b\d+(?:[\.,]\d+)?\s*(?:ha|m2|%|ty)\b", normalized):
+            if not any(marker in normalized for marker in ("du an", "cong trinh", "thu hoi", "quyet dinh", "dieu ")):
+                return True
+
+    return False
+
+
+def _merge_continuation_chunks(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    if not items:
+        return []
+
+    merged: list[dict[str, Any]] = []
+    for item in items:
+        content = _clean_text(str(item.get("content") or ""))
+        if not content:
+            continue
+
+        current = dict(item)
+        current["content"] = content
+
+        if not merged:
+            merged.append(current)
+            continue
+
+        previous = merged[-1]
+        prev_content = _clean_text(str(previous.get("content") or ""))
+        prev_norm = _normalize_for_match(prev_content)
+        current_norm = _normalize_for_match(content)
+        if not prev_norm or not current_norm:
+            merged.append(current)
+            continue
+
+        prev_chunk_type = previous.get("chunkType") or ("table" if _is_table_chunk(prev_content) else "text")
+        current_chunk_type = current.get("chunkType") or ("table" if _is_table_chunk(content) else "text")
+        same_chunk_type = prev_chunk_type == current_chunk_type == "text"
+        same_page = (
+            previous.get("pageNumber") is not None
+            and previous.get("pageNumber") == current.get("pageNumber")
+        )
+        same_section = bool(previous.get("sectionHeading")) and previous.get("sectionHeading") == current.get("sectionHeading")
+        same_hierarchy = bool(previous.get("hierarchyPath")) and previous.get("hierarchyPath") == current.get("hierarchyPath")
+        current_short = len(content) <= 260 or len(content.splitlines()) <= 4
+        current_numeric = re.search(r"\b\d+(?:[\.,]\d+)?\s*(?:ha|m2|%|ty)\b", current_norm) is not None
+        prev_missing_numeric = re.search(r"\b\d+(?:[\.,]\d+)?\s*(?:ha|m2|%|ty)\b", prev_norm) is None
+
+        should_merge = (
+            same_chunk_type
+            and (same_page or same_section or same_hierarchy)
+            and (
+                _ends_with_continuation_signal(prev_content)
+                or _looks_like_continuation_lead(lines := content.splitlines()[0])
+                or (current_short and current_numeric and prev_missing_numeric)
             )
-            break
+        )
 
-        end = min(total_pages, start + batch_pages)
-        writer = PdfWriter()
-        for page_index in range(start, end):
-            writer.add_page(reader.pages[page_index])
+        if not should_merge:
+            merged.append(current)
+            continue
 
-        batch_io = io.BytesIO()
-        writer.write(batch_io)
-        batch_bytes = batch_io.getvalue()
+        previous["content"] = _clean_text(f"{prev_content}\n{content}")
+        previous["chunker"] = f"{previous.get('chunker') or 'unknown'}+ContinuationMerge"
+        if previous.get("pageNumber") is None:
+            previous["pageNumber"] = current.get("pageNumber")
+        if not previous.get("sectionHeading"):
+            previous["sectionHeading"] = current.get("sectionHeading")
+        if not previous.get("hierarchyPath"):
+            previous["hierarchyPath"] = current.get("hierarchyPath")
 
-        batch_chunks = _docling_structural_chunks(batch_bytes, page_offset=start)
-        if batch_chunks:
-            all_chunks.extend(batch_chunks)
-
-        if _docling_disabled_due_bad_alloc and _resolve_docling_disable_after_bad_alloc():
-            break
-
-    return _dedupe_structural_chunks(all_chunks), timed_out
+    return merged
 
 
 def _ocr_structural_chunks(
@@ -698,48 +615,354 @@ def _ocr_structural_chunks(
     return out, timed_out
 
 
-def _is_docling_output_reliable(structural_chunks: list[dict[str, Any]], total_pages: int) -> bool:
-    if not structural_chunks:
+def _hierarchy_line_level(line: str) -> int | None:
+    compact = line.strip()
+    if not compact:
+        return None
+
+    normalized = _normalize_for_match(compact)
+
+    # Top hierarchy (Phần/Chương/A,B,C...)
+    if re.match(r"^(phan|phần)\s+[ivxlcdm]+\b", normalized):
+        return 1
+    if re.match(r"^(chuong|chương)\s+[ivxlcdm0-9]+\b", normalized):
+        return 1
+    if re.match(r"^[A-ZĐ]\s+\S+", compact):
+        return 1
+
+    # Mid hierarchy (Mục / Roman numerals)
+    if re.match(r"^(muc|mục)\s+\d+(?:\.\d+){0,3}\b", normalized):
+        return 2
+    if re.match(r"^[IVXLCDM]+\s+\S+", compact):
+        return 2
+
+    # Lower hierarchy (3.1, 3.1.2)
+    if re.match(r"^\d+\.\d+(?:\.\d+){0,3}\b", normalized):
+        return 3
+
+    # Enumeration under active sections (1. / 1) / a. / a))
+    if re.match(r"^\d+[\.)]\s+\S+", normalized):
+        return 4
+    if re.match(r"^[a-zđ][\.)]\s+\S+", normalized):
+        return 5
+
+    return None
+
+
+def _is_new_item_marker(line: str) -> bool:
+    normalized = _normalize_for_match(line)
+    if not normalized:
         return False
 
-    if total_pages <= 1:
-        return len(structural_chunks) >= 1
+    return bool(re.match(r"^(\d+[\.)]|[a-zđ][\.)]|[ivxlcdm]+[\.)])\s+\S+", normalized))
 
-    page_numbers = {
-        int(item.get("pageNumber"))
-        for item in structural_chunks
-        if isinstance(item.get("pageNumber"), int) and int(item.get("pageNumber")) > 0
-    }
 
-    # For large PDFs, Docling can partially fail with std::bad_alloc but still return a tiny result.
-    # If page coverage/chunk volume is too low, prefer deterministic fallback.
-    expected_min_pages = max(2, int(total_pages * 0.2))
-    expected_min_chunks = max(8, int(total_pages * 0.4))
-
-    if len(page_numbers) < expected_min_pages:
+def _is_projectish_line(line: str) -> bool:
+    normalized = _normalize_for_match(line)
+    if not normalized:
         return False
 
-    if len(structural_chunks) < expected_min_chunks:
+    if any(token in normalized for token in ("du an", "cong trinh", "thu hoi", "dau gia", "gpmb")):
+        return True
+
+    if _looks_like_table_line(line):
+        return True
+
+    if re.search(r"\b\d+(?:[\.,]\d+)?\s*(ha|m2|m²)\b", normalized):
+        return True
+
+    return False
+
+
+def _is_project_table_header_line(line: str) -> bool:
+    normalized = _normalize_for_match(line)
+    if not normalized:
         return False
 
-    return True
+    markers = (
+        "tt",
+        "stt",
+        "danh muc",
+        "cong trinh",
+        "du an",
+        "ma loai dat",
+        "dien tich ke hoach",
+        "dien tich thu hoi",
+        "dia danh",
+        "phuong",
+        "can cu phap ly",
+        "ghi chu",
+    )
+    hit = sum(1 for marker in markers if marker in normalized)
+    if hit >= 3:
+        return True
+
+    return bool(re.match(r"^(tt|stt)\b", normalized) and hit >= 2)
 
 
-def _fallback_structural_chunks(text: str, page_maps: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _hierarchy_contextual_chunks(page_maps: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    if not page_maps:
+        return []
+
+    active_hierarchy: dict[int, str] = {}
+    chunks: list[dict[str, Any]] = []
+
+    for page in page_maps:
+        page_number = page.get("pageNumber")
+        lines: list[str] = page.get("lines") or []
+        i = 0
+
+        while i < len(lines):
+            line = _clean_text(lines[i])
+            if not line:
+                i += 1
+                continue
+
+            if _is_project_table_header_line(line):
+                i += 1
+                continue
+
+            level = _hierarchy_line_level(line)
+            if level is not None:
+                active_hierarchy[level] = line
+                for deeper in [k for k in active_hierarchy if k > level]:
+                    active_hierarchy.pop(deeper, None)
+                i += 1
+                continue
+
+            block = [line]
+            j = i + 1
+            while j < len(lines):
+                next_line = _clean_text(lines[j])
+                if not next_line:
+                    j += 1
+                    continue
+
+                if _hierarchy_line_level(next_line) is not None:
+                    break
+
+                if _is_new_item_marker(next_line) and len(block) >= 2 and _is_projectish_line(block[0]):
+                    break
+
+                block.append(next_line)
+                if len(block) >= 14 or len("\n".join(block)) >= 1700:
+                    break
+                j += 1
+
+            body = _clean_text("\n".join(block))
+            if body:
+                hierarchy_levels = sorted(active_hierarchy.keys())
+                hierarchy_lines = [f"[h{lvl}={active_hierarchy[lvl]}]" for lvl in hierarchy_levels]
+                hierarchy_path = " > ".join(active_hierarchy[lvl] for lvl in hierarchy_levels)
+                merged = _clean_text("\n".join([*hierarchy_lines, body]))
+                if merged:
+                    chunks.append(
+                        {
+                            "content": merged,
+                            "chunkType": "table" if _is_projectish_line(body) else "text",
+                            "pageNumber": page_number if isinstance(page_number, int) else None,
+                            "chunker": "HierarchyContextParser",
+                            "sectionHeading": active_hierarchy[max(active_hierarchy.keys())] if active_hierarchy else None,
+                            "hierarchyPath": hierarchy_path or None,
+                        }
+                    )
+
+            i = max(j, i + 1)
+
+    return _dedupe_structural_chunks(chunks)
+
+
+def _flatten_page_entries(page_maps: list[dict[str, Any]]) -> list[tuple[int | None, str]]:
+    entries: list[tuple[int | None, str]] = []
+    for page in page_maps:
+        page_number = page.get("pageNumber") if isinstance(page.get("pageNumber"), int) else None
+        for raw_line in page.get("lines") or []:
+            line = _clean_text(raw_line)
+            if not line:
+                continue
+            entries.append((page_number, line))
+    return entries
+
+
+def _detect_document_archetype(text: str, page_maps: list[dict[str, Any]]) -> str:
+    entries = _flatten_page_entries(page_maps)
+    sample_lines = [line for _, line in entries[:700]]
+    sample_blob = "\n".join(sample_lines) if sample_lines else text
+    sample_norm = _normalize_for_match(sample_blob[:140000])
+
+    if not sample_norm:
+        return "narrative_report"
+
+    has_quyet_dinh = "quyet dinh" in sample_norm
+    can_cu_count = sample_norm.count("can cu")
+    article_count = len(re.findall(r"\bdieu\s+\d+\b", sample_norm))
+    if has_quyet_dinh and can_cu_count >= 2 and article_count >= 1:
+        return "decision"
+
+    table_markers = (
+        "danh muc cong trinh",
+        "du an",
+        "ma loai dat",
+        "dien tich ke hoach",
+        "dien tich thu hoi",
+        "can cu phap ly",
+        "ghi chu",
+        "hdnd thanh pho",
+    )
+    table_hits = sum(1 for marker in table_markers if marker in sample_norm)
+    roman_headers = sum(1 for line in sample_lines if re.match(r"^[IVXLCDM]+\s+\S+", line))
+    alpha_headers = sum(1 for line in sample_lines if re.match(r"^[A-ZĐ]\s+\S+", line))
+    letter_subgroups = sum(1 for line in sample_lines if re.match(r"^[a-zđ][\.)]\s+\S+", _normalize_for_match(line)))
+    numeric_items = sum(1 for line in sample_lines if re.match(r"^\d+[\.)]\s+\S+", _normalize_for_match(line)))
+    project_rows = sum(1 for line in sample_lines if _is_projectish_line(line) and (re.match(r"^\d+", _normalize_for_match(line)) is not None or " du an " in f" {_normalize_for_match(line)} "))
+    table_header_lines = sum(1 for line in sample_lines if _is_project_table_header_line(line))
+    hierarchy_levels = sum(1 for line in sample_lines if _hierarchy_line_level(line) is not None)
+
+    hierarchy_table_like = (
+        alpha_headers >= 1
+        and roman_headers >= 1
+        and (letter_subgroups >= 1 or table_header_lines >= 1)
+        and project_rows >= 2
+    )
+
+    if hierarchy_table_like or (table_hits >= 2 and hierarchy_levels >= 5 and numeric_items >= 2):
+        return "hierarchical_table"
+
+    return "narrative_report"
+
+
+def _decision_structural_chunks(page_maps: list[dict[str, Any]], text: str) -> list[dict[str, Any]]:
+    entries = [item for item in _flatten_page_entries(page_maps) if not _is_project_table_header_line(item[1])]
+    if not entries:
+        entries = [(None, line) for line in text.splitlines() if _clean_text(line)]
+
+    if not entries:
+        return []
+
+    norms = [_normalize_for_match(line) for _, line in entries]
+    total = len(entries)
+    article_starts = [idx for idx, norm in enumerate(norms) if re.match(r"^dieu\s+\d+\b", norm)]
+    first_article = article_starts[0] if article_starts else None
+    article_end = total
+
+    if first_article is not None:
+        for idx in range(first_article, total):
+            norm = norms[idx]
+            if norm.startswith("noi nhan") or norm.startswith("tm.") or norm.startswith("kt."):
+                article_end = idx
+                break
+
+    chunks: list[dict[str, Any]] = []
+
+    def _append_chunk(block: list[tuple[int | None, str]], section: str, heading: str | None = None) -> None:
+        if not block:
+            return
+        body = _clean_text("\n".join(line for _, line in block))
+        if not body:
+            return
+
+        tags = [f"[decision_section={section}]"]
+        if heading:
+            tags.append(f"[decision_heading={heading}]")
+        tagged = _clean_text("\n".join([*tags, body]))
+        pieces = [tagged] if len(tagged) <= 2200 else _splitter.split_text(tagged)
+
+        for piece in pieces:
+            clean_piece = _clean_text(piece)
+            if not clean_piece:
+                continue
+            chunks.append(
+                {
+                    "content": clean_piece,
+                    "chunkType": "text",
+                    "pageNumber": block[0][0],
+                    "chunker": "DecisionStructureParser",
+                    "sectionHeading": heading or section,
+                }
+            )
+
+    legal_starts = [
+        idx
+        for idx, norm in enumerate(norms)
+        if norm.startswith("can cu") and (first_article is None or idx < first_article)
+    ]
+    legal_ranges: list[tuple[int, int]] = []
+    for pos, start in enumerate(legal_starts):
+        end = legal_starts[pos + 1] if (pos + 1) < len(legal_starts) else (first_article if first_article is not None else total)
+        legal_ranges.append((start, end))
+        heading = entries[start][1][:140]
+        _append_chunk(entries[start:end], section="legal_basis", heading=heading)
+
+    front_end = first_article if first_article is not None else total
+    legal_indices: set[int] = set()
+    for start, end in legal_ranges:
+        legal_indices.update(range(start, end))
+    front_block = [entries[idx] for idx in range(0, front_end) if idx not in legal_indices]
+    _append_chunk(front_block, section="front_matter", heading="Quyet dinh")
+
+    if first_article is not None:
+        article_span = [idx for idx in article_starts if idx < article_end]
+        for pos, start in enumerate(article_span):
+            end = article_span[pos + 1] if (pos + 1) < len(article_span) else article_end
+            heading = entries[start][1][:180]
+            _append_chunk(entries[start:end], section="article", heading=heading)
+
+    if article_end < total:
+        _append_chunk(entries[article_end:], section="closing", heading="Noi nhan")
+
+    return _dedupe_structural_chunks(chunks)
+
+
+def _section_table_fallback_chunks(text: str, page_maps: list[dict[str, Any]]) -> list[dict[str, Any]]:
     text_blocks, table_blocks = _split_text_and_table_blocks(text)
     chunks: list[dict[str, Any]] = []
 
     for block in text_blocks:
-        for chunk in _splitter.split_text(block):
-            clean_chunk = _clean_text(chunk)
-            if clean_chunk:
-                chunks.append({"content": clean_chunk, "chunkType": "text", "pageNumber": None, "chunker": "RecursiveCharacterTextSplitter"})
+        section_items = _split_text_sections(block)
+        for section in section_items:
+            heading = section.get("heading")
+            section_text = _clean_text(str(section.get("content") or ""))
+            if not section_text:
+                continue
+
+            pieces = [section_text] if len(section_text) <= 1900 else _splitter.split_text(section_text)
+            for index, piece in enumerate(pieces):
+                clean_chunk = _clean_text(piece)
+                if not clean_chunk:
+                    continue
+
+                if heading and index > 0:
+                    heading_norm = _normalize_for_match(heading)
+                    prefix_norm = _normalize_for_match(clean_chunk[: max(160, len(heading) + 20)])
+                    if heading_norm and heading_norm not in prefix_norm:
+                        clean_chunk = _clean_text(f"{heading}\n{clean_chunk}")
+
+                chunks.append(
+                    {
+                        "content": clean_chunk,
+                        "chunkType": "text",
+                        "pageNumber": None,
+                        "chunker": "SectionAwareSplitter",
+                        "sectionHeading": heading,
+                    }
+                )
 
     for block in table_blocks:
-        for chunk in _splitter.split_text(block):
-            clean_chunk = _clean_text(chunk)
-            if clean_chunk:
-                chunks.append({"content": clean_chunk, "chunkType": "table", "pageNumber": None, "chunker": "RecursiveCharacterTextSplitter"})
+        row_chunks = _chunk_table_block_rows(block, rows_per_chunk=4)
+        for row_chunk in row_chunks:
+            pieces = [row_chunk] if len(row_chunk) <= 2100 else _splitter.split_text(row_chunk)
+            for piece in pieces:
+                clean_chunk = _clean_text(piece)
+                if clean_chunk:
+                    chunks.append(
+                        {
+                            "content": clean_chunk,
+                            "chunkType": "table",
+                            "pageNumber": None,
+                            "chunker": "TableRowSplitter",
+                            "sectionHeading": None,
+                        }
+                    )
 
     if chunks:
         return chunks
@@ -748,9 +971,39 @@ def _fallback_structural_chunks(text: str, page_maps: list[dict[str, Any]]) -> l
         for chunk in _splitter.split_text("\n".join(page["lines"])):
             clean_chunk = _clean_text(chunk)
             if clean_chunk:
-                chunks.append({"content": clean_chunk, "chunkType": "text", "pageNumber": page["pageNumber"], "chunker": "RecursiveCharacterTextSplitter"})
+                chunks.append(
+                    {
+                        "content": clean_chunk,
+                        "chunkType": "text",
+                        "pageNumber": page["pageNumber"],
+                        "chunker": "RecursiveCharacterTextSplitter",
+                        "sectionHeading": None,
+                    }
+                )
 
     return chunks
+
+
+def _fallback_structural_chunks(text: str, page_maps: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    archetype = _detect_document_archetype(text, page_maps)
+
+    if archetype == "decision":
+        chunks = _decision_structural_chunks(page_maps, text)
+        if chunks:
+            return chunks
+        return _section_table_fallback_chunks(text, page_maps)
+
+    if archetype == "hierarchical_table":
+        chunks = _hierarchy_contextual_chunks(page_maps)
+        if chunks:
+            return chunks
+        return _section_table_fallback_chunks(text, page_maps)
+
+    chunks = _section_table_fallback_chunks(text, page_maps)
+    if chunks:
+        return chunks
+
+    return _hierarchy_contextual_chunks(page_maps)
 
 
 def _build_source_locator(page_number: int | None, line_start: int | None, line_end: int | None) -> str:
@@ -773,6 +1026,102 @@ def _looks_like_table_line(line: str) -> bool:
     # Light heuristic for table-like rows with many numeric fragments.
     numeric_tokens = re.findall(r"\d+[\d.,]*", compact)
     return len(numeric_tokens) >= 3 and len(compact.split()) >= 6
+
+
+def _is_section_heading_line(line: str) -> bool:
+    compact = line.strip()
+    if not compact:
+        return False
+
+    normalized = _normalize_for_match(compact)
+    if re.match(r"^(chuong|phu luc|muc|phan|dieu)\b", normalized):
+        return True
+
+    if re.match(r"^\d+(?:\.\d+){0,3}\b", normalized):
+        return True
+
+    alpha_chars = [ch for ch in compact if ch.isalpha()]
+    if len(alpha_chars) < 8:
+        return False
+
+    uppercase_ratio = sum(1 for ch in alpha_chars if ch.isupper()) / max(1, len(alpha_chars))
+    return uppercase_ratio >= 0.78 and len(compact) <= 150
+
+
+def _split_text_sections(block: str) -> list[dict[str, str | None]]:
+    lines = [line.strip() for line in block.splitlines() if line.strip()]
+    if not lines:
+        return []
+
+    sections: list[dict[str, str | None]] = []
+    current_heading: str | None = None
+    current_lines: list[str] = []
+
+    def _flush() -> None:
+        nonlocal current_heading, current_lines
+        if not current_heading and not current_lines:
+            return
+
+        merged_lines: list[str] = []
+        if current_heading:
+            merged_lines.append(current_heading)
+        merged_lines.extend(current_lines)
+
+        content = _clean_text("\n".join(merged_lines))
+        if content:
+            sections.append({"heading": current_heading, "content": content})
+
+        current_heading = None
+        current_lines = []
+
+    for line in lines:
+        if _is_section_heading_line(line):
+            _flush()
+            current_heading = line
+            continue
+        current_lines.append(line)
+
+    _flush()
+
+    if not sections:
+        fallback_content = _clean_text(block)
+        if fallback_content:
+            return [{"heading": None, "content": fallback_content}]
+        return []
+
+    return sections
+
+
+def _chunk_table_block_rows(block: str, rows_per_chunk: int = 4) -> list[str]:
+    lines = [line.strip() for line in block.splitlines() if line.strip()]
+    if not lines:
+        return []
+
+    header_lines: list[str] = []
+    row_lines: list[str] = []
+    header_markers = ("stt", "noi dung", "chi tieu", "don vi", "ghi chu", "tong cong", "ma")
+
+    for index, line in enumerate(lines):
+        normalized = _normalize_for_match(line)
+        looks_header = any(marker in normalized for marker in header_markers)
+        if index < 2 and (looks_header or not _looks_like_table_line(line)):
+            header_lines.append(line)
+            continue
+        row_lines.append(line)
+
+    if not row_lines:
+        row_lines = lines
+        header_lines = []
+
+    out: list[str] = []
+    stride = max(1, int(rows_per_chunk))
+    for start in range(0, len(row_lines), stride):
+        window = row_lines[start : start + stride]
+        chunk_text = _clean_text("\n".join([*header_lines, *window]))
+        if chunk_text:
+            out.append(chunk_text)
+
+    return out
 
 
 def _split_text_and_table_blocks(text: str) -> tuple[list[str], list[str]]:
@@ -814,17 +1163,19 @@ def _split_text_and_table_blocks(text: str) -> tuple[list[str], list[str]]:
 
 
 def _enrich_for_embedding(content: str, metadata: dict[str, Any]) -> str:
-    tags = [
-        f"[document_scope={metadata.get('documentScope', 'planning')}]",
-        f"[document_type={metadata.get('documentType') or 'unknown'}]",
-        f"[city={metadata.get('city') or 'unknown'}]",
-        f"[district={metadata.get('district') or 'unknown'}]",
-        f"[plan_year={metadata.get('planYear') or 'unknown'}]",
-        f"[chunk_type={metadata.get('chunkType') or 'text'}]",
-        f"[dossier_code={metadata.get('dossierCode') or 'unknown'}]",
-        f"[title={metadata.get('title') or 'unknown'}]",
+    descriptor_parts = [
+        f"document_type:{metadata.get('documentType') or 'unknown'}",
+        f"district:{metadata.get('district') or 'unknown'}",
+        f"plan_year:{metadata.get('planYear') or 'unknown'}",
+        f"chunk_type:{metadata.get('chunkType') or 'text'}",
     ]
-    return "\n".join(tags + [content])
+
+    title = str(metadata.get("title") or "").strip()
+    if title:
+        descriptor_parts.append(f"title:{title[:140]}")
+
+    descriptor = " | ".join(descriptor_parts)
+    return f"{descriptor}\n{content}" if descriptor else content
 
 
 async def fetch_document_bytes(source_url: str, timeout: int = 60) -> bytes:
@@ -875,20 +1226,36 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
         fmt = "pdf" if payload.source_url.lower().endswith(".pdf") else "txt"
 
     if fmt == "pdf":
-        raw_text = _extract_pdf_text(source_bytes)
-        page_texts = _extract_pdf_pages(source_bytes)
+        raw_text, page_texts = _extract_pdf_text_and_pages(source_bytes)
     else:
         raw_text = source_bytes.decode("utf-8", errors="ignore")
         page_texts = [_clean_text(raw_text)] if raw_text else []
 
     cleaned = _clean_text(raw_text)
-    force_docling_ocr = fmt == "pdf" and not cleaned
+    pdf_text_quality_score: float | None = None
+    low_quality_pdf_text = False
+
+    force_ocr_extract = fmt == "pdf" and not cleaned
+    force_ocr_reason = "no_text_layer" if force_ocr_extract else None
+
+    if fmt == "pdf":
+        pdf_text_quality_score = _estimate_pdf_text_quality(page_texts, cleaned)
+        quality_threshold = _resolve_pdf_text_quality_min_score()
+        force_ocr_on_low_quality = _resolve_pdf_force_ocr_on_low_quality()
+
+        low_quality_pdf_text = (
+            bool(cleaned)
+            and force_ocr_on_low_quality
+            and pdf_text_quality_score < quality_threshold
+        )
+
+        if low_quality_pdf_text:
+            force_ocr_extract = True
+            force_ocr_reason = "low_text_quality"
 
     start_monotonic = time.monotonic()
     soft_timeout_seconds = _resolve_ingest_soft_timeout_seconds()
     require_full = _resolve_ingest_require_full()
-    docling_enabled = _resolve_docling_enabled()
-    scanned_pdf_use_docling_first = _resolve_scan_pdf_use_docling_first()
     if require_full and soft_timeout_seconds > 0:
         _logger.warning(
             "PLANNING_INGEST_REQUIRE_FULL=true ignores soft timeout. configured_timeout_seconds=%s",
@@ -897,14 +1264,15 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
     deadline_monotonic = (start_monotonic + soft_timeout_seconds) if (soft_timeout_seconds > 0 and not require_full) else None
 
     _logger.warning(
-        "Planning ingest effective config. planning_document_id=%s require_full=%s docling_enabled=%s scanned_pdf_use_docling_first=%s ocr_fallback_enabled=%s soft_timeout_seconds=%s ocr_max_pages=%s",
+        "Planning ingest effective config. planning_document_id=%s require_full=%s ocr_fallback_enabled=%s soft_timeout_seconds=%s ocr_max_pages=%s pdf_text_quality_score=%s force_ocr_extract=%s force_reason=%s",
         payload.planning_document_id,
         require_full,
-        docling_enabled,
-        scanned_pdf_use_docling_first,
         _resolve_pdf_ocr_fallback_enabled(),
         soft_timeout_seconds,
         _resolve_pdf_ocr_max_pages(),
+        pdf_text_quality_score,
+        force_ocr_extract,
+        force_ocr_reason,
     )
 
     page_maps = _build_page_line_maps(page_texts)
@@ -912,69 +1280,14 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
     timed_out = False
 
     structural_chunks: list[dict[str, Any]] = []
-    if fmt == "pdf":
-        max_docling_pages = _resolve_docling_max_pages()
-        max_docling_pdf_bytes = _resolve_docling_max_pdf_bytes()
-        is_large_by_pages = max_docling_pages > 0 and total_pages > max_docling_pages
-        is_large_by_bytes = max_docling_pdf_bytes > 0 and len(source_bytes) > max_docling_pdf_bytes
-
-        if force_docling_ocr:
-            if docling_enabled and scanned_pdf_use_docling_first:
-                _logger.warning(
-                    "PDF has no text layer from pypdf; forcing Docling OCR path. total_pages=%s, pdf_bytes=%s",
-                    total_pages,
-                    len(source_bytes),
-                )
-                structural_chunks, timed_out = _docling_structural_chunks_batched(
-                    source_bytes,
-                    total_pages,
-                    deadline_monotonic=deadline_monotonic,
-                )
-            else:
-                _logger.warning(
-                    "PDF has no text layer from pypdf; bypassing Docling and using OCR fallback path. total_pages=%s, pdf_bytes=%s docling_enabled=%s scanned_pdf_use_docling_first=%s",
-                    total_pages,
-                    len(source_bytes),
-                    docling_enabled,
-                    scanned_pdf_use_docling_first,
-                )
-
-        elif is_large_by_pages:
-            _logger.warning(
-                "Skipping Docling for large PDF and using fallback chunking. total_pages=%s, max_docling_pages=%s",
-                total_pages,
-                max_docling_pages,
-            )
-        elif is_large_by_bytes:
-            _logger.warning(
-                "Skipping Docling for large PDF payload and using fallback chunking. pdf_bytes=%s, max_docling_pdf_bytes=%s",
-                len(source_bytes),
-                max_docling_pdf_bytes,
-            )
-        else:
-            structural_chunks, timed_out = _docling_structural_chunks_batched(
-                source_bytes,
-                total_pages,
-                deadline_monotonic=deadline_monotonic,
-            )
-            if structural_chunks and not _is_docling_output_reliable(structural_chunks, total_pages):
-                _logger.warning(
-                    "Docling output considered unreliable; switching to fallback chunking. total_pages=%s, docling_chunks=%s",
-                    total_pages,
-                    len(structural_chunks),
-                )
-                structural_chunks = []
-
-    if not structural_chunks:
-        structural_chunks = _fallback_structural_chunks(cleaned, page_maps)
-
-    if fmt == "pdf" and not structural_chunks and force_docling_ocr:
+    if fmt == "pdf" and force_ocr_extract:
         if deadline_monotonic is not None and time.monotonic() >= deadline_monotonic:
             timed_out = True
             _logger.warning("Skipping OCR fallback due to elapsed soft timeout before OCR start.")
         else:
             _logger.warning(
-                "No extractable text from PDF + Docling unavailable/failed. Trying OCR fallback. total_pages=%s",
+                "Triggering OCR fallback for PDF extraction. reason=%s total_pages=%s",
+                force_ocr_reason,
                 total_pages,
             )
             structural_chunks, ocr_timed_out = _ocr_structural_chunks(
@@ -984,6 +1297,12 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
                 require_full=require_full,
             )
             timed_out = timed_out or ocr_timed_out
+
+    if not structural_chunks:
+        structural_chunks = _fallback_structural_chunks(cleaned, page_maps)
+
+    structural_chunks = _merge_continuation_chunks(structural_chunks)
+    structural_chunks = [item for item in structural_chunks if not _is_structurally_weak_chunk(item)]
 
     if timed_out:
         _logger.warning(
@@ -1013,6 +1332,12 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
     table_count = 0
     global_count = 0
 
+    canonical_district = canonicalize_planning_district(
+        payload.district,
+        title=payload.title,
+        dossier_code=payload.dossier_code,
+    )
+
     base_metadata: dict[str, Any] = {
         "documentScope": "planning",
         "planningDocumentId": payload.planning_document_id,
@@ -1022,7 +1347,9 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
         "documentType": payload.document_type,
         "dossierCode": payload.dossier_code,
         "city": payload.city,
-        "district": payload.district,
+        "district": canonical_district or payload.district,
+        "districtCanonical": canonical_district,
+        "districtRaw": payload.district,
         "planYear": payload.plan_year,
         "propertyId": payload.property_id,
         "rawMeta": payload.raw_meta or {},
@@ -1063,6 +1390,8 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
                 "lineEnd": line_end,
                 "sourceLocator": source_locator,
                 "chunker": item.get("chunker") or "unknown",
+                "sectionHeading": item.get("sectionHeading"),
+                "hierarchyPath": item.get("hierarchyPath"),
                 "chunkPreview": chunk[:400],
             }
         )

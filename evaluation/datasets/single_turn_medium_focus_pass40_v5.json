@@ -1,0 +1,114 @@
+[
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Đất sử dụng vào mục đích công cộng năm 2025 của quận Hoàn Kiếm được cấu thành như thế nào?",
+    "expected_output_outline": [
+      "Nêu tổng diện tích đất sử dụng vào mục đích công cộng là 146,38 ha",
+      "Liệt kê đúng các thành phần chính như đất giao thông, thủy lợi, di tích danh thắng, năng lượng chiếu sáng, bưu chính viễn thông công nghệ thông tin, chợ, khu vui chơi sinh hoạt cộng đồng",
+      "Nêu được đất giao thông là thành phần lớn nhất với 122,33 ha",
+      "Không tự thêm loại đất công cộng không có trong bảng"
+    ],
+    "context": [
+      "source=report_2025, section=3.3.2, publicPurposeLand2025=146.38 ha",
+      "source=report_2025, table=Bảng 12, components=DGT 122.33|DTL 0.74|DDD 13.81|DNL 0.02|DBV 1.05|DCH 2.01|DKV 6.41"
+    ],
+    "target_metadata": {
+      "publicPurposeLand2025Ha": 146.38,
+      "largestComponent": "Đất công trình giao thông",
+      "planningDocumentId": 17
+    },
+    "id": "ST_MEDIUM_029"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Tiến độ giải phóng mặt bằng của Dự án thành phần 1.1 phục vụ đường Vành đai 4 đoạn qua quận Hà Đông được thực hiện như thế nào?",
+    "expected_output_outline": [
+      "Nêu được tổng diện tích đất thu hồi là 685.425,88 m2",
+      "Nêu được quận đã thẩm định, phê duyệt phương án bồi thường hỗ trợ tái định cư đối với 66,7 ha đất của 1.823 tổ chức, hộ gia đình",
+      "Nêu được tổng số tiền phê duyệt là 778,05 tỷ đồng, đạt tỷ lệ 97,6%",
+      "Có thể nhắc thêm công tác di chuyển 1.563/1.582 ngôi mộ đã hoàn thành"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, pages=14-15, vanhDai4RecoveryArea=685425.88 m2, approvedCompensationArea=66.7 ha, affectedEntities=1823, approvedAmount=778.05 billion VND, progress=97.6%, gravesMoved=1563/1582"
+    ],
+    "target_metadata": {
+      "recoveryAreaM2": 685425.88,
+      "approvedCompensationAreaHa": 66.7,
+      "affectedEntities": 1823,
+      "approvedAmountBillionVND": 778.05,
+      "planningDocumentId": 137
+    },
+    "id": "ST_MEDIUM_033"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Kết quả thực hiện Kế hoạch sử dụng đất năm 2024 của thị xã Sơn Tây được phản ánh như thế nào ở nhóm dự án đã thực hiện và nhóm dự án chuyển tiếp sang 2025?",
+    "expected_output_outline": [
+      "Nêu được tổng số dự án được UBND thành phố phê duyệt năm 2024 là 115 dự án, diện tích đăng ký 872,20 ha",
+      "Nêu được nhóm đã thực hiện và dự kiến thực hiện đến 31/12/2024 là 64 dự án, diện tích 345,66 ha",
+      "Nêu được nhóm chưa tổ chức thực hiện và chuyển tiếp sang 2025 là 42 dự án, diện tích 509,26 ha",
+      "Không tự suy diễn thêm các nhóm khác nếu tài liệu không yêu cầu"
+    ],
+    "context": [
+      "source=report_son_tay_2025, approvedProjects2024=115, approvedArea2024=872.20 ha, implemented2024=64, implementedArea2024=345.66 ha, carriedForward2025=42, carriedForwardArea2025=509.26 ha"
+    ],
+    "target_metadata": {
+      "approvedProjects2024": 115,
+      "implemented2024": 64,
+      "carriedForward2025": 42,
+      "planningDocumentId": 110
+    },
+    "id": "ST_MEDIUM_041"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Công tác giải phóng mặt bằng trên địa bàn quận Hoàng Mai trong năm 2024 được triển khai như thế nào?",
+    "expected_output_outline": [
+      "Nêu được quận đang triển khai GPMB 45 dự án",
+      "Nêu được đã ban hành thông báo thu hồi đất 1.571 hộ, điều tra 1.106 hộ, xác nhận nguồn gốc đất 1.311 hộ",
+      "Nêu được đã lập 1.593 phương án dự thảo và phê duyệt 1.195 phương án chính thức với số tiền 368,5 tỷ đồng",
+      "Có thể nhắc thêm quận đã thực hiện cưỡng chế, phá dỡ và vận động người dân bàn giao mặt bằng ở một số dự án trọng điểm"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, GPMB2024=45 projects, notices=1571 households, surveyed=1106 households, originConfirmed=1311 households, draftPlans=1593, approvedPlans=1195, compensation=368.5 tỷ đồng"
+    ],
+    "target_metadata": {
+      "GPMBProjects2024": 45,
+      "notices": 1571,
+      "approvedPlans": 1195,
+      "planningDocumentId": 133
+    },
+    "id": "ST_MEDIUM_047"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Công tác đấu giá quyền sử dụng đất của quận Hoàng Mai trong năm 2024 được triển khai như thế nào?",
+    "expected_output_outline": [
+      "Nêu được quận tập trung triển khai 6 ô đất/dự án đấu giá",
+      "Nêu được dự án F1/ODK5 phường Vĩnh Hưng đã đấu giá thành công với giá trúng 60,958 tỷ đồng",
+      "Nêu được ô đất D1/P1 phường Hoàng Văn Thụ đã tổ chức mời đấu giá 3 lần nhưng chưa có nhà đầu tư",
+      "Có thể nêu thêm một số dự án khác như TT4 Nam hồ Linh Đàm, giai đoạn II Nam hồ Linh Đàm, G1/ODK2 Thanh Trì đang tiếp tục thủ tục hoặc dự kiến đấu giá"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, auction2024=6 land lots/projects",
+      "source=report_hoang_mai_2025, F1_ODK5_VinhHung=2387 m2, successAuction=true, winningPrice=60.958 tỷ đồng",
+      "source=report_hoang_mai_2025, D1_P1_HoangVanThu=1835 m2, auctionInvitations=3, noInvestor=true"
+    ],
+    "target_metadata": {
+      "auctionProjects2024": 6,
+      "successfulAuctionProject": "F1/ODK5 phường Vĩnh Hưng",
+      "planningDocumentId": 133
+    },
+    "id": "ST_MEDIUM_048"
+  }
+]

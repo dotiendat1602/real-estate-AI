@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from typing import Any
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
@@ -16,7 +17,19 @@ router = APIRouter()
 
 _embeddings = build_embeddings()
 _vs = None
-_splitter = build_splitter()
+
+
+def _int_env(name: str, default: int) -> int:
+    try:
+        return max(1, int(os.getenv(name, str(default)).strip()))
+    except Exception:
+        return default
+
+
+_splitter = build_splitter(
+    chunk_size=_int_env("LISTING_CHUNK_SIZE", 900),
+    chunk_overlap=_int_env("LISTING_CHUNK_OVERLAP", 120),
+)
 
 async def initialize_vector_store():
     """Khởi tạo async vector store"""

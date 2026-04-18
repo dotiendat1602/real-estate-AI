@@ -1,0 +1,28 @@
+[
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các chỉ tiêu sử dụng đất năm 2025 của quận Hoàng Mai biến động như thế nào so với hiện trạng năm 2024?",
+    "expected_output_outline": [
+      "Nêu được đất nông nghiệp giảm từ 803,81 ha xuống 742,08 ha",
+      "Nêu được đất phi nông nghiệp tăng từ 3.215,40 ha lên 3.277,14 ha",
+      "Nêu được quận không còn đất chưa sử dụng ở cả năm 2024 và trong kế hoạch 2025",
+      "Có thể kết luận xu hướng chính là giảm đất nông nghiệp và tăng đất phi nông nghiệp"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, agricultural2024=803.81 ha, nonAgricultural2024=3215.40 ha, unused2024=0 ha",
+      "source=report_hoang_mai_2025, agricultural2025=742.08 ha, nonAgricultural2025=3277.14 ha, unused2025=0 ha"
+    ],
+    "target_metadata": {
+      "agricultural2024Ha": 803.81,
+      "agricultural2025Ha": 742.08,
+      "nonAgricultural2024Ha": 3215.4,
+      "nonAgricultural2025Ha": 3277.14,
+      "unused2024Ha": 0,
+      "unused2025Ha": 0,
+      "planningDocumentId": 133
+    },
+    "id": "ST_MEDIUM_046"
+  }
+]

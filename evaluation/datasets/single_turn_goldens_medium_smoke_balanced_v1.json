@@ -1,0 +1,508 @@
+[
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Căn nhà ở ngõ 281 Trương Định phù hợp với gia đình có ô tô như thế nào?",
+    "expected_output_outline": [
+      "Nêu được các ý chính: nhà có 4 phòng ngủ, 3 phòng vệ sinh, full nội thất",
+      "Đề cập được lợi thế ô tô 7 chỗ vào nhà hoặc ngõ oto quay đầu"
+    ],
+    "context": [
+      "postId=146, propertyId=145, listingType=Cần bán, title=Chính chủ bán nhà Trương Định 67m2 5T mặt tiền 5m 2 ngõ oto vào nhà, price=14000000000 VND, area=67 m2, bedrooms=4, bathrooms=3, furnishing=FULLY_FURNISHED, address=ngõ 281 Đường Trương Định Phường Tương Mai Quận Hoàng Mai Hà Nội, highlights=2 mặt ngõ|oto 7 chỗ vào nhà|ngõ oto quay đầu"
+    ],
+    "target_metadata": {
+      "postId": 146,
+      "propertyId": 145
+    },
+    "id": "ST_MEDIUM_001"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Nhà nguyên căn tại Nhổn có thể vận hành theo mô hình căn hộ mini như thế nào?",
+    "expected_output_outline": [
+      "Nêu được các ý chính: tổng 7 căn hộ mini độc lập hoặc 7 phòng ngủ khép kín",
+      "Đề cập mỗi phòng có vệ sinh và bếp riêng",
+      "Có thể nêu thêm khu vực đông dân, nhu cầu thuê cao để giải thích tính phù hợp"
+    ],
+    "context": [
+      "postId=295, propertyId=294, listingType=Cho thuê, title=Chính chủ cho thuê nguyên căn thiết kế phù hợp cho thuê 7 căn hộ mini tại Nhổn, price=25000000 VND, area=45 m2, bedrooms=7, bathrooms=7, furnishing=PARTLY_FURNISHED, address=ngõ 27 Đường Nhổn Phường Cầu Diễn Quận Nam Từ Liêm Hà Nội, highlights=4 tầng + 1 tầng thượng|7 căn hộ mini độc lập|mỗi phòng có vệ sinh và bếp riêng|khu dân cư đông đúc"
+    ],
+    "target_metadata": {
+      "postId": 295,
+      "propertyId": 294
+    },
+    "id": "ST_MEDIUM_003"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Nhà ở phố Quang Tiến, Tây Mỗ thuận tiện cho sinh hoạt gia đình như thế nào?",
+    "expected_output_outline": [
+      "Nêu được các ý chính: 3 phòng ngủ, 4 phòng vệ sinh, full nội thất",
+      "Đề cập được tiện ích xung quanh như trường học khoảng 500m và bệnh viện/Aeon Mall khoảng 2km"
+    ],
+    "context": [
+      "postId=290, propertyId=289, listingType=Cho thuê, title=Chính chủ cho thuê nhà 5 tầng ở phố Quang Tiến Tây Mỗ, price=16000000 VND, area=38 m2, bedrooms=3, bathrooms=4, direction=Đông, furnishing=FULLY_FURNISHED, address=Khu đô thị Đại Mỗ Hà Nội Đường Quang Tiến Phường Đại Mỗ Quận Nam Từ Liêm Hà Nội, highlights=5 tầng|trường cấp 1 và 3 cách 500m|bệnh viện và Aeon Mall Hà Đông cách khoảng 2km"
+    ],
+    "target_metadata": {
+      "postId": 290,
+      "propertyId": 289
+    },
+    "id": "ST_MEDIUM_004"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Văn phòng ở 526-528 Nguyễn Văn Cừ đáp ứng nhu cầu vận hành kinh doanh như thế nào?",
+    "expected_output_outline": [
+      "Nêu được các ý chính: diện tích 217 m², có tầng hầm và 10 tầng nổi",
+      "Đề cập được các hạ tầng hỗ trợ như điều hòa trung tâm, PCCC, thang máy, bảo vệ 24/24",
+      "Có thể nhắc các mô hình phù hợp như văn phòng, spa, thời trang, ngân hàng"
+    ],
+    "context": [
+      "postId=299, propertyId=298, listingType=Cho thuê, title=Cho thuê văn phòng 526-528 Nguyễn Văn Cừ phường Bồ Đề Hà Nội, price=30000000 VND, area=217 m2, furnishing=PARTLY_FURNISHED, address=Số 526+528 Đường Nguyễn Văn Cừ Phường Gia Thụy Quận Long Biên Hà Nội, highlights=1 tầng hầm|10 tầng nổi|điều hòa trung tâm|PCCC thành phố cấp|thang máy|bảo vệ 24/24|phù hợp văn phòng spa thời trang ngân hàng"
+    ],
+    "target_metadata": {
+      "postId": 299,
+      "propertyId": 298
+    },
+    "id": "ST_MEDIUM_010"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Căn hộ 2 phòng ngủ ở Quận 1 hỗ trợ cuộc sống tiện nghi trong trung tâm như thế nào?",
+    "expected_output_outline": [
+      "Nêu được các ý chính: 2 phòng ngủ, 2 phòng vệ sinh, full nội thất, view sông",
+      "Đề cập được các tiện ích nội khu như hồ bơi, phòng gym, siêu thị, an ninh 24/7"
+    ],
+    "context": [
+      "postId=1, propertyId=1, listingType=Cần bán, title=Bán căn hộ 2PN Quận 1 full nội thất, price=6500000000 VND, area=75 m2, bedrooms=2, bathrooms=2, direction=Đông Nam, furnishing=FULLY_FURNISHED, city=Hồ Chí Minh, ward=Phường Bến Nghé, district=Quận 1, amenities=Máy lạnh|Tủ âm tường|Ban công|Hồ bơi|Phòng gym|Thang máy|Camera an ninh|Khóa từ|Bãi giữ xe ô tô"
+    ],
+    "target_metadata": {
+      "postId": 1,
+      "propertyId": 1
+    },
+    "id": "ST_MEDIUM_011"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Căn hộ H1 tập thể Nguyễn Công Trứ phù hợp với người thuê ngân sách thấp như thế nào?",
+    "expected_output_outline": [
+      "Nêu được các ý chính: giá thuê 5.000.000 VNĐ, diện tích 45 m², 1 phòng ngủ 1 vệ sinh",
+      "Đề cập được tiện ích xung quanh như công viên, WinMart và bệnh viện",
+      "Có thể nhắc thời gian thuê tối thiểu 1 năm"
+    ],
+    "context": [
+      "postId=83, propertyId=82, listingType=Cho thuê, title=Cho thuê CC 45m2 tại H1 tập thể Nguyễn Công Trứ, price=5000000 VND, area=45 m2, bedrooms=1, bathrooms=1, direction=Nam, address=H1 tập thể Nguyễn Công Trứ Đường Nguyễn Công Trứ Phường Phố Huế Quận Hai Bà Trưng Hà Nội, highlights=gần công viên Thống Nhất|gần công viên Tuổi trẻ Thủ đô|gần WinMart|gần bệnh viện lớn|minRentalPeriod=1 year"
+    ],
+    "target_metadata": {
+      "postId": 83,
+      "propertyId": 82
+    },
+    "id": "ST_MEDIUM_012"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Lô đất khu dịch vụ Đồng Mai có thể phát triển nhà ở hoặc công trình như thế nào?",
+    "expected_output_outline": [
+      "Nêu được các ý chính: diện tích 50 m², đường trước nhà rộng 6m và có vỉa hè",
+      "Đề cập được cấp phép xây lên đến 6 tầng",
+      "Có thể nhắc thêm gần Vành Đai 4, Quốc Lộ 6 và có sổ đỏ"
+    ],
+    "context": [
+      "postId=197, propertyId=196, listingType=Cần bán, title=Bán lô LK16-41 khu 2 đất dịch vụ Đồng Mai Yên Nghĩa, price=7650000000 VND, area=50 m2, address=Khu dịch vụ Đồng Mai Đường Vành Đai 4 Phường Đồng Mai Quận Hà Đông Hà Nội, highlights=đường trước nhà rộng 6m|2 bên vỉa hè 2.5m|cấp phép xây lên đến 6 tầng|sổ đỏ cất két|gần Vành Đai 4 và Quốc Lộ 6"
+    ],
+    "target_metadata": {
+      "postId": 197,
+      "propertyId": 196
+    },
+    "id": "ST_MEDIUM_013"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Nhà số 38 khu Trung Yên phù hợp cho mô hình văn phòng hoặc đào tạo như thế nào?",
+    "expected_output_outline": [
+      "Nêu được các ý chính: thiết kế chuẩn văn phòng công ty, đường hè ô tô tránh nhau, trước nhà đỗ được nhiều ô tô",
+      "Đề cập được các mô hình phù hợp như dạy học, văn phòng công ty, trung tâm ngoại ngữ, spa hoặc nhà trẻ",
+      "Có thể nhắc rõ tin đăng nói không ở hộ gia đình"
+    ],
+    "context": [
+      "postId=298, propertyId=297, listingType=Cho thuê, title=Số nhà 38 khu Trung Yên chính chủ cho thuê nhà 5 tầng, price=20000000 VND, area=80 m2, address=Đường Trung Yên Phường Trung Hòa Quận Cầu Giấy Hà Nội, highlights=thiết kế chuẩn văn phòng công ty|đường hè ô tô tránh nhau|trước nhà đỗ được nhiều ô tô|phù hợp dạy học văn phòng trung tâm ngoại ngữ spa nhà trẻ|không ở hộ gia đình"
+    ],
+    "target_metadata": {
+      "postId": 298,
+      "propertyId": 297
+    },
+    "id": "ST_MEDIUM_015"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Nhà ở ngõ 54 Lê Quang Đạo có thể phục vụ vừa ở vừa kinh doanh nhỏ như thế nào?",
+    "expected_output_outline": [
+      "Nêu được các ý chính: 4 tầng, 6 phòng, 3 vệ sinh, nhà đủ đồ và có thể vào ở luôn",
+      "Đề cập được tầng 1 có thể kinh doanh buôn bán nhỏ theo mô tả",
+      "Có thể nhắc thêm vị trí gần sân vận động Mỹ Đình"
+    ],
+    "context": [
+      "postId=297, propertyId=296, listingType=Cho thuê, title=Cần cho hộ gia đình thuê nhà tại ngõ 54 Lê Quang Đạo Mỹ Đình Nam Từ Liêm Hà Nội, price=16000000 VND, area=45 m2, bedrooms=6, bathrooms=3, address=Đường Lê Quang Đạo Phường Phú Đô Quận Nam Từ Liêm Hà Nội, highlights=4 tầng|3 vệ sinh|nhà đủ đồ|có thể kinh doanh buôn bán tầng 1|vào ở luôn|gần sân vận động Mỹ Đình"
+    ],
+    "target_metadata": {
+      "postId": 297,
+      "propertyId": 296
+    },
+    "id": "ST_MEDIUM_016"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Căn hộ Orchard Park View phù hợp cho người cần sống gần sân bay như thế nào?",
+    "expected_output_outline": [
+      "Nêu được các ý chính: 3 phòng ngủ, 2 vệ sinh, full nội thất",
+      "Đề cập được vị trí cách sân bay Tân Sơn Nhất khoảng 5 phút",
+      "Có thể nhắc thêm an ninh 24/7, hồ bơi, gym, siêu thị"
+    ],
+    "context": [
+      "postId=143, propertyId=142, listingType=Cho thuê, title=Cho thuê căn hộ Orchard Park View 3PN 2WC full nội thất, price=21000000 VND, area=85 m2, bedrooms=3, bathrooms=2, furnishing=FULLY_FURNISHED, address=Căn hộ Orchard Park View Đường Hồng Hà Phường 9 Quận Phú Nhuận Hồ Chí Minh, highlights=cách sân bay Tân Sơn Nhất 5 phút|bảo vệ và lễ tân 24/7|hồ bơi|gym|siêu thị"
+    ],
+    "target_metadata": {
+      "postId": 143,
+      "propertyId": 142
+    },
+    "id": "ST_MEDIUM_019"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Lô B8 đấu giá Tuần Châu, Sài Sơn phù hợp xây ở hoặc khai thác như thế nào?",
+    "expected_output_outline": [
+      "Nêu được các ý chính: diện tích 95.7 m², có 2 mặt thoáng trước sau",
+      "Đề cập được đường 2 ô tô tránh và vị trí gần trường học, chợ, trạm y tế"
+    ],
+    "context": [
+      "postId=250, propertyId=249, listingType=Cần bán, title=Lô B8 đấu giá Tuần Châu Sài Sơn Quốc Oai 95,7m2 có 2 mặt tiền, price=9280000000 VND, area=95.7 m2, direction=Nam, address=Đường vành đai Tuần Châu Sunny Garden City Đường ĐT 421B Xã Sài Sơn Huyện Quốc Oai Hà Nội, highlights=2 mặt thoáng trước sau|đường 2 oto tránh|đối diện trường cấp 3|gần cấp 1 cấp 2 chợ trạm y tế"
+    ],
+    "target_metadata": {
+      "postId": 250,
+      "propertyId": 249
+    },
+    "id": "ST_MEDIUM_021"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "L? ??t n?n H?a L?c 100m2 trong tin C?T gi? ??u t? F0 ph? h?p ??u t? ho?c x?y ? nh? th? n?o?",
+    "expected_output_outline": [
+      "N?u ???c c?c ? ch?nh: di?n t?ch 100 m?, gi? kho?ng 2 t?, g?n khu c?ng ngh? cao H?a L?c v? c?ch FPT kho?ng 5 ph?t",
+      "?? c?p ???c l?i th? v? tr? thu?n l?i cho x?y d?ng nh? ? ho?c ??u t?",
+      "C? th? nh?c th?m khu v?c d?n c? ??ng ??c v? g?n c?c ti?n ?ch"
+    ],
+    "context": [
+      "postId=203, propertyId=202, listingType=C?n b?n, title=C?T ??t n?n H?a L?c gi? ??u t? F0 DT 100m2 - 300m2 nhi?u v? tr? ??p v? uy t?n, price=2000000000 VND, area=100 m2, direction=T?y, address=???ng ?CT08(H?a L?c) X? T?n X? Huy?n Th?ch Th?t H? N?i, highlights=g?n khu c?ng ngh? cao H?a L?c|c?ch FPT 5 ph?t|ph? h?p ??u t? ho?c x?y d?ng nh? ?"
+    ],
+    "target_metadata": {
+      "postId": 203,
+      "propertyId": 202
+    },
+    "id": "ST_MEDIUM_024"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các dự án chưa thực hiện được trong năm 2024 được đưa vào kế hoạch sử dụng đất năm 2025 như thế nào?",
+    "expected_output_outline": [
+      "Nêu được đây là các dự án chuyển tiếp từ năm 2024 sang năm 2025",
+      "Trả lời đúng có 21 dự án với diện tích 4,1325 ha",
+      "Có thể nêu 1-2 ví dụ như phố Vọng Hà, phố Hàm Tử Quan, THPT Việt Đức",
+      "Không nhầm với dự án đăng ký mới"
+    ],
+    "context": [
+      "source=report_2025, section=3.2.1.a, transferredProjects2024to2025=21, transferredArea=4.1325 ha",
+      "source=report_2025, table=Bảng 6, examples=Chỉnh trang phố Vọng Hà|Chỉnh trang phố Hàm Tử Quan|Xây dựng cải tạo THPT Việt Đức"
+    ],
+    "target_metadata": {
+      "transferredProjectsCount": 21,
+      "transferredProjectsAreaHa": 4.1325,
+      "planningDocumentId": 17
+    },
+    "id": "ST_MEDIUM_026"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Đất sử dụng vào mục đích công cộng năm 2025 của quận Hoàn Kiếm được cấu thành như thế nào?",
+    "expected_output_outline": [
+      "Nêu tổng diện tích đất sử dụng vào mục đích công cộng là 146,38 ha",
+      "Liệt kê đúng các thành phần chính như đất giao thông, thủy lợi, di tích danh thắng, năng lượng chiếu sáng, bưu chính viễn thông công nghệ thông tin, chợ, khu vui chơi sinh hoạt cộng đồng",
+      "Nêu được đất giao thông là thành phần lớn nhất với 122,33 ha",
+      "Không tự thêm loại đất công cộng không có trong bảng"
+    ],
+    "context": [
+      "source=report_2025, section=3.3.2, publicPurposeLand2025=146.38 ha",
+      "source=report_2025, table=Bảng 12, components=DGT 122.33|DTL 0.74|DDD 13.81|DNL 0.02|DBV 1.05|DCH 2.01|DKV 6.41"
+    ],
+    "target_metadata": {
+      "publicPurposeLand2025Ha": 146.38,
+      "largestComponent": "Đất công trình giao thông",
+      "planningDocumentId": 17
+    },
+    "id": "ST_MEDIUM_029"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Tiến độ giải phóng mặt bằng của Dự án thành phần 1.1 phục vụ đường Vành đai 4 đoạn qua quận Hà Đông được thực hiện như thế nào?",
+    "expected_output_outline": [
+      "Nêu được tổng diện tích đất thu hồi là 685.425,88 m2",
+      "Nêu được quận đã thẩm định, phê duyệt phương án bồi thường hỗ trợ tái định cư đối với 66,7 ha đất của 1.823 tổ chức, hộ gia đình",
+      "Nêu được tổng số tiền phê duyệt là 778,05 tỷ đồng, đạt tỷ lệ 97,6%",
+      "Có thể nhắc thêm công tác di chuyển 1.563/1.582 ngôi mộ đã hoàn thành"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, pages=14-15, vanhDai4RecoveryArea=685425.88 m2, approvedCompensationArea=66.7 ha, affectedEntities=1823, approvedAmount=778.05 billion VND, progress=97.6%, gravesMoved=1563/1582"
+    ],
+    "target_metadata": {
+      "recoveryAreaM2": 685425.88,
+      "approvedCompensationAreaHa": 66.7,
+      "affectedEntities": 1823,
+      "approvedAmountBillionVND": 778.05,
+      "planningDocumentId": 137
+    },
+    "id": "ST_MEDIUM_033"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "22 công trình, dự án trong Kế hoạch sử dụng đất năm 2025 của quận Cầu Giấy được hình thành như thế nào?",
+    "expected_output_outline": [
+      "Nêu được 21 công trình, dự án là các dự án chuyển tiếp từ kế hoạch năm trước",
+      "Nêu được 1 công trình là dự án đăng ký mới năm 2025",
+      "Có thể nói thêm trong 21 dự án chuyển tiếp có 12 dự án thuộc nhóm HĐND thành phố thông qua và 9 dự án không nằm danh mục Nghị quyết HĐND Thành phố",
+      "Không đảo lộn số lượng giữa dự án chuyển tiếp và dự án mới"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, continuedProjects2025=21, continuedArea=27.41 ha",
+      "source=report_cau_giay_2025, newProjects2025=1, newArea=0.95 ha",
+      "source=report_cau_giay_2025, continuedBreakdown=12 projects in HĐND list + 9 projects outside HĐND list"
+    ],
+    "target_metadata": {
+      "continuedProjects2025": 21,
+      "newProjects2025": 1,
+      "planningDocumentId": 63
+    },
+    "id": "ST_MEDIUM_034"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Chỉ tiêu sử dụng đất năm 2025 của quận Cầu Giấy biến động như thế nào so với năm 2024?",
+    "expected_output_outline": [
+      "Nêu được đất nông nghiệp giảm 7,97 ha",
+      "Nêu được đất phi nông nghiệp tăng 7,99 ha",
+      "Nêu được đất chưa sử dụng giảm 0,02 ha",
+      "Có thể nói thêm đất trồng cây lâu năm giảm mạnh và là nguồn chính chuyển sang đất phi nông nghiệp"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, landBalance2025=NNP 19.34 from 27.31|PNN 1207.92 from 1199.93|CSD 16.61 from 16.63"
+    ],
+    "target_metadata": {
+      "agriculturalChangeHa": -7.97,
+      "nonAgriculturalChangeHa": 7.99,
+      "unusedLandChangeHa": -0.02,
+      "planningDocumentId": 63
+    },
+    "id": "ST_MEDIUM_036"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Theo báo cáo thuyết minh, danh mục công trình, dự án năm 2025 của thị xã Sơn Tây được cấu thành như thế nào?",
+    "expected_output_outline": [
+      "Nêu được theo báo cáo thuyết minh có 80 danh mục, công trình, dự án với diện tích 550,29 ha",
+      "Nêu được 59 dự án thuộc danh mục thu hồi đất, chuyển mục đích đất trồng lúa đã được HĐND thành phố thông qua, diện tích 406,81 ha",
+      "Nêu được 21 dự án đưa vào kế hoạch sử dụng đất, diện tích 143,49 ha",
+      "Không nhầm đây là số liệu đăng ký trong báo cáo với số liệu phê duyệt chính thức trong quyết định"
+    ],
+    "context": [
+      "source=report_son_tay_2025, registeredProjects=80, registeredArea=550.29 ha, HDDNDProjects=59, HDDNDArea=406.81 ha, addedToPlanProjects=21, addedToPlanArea=143.49 ha"
+    ],
+    "target_metadata": {
+      "registeredProjects2025": 80,
+      "registeredArea2025Ha": 550.29,
+      "HDDNDProjects": 59,
+      "addedToPlanProjects": 21,
+      "planningDocumentId": 110
+    },
+    "id": "ST_MEDIUM_038"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các chỉ tiêu sử dụng đất năm 2025 của thị xã Sơn Tây biến động như thế nào so với hiện trạng ước tính năm 2024?",
+    "expected_output_outline": [
+      "Nêu được đất nông nghiệp giảm từ 5.347,70 ha xuống 5.228,42 ha",
+      "Nêu được đất phi nông nghiệp tăng từ 6.352,29 ha lên 6.471,80 ha",
+      "Nêu được đất chưa sử dụng giảm từ 19,92 ha xuống 19,69 ha",
+      "Có thể kết luận xu hướng là giảm đất nông nghiệp, tăng đất phi nông nghiệp, giảm nhẹ đất chưa sử dụng"
+    ],
+    "context": [
+      "source=report_son_tay_2025, land2024=NNP 5347.70|PNN 6352.29|CSD 19.92",
+      "source=report_son_tay_2025, land2025=NNP 5228.42|PNN 6471.80|CSD 19.69"
+    ],
+    "target_metadata": {
+      "agricultural2024Ha": 5347.7,
+      "agricultural2025Ha": 5228.42,
+      "nonAgricultural2024Ha": 6352.29,
+      "nonAgricultural2025Ha": 6471.8,
+      "unused2024Ha": 19.92,
+      "unused2025Ha": 19.69,
+      "planningDocumentId": 110
+    },
+    "id": "ST_MEDIUM_040"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Kết quả thực hiện Kế hoạch sử dụng đất năm 2024 của thị xã Sơn Tây được phản ánh như thế nào ở nhóm dự án đã thực hiện và nhóm dự án chuyển tiếp sang 2025?",
+    "expected_output_outline": [
+      "Nêu được tổng số dự án được UBND thành phố phê duyệt năm 2024 là 115 dự án, diện tích đăng ký 872,20 ha",
+      "Nêu được nhóm đã thực hiện và dự kiến thực hiện đến 31/12/2024 là 64 dự án, diện tích 345,66 ha",
+      "Nêu được nhóm chưa tổ chức thực hiện và chuyển tiếp sang 2025 là 42 dự án, diện tích 509,26 ha",
+      "Không tự suy diễn thêm các nhóm khác nếu tài liệu không yêu cầu"
+    ],
+    "context": [
+      "source=report_son_tay_2025, approvedProjects2024=115, approvedArea2024=872.20 ha, implemented2024=64, implementedArea2024=345.66 ha, carriedForward2025=42, carriedForwardArea2025=509.26 ha"
+    ],
+    "target_metadata": {
+      "approvedProjects2024": 115,
+      "implemented2024": 64,
+      "carriedForward2025": 42,
+      "planningDocumentId": 110
+    },
+    "id": "ST_MEDIUM_041"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các chỉ tiêu sử dụng đất năm 2025 của quận Hai Bà Trưng biến động như thế nào so với hiện trạng năm 2024?",
+    "expected_output_outline": [
+      "Nêu được đất nông nghiệp giảm từ 8,75 ha xuống 8,1451 ha",
+      "Nêu được đất phi nông nghiệp tăng từ 1.016,98 ha lên 1.017,5857 ha",
+      "Nêu được đất chưa sử dụng giữ nguyên 0,13 ha",
+      "Có thể nói thêm phần giảm của đất nông nghiệp chủ yếu chuyển sang đất xây dựng công trình sự nghiệp"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, land2024=NNP 8.75|PNN 1016.98|CSD 0.13",
+      "source=report_hai_ba_trung_2025, land2025=NNP 8.1451|PNN 1017.5857|CSD 0.13",
+      "source=report_hai_ba_trung_2025, agriculturalDecreaseReason=chuyển sang đất xây dựng công trình sự nghiệp"
+    ],
+    "target_metadata": {
+      "agricultural2024Ha": 8.75,
+      "agricultural2025Ha": 8.1451,
+      "nonAgricultural2024Ha": 1016.98,
+      "nonAgricultural2025Ha": 1017.5857,
+      "unused2024Ha": 0.13,
+      "unused2025Ha": 0.13,
+      "planningDocumentId": 91
+    },
+    "id": "ST_MEDIUM_042"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Kết quả thực hiện các công trình, dự án trong Kế hoạch sử dụng đất năm 2024 của quận Hai Bà Trưng được phân loại như thế nào?",
+    "expected_output_outline": [
+      "Nêu được tổng số dự án trong kế hoạch năm 2024 là 39 dự án",
+      "Nêu được 21 dự án đã thực hiện với diện tích 5,9358 ha",
+      "Nêu được 18 dự án chưa tổ chức thực hiện với diện tích 6,0361 ha",
+      "Có thể nói thêm trong 21 dự án đã thực hiện có 12 dự án đã có quyết định thu hồi/giao/chuyển mục đích và 9 dự án đã cắm mốc giới hoặc có quyết định một phần"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, totalProjects2024=39, implemented2024=21, implementedArea2024=5.9358 ha, notImplemented2024=18, notImplementedArea2024=6.0361 ha, implementedBreakdown=12 projects with decisions + 9 projects with markers_or_partial_decisions"
+    ],
+    "target_metadata": {
+      "totalProjects2024": 39,
+      "implemented2024": 21,
+      "implementedArea2024Ha": 5.9358,
+      "notImplemented2024": 18,
+      "notImplementedArea2024Ha": 6.0361,
+      "planningDocumentId": 91
+    },
+    "id": "ST_MEDIUM_043"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các chỉ tiêu sử dụng đất năm 2025 của quận Hoàng Mai biến động như thế nào so với hiện trạng năm 2024?",
+    "expected_output_outline": [
+      "Nêu được đất nông nghiệp giảm từ 803,81 ha xuống 742,08 ha",
+      "Nêu được đất phi nông nghiệp tăng từ 3.215,40 ha lên 3.277,14 ha",
+      "Nêu được quận không còn đất chưa sử dụng ở cả năm 2024 và trong kế hoạch 2025",
+      "Có thể kết luận xu hướng chính là giảm đất nông nghiệp và tăng đất phi nông nghiệp"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, agricultural2024=803.81 ha, nonAgricultural2024=3215.40 ha, unused2024=0 ha",
+      "source=report_hoang_mai_2025, agricultural2025=742.08 ha, nonAgricultural2025=3277.14 ha, unused2025=0 ha"
+    ],
+    "target_metadata": {
+      "agricultural2024Ha": 803.81,
+      "agricultural2025Ha": 742.08,
+      "nonAgricultural2024Ha": 3215.4,
+      "nonAgricultural2025Ha": 3277.14,
+      "unused2024Ha": 0,
+      "unused2025Ha": 0,
+      "planningDocumentId": 133
+    },
+    "id": "ST_MEDIUM_046"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Công tác giải phóng mặt bằng trên địa bàn quận Hoàng Mai trong năm 2024 được triển khai như thế nào?",
+    "expected_output_outline": [
+      "Nêu được quận đang triển khai GPMB 45 dự án",
+      "Nêu được đã ban hành thông báo thu hồi đất 1.571 hộ, điều tra 1.106 hộ, xác nhận nguồn gốc đất 1.311 hộ",
+      "Nêu được đã lập 1.593 phương án dự thảo và phê duyệt 1.195 phương án chính thức với số tiền 368,5 tỷ đồng",
+      "Có thể nhắc thêm quận đã thực hiện cưỡng chế, phá dỡ và vận động người dân bàn giao mặt bằng ở một số dự án trọng điểm"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, GPMB2024=45 projects, notices=1571 households, surveyed=1106 households, originConfirmed=1311 households, draftPlans=1593, approvedPlans=1195, compensation=368.5 tỷ đồng"
+    ],
+    "target_metadata": {
+      "GPMBProjects2024": 45,
+      "notices": 1571,
+      "approvedPlans": 1195,
+      "planningDocumentId": 133
+    },
+    "id": "ST_MEDIUM_047"
+  }
+]

@@ -1,0 +1,75 @@
+[
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Theo báo cáo thuyết minh, danh mục công trình, dự án năm 2025 của thị xã Sơn Tây được cấu thành như thế nào?",
+    "expected_output_outline": [
+      "Nêu được theo báo cáo thuyết minh có 80 danh mục, công trình, dự án với diện tích 550,29 ha",
+      "Nêu được 59 dự án thuộc danh mục thu hồi đất, chuyển mục đích đất trồng lúa đã được HĐND thành phố thông qua, diện tích 406,81 ha",
+      "Nêu được 21 dự án đưa vào kế hoạch sử dụng đất, diện tích 143,49 ha",
+      "Không nhầm đây là số liệu đăng ký trong báo cáo với số liệu phê duyệt chính thức trong quyết định"
+    ],
+    "context": [
+      "source=report_son_tay_2025, registeredProjects=80, registeredArea=550.29 ha, HDDNDProjects=59, HDDNDArea=406.81 ha, addedToPlanProjects=21, addedToPlanArea=143.49 ha"
+    ],
+    "target_metadata": {
+      "registeredProjects2025": 80,
+      "registeredArea2025Ha": 550.29,
+      "HDDNDProjects": 59,
+      "addedToPlanProjects": 21,
+      "planningDocumentId": 110
+    },
+    "id": "ST_MEDIUM_038"
+  },
+  {
+    "difficulty": "medium",
+    "question_type": "how",
+    "domain": "real_estate",
+    "input": "Các chỉ tiêu sử dụng đất năm 2025 của quận Hoàng Mai biến động như thế nào so với hiện trạng năm 2024?",
+    "expected_output_outline": [
+      "Nêu được đất nông nghiệp giảm từ 803,81 ha xuống 742,08 ha",
+      "Nêu được đất phi nông nghiệp tăng từ 3.215,40 ha lên 3.277,14 ha",
+      "Nêu được quận không còn đất chưa sử dụng ở cả năm 2024 và trong kế hoạch 2025",
+      "Có thể kết luận xu hướng chính là giảm đất nông nghiệp và tăng đất phi nông nghiệp"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, agricultural2024=803.81 ha, nonAgricultural2024=3215.40 ha, unused2024=0 ha",
+      "source=report_hoang_mai_2025, agricultural2025=742.08 ha, nonAgricultural2025=3277.14 ha, unused2025=0 ha"
+    ],
+    "target_metadata": {
+      "agricultural2024Ha": 803.81,
+      "agricultural2025Ha": 742.08,
+      "nonAgricultural2024Ha": 3215.4,
+      "nonAgricultural2025Ha": 3277.14,
+      "unused2024Ha": 0,
+      "unused2025Ha": 0,
+      "planningDocumentId": 133
+    },
+    "id": "ST_MEDIUM_046"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao hai phường Chương Dương và Phúc Tân được nhấn mạnh trong giải pháp quản lý đất đai?",
+    "expected_output_outline": [
+      "Nêu được đây là 2 phường nằm ngoài đê sông Hồng",
+      "Nêu được yêu cầu bảo đảm an toàn hành lang đê, hành lang thoát lũ, hành lang cầu và chống lấn chiếm bờ bãi sông Hồng",
+      "Có thể bổ sung các biện pháp như kiểm tra thu hồi đất sử dụng sai mục đích và khảo sát đất bãi giữa để kiến nghị sử dụng dịch vụ du lịch",
+      "Không suy diễn sang nguyên nhân khác ngoài báo cáo"
+    ],
+    "context": [
+      "source=report_2025, section=IV giải pháp mục 4, wardsOutsideDike=Chương Dương|Phúc Tân",
+      "source=report_2025, section=IV giải pháp mục 4, managementNeeds=protect dike corridor|floodway corridor|bridge corridor|prevent encroachment|inspect misuse|consider service tourism use for mid-river agricultural land"
+    ],
+    "target_metadata": {
+      "wards": [
+        "Chương Dương",
+        "Phúc Tân"
+      ],
+      "planningDocumentId": 17
+    },
+    "id": "ST_HARD_029"
+  }
+]
