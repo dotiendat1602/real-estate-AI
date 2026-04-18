@@ -605,6 +605,27 @@ async def _augment_planning_table_neighbors(
     )
 
 
+async def _augment_recovery_grouping_with_neighbors(
+    planning_vs,
+    message: str,
+    district: Optional[str],
+    plan_year: Optional[int],
+    selected_docs: list[Document],
+    limit: int,
+) -> list[Document]:
+    if not selected_docs or limit <= 0:
+        return selected_docs
+
+    return await _augment_planning_text_neighbors(
+        planning_vs,
+        message,
+        district,
+        plan_year,
+        selected_docs,
+        limit,
+    )
+
+
 async def _augment_planning_intent_evidence(
     planning_vs,
     message: str,
@@ -1520,6 +1541,9 @@ async def _retrieve_planning_docs_for_nl_query(
             if recovery_grouping_query and selected:
                 selected = await _augment_recovery_grouping_with_neighbors(
                     planning_vs,
+                    message,
+                    district,
+                    plan_year,
                     selected,
                     final_k,
                 )
