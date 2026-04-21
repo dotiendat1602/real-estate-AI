@@ -1,17 +1,17 @@
 # Single-turn Baseline Summary
 
-- Run ID: 11d29c75-db4b-4a5a-a300-618f9a0d9bee
+- Run ID: db3d2048-4b64-4b0a-bc2b-b327814403f3
 
-- Cases: 3
+- Cases: 100
 
-- Dataset: tmp_planning_last3_20260418.json
+- Dataset: single_turn_goldens_hard_tuned.json
 
-- Difficulties: {'medium': 2, 'hard': 1}
+- Difficulties: {'hard': 100}
 
-- Domains: {'real_estate': 3}
+- Domains: {'real_estate': 50, 'land_use_planning': 50}
 
 - Formula: Q_single = (w_CRec*S_CRec + w_F*S_F + w_AR*S_AR) / (w_CRec + w_F + w_AR)
 
-- Q_single: 0.851852
+- Q_single: 0.952556
 
-- Detailed JSON: reports/tmp_planning_last3_20260418_v10.json
+- Detailed JSON: reports/full_hard_single_turn_100_b10_groupfix_v2_20260421.json

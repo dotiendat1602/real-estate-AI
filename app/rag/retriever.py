@@ -14,6 +14,23 @@ from sqlalchemy import text
 from ..db.pgvector import AsyncSessionLocal
 
 
+def _env_float(name: str, default: float) -> float:
+    raw = (os.getenv(name, "") or "").strip()
+    if not raw:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
+def _env_bool(name: str, default: bool = False) -> bool:
+    raw = (os.getenv(name, "") or "").strip().lower()
+    if not raw:
+        return default
+    return raw in {"1", "true", "yes", "on"}
+
+
 def _rrf_score(rank: int, k: int = 60) -> float:
     return 1.0 / (k + rank + 1)
 
@@ -536,6 +553,9 @@ async def lexical_search_documents(
     allow_empty_terms: bool = False,
 ) -> list[Document]:
     """Metadata-aware lexical retrieval using SQL LIKE scoring on document + title fields."""
+    if _env_bool("RAG_LEXICAL_DISABLE"):
+        return []
+
     terms = _extract_lexical_terms(query)
     if not terms and not allow_empty_terms:
         return []
@@ -640,8 +660,42 @@ async def lexical_search_documents(
         """
     )
 
-    async with AsyncSessionLocal() as session:
-        rows = (await session.execute(stmt, params)).fetchall()
+    lexical_timeout_seconds = _env_float("RAG_LEXICAL_TIMEOUT_SECONDS", 0.0)
+
+    try:
+        async with AsyncSessionLocal() as session:
+            if lexical_timeout_seconds > 0:
+                # Keep timeout server-side too so cancelled lexical probes do not
+                # continue consuming the DB while semantic results are ready.
+                timeout_ms = max(1, int(lexical_timeout_seconds * 1000))
+                await session.execute(
+                    text("SELECT set_config('statement_timeout', :timeout_ms, true)"),
+                    {"timeout_ms": f"{timeout_ms}ms"},
+                )
+                result = await asyncio.wait_for(
+                    session.execute(stmt, params),
+                    timeout=lexical_timeout_seconds + 1.0,
+                )
+            else:
+                result = await session.execute(stmt, params)
+            rows = result.fetchall()
+    except (asyncio.TimeoutError, TimeoutError):
+        print(
+            f"[Retriever] lexical search timed out after {lexical_timeout_seconds}s; "
+            "using semantic results only",
+            flush=True,
+        )
+        return []
+    except Exception as exc:
+        message = str(exc).lower()
+        if "statement timeout" in message or "querycanceled" in message or "query canceled" in message:
+            print(
+                f"[Retriever] lexical search hit statement_timeout after {lexical_timeout_seconds}s; "
+                "using semantic results only",
+                flush=True,
+            )
+            return []
+        raise
 
     docs: list[Document] = []
     for row in rows:

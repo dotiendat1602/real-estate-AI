@@ -1050,5 +1050,1126 @@
       "source=report_hoang_mai_2025, constructionChecks=1610, buildingViolations=16, urbanOrderViolations=14803, environmentalViolations=175, wasteCollection=100% daily"
     ],
     "id": "MT_HARD_049"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "scenario": "Nguoi dung hoi ve Bán căn hộ 2PN Quận 1, full nội thất, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung bat dong san dang noi toi.",
+    "expected_outcome": "Bot tra loi dung theo cung tin Bán căn hộ 2PN Quận 1, full nội thất: Nêu được các căn cứ chính: diện tích 75 m², giá 6.500.000.000 VNĐ, 2 phòng ngủ, 2 phòng vệ sinh, nội thất FULLY_FURNISHED; Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức. O luot sau bot giu dung cung tin, khong lan sang bat dong san khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao tin cần bán \"Bán căn hộ 2PN Quận 1, full nội thất\" có thể đáng cân nhắc khi đánh giá nhanh?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao cac can cu vua neu phai duoc hieu trong dung cung tin/tai lieu nay, khong suy sang nguon khac?"
+      }
+    ],
+    "context": [
+      "postId=1, propertyId=1, postType=SALE, categoryName=Căn hộ, title=Bán căn hộ 2PN Quận 1, full nội thất, price=6.500.000.000 VNĐ, area=75 m², bedrooms=2, bathrooms=2, direction=Đông Nam, furnishing=FULLY_FURNISHED, address=Quận 1, TP. Hồ Chí Minh"
+    ],
+    "id": "MT_HARD_050"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nêu được lý do pháp lý: kế hoạch sử dụng đất hằng năm cấp huyện là nội dung quản lý nhà nước về đất đai và thuộc trách nhiệm UBND cấp huyện; Nêu được vai trò thực tiễn: làm căn cứ thu hồi đất, giao đất, cho thuê đất, chuyển mục đích sử dụng đất; Nêu được mục tiêu quản lý: sử dụng đất hợp lý, tránh chồng chéo, lãng phí, bảo vệ môi trường, phục vụ phát triển kinh tế xã hội; Không suy đoán ngoài các lý do tài liệu đã nêu. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hoàn Kiếm cần lập Kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Neu hoi tiep bang \"nguon do\", vi sao can giu dung cac can cu vua neu thay vi doi sang du lieu khac?"
+      }
+    ],
+    "context": [
+      "source=report_2025, section=Đặt vấn đề mục 1, legalNeed=Luật Đất đai 2024 quy định lập kế hoạch sử dụng đất hằng năm cấp huyện",
+      "source=report_2025, section=Đặt vấn đề mục 1, planningRole=basis for land recovery|land allocation|land lease|change of land use purpose|effective land management"
+    ],
+    "id": "MT_HARD_051"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nêu được các dự án chưa hoàn tất GPMB, hồ sơ thu hồi đất, giao đất hoặc thủ tục pháp lý; Nêu được nguyên nhân khách quan như chồng chéo quy định đầu tư, xây dựng, đất đai và khó khăn về chính sách bồi thường GPMB; Nêu được nguyên nhân chủ quan như chủ đầu tư chưa bố trí đủ nguồn lực, chưa quyết liệt thực hiện; Không trả lời chung chung kiểu chỉ vì chậm tiến độ mà thiếu căn cứ. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao nhiều dự án của năm 2024 phải chuyển tiếp sang kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich ngan gon vi sao ket luan vua roi phu thuoc vao dung cac chi tiet cua cung nguon nay nhe."
+      }
+    ],
+    "context": [
+      "source=report_2025, section=2.2, status=many projects had site clearance markers but not finished GPMB or procedures; 21 projects proposed to continue",
+      "source=report_2025, section=2.3, objectiveCauses=overlap of laws and procedures|compensation policy difficulties",
+      "source=report_2025, section=2.3, subjectiveCauses=registration subjective|lack of capital/resources|investors not decisive in GPMB"
+    ],
+    "id": "MT_HARD_052"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nêu được cơ sở từ nguồn lực của thành phố như vốn đầu tư phát triển lớn, cơ chế tăng thẩm quyền đầu tư, khả năng huy động vốn; Nêu được lợi thế của quận như vị trí trung tâm, đầu mối giao thông, thế mạnh thương mại dịch vụ du lịch, giá trị thương mại đất cao; Kết luận được rằng các điều kiện này hỗ trợ khả năng triển khai dự án; Không thêm nhận định ngoài phần đánh giá nguồn lực trong báo cáo. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao báo cáo cho rằng các dự án trong Kế hoạch sử dụng đất năm 2025 của quận Hoàn Kiếm có khả năng thực hiện cao?"
+      },
+      {
+        "role": "user",
+        "content": "De tranh suy dien, nhung can cu nao cua cung nguon nay phai duoc giu lai khi tra loi tiep?"
+      }
+    ],
+    "context": [
+      "source=report_2025, section=1.3, cityResources=large development capital|stronger investment authority|high commercial land value",
+      "source=report_2025, section=1.3, districtResources=center location|transport hub|trade tourism service strengths",
+      "source=report_2025, section=1.3, conclusion=projects in 2025 plan have high implementation conditions and feasibility"
+    ],
+    "id": "MT_HARD_053"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Neu Chuong Duong va Phuc Tan la 2 phuong nam ngoai de song Hong; Neu yeu cau bao dam an toan hanh lang de, hanh lang thoat lu, hanh lang cau va chong lan chiem bo bai song Hong; Co the neu thanh tra, kiem tra, thu hoi dat su dung sai muc dich hoac khao sat dat bai giua song Hong. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao Chuong Duong va Phuc Tan la hai phuong ngoai de song Hong can nhan manh trong quan ly dat dai Hoan Kiem?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao neu bo ngu canh cua tin hoac tai lieu vua hoi thi cau tra loi co the sai?"
+      }
+    ],
+    "context": [
+      "source=report_2025, section=IV giải pháp mục 4, wardsOutsideDike=Chương Dương|Phúc Tân",
+      "source=report_2025, section=IV giải pháp mục 4, managementNeeds=protect dike corridor|floodway corridor|bridge corridor|prevent encroachment|inspect misuse|consider service tourism use for mid-river agricultural land"
+    ],
+    "id": "MT_HARD_054"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nêu được lý do pháp lý: kế hoạch sử dụng đất cấp huyện được lập hằng năm theo Luật Đất đai 2024; Nêu được đây là căn cứ để giao đất, cho thuê đất, cho phép chuyển mục đích sử dụng đất; Nêu được mục tiêu quản lý: khắc phục giao đất, cho thuê đất, chuyển mục đích tràn lan; tránh bỏ hoang hóa, lãng phí tài nguyên đất; Nêu được mục tiêu phát triển: đáp ứng nhu cầu phát triển kinh tế - xã hội, an ninh, quốc phòng của quận trong năm 2025. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hà Đông cần lập Kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Ban nhac lai lap luan chinh va gioi han no trong dung nguon vua truy xuat nhe."
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=1, necessity=annual district land use plan under Land Law 2024, legalBasisFor=land allocation|land lease|change of land use purpose, managementPurpose=avoid waste and arbitrary use, developmentPurpose=support socio-economic, security and defense goals"
+    ],
+    "id": "MT_HARD_055"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Moi truong nuoc mat chiu tac dong boi do thi hoa, cong nghiep, chat thai va khu dan cu dong duc; Song Nhue, ho va kenh muong noi thi co dau hieu o nhiem. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao van de moi truong nuoc mat la can cu can chu y trong ke hoach su dung dat nam 2025 cua quan Ha Dong?"
+      },
+      {
+        "role": "user",
+        "content": "Neu minh hoi tiep ve \"truong hop nay\", vi sao khong nen tron them du lieu tu nguon khac?"
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, pages=8-9, waterPollution=song Nhue and lakes affected by urbanization, industry, domestic wastewater",
+      "source=report_ha_dong_2025, page=9, indicators=BOD5 and COD and TSS exceed standards in dry season",
+      "source=report_ha_dong_2025, page=9, airPollution=serious due to dust and traffic emissions"
+    ],
+    "id": "MT_HARD_056"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Kho khan den tu chinh sach boi thuong, ho tro GPMB va su dong thuan cua ho dan; Luat Dat dai moi lam quy trinh boi thuong, ho tro, tai dinh cu bi anh huong; Co them vuong mac ve von, thu tuc phap ly va thu thap ho so nguon goc dat dai. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao cong tac GPMB o quan Ha Dong gap kho do chinh sach boi thuong, quy trinh Luat Dat dai moi, von va ho so dat dai?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich lai ngan gon moi lien he giua cau tra loi vua roi va dung nguon dang xet nhe."
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, difficulties=compensation and support policy lacks consensus|Land Law changes affect compensation support resettlement procedures|capital and legal delays|difficulty collecting land origin records"
+    ],
+    "id": "MT_HARD_057"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Bao cao neu nhom thuong mai - dich vu - du lich cua Ha Dong tang truong manh, doanh thu uoc dat 128.380 ty dong trong 10 thang dau nam 2024 va tang 175,78% so voi cung ky. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao quan Ha Dong co tiem nang phat trien du lich, dich vu gan voi gia tri van hoa?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao cac can cu vua neu phai duoc hieu trong dung cung tin/tai lieu nay, khong suy sang nguon khac? Tra loi bang mot cau ngan."
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, economy=trade service tourism, revenueFirst10Months2024=128380 billion VND, growth=175.78 percent"
+    ],
+    "id": "MT_HARD_058"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Ke hoach cu the hoa chi tieu su dung dat cua quy hoach va ky ke hoach 5 nam; Muc tieu la su dung quy dat hop ly, tranh lang phi, chong cheo va han che huy hoai dat, pha vo moi truong sinh thai; Ke hoach la co so cho thu hoi dat, giao dat, cho thue dat va chuyen muc dich su dung dat. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao quan Cau Giay can lap Ke hoach su dung dat nam 2025 de tranh lang phi, chong cheo?"
+      },
+      {
+        "role": "user",
+        "content": "Neu hoi tiep bang \"nguon do\", vi sao can giu dung cac can cu vua neu thay vi doi sang du lieu khac? Tra loi bang mot cau ngan."
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, necessity=implement Land Law 2024 and Decree 102/2024/ND-CP|specify land-use targets|basis for land recovery allocation lease and conversion|avoid waste and overlap|protect ecological environment"
+    ],
+    "id": "MT_HARD_059"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Dien tich dat nong nghiep cua quan Cau Giay den nam 2025 la 19,34 ha; Dat nong nghiep tap trung chu yeu tai phuong Mai Dich voi 16,03 ha. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao phuong Mai Dich can chu y trong ke hoach su dung dat nong nghiep nam 2025 cua quan Cau Giay? Khong can tinh phan tram."
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich ngan gon vi sao ket luan vua roi phu thuoc vao dung cac chi tiet cua cung nguon nay nhe. Tra loi bang mot cau ngan."
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, agriculturalLand2025Distribution=Mai Dich 16.03 ha"
+    ],
+    "id": "MT_HARD_060"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Co 21 cong trinh, du an du kien chuyen tiep sang ke hoach nam 2025 voi dien tich 27,41 ha; Dat co so giao duc va dao tao tang len 108,94 ha, chiem 8,76% dien tich tu nhien; Dat nong nghiep chuyen sang dat phi nong nghiep 0,95 ha, tap trung tai phuong Mai Dich. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao ke hoach su dung dat 2025 cua Cau Giay vua phai xu ly du an chuyen tiep vua dieu chinh dat giao duc va dat nong nghiep?"
+      },
+      {
+        "role": "user",
+        "content": "De tranh suy dien, nhung can cu nao cua cung nguon nay phai duoc giu lai khi tra loi tiep? Tra loi bang mot cau ngan."
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, causes=capital difficulties due to economic fluctuations|GPMB difficulties|limited state budget|project quality not high|forecasting and registration not accurate"
+    ],
+    "id": "MT_HARD_061"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Dat co so giao duc va dao tao tang them 0,95 ha tu dat trong cay hang nam de thuc hien Truong THPT cong lap o dat F/THPT1 tai Mai Dich; Co phan dat chuyen sang dat cong trinh giao thong hoac tang dat giao thong de phuc vu ha tang; Cac dieu chinh nay dap ung nhu cau phat trien ha tang cua quan. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao ke hoach su dung dat 2025 cua Cau Giay can bo sung dat cho truong hoc va giao thong?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao neu bo ngu canh cua tin hoac tai lieu vua hoi thi cau tra loi co the sai? Tra loi bang mot cau ngan."
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, drivers=mechanical population growth|urbanization|housing pressure|transport infrastructure needs|service economy demand|public welfare works"
+    ],
+    "id": "MT_HARD_062"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nêu được đây là căn cứ pháp lý quan trọng phục vụ quản lý nhà nước về đất đai; Nêu được kế hoạch là cơ sở cho giao đất, thu hồi đất, cho thuê đất, chuyển mục đích sử dụng đất; Nêu được mục tiêu sử dụng đất hợp lý, hiệu quả, hạn chế lãng phí, ngăn chặn hủy hoại đất và phá vỡ cân bằng môi trường sinh thái; Không trả lời chung chung ngoài các mục đích được nêu trong phần đặt vấn đề. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao thị xã Sơn Tây cần lập Kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Ban nhac lai lap luan chinh va gioi han no trong dung nguon vua truy xuat nhe. Tra loi bang mot cau ngan."
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, necessity=legal basis for land management|basis for land allocation recovery lease and conversion|use land efficiently|limit waste and environmental imbalance"
+    ],
+    "id": "MT_HARD_063"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nêu được Sơn Tây là trung tâm văn hóa xứ Đoài, có nhiều di tích lịch sử văn hóa và danh lam thắng cảnh; Nêu được có nhiều địa điểm nổi bật như thành cổ Sơn Tây, làng cổ Đường Lâm, đền Và, chùa Mía, lăng Ngô Quyền, hồ Đồng Mô, hồ Xuân Khanh; Nêu được định hướng phát triển của Sơn Tây là đô thị vệ tinh văn hóa lịch sử và du lịch nghỉ dưỡng; Không suy diễn ngoài các lợi thế đã được nêu trong báo cáo. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao thị xã Sơn Tây được xem là có nhiều lợi thế để phát triển du lịch và dịch vụ?"
+      },
+      {
+        "role": "user",
+        "content": "Neu minh hoi tiep ve \"truong hop nay\", vi sao khong nen tron them du lieu tu nguon khac? Tra loi bang mot cau ngan."
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, culturalAssets=244 di tích lịch sử văn hóa|78 di sản văn hóa phi vật thể|65 lễ hội truyền thống",
+      "source=report_son_tay_2025, majorSites=thành cổ Sơn Tây|làng cổ Đường Lâm|đền Và|chùa Mía|lăng Ngô Quyền|hồ Đồng Mô|hồ Xuân Khanh",
+      "source=report_son_tay_2025, developmentOrientation=đô thị vệ tinh văn hóa lịch sử và du lịch nghỉ dưỡng"
+    ],
+    "id": "MT_HARD_064"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nguyen nhan thu tuc: phe duyet bao cao kinh te ky thuat, do dac hien trang, xac dinh nguon goc dat; Cac buoc lap phuong an den bu va cong bo cong khai quy hoach du an cung anh huong tien do. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao nhieu du an trong ke hoach su dung dat nam 2024 cua thi xa Son Tay phai chuyen tiep sang nam 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich lai ngan gon moi lien he giua cau tra loi vua roi va dung nguon dang xet nhe. Tra loi bang mot cau ngan."
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, carriedForwardReasons=approval procedures|site measurement|land origin determination|compensation plan|public disclosure of planning",
+      "source=report_son_tay_2025, carriedForwardScale=42 projects 509.26 ha, large share from auction of public agricultural land and investment-attraction proposals"
+    ],
+    "id": "MT_HARD_065"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Dien tich dat nong nghiep la 5.228,42 ha, chiem 44,61% dien tich tu nhien; Dien tich dat trong lua la 1.952,55 ha, chiem 37,34% dat nong nghiep; Co dien tich chuyen trong lua nuoc 1.758,76 ha nen nguon nuoc la yeu to can chu y trong su dung dat. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao quy mo dat nong nghiep va dat trong lua o Son Tay khien viec su dung dat can chu y toi nguon nuoc?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao cac can cu vua neu phai duoc hieu trong dung cung tin/tai lieu nay, khong suy sang nguon khac? Tra loi bang hai y gach dau dong."
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, surfaceWaterPollution=BOD5|COD|TSS|Amoni|Photphat vượt quy chuẩn ở một số mẫu",
+      "source=report_son_tay_2025, groundwaterPollution=Amoni",
+      "source=report_son_tay_2025, airPollutionNearDump=H2S vượt QCCP 1.02-1.52 lần",
+      "source=report_son_tay_2025, wastePressure=CTRSH 38376 tấn năm 2022|chất thải nguy hại 2135.7 tấn/năm"
+    ],
+    "id": "MT_HARD_066"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nêu được đây là cơ sở pháp lý cho quản lý nhà nước về đất đai; Nêu được kế hoạch là căn cứ cho giao đất, cho thuê đất, chuyển mục đích sử dụng đất và phục vụ phát triển kinh tế xã hội, quốc phòng, an ninh; Nêu được mục tiêu hạn chế sử dụng đất chồng chéo, lãng phí, lấn chiếm, hủy hoại đất và bảo vệ môi trường sinh thái; Có thể nêu thêm vai trò cân đối thu chi ngân sách liên quan đến đất. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hai Bà Trưng cần lập Kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Neu hoi tiep bang \"nguon do\", vi sao can giu dung cac can cu vua neu thay vi doi sang du lieu khac? Tra loi bang hai y gach dau dong."
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, necessity=legal basis for land management|basis for land allocation lease conversion|limit overlap waste encroachment and land destruction|protect environment|support land-related budget balancing"
+    ],
+    "id": "MT_HARD_067"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nam 2025 quan co 02 du an thuoc khoan 4 Dieu 67 Luat Dat dai tiep tuc thuc hien; Gom mo rong Nha tang le Quoc gia so 5 Tran Thanh Tong dien tich 1,2030 ha va mo rong tru so Bo Cong an so 30 Tran Binh Trong - 58 Tran Nhan Tong khoang 0,04 ha; Du kien co khoang 1.017,59 ha dat phi nong nghiep, tang khoang 0,61 ha, chu yeu cho giao thong, khu dan cu, giao duc, van hoa - the thao va an ninh. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao cac chi tieu dat phi nong nghiep va du an tiep tuc nam 2025 cho thay Hai Ba Trung chiu ap luc ha tang?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich ngan gon vi sao ket luan vua roi phu thuoc vao dung cac chi tiet cua cung nguon nay nhe. Tra loi bang hai y gach dau dong."
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, landPressure=trade_service_growth|rapid urbanization|high transport demand|mechanical population growth|housing demand|need for cultural and public welfare facilities|limited land fund"
+    ],
+    "id": "MT_HARD_068"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Ke hoach su dung dat nam 2024 con 18 cong trinh, du an chua thuc hien; So cong trinh, du an de nghi chuyen sang nam 2025 la 28 du an; Nguyen nhan khai quat la tinh kha thi trong phuong an ke hoach su dung dat chua cao. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao nhieu cong trinh, du an ke hoach su dung dat 2024 cua Hai Ba Trung phai chuyen tiep sang nam 2025 theo phan danh gia ton tai?"
+      },
+      {
+        "role": "user",
+        "content": "De tranh suy dien, nhung can cu nao cua cung nguon nay phai duoc giu lai khi tra loi tiep? Tra loi bang hai y gach dau dong."
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, carryoverProjects2025=28",
+      "source=report_hai_ba_trung_2025, reasons=planning inconsistencies|complex investment procedures|PCCC approvals|many detailed appraisal procedures|GPMB inheritance and source verification issues|lack of consensus|unrealistic registration|red-line approval issues|compensation policy issues|economic difficulties"
+    ],
+    "id": "MT_HARD_069"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nêu được môi trường không khí bị ảnh hưởng bởi bụi, tiếng ồn và mùi ở các tuyến giao thông lớn, công trình xây dựng và cơ sở sản xuất; Nêu được môi trường nước bị ô nhiễm, đặc biệt ở sông Kim Ngưu, sông Sét và hệ thống cống rãnh lộ thiên ứ đọng; Nêu được chất thải và rác thải còn là áp lực do mật độ dân số cao và ý thức vệ sinh môi trường chưa đồng đều; Có thể nêu thêm tài liệu đánh giá ô nhiễm nước mặt và ô nhiễm không khí đang ở mức báo động. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao yếu tố môi trường là một hạn chế quan trọng đối với sử dụng đất ở quận Hai Bà Trưng?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao neu bo ngu canh cua tin hoac tai lieu vua hoi thi cau tra loi co the sai? Tra loi bang hai y gach dau dong."
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, airIssues=dust|noise|odor along main roads and construction areas",
+      "source=report_hai_ba_trung_2025, waterIssues=Kim Nguu and Set rivers heavily polluted|open drainage stagnation",
+      "source=report_hai_ba_trung_2025, wasteIssues=high population density|improper dumping|collection constraints",
+      "source=report_hai_ba_trung_2025, generalConstraint=surface water and air pollution are alarming"
+    ],
+    "id": "MT_HARD_070"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nêu được đây là cơ sở pháp lý cho công tác quản lý nhà nước về đất đai; Nêu được kế hoạch là căn cứ cho giao đất, cho thuê đất và đáp ứng nhu cầu phát triển kinh tế - xã hội, an ninh, quốc phòng; Nêu được mục tiêu sử dụng đất hợp lý, hiệu quả, hạn chế lãng phí và ngăn chặn hủy hoại đất, phá vỡ cân bằng môi trường sinh thái; Có thể nêu thêm vai trò phân bổ quỹ đất, điều chỉnh quỹ đất và cung cấp thông tin cho nhà đầu tư. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vì sao quận Hoàng Mai cần lập Kế hoạch sử dụng đất năm 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Ban nhac lai lap luan chinh va gioi han no trong dung nguon vua truy xuat nhe. Tra loi bang hai y gach dau dong."
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, necessity=legal basis for land management|basis for land allocation and lease|serve socio-economic security defense needs|use land efficiently|limit waste and environmental imbalance"
+    ],
+    "id": "MT_HARD_071"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Hoang Mai la vung trung phia Nam noi thanh; Dia hinh thap dan tu Bac xuong Nam va tu Tay sang Dong nen tieu thoat nuoc la nhu cau quan trong. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao dac diem dia hinh khien quan Hoang Mai phai chu trong thoat nuoc khi lap ke hoach su dung dat?"
+      },
+      {
+        "role": "user",
+        "content": "Neu minh hoi tiep ve \"truong hop nay\", vi sao khong nen tron them du lieu tu nguon khac? Tra loi bang hai y gach dau dong."
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, topography=low-lying southern inner district|slope north to south and west to east",
+      "source=report_hoang_mai_2025, hydrology=To Lich river|Lu river|Set river|Kim Nguu river|Yen So lake|Linh Dam lake|Den Lu lake"
+    ],
+    "id": "MT_HARD_072"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Quan Hoang Mai dang trien khai GPMB cho 45 du an; GPMB la khau trong diem vi can thu hoi dat, chuan bi mat bang va tap trung cac du an ha tang/trong diem. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao cong tac giai phong mat bang la khau trong diem trong ke hoach su dung dat cua quan Hoang Mai?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich lai ngan gon moi lien he giua cau tra loi vua roi va dung nguon dang xet nhe. Tra loi bang hai y gach dau dong."
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, GPMB2024=45 projects, focus=key projects and infrastructure implementation",
+      "source=report_hoang_mai_2025, GPMB=land recovery and site preparation are needed for project implementation"
+    ],
+    "id": "MT_HARD_073"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Dinh huong giu on dinh kinh te va bao dam cac can doi lon cua quan; Day manh chuyen dich co cau kinh te, tang ty trong thuong mai dich vu, phat trien ben vung gan voi an sinh xa hoi; Day nhanh tien do va chat luong cac cong trinh, du an ha tang quan trong de nang cao chat luong song va bao ve moi truong. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao dinh huong phat trien Hoang Mai can gan ke hoach su dung dat voi ha tang, chuyen dich kinh te va moi truong?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao cac can cu vua neu phai duoc hieu trong dung cung tin/tai lieu nay, khong suy sang nguon khac? Chi giu thong tin tu nguon vua hoi."
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, constructionChecks=1610 works checked, buildingViolations=16",
+      "source=report_hoang_mai_2025, urbanOrderViolations=14803 cases handled",
+      "source=report_hoang_mai_2025, environmentalViolations=175 cases handled, wasteCollection=100% collected daily",
+      "source=report_hoang_mai_2025, terrainAndRivers=low-lying terrain with major drainage rivers and lakes"
+    ],
+    "id": "MT_HARD_074"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Ke hoach duoc lap de dap ung nhu cau phat trien kinh te - xa hoi, quoc phong an ninh va bao ve moi truong sinh thai; Context retrieved neu danh muc nam 2025 gom 21 du an voi dien tich 4,1325 ha. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon viec quan Hoan Kiem lap ke hoach su dung dat nam 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Neu hoi tiep bang \"nguon do\", vi sao can giu dung cac can cu vua neu thay vi doi sang du lieu khac? Chi giu thong tin tu nguon vua hoi."
+      }
+    ],
+    "context": [
+      "source=report_2025, planNeed=socio-economic development|political stability|national defense security|environmental protection",
+      "source=report_2025, section=3.7, totalProjects2025=21, totalArea=4.1325 ha"
+    ],
+    "id": "MT_HARD_075"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Neu duoc ly do chua thuc hien va can tiep tuc dua vao ke hoach 2025. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon viec nhieu du an nam 2024 phai chuyen tiep sang ke hoach su dung dat nam 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich ngan gon vi sao ket luan vua roi phu thuoc vao dung cac chi tiet cua cung nguon nay nhe. Chi giu thong tin tu nguon vua hoi."
+      }
+    ],
+    "context": [
+      "source=report_2025, section=2.2, status=many projects had site clearance markers but not finished GPMB or procedures; 21 projects proposed to continue",
+      "source=report_2025, section=2.3, objectiveCauses=overlap of laws and procedures|compensation policy difficulties",
+      "source=report_2025, section=2.3, subjectiveCauses=registration subjective|lack of capital/resources|investors not decisive in GPMB"
+    ],
+    "id": "MT_HARD_076"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Neu duoc can cu phap ly va tinh kha thi cua danh muc du an trong bao cao. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon kha nang thuc hien cao cua cac du an nam 2025 quan Hoan Kiem?"
+      },
+      {
+        "role": "user",
+        "content": "De tranh suy dien, nhung can cu nao cua cung nguon nay phai duoc giu lai khi tra loi tiep? Chi giu thong tin tu nguon vua hoi."
+      }
+    ],
+    "context": [
+      "source=report_2025, section=1.3, cityResources=large development capital|stronger investment authority|high commercial land value",
+      "source=report_2025, section=1.3, districtResources=center location|transport hub|trade tourism service strengths",
+      "source=report_2025, section=1.3, conclusion=projects in 2025 plan have high implementation conditions and feasibility"
+    ],
+    "id": "MT_HARD_077"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Hai phuong Chuong Duong va Phuc Tan lien quan den du an he thong thu gom va tram xu ly nuoc thai; Can tang cuong quan ly dat dai, bao dam hanh lang de hoac chong lan chiem bo song Hong neu context ho tro; Co dinh huong dieu tra, khao sat dat nong nghiep bai giua song Hong de kien nghi chuyen muc dich sang dich vu, du lich neu context ho tro. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao Chuong Duong va Phuc Tan can duoc chu y trong quan ly dat dai, moi truong nuoc thai va bai giua song Hong?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao neu bo ngu canh cua tin hoac tai lieu vua hoi thi cau tra loi co the sai? Chi giu thong tin tu nguon vua hoi."
+      }
+    ],
+    "context": [
+      "source=report_2025, section=IV giải pháp mục 4, wardsOutsideDike=Chương Dương|Phúc Tân",
+      "source=report_2025, section=IV giải pháp mục 4, managementNeeds=protect dike corridor|floodway corridor|bridge corridor|prevent encroachment|inspect misuse|consider service tourism use for mid-river agricultural land"
+    ],
+    "id": "MT_HARD_078"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Ke hoach giup cu the hoa chi tieu va lam co so thu hoi, giao, cho thue, chuyen muc dich su dung dat. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon viec quan Ha Dong lap ke hoach su dung dat nam 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Ban nhac lai lap luan chinh va gioi han no trong dung nguon vua truy xuat nhe. Chi giu thong tin tu nguon vua hoi."
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=1, necessity=annual district land use plan under Land Law 2024, legalBasisFor=land allocation|land lease|change of land use purpose, managementPurpose=avoid waste and arbitrary use, developmentPurpose=support socio-economic, security and defense goals"
+    ],
+    "id": "MT_HARD_079"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Moi truong nuoc mat chiu tac dong boi do thi hoa, cong nghiep, chat thai va khu dan cu; Song Nhue, ho va kenh muong noi thi co dau hieu o nhiem. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon moi truong nuoc mat trong ke hoach su dung dat nam 2025 cua quan Ha Dong?"
+      },
+      {
+        "role": "user",
+        "content": "Neu minh hoi tiep ve \"truong hop nay\", vi sao khong nen tron them du lieu tu nguon khac? Chi giu thong tin tu nguon vua hoi."
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, pages=8-9, waterPollution=song Nhue and lakes affected by urbanization, industry, domestic wastewater",
+      "source=report_ha_dong_2025, page=9, indicators=BOD5 and COD and TSS exceed standards in dry season",
+      "source=report_ha_dong_2025, page=9, airPollution=serious due to dust and traffic emissions"
+    ],
+    "id": "MT_HARD_080"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Kho khan gom chinh sach boi thuong ho tro, thay doi quy trinh theo Luat Dat dai moi, von/thu tuc phap ly va ho so nguon goc dat dai. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon kho khan GPMB o Ha Dong ve boi thuong, quy trinh, von va ho so dat dai?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich lai ngan gon moi lien he giua cau tra loi vua roi va dung nguon dang xet nhe. Chi giu thong tin tu nguon vua hoi."
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, difficulties=compensation and support policy lacks consensus|Land Law changes affect compensation support resettlement procedures|capital and legal delays|difficulty collecting land origin records"
+    ],
+    "id": "MT_HARD_081"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Co 142 di tich trong danh muc kiem ke; Co 51 di tich cap quoc gia va 41 di tich cap tinh/thanh pho. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon tiem nang du lich dich vu gan voi van hoa cua quan Ha Dong?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao cac can cu vua neu phai duoc hieu trong dung cung tin/tai lieu nay, khong suy sang nguon khac? Uu tien so lieu hoac ten rieng da neu."
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=8, heritageCount=142, nationalRanked=51, cityProvincialRanked=41",
+      "source=report_ha_dong_2025, page=8, supportingAssets=festivals|Nguyen Trai monument|Van Phuc silk village|Da Sy forging village"
+    ],
+    "id": "MT_HARD_082"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Dat co so giao duc va dao tao den nam 2025 la 108,94 ha, chiem 8,76% dien tich tu nhien; Dat co so y te den nam 2025 la 9,02 ha, chiem 0,72% dien tich tu nhien; Dat co so xa hoi la 3,95 ha, chiem 0,32% dien tich tu nhien; co 21 cong trinh, du an chuyen tiep voi dien tich 27,41 ha. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao co the noi ke hoach su dung dat 2025 cua Cau Giay la cong cu phan bo lai dat cho giao duc, y te, co so xa hoi va du an chuyen tiep?"
+      },
+      {
+        "role": "user",
+        "content": "Neu hoi tiep bang \"nguon do\", vi sao can giu dung cac can cu vua neu thay vi doi sang du lieu khac? Uu tien so lieu hoac ten rieng da neu."
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, necessity=implement Land Law 2024 and Decree 102/2024/ND-CP|specify land-use targets|basis for land recovery allocation lease and conversion|avoid waste and overlap|protect ecological environment"
+    ],
+    "id": "MT_HARD_083"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Dat giao duc tang them 0,95 ha de thuc hien du an Truong THPT cong lap tai o dat F/THPT1, phuong Mai Dich; Dat y te tang 0,14 ha de thuc hien du an Trung tam Phap y Ha Noi tai phuong Mai Dich; Mai Dich cung xuat hien trong phan bo dat co so xa hoi hoac cac du an ha tang khac neu context ho tro. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao phuong Mai Dich dang chu y trong cac dieu chinh dat giao duc va y te cua Cau Giay nam 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich ngan gon vi sao ket luan vua roi phu thuoc vao dung cac chi tiet cua cung nguon nay nhe. Uu tien so lieu hoac ten rieng da neu."
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, agriculturalLand2025Distribution=Mai Dịch 16.03 ha",
+      "source=report_cau_giay_2025, recoveryAndConversionFocus=agricultural recovery 4.77 ha and agricultural-to-non-agricultural conversion concentrated at Mai Dịch",
+      "source=report_cau_giay_2025, majorProjectsAtMaiDich=Bo Cong an 47 Pham Van Dong|F/THPT1|Khu do thi thanh pho giao luu|Trung tam Phap y Ha Noi"
+    ],
+    "id": "MT_HARD_084"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Dat giao duc va dao tao den nam 2025 la 108,94 ha, tang so voi nam 2024; Dat y te den nam 2025 la 9,02 ha, tang 0,14 ha so voi nam 2024; Dat khoa hoc cong nghe khong bien dong o muc 10,85 ha; dat nong nghiep giam con 19,34 ha. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao cac bien dong dat giao duc, y te, khoa hoc va nong nghiep cho thay ke hoach 2025 cua Cau Giay dang dieu chinh nhieu nhom dat?"
+      },
+      {
+        "role": "user",
+        "content": "De tranh suy dien, nhung can cu nao cua cung nguon nay phai duoc giu lai khi tra loi tiep? Uu tien so lieu hoac ten rieng da neu."
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, causes=capital difficulties due to economic fluctuations|GPMB difficulties|limited state budget|project quality not high|forecasting and registration not accurate"
+    ],
+    "id": "MT_HARD_085"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Co dien tich dat giao thong 0,20 ha va dat o do thi 1,97 ha lien quan den phan tang de thuc hien du an; Du an la xay dung ha tang, giai phong mat bang mo rong tru so Bo Cong an so 47 Pham Van Dong; Den nam 2025 dien tich dat an ninh cua quan la 22,22 ha. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao du an mo rong tru so Bo Cong an so 47 Pham Van Dong lam tang nhu cau dat giao thong va dat an ninh o Cau Giay?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao neu bo ngu canh cua tin hoac tai lieu vua hoi thi cau tra loi co the sai? Uu tien so lieu hoac ten rieng da neu."
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, districtResources=western gateway|good transport|attract capital and human resources",
+      "source=report_cau_giay_2025, developmentPressure=growing service economy|need more land for transport infrastructure|urbanization and mechanical population growth increase housing demand"
+    ],
+    "id": "MT_HARD_086"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Can cu phap ly va nhu cau phan bo chi tieu su dung dat nam 2025. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon viec thi xa Son Tay lap ke hoach su dung dat nam 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Ban nhac lai lap luan chinh va gioi han no trong dung nguon vua truy xuat nhe. Uu tien so lieu hoac ten rieng da neu."
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, necessity=legal basis for land management|basis for land allocation recovery lease and conversion|use land efficiently|limit waste and environmental imbalance"
+    ],
+    "id": "MT_HARD_087"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Son Tay co 15 di tich xep hang quoc gia va 49 di tich xep hang cap Thanh pho; Co khoang 73 le hoi trong nam; Co Lang van hoa du lich cac dan toc Viet Nam tai xa Co Dong voi dien tich 240 ha. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao di tich, le hoi va lang van hoa tao loi the du lich, dich vu cho Son Tay?"
+      },
+      {
+        "role": "user",
+        "content": "Neu minh hoi tiep ve \"truong hop nay\", vi sao khong nen tron them du lieu tu nguon khac? Uu tien so lieu hoac ten rieng da neu."
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, culturalAssets=244 di tích lịch sử văn hóa|78 di sản văn hóa phi vật thể|65 lễ hội truyền thống",
+      "source=report_son_tay_2025, majorSites=thành cổ Sơn Tây|làng cổ Đường Lâm|đền Và|chùa Mía|lăng Ngô Quyền|hồ Đồng Mô|hồ Xuân Khanh",
+      "source=report_son_tay_2025, developmentOrientation=đô thị vệ tinh văn hóa lịch sử và du lịch nghỉ dưỡng"
+    ],
+    "id": "MT_HARD_088"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Thu tuc phe duyet, do dac hien trang, xac dinh nguon goc dat anh huong tien do; Lap phuong an den bu va cong bo quy hoach cung anh huong tien do. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon viec nhieu du an nam 2024 cua thi xa Son Tay chuyen tiep sang 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich lai ngan gon moi lien he giua cau tra loi vua roi va dung nguon dang xet nhe. Uu tien so lieu hoac ten rieng da neu."
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, carriedForwardReasons=approval procedures|site measurement|land origin determination|compensation plan|public disclosure of planning",
+      "source=report_son_tay_2025, carriedForwardScale=42 projects 509.26 ha, large share from auction of public agricultural land and investment-attraction proposals"
+    ],
+    "id": "MT_HARD_089"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Neu duoc cac ap luc moi truong va yeu cau bao ve tai nguyen theo bao cao. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon yeu to moi truong trong su dung dat o thi xa Son Tay?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao cac can cu vua neu phai duoc hieu trong dung cung tin/tai lieu nay, khong suy sang nguon khac? Khong them thong tin ngoai ngu canh truoc do."
+      }
+    ],
+    "context": [
+      "source=report_son_tay_2025, surfaceWaterPollution=BOD5|COD|TSS|Amoni|Photphat vượt quy chuẩn ở một số mẫu",
+      "source=report_son_tay_2025, groundwaterPollution=Amoni",
+      "source=report_son_tay_2025, airPollutionNearDump=H2S vượt QCCP 1.02-1.52 lần",
+      "source=report_son_tay_2025, wastePressure=CTRSH 38376 tấn năm 2022|chất thải nguy hại 2135.7 tấn/năm"
+    ],
+    "id": "MT_HARD_090"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Can cu phap ly va nhu cau lam co so thu hoi, giao, cho thue, chuyen muc dich su dung dat. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon viec quan Hai Ba Trung lap ke hoach su dung dat nam 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Neu hoi tiep bang \"nguon do\", vi sao can giu dung cac can cu vua neu thay vi doi sang du lieu khac? Khong them thong tin ngoai ngu canh truoc do."
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, necessity=legal basis for land management|basis for land allocation lease conversion|limit overlap waste encroachment and land destruction|protect environment|support land-related budget balancing"
+    ],
+    "id": "MT_HARD_091"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Du kien nam 2025 quan co khoang 1.017,59 ha dat phi nong nghiep, tang khoang 0,61 ha so voi hien trang; Phan tang chu yeu de mo rong, quy hoach moi giao thong, phat trien khu dan cu, giao duc dao tao, van hoa - the duc the thao va an ninh; Co cac du an tiep tuc nhu mo rong Nha tang le Quoc gia va mo rong tru so Bo Cong an neu context ho tro. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao ke hoach dat phi nong nghiep 2025 cua Hai Ba Trung cho thay nhu cau bo tri dat cho ha tang va dich vu cong?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich ngan gon vi sao ket luan vua roi phu thuoc vao dung cac chi tiet cua cung nguon nay nhe. Khong them thong tin ngoai ngu canh truoc do."
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, landPressure=trade_service_growth|rapid urbanization|high transport demand|mechanical population growth|housing demand|need for cultural and public welfare facilities|limited land fund"
+    ],
+    "id": "MT_HARD_092"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Neu duoc nhom du an chua thuc hien va ly do can tiep tuc dua vao ke hoach 2025. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon viec nhieu du an nam 2024 cua quan Hai Ba Trung chuyen tiep sang 2025?"
+      },
+      {
+        "role": "user",
+        "content": "De tranh suy dien, nhung can cu nao cua cung nguon nay phai duoc giu lai khi tra loi tiep? Khong them thong tin ngoai ngu canh truoc do."
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, carryoverProjects2025=28",
+      "source=report_hai_ba_trung_2025, reasons=planning inconsistencies|complex investment procedures|PCCC approvals|many detailed appraisal procedures|GPMB inheritance and source verification issues|lack of consensus|unrealistic registration|red-line approval issues|compensation policy issues|economic difficulties"
+    ],
+    "id": "MT_HARD_093"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Nêu được ô nhiễm không khí gồm bụi, tiếng ồn hoặc mùi tại các trục đường/khu xây dựng; Nêu được ô nhiễm nước tại sông Kim Ngưu, sông Sét và tình trạng thoát nước hở bị ứ đọng; Giải thích mật độ dân cư cao, đổ thải chưa đúng quy định hoặc hạn chế thu gom làm môi trường trở thành ràng buộc khi sử dụng đất. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon moi truong la han che trong su dung dat o quan Hai Ba Trung?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao neu bo ngu canh cua tin hoac tai lieu vua hoi thi cau tra loi co the sai? Khong them thong tin ngoai ngu canh truoc do."
+      }
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, airIssues=dust|noise|odor along main roads and construction areas",
+      "source=report_hai_ba_trung_2025, waterIssues=Kim Nguu and Set rivers heavily polluted|open drainage stagnation",
+      "source=report_hai_ba_trung_2025, wasteIssues=high population density|improper dumping|collection constraints",
+      "source=report_hai_ba_trung_2025, generalConstraint=surface water and air pollution are alarming"
+    ],
+    "id": "MT_HARD_094"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Can cu phap ly va nhu cau to chuc thu hoi, giao, cho thue, chuyen muc dich su dung dat. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon viec quan Hoang Mai lap ke hoach su dung dat nam 2025?"
+      },
+      {
+        "role": "user",
+        "content": "Ban nhac lai lap luan chinh va gioi han no trong dung nguon vua truy xuat nhe. Khong them thong tin ngoai ngu canh truoc do."
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, necessity=legal basis for land management|basis for land allocation and lease|serve socio-economic security defense needs|use land efficiently|limit waste and environmental imbalance"
+    ],
+    "id": "MT_HARD_095"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Hoang Mai la vung trung phia Nam noi thanh; Dia hinh thap dan tu Bac xuong Nam va tu Tay sang Dong. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon dia hinh va nhu cau thoat nuoc cua quan Hoang Mai?"
+      },
+      {
+        "role": "user",
+        "content": "Neu minh hoi tiep ve \"truong hop nay\", vi sao khong nen tron them du lieu tu nguon khac? Khong them thong tin ngoai ngu canh truoc do."
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, topography=low-lying southern inner district|slope north to south and west to east",
+      "source=report_hoang_mai_2025, hydrology=To Lich river|Lu river|Set river|Kim Nguu river|Yen So lake|Linh Dam lake|Den Lu lake"
+    ],
+    "id": "MT_HARD_096"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Hoang Mai trien khai GPMB cho 45 du an nam 2024; Co 1.571 ho duoc thong bao thu hoi dat va 1.195 phuong an duoc phe duyet. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon GPMB la khau trong diem cua quan Hoang Mai?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich lai ngan gon moi lien he giua cau tra loi vua roi va dung nguon dang xet nhe. Khong them thong tin ngoai ngu canh truoc do."
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, GPMB2024=45 projects, notices=1571 households, approvedPlans=1195, compensation=368.5 tỷ đồng",
+      "source=report_hoang_mai_2025, keyProjects=đường Tam Trinh|Nam hồ Linh Đàm giai đoạn II|trường Tiểu học Lĩnh Nam|các dự án trường học tại Định Công"
+    ],
+    "id": "MT_HARD_097"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Neu duoc ap luc do thi hoa, vi pham trat tu xay dung va moi truong theo tai lieu. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon quan Hoang Mai phai tang cuong quan ly do thi va moi truong?"
+      },
+      {
+        "role": "user",
+        "content": "Vi sao cac can cu vua neu phai duoc hieu trong dung cung tin/tai lieu nay, khong suy sang nguon khac? Nhac lai theo cach de doi chieu."
+      }
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, constructionChecks=1610 works checked, buildingViolations=16",
+      "source=report_hoang_mai_2025, urbanOrderViolations=14803 cases handled",
+      "source=report_hoang_mai_2025, environmentalViolations=175 cases handled, wasteCollection=100% collected daily",
+      "source=report_hoang_mai_2025, terrainAndRivers=low-lying terrain with major drainage rivers and lakes"
+    ],
+    "id": "MT_HARD_098"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Ke hoach lam co so thu hoi dat, giao dat, cho thue dat va chuyen muc dich su dung dat. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao can giai thich ngan gon ke hoach su dung dat Ha Dong la co so cho thu hoi va giao dat?"
+      },
+      {
+        "role": "user",
+        "content": "Neu hoi tiep bang \"nguon do\", vi sao can giu dung cac can cu vua neu thay vi doi sang du lieu khac? Nhac lai theo cach de doi chieu."
+      }
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=1, necessity=annual district land use plan under Land Law 2024, legalBasisFor=land allocation|land lease|change of land use purpose, managementPurpose=avoid waste and arbitrary use, developmentPurpose=support socio-economic, security and defense goals"
+    ],
+    "id": "MT_HARD_099"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "scenario": "Nguoi dung hoi ve cung nguon du lieu da truy xuat, roi hoi tiep bang cach noi noi de kiem tra bot con giu dung tai lieu quy hoach.",
+    "expected_outcome": "Bot tra loi dung theo cung tai lieu quy hoach: Dat giao duc tang them 0,95 ha de thuc hien Truong THPT cong lap tai Mai Dich; Dat y te tang 0,14 ha de thuc hien du an Trung tam Phap y Ha Noi tai Mai Dich; Co chuyen muc dich tu dat trong cay hang nam hoac dat trong cay lau nam sang cac muc dich do thi, giao duc, y te theo context. O luot sau bot giu dung cung tai lieu/khu vuc, khong doi sang quan hoac bao cao khac.",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Vi sao cac dieu chinh dat giao duc, y te va chuyen muc dich dat cho thay ke hoach Cau Giay dang phan bo quy dat cho nhu cau do thi?"
+      },
+      {
+        "role": "user",
+        "content": "Ban giai thich ngan gon vi sao ket luan vua roi phu thuoc vao dung cac chi tiet cua cung nguon nay nhe. Nhac lai theo cach de doi chieu."
+      }
+    ],
+    "context": [
+      "source=report_cau_giay_2025, necessity=ensure consistency and continuity in land management and land use according to planning and law|manage and supervise closely|ensure feasibility and efficient land use"
+    ],
+    "id": "MT_HARD_100"
   }
 ]

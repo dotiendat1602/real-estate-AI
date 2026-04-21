@@ -3,10 +3,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao căn nhà ở ngõ 281 Trương Định được xem là phù hợp cho gia đình ở lâu dài?",
+    "input": "V? sao c?n nh? ? ng? 281 Tr??ng ??nh ph? h?p cho gia ??nh ? l?u d?i n?u x?t s? ph?ng, n?i th?t v? ng? ? t??",
     "expected_output_outline": [
-      "Nêu được nhiều căn cứ chính như 4 phòng ngủ, 3 phòng vệ sinh, full nội thất, ô tô vào nhà hoặc ngõ oto quay đầu",
-      "Giải thích được vì sao các chi tiết đó phù hợp với nhu cầu ở gia đình lâu dài"
+      "N?u c?c c?n c? ch?nh: 4 ph?ng ng?, 3 ph?ng v? sinh, full n?i th?t",
+      "N?u l?i th? s? d?ng l?u d?i: nh? 5 t?ng, ? t? 7 ch? v?o nh? ho?c ng? ? t? quay ??u"
     ],
     "context": [
       "postId=146, propertyId=145, listingType=Cần bán, title=Chính chủ bán nhà Trương Định 67m2 5T mặt tiền 5m 2 ngõ oto vào nhà, price=14000000000 VND, area=67 m2, bedrooms=4, bathrooms=3, furnishing=FULLY_FURNISHED, address=ngõ 281 Đường Trương Định Phường Tương Mai Quận Hoàng Mai Hà Nội, highlights=2 mặt ngõ|oto 7 chỗ vào nhà|ngõ oto quay đầu"
@@ -39,10 +39,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao nhà nguyên căn tại Nhổn được xem là phù hợp để khai thác mô hình căn hộ mini hoặc cho thuê nhiều phòng?",
+    "input": "Vi sao tin \"Chinh chu cho thue nguyen can thiet ke phu hop cho thue 7 can ho mini tai Nhon\" phu hop khai thac can ho mini?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như có 7 căn hộ mini độc lập, 7 phòng ngủ khép kín, mỗi phòng có bếp và vệ sinh riêng, khu dân cư đông đúc nhu cầu thuê cao",
-      "Giải thích được vì sao những chi tiết này phù hợp cho khai thác cho thuê nhiều phòng"
+      "Can cu chinh: 7 can ho mini doc lap, 7 phong ngu, 7 phong ve sinh",
+      "Moi phong co ve sinh va bep rieng, khu dan cu dong duc"
     ],
     "context": [
       "postId=295, propertyId=294, listingType=Cho thuê, title=Chính chủ cho thuê nguyên căn thiết kế phù hợp cho thuê 7 căn hộ mini tại Nhổn, price=25000000 VND, area=45 m2, bedrooms=7, bathrooms=7, furnishing=PARTLY_FURNISHED, address=ngõ 27 Đường Nhổn Phường Cầu Diễn Quận Nam Từ Liêm Hà Nội, highlights=4 tầng + 1 tầng thượng|7 căn hộ mini độc lập|mỗi phòng có vệ sinh và bếp riêng|khu dân cư đông đúc"
@@ -57,10 +57,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao nhà ở phố Quang Tiến, Tây Mỗ được xem là thuận tiện cho sinh hoạt gia đình?",
+    "input": "Vi sao tin \"Chinh chu cho thue nha 5 tang o pho Quang Tien Tay Mo\" thuan tien cho sinh hoat gia dinh?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như 3 phòng ngủ, 4 vệ sinh, full nội thất, nhà 5 tầng, gần trường học, bệnh viện và Aeon Mall Hà Đông",
-      "Liên kết được các chi tiết đó với nhu cầu sinh hoạt gia đình"
+      "Can cu chinh: 3 phong ngu, 4 phong ve sinh, nha 5 tang, full noi that",
+      "Tien ich gan: truong hoc khoang 500m, benh vien va Aeon Mall Ha Dong khoang 2km"
     ],
     "context": [
       "postId=290, propertyId=289, listingType=Cho thuê, title=Chính chủ cho thuê nhà 5 tầng ở phố Quang Tiến Tây Mỗ, price=16000000 VND, area=38 m2, bedrooms=3, bathrooms=4, direction=Đông, furnishing=FULLY_FURNISHED, address=Khu đô thị Đại Mỗ Hà Nội Đường Quang Tiến Phường Đại Mỗ Quận Nam Từ Liêm Hà Nội, highlights=5 tầng|trường cấp 1 và 3 cách 500m|bệnh viện và Aeon Mall Hà Đông cách khoảng 2km"
@@ -75,10 +75,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao nhà ở phố Thanh Nhàn được xem là hợp với người học tập hoặc làm việc gần khu trung tâm?",
+    "input": "Vi sao tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" hop voi nguoi hoc tap hoac lam viec gan trung tam?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như gần Bách Kinh Xây, gần Bệnh viện Bạch Mai và Thanh Nhàn, chợ đối diện, full nội thất",
-      "Giải thích được vì sao vị trí và tiện ích này hợp cho người học tập hoặc đi làm"
+      "Can cu vi tri: gan Bach Kinh Xay, gan Benh vien Bach Mai va Thanh Nhan, cho doi dien",
+      "Cong nang co ban: 2 phong ngu, 2 phong ve sinh, full noi that"
     ],
     "context": [
       "postId=294, propertyId=293, listingType=Cho thuê, title=Cho thuê nhà riêng tại phố Thanh Nhàn Hà Nội, price=7000000 VND, area=34 m2, bedrooms=2, bathrooms=2, furnishing=FULLY_FURNISHED, address=ngõ 285 phố Thanh Nhàn Đường Thanh Nhàn Phường Thanh Nhàn Quận Hai Bà Trưng Hà Nội, highlights=gần Bách Kinh Xây|gần Bệnh viện Bạch Mai và Thanh Nhàn|chợ đối diện"
@@ -111,10 +111,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao nhà nguyên căn ở Giảng Võ không phù hợp với mô hình Airbnb hoặc văn phòng đông người?",
+    "input": "Vi sao tin \"Cho thue nha rieng chinh chu tai Giang Vo\" khong phu hop Airbnb hoac van phong dong nguoi?",
     "expected_output_outline": [
-      "Nêu đúng các hạn chế ghi rõ trong tin: không văn phòng đông người, không căn hộ cho thuê lẻ, không Airbnb",
-      "Có thể liên hệ thêm rằng tin chỉ phù hợp gia đình hoặc văn phòng nhỏ ít người"
+      "Han che ghi trong tin: khong van phong dong nguoi, khong can ho cho thue le, khong Airbnb",
+      "Phuong an phu hop hon: gia dinh hoac van phong nho it nguoi"
     ],
     "context": [
       "postId=272, propertyId=271, listingType=Cho thuê, title=Cho thuê nhà riêng chính chủ tại Giảng Võ, price=30000000 VND, area=65 m2, bedrooms=5, bathrooms=4, furnishing=PARTLY_FURNISHED, address=Phố Giảng Võ Phường Giảng Võ Quận Ba Đình Hà Nội, highlights=4 tầng|phù hợp gia đình hoặc văn phòng nhỏ|không văn phòng đông người|không căn hộ cho thuê lẻ|không Airbnb"
@@ -147,10 +147,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao nhà 7 tầng ở đất dịch vụ Dương Nội được xem là phù hợp để vừa ở vừa làm việc?",
+    "input": "V? sao nh? 7 t?ng ? ??t d?ch v? D??ng N?i ph? h?p ?? v?a ? v?a l?m v?n ph?ng ho?c b?n h?ng online?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như 7 tầng, 7 phòng ngủ, 7 vệ sinh, có thang máy, đường vào rộng 11m, gần Aeon Hà Đông",
-      "Giải thích được vì sao cấu trúc này phù hợp để vừa ở vừa làm việc hoặc bán hàng online"
+      "N?u c?c c?n c? ch?nh: 7 t?ng, 7 ph?ng ng?, 7 v? sinh v? c? thang m?y",
+      "N?u l?i th? v?n h?nh: ???ng v?o r?ng 11m, ? t? v?o t?n n?i, g?n Aeon Mall H? ??ng v? ph? h?p l?m v?n ph?ng/b?n h?ng online"
     ],
     "context": [
       "postId=300, propertyId=299, listingType=Cho thuê, title=Cho thuê gấp nhà riêng 7 tầng có thang máy 7PN 7WC 55m2 tại đất dịch vụ Dương Nội, price=20000000 VND, area=55 m2, bedrooms=7, bathrooms=7, direction=Đông, furnishing=PARTLY_FURNISHED, address=Khu đất dịch vụ 27 28 Dương Nội Phường Dương Nội Quận Hà Đông Hà Nội, highlights=7 tầng|có thang máy|đường vào rộng 11m|gần Aeon Hà Đông 1km|phù hợp làm văn phòng hoặc bán hàng online kết hợp ở"
@@ -165,10 +165,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao văn phòng ở 526-528 Nguyễn Văn Cừ được xem là phù hợp cho vận hành kinh doanh chuyên nghiệp?",
+    "input": "Vi sao tin \"Cho thue van phong 526-528 Nguyen Van Cu phuong Bo De Ha Noi\" phu hop van hanh kinh doanh?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như diện tích 217m2, có tầng hầm, 10 tầng nổi, điều hòa trung tâm, PCCC, thang máy, bảo vệ 24/24",
-      "Giải thích được vì sao các yếu tố này phù hợp cho vận hành kinh doanh chuyên nghiệp"
+      "Can cu ha tang: 1 tang ham, 10 tang noi, dieu hoa trung tam, PCCC, thang may",
+      "Can cu van hanh: bao ve 24/24, phu hop van phong, spa, thoi trang hoac ngan hang"
     ],
     "context": [
       "postId=299, propertyId=298, listingType=Cho thuê, title=Cho thuê văn phòng 526-528 Nguyễn Văn Cừ phường Bồ Đề Hà Nội, price=30000000 VND, area=217 m2, furnishing=PARTLY_FURNISHED, address=Số 526+528 Đường Nguyễn Văn Cừ Phường Gia Thụy Quận Long Biên Hà Nội, highlights=1 tầng hầm|10 tầng nổi|điều hòa trung tâm|PCCC thành phố cấp|thang máy|bảo vệ 24/24|phù hợp văn phòng spa thời trang ngân hàng"
@@ -201,10 +201,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao căn hộ H1 tập thể Nguyễn Công Trứ được xem là phù hợp với người thuê có ngân sách thấp?",
+    "input": "V? sao c?n h? H1 t?p th? Nguy?n C?ng Tr? ph? h?p v?i ng??i thu? ng?n s?ch th?p n?u ch? x?t gi? v? di?n t?ch?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như giá thuê 5 triệu, diện tích 45m2, gần công viên, WinMart và bệnh viện lớn",
-      "Có thể nhắc thêm thời gian thuê tối thiểu 1 năm nếu dùng làm căn cứ ổn định"
+      "N?u gi? thu? 5.000.000 VND/th?ng",
+      "N?u di?n t?ch 45 m2 v? c? 1 ph?ng ng?"
     ],
     "context": [
       "postId=83, propertyId=82, listingType=Cho thuê, title=Cho thuê CC 45m2 tại H1 tập thể Nguyễn Công Trứ, price=5000000 VND, area=45 m2, bedrooms=1, bathrooms=1, direction=Nam, address=H1 tập thể Nguyễn Công Trứ Đường Nguyễn Công Trứ Phường Phố Huế Quận Hai Bà Trưng Hà Nội, highlights=gần công viên Thống Nhất|gần công viên Tuổi trẻ Thủ đô|gần WinMart|gần bệnh viện lớn|minRentalPeriod=1 year"
@@ -219,10 +219,11 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao lô đất khu dịch vụ Đồng Mai được xem là có thể phát triển nhà ở hoặc công trình khai thác tốt?",
+    "input": "V? sao l? ??t khu d?ch v? ??ng Mai c? ti?m n?ng x?y d?ng n?u x?t ???ng, ph?p l? v? kh? n?ng x?y t?ng?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như đường trước nhà rộng 6m, hai bên vỉa hè 2.5m, được phép xây 6 tầng, có sổ đỏ, gần Vành Đai 4 và Quốc Lộ 6",
-      "Giải thích được vì sao các yếu tố pháp lý, giao thông và khả năng xây dựng tạo tiềm năng phát triển"
+      "N?u ???ng tr??c nh? r?ng 6m, hai b?n v?a h? 2,5m",
+      "N?u ???c ph?p x?y l?n ??n 6 t?ng v? c? s? ??",
+      "C? th? nh?c v? tr? g?n V?nh ?ai 4, Qu?c L? 6 ho?c ???ng quy ho?ch 30m"
     ],
     "context": [
       "postId=197, propertyId=196, listingType=Cần bán, title=Bán lô LK16-41 khu 2 đất dịch vụ Đồng Mai Yên Nghĩa, price=7650000000 VND, area=50 m2, address=Khu dịch vụ Đồng Mai Đường Vành Đai 4 Phường Đồng Mai Quận Hà Đông Hà Nội, highlights=đường trước nhà rộng 6m|2 bên vỉa hè 2.5m|cấp phép xây lên đến 6 tầng|sổ đỏ cất két|gần Vành Đai 4 và Quốc Lộ 6"
@@ -237,10 +238,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao nhà ở ngõ 276 Nghi Tàm được xem là vừa thoáng vừa thuận tiện đi lại?",
+    "input": "Vi sao tin \"Cho thue nha rieng tai ngo 276 Nghi Tam\" vua thoang vua thuan tien di lai?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như phòng nào cũng có cửa sổ hoặc ban công, ô tô đỗ cửa, bus cách 1 phút đi bộ, gần công viên và bệnh viện",
-      "Giải thích được vì sao tin đăng cho thấy nhà thoáng và tiện di chuyển"
+      "Can cu do thoang: phong nao cung co cua so lon hoac ban cong",
+      "Can cu di lai: o to do cua, bus cach 1 phut di bo"
     ],
     "context": [
       "postId=291, propertyId=290, listingType=Cho thuê, title=Cho thuê nhà riêng tại ngõ 276 Nghi Tàm, price=18000000 VND, area=60 m2, bedrooms=5, bathrooms=3, furnishing=PARTLY_FURNISHED, address=ngõ 276 đường Nghi Tàm Phường Tứ Liên Quận Tây Hồ Hà Nội, highlights=phòng nào cũng có cửa sổ lớn hoặc ban công|ô tô đỗ cửa|bus cách 1 phút đi bộ|gần công viên Bách Thảo|gần bệnh viện"
@@ -291,10 +292,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao căn 2PN 1VS tại Vinhomes D'Capitale được xem là có thể dùng linh hoạt để ở hoặc làm việc?",
+    "input": "V? sao c?n 2PN 1VS t?i Vinhomes D'Capitale c? th? d?ng linh ho?t ?? ? ho?c l?m v?n ph?ng theo tin ??ng?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như diện tích 70m2, 2 phòng ngủ, full nội thất, tin đăng ghi rõ làm văn phòng cực hợp",
-      "Giải thích được vì sao căn này có tính linh hoạt giữa ở và làm việc"
+      "N?u di?n t?ch 70m2 v? c?u h?nh 2 ph?ng ng?, 1 v? sinh",
+      "N?u tin ??ng c? ph??ng ?n l?m v?n ph?ng c?c h?p v? c? l?a ch?n n?i th?t c? b?n/full n?i th?t"
     ],
     "context": [
       "postId=77, propertyId=76, listingType=Cho thuê, project=Vinhomes DCapitale, variant=2PN 1VS, price=16000000 VND, area=70 m2, bedrooms=2, bathrooms=1, direction=Tây, furnishing=FULLY_FURNISHED, address=Vinhomes DCapitale Đường Trần Duy Hưng Phường Trung Hòa Quận Cầu Giấy Hà Nội, highlights=làm văn phòng cực hợp|full nội thất"
@@ -309,10 +310,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao lô đất Chi Đông được xem là phù hợp để ở hoặc kinh doanh?",
+    "input": "Vi sao tin \"Dat nen ban gap Chi Dong 13,6 ty 206.7m2 mat tien 7m duong 18m\" phu hop de o hoac kinh doanh?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như mặt tiền 7m, đường 18m, pháp lý đầy đủ, sổ đỏ sẵn sàng, vị trí cách trung tâm Hà Nội 20km và Nội Bài 5km",
-      "Giải thích được vì sao lô đất hợp cả nhu cầu ở lẫn kinh doanh hoặc khai thác"
+      "Can cu lo dat: dien tich 206,7 m2, mat tien 7m, duong 18m",
+      "Can cu phap ly va vi tri: phap ly day du, so do san sang, cach Noi Bai 5km"
     ],
     "context": [
       "postId=225, propertyId=224, listingType=Cần bán, title=Đất nền bán gấp Chi Đông 13,6 tỷ 206.7m2 mặt tiền 7m đường 18m, price=13600000000 VND, area=206.7 m2, frontage=7 m, roadWidth=18 m, address=Chi Đông Đường Cao tốc Thăng Long Nội Bài Thị trấn Chi Đông Mê Linh Hà Nội, highlights=pháp lý đầy đủ|sổ đỏ sẵn sàng|cách trung tâm Hà Nội 20km|cách Nội Bài 5km"
@@ -327,10 +328,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao căn hộ Orchard Park View được xem là phù hợp với người cần di chuyển sân bay thường xuyên?",
+    "input": "V? sao c?n h? Orchard Park View ph? h?p v?i ng??i c?n di chuy?n s?n bay th??ng xuy?n n?u x?t v? tr? v? ti?n ?ch?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như cách sân bay Tân Sơn Nhất 5 phút, 3PN 2WC, full nội thất, có hồ bơi, gym, siêu thị và an ninh 24/7",
-      "Giải thích được vì sao đây là lựa chọn hợp cho người cần di chuyển sân bay thường xuyên"
+      "N?u c?n h? c?ch s?n bay T?n S?n Nh?t kho?ng 5 ph?t",
+      "N?u c?c c?n c? h? tr? sinh ho?t: 3PN 2WC, full n?i th?t, an ninh 24/7 v? ti?n ?ch nh? h? b?i, gym, si?u th?"
     ],
     "context": [
       "postId=143, propertyId=142, listingType=Cho thuê, title=Cho thuê căn hộ Orchard Park View 3PN 2WC full nội thất, price=21000000 VND, area=85 m2, bedrooms=3, bathrooms=2, furnishing=FULLY_FURNISHED, address=Căn hộ Orchard Park View Đường Hồng Hà Phường 9 Quận Phú Nhuận Hồ Chí Minh, highlights=cách sân bay Tân Sơn Nhất 5 phút|bảo vệ và lễ tân 24/7|hồ bơi|gym|siêu thị"
@@ -345,10 +346,11 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao nhà vườn ở Phan Kế Bính có thể kết hợp ở và kinh doanh?",
+    "input": "V? sao nh? v??n Phan K? B?nh c? th? k?t h?p ? v? kinh doanh n?u x?t di?n t?ch, b? c?c showroom v? v? tr? y?n t?nh?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như diện tích 163m2, có sân vườn, có showroom rộng, 3 tầng, hướng Nam, tin đăng nói rõ có thể ở kết hợp kinh doanh",
-      "Giải thích được vì sao bố cục và công năng hỗ trợ mô hình kết hợp"
+      "Di?n t?ch 163m2, nh? 3 t?ng, c? s?n v? v??n c?y xanh",
+      "T?ng 2 c? showroom r?ng; tin ??ng n?u c? th? ? k?t h?p kinh doanh, l?m showroom c? nh?n, trung t?m Anh ng? ho?c spa",
+      "N?m trong ng? Phan K? B?nh k?o d?i, y?n t?nh"
     ],
     "context": [
       "postId=293, propertyId=292, listingType=Cho thuê, title=Cho thuê nhà vườn 163m2 Phan Kế Bính 3 tầng hợp ở và kinh doanh, price=42000000 VND, area=163 m2, bedrooms=6, direction=Nam, address=Đường Phan Kế Bính Phường Cống Vị Quận Ba Đình Hà Nội, highlights=có sân và vườn cây xanh|3 tầng|1 showroom rộng|ở kết hợp kinh doanh|phù hợp showroom cá nhân trung tâm Anh ngữ spa"
@@ -363,10 +365,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao lô B8 đấu giá Tuần Châu, Sài Sơn được xem là phù hợp để xây ở?",
+    "input": "Vi sao tin \"Lo B8 dau gia Tuan Chau Sai Son Quoc Oai 95,7m2 co 2 mat tien\" phu hop de xay o?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như 2 mặt thoáng, đường 2 ô tô tránh, đối diện trường học, gần chợ và trạm y tế, hướng Nam",
-      "Giải thích được vì sao những chi tiết này làm lô đất phù hợp để xây ở"
+      "Can cu lo dat: dien tich 95,7 m2, 2 mat thoang truoc sau, huong Nam",
+      "Can cu vi tri: duong 2 o to tranh, doi dien truong cap 3, gan cho va tram y te"
     ],
     "context": [
       "postId=250, propertyId=249, listingType=Cần bán, title=Lô B8 đấu giá Tuần Châu Sài Sơn Quốc Oai 95,7m2 có 2 mặt tiền, price=9280000000 VND, area=95.7 m2, direction=Nam, address=Đường vành đai Tuần Châu Sunny Garden City Đường ĐT 421B Xã Sài Sơn Huyện Quốc Oai Hà Nội, highlights=2 mặt thoáng trước sau|đường 2 oto tránh|đối diện trường cấp 3|gần cấp 1 cấp 2 chợ trạm y tế"
@@ -381,10 +383,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao lô đất ở Phú Cát gần khu công nghệ cao Hòa Lạc được xem là sẵn sàng cho đầu tư?",
+    "input": "Vi sao tin \"Dat Hoa Lac dau tu gia F0 full tho cu vi tri cuc dep sat khu cong nghe cao\" san sang cho dau tu?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như full thổ cư, sổ đỏ mới nhất 2026 công chứng ngay, gần khu công nghệ cao Hòa Lạc, gần Đại học Quốc Gia, đường nhựa rộng 2 ô tô tránh",
-      "Giải thích được vì sao tin đăng thể hiện mức độ sẵn sàng cho đầu tư"
+      "Can cu phap ly: full tho cu, so do moi nhat 2026, cong chung ngay",
+      "Can cu vi tri: gan khu cong nghe cao Hoa Lac, gan Dai hoc Quoc Gia, duong nhua rong 2 o to tranh"
     ],
     "context": [
       "postId=205, propertyId=204, listingType=Cần bán, title=Đất Hòa Lạc đầu tư giá F0 full thổ cư vị trí cực đẹp sát khu công nghệ cao, price=2800000000 VND, area=100 m2, address=Xã Phú Cát Huyện Quốc Oai Hà Nội, highlights=full thổ cư|đường trải nhựa rộng 2 ô tô tránh|gần khu công nghệ cao Hòa Lạc|gần Đại học Quốc Gia|gần QL21 mở rộng 80m|sổ đỏ mới nhất 2026 công chứng ngay"
@@ -417,13 +419,13 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "V? sao l? ??t n?n H?a L?c 100m2 trong tin C?T gi? ??u t? F0 ???c xem l? c? ti?m n?ng ??u t??",
+    "input": "Vi sao tin \"CDT dat nen Hoa Lac gia dau tu F0 DT 100m2 - 300m2\" co tiem nang dau tu?",
     "expected_output_outline": [
-      "N?u ???c c?c c?n c? nh? g?n khu c?ng ngh? cao H?a L?c, c?ch FPT kho?ng 5 ph?t v? v? tr? thu?n l?i cho x?y d?ng nh? ? ho?c ??u t?",
-      "C? th? nh?c th?m m?c gi? kho?ng 2 t? cho di?n t?ch 100m2 v? khu v?c d?n c? xung quanh"
+      "Can cu chinh: dien tich 100 m2, gia khoang 2 ty",
+      "Can cu vi tri: gan khu cong nghe cao Hoa Lac, cach FPT khoang 5 phut, thuan loi xay nha o hoac dau tu"
     ],
     "context": [
-      "postId=203, propertyId=202, listingType=C?n b?n, title=C?T ??t n?n H?a L?c gi? ??u t? F0 DT 100m2 - 300m2 nhi?u v? tr? ??p v? uy t?n, price=2000000000 VND, area=100 m2, direction=T?y, address=???ng ?CT08(H?a L?c) X? T?n X? Huy?n Th?ch Th?t H? N?i, highlights=g?n khu c?ng ngh? cao H?a L?c|c?ch FPT 5 ph?t|ph? h?p ??u t? ho?c x?y d?ng nh? ?"
+      "postId=203, propertyId=202, postType=SALE, categoryName=Căn hộ, title=CĐT đất nền Hòa Lạc giá đầu tư F0 DT 100m2 - 300m2 nhiều vị trí đẹp và uy tín: 0903 066 ***, price=2.000.000.000 VNĐ, area=100 m², bedrooms=N/A, bathrooms=N/A, direction=Tây, furnishing=N/A, address=Đường ĐCT08(Hòa Lạc), Xã Tân Xã, Huyện Thạch Thất, Hà Nội"
     ],
     "target_metadata": {
       "postId": 203,
@@ -435,10 +437,10 @@
     "difficulty": "hard",
     "question_type": "why",
     "domain": "real_estate",
-    "input": "Vì sao căn hộ ở Keangnam Hanoi Landmark Tower được xem là đáp ứng nhu cầu sống cao cấp?",
+    "input": "Vi sao tin thue can ho tai Keangnam Hanoi Landmark Tower dap ung nhu cau song rong rai, tien nghi?",
     "expected_output_outline": [
-      "Nêu được các căn cứ như diện tích 156m2, full nội thất, gần bệnh viện, siêu thị, công viên, thuộc Keangnam Hanoi Landmark Tower",
-      "Có thể nhắc thêm hướng cửa chính Đông và ban công Đông Bắc như chi tiết cộng thêm"
+      "Can cu can ho: dien tich 156 m2, full noi that, khong gian song rong rai",
+      "Can cu vi tri: thuoc Keangnam Hanoi Landmark Tower, gan benh vien, sieu thi va cong vien"
     ],
     "context": [
       "postId=73, propertyId=72, listingType=Cho thuê, title=Liên hệ để thuê căn hộ tại Keangnam Hanoi Landmark Tower, price=70000000 VND, area=156 m2, furnishing=FULLY_FURNISHED, address=Keangnam Hanoi Landmark Tower Đường Phạm Hùng Phường Mễ Trì Quận Nam Từ Liêm Hà Nội, highlights=hướng cửa chính Đông|ban công Đông Bắc|gần bệnh viện|gần siêu thị|gần công viên"
@@ -452,7 +454,7 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
+    "domain": "land_use_planning",
     "input": "Vì sao quận Hoàn Kiếm cần lập Kế hoạch sử dụng đất năm 2025?",
     "expected_output_outline": [
       "Nêu được lý do pháp lý: kế hoạch sử dụng đất hằng năm cấp huyện là nội dung quản lý nhà nước về đất đai và thuộc trách nhiệm UBND cấp huyện",
@@ -473,7 +475,7 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
+    "domain": "land_use_planning",
     "input": "Vì sao nhiều dự án của năm 2024 phải chuyển tiếp sang kế hoạch sử dụng đất năm 2025?",
     "expected_output_outline": [
       "Nêu được các dự án chưa hoàn tất GPMB, hồ sơ thu hồi đất, giao đất hoặc thủ tục pháp lý",
@@ -495,7 +497,7 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
+    "domain": "land_use_planning",
     "input": "Vì sao báo cáo cho rằng các dự án trong Kế hoạch sử dụng đất năm 2025 của quận Hoàn Kiếm có khả năng thực hiện cao?",
     "expected_output_outline": [
       "Nêu được cơ sở từ nguồn lực của thành phố như vốn đầu tư phát triển lớn, cơ chế tăng thẩm quyền đầu tư, khả năng huy động vốn",
@@ -517,13 +519,12 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao hai phường Chương Dương và Phúc Tân được nhấn mạnh trong giải pháp quản lý đất đai?",
+    "domain": "land_use_planning",
+    "input": "V? sao Ch??ng D??ng v? Ph?c T?n l? hai ph??ng ngo?i ?? s?ng H?ng c?n nh?n m?nh trong qu?n l? ??t ?ai Ho?n Ki?m?",
     "expected_output_outline": [
-      "Nêu được đây là 2 phường nằm ngoài đê sông Hồng",
-      "Nêu được yêu cầu bảo đảm an toàn hành lang đê, hành lang thoát lũ, hành lang cầu và chống lấn chiếm bờ bãi sông Hồng",
-      "Có thể bổ sung các biện pháp như kiểm tra thu hồi đất sử dụng sai mục đích và khảo sát đất bãi giữa để kiến nghị sử dụng dịch vụ du lịch",
-      "Không suy diễn sang nguyên nhân khác ngoài báo cáo"
+      "N?u Ch??ng D??ng v? Ph?c T?n l? 2 ph??ng n?m ngo?i ?? s?ng H?ng",
+      "N?u y?u c?u b?o ??m an to?n h?nh lang ??, h?nh lang tho?t l?, h?nh lang c?u v? ch?ng l?n chi?m b? b?i s?ng H?ng",
+      "C? th? n?u th?m thanh tra, ki?m tra, thu h?i ??t s? d?ng sai m?c ??ch ho?c kh?o s?t ??t b?i gi?a s?ng H?ng"
     ],
     "context": [
       "source=report_2025, section=IV giải pháp mục 4, wardsOutsideDike=Chương Dương|Phúc Tân",
@@ -541,7 +542,7 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
+    "domain": "land_use_planning",
     "input": "Vì sao quận Hà Đông cần lập Kế hoạch sử dụng đất năm 2025?",
     "expected_output_outline": [
       "Nêu được lý do pháp lý: kế hoạch sử dụng đất cấp huyện được lập hằng năm theo Luật Đất đai 2024",
@@ -561,13 +562,11 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao yếu tố môi trường cần được chú ý khi xem xét việc sử dụng đất ở quận Hà Đông?",
+    "domain": "land_use_planning",
+    "input": "Vi sao van de moi truong nuoc mat la can cu can chu y trong ke hoach su dung dat nam 2025 cua quan Ha Dong?",
     "expected_output_outline": [
-      "Nêu được môi trường nước mặt đang chịu tác động mạnh do đô thị hóa, công nghiệp, chất thải và khu dân cư đông đúc",
-      "Nêu được sông Nhuệ có dấu hiệu ô nhiễm, nhiều chỉ tiêu như BOD5, COD, TSS vượt chuẩn trong mùa khô",
-      "Nêu được các hồ và kênh mương nội thị cũng có dấu hiệu ô nhiễm, phú dưỡng",
-      "Nêu được môi trường không khí suy thoái, nguồn ô nhiễm nghiêm trọng là bụi và khí thải giao thông trên các tuyến chính"
+      "Moi truong nuoc mat chiu tac dong boi do thi hoa, cong nghiep, chat thai va khu dan cu dong duc",
+      "Song Nhue, ho va kenh muong noi thi co dau hieu o nhiem"
     ],
     "context": [
       "source=report_ha_dong_2025, pages=8-9, waterPollution=song Nhue and lakes affected by urbanization, industry, domestic wastewater",
@@ -583,19 +582,15 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao công tác giải phóng mặt bằng và xây dựng phương án bồi thường, hỗ trợ, tái định cư cho các dự án trọng điểm ở quận Hà Đông còn gặp khó khăn?",
+    "domain": "land_use_planning",
+    "input": "Vi sao cong tac GPMB o quan Ha Dong gap kho do chinh sach boi thuong, quy trinh Luat Dat dai moi, von va ho so dat dai?",
     "expected_output_outline": [
-      "Nêu được nguyên nhân chính là Luật Đất đai 2024 và các nghị định hướng dẫn mới có hiệu lực làm phát sinh vướng mắc trong quá trình áp dụng",
-      "Nêu được việc xác định giá đất cụ thể kéo dài thời gian GPMB",
-      "Nêu được Quyết định 56/2024/QĐ-UBND chưa quy định về hạn mức giao đất tái định cư",
-      "Nêu được việc bồi thường đối với công trình xây dựng và đơn giá di chuyển mộ còn thiếu hướng dẫn cụ thể"
+      "Kho khan den tu chinh sach boi thuong, ho tro GPMB va su dong thuan cua ho dan",
+      "Luat Dat dai moi lam quy trinh boi thuong, ho tro, tai dinh cu bi anh huong",
+      "Co them vuong mac ve von, thu tuc phap ly va thu thap ho so nguon goc dat dai"
     ],
     "context": [
-      "source=report_ha_dong_2025, page=15, difficulties=Land Law 2024 and new guiding regulations create obstacles",
-      "source=report_ha_dong_2025, page=15, landPriceIssue=specific land price must be redetermined, delaying GPMB",
-      "source=report_ha_dong_2025, page=15, resettlementIssue=Decision 56/2024/QD-UBND has not specified resettlement land quota",
-      "source=report_ha_dong_2025, page=15, structureAndGravesIssue=lack of detailed guidance for compensation of structures and grave relocation pricing"
+      "source=report_ha_dong_2025, difficulties=compensation and support policy lacks consensus|Land Law changes affect compensation support resettlement procedures|capital and legal delays|difficulty collecting land origin records"
     ],
     "target_metadata": {
       "topic": "gpmh_difficulties_ha_dong",
@@ -606,16 +601,13 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao quận Hà Đông được xem là có tiềm năng phát triển du lịch và dịch vụ gắn với giá trị văn hóa?",
+    "domain": "land_use_planning",
+    "input": "Vi sao quan Ha Dong co tiem nang phat trien du lich, dich vu gan voi gia tri van hoa?",
     "expected_output_outline": [
-      "Nêu được Hà Đông có nguồn tài nguyên nhân văn phong phú với bề dày lịch sử và nhiều di tích",
-      "Nêu được trên địa bàn có 142 di tích trong danh mục kiểm kê, trong đó 51 di tích xếp hạng cấp quốc gia và 41 di tích xếp hạng cấp tỉnh, thành phố",
-      "Nêu được các lễ hội, di tích, tượng đài Nguyễn Trãi và các làng nghề như Vạn Phúc, Đa Sỹ là các yếu tố hỗ trợ phát triển du lịch, dịch vụ"
+      "Bao cao neu nhom thuong mai - dich vu - du lich cua Ha Dong tang truong manh, doanh thu uoc dat 128.380 ty dong trong 10 thang dau nam 2024 va tang 175,78% so voi cung ky"
     ],
     "context": [
-      "source=report_ha_dong_2025, page=8, heritageCount=142, nationalRanked=51, cityProvincialRanked=41",
-      "source=report_ha_dong_2025, page=8, supportingAssets=festivals|Nguyen Trai monument|Van Phuc silk village|Da Sy forging village"
+      "source=report_ha_dong_2025, economy=trade service tourism, revenueFirst10Months2024=128380 billion VND, growth=175.78 percent"
     ],
     "target_metadata": {
       "heritageCount": 142,
@@ -628,16 +620,15 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao quận Cầu Giấy cần lập Kế hoạch sử dụng đất năm 2025?",
+    "domain": "land_use_planning",
+    "input": "V? sao qu?n C?u Gi?y c?n l?p K? ho?ch s? d?ng ??t n?m 2025 ?? tr?nh l?ng ph?, ch?ng ch?o?",
     "expected_output_outline": [
-      "Nêu được lý do pháp lý là kế hoạch sử dụng đất hằng năm cấp huyện là nội dung thực hiện Luật Đất đai 2024 và Nghị định 102/2024/NĐ-CP",
-      "Nêu được vai trò cụ thể hóa các chỉ tiêu sử dụng đất và làm cơ sở cho thu hồi đất, giao đất, cho thuê đất, chuyển mục đích sử dụng đất",
-      "Nêu được mục tiêu sử dụng đất hợp lý, tránh lãng phí, chồng chéo và hạn chế hủy hoại môi trường sinh thái",
-      "Không trả lời chung chung ngoài các căn cứ trong báo cáo"
+      "K? ho?ch c? th? h?a ch? ti?u s? d?ng ??t c?a quy ho?ch v? k? k? ho?ch 5 n?m",
+      "M?c ti?u l? s? d?ng qu? ??t h?p l?, tr?nh l?ng ph?, ch?ng ch?o v? h?n ch? h?y ho?i ??t, ph? v? m?i tr??ng sinh th?i",
+      "K? ho?ch l? c? s? cho thu h?i ??t, giao ??t, cho thu? ??t v? chuy?n m?c ??ch s? d?ng ??t"
     ],
     "context": [
-      "source=report_cau_giay_2025, necessity=implement Land Law 2024|specify land-use targets|basis for land recovery allocation lease and conversion|avoid waste and overlap|protect ecological environment"
+      "source=report_cau_giay_2025, necessity=implement Land Law 2024 and Decree 102/2024/ND-CP|specify land-use targets|basis for land recovery allocation lease and conversion|avoid waste and overlap|protect ecological environment"
     ],
     "target_metadata": {
       "topic": "necessity_of_2025_land_use_plan",
@@ -648,18 +639,14 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao phường Mai Dịch là địa bàn trọng điểm trong Kế hoạch sử dụng đất năm 2025 của quận Cầu Giấy?",
+    "domain": "land_use_planning",
+    "input": "V? sao ph??ng Mai D?ch c?n ch? ? trong k? ho?ch s? d?ng ??t n?ng nghi?p n?m 2025 c?a qu?n C?u Gi?y? Kh?ng c?n t?nh ph?n tr?m.",
     "expected_output_outline": [
-      "Nêu được phần lớn đất nông nghiệp còn lại, đặc biệt đất trồng cây lâu năm, tập trung tại Mai Dịch",
-      "Nêu được hầu hết chỉ tiêu thu hồi đất nông nghiệp, chuyển mục đích từ đất trồng cây lâu năm và dự án đăng ký mới đều tập trung tại Mai Dịch",
-      "Có thể dẫn chứng các dự án lớn như mở rộng trụ sở Bộ Công an số 47 Phạm Văn Đồng, Trường THPT công lập F/THPT1, Khu đô thị thành phố giao lưu, Trung tâm Pháp y Hà Nội",
-      "Không suy đoán nguyên nhân ngoài các dữ kiện được nêu"
+      "N?u di?n t?ch ??t n?ng nghi?p c?a qu?n C?u Gi?y ??n n?m 2025 l? 19,34 ha",
+      "N?u ??t n?ng nghi?p t?p trung ch? y?u t?i ph??ng Mai D?ch v?i 16,03 ha"
     ],
     "context": [
-      "source=report_cau_giay_2025, agriculturalLand2025Distribution=Mai Dịch 16.03 ha",
-      "source=report_cau_giay_2025, recoveryAndConversionFocus=agricultural recovery 4.77 ha and agricultural-to-non-agricultural conversion concentrated at Mai Dịch",
-      "source=report_cau_giay_2025, majorProjectsAtMaiDich=Bo Cong an 47 Pham Van Dong|F/THPT1|Khu do thi thanh pho giao luu|Trung tam Phap y Ha Noi"
+      "source=report_cau_giay_2025, agriculturalLand2025Distribution=Mai Dich 16.03 ha"
     ],
     "target_metadata": {
       "focusWard": "Mai Dịch",
@@ -670,13 +657,12 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao nhiều công trình, dự án trong Kế hoạch sử dụng đất năm 2024 của quận Cầu Giấy chưa hoàn thành hoặc bị hủy bỏ?",
+    "domain": "land_use_planning",
+    "input": "V? sao k? ho?ch s? d?ng ??t 2025 c?a C?u Gi?y v?a ph?i x? l? d? ?n chuy?n ti?p v?a ?i?u ch?nh ??t gi?o d?c v? ??t n?ng nghi?p?",
     "expected_output_outline": [
-      "Nêu được nguyên nhân về khó khăn vốn do bối cảnh kinh tế biến động, lạm phát, giá nguyên vật liệu tăng",
-      "Nêu được công tác bồi thường, giải phóng mặt bằng còn nhiều khó khăn làm chậm tiến độ",
-      "Nêu được nguồn ngân sách hạn hẹp, bố trí vốn chưa kịp thời đối với một số dự án",
-      "Có thể bổ sung chất lượng một số dự án chưa cao, chưa có tầm nhìn dài hạn, đăng ký nhu cầu sử dụng đất chưa chính xác"
+      "C? 21 c?ng tr?nh, d? ?n d? ki?n chuy?n ti?p sang k? ho?ch n?m 2025 v?i di?n t?ch 27,41 ha",
+      "??t c? s? gi?o d?c v? ??o t?o t?ng l?n 108,94 ha, chi?m 8,76% di?n t?ch t? nhi?n",
+      "??t n?ng nghi?p chuy?n sang ??t phi n?ng nghi?p 0,95 ha, t?p trung t?i ph??ng Mai D?ch"
     ],
     "context": [
       "source=report_cau_giay_2025, causes=capital difficulties due to economic fluctuations|GPMB difficulties|limited state budget|project quality not high|forecasting and registration not accurate"
@@ -690,17 +676,15 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao quận Cầu Giấy cần dành thêm đất cho dịch vụ, giao thông và nhà ở đô thị trong giai đoạn tới?",
+    "domain": "land_use_planning",
+    "input": "V? sao k? ho?ch s? d?ng ??t 2025 c?a C?u Gi?y c?n b? sung ??t cho tr??ng h?c v? giao th?ng?",
     "expected_output_outline": [
-      "Nêu được Cầu Giấy là quận nội thành, cửa ngõ phía Tây của Hà Nội, có hạ tầng khá phát triển và khả năng thu hút vốn, nhân lực, khoa học công nghệ",
-      "Nêu được kinh tế quận phát triển theo hướng tăng nhanh thương mại, dịch vụ nên nhu cầu đất cho trung tâm thương mại, khách sạn, dịch vụ tài chính, du lịch tăng",
-      "Nêu được tốc độ đô thị hóa cao và tăng dân số cơ học gây áp lực lớn lên nhu cầu giao thông, hạ tầng kỹ thuật và nhà ở",
-      "Không suy diễn ngoài phần đánh giá nguồn lực của quận"
+      "??t c? s? gi?o d?c v? ??o t?o t?ng th?m 0,95 ha t? ??t tr?ng c?y h?ng n?m ?? th?c hi?n Tr??ng THPT c?ng l?p ? ??t F/THPT1 t?i Mai D?ch",
+      "C? ph?n ??t chuy?n sang ??t c?ng tr?nh giao th?ng ho?c t?ng ??t giao th?ng ?? ph?c v? h? t?ng",
+      "C?c ?i?u ch?nh n?y ??p ?ng nhu c?u ph?t tri?n h? t?ng c?a qu?n"
     ],
     "context": [
-      "source=report_cau_giay_2025, districtResources=western gateway|good transport|attract capital and human resources",
-      "source=report_cau_giay_2025, developmentPressure=growing service economy|need more land for transport infrastructure|urbanization and mechanical population growth increase housing demand"
+      "source=report_cau_giay_2025, drivers=mechanical population growth|urbanization|housing pressure|transport infrastructure needs|service economy demand|public welfare works"
     ],
     "target_metadata": {
       "topic": "why_more_land_needed_for_services_transport_housing",
@@ -711,7 +695,7 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
+    "domain": "land_use_planning",
     "input": "Vì sao thị xã Sơn Tây cần lập Kế hoạch sử dụng đất năm 2025?",
     "expected_output_outline": [
       "Nêu được đây là căn cứ pháp lý quan trọng phục vụ quản lý nhà nước về đất đai",
@@ -731,7 +715,7 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
+    "domain": "land_use_planning",
     "input": "Vì sao thị xã Sơn Tây được xem là có nhiều lợi thế để phát triển du lịch và dịch vụ?",
     "expected_output_outline": [
       "Nêu được Sơn Tây là trung tâm văn hóa xứ Đoài, có nhiều di tích lịch sử văn hóa và danh lam thắng cảnh",
@@ -753,13 +737,11 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao nhiều dự án trong kế hoạch sử dụng đất năm 2024 của thị xã Sơn Tây phải chuyển tiếp sang năm 2025?",
+    "domain": "land_use_planning",
+    "input": "Vi sao nhieu du an trong ke hoach su dung dat nam 2024 cua thi xa Son Tay phai chuyen tiep sang nam 2025?",
     "expected_output_outline": [
-      "Nêu được nguyên nhân về thủ tục: phê duyệt báo cáo kinh tế kỹ thuật, đo đạc hiện trạng, xác định nguồn gốc đất, lập phương án đền bù, công bố công khai quy hoạch dự án",
-      "Có thể nêu thêm quy mô lớn của danh mục đấu giá cho thuê đất nông nghiệp công ích và các dự án đề xuất thu hút đầu tư làm tăng diện tích chuyển tiếp",
-      "Không quy kết các nguyên nhân ngoài tài liệu",
-      "Có thể dẫn lại số liệu nhóm chuyển tiếp tương ứng nếu cần"
+      "Nguyen nhan thu tuc: phe duyet bao cao kinh te ky thuat, do dac hien trang, xac dinh nguon goc dat",
+      "Cac buoc lap phuong an den bu va cong bo cong khai quy hoach du an cung anh huong tien do"
     ],
     "context": [
       "source=report_son_tay_2025, carriedForwardReasons=approval procedures|site measurement|land origin determination|compensation plan|public disclosure of planning",
@@ -774,13 +756,12 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao yếu tố môi trường cần được cân nhắc kỹ trong việc sử dụng đất ở thị xã Sơn Tây?",
+    "domain": "land_use_planning",
+    "input": "V? sao quy m? ??t n?ng nghi?p v? ??t tr?ng l?a ? S?n T?y khi?n vi?c s? d?ng ??t c?n ch? ? t?i ngu?n n??c?",
     "expected_output_outline": [
-      "Nêu được nguồn nước mặt có dấu hiệu ô nhiễm, một số mẫu vượt quy chuẩn về BOD5, COD, TSS, Amoni, Photphat",
-      "Nêu được nước dưới đất còn có dấu hiệu ô nhiễm bởi Amoni",
-      "Nêu được không khí gần khu vực bãi rác có hàm lượng H2S vượt quy chuẩn",
-      "Có thể bổ sung áp lực từ chất thải rắn sinh hoạt, y tế và nguy cơ ô nhiễm từ công nghiệp, làng nghề, khu dân cư"
+      "Di?n t?ch ??t n?ng nghi?p l? 5.228,42 ha, chi?m 44,61% di?n t?ch t? nhi?n",
+      "Di?n t?ch ??t tr?ng l?a l? 1.952,55 ha, chi?m 37,34% ??t n?ng nghi?p",
+      "C? di?n t?ch chuy?n tr?ng l?a n??c 1.758,76 ha, n?n ngu?n n??c l? y?u t? c?n ch? ? trong s? d?ng ??t"
     ],
     "context": [
       "source=report_son_tay_2025, surfaceWaterPollution=BOD5|COD|TSS|Amoni|Photphat vượt quy chuẩn ở một số mẫu",
@@ -797,7 +778,7 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
+    "domain": "land_use_planning",
     "input": "Vì sao quận Hai Bà Trưng cần lập Kế hoạch sử dụng đất năm 2025?",
     "expected_output_outline": [
       "Nêu được đây là cơ sở pháp lý cho quản lý nhà nước về đất đai",
@@ -817,13 +798,12 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao quận Hai Bà Trưng chịu áp lực lớn về nhu cầu đất cho thương mại, giao thông, nhà ở và công trình công cộng?",
+    "domain": "land_use_planning",
+    "input": "V? sao c?c ch? ti?u ??t phi n?ng nghi?p v? d? ?n ti?p t?c n?m 2025 cho th?y Hai B? Tr?ng ch?u ?p l?c h? t?ng?",
     "expected_output_outline": [
-      "Nêu được kinh tế quận phát triển theo hướng tăng nhanh tỷ trọng thương mại và dịch vụ nên nhu cầu đất cho trung tâm thương mại, siêu thị, khách sạn, nhà hàng và dịch vụ tài chính tăng",
-      "Nêu được tốc độ đô thị hóa nhanh khiến nhu cầu đất cho hạ tầng kỹ thuật, đặc biệt là giao thông, tăng cao",
-      "Nêu được tăng dân số cơ học và dịch chuyển dân cư tạo áp lực lớn về nhà ở đô thị",
-      "Nêu được mật độ dân số cao và nhu cầu văn hóa, phúc lợi công cộng làm tăng áp lực lên quỹ đất vốn hạn hẹp"
+      "N?m 2025 qu?n c? 02 d? ?n thu?c kho?n 4 ?i?u 67 Lu?t ??t ?ai ti?p t?c th?c hi?n",
+      "G?m m? r?ng Nh? tang l? Qu?c gia s? 5 Tr?n Th?nh T?ng di?n t?ch 1,2030 ha v? m? r?ng tr? s? B? C?ng an s? 30 Tr?n B?nh Tr?ng - 58 Tr?n Nh?n T?ng kho?ng 0,04 ha",
+      "D? ki?n c? kho?ng 1.017,59 ha ??t phi n?ng nghi?p, t?ng kho?ng 0,61 ha, ch? y?u cho giao th?ng, khu d?n c?, gi?o d?c, v?n h?a - th? thao v? an ninh"
     ],
     "context": [
       "source=report_hai_ba_trung_2025, landPressure=trade_service_growth|rapid urbanization|high transport demand|mechanical population growth|housing demand|need for cultural and public welfare facilities|limited land fund"
@@ -837,13 +817,12 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao nhiều công trình, dự án trong kế hoạch sử dụng đất năm 2024 của quận Hai Bà Trưng phải chuyển tiếp sang năm 2025?",
+    "domain": "land_use_planning",
+    "input": "V? sao nhi?u c?ng tr?nh, d? ?n k? ho?ch s? d?ng ??t 2024 c?a Hai B? Tr?ng ph?i chuy?n ti?p sang n?m 2025 theo ph?n ??nh gi? t?n t?i?",
     "expected_output_outline": [
-      "Nêu được nguyên nhân do quy hoạch sử dụng đất và quy hoạch phân khu còn một số bất cập, chưa thống nhất",
-      "Nêu được thủ tục đầu tư xây dựng cơ bản, thẩm duyệt PCCC và các thủ tục theo quy định hiện hành còn phức tạp",
-      "Nêu được công tác giải phóng mặt bằng còn vướng về thừa kế, xác nhận nguồn gốc và thời điểm sử dụng đất, sự chưa đồng thuận của một bộ phận người dân",
-      "Có thể bổ sung các nguyên nhân như đăng ký nhu cầu sử dụng đất chưa sát tính khả thi, vướng chỉ giới đường đỏ, khó khăn kinh tế xã hội và chính sách bồi thường tái định cư"
+      "N?u k? ho?ch s? d?ng ??t n?m 2024 c?n 18 c?ng tr?nh, d? ?n ch?a th?c hi?n",
+      "N?u s? c?ng tr?nh, d? ?n ?? ngh? chuy?n sang n?m 2025 l? 28 d? ?n",
+      "N?u nguy?n nh?n kh?i qu?t l? t?nh kh? thi trong ph??ng ?n k? ho?ch s? d?ng ??t ch?a cao"
     ],
     "context": [
       "source=report_hai_ba_trung_2025, carryoverProjects2025=28",
@@ -858,7 +837,7 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
+    "domain": "land_use_planning",
     "input": "Vì sao yếu tố môi trường là một hạn chế quan trọng đối với sử dụng đất ở quận Hai Bà Trưng?",
     "expected_output_outline": [
       "Nêu được môi trường không khí bị ảnh hưởng bởi bụi, tiếng ồn và mùi ở các tuyến giao thông lớn, công trình xây dựng và cơ sở sản xuất",
@@ -881,7 +860,7 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
+    "domain": "land_use_planning",
     "input": "Vì sao quận Hoàng Mai cần lập Kế hoạch sử dụng đất năm 2025?",
     "expected_output_outline": [
       "Nêu được đây là cơ sở pháp lý cho công tác quản lý nhà nước về đất đai",
@@ -901,13 +880,11 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao quận Hoàng Mai phải đặc biệt chú trọng hạ tầng thoát nước và giao thông khi lập kế hoạch sử dụng đất?",
+    "domain": "land_use_planning",
+    "input": "Vi sao dac diem dia hinh khien quan Hoang Mai phai chu trong thoat nuoc khi lap ke hoach su dung dat?",
     "expected_output_outline": [
-      "Nêu được Hoàng Mai là vùng trũng phía Nam nội thành, địa hình thấp dần từ Bắc xuống Nam và từ Tây sang Đông",
-      "Nêu được quận có 4 sông tiêu chính gồm Tô Lịch, Lừ, Sét và Kim Ngưu cùng nhiều hồ lớn như Yên Sở, Linh Đàm, Đền Lừ",
-      "Nêu được điều này làm công tác tiêu thoát nước, chống úng ngập và tổ chức hạ tầng kỹ thuật trở thành nhu cầu quan trọng",
-      "Không suy diễn ngoài các đặc điểm tự nhiên và hạ tầng đã nêu trong tài liệu"
+      "Hoang Mai la vung trung phia Nam noi thanh",
+      "Dia hinh thap dan tu Bac xuong Nam va tu Tay sang Dong nen tieu thoat nuoc la nhu cau quan trong"
     ],
     "context": [
       "source=report_hoang_mai_2025, topography=low-lying southern inner district|slope north to south and west to east",
@@ -922,17 +899,15 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao công tác giải phóng mặt bằng là một khâu rất trọng điểm trong việc thực hiện kế hoạch sử dụng đất của quận Hoàng Mai?",
+    "domain": "land_use_planning",
+    "input": "Vi sao cong tac giai phong mat bang la khau trong diem trong ke hoach su dung dat cua quan Hoang Mai?",
     "expected_output_outline": [
-      "Nêu được quận đang triển khai GPMB cho nhiều dự án với quy mô lớn",
-      "Nêu được số lượng hộ, phương án bồi thường và tiền bồi thường rất lớn, cho thấy mức độ phức tạp của công việc",
-      "Nêu được nhiều dự án trọng điểm về giao thông, trường học và đấu giá quyền sử dụng đất đều phụ thuộc vào tiến độ GPMB",
-      "Có thể dẫn ví dụ như đường Tam Trinh, Nam hồ Linh Đàm giai đoạn II, các dự án trường học tại Lĩnh Nam và Định Công"
+      "Quan Hoang Mai dang trien khai GPMB cho 45 du an",
+      "GPMB la khau trong diem vi can thu hoi dat, chuan bi mat bang va tap trung cac du an ha tang/trong diem"
     ],
     "context": [
-      "source=report_hoang_mai_2025, GPMB2024=45 projects, notices=1571 households, approvedPlans=1195, compensation=368.5 tỷ đồng",
-      "source=report_hoang_mai_2025, keyProjects=đường Tam Trinh|Nam hồ Linh Đàm giai đoạn II|trường Tiểu học Lĩnh Nam|các dự án trường học tại Định Công"
+      "source=report_hoang_mai_2025, GPMB2024=45 projects, focus=key projects and infrastructure implementation",
+      "source=report_hoang_mai_2025, GPMB=land recovery and site preparation are needed for project implementation"
     ],
     "target_metadata": {
       "topic": "importance_of_land_clearance",
@@ -943,13 +918,12 @@
   {
     "difficulty": "hard",
     "question_type": "why",
-    "domain": "real_estate",
-    "input": "Vì sao quận Hoàng Mai phải tăng cường quản lý đô thị, trật tự xây dựng và môi trường song song với kế hoạch sử dụng đất?",
+    "domain": "land_use_planning",
+    "input": "V? sao ??nh h??ng ph?t tri?n Ho?ng Mai c?n g?n k? ho?ch s? d?ng ??t v?i h? t?ng, chuy?n d?ch kinh t? v? m?i tr??ng?",
     "expected_output_outline": [
-      "Nêu được quận có mật độ hoạt động xây dựng và đô thị hóa lớn nên phải kiểm tra nhiều công trình xây dựng",
-      "Nêu được tài liệu ghi nhận vẫn có công trình vi phạm trật tự xây dựng, nhiều vi phạm trật tự đô thị và các vụ vi phạm môi trường",
-      "Nêu được địa hình trũng thấp và mạng lưới sông hồ khiến việc duy trì hạ tầng kỹ thuật, vệ sinh môi trường và thoát nước càng quan trọng",
-      "Có thể nhắc thêm quận phải duy trì thu gom 100% rác thải trong ngày và thường xuyên duy tu hệ thống hạ tầng"
+      "??nh h??ng gi? ?n ??nh kinh t? v? b?o ??m c?c c?n ??i l?n c?a qu?n",
+      "??y m?nh chuy?n d?ch c? c?u kinh t?, t?ng t? tr?ng th??ng m?i d?ch v?, ph?t tri?n b?n v?ng g?n v?i an sinh x? h?i",
+      "??y nhanh ti?n ?? v? ch?t l??ng c?c c?ng tr?nh, d? ?n h? t?ng quan tr?ng ?? n?ng cao ch?t l??ng s?ng v? b?o v? m?i tr??ng"
     ],
     "context": [
       "source=report_hoang_mai_2025, constructionChecks=1610 works checked, buildingViolations=16",
@@ -962,5 +936,956 @@
       "planningDocumentId": 133
     },
     "id": "ST_HARD_049"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Bán căn hộ 2PN Quận 1, full nội thất\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 75 m², giá 6.500.000.000 VNĐ, 2 phòng ngủ, 2 phòng vệ sinh, nội thất FULLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=1, propertyId=1, postType=SALE, categoryName=Căn hộ, title=Bán căn hộ 2PN Quận 1, full nội thất, price=6.500.000.000 VNĐ, area=75 m², bedrooms=2, bathrooms=2, direction=Đông Nam, furnishing=FULLY_FURNISHED, address=Quận 1, TP. Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 1,
+      "propertyId": 1
+    },
+    "id": "ST_HARD_050"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cho thuê \"Cho thuê căn hộ 2PN Quận 1, đầy đủ tiện ích\" có thể phù hợp với người cần thuê thực tế?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 75 m², 2 phòng ngủ, 2 phòng vệ sinh, nội thất FULLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=2, propertyId=1, postType=RENT, categoryName=Căn hộ, title=Cho thuê căn hộ 2PN Quận 1, đầy đủ tiện ích, price=6.500.000.000 VNĐ, area=75 m², bedrooms=2, bathrooms=2, direction=Đông Nam, furnishing=FULLY_FURNISHED, address=Quận 1, TP. Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 2,
+      "propertyId": 1
+    },
+    "id": "ST_HARD_051"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Em Hằng gửi đến quý khách mua nhà tại Vinhomes Ocean Park 1 quỹ căn giá rẻ, tầng đẹp, view\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 55 m², giá 3.650.000.000 VNĐ, 2 phòng ngủ, 1 phòng vệ sinh, nội thất FULLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=41, propertyId=40, postType=SALE, categoryName=Căn hộ, title=Em Hằng gửi đến quý khách mua nhà tại Vinhomes Ocean Park 1 quỹ căn giá rẻ, tầng đẹp, view, price=3.650.000.000 VNĐ, area=55 m², bedrooms=2, bathrooms=1, direction=N/A, furnishing=FULLY_FURNISHED, address=Vinhomes Ocean Park Gia Lâm, Xã Dương Xá, Huyện Gia Lâm, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 41,
+      "propertyId": 40
+    },
+    "id": "ST_HARD_052"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cho thuê \"Liên hệ Em Han 0969 116 *** để thuê CC tại Keangnam Hanoi Landmark Tower\" có thể phù hợp với người cần thuê thực tế?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 156 m², giá 70.000.000 VNĐ, nội thất FULLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=73, propertyId=72, postType=RENT, categoryName=Căn hộ, title=Liên hệ Em Han 0969 116 *** để thuê CC tại Keangnam Hanoi Landmark Tower, price=70.000.000 VNĐ, area=156 m², bedrooms=N/A, bathrooms=N/A, direction=Đông, furnishing=FULLY_FURNISHED, address=Keangnam Hanoi Landmark Tower, Đường Phạm Hùng, Phường Mễ Trì, Quận Nam Từ Liêm, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 73,
+      "propertyId": 72
+    },
+    "id": "ST_HARD_053"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cho thuê \"Tổng hợp quỹ căn 1.5PN, 2PN, 3N , cho thuê đẹp giá từ 15tr - 30tr tại Vinhomes D'Capitale\" có thể phù hợp với người cần thuê thực tế?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 70 m², giá 16.000.000 VNĐ, 2 phòng ngủ, 1 phòng vệ sinh, nội thất FULLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=77, propertyId=76, postType=RENT, categoryName=Căn hộ, title=Tổng hợp quỹ căn 1.5PN, 2PN, 3N , cho thuê đẹp giá từ 15tr - 30tr tại Vinhomes D'Capitale, price=16.000.000 VNĐ, area=70 m², bedrooms=2, bathrooms=1, direction=Tây, furnishing=FULLY_FURNISHED, address=Vinhomes D'Capitale, Đường Trần Duy Hưng, Phường Trung Hòa, Quận Cầu Giấy, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 77,
+      "propertyId": 76
+    },
+    "id": "ST_HARD_054"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cho thuê \"Cho thuê The Ninety, mới 100%, Studio-2-3 ngủ, từ 11tr, Miễn Dịch vụ, Có Slot Ô Tô\" có thể phù hợp với người cần thuê thực tế?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 39 m², giá 11.000.000 VNĐ, nội thất PARTLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=82, propertyId=81, postType=RENT, categoryName=Căn hộ, title=Cho thuê The Ninety, mới 100%, Studio-2-3 ngủ, từ 11tr, Miễn Dịch vụ, Có Slot Ô Tô, price=11.000.000 VNĐ, area=39 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=PARTLY_FURNISHED, address=The Ninety Complex, Đường Láng, Phường Thịnh Quang, Quận Đống Đa, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 82,
+      "propertyId": 81
+    },
+    "id": "ST_HARD_055"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cho thuê \"Cho thuê CC 45m2, 5 triệu VND tại H1 tập thể Nguyễn Công Trứ, Quận Hai Bà Trưng, Hà Nội\" có thể phù hợp với người cần thuê thực tế?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 45 m², giá 5.000.000 VNĐ, 1 phòng ngủ, 1 phòng vệ sinh",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=83, propertyId=82, postType=RENT, categoryName=Căn hộ, title=Cho thuê CC 45m2, 5 triệu VND tại H1 tập thể Nguyễn Công Trứ, Quận Hai Bà Trưng, Hà Nội, price=5.000.000 VNĐ, area=45 m², bedrooms=1, bathrooms=1, direction=Nam, furnishing=N/A, address=H1 tập thể Nguyễn Công trứ, Đường Nguyễn Công Trứ, Phường Phố Huế, Quận Hai Bà Trưng, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 83,
+      "propertyId": 82
+    },
+    "id": "ST_HARD_056"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Tặng cư dân Mas- 2% tháp B2 - Căn 2PN chỉ 8.867 tỷ - Giỏ 30 căn khu CT5 The Global City\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 77.5 m², 2 phòng ngủ, 2 phòng vệ sinh, nội thất PARTLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=120, propertyId=119, postType=SALE, categoryName=Căn hộ, title=Tặng cư dân Mas- 2% tháp B2 - Căn 2PN chỉ 8.867 tỷ - Giỏ 30 căn khu CT5 The Global City, price=8.867.000.000.000 VNĐ, area=77.5 m², bedrooms=2, bathrooms=2, direction=Tây, furnishing=PARTLY_FURNISHED, address=Masteri Park Place, Phường An Phú, Quận 2, Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 120,
+      "propertyId": 119
+    },
+    "id": "ST_HARD_057"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Bán căn hộ CC The River Thủ Thiêm (1PN- 11 tỷ)(2PN - 15.5tỷ)(3PN -24.5tỷ)(4PN\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 64 m², giá 11.000.000.000 VNĐ, 1 phòng ngủ, 1 phòng vệ sinh, nội thất PARTLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=122, propertyId=121, postType=SALE, categoryName=Căn hộ, title=Bán căn hộ CC The River Thủ Thiêm (1PN- 11 tỷ)(2PN - 15.5tỷ)(3PN -24.5tỷ)(4PN, price=11.000.000.000 VNĐ, area=64 m², bedrooms=1, bathrooms=1, direction=N/A, furnishing=PARTLY_FURNISHED, address=The River Thủ Thiêm, Đường Nguyễn Cơ Thạch, Phường An Khánh, Quận 2, Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 122,
+      "propertyId": 121
+    },
+    "id": "ST_HARD_058"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cho thuê \"Cho thuê căn hộ 3 phòng ngủ The Estella - Không nội thất - Giá thuê 35 triệu - Trống sẵn\" có thể phù hợp với người cần thuê thực tế?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 125 m², giá 35.000.000 VNĐ, 3 phòng ngủ, 2 phòng vệ sinh, nội thất PARTLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=142, propertyId=141, postType=RENT, categoryName=Căn hộ, title=Cho thuê căn hộ 3 phòng ngủ The Estella - Không nội thất - Giá thuê 35 triệu - Trống sẵn, price=35.000.000 VNĐ, area=125 m², bedrooms=3, bathrooms=2, direction=N/A, furnishing=PARTLY_FURNISHED, address=The Estella, Đường Xa Lộ Hà Nội, Phường An Phú, Quận 2, Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 142,
+      "propertyId": 141
+    },
+    "id": "ST_HARD_059"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cho thuê \"Cho thuê căn hộ Orchard Park View, 3PN, 2WC, full nội thất, giá: 21 triệu/tháng, 0908 435\" có thể phù hợp với người cần thuê thực tế?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 85 m², giá 21.000.000 VNĐ, 3 phòng ngủ, 2 phòng vệ sinh, nội thất FULLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=143, propertyId=142, postType=RENT, categoryName=Căn hộ, title=Cho thuê căn hộ Orchard Park View, 3PN, 2WC, full nội thất, giá: 21 triệu/tháng, 0908 435, price=21.000.000 VNĐ, area=85 m², bedrooms=3, bathrooms=2, direction=N/A, furnishing=FULLY_FURNISHED, address=Căn hộ Orchard Park View, Đường Hồng Hà, Phường 9, Quận Phú Nhuận, Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 143,
+      "propertyId": 142
+    },
+    "id": "ST_HARD_060"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Chính chủ bán nhà Trương Định, 67m2, 5T, mặt tiền 5m, 2 ngõ, oto vào nhà chỉ hơn 14 tỷ\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 67 m², giá 14.000.000.000 VNĐ, 4 phòng ngủ, 3 phòng vệ sinh, nội thất FULLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=146, propertyId=145, postType=SALE, categoryName=Căn hộ, title=Chính chủ bán nhà Trương Định, 67m2, 5T, mặt tiền 5m, 2 ngõ, oto vào nhà chỉ hơn 14 tỷ, price=14.000.000.000 VNĐ, area=67 m², bedrooms=4, bathrooms=3, direction=N/A, furnishing=FULLY_FURNISHED, address=ngõ 281 , Đường Trương Định, Phường Tương Mai, Quận Hoàng Mai, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 146,
+      "propertyId": 145
+    },
+    "id": "ST_HARD_061"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "V? sao nh? ph?n l? ng? 167 T?y S?n ??ng c?n nh?c n?u x?t ng? ? t?, v? tr? g?n c?c tuy?n l?n, di?n t?ch v? t?nh tr?ng ?ang cho thu??",
+    "expected_output_outline": [
+      "N?u di?n t?ch 71,9 m2 v? gi? 23.600.000.000 VND",
+      "N?u ng? th?ng, ? t? v?o nh? ho?c giao th?ng thu?n ti?n ra Th?i H?, Ch?a B?c, T?n Th?t T?ng, Tr??ng Chinh",
+      "N?u nh? ?ang cho thu? g?n 30 tri?u/th?ng n?u c? trong context"
+    ],
+    "context": [
+      "postId=147, propertyId=146, postType=SALE, categoryName=Căn hộ, title=Bán nhà phân lô ngõ 167 Tây Sơn - đại học Công Đoàn. Ngõ thông ô tô vào nhà, đang cho thuê, price=23.600.000.000 VNĐ, area=71.9 m², bedrooms=N/A, bathrooms=4, direction=Nam, furnishing=FULLY_FURNISHED, address=số 47, ngách 15, ngõ 167, Đường Tây Sơn, Phường Quang Trung, Quận Đống Đa, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 147,
+      "propertyId": 146
+    },
+    "id": "ST_HARD_062"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Siêu Phẩm! Phạm Văn Đồng- Hoàng Quốc Việt- Phân Lô, Lô Góc 3 Mặt tiền, 3 ô tô tránh, 70 m2\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 70 m², giá 31.800.000.000 VNĐ, 6 phòng ngủ, 6 phòng vệ sinh",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=164, propertyId=163, postType=SALE, categoryName=Căn hộ, title=Siêu Phẩm! Phạm Văn Đồng- Hoàng Quốc Việt- Phân Lô, Lô Góc 3 Mặt tiền, 3 ô tô tránh, 70 m2, price=31.800.000.000 VNĐ, area=70 m², bedrooms=6, bathrooms=6, direction=N/A, furnishing=N/A, address=Khu đô thị Nam Cường, Đường Phạm Văn Đồng, Phường Cổ Nhuế 1, Quận Bắc Từ Liêm, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 164,
+      "propertyId": 163
+    },
+    "id": "ST_HARD_063"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"CC nhà Ngõ 1/62/29 Bùi Xương Trạch ,Thiện Chí Bán 30m2*5,5 Tầng\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 30 m², giá 7.000.000.000 VNĐ",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=167, propertyId=166, postType=SALE, categoryName=Căn hộ, title=CC nhà Ngõ 1/62/29 Bùi Xương Trạch ,Thiện Chí Bán 30m2*5,5 Tầng, price=7.000.000.000 VNĐ, area=30 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Đường Bùi Xương Trạch, Phường Khương Đình, Quận Thanh Xuân, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 167,
+      "propertyId": 166
+    },
+    "id": "ST_HARD_064"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Siêu ngon nhà dòng tiền CCMN/CHDV - Ba Đình - Ngọc Hà 85m2, 8 tầng, 22PKK cao cấp, dòng\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 85 m², giá 18.000.000.000 VNĐ, 22 phòng ngủ, 22 phòng vệ sinh, nội thất FULLY_FURNISHED",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=178, propertyId=177, postType=SALE, categoryName=Căn hộ, title=Siêu ngon nhà dòng tiền CCMN/CHDV - Ba Đình - Ngọc Hà 85m2, 8 tầng, 22PKK cao cấp, dòng, price=18.000.000.000 VNĐ, area=85 m², bedrooms=22, bathrooms=22, direction=N/A, furnishing=FULLY_FURNISHED, address=Phường Ngọc Hà, Quận Ba Đình, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 178,
+      "propertyId": 177
+    },
+    "id": "ST_HARD_065"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Bán lô LK16 - 41 khu 2 đất dịch vụ Đồng Mai, Yên Nghĩa, giá 7,65 tỷ\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 50 m², giá 7.650.000.000 VNĐ",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=197, propertyId=196, postType=SALE, categoryName=Căn hộ, title=Bán lô LK16 - 41 khu 2 đất dịch vụ Đồng Mai, Yên Nghĩa, giá 7,65 tỷ, price=7.650.000.000 VNĐ, area=50 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Khu dịch vụ Đồng Mai, Đường Vành Đai 4, Phường Đồng Mai, Quận Hà Đông, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 197,
+      "propertyId": 196
+    },
+    "id": "ST_HARD_066"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"CĐT đất nền Hòa Lạc giá đầu tư F0 DT 100m2 - 300m2 nhiều vị trí đẹp và uy tín: 0903 066 ***\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 100 m², giá 2.000.000.000 VNĐ",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=203, propertyId=202, postType=SALE, categoryName=Căn hộ, title=CĐT đất nền Hòa Lạc giá đầu tư F0 DT 100m2 - 300m2 nhiều vị trí đẹp và uy tín: 0903 066 ***, price=2.000.000.000 VNĐ, area=100 m², bedrooms=N/A, bathrooms=N/A, direction=Tây, furnishing=N/A, address=Đường ĐCT08(Hòa Lạc), Xã Tân Xã, Huyện Thạch Thất, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 203,
+      "propertyId": 202
+    },
+    "id": "ST_HARD_067"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Đất Hòa Lạc đầu tư giá F0, full thổ cư, vị trí cực đẹp, sát khu công nghệ cao. LH 0866 333\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 100 m², giá 2.800.000.000 VNĐ",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=205, propertyId=204, postType=SALE, categoryName=Căn hộ, title=Đất Hòa Lạc đầu tư giá F0, full thổ cư, vị trí cực đẹp, sát khu công nghệ cao. LH 0866 333, price=2.800.000.000 VNĐ, area=100 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Xã Phú Cát, Huyện Quốc Oai, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 205,
+      "propertyId": 204
+    },
+    "id": "ST_HARD_068"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Đẹp nhất Sơn Tây gia đình có việc cần bán lô đất 100m2 chỉ 1tỷ900tr rẻ hơn thị trường 300tr\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 100 m², giá 1.000.000.000 VNĐ",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=207, propertyId=206, postType=SALE, categoryName=Căn hộ, title=Đẹp nhất Sơn Tây gia đình có việc cần bán lô đất 100m2 chỉ 1tỷ900tr rẻ hơn thị trường 300tr, price=1.000.000.000 VNĐ, area=100 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Đường Tỉnh lộ 413, Xã Xuân Sơn, Thị xã Sơn Tây, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 207,
+      "propertyId": 206
+    },
+    "id": "ST_HARD_069"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Đất nền bán gấp Chi Đông, 13,6 tỷ, 206.7m2, mặt tiền 7m, đường 18m\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 150 m², giá 5.850.000.000 VNĐ",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=225, propertyId=224, postType=SALE, categoryName=Căn hộ, title=Đất nền bán gấp Chi Đông, 13,6 tỷ, 206.7m2, mặt tiền 7m, đường 18m, price=5.850.000.000 VNĐ, area=150 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Chi Đông, Đường Cao tốc Thăng Long Nội Bài, Thị trấn Chi Đông, Mê Linh, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 225,
+      "propertyId": 224
+    },
+    "id": "ST_HARD_070"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu hời!\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 290 m², giá 3.900.000.000 VNĐ",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu hời!, price=3.900.000.000 VNĐ, area=290 m², bedrooms=N/A, bathrooms=N/A, direction=Đông, furnishing=N/A, address=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230
+    },
+    "id": "ST_HARD_071"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "V? sao l? D3 khu V??n ??o ??i di?n Lotte Mall ??ng ch? ? n?u x?t v? tr? v? k?t n?i giao th?ng?",
+    "expected_output_outline": [
+      "N?u di?n t?ch 270m2 v? gi? 189.000.000.000 VND",
+      "N?u v? tr? ??i di?n Lotte Mall West Lake Hanoi, ngay ng? t? L?c Long Qu?n ho?c khu V??n ??o",
+      "N?u k?t n?i giao th?ng nh? g?n H? T?y, Ciputra ho?c N?i B?i n?u c? trong context"
+    ],
+    "context": [
+      "postId=240, propertyId=239, postType=SALE, categoryName=Căn hộ, title=Bán đất lô D3 khu Vườn Đào, 270m2 ngay ngã tư, đối diện Lotte Mall, price=189.000.000.000 VNĐ, area=270 m², bedrooms=N/A, bathrooms=N/A, direction=Tây, furnishing=UNFURNISHED, address=685, Đường Lạc Long Quân, Phường Phú Thượng, Quận Tây Hồ, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 240,
+      "propertyId": 239
+    },
+    "id": "ST_HARD_072"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "Vì sao tin cần bán \"Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn trung thực & không chênh\" có thể đáng cân nhắc khi đánh giá nhanh?",
+    "expected_output_outline": [
+      "Nêu được các căn cứ chính: diện tích 100 m², giá 3.900.000.000 VNĐ",
+      "Giải thích dựa trên dữ liệu trong tin, không suy diễn quá mức"
+    ],
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn trung thực & không chênh, price=3.900.000.000 VNĐ, area=100 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243
+    },
+    "id": "ST_HARD_073"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "real_estate",
+    "input": "V? sao ??t bi?t th? 400m2 The Phoenix - ?an Ph??ng ??ng c?n nh?c n?u x?t quy m? l? ??t v? k?t n?i ???ng l?n?",
+    "expected_output_outline": [
+      "N?u di?n t?ch 400m2, m?t ti?n 16m v? chi?u d?i 25m",
+      "N?u v? tr? s?t ???ng V?nh ?ai 4 v? ???ng T?y Th?ng Long",
+      "C? th? nh?c h??ng T?y B?c ho?c gi? ???c m? t? l? t?t nh?t th? tr??ng, kh?ng c?n n?u gi? c? th? n?u context kh?ng c? s? gi?"
+    ],
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị trường, price=0 VNĐ, area=400 m², bedrooms=N/A, bathrooms=N/A, direction=Tây, furnishing=N/A, address=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246
+    },
+    "id": "ST_HARD_074"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon viec quan Hoan Kiem lap ke hoach su dung dat nam 2025?",
+    "expected_output_outline": [
+      "Ke hoach duoc lap de dap ung nhu cau phat trien kinh te - xa hoi, quoc phong an ninh va bao ve moi truong sinh thai",
+      "Context retrieved neu danh muc nam 2025 gom 21 du an voi dien tich 4,1325 ha"
+    ],
+    "context": [
+      "source=report_2025, planNeed=socio-economic development|political stability|national defense security|environmental protection",
+      "source=report_2025, section=3.7, totalProjects2025=21, totalArea=4.1325 ha"
+    ],
+    "target_metadata": {
+      "topic": "necessity_of_annual_land_use_plan",
+      "planningDocumentId": 17
+    },
+    "id": "ST_HARD_075"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon viec nhieu du an nam 2024 phai chuyen tiep sang ke hoach su dung dat nam 2025?",
+    "expected_output_outline": [
+      "Neu duoc ly do chua thuc hien va can tiep tuc dua vao ke hoach 2025"
+    ],
+    "context": [
+      "source=report_2025, section=2.2, status=many projects had site clearance markers but not finished GPMB or procedures; 21 projects proposed to continue",
+      "source=report_2025, section=2.3, objectiveCauses=overlap of laws and procedures|compensation policy difficulties",
+      "source=report_2025, section=2.3, subjectiveCauses=registration subjective|lack of capital/resources|investors not decisive in GPMB"
+    ],
+    "target_metadata": {
+      "continuedProjects2025": 21,
+      "planningDocumentId": 17
+    },
+    "id": "ST_HARD_076"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon kha nang thuc hien cao cua cac du an nam 2025 quan Hoan Kiem?",
+    "expected_output_outline": [
+      "Neu duoc can cu phap ly va tinh kha thi cua danh muc du an trong bao cao"
+    ],
+    "context": [
+      "source=report_2025, section=1.3, cityResources=large development capital|stronger investment authority|high commercial land value",
+      "source=report_2025, section=1.3, districtResources=center location|transport hub|trade tourism service strengths",
+      "source=report_2025, section=1.3, conclusion=projects in 2025 plan have high implementation conditions and feasibility"
+    ],
+    "target_metadata": {
+      "topic": "feasibility_of_2025_plan",
+      "planningDocumentId": 17
+    },
+    "id": "ST_HARD_077"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "V? sao Ch??ng D??ng v? Ph?c T?n c?n ???c ch? ? trong qu?n l? ??t ?ai, m?i tr??ng n??c th?i v? b?i gi?a s?ng H?ng?",
+    "expected_output_outline": [
+      "Hai ph??ng Ch??ng D??ng v? Ph?c T?n li?n quan ??n d? ?n h? th?ng thu gom v? tr?m x? l? n??c th?i",
+      "C?n t?ng c??ng qu?n l? ??t ?ai, b?o ??m h?nh lang ?? ho?c ch?ng l?n chi?m b? s?ng H?ng n?u context h? tr?",
+      "C? ??nh h??ng ?i?u tra, kh?o s?t ??t n?ng nghi?p b?i gi?a s?ng H?ng ?? ki?n ngh? chuy?n m?c ??ch sang d?ch v?, du l?ch n?u context h? tr?"
+    ],
+    "context": [
+      "source=report_2025, section=IV giải pháp mục 4, wardsOutsideDike=Chương Dương|Phúc Tân",
+      "source=report_2025, section=IV giải pháp mục 4, managementNeeds=protect dike corridor|floodway corridor|bridge corridor|prevent encroachment|inspect misuse|consider service tourism use for mid-river agricultural land"
+    ],
+    "target_metadata": {
+      "wards": [
+        "Chương Dương",
+        "Phúc Tân"
+      ],
+      "planningDocumentId": 17
+    },
+    "id": "ST_HARD_078"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon viec quan Ha Dong lap ke hoach su dung dat nam 2025?",
+    "expected_output_outline": [
+      "Ke hoach giup cu the hoa chi tieu va lam co so thu hoi, giao, cho thue, chuyen muc dich su dung dat"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=1, necessity=annual district land use plan under Land Law 2024, legalBasisFor=land allocation|land lease|change of land use purpose, managementPurpose=avoid waste and arbitrary use, developmentPurpose=support socio-economic, security and defense goals"
+    ],
+    "target_metadata": {
+      "topic": "necessity_of_land_use_plan_2025",
+      "planningDocumentId": 137
+    },
+    "id": "ST_HARD_079"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon moi truong nuoc mat trong ke hoach su dung dat nam 2025 cua quan Ha Dong?",
+    "expected_output_outline": [
+      "Moi truong nuoc mat chiu tac dong boi do thi hoa, cong nghiep, chat thai va khu dan cu",
+      "Song Nhue, ho va kenh muong noi thi co dau hieu o nhiem"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, pages=8-9, waterPollution=song Nhue and lakes affected by urbanization, industry, domestic wastewater",
+      "source=report_ha_dong_2025, page=9, indicators=BOD5 and COD and TSS exceed standards in dry season",
+      "source=report_ha_dong_2025, page=9, airPollution=serious due to dust and traffic emissions"
+    ],
+    "target_metadata": {
+      "topic": "environmental_constraints_on_land_use",
+      "planningDocumentId": 137
+    },
+    "id": "ST_HARD_080"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon kho khan GPMB o Ha Dong ve boi thuong, quy trinh, von va ho so dat dai?",
+    "expected_output_outline": [
+      "Kho khan gom chinh sach boi thuong ho tro, thay doi quy trinh theo Luat Dat dai moi, von/thu tuc phap ly va ho so nguon goc dat dai"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, difficulties=compensation and support policy lacks consensus|Land Law changes affect compensation support resettlement procedures|capital and legal delays|difficulty collecting land origin records"
+    ],
+    "target_metadata": {
+      "topic": "gpmh_difficulties_ha_dong",
+      "planningDocumentId": 137
+    },
+    "id": "ST_HARD_081"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon tiem nang du lich dich vu gan voi van hoa cua quan Ha Dong?",
+    "expected_output_outline": [
+      "Co 142 di tich trong danh muc kiem ke",
+      "Co 51 di tich cap quoc gia va 41 di tich cap tinh/thanh pho"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=8, heritageCount=142, nationalRanked=51, cityProvincialRanked=41",
+      "source=report_ha_dong_2025, page=8, supportingAssets=festivals|Nguyen Trai monument|Van Phuc silk village|Da Sy forging village"
+    ],
+    "target_metadata": {
+      "heritageCount": 142,
+      "nationalRanked": 51,
+      "cityProvincialRanked": 41,
+      "planningDocumentId": 137
+    },
+    "id": "ST_HARD_082"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "V? sao c? th? n?i k? ho?ch s? d?ng ??t 2025 c?a C?u Gi?y l? c?ng c? ph?n b? l?i ??t cho gi?o d?c, y t?, c? s? x? h?i v? d? ?n chuy?n ti?p?",
+    "expected_output_outline": [
+      "??t c? s? gi?o d?c v? ??o t?o ??n n?m 2025 l? 108,94 ha, chi?m 8,76% di?n t?ch t? nhi?n",
+      "??t c? s? y t? ??n n?m 2025 l? 9,02 ha, chi?m 0,72% di?n t?ch t? nhi?n",
+      "??t c? s? x? h?i l? 3,95 ha, chi?m 0,32% di?n t?ch t? nhi?n; c? 21 c?ng tr?nh, d? ?n chuy?n ti?p v?i di?n t?ch 27,41 ha"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, necessity=implement Land Law 2024 and Decree 102/2024/ND-CP|specify land-use targets|basis for land recovery allocation lease and conversion|avoid waste and overlap|protect ecological environment"
+    ],
+    "target_metadata": {
+      "topic": "necessity_of_2025_land_use_plan",
+      "planningDocumentId": 63
+    },
+    "id": "ST_HARD_083"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "V? sao ph??ng Mai D?ch ??ng ch? ? trong c?c ?i?u ch?nh ??t gi?o d?c v? y t? c?a C?u Gi?y n?m 2025?",
+    "expected_output_outline": [
+      "??t gi?o d?c t?ng th?m 0,95 ha ?? th?c hi?n d? ?n Tr??ng THPT c?ng l?p t?i ? ??t F/THPT1, ph??ng Mai D?ch",
+      "??t y t? t?ng 0,14 ha ?? th?c hi?n d? ?n Trung t?m Ph?p y H? N?i t?i ph??ng Mai D?ch",
+      "Mai D?ch c?ng xu?t hi?n trong ph?n b? ??t c? s? x? h?i ho?c c?c d? ?n h? t?ng kh?c n?u context h? tr?"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, agriculturalLand2025Distribution=Mai Dịch 16.03 ha",
+      "source=report_cau_giay_2025, recoveryAndConversionFocus=agricultural recovery 4.77 ha and agricultural-to-non-agricultural conversion concentrated at Mai Dịch",
+      "source=report_cau_giay_2025, majorProjectsAtMaiDich=Bo Cong an 47 Pham Van Dong|F/THPT1|Khu do thi thanh pho giao luu|Trung tam Phap y Ha Noi"
+    ],
+    "target_metadata": {
+      "focusWard": "Mai Dịch",
+      "planningDocumentId": 63
+    },
+    "id": "ST_HARD_084"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "V? sao c?c bi?n ??ng ??t gi?o d?c, y t?, khoa h?c v? n?ng nghi?p cho th?y k? ho?ch 2025 c?a C?u Gi?y ?ang ?i?u ch?nh nhi?u nh?m ??t?",
+    "expected_output_outline": [
+      "??t gi?o d?c v? ??o t?o ??n n?m 2025 l? 108,94 ha, t?ng so v?i n?m 2024",
+      "??t y t? ??n n?m 2025 l? 9,02 ha, t?ng 0,14 ha so v?i n?m 2024",
+      "??t khoa h?c c?ng ngh? kh?ng bi?n ??ng ? m?c 10,85 ha; ??t n?ng nghi?p gi?m c?n 19,34 ha"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, causes=capital difficulties due to economic fluctuations|GPMB difficulties|limited state budget|project quality not high|forecasting and registration not accurate"
+    ],
+    "target_metadata": {
+      "topic": "reasons_for_delays_and_cancellations_2024",
+      "planningDocumentId": 63
+    },
+    "id": "ST_HARD_085"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "V? sao d? ?n m? r?ng tr? s? B? C?ng an s? 47 Ph?m V?n ??ng l?m t?ng nhu c?u ??t giao th?ng v? ??t an ninh ? C?u Gi?y?",
+    "expected_output_outline": [
+      "C? di?n t?ch ??t giao th?ng 0,20 ha v? ??t ? ?? th? 1,97 ha li?n quan ??n ph?n t?ng ?? th?c hi?n d? ?n",
+      "D? ?n l? x?y d?ng h? t?ng, gi?i ph?ng m?t b?ng m? r?ng tr? s? B? C?ng an s? 47 Ph?m V?n ??ng",
+      "??n n?m 2025 di?n t?ch ??t an ninh c?a qu?n l? 22,22 ha"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, districtResources=western gateway|good transport|attract capital and human resources",
+      "source=report_cau_giay_2025, developmentPressure=growing service economy|need more land for transport infrastructure|urbanization and mechanical population growth increase housing demand"
+    ],
+    "target_metadata": {
+      "topic": "why_more_land_needed_for_services_transport_housing",
+      "planningDocumentId": 63
+    },
+    "id": "ST_HARD_086"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon viec thi xa Son Tay lap ke hoach su dung dat nam 2025?",
+    "expected_output_outline": [
+      "Can cu phap ly va nhu cau phan bo chi tieu su dung dat nam 2025"
+    ],
+    "context": [
+      "source=report_son_tay_2025, necessity=legal basis for land management|basis for land allocation recovery lease and conversion|use land efficiently|limit waste and environmental imbalance"
+    ],
+    "target_metadata": {
+      "topic": "necessity_of_2025_land_use_plan",
+      "planningDocumentId": 110
+    },
+    "id": "ST_HARD_087"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "V? sao di t?ch, l? h?i v? l?ng v?n h?a t?o l?i th? du l?ch, d?ch v? cho S?n T?y?",
+    "expected_output_outline": [
+      "S?n T?y c? 15 di t?ch x?p h?ng qu?c gia v? 49 di t?ch x?p h?ng c?p Th?nh ph?",
+      "C? kho?ng 73 l? h?i trong n?m",
+      "C? L?ng v?n h?a du l?ch c?c d?n t?c Vi?t Nam t?i x? C? ??ng v?i di?n t?ch 240 ha"
+    ],
+    "context": [
+      "source=report_son_tay_2025, culturalAssets=244 di tích lịch sử văn hóa|78 di sản văn hóa phi vật thể|65 lễ hội truyền thống",
+      "source=report_son_tay_2025, majorSites=thành cổ Sơn Tây|làng cổ Đường Lâm|đền Và|chùa Mía|lăng Ngô Quyền|hồ Đồng Mô|hồ Xuân Khanh",
+      "source=report_son_tay_2025, developmentOrientation=đô thị vệ tinh văn hóa lịch sử và du lịch nghỉ dưỡng"
+    ],
+    "target_metadata": {
+      "topic": "tourism_and_service_potential",
+      "planningDocumentId": 110
+    },
+    "id": "ST_HARD_088"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon viec nhieu du an nam 2024 cua thi xa Son Tay chuyen tiep sang 2025?",
+    "expected_output_outline": [
+      "Thu tuc phe duyet, do dac hien trang, xac dinh nguon goc dat anh huong tien do",
+      "Lap phuong an den bu va cong bo quy hoach cung anh huong tien do"
+    ],
+    "context": [
+      "source=report_son_tay_2025, carriedForwardReasons=approval procedures|site measurement|land origin determination|compensation plan|public disclosure of planning",
+      "source=report_son_tay_2025, carriedForwardScale=42 projects 509.26 ha, large share from auction of public agricultural land and investment-attraction proposals"
+    ],
+    "target_metadata": {
+      "topic": "reasons_for_2024_projects_carried_forward",
+      "planningDocumentId": 110
+    },
+    "id": "ST_HARD_089"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon yeu to moi truong trong su dung dat o thi xa Son Tay?",
+    "expected_output_outline": [
+      "Neu duoc cac ap luc moi truong va yeu cau bao ve tai nguyen theo bao cao"
+    ],
+    "context": [
+      "source=report_son_tay_2025, surfaceWaterPollution=BOD5|COD|TSS|Amoni|Photphat vượt quy chuẩn ở một số mẫu",
+      "source=report_son_tay_2025, groundwaterPollution=Amoni",
+      "source=report_son_tay_2025, airPollutionNearDump=H2S vượt QCCP 1.02-1.52 lần",
+      "source=report_son_tay_2025, wastePressure=CTRSH 38376 tấn năm 2022|chất thải nguy hại 2135.7 tấn/năm"
+    ],
+    "target_metadata": {
+      "topic": "environmental_pressure_in_land_use",
+      "planningDocumentId": 110
+    },
+    "id": "ST_HARD_090"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon viec quan Hai Ba Trung lap ke hoach su dung dat nam 2025?",
+    "expected_output_outline": [
+      "Can cu phap ly va nhu cau lam co so thu hoi, giao, cho thue, chuyen muc dich su dung dat"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, necessity=legal basis for land management|basis for land allocation lease conversion|limit overlap waste encroachment and land destruction|protect environment|support land-related budget balancing"
+    ],
+    "target_metadata": {
+      "topic": "necessity_of_2025_land_use_plan",
+      "planningDocumentId": 91
+    },
+    "id": "ST_HARD_091"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "V? sao k? ho?ch ??t phi n?ng nghi?p 2025 c?a Hai B? Tr?ng cho th?y nhu c?u b? tr? ??t cho h? t?ng v? d?ch v? c?ng?",
+    "expected_output_outline": [
+      "D? ki?n n?m 2025 qu?n c? kho?ng 1.017,59 ha ??t phi n?ng nghi?p, t?ng kho?ng 0,61 ha so v?i hi?n tr?ng",
+      "Ph?n t?ng ch? y?u ?? m? r?ng, quy ho?ch m?i giao th?ng, ph?t tri?n khu d?n c?, gi?o d?c ??o t?o, v?n h?a - th? d?c th? thao v? an ninh",
+      "C? c?c d? ?n ti?p t?c nh? m? r?ng Nh? tang l? Qu?c gia v? m? r?ng tr? s? B? C?ng an n?u context h? tr?"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, landPressure=trade_service_growth|rapid urbanization|high transport demand|mechanical population growth|housing demand|need for cultural and public welfare facilities|limited land fund"
+    ],
+    "target_metadata": {
+      "topic": "pressure_on_land_demand",
+      "planningDocumentId": 91
+    },
+    "id": "ST_HARD_092"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon viec nhieu du an nam 2024 cua quan Hai Ba Trung chuyen tiep sang 2025?",
+    "expected_output_outline": [
+      "Neu duoc nhom du an chua thuc hien va ly do can tiep tuc dua vao ke hoach 2025"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, carryoverProjects2025=28",
+      "source=report_hai_ba_trung_2025, reasons=planning inconsistencies|complex investment procedures|PCCC approvals|many detailed appraisal procedures|GPMB inheritance and source verification issues|lack of consensus|unrealistic registration|red-line approval issues|compensation policy issues|economic difficulties"
+    ],
+    "target_metadata": {
+      "topic": "reasons_for_2024_projects_carried_forward",
+      "planningDocumentId": 91
+    },
+    "id": "ST_HARD_093"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon moi truong la han che trong su dung dat o quan Hai Ba Trung?",
+    "expected_output_outline": [
+      "Nêu được ô nhiễm không khí gồm bụi, tiếng ồn hoặc mùi tại các trục đường/khu xây dựng",
+      "Nêu được ô nhiễm nước tại sông Kim Ngưu, sông Sét và tình trạng thoát nước hở bị ứ đọng",
+      "Giải thích mật độ dân cư cao, đổ thải chưa đúng quy định hoặc hạn chế thu gom làm môi trường trở thành ràng buộc khi sử dụng đất"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, airIssues=dust|noise|odor along main roads and construction areas",
+      "source=report_hai_ba_trung_2025, waterIssues=Kim Nguu and Set rivers heavily polluted|open drainage stagnation",
+      "source=report_hai_ba_trung_2025, wasteIssues=high population density|improper dumping|collection constraints",
+      "source=report_hai_ba_trung_2025, generalConstraint=surface water and air pollution are alarming"
+    ],
+    "target_metadata": {
+      "topic": "environmental_constraints",
+      "planningDocumentId": 91
+    },
+    "id": "ST_HARD_094"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon viec quan Hoang Mai lap ke hoach su dung dat nam 2025?",
+    "expected_output_outline": [
+      "Can cu phap ly va nhu cau to chuc thu hoi, giao, cho thue, chuyen muc dich su dung dat"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, necessity=legal basis for land management|basis for land allocation and lease|serve socio-economic security defense needs|use land efficiently|limit waste and environmental imbalance"
+    ],
+    "target_metadata": {
+      "topic": "necessity_of_2025_land_use_plan",
+      "planningDocumentId": 133
+    },
+    "id": "ST_HARD_095"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon dia hinh va nhu cau thoat nuoc cua quan Hoang Mai?",
+    "expected_output_outline": [
+      "Hoang Mai la vung trung phia Nam noi thanh",
+      "Dia hinh thap dan tu Bac xuong Nam va tu Tay sang Dong"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, topography=low-lying southern inner district|slope north to south and west to east",
+      "source=report_hoang_mai_2025, hydrology=To Lich river|Lu river|Set river|Kim Nguu river|Yen So lake|Linh Dam lake|Den Lu lake"
+    ],
+    "target_metadata": {
+      "topic": "drainage_and_transport_need",
+      "planningDocumentId": 133
+    },
+    "id": "ST_HARD_096"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon GPMB la khau trong diem cua quan Hoang Mai?",
+    "expected_output_outline": [
+      "Hoang Mai trien khai GPMB cho 45 du an nam 2024",
+      "Co 1.571 ho duoc thong bao thu hoi dat va 1.195 phuong an duoc phe duyet"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, GPMB2024=45 projects, notices=1571 households, approvedPlans=1195, compensation=368.5 tỷ đồng",
+      "source=report_hoang_mai_2025, keyProjects=đường Tam Trinh|Nam hồ Linh Đàm giai đoạn II|trường Tiểu học Lĩnh Nam|các dự án trường học tại Định Công"
+    ],
+    "target_metadata": {
+      "topic": "importance_of_land_clearance",
+      "planningDocumentId": 133
+    },
+    "id": "ST_HARD_097"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon quan Hoang Mai phai tang cuong quan ly do thi va moi truong?",
+    "expected_output_outline": [
+      "Neu duoc ap luc do thi hoa, vi pham trat tu xay dung va moi truong theo tai lieu"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, constructionChecks=1610 works checked, buildingViolations=16",
+      "source=report_hoang_mai_2025, urbanOrderViolations=14803 cases handled",
+      "source=report_hoang_mai_2025, environmentalViolations=175 cases handled, wasteCollection=100% collected daily",
+      "source=report_hoang_mai_2025, terrainAndRivers=low-lying terrain with major drainage rivers and lakes"
+    ],
+    "target_metadata": {
+      "topic": "urban_order_and_environmental_management",
+      "planningDocumentId": 133
+    },
+    "id": "ST_HARD_098"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon ke hoach su dung dat Ha Dong la co so cho thu hoi va giao dat?",
+    "expected_output_outline": [
+      "Ke hoach lam co so thu hoi dat, giao dat, cho thue dat va chuyen muc dich su dung dat"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=1, necessity=annual district land use plan under Land Law 2024, legalBasisFor=land allocation|land lease|change of land use purpose, managementPurpose=avoid waste and arbitrary use, developmentPurpose=support socio-economic, security and defense goals"
+    ],
+    "target_metadata": {
+      "topic": "necessity_of_land_use_plan_2025",
+      "planningDocumentId": 137
+    },
+    "id": "ST_HARD_099"
+  },
+  {
+    "difficulty": "hard",
+    "question_type": "why",
+    "domain": "land_use_planning",
+    "input": "V? sao c?c ?i?u ch?nh ??t gi?o d?c, y t? v? chuy?n m?c ??ch ??t cho th?y k? ho?ch C?u Gi?y ?ang ph?n b? qu? ??t cho nhu c?u ?? th??",
+    "expected_output_outline": [
+      "??t gi?o d?c t?ng th?m 0,95 ha ?? th?c hi?n Tr??ng THPT c?ng l?p t?i Mai D?ch",
+      "??t y t? t?ng 0,14 ha ?? th?c hi?n d? ?n Trung t?m Ph?p y H? N?i t?i Mai D?ch",
+      "C? chuy?n m?c ??ch t? ??t tr?ng c?y h?ng n?m ho?c ??t tr?ng c?y l?u n?m sang c?c m?c ??ch ?? th?, gi?o d?c, y t? theo context"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, necessity=ensure consistency and continuity in land management and land use according to planning and law|manage and supervise closely|ensure feasibility and efficient land use"
+    ],
+    "target_metadata": {
+      "topic": "necessity_of_2025_land_use_plan",
+      "planningDocumentId": 63
+    },
+    "id": "ST_HARD_100"
   }
 ]

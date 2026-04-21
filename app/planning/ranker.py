@@ -844,6 +844,23 @@ def planning_doc_score(
     query_years = set(re.findall(r"\b20\d{2}\b", normalized_message))
     content_year_hits = sum(1 for year in query_years if year in content_norm) if query_years else 0
     doc_years = set(re.findall(r"\b20\d{2}\b", content_norm or haystack))
+    query_number_tokens = set(re.findall(r"\b\d+\b", normalized_message))
+    query_salient_numbers = {
+        token
+        for token in query_number_tokens
+        if token not in query_years and (len(token) >= 2 or int(token) >= 5)
+    }
+    doc_number_tokens = set(re.findall(r"\b\d+\b", haystack))
+    query_number_hits = len(query_number_tokens.intersection(doc_number_tokens))
+    salient_number_hits = len(query_salient_numbers.intersection(doc_number_tokens))
+
+    implementation_duty_query = (
+        "duoc phe duyet" in normalized_message
+        and "ubnd" in normalized_message
+        and any(marker in normalized_message for marker in ("trien khai", "thuc hien", "phai"))
+    )
+    auction_query = "dau gia" in normalized_message and "quyen su dung dat" in normalized_message
+    summary_like_doc = content_norm.startswith("tom tat") or haystack.startswith("tom tat")
 
     district_ok = doc_matches_district(doc, district)
     year_ok = doc_matches_plan_year(doc, plan_year)
@@ -861,6 +878,8 @@ def planning_doc_score(
     score += min(intent_hits, 8) * 0.35
     score += min(numeric_hits, 20) * 0.06
     score += min(dense_numeric_row_hits, 6) * 0.28
+    score += float(min(query_number_hits, 6)) * 0.55
+    score += float(min(salient_number_hits, 4)) * 1.1
     score += float(content_year_hits) * 0.95
     score += min(named_entity_hits, 4) * 0.95
     score += count_pattern
@@ -877,6 +896,15 @@ def planning_doc_score(
         else:
             score -= 1.2 if profile.analytical_fact_query else 0.7
 
+    if query_salient_numbers and salient_number_hits == 0:
+        if profile.analytical_fact_query or profile.project_structure or profile.land_recovery or profile.gpmb_stats or profile.land_change:
+            score -= 2.2
+        else:
+            score -= 0.8
+
+    if profile.analytical_fact_query and summary_like_doc:
+        score -= 1.4
+
     if len(query_years) >= 2:
         year_overlap = len(query_years.intersection(doc_years))
         if year_overlap >= len(query_years):
@@ -888,6 +916,47 @@ def planning_doc_score(
         score += 1.6 if district_ok else -2.6
     if plan_year is not None:
         score += 1.4 if year_ok else -0.9
+
+    if implementation_duty_query:
+        duty_hits = sum(
+            1
+            for marker in (
+                "cong bo cong khai",
+                "thu hoi dat",
+                "kiem tra",
+                "xu ly vi pham",
+                "can doi nguon von",
+                "to chuc thuc hien",
+                "bao cao ket qua",
+                "15 10 2025",
+            )
+            if marker in haystack
+        )
+        if "quyet dinh" in title_norm:
+            score += 2.4
+        score += float(min(duty_hits, 8)) * 0.75
+        if duty_hits == 0 and "quyet dinh" not in title_norm:
+            score -= 1.6
+
+    if auction_query:
+        auction_hits = sum(
+            1
+            for marker in (
+                "dau gia",
+                "trung dau gia",
+                "gia khoi diem",
+                "gia trung dau gia",
+                "o dat",
+                "thua dat",
+                "khach hang",
+                "moi dau gia",
+                "khong co nha dau tu",
+            )
+            if marker in haystack
+        )
+        score += float(min(auction_hits, 8)) * 0.9
+        if auction_hits == 0:
+            score -= 2.0
 
     if profile.project_listing:
         listing_hits = sum(

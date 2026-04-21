@@ -9,8 +9,12 @@ from pathlib import Path
 
 from deepeval import evaluate
 from deepeval.evaluate.configs import AsyncConfig
+try:
+    from dotenv import load_dotenv
+except ImportError:  # pragma: no cover - optional local convenience dependency
+    load_dotenv = None
 
-from evaluation.adapters.langchain_adapter import LangChainEvalAdapter, turn_trace_to_dict
+from evaluation.adapters.langchain_adapter import LangChainEvalAdapter, TurnTrace, turn_trace_to_dict
 from evaluation.adapters.trace_to_testcase import build_single_turn_test_case
 from evaluation.metrics.metric_helpers import (
     build_single_turn_scorecard,
@@ -46,6 +50,11 @@ def parse_args() -> argparse.Namespace:
         help="Output report filename under evaluation/reports",
     )
     parser.add_argument(
+        "--trace-input",
+        default="",
+        help="Optional trace checkpoint JSON to score without regenerating RAG traces. Relative paths are resolved under evaluation/reports.",
+    )
+    parser.add_argument(
         "--max-cases",
         type=int,
         default=0,
@@ -56,6 +65,12 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=4,
         help="Maximum concurrent async metric evaluations to reduce API rate-limit errors",
+    )
+    parser.add_argument(
+        "--trace-max-concurrent",
+        type=int,
+        default=1,
+        help="Maximum concurrent RAG trace generation calls before DeepEval scoring",
     )
     parser.add_argument(
         "--throttle-seconds",
@@ -79,12 +94,27 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Disable DeepEval-enforced timeouts (provider SDK timeouts still apply)",
     )
+    parser.add_argument(
+        "--eval-batch-size",
+        type=int,
+        default=0,
+        help="If > 0, score test cases in smaller batches and merge the DeepEval results.",
+    )
     return parser.parse_args()
 
 
+def _configure_utf8_stdio() -> None:
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
+
 async def main() -> None:
+    _configure_utf8_stdio()
     args = parse_args()
     eval_root = Path(args.root)
+    if load_dotenv is not None:
+        load_dotenv(eval_root.parent / ".env")
 
     thresholds = load_yaml(eval_root / "config" / "thresholds.yaml")
     settings = load_yaml(eval_root / "config" / "eval_settings.yaml")
@@ -100,30 +130,106 @@ async def main() -> None:
     if args.max_cases and args.max_cases > 0:
         goldens = goldens[: args.max_cases]
 
-    adapter = LangChainEvalAdapter(settings=settings)
-    traces = []
-    test_cases = []
-    trace_generation_profile = []
+    trace_max_concurrent = max(1, int(args.trace_max_concurrent))
+    trace_generation_started_at = time.perf_counter()
 
-    for golden in goldens:
-        started_at = time.perf_counter()
-        trace = await adapter.run_single_turn(
-            golden["input"],
-            target_metadata=golden.get("target_metadata"),
-        )
-        generation_seconds = round(time.perf_counter() - started_at, 3)
-        context_chars = sum(len(item or "") for item in trace.retrieval_context)
-        trace_generation_profile.append(
+    if args.trace_input:
+        trace_input_path = Path(args.trace_input)
+        if not trace_input_path.is_absolute():
+            trace_input_path = eval_root / "reports" / trace_input_path
+        checkpoint = load_json(trace_input_path)
+        trace_records = checkpoint.get("traces") or []
+        if args.max_cases and args.max_cases > 0:
+            trace_records = trace_records[: args.max_cases]
+        trace_results = []
+        for index, record in enumerate(trace_records):
+            golden = record["golden"]
+            trace = TurnTrace(**record["trace"])
+            trace_results.append(
+                (
+                    index,
+                    record,
+                    build_single_turn_test_case(trace, golden),
+                    (checkpoint.get("timing", {}).get("trace_generation_by_case") or [{}] * len(trace_records))[index],
+                )
+            )
+        goldens = [record["golden"] for record in trace_records]
+        trace_generation_wall_seconds = float(checkpoint.get("timing", {}).get("trace_generation_seconds") or 0.0)
+        print(f"[Trace] Loaded {len(trace_results)} traces from {trace_input_path}", flush=True)
+    else:
+        adapter = LangChainEvalAdapter(settings=settings)
+        await adapter.initialize()
+
+        trace_semaphore = asyncio.Semaphore(trace_max_concurrent)
+
+        async def build_trace_case(index: int, golden: dict):
+            async with trace_semaphore:
+                started_at = time.perf_counter()
+                trace = await adapter.run_single_turn(
+                    golden["input"],
+                    target_metadata=golden.get("target_metadata"),
+                )
+                generation_seconds = round(time.perf_counter() - started_at, 3)
+                context_chars = sum(len(item or "") for item in trace.retrieval_context)
+                profile = {
+                    "id": golden.get("id"),
+                    "input_preview": str(golden.get("input", ""))[:120],
+                    "generation_seconds": generation_seconds,
+                    "retrieval_context_docs": len(trace.retrieval_context),
+                    "retrieval_context_chars": context_chars,
+                    "retrieval_seconds": trace.metadata.get("retrieval_seconds"),
+                    "answer_generation_seconds": trace.metadata.get("answer_generation_seconds"),
+                    "retrieval_strategy": trace.metadata.get("retrieval_strategy"),
+                    "filter_extraction_skipped": trace.metadata.get("filter_extraction_skipped"),
+                }
+                print(
+                    "[Trace] "
+                    f"{index + 1}/{len(goldens)} "
+                    f"{golden.get('id') or 'case'} "
+                    f"done in {generation_seconds}s "
+                    f"retrieval={profile['retrieval_seconds']}s "
+                    f"answer={profile['answer_generation_seconds']}s "
+                    f"docs={len(trace.retrieval_context)}",
+                    flush=True,
+                )
+                return (
+                    index,
+                    {"golden": golden, "trace": turn_trace_to_dict(trace)},
+                    build_single_turn_test_case(trace, golden),
+                    profile,
+                )
+
+        if trace_max_concurrent == 1:
+            trace_results = []
+            for index, golden in enumerate(goldens):
+                trace_results.append(await build_trace_case(index, golden))
+        else:
+            trace_results = await asyncio.gather(
+                *(build_trace_case(index, golden) for index, golden in enumerate(goldens))
+            )
+        trace_generation_wall_seconds = round(time.perf_counter() - trace_generation_started_at, 3)
+
+    trace_results.sort(key=lambda item: item[0])
+    traces = [item[1] for item in trace_results]
+    test_cases = [item[2] for item in trace_results]
+    trace_generation_profile = [item[3] for item in trace_results]
+    trace_checkpoint_path = eval_root / "reports" / f"{Path(args.output_name).stem}.traces.json"
+    if not args.trace_input:
+        write_json(
+            trace_checkpoint_path,
             {
-                "id": golden.get("id"),
-                "input_preview": str(golden.get("input", ""))[:120],
-                "generation_seconds": generation_seconds,
-                "retrieval_context_docs": len(trace.retrieval_context),
-                "retrieval_context_chars": context_chars,
-            }
+                "created_at": now_utc_iso(),
+                "phase": "single_turn_trace_generation",
+                "dataset": args.dataset,
+                "cases": len(test_cases),
+                "trace_max_concurrent": trace_max_concurrent,
+                "timing": {
+                    "trace_generation_seconds": trace_generation_wall_seconds,
+                    "trace_generation_by_case": trace_generation_profile,
+                },
+                "traces": traces,
+            },
         )
-        traces.append({"golden": golden, "trace": turn_trace_to_dict(trace)})
-        test_cases.append(build_single_turn_test_case(trace, golden))
 
     # Apply judge provider environment only for scoring to avoid impacting runtime QA model.
     judge_model = resolve_judge_model_and_apply_env(judge)
@@ -132,23 +238,41 @@ async def main() -> None:
         *build_rag_metrics(thresholds, judge_model=judge_model),
     ]
     scoring_started_at = time.perf_counter()
-    eval_result = evaluate(
-        test_cases=test_cases,
-        metrics=metrics,
-        async_config=AsyncConfig(
-            run_async=not bool(args.sync),
-            throttle_value=max(0.0, float(args.throttle_seconds)),
-            max_concurrent=max(1, int(args.max_concurrent)),
-        ),
-    )
+    eval_batch_size = max(0, int(args.eval_batch_size))
+    if eval_batch_size and len(test_cases) > eval_batch_size:
+        deepeval_batches: list[dict] = []
+        for batch_start in range(0, len(test_cases), eval_batch_size):
+            batch = test_cases[batch_start : batch_start + eval_batch_size]
+            deepeval_batches.extend(
+                _evaluate_batch_with_fallback(
+                    batch,
+                    metrics,
+                    start_index=batch_start,
+                    total_cases=len(test_cases),
+                    sync=bool(args.sync),
+                    throttle_seconds=max(0.0, float(args.throttle_seconds)),
+                    max_concurrent=max(1, int(args.max_concurrent)),
+                )
+            )
+        deepeval_result = _merge_deepeval_results(deepeval_batches)
+    else:
+        eval_result = evaluate(
+            test_cases=test_cases,
+            metrics=metrics,
+            async_config=AsyncConfig(
+                run_async=not bool(args.sync),
+                throttle_value=max(0.0, float(args.throttle_seconds)),
+                max_concurrent=max(1, int(args.max_concurrent)),
+            ),
+        )
+        deepeval_result = to_jsonable(eval_result)
     judge_scoring_seconds = round(time.perf_counter() - scoring_started_at, 3)
-    deepeval_result = to_jsonable(eval_result)
     scorecard = build_single_turn_scorecard(
         deepeval_result=deepeval_result,
         thresholds=thresholds,
     )
 
-    trace_generation_seconds = round(
+    trace_generation_worker_seconds_total = round(
         sum(float(item.get("generation_seconds", 0.0)) for item in trace_generation_profile),
         3,
     )
@@ -162,15 +286,22 @@ async def main() -> None:
         "thresholds": thresholds,
         "settings": settings,
         "deepeval_timeout": timeout_config,
+        "runner": {
+            "trace_max_concurrent": trace_max_concurrent,
+            "judge_max_concurrent": max(1, int(args.max_concurrent)),
+            "throttle_seconds": max(0.0, float(args.throttle_seconds)),
+            "sync": bool(args.sync),
+        },
         "summary": {
             "cases": len(test_cases),
             "difficulties": _count_by_field(goldens, "difficulty"),
             "domains": _count_by_field(goldens, "domain"),
         },
         "timing": {
-            "trace_generation_seconds": trace_generation_seconds,
+            "trace_generation_seconds": trace_generation_wall_seconds,
+            "trace_generation_worker_seconds_total": trace_generation_worker_seconds_total,
             "judge_scoring_seconds": judge_scoring_seconds,
-            "total_pipeline_seconds": round(trace_generation_seconds + judge_scoring_seconds, 3),
+            "total_pipeline_seconds": round(trace_generation_wall_seconds + judge_scoring_seconds, 3),
             "trace_generation_by_case": trace_generation_profile,
         },
         "judge_cost_profile": _build_judge_cost_profile(deepeval_result, goldens),
@@ -205,6 +336,78 @@ def _count_by_field(items: list[dict], field: str) -> dict[str, int]:
         key = str(item.get(field, "unknown"))
         out[key] = out.get(key, 0) + 1
     return out
+
+
+def _merge_deepeval_results(results: list[dict]) -> dict:
+    merged = {
+        "test_results": [],
+        "confident_link": None,
+        "test_run_id": None,
+    }
+    for result in results:
+        merged["test_results"].extend(result.get("test_results") or [])
+        if merged["confident_link"] is None and result.get("confident_link"):
+            merged["confident_link"] = result.get("confident_link")
+        if merged["test_run_id"] is None and result.get("test_run_id"):
+            merged["test_run_id"] = result.get("test_run_id")
+    return merged
+
+
+def _evaluate_batch_with_fallback(
+    test_cases: list,
+    metrics: list,
+    *,
+    start_index: int,
+    total_cases: int,
+    sync: bool,
+    throttle_seconds: float,
+    max_concurrent: int,
+) -> list[dict]:
+    batch_end = start_index + len(test_cases)
+    print(
+        f"[EvalBatch] scoring cases {start_index + 1}-{batch_end}/{total_cases}",
+        flush=True,
+    )
+    try:
+        batch_result = evaluate(
+            test_cases=test_cases,
+            metrics=metrics,
+            async_config=AsyncConfig(
+                run_async=not sync,
+                throttle_value=throttle_seconds,
+                max_concurrent=max_concurrent,
+            ),
+        )
+        return [to_jsonable(batch_result)]
+    except BaseException as exc:
+        print(
+            f"[EvalBatch] cases {start_index + 1}-{batch_end} failed: {type(exc).__name__}: {exc}",
+            flush=True,
+        )
+        if len(test_cases) <= 1:
+            raise
+
+        midpoint = len(test_cases) // 2
+        return [
+            *_evaluate_batch_with_fallback(
+                test_cases[:midpoint],
+                metrics,
+                start_index=start_index,
+                total_cases=total_cases,
+                sync=True,
+                throttle_seconds=max(throttle_seconds, 1.0),
+                max_concurrent=1,
+            ),
+            *_evaluate_batch_with_fallback(
+                test_cases[midpoint:],
+                metrics,
+                start_index=start_index + midpoint,
+                total_cases=total_cases,
+                sync=True,
+                throttle_seconds=max(throttle_seconds, 1.0),
+                max_concurrent=1,
+            ),
+        ]
 
 
 def _build_judge_cost_profile(

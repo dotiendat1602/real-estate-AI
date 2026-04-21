@@ -62,6 +62,9 @@ def planning_specialized_limit(message: str) -> int:
         return 3
     if profile.drainage_transport:
         return 2
+    if profile.analytical_fact_query or profile.fact_query:
+        # Generic fallback for analytical planning questions that miss specialized buckets.
+        return 2
     return 0
 
 
@@ -105,6 +108,13 @@ def planning_intent_rescue_queries(message: str, district: Optional[str], plan_y
     profile = build_planning_query_profile(message, planning_intent=True)
     focus_terms = planning_focus_phrases(message)
     queries: list[str] = []
+    implementation_duty_query = (
+        "duoc phe duyet" in normalized
+        and "ubnd" in normalized
+        and any(marker in normalized for marker in ("trien khai", "thuc hien", "phai"))
+    )
+    auction_query = "dau gia" in normalized and "quyen su dung dat" in normalized
+    numeric_tokens = re.findall(r"\b\d+(?:[\.,]\d+)?\b", normalized)
 
     if any(marker in normalized for marker in ("chi tieu", "bien dong", "so voi", "hien trang", "dat nong nghiep", "dat phi nong nghiep")):
         queries.append("chi tieu dat nong nghiep dat phi nong nghiep dat chua su dung hien trang 2024 2025")
@@ -118,6 +128,14 @@ def planning_intent_rescue_queries(message: str, district: Optional[str], plan_y
     if any(marker in normalized for marker in ("giai phong mat bang", "gpmb", "thu hoi dat", "boi thuong", "tai dinh cu")):
         queries.append("giai phong mat bang thong bao thu hoi dieu tra xac nhan nguon goc phuong an boi thuong")
         queries.append("cong tac giai phong mat bang trien khai ket qua thuc hien thong bao thu hoi")
+
+    if implementation_duty_query:
+        queries.append("ubnd quan cong bo cong khai ke hoach thu hoi dat kiem tra xu ly vi pham can doi nguon von to chuc thuc hien")
+        queries.append("nhiem vu ubnd sau khi ke hoach su dung dat duoc phe duyet bao cao ket qua truoc 15 10 2025")
+
+    if auction_query:
+        queries.append("cong tac dau gia quyen su dung dat o dat du an trung dau gia gia khoi diem gia trung dau gia")
+        queries.append("moi dau gia nhieu lan chua co nha dau tu khach hang trung dau gia")
 
     if any(marker in normalized for marker in ("muc dich cong cong", "dat cong cong", "bao gom", "cau thanh")):
         queries.append("dat su dung vao muc dich cong cong bao gom cau thanh chi tieu")
@@ -166,6 +184,16 @@ def planning_intent_rescue_queries(message: str, district: Optional[str], plan_y
         queries.append("dia hinh vung trung song ho to lich lu set kim nguu yen so linh dam den lu tieu thoat nuoc ung ngap giao thong")
         queries.append("vung trung song ho tieu thoat nuoc giao thong ha tang ky thuat")
         queries.append("vi sao can chu trong thoat nuoc giao thong do dia hinh vung trung song ho ung ngap")
+
+    if profile.analytical_fact_query or profile.fact_query:
+        generic_terms = [term for term in planning_query_terms(message, max_terms=12) if len(term) >= 4]
+        if generic_terms:
+            queries.append(" ".join(generic_terms[:6]))
+            queries.append("bao cao thuyet minh " + " ".join(generic_terms[:5]))
+        if numeric_tokens:
+            queries.append("tong so du an dien tich " + " ".join(numeric_tokens[:6]))
+        queries.append("quyet dinh phu luc tong so du an dien tich nam 2025")
+        queries.append("bao cao thuyet minh ke hoach su dung dat ket qua thuc hien nam 2024")
 
     if profile.focus_area_reason:
         for phrase in focus_terms[:3]:

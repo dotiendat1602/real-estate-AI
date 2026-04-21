@@ -50,6 +50,7 @@ from ..planning.augmenters import (
     augment_planning_intent_evidence as _augment_planning_intent_evidence_base,
     augment_planning_land_change_fact_docs as _augment_planning_land_change_fact_docs_base,
     augment_planning_land_recovery_evidence as _augment_planning_land_recovery_evidence_base,
+    augment_planning_operational_fact_docs as _augment_planning_operational_fact_docs_base,
     augment_planning_table_neighbors as _augment_planning_table_neighbors_base,
     augment_planning_text_neighbors as _augment_planning_text_neighbors_base,
 )
@@ -581,6 +582,24 @@ async def _augment_planning_land_change_fact_docs(
     limit: int,
 ) -> list[Document]:
     return await _augment_planning_land_change_fact_docs_base(
+        message,
+        district,
+        plan_year,
+        selected_docs,
+        limit,
+        planning_doc_score=_planning_doc_score,
+        load_planning_document_docs=_load_planning_document_docs_sync,
+    )
+
+
+async def _augment_planning_operational_fact_docs(
+    message: str,
+    district: Optional[str],
+    plan_year: Optional[int],
+    selected_docs: list[Document],
+    limit: int,
+) -> list[Document]:
+    return await _augment_planning_operational_fact_docs_base(
         message,
         district,
         plan_year,
@@ -1489,6 +1508,14 @@ async def _retrieve_planning_docs_for_nl_query(
                 final_k,
             )
 
+            selected = await _augment_planning_operational_fact_docs(
+                message,
+                district,
+                plan_year,
+                selected,
+                final_k,
+            )
+
             if debug_enabled:
                 _planning_debug_log(
                     "selected_after_intent_rescue",
@@ -1529,6 +1556,14 @@ async def _retrieve_planning_docs_for_nl_query(
                         selected,
                         final_k,
                     )
+
+                selected = await _augment_planning_operational_fact_docs(
+                    message,
+                    district,
+                    plan_year,
+                    selected,
+                    final_k,
+                )
 
             if (recovery_grouping_query or project_listing_query) and selected:
                 selected = await _augment_planning_table_neighbors(

@@ -429,6 +429,134 @@ async def augment_planning_land_change_fact_docs(
     return merged
 
 
+async def augment_planning_operational_fact_docs(
+    message: str,
+    district: Optional[str],
+    plan_year: Optional[int],
+    selected_docs: list[Document],
+    limit: int,
+    *,
+    planning_doc_score: PlanningDocScoreFn,
+    load_planning_document_docs: Callable[..., list[Document]],
+) -> list[Document]:
+    profile = build_planning_query_profile(message, planning_intent=True)
+    normalized = profile.normalized
+    if not selected_docs or limit <= 0 or not normalized:
+        return selected_docs
+
+    implementation_duty_query = (
+        "duoc phe duyet" in normalized
+        and "ubnd" in normalized
+        and any(marker in normalized for marker in ("trien khai", "thuc hien", "phai"))
+    )
+    auction_query = "dau gia" in normalized and "quyen su dung dat" in normalized
+    if not implementation_duty_query and not auction_query:
+        return selected_docs
+
+    candidate_pids: list[int] = []
+    for doc in selected_docs:
+        planning_document_id, _ = planning_doc_pid_idx(doc)
+        if planning_document_id is None or planning_document_id in candidate_pids:
+            continue
+        candidate_pids.append(planning_document_id)
+        if len(candidate_pids) >= 3:
+            break
+
+    if not candidate_pids:
+        return selected_docs
+
+    implementation_markers = (
+        "cong bo cong khai",
+        "thu hoi dat",
+        "kiem tra",
+        "xu ly vi pham",
+        "can doi nguon von",
+        "to chuc thuc hien",
+        "bao cao ket qua",
+        "15 10 2025",
+    )
+    auction_markers = (
+        "dau gia",
+        "trung dau gia",
+        "gia khoi diem",
+        "gia trung dau gia",
+        "o dat",
+        "thua dat",
+        "khach hang",
+        "moi dau gia",
+        "khong co nha dau tu",
+    )
+
+    prioritized: list[tuple[float, Document]] = []
+    seen_prioritized: set[str] = set()
+    for planning_document_id in candidate_pids:
+        sql_candidates = await asyncio.to_thread(
+            load_planning_document_docs,
+            planning_document_id,
+            plan_year,
+            chunk_types=("text", "table"),
+            limit=2500,
+        )
+        for candidate in sql_candidates:
+            haystack = planning_doc_haystack(candidate)
+            if not haystack or planning_is_toc_like_chunk(candidate.page_content or "", haystack):
+                continue
+            if planning_is_tabular_header_fragment(haystack):
+                continue
+
+            identity = planning_doc_identity(candidate)
+            if identity in seen_prioritized:
+                continue
+
+            score = planning_doc_score(candidate, message, district, plan_year)
+            marker_hits = 0
+
+            if implementation_duty_query:
+                implementation_hits = sum(1 for marker in implementation_markers if marker in haystack)
+                if implementation_hits == 0:
+                    continue
+                marker_hits += implementation_hits
+                if "quyet dinh" in haystack:
+                    score += 3.0
+                if "15 10 2025" in haystack:
+                    score += 1.5
+
+            if auction_query:
+                auction_hits = sum(1 for marker in auction_markers if marker in haystack)
+                if auction_hits == 0:
+                    continue
+                marker_hits += auction_hits
+                if any(marker in haystack for marker in ("gia khoi diem", "gia trung dau gia", "trung dau gia")):
+                    score += 2.0
+
+            if marker_hits <= 0:
+                continue
+
+            score += float(min(marker_hits, 8)) * 1.15
+            prioritized.append((score, candidate))
+            seen_prioritized.add(identity)
+
+    if not prioritized:
+        return selected_docs
+
+    prioritized.sort(key=lambda item: item[0], reverse=True)
+    max_prioritized = min(len(prioritized), max(2, min(6, limit // 2 if limit > 2 else 2)))
+    prioritized_docs = [doc for _, doc in prioritized[:max_prioritized]]
+
+    merged: list[Document] = []
+    seen_merged: set[str] = set()
+    for doc in [*prioritized_docs, *selected_docs]:
+        identity = planning_doc_identity(doc)
+        if identity in seen_merged:
+            continue
+        seen_merged.add(identity)
+        merged.append(doc)
+        if len(merged) >= limit:
+            break
+
+    return merged
+
+
 async def augment_planning_table_neighbors(
     planning_vs,
     message: str,

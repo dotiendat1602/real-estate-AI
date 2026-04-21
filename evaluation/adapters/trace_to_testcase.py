@@ -62,6 +62,17 @@ _FACT_HINTS = (
     "planyear",
     "dong tien",
     "du an",
+    "ke hoach",
+    "cong bo",
+    "thu hoi",
+    "kiem tra",
+    "giam sat",
+    "xu ly vi pham",
+    "bao cao",
+    "dau gia",
+    "gpmb",
+    "chuyen tiep",
+    "phuong",
 )
 
 
@@ -208,11 +219,18 @@ def build_single_turn_test_case(trace: TurnTrace, golden: dict[str, Any]):
     expected_output = _sanitize_expected_output_for_recall(str(expected_output_raw or ""))
 
     return LLMTestCase(
+        name=str(golden.get("id") or ""),
         input=trace.input,
         actual_output=trace.actual_output,
         retrieval_context=trace.retrieval_context,
         context=golden.get("context"),
         expected_output=expected_output,
+        additional_metadata={
+            "golden_id": golden.get("id"),
+            "domain": golden.get("domain"),
+            "difficulty": golden.get("difficulty"),
+            "question_type": golden.get("question_type"),
+        },
     )
 
 
