@@ -1,0 +1,28 @@
+[Reembed] resume target_existing=10501 source_docs=10501 remaining=0
+[Reembed] done target_count=10501
+[Reembed] resume target_existing=14032 source_docs=14032 remaining=0
+[Reembed] done target_count=14032
+[Reembed] resume target_existing=1728 source_docs=8502 remaining=6774
+[Reembed] source=planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context target=planning_documents__bge_m3_ghr1__planning_hierarchical_parent_context model=BAAI/bge-m3 docs=6774 batch_size=32
+[Reembed] 32/6774
+[Reembed] 64/6774
+[Reembed] 96/6774
+[Reembed] 128/6774
+[Reembed] 160/6774
+[Reembed] 192/6774
+[Reembed] 224/6774
+[Reembed] 256/6774
+[Reembed] 288/6774
+[Reembed] 320/6774
+[Reembed] 352/6774
+[Reembed] 384/6774
+[Reembed] 416/6774
+[Reembed] 448/6774
+[Reembed] 480/6774
+[Reembed] 512/6774
+[Reembed] 544/6774
+[Reembed] 576/6774
+[Reembed] 608/6774
+[Reembed] 640/6774
+[Reembed] 672/6774
+[Reembed] 704/6774

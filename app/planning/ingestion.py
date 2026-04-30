@@ -18,12 +18,50 @@ from ..utils.chunking import build_splitter
 _splitter = build_splitter(chunk_size=1500, chunk_overlap=120)
 _logger = logging.getLogger(__name__)
 
+PLANNING_CHUNKING_BASELINE_FIXED = "planning_baseline_fixed"
+PLANNING_CHUNKING_HIERARCHICAL_LEAF = "planning_hierarchical_leaf"
+PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT = "planning_hierarchical_parent_context"
+PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD = "planning_hierarchical_parent_child"
+
+_PLANNING_HIERARCHICAL_MODES = {
+    PLANNING_CHUNKING_HIERARCHICAL_LEAF,
+    PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT,
+    PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD,
+}
+
 
 def _resolve_bool_env(name: str, default: bool) -> bool:
     raw = os.getenv(name)
     if raw is None:
         return default
     return raw.strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _resolve_planning_chunking_mode() -> str:
+    raw = (
+        os.getenv("PLANNING_CHUNKING_MODE") or PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT
+    ).strip().lower()
+    aliases = {
+        "baseline": PLANNING_CHUNKING_BASELINE_FIXED,
+        "fixed": PLANNING_CHUNKING_BASELINE_FIXED,
+        "hierarchical_leaf": PLANNING_CHUNKING_HIERARCHICAL_LEAF,
+        "hierarchical_parent_context": PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT,
+        "hierarchical_parent_child": PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD,
+    }
+    resolved = aliases.get(raw, raw)
+    valid = {PLANNING_CHUNKING_BASELINE_FIXED, *_PLANNING_HIERARCHICAL_MODES}
+    if resolved not in valid:
+        _logger.warning(
+            "Unknown PLANNING_CHUNKING_MODE=%s. Falling back to %s",
+            raw,
+            PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT,
+        )
+        return PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT
+    return resolved
+
+
+def _is_hierarchical_chunking_mode(mode: str) -> bool:
+    return mode in _PLANNING_HIERARCHICAL_MODES
 
 
 def _resolve_http_verify() -> bool | str:
@@ -772,6 +810,213 @@ def _hierarchy_contextual_chunks(page_maps: list[dict[str, Any]]) -> list[dict[s
     return _dedupe_structural_chunks(chunks)
 
 
+def _hierarchy_signature(path: str, page_number: int | None = None) -> str:
+    compact = re.sub(r"[^a-z0-9]+", "_", _normalize_for_match(path or "root")).strip("_")
+    if not compact:
+        compact = "root"
+    suffix = f"_p{page_number}" if page_number is not None else ""
+    return f"planning_hierarchy_{compact[:96]}{suffix}"
+
+
+def _hierarchical_chunk_content(
+    body: str,
+    hierarchy_lines: list[str],
+    hierarchy_path: str,
+    mode: str,
+) -> str:
+    if mode != PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT:
+        return body
+
+    context_lines = [f"[hierarchy_path={hierarchy_path}]"] if hierarchy_path else []
+    context_lines.extend(f"[h{idx + 1}={line}]" for idx, line in enumerate(hierarchy_lines))
+    return _clean_text("\n".join([*context_lines, body]))
+
+
+def _append_hierarchical_parent_chunks(
+    chunks: list[dict[str, Any]],
+    emitted_parent_ids: set[str],
+    active_hierarchy: dict[int, str],
+    *,
+    page_number: int | None,
+    sibling_index: int,
+) -> str | None:
+    if not active_hierarchy:
+        return None
+
+    levels = sorted(active_hierarchy.keys())
+    parent_level = levels[-1]
+    hierarchy_path = " > ".join(active_hierarchy[level] for level in levels)
+    parent_id = _hierarchy_signature(hierarchy_path, page_number)
+    if parent_id not in emitted_parent_ids:
+        emitted_parent_ids.add(parent_id)
+        parent_content = _clean_text(
+            "\n".join(
+                [
+                    f"[hierarchy_path={hierarchy_path}]",
+                    *[f"[h{level}={active_hierarchy[level]}]" for level in levels],
+                ]
+            )
+        )
+        if parent_content:
+            chunks.append(
+                {
+                    "content": parent_content,
+                    "chunkType": "text",
+                    "pageNumber": page_number,
+                    "chunker": "PlanningHierarchicalParentChunk",
+                    "sectionHeading": active_hierarchy.get(parent_level),
+                    "hierarchyPath": hierarchy_path,
+                    "hierarchyLevel": parent_level,
+                    "parentChunkId": None,
+                    "siblingIndex": sibling_index,
+                    "isParentChunk": True,
+                }
+            )
+
+    return parent_id
+
+
+def build_planning_hierarchical_chunks(
+    text: str,
+    page_maps: list[dict[str, Any]],
+    mode: str,
+) -> list[dict[str, Any]]:
+    """Build planning chunks by document hierarchy instead of fixed text length."""
+    if mode not in _PLANNING_HIERARCHICAL_MODES:
+        return []
+
+    entries = _flatten_page_entries(page_maps)
+    if not entries:
+        entries = [(None, line) for line in text.splitlines() if _clean_text(line)]
+    if not entries:
+        return []
+
+    active_hierarchy: dict[int, str] = {}
+    active_table_header: list[str] = []
+    chunks: list[dict[str, Any]] = []
+    emitted_parent_ids: set[str] = set()
+    sibling_counters: dict[str, int] = {}
+
+    def _current_context(page_number: int | None) -> tuple[list[int], list[str], str, str | None, int, int]:
+        levels = sorted(active_hierarchy.keys())
+        hierarchy_lines = [active_hierarchy[level] for level in levels]
+        hierarchy_path = " > ".join(hierarchy_lines)
+        hierarchy_level = levels[-1] if levels else 0
+        section_heading = active_hierarchy.get(hierarchy_level) if levels else None
+        parent_id = (
+            _append_hierarchical_parent_chunks(
+                chunks,
+                emitted_parent_ids,
+                active_hierarchy,
+                page_number=page_number,
+                sibling_index=len(emitted_parent_ids),
+            )
+            if mode == PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD
+            else None
+        )
+        counter_key = parent_id or hierarchy_path or "root"
+        sibling_counters[counter_key] = sibling_counters.get(counter_key, 0) + 1
+        return levels, hierarchy_lines, hierarchy_path, section_heading, hierarchy_level, sibling_counters[counter_key] - 1
+
+    def _append_body_chunk(
+        body_lines: list[str],
+        *,
+        page_number: int | None,
+        chunk_type: str | None = None,
+    ) -> None:
+        clean_lines = [_clean_text(line) for line in body_lines if _clean_text(line)]
+        if not clean_lines:
+            return
+
+        levels, hierarchy_lines, hierarchy_path, section_heading, hierarchy_level, sibling_index = _current_context(page_number)
+        body = _clean_text("\n".join(clean_lines))
+        if not body:
+            return
+
+        parent_id = _hierarchy_signature(hierarchy_path, page_number) if (
+            mode == PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD and hierarchy_path
+        ) else None
+        content = _hierarchical_chunk_content(body, hierarchy_lines, hierarchy_path, mode)
+        chunks.append(
+            {
+                "content": content,
+                "chunkType": chunk_type or ("table" if _is_projectish_line(body) else "text"),
+                "pageNumber": page_number,
+                "chunker": {
+                    PLANNING_CHUNKING_HIERARCHICAL_LEAF: "PlanningHierarchicalLeaf",
+                    PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT: "PlanningHierarchicalParentContext",
+                    PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD: "PlanningHierarchicalParentChild",
+                }[mode],
+                "sectionHeading": section_heading,
+                "hierarchyPath": hierarchy_path or None,
+                "hierarchyLevel": hierarchy_level,
+                "parentChunkId": parent_id,
+                "siblingIndex": sibling_index,
+                "isParentChunk": False,
+            }
+        )
+
+    body_buffer: list[str] = []
+    body_page: int | None = None
+
+    def _flush_body() -> None:
+        nonlocal body_buffer, body_page
+        if body_buffer:
+            _append_body_chunk(body_buffer, page_number=body_page)
+        body_buffer = []
+        body_page = None
+
+    for page_number, raw_line in entries:
+        line = _clean_text(raw_line)
+        if not line:
+            continue
+
+        if _is_project_table_header_line(line):
+            _flush_body()
+            active_table_header = [line]
+            continue
+
+        raw_level = _hierarchy_line_level(line)
+        level = raw_level if raw_level is not None and raw_level <= 3 else None
+        if (
+            level is None
+            and _is_section_heading_line(line)
+            and not _is_new_item_marker(line)
+            and not _looks_like_table_line(line)
+            and not _is_projectish_line(line)
+        ):
+            level = 3
+
+        if level is not None:
+            _flush_body()
+            active_hierarchy[level] = line
+            for deeper in [key for key in active_hierarchy if key > level]:
+                active_hierarchy.pop(deeper, None)
+            active_table_header = []
+            continue
+
+        if active_table_header and (_looks_like_table_line(line) or _is_projectish_line(line)):
+            _flush_body()
+            _append_body_chunk([*active_table_header, line], page_number=page_number, chunk_type="table")
+            continue
+
+        if body_buffer and _is_new_item_marker(line):
+            _flush_body()
+
+        if body_page is None:
+            body_page = page_number
+        body_buffer.append(line)
+
+    _flush_body()
+
+    meaningful_chunks = [
+        item
+        for item in chunks
+        if item.get("isParentChunk") or not _is_structurally_weak_chunk(item)
+    ]
+    return _dedupe_structural_chunks(meaningful_chunks)
+
+
 def _flatten_page_entries(page_maps: list[dict[str, Any]]) -> list[tuple[int | None, str]]:
     entries: list[tuple[int | None, str]] = []
     for page in page_maps:
@@ -1219,6 +1464,7 @@ async def fetch_document_bytes(source_url: str, timeout: int = 60) -> bytes:
 
 
 async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list[Document], dict[str, int]]:
+    chunking_mode = _resolve_planning_chunking_mode()
     source_bytes = await fetch_document_bytes(payload.source_url)
 
     fmt = (payload.format or "").lower().strip(".")
@@ -1264,8 +1510,9 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
     deadline_monotonic = (start_monotonic + soft_timeout_seconds) if (soft_timeout_seconds > 0 and not require_full) else None
 
     _logger.warning(
-        "Planning ingest effective config. planning_document_id=%s require_full=%s ocr_fallback_enabled=%s soft_timeout_seconds=%s ocr_max_pages=%s pdf_text_quality_score=%s force_ocr_extract=%s force_reason=%s",
+        "Planning ingest effective config. planning_document_id=%s chunking_mode=%s require_full=%s ocr_fallback_enabled=%s soft_timeout_seconds=%s ocr_max_pages=%s pdf_text_quality_score=%s force_ocr_extract=%s force_reason=%s",
         payload.planning_document_id,
+        chunking_mode,
         require_full,
         _resolve_pdf_ocr_fallback_enabled(),
         soft_timeout_seconds,
@@ -1299,10 +1546,27 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
             timed_out = timed_out or ocr_timed_out
 
     if not structural_chunks:
-        structural_chunks = _fallback_structural_chunks(cleaned, page_maps)
+        if _is_hierarchical_chunking_mode(chunking_mode):
+            structural_chunks = build_planning_hierarchical_chunks(cleaned, page_maps, chunking_mode)
+            if not structural_chunks:
+                structural_chunks = _fallback_structural_chunks(cleaned, page_maps)
+                for item in structural_chunks:
+                    item["chunkingFallback"] = True
+        else:
+            structural_chunks = _fallback_structural_chunks(cleaned, page_maps)
 
-    structural_chunks = _merge_continuation_chunks(structural_chunks)
-    structural_chunks = [item for item in structural_chunks if not _is_structurally_weak_chunk(item)]
+    used_hierarchical_chunks = (
+        _is_hierarchical_chunking_mode(chunking_mode)
+        and bool(structural_chunks)
+        and not any(item.get("chunkingFallback") for item in structural_chunks)
+    )
+    if not used_hierarchical_chunks:
+        structural_chunks = _merge_continuation_chunks(structural_chunks)
+    structural_chunks = [
+        item
+        for item in structural_chunks
+        if item.get("isParentChunk") or not _is_structurally_weak_chunk(item)
+    ]
 
     if timed_out:
         _logger.warning(
@@ -1392,6 +1656,12 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
                 "chunker": item.get("chunker") or "unknown",
                 "sectionHeading": item.get("sectionHeading"),
                 "hierarchyPath": item.get("hierarchyPath"),
+                "hierarchyLevel": item.get("hierarchyLevel"),
+                "parentChunkId": item.get("parentChunkId"),
+                "siblingIndex": item.get("siblingIndex"),
+                "isParentChunk": bool(item.get("isParentChunk")),
+                "chunkingMode": chunking_mode,
+                "chunkingFallback": bool(item.get("chunkingFallback")),
                 "chunkPreview": chunk[:400],
             }
         )
@@ -1399,8 +1669,9 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
 
     elapsed_ms = int((time.monotonic() - start_monotonic) * 1000)
     _logger.info(
-        "Planning document extraction completed. planning_document_id=%s format=%s pages=%s chunks=%s text_chunks=%s table_chunks=%s timed_out=%s elapsed_ms=%s",
+        "Planning document extraction completed. planning_document_id=%s chunking_mode=%s format=%s pages=%s chunks=%s text_chunks=%s table_chunks=%s timed_out=%s elapsed_ms=%s",
         payload.planning_document_id,
+        chunking_mode,
         fmt,
         total_pages,
         len(docs),

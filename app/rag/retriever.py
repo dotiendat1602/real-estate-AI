@@ -53,7 +53,7 @@ def build_pgvector_store(embeddings, collection_name: str | None = None) -> PGVe
     if not pgvector_url:
         raise RuntimeError("PGVECTOR_URL is missing")
 
-    resolved_collection = collection_name or os.getenv("PGVECTOR_COLLECTION", "post_embeddings")
+    resolved_collection = collection_name or os.getenv("PGVECTOR_COLLECTION", "post_embeddings__multilingual_e5_base_ghr1")
 
     return PGVector(
         connection=pgvector_url,
@@ -561,7 +561,10 @@ async def lexical_search_documents(
         return []
 
     merged_filters = _merge_raw_filters(base_filter, filters)
-    collection_name = getattr(vs, "collection_name", None) or os.getenv("PGVECTOR_COLLECTION", "post_embeddings")
+    collection_name = getattr(vs, "collection_name", None) or os.getenv(
+        "PGVECTOR_COLLECTION",
+        "post_embeddings__multilingual_e5_base_ghr1",
+    )
 
     params: dict[str, Any] = {
         "collection_name": collection_name,

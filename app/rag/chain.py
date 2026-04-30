@@ -2678,9 +2678,9 @@ def _humanize_post_type(value: str) -> str | None:
     if not normalized:
         return None
     if normalized in {"rent", "cho thue", "thue"}:
-        return "Cho thuÃª"
+        return "Cho thue"
     if normalized in {"sale", "can ban", "ban"}:
-        return "Cáº§n bÃ¡n"
+        return "Can ban"
     return value.strip() or None
 
 
@@ -2914,78 +2914,78 @@ def _build_structured_listing_context(question: str, doc: Document) -> str | Non
 
     lines: list[str] = []
     if post_id is not None:
-        lines.append(f"=== B?T ï¿½?NG S?N {post_id} ===")
+        lines.append(f"=== BAT DONG SAN {post_id} ===")
     else:
         lines.append(f"=== PLANNING {planning_document_id} ===")
 
     title = str(md.get("title") or "").strip()
     if title:
-        lines.append(f"- Tiï¿½u d?: {title}")
+        lines.append(f"- Tieu de: {title}")
 
     post_type = _humanize_post_type(str(md.get("postType") or ""))
     if post_type:
-        lines.append(f"- Lo?i tin: {post_type}")
+        lines.append(f"- Loai tin: {post_type}")
 
     district = str(md.get("district") or "").strip() or (_extract_district_from_text(text_blob) or "")
     if district:
-        lines.append(f"- Qu?n/Huy?n: {district}")
+        lines.append(f"- Quan/Huyen: {district}")
 
     address = str(md.get("address") or "").strip()
     if address:
-        lines.append(f"- V? trï¿½: {address}")
+        lines.append(f"- Vi tri: {address}")
 
     price = _format_price_vnd(md.get("price"))
     if not price:
         price = _format_price_vnd(_extract_price_from_text(text_blob))
     if price:
-        lines.append(f"- Giï¿½: {price}")
+        lines.append(f"- Gia: {price}")
 
     area_val = md.get("area")
     if area_val is None:
         area_val = _extract_area_from_text(text_blob)
     area = _format_numeric_value(area_val)
     if area:
-        lines.append(f"- Di?n tï¿½ch: {area} m2")
+        lines.append(f"- Dien tich: {area} m2")
 
     bedrooms_val = md.get("bedrooms")
     if bedrooms_val is None:
         bedrooms_val = _extract_bedrooms_from_text(text_blob)
     bedrooms = _format_numeric_value(bedrooms_val)
     if bedrooms:
-        lines.append(f"- S? phï¿½ng ng?: {bedrooms}")
+        lines.append(f"- So phong ngu: {bedrooms}")
 
     bathrooms_val = md.get("bathrooms")
     if bathrooms_val is None:
         bathrooms_val = _extract_bathrooms_from_text(text_blob)
     bathrooms = _format_numeric_value(bathrooms_val)
     if bathrooms:
-        lines.append(f"- S? phï¿½ng v? sinh: {bathrooms}")
+        lines.append(f"- So phong ve sinh: {bathrooms}")
 
     furnishing = str(md.get("furnishing") or "").strip()
     if furnishing:
-        lines.append(f"- N?i th?t: {furnishing}")
+        lines.append(f"- Noi that: {furnishing}")
 
     direction = str(md.get("mainDoorDirection") or "").strip() or str(md.get("direction") or "").strip()
     if not direction:
         direction = _extract_direction_from_text(text_blob) or ""
     if direction:
-        lines.append(f"- Hu?ng: {direction}")
+        lines.append(f"- Huong: {direction}")
 
     min_rental_period = str(md.get("minRentalPeriod") or "").strip()
     if not min_rental_period:
         min_rental_period = _extract_min_rental_period_from_text(text_blob) or ""
     if min_rental_period:
-        lines.append(f"- Th?i gian thuï¿½ t?i thi?u: {min_rental_period}")
+        lines.append(f"- Thoi gian thue toi thieu: {min_rental_period}")
 
     cashflow = _format_price_vnd(md.get("monthlyCashflow"))
     if not cashflow:
         cashflow = _format_price_vnd(_extract_monthly_cashflow_from_text(text_blob))
     if cashflow:
-        lines.append(f"- Dï¿½ng ti?n: {cashflow}/thï¿½ng")
+        lines.append(f"- Dong tien: {cashflow}/thang")
 
     highlights = _structured_highlights(question, md.get("highlights"), prefer_broad=True)
     if highlights:
-        lines.append(f"- ï¿½i?m n?i b?t: {highlights}")
+        lines.append(f"- Diem noi bat: {highlights}")
 
     raw_evidence = _compact_doc_content(question, doc.page_content or "", max_chars=1100, max_lines=16)
     if raw_evidence:

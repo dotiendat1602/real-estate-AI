@@ -1,0 +1,44 @@
+services:
+  ai-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: real-estate-ai-service:local
+    container_name: real_estate_ai_service
+    env_file:
+      - ./.env
+    environment:
+      - HOST=0.0.0.0
+      - PORT=${AI_SERVICE_PORT:-8001}
+      - WEB_CONCURRENCY=${AI_WEB_CONCURRENCY:-1}
+      - RUN_MIGRATIONS=${AI_RUN_MIGRATIONS:-true}
+      - HF_HOME=/models/huggingface
+      - TRANSFORMERS_CACHE=/models/huggingface
+      - SENTENCE_TRANSFORMERS_HOME=/models/sentence-transformers
+    ports:
+      - "${AI_SERVICE_PUBLISHED_PORT:-8001}:${AI_SERVICE_PORT:-8001}"
+    volumes:
+      - ai_model_cache:/models
+    mem_limit: ${AI_SERVICE_MEMORY_LIMIT:-3072m}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:$${PORT:-8001}/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - real-estate
+
+volumes:
+  ai_model_cache:
+
+networks:
+  real-estate:
+    name: ${DOCKER_NETWORK_NAME:-real_estate_network}
+    external: true

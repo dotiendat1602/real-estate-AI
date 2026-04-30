@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import json
 import uuid
+import os
 import sys
 import time
 from pathlib import Path
@@ -100,6 +102,27 @@ def parse_args() -> argparse.Namespace:
         default=0,
         help="If > 0, score test cases in smaller batches and merge the DeepEval results.",
     )
+    parser.add_argument(
+        "--top-k",
+        type=int,
+        default=0,
+        help="Override evaluation runtime.top_k for this run.",
+    )
+    parser.add_argument(
+        "--experiment-config",
+        default="",
+        help="Optional JSON object or JSON file path to include in the report.",
+    )
+    parser.add_argument(
+        "--skip-baseline-summary",
+        action="store_true",
+        help="Do not write reports/baseline_summary.md. Intended for experiment matrix runs.",
+    )
+    parser.add_argument(
+        "--manual-metric-loop",
+        action="store_true",
+        help="Score cases by calling each DeepEval metric directly. Useful when deepeval.evaluate hangs in smoke/debug runs.",
+    )
     return parser.parse_args()
 
 
@@ -119,7 +142,12 @@ async def main() -> None:
     thresholds = load_yaml(eval_root / "config" / "thresholds.yaml")
     settings = load_yaml(eval_root / "config" / "eval_settings.yaml")
     judge = load_yaml(eval_root / "config" / "judge_model.yaml")
-    goldens = load_json(eval_root / "datasets" / args.dataset)
+    goldens = load_json(_resolve_dataset_path(eval_root, args.dataset))
+    top_k_override = _resolve_top_k_override(args.top_k)
+    if top_k_override is not None:
+        settings.setdefault("runtime", {})["top_k"] = top_k_override
+
+    experiment_config = _load_experiment_config_arg(args.experiment_config)
 
     timeout_config = apply_deepeval_timeout_env(
         judge_config=judge,
@@ -213,7 +241,8 @@ async def main() -> None:
     traces = [item[1] for item in trace_results]
     test_cases = [item[2] for item in trace_results]
     trace_generation_profile = [item[3] for item in trace_results]
-    trace_checkpoint_path = eval_root / "reports" / f"{Path(args.output_name).stem}.traces.json"
+    output_report_relpath = Path(args.output_name)
+    trace_checkpoint_path = (eval_root / "reports" / output_report_relpath).with_suffix(".traces.json")
     if not args.trace_input:
         write_json(
             trace_checkpoint_path,
@@ -239,7 +268,9 @@ async def main() -> None:
     ]
     scoring_started_at = time.perf_counter()
     eval_batch_size = max(0, int(args.eval_batch_size))
-    if eval_batch_size and len(test_cases) > eval_batch_size:
+    if args.manual_metric_loop:
+        deepeval_result = _evaluate_metrics_manually(test_cases, metrics)
+    elif eval_batch_size and len(test_cases) > eval_batch_size:
         deepeval_batches: list[dict] = []
         for batch_start in range(0, len(test_cases), eval_batch_size):
             batch = test_cases[batch_start : batch_start + eval_batch_size]
@@ -292,6 +323,7 @@ async def main() -> None:
             "throttle_seconds": max(0.0, float(args.throttle_seconds)),
             "sync": bool(args.sync),
         },
+        "experiment_config": experiment_config,
         "summary": {
             "cases": len(test_cases),
             "difficulties": _count_by_field(goldens, "difficulty"),
@@ -313,21 +345,142 @@ async def main() -> None:
     report_path = eval_root / "reports" / args.output_name
     write_json(report_path, report_payload)
 
-    summary_md = build_markdown_summary(
-        "Single-turn Baseline Summary",
-        [
-            f"- Run ID: {run_id}",
-            f"- Cases: {len(test_cases)}",
-            f"- Dataset: {args.dataset}",
-            f"- Difficulties: {report_payload['summary']['difficulties']}",
-            f"- Domains: {report_payload['summary']['domains']}",
-            "- Formula: Q_single = (w_CRec*S_CRec + w_F*S_F + w_AR*S_AR) / (w_CRec + w_F + w_AR)",
-            # "- Formula: Q_single = (w_F*S_F + w_AR*S_AR) / (w_F + w_AR)",
-            f"- Q_single: {scorecard.get('overall_quality_score')}",
-            f"- Detailed JSON: reports/{args.output_name}",
-        ],
-    )
-    (eval_root / "reports" / "baseline_summary.md").write_text(summary_md, encoding="utf-8")
+    if not args.skip_baseline_summary:
+        summary_md = build_markdown_summary(
+            "Single-turn Baseline Summary",
+            [
+                f"- Run ID: {run_id}",
+                f"- Cases: {len(test_cases)}",
+                f"- Dataset: {args.dataset}",
+                f"- Difficulties: {report_payload['summary']['difficulties']}",
+                f"- Domains: {report_payload['summary']['domains']}",
+                "- Formula: Q_single = (w_CRec*S_CRec + w_F*S_F + w_AR*S_AR) / (w_CRec + w_F + w_AR)",
+                # "- Formula: Q_single = (w_F*S_F + w_AR*S_AR) / (w_F + w_AR)",
+                f"- Q_single: {scorecard.get('overall_quality_score')}",
+                f"- Detailed JSON: reports/{args.output_name}",
+            ],
+        )
+        (eval_root / "reports" / "baseline_summary.md").write_text(summary_md, encoding="utf-8")
+
+
+def _resolve_top_k_override(raw_cli_value: int) -> int | None:
+    if raw_cli_value and raw_cli_value > 0:
+        return int(raw_cli_value)
+    raw_env_value = (os.getenv("EVAL_TOP_K") or "").strip()
+    if not raw_env_value:
+        return None
+    try:
+        value = int(raw_env_value)
+    except ValueError:
+        return None
+    return value if value > 0 else None
+
+
+def _resolve_dataset_path(eval_root: Path, dataset: str) -> Path:
+    candidate = Path(dataset)
+    if candidate.is_absolute():
+        return candidate
+    if candidate.exists():
+        return candidate
+    direct_eval_path = eval_root / dataset
+    if direct_eval_path.exists():
+        return direct_eval_path
+    return eval_root / "datasets" / dataset
+
+
+def _load_experiment_config_arg(raw: str) -> dict:
+    value = (raw or "").strip()
+    if not value:
+        env_value = (os.getenv("EVAL_EXPERIMENT_CONFIG") or "").strip()
+        value = env_value
+    if not value:
+        return {}
+
+    if not value.startswith(("{", "[")):
+        candidate_path = Path(value)
+        if candidate_path.exists():
+            return load_json(candidate_path)
+
+    try:
+        parsed = json.loads(value)
+    except json.JSONDecodeError:
+        return {"raw": value}
+    return parsed if isinstance(parsed, dict) else {"value": parsed}
+
+
+def _evaluate_metrics_manually(test_cases: list, metrics: list) -> dict:
+    """Minimal DeepEval-compatible result for stable sequential smoke scoring."""
+    test_results: list[dict] = []
+    for case_index, test_case in enumerate(test_cases):
+        metrics_data: list[dict] = []
+        print(
+            f"[JudgeManual] {case_index + 1}/{len(test_cases)} {getattr(test_case, 'name', '')} start",
+            flush=True,
+        )
+        for metric in metrics:
+            metric_name = _metric_display_name(metric)
+            started_at = time.perf_counter()
+            try:
+                metric.measure(test_case)
+                score = getattr(metric, "score", None)
+                success = getattr(metric, "success", None)
+                reason = getattr(metric, "reason", None)
+                error = None
+            except Exception as exc:
+                score = None
+                success = False
+                reason = None
+                error = f"{type(exc).__name__}: {exc}"
+
+            duration = round(time.perf_counter() - started_at, 3)
+            print(
+                f"[JudgeManual] {case_index + 1}/{len(test_cases)} "
+                f"{metric_name} score={score} success={success} time={duration}s",
+                flush=True,
+            )
+            metric_payload = {
+                "name": metric_name,
+                "threshold": getattr(metric, "threshold", None),
+                "score": score,
+                "success": success,
+                "reason": reason,
+                "evaluation_cost": getattr(metric, "evaluation_cost", None),
+                "verbose_logs": getattr(metric, "verbose_logs", None),
+                "evaluation_model": str(getattr(metric, "evaluation_model", None) or ""),
+                "duration_seconds": duration,
+            }
+            if error:
+                metric_payload["error"] = error
+            metrics_data.append(metric_payload)
+
+        test_results.append(
+            {
+                "name": getattr(test_case, "name", ""),
+                "success": all(item.get("success") for item in metrics_data),
+                "metrics_data": metrics_data,
+            }
+        )
+
+    return {
+        "test_results": test_results,
+        "confident_link": None,
+        "run_duration": None,
+    }
+
+
+def _metric_display_name(metric) -> str:
+    raw_name = getattr(metric, "name", None)
+    if raw_name:
+        return str(raw_name)
+
+    class_name = metric.__class__.__name__
+    if class_name == "ContextualRecallMetric":
+        return "Contextual Recall"
+    if class_name == "FaithfulnessMetric":
+        return "Faithfulness"
+    if class_name == "AnswerRelevancyMetric":
+        return "Answer Relevancy"
+    return class_name
 
 
 def _count_by_field(items: list[dict], field: str) -> dict[str, int]:

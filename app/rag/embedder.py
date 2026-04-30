@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+from typing import Any
+
+from langchain_core.embeddings import Embeddings
 from langchain_huggingface import HuggingFaceEmbeddings
 
 
@@ -57,8 +60,47 @@ def _resolve_local_hf_snapshot(model_name: str) -> str:
     return str(latest_snapshot)
 
 
-def build_embeddings() -> HuggingFaceEmbeddings:
-    model_name = os.getenv("EMBED_MODEL", "intfloat/multilingual-e5-small")
+class PrefixingEmbeddings(Embeddings):
+    def __init__(
+        self,
+        inner: Embeddings,
+        *,
+        query_prefix: str = "",
+        document_prefix: str = "",
+    ) -> None:
+        self.inner = inner
+        self.query_prefix = query_prefix
+        self.document_prefix = document_prefix
+
+    @staticmethod
+    def _prefix(value: str, prefix: str) -> str:
+        text = str(value or "")
+        if not prefix or text.startswith(prefix):
+            return text
+        return f"{prefix}{text}"
+
+    def embed_documents(self, texts: list[str]) -> list[list[float]]:
+        return self.inner.embed_documents([self._prefix(text, self.document_prefix) for text in texts])
+
+    def embed_query(self, text: str) -> list[float]:
+        return self.inner.embed_query(self._prefix(text, self.query_prefix))
+
+    async def aembed_documents(self, texts: list[str]) -> list[list[float]]:
+        if hasattr(self.inner, "aembed_documents"):
+            return await self.inner.aembed_documents([self._prefix(text, self.document_prefix) for text in texts])
+        return self.embed_documents(texts)
+
+    async def aembed_query(self, text: str) -> list[float]:
+        if hasattr(self.inner, "aembed_query"):
+            return await self.inner.aembed_query(self._prefix(text, self.query_prefix))
+        return self.embed_query(text)
+
+    def __getattr__(self, name: str) -> Any:
+        return getattr(self.inner, name)
+
+
+def build_embeddings() -> Embeddings:
+    model_name = os.getenv("EMBED_MODEL", "intfloat/multilingual-e5-base")
     device = os.getenv("EMBED_DEVICE", "cpu")
     resolved_model_name = _resolve_local_hf_snapshot(model_name)
     resolved_model_path = Path(resolved_model_name)
@@ -68,8 +110,19 @@ def build_embeddings() -> HuggingFaceEmbeddings:
         model_kwargs["local_files_only"] = True
 
     # normalize_embeddings=True để cosine similarity ổn
-    return HuggingFaceEmbeddings(
+    embeddings = HuggingFaceEmbeddings(
         model_name=resolved_model_name,
         model_kwargs=model_kwargs,
         encode_kwargs={"normalize_embeddings": True},
     )
+    default_query_prefix = "query: " if model_name.startswith("intfloat/") else ""
+    default_document_prefix = "passage: " if model_name.startswith("intfloat/") else ""
+    query_prefix = os.getenv("EMBED_QUERY_PREFIX", default_query_prefix)
+    document_prefix = os.getenv("EMBED_DOCUMENT_PREFIX", default_document_prefix)
+    if query_prefix or document_prefix:
+        return PrefixingEmbeddings(
+            embeddings,
+            query_prefix=query_prefix,
+            document_prefix=document_prefix,
+        )
+    return embeddings

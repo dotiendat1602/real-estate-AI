@@ -27,7 +27,10 @@ _vs = None
 async def initialize_vector_store():
     global _vs
     if _vs is None:
-        planning_collection = os.getenv("PGVECTOR_COLLECTION_PLANNING", "planning_documents")
+        planning_collection = os.getenv(
+            "PGVECTOR_COLLECTION_PLANNING",
+            "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
+        )
         _vs = build_pgvector_store(_embeddings, collection_name=planning_collection)
         await _vs.__apost_init__()
     return _vs
@@ -94,7 +97,10 @@ class PlanningExplainResponse(BaseModel):
 
 
 def _planning_collection_name() -> str:
-    return os.getenv("PGVECTOR_COLLECTION_PLANNING", "planning_documents")
+    return os.getenv(
+        "PGVECTOR_COLLECTION_PLANNING",
+        "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
+    )
 
 
 @router.get("/planning/ingested-documents")

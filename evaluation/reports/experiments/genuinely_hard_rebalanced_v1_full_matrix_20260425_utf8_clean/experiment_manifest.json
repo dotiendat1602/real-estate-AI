@@ -1,0 +1,115 @@
+{
+  "created_at": "2026-04-29T17:20:47.478296+00:00",
+  "stage": "full",
+  "dataset_path": "D:\\Real-estate\\real-estate-AI\\ai-service\\evaluation\\reports\\experiments\\genuinely_hard_rebalanced_v1_full_matrix_20260425_utf8_clean\\datasets\\full_single_turn_goldens_medium_genuinely_hard_100_candidate_v5_rebalanced_v1.json",
+  "configs": [
+    {
+      "config_id": "multilingual_e5_base_ghr1__planning_hierarchical_parent_child__k8",
+      "embedding_model": "intfloat/multilingual-e5-base",
+      "embedding_model_slug": "multilingual_e5_base_ghr1",
+      "planning_chunking_mode": "planning_hierarchical_parent_child",
+      "top_k": 8,
+      "post_collection": "post_embeddings__multilingual_e5_base_ghr1",
+      "planning_collection": "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_child"
+    },
+    {
+      "config_id": "multilingual_e5_base_ghr1__planning_hierarchical_parent_child__k16",
+      "embedding_model": "intfloat/multilingual-e5-base",
+      "embedding_model_slug": "multilingual_e5_base_ghr1",
+      "planning_chunking_mode": "planning_hierarchical_parent_child",
+      "top_k": 16,
+      "post_collection": "post_embeddings__multilingual_e5_base_ghr1",
+      "planning_collection": "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_child"
+    },
+    {
+      "config_id": "multilingual_e5_base_ghr1__planning_hierarchical_parent_child__k24",
+      "embedding_model": "intfloat/multilingual-e5-base",
+      "embedding_model_slug": "multilingual_e5_base_ghr1",
+      "planning_chunking_mode": "planning_hierarchical_parent_child",
+      "top_k": 24,
+      "post_collection": "post_embeddings__multilingual_e5_base_ghr1",
+      "planning_collection": "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_child"
+    },
+    {
+      "config_id": "bge_m3_ghr1__planning_baseline_fixed__k8",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_model_slug": "bge_m3_ghr1",
+      "planning_chunking_mode": "planning_baseline_fixed",
+      "top_k": 8,
+      "post_collection": "post_embeddings__bge_m3_ghr1",
+      "planning_collection": "planning_documents__bge_m3_ghr1__planning_baseline_fixed"
+    },
+    {
+      "config_id": "bge_m3_ghr1__planning_baseline_fixed__k16",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_model_slug": "bge_m3_ghr1",
+      "planning_chunking_mode": "planning_baseline_fixed",
+      "top_k": 16,
+      "post_collection": "post_embeddings__bge_m3_ghr1",
+      "planning_collection": "planning_documents__bge_m3_ghr1__planning_baseline_fixed"
+    },
+    {
+      "config_id": "bge_m3_ghr1__planning_baseline_fixed__k24",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_model_slug": "bge_m3_ghr1",
+      "planning_chunking_mode": "planning_baseline_fixed",
+      "top_k": 24,
+      "post_collection": "post_embeddings__bge_m3_ghr1",
+      "planning_collection": "planning_documents__bge_m3_ghr1__planning_baseline_fixed"
+    },
+    {
+      "config_id": "bge_m3_ghr1__planning_hierarchical_parent_context__k8",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_model_slug": "bge_m3_ghr1",
+      "planning_chunking_mode": "planning_hierarchical_parent_context",
+      "top_k": 8,
+      "post_collection": "post_embeddings__bge_m3_ghr1",
+      "planning_collection": "planning_documents__bge_m3_ghr1__planning_hierarchical_parent_context"
+    },
+    {
+      "config_id": "bge_m3_ghr1__planning_hierarchical_parent_context__k16",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_model_slug": "bge_m3_ghr1",
+      "planning_chunking_mode": "planning_hierarchical_parent_context",
+      "top_k": 16,
+      "post_collection": "post_embeddings__bge_m3_ghr1",
+      "planning_collection": "planning_documents__bge_m3_ghr1__planning_hierarchical_parent_context"
+    },
+    {
+      "config_id": "bge_m3_ghr1__planning_hierarchical_parent_context__k24",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_model_slug": "bge_m3_ghr1",
+      "planning_chunking_mode": "planning_hierarchical_parent_context",
+      "top_k": 24,
+      "post_collection": "post_embeddings__bge_m3_ghr1",
+      "planning_collection": "planning_documents__bge_m3_ghr1__planning_hierarchical_parent_context"
+    },
+    {
+      "config_id": "bge_m3_ghr1__planning_hierarchical_parent_child__k8",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_model_slug": "bge_m3_ghr1",
+      "planning_chunking_mode": "planning_hierarchical_parent_child",
+      "top_k": 8,
+      "post_collection": "post_embeddings__bge_m3_ghr1",
+      "planning_collection": "planning_documents__bge_m3_ghr1__planning_hierarchical_parent_child"
+    },
+    {
+      "config_id": "bge_m3_ghr1__planning_hierarchical_parent_child__k16",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_model_slug": "bge_m3_ghr1",
+      "planning_chunking_mode": "planning_hierarchical_parent_child",
+      "top_k": 16,
+      "post_collection": "post_embeddings__bge_m3_ghr1",
+      "planning_collection": "planning_documents__bge_m3_ghr1__planning_hierarchical_parent_child"
+    },
+    {
+      "config_id": "bge_m3_ghr1__planning_hierarchical_parent_child__k24",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_model_slug": "bge_m3_ghr1",
+      "planning_chunking_mode": "planning_hierarchical_parent_child",
+      "top_k": 24,
+      "post_collection": "post_embeddings__bge_m3_ghr1",
+      "planning_collection": "planning_documents__bge_m3_ghr1__planning_hierarchical_parent_child"
+    }
+  ]
+}

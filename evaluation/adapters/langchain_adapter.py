@@ -21,6 +21,7 @@ from app.api.chat import (
     _is_planning_fact_query,
     _load_planning_document_docs_sync,
     _planning_doc_score,
+    _repair_mojibake,
     _rebalance_planning_chunk_mix,
     _retrieve_planning_docs_for_nl_query,
     _select_ranked_planning_docs,
@@ -107,11 +108,20 @@ class LangChainEvalAdapter:
     ) -> TurnTrace:
         await self.initialize()
 
-        history_payload = (conversation_history or [])[-self.max_history_turns :]
+        input_text = self._repair_text(input_text)
+        history_payload = [
+            {
+                "role": item.get("role", ""),
+                "content": self._repair_text(item.get("content", "")),
+            }
+            for item in (conversation_history or [])[-self.max_history_turns :]
+        ]
         history_messages = self._to_langchain_messages(history_payload)
         target_metadata = target_metadata or {}
+        target_metadata_eval_only = self._target_metadata_eval_only(target_metadata)
+        retrieval_target_metadata = {} if target_metadata_eval_only else target_metadata
         force_planning_document_id: int | None = None
-        raw_planning_doc_id = target_metadata.get("planningDocumentId")
+        raw_planning_doc_id = retrieval_target_metadata.get("planningDocumentId")
         if raw_planning_doc_id is not None:
             try:
                 force_planning_document_id = int(raw_planning_doc_id)
@@ -126,10 +136,12 @@ class LangChainEvalAdapter:
             else None
         )
         filter_query = retrieval_query if rewritten_query else input_text
-        use_planning_mode = _has_planning_intent(input_text) or self._target_metadata_suggests_planning(target_metadata)
+        use_planning_mode = _has_planning_intent(input_text) or self._target_metadata_suggests_planning(
+            retrieval_target_metadata
+        )
         has_exact_property_target = (
-            target_metadata.get("postId") is not None
-            or target_metadata.get("propertyId") is not None
+            retrieval_target_metadata.get("postId") is not None
+            or retrieval_target_metadata.get("propertyId") is not None
         )
         filter_extraction_skipped = False
         filter_extraction_skip_reason: str | None = None
@@ -143,7 +155,7 @@ class LangChainEvalAdapter:
             filter_extraction_skip_reason = "target_metadata"
         else:
             extracted_filters = await extract_filters_from_query(filter_query, self._llm)
-        filters = self._merge_target_metadata_filters(extracted_filters, target_metadata)
+        filters = self._merge_target_metadata_filters(extracted_filters, retrieval_target_metadata)
 
         is_explanatory_query = self._is_explanatory_question(input_text)
         retrieval_strategy = "planning_nl" if use_planning_mode else "exact_filters"
@@ -155,7 +167,7 @@ class LangChainEvalAdapter:
                 docs = await self._retrieve_planning_target_docs(
                     retrieval_query,
                     planning_document_id=force_planning_document_id,
-                    target_metadata=target_metadata,
+                    target_metadata=retrieval_target_metadata,
                     top_k=k,
                 )
                 retrieval_strategy = "planning_target_metadata"
@@ -189,6 +201,7 @@ class LangChainEvalAdapter:
                 )
                 retrieval_augmentation_docs_added = max(0, len(docs) - original_doc_count)
         retrieval_seconds = round(time.perf_counter() - retrieval_started, 3)
+        docs = [self._repair_document_text(doc) for doc in docs]
 
         context_selection_query = retrieval_query or input_text
         planning_max_docs = (
@@ -209,12 +222,14 @@ class LangChainEvalAdapter:
             max_docs=planning_max_docs,
             max_chars_per_doc=max_chars_per_doc,
         )
+        context_docs = [self._repair_document_text(doc) for doc in context_docs]
         eval_context_docs = self._prepare_eval_context_docs(
             context_selection_query,
             context_docs,
             use_planning_mode=use_planning_mode,
             is_explanatory_query=is_explanatory_query,
         )
+        eval_context_docs = [self._repair_document_text(doc) for doc in eval_context_docs]
 
         context_text = self._format_docs(context_docs)
 
@@ -250,6 +265,7 @@ class LangChainEvalAdapter:
             "retrieval_strategy": retrieval_strategy,
             "filter_extraction_skipped": filter_extraction_skipped,
             "filter_extraction_skip_reason": filter_extraction_skip_reason,
+            "target_metadata_eval_only": target_metadata_eval_only,
             "raw_retrieved_docs_count": len(docs),
             "context_docs_count": len(context_docs),
             "context_chars": context_chars,
@@ -743,6 +759,17 @@ class LangChainEvalAdapter:
         }
         return any(key in target_metadata for key in planning_keys)
 
+    @staticmethod
+    def _target_metadata_eval_only(target_metadata: dict[str, Any] | None) -> bool:
+        if not target_metadata:
+            return False
+        value = target_metadata.get("evalOnly")
+        if isinstance(value, bool):
+            return value
+        if isinstance(value, str):
+            return value.strip().lower() in {"1", "true", "yes", "y"}
+        return False
+
     async def _generate_answer(
         self,
         question: str,
@@ -886,6 +913,17 @@ class LangChainEvalAdapter:
     @staticmethod
     def _format_docs(docs: list[Document]) -> str:
         return "\n\n".join(d.page_content for d in docs if d.page_content)
+
+    @staticmethod
+    def _repair_text(value: str | None) -> str:
+        return _repair_mojibake(str(value or ""))
+
+    @classmethod
+    def _repair_document_text(cls, doc: Document) -> Document:
+        repaired_content = cls._repair_text(doc.page_content)
+        if repaired_content == doc.page_content:
+            return doc
+        return Document(page_content=repaired_content, metadata=dict(doc.metadata or {}))
 
 def turn_trace_to_dict(trace: TurnTrace) -> dict[str, Any]:
     return asdict(trace)

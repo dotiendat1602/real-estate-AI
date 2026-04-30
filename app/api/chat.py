@@ -988,7 +988,10 @@ def _load_planning_document_docs_sync(
                       and cmetadata->>'planningDocumentId' = %s
                 """
                 params: list[Any] = [
-                    os.getenv("PGVECTOR_COLLECTION_PLANNING", "planning_documents"),
+                    os.getenv(
+                        "PGVECTOR_COLLECTION_PLANNING",
+                        "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
+                    ),
                     str(planning_document_id),
                 ]
                 if year_value is not None:
@@ -1040,7 +1043,10 @@ def _load_admin_overview_sql_rescue_docs_sync(
                       and cmetadata->>'planningDocumentId' = %s
                 """
                 params: list[Any] = [
-                    os.getenv("PGVECTOR_COLLECTION_PLANNING", "planning_documents"),
+                    os.getenv(
+                        "PGVECTOR_COLLECTION_PLANNING",
+                        "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
+                    ),
                     str(planning_document_id),
                 ]
                 if year_value is not None:
@@ -1188,6 +1194,10 @@ async def _retrieve_planning_docs_for_nl_query(
     history_messages: Optional[list[dict[str, Any]]] = None,
     force_planning_document_id: Optional[int] = None,
 ) -> list[Document]:
+    retriever_mode = (os.getenv("RAG_RETRIEVER_MODE", "hybrid") or "hybrid").strip().lower()
+    lexical_disabled = (os.getenv("RAG_LEXICAL_DISABLE", "") or "").strip().lower() in {"1", "true", "yes", "y"}
+    use_lexical_probe = retriever_mode == "hybrid" and not lexical_disabled
+
     district = _extract_district_from_message(message) or _extract_district_from_history(history_messages)
     plan_year = _extract_plan_year_from_message(message)
     if plan_year is None:
@@ -1220,6 +1230,8 @@ async def _retrieve_planning_docs_for_nl_query(
                 "districtMinDocs": district_min_docs,
                 "probeK": probe_k,
                 "lexicalK": lexical_k,
+                "retrieverMode": retriever_mode,
+                "useLexicalProbe": use_lexical_probe,
                 "queryCandidates": query_candidates,
                 "recoveryGroupingQuery": recovery_grouping_query,
                 "projectListingQuery": project_listing_query,
@@ -1313,20 +1325,22 @@ async def _retrieve_planning_docs_for_nl_query(
                 vector_docs, lexical_docs = cached_result
             else:
                 vector_task = asyncio.create_task(planning_retriever.ainvoke(query_text))
-                lexical_task = asyncio.create_task(
-                    lexical_search_documents(
-                        planning_vs,
-                        query_text,
-                        k=lexical_k,
-                        filters={"chunkTypes": chunk_types},
-                        base_filter=base_filter,
-                    )
-                )
-
                 vector_docs = await vector_task
-                try:
-                    lexical_docs = await lexical_task
-                except Exception:
+                if use_lexical_probe:
+                    lexical_task = asyncio.create_task(
+                        lexical_search_documents(
+                            planning_vs,
+                            query_text,
+                            k=lexical_k,
+                            filters={"chunkTypes": chunk_types},
+                            base_filter=base_filter,
+                        )
+                    )
+                    try:
+                        lexical_docs = await lexical_task
+                    except Exception:
+                        lexical_docs = []
+                else:
                     lexical_docs = []
 
                 _planning_query_cache_put(cache_key, (vector_docs, lexical_docs))
@@ -1804,7 +1818,10 @@ async def initialize_vector_store():
         # Trigger async init
         await _vs.__apost_init__()
     if _planning_vs is None:
-        planning_collection = os.getenv("PGVECTOR_COLLECTION_PLANNING", "planning_documents")
+        planning_collection = os.getenv(
+            "PGVECTOR_COLLECTION_PLANNING",
+            "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
+        )
         _planning_vs = build_pgvector_store(_embeddings, collection_name=planning_collection)
         await _planning_vs.__apost_init__()
     return _vs
@@ -1849,7 +1866,7 @@ class ChatRequest(BaseModel):
     userId: Optional[int] = None
     sessionId: Optional[int] = None
     message: str = Field(min_length=1)
-    topK: int = Field(default=int(os.getenv("TOP_K_DEFAULT", "12")), ge=1, le=50)
+    topK: int = Field(default=int(os.getenv("TOP_K_DEFAULT", "16")), ge=1, le=50)
     planningContexts: list[PlanningContext] = Field(default_factory=list)
 
 class ChatResponse(BaseModel):

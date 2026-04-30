@@ -1,0 +1,33 @@
+dataset: single_turn_goldens_medium_tuned.json
+
+embedding_models:
+  - name: intfloat/multilingual-e5-small
+    slug: multilingual_e5_small
+  - name: intfloat/multilingual-e5-base
+    slug: multilingual_e5_base
+  - name: BAAI/bge-m3
+    slug: bge_m3
+
+top_k: [8, 16, 24]
+
+planning_chunking_modes:
+  - planning_baseline_fixed
+  - planning_hierarchical_parent_context
+  - planning_hierarchical_parent_child
+
+smoke:
+  max_cases: 20
+
+full:
+  top_n: 8
+
+runner:
+  trace_max_concurrent: 1
+  judge_max_concurrent: 2
+  throttle_seconds: 0.6
+  eval_batch_size: 0
+  sync: false
+
+corpus:
+  posts_manifest: evaluation/corpus/posts.full.jsonl
+  planning_manifest: evaluation/corpus/planning_documents.full.jsonl

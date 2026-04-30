@@ -1,0 +1,228 @@
+D:\Real-estate\real-estate-AI\ai-service\.venv\lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Planning ingest effective config. planning_document_id=109 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=0.825 force_ocr_extract=False force_reason=None
+Planning ingest effective config. planning_document_id=110 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=1.0 force_ocr_extract=False force_reason=None
+Planning ingest effective config. planning_document_id=111 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=1.0 force_ocr_extract=False force_reason=None
+Planning ingest effective config. planning_document_id=113 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=0.883 force_ocr_extract=False force_reason=None
+Planning ingest effective config. planning_document_id=118 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=1.0 force_ocr_extract=False force_reason=None
+Planning ingest effective config. planning_document_id=119 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=1.0 force_ocr_extract=False force_reason=None
+Retrying planning document download with SSL verify disabled due to certificate verification failure. source_url=https://qhkhsdd.hanoi.gov.vn/hanoistnmt/HN-ThachThat-KH2025/HN-ThachThat-KH2025.tif
+Planning ingest effective config. planning_document_id=120 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=None force_ocr_extract=False force_reason=None
+Retrying planning document download with SSL verify disabled due to certificate verification failure. source_url=https://qhkhsdd.hanoi.gov.vn/hanoistnmt/HN-ThachThat-KH2025/HN-ThachThat-KH2025_Clip.tif
+Planning ingest effective config. planning_document_id=121 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=None force_ocr_extract=False force_reason=None
+Planning ingest effective config. planning_document_id=123 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=1.0 force_ocr_extract=False force_reason=None
+Planning ingest effective config. planning_document_id=125 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=1.0 force_ocr_extract=False force_reason=None
+Planning ingest effective config. planning_document_id=129 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=0.883 force_ocr_extract=False force_reason=None
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2b6 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2c0 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2c1 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a7 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a7 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a7 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a7 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a7 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a7 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a7 for key /Subtype
+Multiple definitions in dictionary at byte 0x5f0c for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a7 for key /Subtype
+Multiple definitions in dictionary at byte 0x64bf for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x6f80 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x5510 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x55c7 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x56fc for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x6637 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x61ee for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x6161 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x4044 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x4029 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x481c for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x13001 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x87b2 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0xbc54 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x17d93 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x14d57 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Multiple definitions in dictionary at byte 0x7a for key /Subtype
+Multiple definitions in dictionary at byte 0x2a8 for key /Subtype
+Planning ingest effective config. planning_document_id=133 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=1.0 force_ocr_extract=False force_reason=None
+Planning ingest effective config. planning_document_id=135 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=1.0 force_ocr_extract=False force_reason=None
+Planning ingest effective config. planning_document_id=136 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=0.0 force_ocr_extract=True force_reason=no_text_layer
+Triggering OCR fallback for PDF extraction. reason=no_text_layer total_pages=104
+[32m[INFO] 2026-04-27 21:43:41,794 [RapidOCR] base.py:22: Using engine_name: onnxruntime[0m
+[32m[INFO] 2026-04-27 21:43:42,369 [RapidOCR] download_file.py:60: File exists and is valid: D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_det_infer.onnx[0m
+[32m[INFO] 2026-04-27 21:43:42,369 [RapidOCR] main.py:53: Using D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_det_infer.onnx[0m
+[32m[INFO] 2026-04-27 21:43:42,819 [RapidOCR] base.py:22: Using engine_name: onnxruntime[0m
+[32m[INFO] 2026-04-27 21:43:42,939 [RapidOCR] download_file.py:60: File exists and is valid: D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_ppocr_mobile_v2.0_cls_infer.onnx[0m
+[32m[INFO] 2026-04-27 21:43:42,955 [RapidOCR] main.py:53: Using D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_ppocr_mobile_v2.0_cls_infer.onnx[0m
+[32m[INFO] 2026-04-27 21:43:43,095 [RapidOCR] base.py:22: Using engine_name: onnxruntime[0m
+[32m[INFO] 2026-04-27 21:43:43,220 [RapidOCR] download_file.py:60: File exists and is valid: D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_rec_infer.onnx[0m
+[32m[INFO] 2026-04-27 21:43:43,220 [RapidOCR] main.py:53: Using D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_rec_infer.onnx[0m
+Starting OCR fallback for scanned PDF. pages_to_process=104 total_pages=104 render_scale=1.25
+OCR fallback progress: 5/104 pages processed, chunks=5
+OCR fallback progress: 10/104 pages processed, chunks=10
+OCR fallback progress: 15/104 pages processed, chunks=15
+OCR fallback progress: 20/104 pages processed, chunks=20
+OCR fallback progress: 25/104 pages processed, chunks=25
+OCR fallback progress: 30/104 pages processed, chunks=30
+OCR fallback progress: 35/104 pages processed, chunks=35
+OCR fallback progress: 40/104 pages processed, chunks=40
+OCR fallback progress: 45/104 pages processed, chunks=45
+OCR fallback progress: 50/104 pages processed, chunks=50
+OCR fallback progress: 55/104 pages processed, chunks=55
+OCR fallback progress: 60/104 pages processed, chunks=60
+OCR fallback progress: 65/104 pages processed, chunks=65
+OCR fallback progress: 70/104 pages processed, chunks=70
+OCR fallback progress: 75/104 pages processed, chunks=75
+OCR fallback progress: 80/104 pages processed, chunks=80
+OCR fallback progress: 85/104 pages processed, chunks=85
+OCR fallback progress: 90/104 pages processed, chunks=90
+OCR fallback progress: 95/104 pages processed, chunks=95
+OCR fallback progress: 100/104 pages processed, chunks=100
+OCR fallback progress: 104/104 pages processed, chunks=104
+Planning ingest effective config. planning_document_id=137 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=0.0 force_ocr_extract=True force_reason=no_text_layer
+Triggering OCR fallback for PDF extraction. reason=no_text_layer total_pages=104
+[32m[INFO] 2026-04-27 22:10:02,525 [RapidOCR] base.py:22: Using engine_name: onnxruntime[0m
+[32m[INFO] 2026-04-27 22:10:02,615 [RapidOCR] download_file.py:60: File exists and is valid: D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_det_infer.onnx[0m
+[32m[INFO] 2026-04-27 22:10:02,615 [RapidOCR] main.py:53: Using D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_det_infer.onnx[0m
+[32m[INFO] 2026-04-27 22:10:03,079 [RapidOCR] base.py:22: Using engine_name: onnxruntime[0m
+[32m[INFO] 2026-04-27 22:10:03,091 [RapidOCR] download_file.py:60: File exists and is valid: D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_ppocr_mobile_v2.0_cls_infer.onnx[0m
+[32m[INFO] 2026-04-27 22:10:03,092 [RapidOCR] main.py:53: Using D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_ppocr_mobile_v2.0_cls_infer.onnx[0m
+[32m[INFO] 2026-04-27 22:10:03,243 [RapidOCR] base.py:22: Using engine_name: onnxruntime[0m
+[32m[INFO] 2026-04-27 22:10:03,336 [RapidOCR] download_file.py:60: File exists and is valid: D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_rec_infer.onnx[0m
+[32m[INFO] 2026-04-27 22:10:03,337 [RapidOCR] main.py:53: Using D:\Real-estate\real-estate-AI\ai-service\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_rec_infer.onnx[0m
+Starting OCR fallback for scanned PDF. pages_to_process=104 total_pages=104 render_scale=1.25
+OCR fallback progress: 5/104 pages processed, chunks=5
+OCR fallback progress: 10/104 pages processed, chunks=10
+OCR fallback progress: 15/104 pages processed, chunks=15
+OCR fallback progress: 20/104 pages processed, chunks=20
+OCR fallback progress: 25/104 pages processed, chunks=25
+OCR fallback progress: 30/104 pages processed, chunks=30
+OCR fallback progress: 35/104 pages processed, chunks=35
+OCR fallback progress: 40/104 pages processed, chunks=40
+OCR fallback progress: 45/104 pages processed, chunks=45
+OCR fallback progress: 50/104 pages processed, chunks=50
+OCR fallback progress: 55/104 pages processed, chunks=55
+OCR fallback progress: 60/104 pages processed, chunks=60
+OCR fallback progress: 65/104 pages processed, chunks=65
+OCR fallback progress: 70/104 pages processed, chunks=70
+OCR fallback progress: 75/104 pages processed, chunks=75
+OCR fallback progress: 80/104 pages processed, chunks=80
+OCR fallback progress: 85/104 pages processed, chunks=85
+OCR fallback progress: 90/104 pages processed, chunks=90
+OCR fallback progress: 95/104 pages processed, chunks=95
+OCR fallback progress: 100/104 pages processed, chunks=100
+OCR fallback progress: 104/104 pages processed, chunks=104
+Planning ingest effective config. planning_document_id=138 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=1.0 force_ocr_extract=False force_reason=None
+Planning ingest effective config. planning_document_id=139 chunking_mode=planning_hierarchical_parent_child require_full=True ocr_fallback_enabled=True soft_timeout_seconds=0 ocr_max_pages=0 pdf_text_quality_score=1.0 force_ocr_extract=False force_reason=None
