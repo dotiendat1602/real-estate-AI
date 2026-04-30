@@ -1,3 +1,7 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=69", "wheel"]
+
 [project]
 dependencies = [
   "fastapi>=0.110",
@@ -16,6 +20,7 @@ dependencies = [
   "langchain>=0.2.0",
   "langchain-community>=0.2.0",
   "langchain-core>=0.2.0",
+  "langchain-huggingface>=0.0.3",
   "langchain-text-splitters>=0.2.0",
   "langchain-postgres>=0.0.9",
   "langchain-openai>=0.2.0",
@@ -33,3 +38,9 @@ version = "0.1.0"
 
 [tool.uvicorn]
 factory = false
+
+[tool.setuptools.packages.find]
+exclude = ["alembic*", "docker*", "evaluation*"]
+include = ["app*"]
+namespaces = true
+where = ["."]
