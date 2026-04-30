@@ -1,3 +1,7 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=69", "wheel"]
+
 [project]
 dependencies = [
   "fastapi>=0.110",
@@ -33,3 +37,9 @@ version = "0.1.0"
 
 [tool.uvicorn]
 factory = false
+
+[tool.setuptools.packages.find]
+exclude = ["alembic*", "docker*", "evaluation*"]
+include = ["app*"]
+namespaces = true
+where = ["."]
