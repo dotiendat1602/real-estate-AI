@@ -5,7 +5,7 @@ from logging.config import fileConfig
 
 from dotenv import load_dotenv
 from alembic import context
-from sqlalchemy import engine_from_config, pool
+from sqlalchemy import engine_from_config, pool, text
 
 from app.db.models import Base
 
@@ -106,6 +106,9 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
+        connection.execute(text("CREATE SCHEMA IF NOT EXISTS ai"))
+        connection.commit()
+
         context.configure(
             connection=connection,
             target_metadata=target_metadata,

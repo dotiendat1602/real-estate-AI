@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 set -eu
 
+if [ "$#" -gt 0 ]; then
+  exec "$@"
+fi
+
 if [ "${RUN_MIGRATIONS:-true}" = "true" ]; then
   alembic upgrade head
 fi
