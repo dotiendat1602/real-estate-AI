@@ -27,7 +27,7 @@ def upgrade() -> None:
     
     # Langchain collection
     op.execute("""
-        CREATE TABLE IF NOT EXISTS langchain_pg_collection (
+        CREATE TABLE IF NOT EXISTS ai.langchain_pg_collection (
             uuid UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             name VARCHAR,
             cmetadata JSON
@@ -35,15 +35,16 @@ def upgrade() -> None:
     """)
     
     # Langchain embeddings
-    if 'langchain_pg_embedding' not in inspector.get_table_names():
+    if 'langchain_pg_embedding' not in inspector.get_table_names(schema='ai'):
         op.create_table(
             'langchain_pg_embedding',
             sa.Column('id', sa.String(), nullable=False),
             sa.Column('collection_id', sa.UUID(), nullable=True),
-            sa.Column('embedding', Vector(1536), nullable=True),
+            sa.Column('embedding', Vector(), nullable=True),
             sa.Column('document', sa.String(), nullable=True),
             sa.Column('cmetadata', sa.JSON(), nullable=True),
-            sa.PrimaryKeyConstraint('id')
+            sa.PrimaryKeyConstraint('id'),
+            schema='ai',
         )
     
     # Chat sessions
@@ -77,5 +78,5 @@ def downgrade() -> None:
     op.drop_table('chat_messages', schema='ai', if_exists=True)
     op.drop_index(op.f('ix_ai_chat_sessions_user_id'), table_name='chat_sessions', schema='ai', if_exists=True)
     op.drop_table('chat_sessions', schema='ai', if_exists=True)
-    op.drop_table('langchain_pg_embedding', if_exists=True)
-    op.execute("DROP TABLE IF EXISTS langchain_pg_collection CASCADE")
+    op.drop_table('langchain_pg_embedding', schema='ai', if_exists=True)
+    op.execute("DROP TABLE IF EXISTS ai.langchain_pg_collection CASCADE")
