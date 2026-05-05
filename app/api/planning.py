@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import logging
-import os
 import time
 from typing import Any, Optional
 
@@ -9,38 +8,18 @@ from fastapi import APIRouter
 from pydantic import BaseModel, Field, HttpUrl
 from sqlalchemy import text
 
-from ..api.chat import build_llm
 from ..db.pgvector import AsyncSessionLocal
 from ..planning.ingestion import PlanningIngestPayload, build_planning_documents
 from ..planning.metadata import canonicalize_planning_district
-from ..rag.chain import RagChain
-from ..rag.embedder import build_embeddings
-from ..rag.retriever import build_pgvector_store, build_retriever
+from ..rag.llm import build_llm
+from ..rag.resources import initialize_planning_vector_store, planning_collection_name
+from ..rag.retriever import build_retriever
 
 router = APIRouter()
 _logger = logging.getLogger(__name__)
 
-_embeddings = build_embeddings()
-_vs = None
-
-
 async def initialize_vector_store():
-    global _vs
-    if _vs is None:
-        planning_collection = os.getenv(
-            "PGVECTOR_COLLECTION_PLANNING",
-            "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
-        )
-        _vs = build_pgvector_store(_embeddings, collection_name=planning_collection)
-        await _vs.__apost_init__()
-    return _vs
-
-
-def get_vector_store():
-    global _vs
-    if _vs is None:
-        raise RuntimeError("Vector store not initialized. Call initialize_vector_store() first.")
-    return _vs
+    return await initialize_planning_vector_store()
 
 
 class PlanningIngestDocument(BaseModel):
@@ -97,10 +76,7 @@ class PlanningExplainResponse(BaseModel):
 
 
 def _planning_collection_name() -> str:
-    return os.getenv(
-        "PGVECTOR_COLLECTION_PLANNING",
-        "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
-    )
+    return planning_collection_name()
 
 
 @router.get("/planning/ingested-documents")
@@ -225,7 +201,7 @@ async def ingest_planning_documents(req: PlanningIngestRequest):
         req.skipIfExists,
     )
 
-    vs = get_vector_store()
+    vs = await initialize_planning_vector_store()
     result_items: list[dict[str, Any]] = []
     total_ingested = 0
     failed_documents = 0
@@ -425,8 +401,10 @@ async def ingest_planning_documents(req: PlanningIngestRequest):
 
 @router.post("/planning/explain", response_model=PlanningExplainResponse)
 async def explain_planning(req: PlanningExplainRequest):
+    from ..rag.chain import RagChain
+
     llm = build_llm()
-    vs = get_vector_store()
+    vs = await initialize_planning_vector_store()
 
     user_question = (req.question or "").strip()
     if not user_question:

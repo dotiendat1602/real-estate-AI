@@ -16,6 +16,13 @@ from .api.planning import router as planning_router
 setup_logging()
 
 
+def _env_bool(name: str, default: bool = False) -> bool:
+    raw = (os.getenv(name) or "").strip().lower()
+    if not raw:
+        return default
+    return raw in {"1", "true", "yes", "on"}
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # startup
@@ -24,11 +31,12 @@ async def lifespan(app: FastAPI):
     print(f"Server: http://{os.getenv('HOST', '127.0.0.1')}:{os.getenv('PORT', '8001')}")
     
     # Khởi tạo vector store
-    print("Initializing vector store...")
-    from app.api import chat, ingest, planning
-    await chat.initialize_vector_store()
-    await ingest.initialize_vector_store()
-    await planning.initialize_vector_store()
+    if _env_bool("AI_PRELOAD_VECTOR_STORES", True):
+        print("Preloading vector stores...")
+        from app.api import chat
+        await chat.initialize_vector_store()
+    else:
+        print("Skipping vector store preload (AI_PRELOAD_VECTOR_STORES=false).")
     
     print("=" * 80)
     print("Application startup complete!")
@@ -62,5 +70,5 @@ if __name__ == "__main__":
         "app.main:app",
         host=os.getenv("HOST", "127.0.0.1"),
         port=int(os.getenv("PORT", "8001")),
-        reload=True,
+        reload=_env_bool("UVICORN_RELOAD", True),
     )

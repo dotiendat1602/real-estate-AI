@@ -1,0 +1,1018 @@
+{
+  "created_at": "2026-04-30T16:13:15.305877+00:00",
+  "phase": "single_turn_trace_generation",
+  "dataset": "single_turn_goldens_hard_rebalanced_v1.json",
+  "cases": 12,
+  "trace_max_concurrent": 1,
+  "timing": {
+    "trace_generation_seconds": 127.999,
+    "trace_generation_by_case": [
+      {
+        "id": "ST_HARD_001",
+        "input_preview": "Vi sao can nha ngo 281 Truong Dinh phu hop cho gia dinh o lau dai neu xet so phong, noi that va ngo o to?",
+        "generation_seconds": 10.103,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 1571,
+        "retrieval_seconds": 4.405,
+        "answer_generation_seconds": 5.684,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_HARD_002",
+        "input_preview": "Vì sao nhà cho thuê ở 54/98 Thịnh Hào 3 được xem là hợp cho gia đình đông người hoặc nhóm ở dài hạn?",
+        "generation_seconds": 6.78,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 1906,
+        "retrieval_seconds": 4.01,
+        "answer_generation_seconds": 2.759,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_HARD_003",
+        "input_preview": "Vi sao tin \"Chinh chu cho thue nguyen can thiet ke phu hop cho thue 7 can ho mini tai Nhon\" phu hop khai thac can ho min",
+        "generation_seconds": 8.394,
+        "retrieval_context_docs": 2,
+        "retrieval_context_chars": 1773,
+        "retrieval_seconds": 3.974,
+        "answer_generation_seconds": 4.41,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_HARD_004",
+        "input_preview": "Vi sao tin \"Chinh chu cho thue nha 5 tang o pho Quang Tien Tay Mo\" thuan tien cho sinh hoat gia dinh?",
+        "generation_seconds": 5.462,
+        "retrieval_context_docs": 2,
+        "retrieval_context_chars": 1602,
+        "retrieval_seconds": 2.054,
+        "answer_generation_seconds": 3.397,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_HARD_005",
+        "input_preview": "Vi sao tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" hop voi nguoi hoc tap hoac lam viec gan trung tam?",
+        "generation_seconds": 10.437,
+        "retrieval_context_docs": 1,
+        "retrieval_context_chars": 617,
+        "retrieval_seconds": 6.059,
+        "answer_generation_seconds": 4.372,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_HARD_006",
+        "input_preview": "Vì sao lô đất D3 khu Vườn Đào đối diện Lotte Mall được xem là có sức hút đầu tư cao?",
+        "generation_seconds": 4.851,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 2006,
+        "retrieval_seconds": 0.682,
+        "answer_generation_seconds": 4.156,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_HARD_007",
+        "input_preview": "Vi sao tin \"Cho thue nha rieng chinh chu tai Giang Vo\" khong phu hop Airbnb hoac van phong dong nguoi?",
+        "generation_seconds": 38.16,
+        "retrieval_context_docs": 2,
+        "retrieval_context_chars": 1116,
+        "retrieval_seconds": 36.045,
+        "answer_generation_seconds": 2.105,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_HARD_008",
+        "input_preview": "Vì sao mặt bằng ở số 2A ngõ 76 Trần Thái Tông có thể phù hợp với nhiều mô hình kinh doanh khác nhau?",
+        "generation_seconds": 7.615,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 1741,
+        "retrieval_seconds": 3.376,
+        "answer_generation_seconds": 4.227,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_HARD_009",
+        "input_preview": "Vi sao nha 7 tang o dat dich vu Duong Noi phu hop de vua o vua lam van phong hoac ban hang online?",
+        "generation_seconds": 6.981,
+        "retrieval_context_docs": 2,
+        "retrieval_context_chars": 1772,
+        "retrieval_seconds": 3.21,
+        "answer_generation_seconds": 3.762,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_HARD_010",
+        "input_preview": "Vi sao tin \"Cho thue van phong 526-528 Nguyen Van Cu phuong Bo De Ha Noi\" phu hop van hanh kinh doanh?",
+        "generation_seconds": 7.287,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 1631,
+        "retrieval_seconds": 3.541,
+        "answer_generation_seconds": 3.736,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_HARD_011",
+        "input_preview": "Vì sao căn hộ 2 phòng ngủ ở Quận 1 được xem là thuận tiện cho cuộc sống cao cấp ở trung tâm?",
+        "generation_seconds": 16.039,
+        "retrieval_context_docs": 2,
+        "retrieval_context_chars": 1208,
+        "retrieval_seconds": 11.696,
+        "answer_generation_seconds": 4.325,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_HARD_012",
+        "input_preview": "Minh dang phan van can H1 tap the Nguyen Cong Tru cho nguoi thue ngan sach thap. Neu chi xet gia, dien tich, so phong va",
+        "generation_seconds": 3.406,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 1613,
+        "retrieval_seconds": 0.683,
+        "answer_generation_seconds": 2.711,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      }
+    ]
+  },
+  "traces": [
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "why",
+        "domain": "real_estate",
+        "input": "Vi sao can nha ngo 281 Truong Dinh phu hop cho gia dinh o lau dai neu xet so phong, noi that va ngo o to?",
+        "expected_output_outline": [
+          "Neu cac can cu chinh: 4 phong ngu, 3 phong ve sinh, full noi that",
+          "Neu loi the su dung lau dai: nha 5 tang, o to 7 cho vao nha hoac ngo o to quay dau"
+        ],
+        "context": [
+          "postId=146, propertyId=145, listingType=Cần bán, title=Chính chủ bán nhà Trương Định 67m2 5T mặt tiền 5m 2 ngõ oto vào nhà, price=14000000000 VND, area=67 m2, bedrooms=4, bathrooms=3, furnishing=FULLY_FURNISHED, address=ngõ 281 Đường Trương Định Phường Tương Mai Quận Hoàng Mai Hà Nội, highlights=2 mặt ngõ|oto 7 chỗ vào nhà|ngõ oto quay đầu"
+        ],
+        "target_metadata": {
+          "postId": 146,
+          "propertyId": 145
+        },
+        "id": "ST_HARD_001"
+      },
+      "trace": {
+        "input": "Vi sao can nha ngo 281 Truong Dinh phu hop cho gia dinh o lau dai neu xet so phong, noi that va ngo o to?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 146 ===\n- Loai tin: Can ban\n- Gia: 14.000.000.000 VND\n- Dien tich: 67 m2\n- So phong ngu: 4\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 146 ===\n Loại: Cần bán\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Chính chủ bán nhà Trương Định, 67m2, 5T, mặt tiền 5m, 2 ngõ, oto vào nhà chỉ hơn 14 tỷ\nNhà tôi bán đẹp nhất ngõ 281 Trương Định, mặt tiền 5m, 2 măt ngõ, oto 7 chỗ vào nhà.\n- Nhà thuộc ngõ 281 Trương Định, nhưng đi ngõ 151 Nguyễn Đức Cảnh cách mặt phố Nguyễn Đức Cảnh 100m, ngõ Oto quay đầu. Diện tích 67m2 (sổ CN 57m2) x 5T.\n- Tầng 1: Sân 10m2 + Khách + Bếp + WC.\n- Tầng 2, 3,4: Mỗi tầng 2p bao gồm 1 master, 1N nhỏ đã full nội thất.\n- Tầng 5: Sân phơi, trồng cây BBQ. Xung quanh cách hồ Đền Lừ 700m, các trường C1, C2 Tân Mai 500m tiện ích vô cùng nhiều. Liên hệ ngay chủ nhà O963319192 thương lượng. Miễn tiếp trung gian môi giới.",
+          "Nhà tôi bán đẹp nhất ngõ 281 Trương Định, mặt tiền 5m, 2 măt ngõ, oto 7 chỗ vào nhà.\n- Nhà thuộc ngõ 281 Trương Định, nhưng đi ngõ 151 Nguyễn Đức Cảnh cách mặt phố Nguyễn Đức Cảnh 100m, ngõ Oto quay đầu. Diện tích 67m2 (sổ CN 57m2) x 5T.\n- Tầng 2, 3,4: Mỗi tầng 2p bao gồm 1 master, 1N nhỏ đã full nội thất.\n• Tình trạng nội thất: FULLY_FURNISHED\n• Số phòng ngủ: 4\n• Số phòng vệ sinh: 3\n• Giá: 14.000.000.000 VNĐ\n- Tầng 5: Sân phơi, trồng cây BBQ. Xung quanh cách hồ Đền Lừ 700m, các trường C1, C2 Tân Mai 500m tiện ích vô cùng nhiều. Liên hệ ngay chủ nhà O963319192 thương lượng. Miễn tiếp trung gian môi giới.",
+          "--- VỊ TRÍ ---\n ngõ 281 , Đường Trương Định, Phường Tương Mai, Quận Hoàng Mai, Hà Nội\n\n(Phường Tương Mai, Hà Nội mới)"
+        ],
+        "retrieved_doc_ids": [
+          "146_chunk_na",
+          "146_chunk_1",
+          "146_chunk_2"
+        ],
+        "retrieval_scores": [
+          0.7852585103645618,
+          0.7898523461994712,
+          0.7942205194103422
+        ],
+        "actual_output": "Căn nhà ngõ 281 Trương Định phù hợp cho gia đình ở lâu dài vì các lý do sau:\n- **Số phòng**: Có 4 phòng ngủ, đáp ứng nhu cầu sinh hoạt cho gia đình đông người.\n- **Nội thất**: Đã được trang bị đầy đủ nội thất, giúp tiết kiệm thời gian và chi phí cho việc mua sắm.\n- **Ngõ ô tô**: Ngõ rộng, ô tô 7 chỗ vào nhà, thuận tiện cho việc di chuyển và đón đưa.\nNhững yếu tố này tạo điều kiện sống thoải mái và tiện nghi cho gia đình.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 146,
+            "propertyId": 145
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Vi sao can nha ngo 281 Truong Dinh phu hop cho gia dinh o lau dai neu xet so phong, noi that va ngo o to?",
+          "context_selection_query": "Vi sao can nha ngo 281 Truong Dinh phu hop cho gia dinh o lau dai neu xet so phong, noi that va ngo o to?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 3,
+          "context_chars": 1571,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 1571,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 4.405,
+          "answer_generation_seconds": 5.684,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:11:19.883636+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "why",
+        "domain": "real_estate",
+        "input": "Vì sao nhà cho thuê ở 54/98 Thịnh Hào 3 được xem là hợp cho gia đình đông người hoặc nhóm ở dài hạn?",
+        "expected_output_outline": [
+          "Nêu được các căn cứ như 6 phòng ngủ, 3 vệ sinh, 4 tầng, phù hợp gia đình hoặc nhóm ở lâu dài, thời gian thuê tối thiểu 2 năm",
+          "Có thể nhắc thêm ngõ rộng 3m và mặt tiền 4m như lợi thế sử dụng"
+        ],
+        "context": [
+          "postId=289, propertyId=288, listingType=Cho thuê, title=Cho thuê nhà riêng 54/98 Thịnh Hào 3, price=13000000 VND, area=45 m2, bedrooms=6, bathrooms=3, furnishing=PARTLY_FURNISHED, minRentalPeriod=2 years, address=54/98 Thịnh Hào 3 đường Tôn Đức Thắng Phường Ô Chợ Dừa Hà Nội, highlights=4 tầng|ngõ vào rộng 3m|mặt tiền 4m|phù hợp gia đình hoặc nhóm ở lâu dài"
+        ],
+        "target_metadata": {
+          "postId": 289,
+          "propertyId": 288
+        },
+        "id": "ST_HARD_002"
+      },
+      "trace": {
+        "input": "Vì sao nhà cho thuê ở 54/98 Thịnh Hào 3 được xem là hợp cho gia đình đông người hoặc nhóm ở dài hạn?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 289 ===\n- Loai tin: Cho thue\n- Gia: 13.000.000 VND\n- Dien tich: 45 m2\n- So phong ngu: 6\n- So phong ve sinh: 3\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 289 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Cho thuê nhà riêng 54/98 Thịnh Hào 3, 13 triệu, 45m2, 6PN, 3WC, uy tín\nNhà riêng cho thuê tại 54/98 Thịnh Hào 3 đường Tôn Đức Thắng Phường Ô Chợ Dừa TP Hà Nội, Phố Tôn Đức Thắng, Phường Ô Chợ Dừa, Hà Nội (địa chỉ cũ: Quận Đống Đa, Hà Nội) với diện tích 45m2, gồm 4 tầng, 6 phòng ngủ và 3 toilet. Nội thất cơ bản, phù hợp cho gia đình hoặc nhóm người ở lâu dài. Ngõ vào rộng 3m, thuận tiện cho việc di chuyển, mặt tiền 4m, lý tưởng cho việc kinh doanh nhỏ hay cho thuê lại. Thời gian cho thuê linh hoạt, tối thiểu hai năm. Địa điểm xung quanh:- Bệnh viện Da liễu Hà Nội.\n- Bệnh viện Tim Hà Nội.\n- Siêu thị Teekiu Mart.\n- Công viên Thống Nhất. Liên hệ để biết thêm thông tin chi tiết qua số điện thoại 0912 016 *** hoặc với MINH .",
+          "Nhà riêng cho thuê tại 54/98 Thịnh Hào 3 đường Tôn Đức Thắng Phường Ô Chợ Dừa TP Hà Nội, Phố Tôn Đức Thắng, Phường Ô Chợ Dừa, Hà Nội (địa chỉ cũ: Quận Đống Đa, Hà Nội) với diện tích 45m2, gồm 4 tầng, 6 phòng ngủ và 3 toilet. Nội thất cơ bản, phù hợp cho gia đình hoặc nhóm người ở lâu dài. Ngõ vào rộng 3m, thuận tiện cho việc di chuyển, mặt tiền 4m, lý tưởng cho việc kinh doanh nhỏ hay cho thuê lại. Thời gian cho thuê linh hoạt, tối thiểu hai năm. Địa điểm xung quanh:- Bệnh viện Da liễu Hà Nội.\n- Bệnh viện Tim Hà Nội.\n- Siêu thị Teekiu Mart.\n- Công viên Thống Nhất. Liên hệ để biết thêm thông tin chi tiết qua số điện thoại 0912 016 *** hoặc với MINH .",
+          "54/98 Thịnh Hào 3 đường Tôn Đức Thắng Phường Ô Chợ Dừa TP Hà Nội, Phố Tôn Đức Thắng, Phường Ô Chợ Dừa, Quận Đống Đa, Hà Nội\n• Số phòng vệ sinh: 3\n• Tình trạng nội thất: PARTLY_FURNISHED\n• Giá: 13.000.000 VNĐ\n(Phường Ô Chợ Dừa, Hà Nội mới)\n• Số phòng ngủ: 6\n--- VỊ TRÍ ---\n• Diện tích: 45 m2"
+        ],
+        "retrieved_doc_ids": [
+          "289_chunk_na",
+          "289_chunk_1",
+          "289_chunk_2"
+        ],
+        "retrieval_scores": [
+          0.8765769935674407,
+          0.8687282361116128,
+          0.7977847577461759
+        ],
+        "actual_output": "Nhà cho thuê ở 54/98 Thịnh Hào 3 được xem là hợp cho gia đình đông người hoặc nhóm ở dài hạn vì:\n\n- **Số lượng phòng ngủ**: Có 6 phòng ngủ, đủ không gian cho nhiều người.\n- **Số phòng vệ sinh**: Có 3 toilet, giúp giảm thiểu sự bất tiện cho nhiều người sử dụng.\n- **Thời gian cho thuê linh hoạt**: Tối thiểu hai năm, phù hợp cho những ai cần chỗ ở lâu dài.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 289,
+            "propertyId": 288
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Vì sao nhà cho thuê ở 54/98 Thịnh Hào 3 được xem là hợp cho gia đình đông người hoặc nhóm ở dài hạn?",
+          "context_selection_query": "Vì sao nhà cho thuê ở 54/98 Thịnh Hào 3 được xem là hợp cho gia đình đông người hoặc nhóm ở dài hạn?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 3,
+          "context_chars": 1906,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 1906,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 4.01,
+          "answer_generation_seconds": 2.759,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:11:26.665626+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "why",
+        "domain": "real_estate",
+        "input": "Vi sao tin \"Chinh chu cho thue nguyen can thiet ke phu hop cho thue 7 can ho mini tai Nhon\" phu hop khai thac can ho mini?",
+        "expected_output_outline": [
+          "Can cu chinh: 7 can ho mini doc lap, 7 phong ngu, 7 phong ve sinh",
+          "Moi phong co ve sinh va bep rieng, khu dan cu dong duc"
+        ],
+        "context": [
+          "postId=295, propertyId=294, listingType=Cho thuê, title=Chính chủ cho thuê nguyên căn thiết kế phù hợp cho thuê 7 căn hộ mini tại Nhổn, price=25000000 VND, area=45 m2, bedrooms=7, bathrooms=7, furnishing=PARTLY_FURNISHED, address=ngõ 27 Đường Nhổn Phường Cầu Diễn Quận Nam Từ Liêm Hà Nội, highlights=4 tầng + 1 tầng thượng|7 căn hộ mini độc lập|mỗi phòng có vệ sinh và bếp riêng|khu dân cư đông đúc"
+        ],
+        "target_metadata": {
+          "postId": 295,
+          "propertyId": 294
+        },
+        "id": "ST_HARD_003"
+      },
+      "trace": {
+        "input": "Vi sao tin \"Chinh chu cho thue nguyen can thiet ke phu hop cho thue 7 can ho mini tai Nhon\" phu hop khai thac can ho mini?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 295 ===\n- Loai tin: Cho thue\n- Gia: 25.000.000 VND\n- Dien tich: 45 m2\n- So phong ngu: 7\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 295 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Chính chủ cho thuê nguyên căn đã thiết kế phù hợp cho thuê 7 căn hộ mini, khép kín tại Nhổn\nChính Chủ Cho Thuê Nhà Nguyên Căn Thiết Kế Sẵn 7 Căn Hộ Mini Tại NhổnCho thuê nhà nguyên căn, đã thiết kế tối ưu để khai thác cho thuê căn hộ mini, phù hợp đầu tư kinh doanh hoặc vận hành mô hình cho thuê. Diện tích: (45m/ sàn)Kết cấu: 4 tầng + 1 tầng thượngGồm 7 phòng ngủ khép kín, mỗi phòng đều có nhà vệ sinh, bếp riêngTổng cộng 7 căn hộ mini độc lập, tiện cho thuê riêng từng phòngThiết kế thông minh, tối ưu công năng sử dụngKhu vực Nhổn, giao thông thuận tiện, gần trường học, khu dân cư đông đúc, nhu cầu thuê cao Nhà phù hợp:Đầu tư cho thuê căn hộ miniLàm homestay, ký túc xá, hoặc cho thuê dài hạn Liên hệ chính chủ: 0976 062 938Giá thuê: 25 triệu",
+          "Chính Chủ Cho Thuê Nhà Nguyên Căn Thiết Kế Sẵn 7 Căn Hộ Mini Tại NhổnCho thuê nhà nguyên căn, đã thiết kế tối ưu để khai thác cho thuê căn hộ mini, phù hợp đầu tư kinh doanh hoặc vận hành mô hình cho thuê. Diện tích: (45m/ sàn)Kết cấu: 4 tầng + 1 tầng thượngGồm 7 phòng ngủ khép kín, mỗi phòng đều có nhà vệ sinh, bếp riêngTổng cộng 7 căn hộ mini độc lập, tiện cho thuê riêng từng phòngThiết kế thông minh, tối ưu công năng sử dụngKhu vực Nhổn, giao thông thuận tiện, gần trường học, khu dân cư đông đúc, nhu cầu thuê cao Nhà phù hợp:Đầu tư cho thuê căn hộ miniLàm homestay, ký túc xá, hoặc cho thuê dài hạn Liên hệ chính chủ: 0976 062 938Giá thuê: 25 triệu\n\n--- ĐẶC ĐIỂM ---\n • Giá: 25.000.000 VNĐ\n • Diện tích: 45 m2\n • Số phòng ngủ: 7\n • Số phòng vệ sinh: 7\n • Hướng: N/A\n • Tình trạng nội thất: PARTLY_FURNISHED"
+        ],
+        "retrieved_doc_ids": [
+          "295_chunk_na",
+          "295_chunk_1"
+        ],
+        "retrieval_scores": [
+          0.793506575017777,
+          0.7875954635384417
+        ],
+        "actual_output": "Tin \"Chính chủ cho thuê nguyên căn thiết kế phù hợp cho thuê 7 căn hộ mini tại Nhổn\" phù hợp khai thác căn hộ mini vì các lý do sau:\n- **Thiết kế tối ưu**: Nguyên căn đã được thiết kế sẵn để khai thác cho thuê 7 căn hộ mini, với mỗi phòng đều có nhà vệ sinh và bếp riêng, giúp tối ưu hóa công năng sử dụng.\n- **Nhu cầu cao**: Khu vực Nhổn có giao thông thuận tiện, gần trường học và khu dân cư đông đúc, tạo ra nhu cầu thuê cao cho các căn hộ mini.\n- **Đầu tư linh hoạt**: Nhà có thể được sử dụng cho nhiều mục đích như cho thuê dài hạn, làm homestay hoặc ký túc xá, phù hợp với nhiều mô hình kinh doanh.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 295,
+            "propertyId": 294
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Vi sao tin \"Chinh chu cho thue nguyen can thiet ke phu hop cho thue 7 can ho mini tai Nhon\" phu hop khai thac can ho mini?",
+          "context_selection_query": "Vi sao tin \"Chinh chu cho thue nguyen can thiet ke phu hop cho thue 7 can ho mini tai Nhon\" phu hop khai thac can ho mini?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 2,
+          "context_chars": 1773,
+          "eval_context_docs_count": 2,
+          "eval_context_chars": 1773,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 3.974,
+          "answer_generation_seconds": 4.41,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:11:35.059480+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "why",
+        "domain": "real_estate",
+        "input": "Vi sao tin \"Chinh chu cho thue nha 5 tang o pho Quang Tien Tay Mo\" thuan tien cho sinh hoat gia dinh?",
+        "expected_output_outline": [
+          "Can cu chinh: 3 phong ngu, 4 phong ve sinh, nha 5 tang, full noi that",
+          "Tien ich gan: truong hoc khoang 500m, benh vien va Aeon Mall Ha Dong khoang 2km"
+        ],
+        "context": [
+          "postId=290, propertyId=289, listingType=Cho thuê, title=Chính chủ cho thuê nhà 5 tầng ở phố Quang Tiến Tây Mỗ, price=16000000 VND, area=38 m2, bedrooms=3, bathrooms=4, direction=Đông, furnishing=FULLY_FURNISHED, address=Khu đô thị Đại Mỗ Hà Nội Đường Quang Tiến Phường Đại Mỗ Quận Nam Từ Liêm Hà Nội, highlights=5 tầng|trường cấp 1 và 3 cách 500m|bệnh viện và Aeon Mall Hà Đông cách khoảng 2km"
+        ],
+        "target_metadata": {
+          "postId": 290,
+          "propertyId": 289
+        },
+        "id": "ST_HARD_004"
+      },
+      "trace": {
+        "input": "Vi sao tin \"Chinh chu cho thue nha 5 tang o pho Quang Tien Tay Mo\" thuan tien cho sinh hoat gia dinh?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 290 ===\n- Loai tin: Cho thue\n- Gia: 16.000.000 VND\n- Dien tich: 38 m2\n- So phong ngu: 3\n- So phong ve sinh: 4\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 290 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n CHÍNH CHỦ CHO THUÊ NHÀ 5 TẦNG Ở PHỐ QUANG TIẾN -TÂY MỖ - TỪ LIÊM - HÀ NỘI.\n- Diện tích 38m2x 5 tầng, mặt tiền 3.2m.\n- Thiết kế : 1 phòng khách, 1 bếp, 3 phòng ngủ, 4 phòng vệ sinh, 1 phòng thờ + tum, sân phơi có lưới an toàn.\n- Nội thất nhà cơ bản : có đủ điều hòa, giường, tủ quần áo,...\n- Hướng ban công Đông - Nam.\n- Ngõ rộng, xe ba gác và ô tô 4 chỗ đỗ sát cổng.\n- Khu đông dân, thuận tiện, đường sá đi lại sạch sẽ, thông thoáng và an ninh.\n- Xung quanh nhiều tiện ích : + Cách 500m là trường cấp 1 và cấp 3 Đại Mỗ, trường cấp 2 Nguyễn Quý Đức, chợ Đại Mỗ và Tây Mỗ sầm uất.+ Cách 2 km là bệnh viện Hồng Ngọc Phúc Trường Minh hoặc Vinmec và Aeon Mall Hà Đông.+ Giá thuê : 12 triệu/tháng.\n- Liên hệ qua sdt : 0989 532 ***.",
+          "Xung quanh nhiều tiện ích : + Cách 500m là trường cấp 1 và cấp 3 Đại Mỗ, trường cấp 2 Nguyễn Quý Đức, chợ Đại Mỗ và Tây Mỗ sầm uất.+ Cách 2 km là bệnh viện Hồng Ngọc Phúc Trường Minh hoặc Vinmec và Aeon Mall Hà Đông.+ Giá thuê : 12 triệu/tháng.\n- Khu đông dân, thuận tiện, đường sá đi lại sạch sẽ, thông thoáng và an ninh.\n- Diện tích 38m2x 5 tầng, mặt tiền 3.2m.\n- Nội thất nhà cơ bản : có đủ điều hòa, giường, tủ quần áo,...\n• Tình trạng nội thất: FULLY_FURNISHED\n- Thiết kế : 1 phòng khách, 1 bếp, 3 phòng ngủ, 4 phòng vệ sinh, 1 phòng thờ + tum, sân phơi có lưới an toàn.\n• Số phòng vệ sinh: 4\n- Ngõ rộng, xe ba gác và ô tô 4 chỗ đỗ sát cổng."
+        ],
+        "retrieved_doc_ids": [
+          "290_chunk_na",
+          "290_chunk_1"
+        ],
+        "retrieval_scores": [
+          0.7944804078959989,
+          0.7730434211440831
+        ],
+        "actual_output": "Tin \"Chính chủ cho thuê nhà 5 tầng ở phố Quang Tiến Tây Mỗ\" thuận tiện cho sinh hoạt gia đình vì:\n- **Thiết kế hợp lý**: Có 3 phòng ngủ và 4 phòng vệ sinh, giúp đáp ứng nhu cầu sinh hoạt của nhiều thành viên trong gia đình.\n- **Vị trí thuận lợi**: Gần trường học, chợ và các tiện ích khác, giúp gia đình dễ dàng tiếp cận dịch vụ cần thiết hàng ngày.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 290,
+            "propertyId": 289
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Vi sao tin \"Chinh chu cho thue nha 5 tang o pho Quang Tien Tay Mo\" thuan tien cho sinh hoat gia dinh?",
+          "context_selection_query": "Vi sao tin \"Chinh chu cho thue nha 5 tang o pho Quang Tien Tay Mo\" thuan tien cho sinh hoat gia dinh?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 2,
+          "context_chars": 1602,
+          "eval_context_docs_count": 2,
+          "eval_context_chars": 1602,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 2.054,
+          "answer_generation_seconds": 3.397,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:11:40.522267+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "why",
+        "domain": "real_estate",
+        "input": "Vi sao tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" hop voi nguoi hoc tap hoac lam viec gan trung tam?",
+        "expected_output_outline": [
+          "Can cu vi tri: gan Bach Kinh Xay, gan Benh vien Bach Mai va Thanh Nhan, cho doi dien",
+          "Cong nang co ban: 2 phong ngu, 2 phong ve sinh, full noi that"
+        ],
+        "context": [
+          "postId=294, propertyId=293, listingType=Cho thuê, title=Cho thuê nhà riêng tại phố Thanh Nhàn Hà Nội, price=7000000 VND, area=34 m2, bedrooms=2, bathrooms=2, furnishing=FULLY_FURNISHED, address=ngõ 285 phố Thanh Nhàn Đường Thanh Nhàn Phường Thanh Nhàn Quận Hai Bà Trưng Hà Nội, highlights=gần Bách Kinh Xây|gần Bệnh viện Bạch Mai và Thanh Nhàn|chợ đối diện"
+        ],
+        "target_metadata": {
+          "postId": 294,
+          "propertyId": 293
+        },
+        "id": "ST_HARD_005"
+      },
+      "trace": {
+        "input": "Vi sao tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" hop voi nguoi hoc tap hoac lam viec gan trung tam?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 294 ===\n- Loai tin: Cho thue\n- Gia: 7.000.000 VND\n- Dien tich: 34 m2\n- So phong ngu: 2\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 294 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n CHO THUÊ NHÀ RIÊNG TẠI PHỐ THANH NHÀN, HÀ NỘI\nƯu điểm vị trí: Chỉ vài bước ra mặt phố Thanh Nhàn Gần 3 trường đại học lớn: Bách - Kinh - Xây Chợ ngay đối diện bên đường, mua bán cực tiện Gần bệnh viện lớn: Bệnh viện Bạch Mai, Thanh Nhàn Thông tin nhà: Nhà 3 tầng, tầng 2 có ban công, tầng 3 có sân phơi rộng rãi Đầy đủ nội thất: giường, tủ quần áo, tủ lạnh, máy giặt, bình nóng lạnh,... Điện nước giá nhà nước"
+        ],
+        "retrieved_doc_ids": [
+          "294_chunk_na"
+        ],
+        "retrieval_scores": [
+          0.776984598996091
+        ],
+        "actual_output": "Tin \"Cho thuê nhà riêng tại phố Thanh Nhàn, Hà Nội\" phù hợp với người học tập hoặc làm việc gần trung tâm vì:\n\n- **Vị trí thuận lợi**: Chỉ vài bước ra mặt phố Thanh Nhàn, gần 3 trường đại học lớn (Bách Khoa, Kinh tế Quốc dân, Xây dựng), thuận tiện cho sinh viên.\n- **Tiện ích xung quanh**: Gần chợ và bệnh viện lớn (Bệnh viện Bạch Mai, Thanh Nhàn), giúp đáp ứng nhu cầu sinh hoạt hàng ngày.\n- **Nội thất đầy đủ**: Nhà có đầy đủ nội thất như giường, tủ quần áo, tủ lạnh, máy giặt, bình nóng lạnh, giúp tiết kiệm thời gian và chi phí cho người thuê.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 294,
+            "propertyId": 293
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Vi sao tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" hop voi nguoi hoc tap hoac lam viec gan trung tam?",
+          "context_selection_query": "Vi sao tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" hop voi nguoi hoc tap hoac lam viec gan trung tam?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 2,
+          "context_docs_count": 1,
+          "context_chars": 617,
+          "eval_context_docs_count": 1,
+          "eval_context_chars": 617,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 6.059,
+          "answer_generation_seconds": 4.372,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:11:50.958733+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "why",
+        "domain": "real_estate",
+        "input": "Vì sao lô đất D3 khu Vườn Đào đối diện Lotte Mall được xem là có sức hút đầu tư cao?",
+        "expected_output_outline": [
+          "Nêu được các căn cứ như đối diện Lotte Mall, gần Hồ Tây, gần Ciputra, cách Nội Bài ngắn, quỹ đất khan hiếm",
+          "Giải thích được vì sao các yếu tố vị trí và quy mô tạo sức hút đầu tư"
+        ],
+        "context": [
+          "postId=240, propertyId=239, listingType=Cần bán, title=Bán đất lô D3 khu Vườn Đào 270m2 ngay ngã tư đối diện Lotte Mall, price=189000000000 VND, area=270 m2, direction=Tây, address=685 Đường Lạc Long Quân Phường Phú Thượng Quận Tây Hồ Hà Nội, highlights=đối diện Lotte Mall West Lake Hanoi|3 phút ra Hồ Tây|5 phút sang Ciputra|15 phút tới Nội Bài|khan hiếm quỹ đất"
+        ],
+        "target_metadata": {
+          "postId": 240,
+          "propertyId": 239
+        },
+        "id": "ST_HARD_006"
+      },
+      "trace": {
+        "input": "Vì sao lô đất D3 khu Vườn Đào đối diện Lotte Mall được xem là có sức hút đầu tư cao?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 240 ===\n- Loai tin: Can ban\n- Gia: 189.000.000.000 VND\n- Dien tich: 270 m2\n--- CHI TIET ---\nBán đất lô D3 khu Vườn Đào, 270m2 ngay ngã tư, đối diện Lotte Mall. Ngay ngã tư Lạc Long Quân vị trí kim cương khu Tây Hồ. Đối diện Lotte Mall West Lake Hanoi Trung tâm thương mại lớn nhất Hà Nội. Thông tin nổi bật:Vị trí: Lô D3 khu biệt thự Vườn Đào, phường Phú Thượng, Hà Nội. Khu vực vip dân trí cao an ninh 24/7. Đường rộng, vỉa hè thoáng, ô tô tránh nhau. Giao thông kết nối cực thuận tiện:O 3 phút ra Hồ Tây. O 5 phút sang Ciputra. O 15 phút tới Nội Bài. Giá trị đầu tư vượt trội:Đối diện Lotte Mall trung tâm thương mại biểu tượng khu Tây Hồ. Tăng giá mạnh theo hạ tầng và tiện ích khu vực. Phù hợp xây biệt thự ở, căn hộ dịch vụ cao cấp, văn phòng đại diện. Khu vực khan hiếm quỹ đất tính thanh khoản cao. Giá bán: Giá đầu tư thương lượng trực tiếp.(Chi tiết diện tích sổ đỏ quy hoạch cung cấp trực tiếp). Liên hệ ngay 0936 668 *** để xem đất và làm việc chính chủ",
+          "Bán đất lô D3 khu Vườn Đào, 270m2 ngay ngã tư, đối diện Lotte Mall. Ngay ngã tư Lạc Long Quân vị trí kim cương khu Tây Hồ. Đối diện Lotte Mall West Lake Hanoi Trung tâm thương mại lớn nhất Hà Nội. Thông tin nổi bật:Vị trí: Lô D3 khu biệt thự Vườn Đào, phường Phú Thượng, Hà Nội. Khu vực vip dân trí cao an ninh 24/7. Đường rộng, vỉa hè thoáng, ô tô tránh nhau. Giao thông kết nối cực thuận tiện:O 3 phút ra Hồ Tây. O 5 phút sang Ciputra. O 15 phút tới Nội Bài. Giá trị đầu tư vượt trội:Đối diện Lotte Mall trung tâm thương mại biểu tượng khu Tây Hồ. Tăng giá mạnh theo hạ tầng và tiện ích khu vực. Phù hợp xây biệt thự ở, căn hộ dịch vụ cao cấp, văn phòng đại diện. Khu vực khan hiếm quỹ đất tính thanh khoản cao. Giá bán: Giá đầu tư thương lượng trực tiếp.(Chi tiết diện tích sổ đỏ quy hoạch cung cấp trực tiếp). Liên hệ ngay 0936 668 *** để xem đất và làm việc chính chủ",
+          "=== BẤT ĐỘNG SẢN 240 ===\n Loại: Cần bán\n Danh mục: Căn hộ\n\n--- THÔNG TIN CHI TIẾT ---\n Bán đất lô D3 khu Vườn Đào, 270m2 ngay ngã tư, đối diện Lotte Mall"
+        ],
+        "retrieved_doc_ids": [
+          "240_chunk_1",
+          "240_chunk_3",
+          "240_chunk_na"
+        ],
+        "retrieval_scores": [
+          0.8990011931656433,
+          0.8990011931656433,
+          0.8892281717522058
+        ],
+        "actual_output": "Lô đất D3 khu Vườn Đào được xem là có sức hút đầu tư cao vì các lý do sau:\n\n- **Vị trí đắc địa**: Nằm ngay ngã tư, đối diện Lotte Mall, trung tâm thương mại lớn nhất Hà Nội, tạo điều kiện thuận lợi cho việc kinh doanh và thu hút khách hàng.\n- **Khu vực dân trí cao**: Khu vực này có an ninh 24/7, đường rộng và vỉa hè thoáng, phù hợp cho các dự án xây dựng biệt thự, căn hộ dịch vụ cao cấp, hoặc văn phòng đại diện.\n- **Tiềm năng tăng giá**: Giá trị đầu tư được dự đoán sẽ tăng mạnh theo sự phát triển hạ tầng và tiện ích khu vực, cùng với việc quỹ đất khan hiếm, tạo ra tính thanh khoản cao.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 240,
+            "propertyId": 239
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Vì sao lô đất D3 khu Vườn Đào đối diện Lotte Mall được xem là có sức hút đầu tư cao?",
+          "context_selection_query": "Vì sao lô đất D3 khu Vườn Đào đối diện Lotte Mall được xem là có sức hút đầu tư cao?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 6,
+          "context_docs_count": 3,
+          "context_chars": 2006,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 2006,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 0.682,
+          "answer_generation_seconds": 4.156,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:11:55.810561+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "why",
+        "domain": "real_estate",
+        "input": "Vi sao tin \"Cho thue nha rieng chinh chu tai Giang Vo\" khong phu hop Airbnb hoac van phong dong nguoi?",
+        "expected_output_outline": [
+          "Han che ghi trong tin: khong van phong dong nguoi, khong can ho cho thue le, khong Airbnb",
+          "Phuong an phu hop hon: gia dinh hoac van phong nho it nguoi"
+        ],
+        "context": [
+          "postId=272, propertyId=271, listingType=Cho thuê, title=Cho thuê nhà riêng chính chủ tại Giảng Võ, price=30000000 VND, area=65 m2, bedrooms=5, bathrooms=4, furnishing=PARTLY_FURNISHED, address=Phố Giảng Võ Phường Giảng Võ Quận Ba Đình Hà Nội, highlights=4 tầng|phù hợp gia đình hoặc văn phòng nhỏ|không văn phòng đông người|không căn hộ cho thuê lẻ|không Airbnb"
+        ],
+        "target_metadata": {
+          "postId": 272,
+          "propertyId": 271
+        },
+        "id": "ST_HARD_007"
+      },
+      "trace": {
+        "input": "Vi sao tin \"Cho thue nha rieng chinh chu tai Giang Vo\" khong phu hop Airbnb hoac van phong dong nguoi?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 272 ===\n- Loai tin: Cho thue\n- Gia: 30.000.000 VND\n- Dien tich: 65 m2\n- So phong ngu: 5\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 272 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Cho thuê nhà riêng chính chủ tại Giảng Võ\nCho thuê nhà nguyên căn để ở gia đình hoặc kết hợp làm văn phòng quy mô nhỏ, ít người. Nhà nằm trong khu dân cư dân trí cao, có bảo vệ khu, ngõ rộng, ô tô ra vào thuận tiện. Không cho thuê:- Văn phòng đông người / quy mô lớn.\n- Căn hộ cho thuê lẻ.\n- Dịch vụ lưu trú ngắn ngày (Airbnb). Thông tin chi tiết:Diện tích: 65m2, mặt tiền 5,8m. Kết cấu: 4 tầng, 5 phòng ngủ. Cầu thang cuối nhà, không có thang máy. Giá thuê: 30 triệu/tháng (chưa bao gồm thuế TNCN).",
+          "Cho thuê nhà nguyên căn để ở gia đình hoặc kết hợp làm văn phòng quy mô nhỏ, ít người.\nKhông cho thuê:- Văn phòng đông người / quy mô lớn.\nNhà nằm trong khu dân cư dân trí cao, có bảo vệ khu, ngõ rộng, ô tô ra vào thuận tiện.\n• Tình trạng nội thất: PARTLY_FURNISHED\nCầu thang cuối nhà, không có thang máy.\n- Căn hộ cho thuê lẻ.\nGiá thuê: 30 triệu/tháng (chưa bao gồm thuế TNCN).\n(Phường Giảng Võ, Hà Nội mới)"
+        ],
+        "retrieved_doc_ids": [
+          "272_chunk_na",
+          "272_chunk_1"
+        ],
+        "retrieval_scores": [
+          0.7879136331132883,
+          0.7956523895263672
+        ],
+        "actual_output": "Tin \"Cho thuê nhà riêng chính chủ tại Giảng Võ\" không phù hợp với Airbnb hoặc văn phòng đông người vì:\n1. **Không cho thuê dịch vụ lưu trú ngắn ngày (Airbnb)**: Chủ nhà đã chỉ rõ không cho phép cho thuê theo hình thức này.\n2. **Chỉ cho thuê văn phòng quy mô nhỏ, ít người**: Nhà chỉ phù hợp cho văn phòng nhỏ, không cho thuê cho văn phòng đông người hoặc quy mô lớn.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 272,
+            "propertyId": 271
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Vi sao tin \"Cho thue nha rieng chinh chu tai Giang Vo\" khong phu hop Airbnb hoac van phong dong nguoi?",
+          "context_selection_query": "Vi sao tin \"Cho thue nha rieng chinh chu tai Giang Vo\" khong phu hop Airbnb hoac van phong dong nguoi?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 2,
+          "context_docs_count": 2,
+          "context_chars": 1116,
+          "eval_context_docs_count": 2,
+          "eval_context_chars": 1116,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 36.045,
+          "answer_generation_seconds": 2.105,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:12:33.971790+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "why",
+        "domain": "real_estate",
+        "input": "Vì sao mặt bằng ở số 2A ngõ 76 Trần Thái Tông có thể phù hợp với nhiều mô hình kinh doanh khác nhau?",
+        "expected_output_outline": [
+          "Nêu được các căn cứ như căn góc 2 mặt tiền, ô tô đỗ tận cửa, khu vực sầm uất, không gian vuông vắn, 91m2",
+          "Liên kết các chi tiết đó với việc phù hợp nhiều mô hình như văn phòng, spa, showroom, lớp học"
+        ],
+        "context": [
+          "postId=292, propertyId=291, listingType=Cho thuê, title=Chính chủ cần cho thuê nhà số 2A ngõ 76 Trần Thái Tông Cầu Giấy Hà Nội, price=16000000 VND, area=91 m2, address=Số 2A ngõ 76 Trần Thái Tông Cầu Giấy Hà Nội, highlights=căn góc 2 mặt tiền|ô tô đỗ tận cửa|khu vực sầm uất|phù hợp văn phòng studio spa salon nha khoa trung tâm tiếng Anh lớp học showroom coffe"
+        ],
+        "target_metadata": {
+          "postId": 292,
+          "propertyId": 291
+        },
+        "id": "ST_HARD_008"
+      },
+      "trace": {
+        "input": "Vì sao mặt bằng ở số 2A ngõ 76 Trần Thái Tông có thể phù hợp với nhiều mô hình kinh doanh khác nhau?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 292 ===\n- Loai tin: Cho thue\n- Gia: 16.000.000 VND\n- Dien tich: 91 m2\n--- CHI TIET ---\n--- THÔNG TIN CHI TIẾT ---\n Chính chủ cần cho thuê nhà số 2A, ngõ 76 Trần Thái Tông, Cầu Giấy, Hà Nội\nChính chủ cho thuê mặt bằng đẹp căn góc 2 mặt tiền. Địa chỉ: Số 2A, ngõ 76 Trần Thái Tông, Cầu Giấy, Hà Nội. Nhà 7 tầng mới xây, căn góc thoáng sáng, ô tô đỗ tận cửa, nằm trong khu vực sầm uất phù hợp nhiều mô hình kinh doanh. Diện tích cho thuê tầng 4: 91m2Giá chỉ 16tr/ tháng.\n- Khu vực dân trí cao, an ninh đảm bảo.\n- Giao thông thuận tiện, gần mặt đường Trần Thái Tông khu phố kinh doanh nhiều nhất Cầu Giấy.\n- Không gian đẹp, vuông vắn, dễ setup.\n- Phù hợp làm văn phòng, studio, spa, salon tóc, nha khoa, trung tâm tiếng Anh, lớp học, showroom, coffe. Cơ hội thuê mặt bằng vị trí vàng giá tốt!Liên hệ chính chủ: Anh Trường 0983 733 ***.(Ưu tiên khách thiện chí, xem nhà trực tiếp).",
+          "Chính chủ cho thuê mặt bằng đẹp căn góc 2 mặt tiền. Địa chỉ: Số 2A, ngõ 76 Trần Thái Tông, Cầu Giấy, Hà Nội. Nhà 7 tầng mới xây, căn góc thoáng sáng, ô tô đỗ tận cửa, nằm trong khu vực sầm uất phù hợp nhiều mô hình kinh doanh. Diện tích cho thuê tầng 4: 91m2Giá chỉ 16tr/ tháng.\n- Khu vực dân trí cao, an ninh đảm bảo.\n- Giao thông thuận tiện, gần mặt đường Trần Thái Tông khu phố kinh doanh nhiều nhất Cầu Giấy.\n- Không gian đẹp, vuông vắn, dễ setup.\n- Phù hợp làm văn phòng, studio, spa, salon tóc, nha khoa, trung tâm tiếng Anh, lớp học, showroom, coffe. Cơ hội thuê mặt bằng vị trí vàng giá tốt!Liên hệ chính chủ: Anh Trường 0983 733 ***.(Ưu tiên khách thiện chí, xem nhà trực tiếp).",
+          "=== BẤT ĐỘNG SẢN 292 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n\n--- THÔNG TIN CHI TIẾT ---\n Chính chủ cần cho thuê nhà số 2A, ngõ 76 Trần Thái Tông, Cầu Giấy, Hà Nội"
+        ],
+        "retrieved_doc_ids": [
+          "292_chunk_1",
+          "292_chunk_2",
+          "292_chunk_na"
+        ],
+        "retrieval_scores": [
+          0.874693468249629,
+          0.8715168237686157,
+          0.8386344909667969
+        ],
+        "actual_output": "Mặt bằng ở số 2A ngõ 76 Trần Thái Tông có thể phù hợp với nhiều mô hình kinh doanh khác nhau vì:\n- **Căn góc 2 mặt tiền**: Tạo điều kiện thuận lợi cho việc quảng bá và thu hút khách hàng.\n- **Không gian đẹp, vuông vắn, dễ setup**: Giúp các doanh nghiệp dễ dàng thiết kế và bố trí không gian theo nhu cầu.\n- **Khu vực sầm uất, gần mặt đường Trần Thái Tông**: Tăng khả năng tiếp cận khách hàng và tạo điều kiện cho các hoạt động kinh doanh diễn ra thuận lợi.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 292,
+            "propertyId": 291
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Vì sao mặt bằng ở số 2A ngõ 76 Trần Thái Tông có thể phù hợp với nhiều mô hình kinh doanh khác nhau?",
+          "context_selection_query": "Vì sao mặt bằng ở số 2A ngõ 76 Trần Thái Tông có thể phù hợp với nhiều mô hình kinh doanh khác nhau?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 4,
+          "context_docs_count": 3,
+          "context_chars": 1741,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 1741,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 3.376,
+          "answer_generation_seconds": 4.227,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:12:41.588095+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "why",
+        "domain": "real_estate",
+        "input": "Vi sao nha 7 tang o dat dich vu Duong Noi phu hop de vua o vua lam van phong hoac ban hang online?",
+        "expected_output_outline": [
+          "Neu cac can cu chinh: 7 tang, 7 phong ngu, 7 ve sinh va co thang may",
+          "Neu loi the van hanh: duong vao rong 11m, o to vao tan noi, gan Aeon Mall Ha Dong va phu hop lam van phong/ban hang online"
+        ],
+        "context": [
+          "postId=300, propertyId=299, listingType=Cho thuê, title=Cho thuê gấp nhà riêng 7 tầng có thang máy 7PN 7WC 55m2 tại đất dịch vụ Dương Nội, price=20000000 VND, area=55 m2, bedrooms=7, bathrooms=7, direction=Đông, furnishing=PARTLY_FURNISHED, address=Khu đất dịch vụ 27 28 Dương Nội Phường Dương Nội Quận Hà Đông Hà Nội, highlights=7 tầng|có thang máy|đường vào rộng 11m|gần Aeon Hà Đông 1km|phù hợp làm văn phòng hoặc bán hàng online kết hợp ở"
+        ],
+        "target_metadata": {
+          "postId": 300,
+          "propertyId": 299
+        },
+        "id": "ST_HARD_009"
+      },
+      "trace": {
+        "input": "Vi sao nha 7 tang o dat dich vu Duong Noi phu hop de vua o vua lam van phong hoac ban hang online?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 300 ===\n- Loai tin: Cho thue\n- Gia: 20.000.000 VND\n- Dien tich: 55 m2\n- So phong ngu: 7\n- So phong ve sinh: 7\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 300 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Cho thuê gấp nhà riêng 7 tầng có THANG MÁY 7PN, 7WC, 55m2 tại đất dịch vụ Dương Nội, 20 triệu VND\nNhanh tay sở hữu nhà riêng 7 tầng, 7 phòng ngủ, 7 toilet, thiết kế hiện đại, phù hợp cho gia đình lớn hoặc nhóm bạn. Nhà có mặt tiền 4m, đường vào rộng 11m, thuận tiện cho xe ô tô vào tận nơi. Giá cho thuê là 20 triệu VND, diện tích 55m2, hướng cửa chính Đông Nam và ban công Đông Nam, mang lại không gian thoáng đãng và ánh sáng tự nhiên. Đặc biệt có thang máy chạy vù vùĐịa điểm tiện ích xung quanh:- Công viên thiên văn học, cách Aeon Hà Đông 1km._Ngay trục đường Lê Trọng Tấn nên giao thông rất thuận tiện_ Làm văn phòng, bán hàng online kết hợp ở đều được. Liên hệ ngay với Đặng Thuận qua số 0348 864 213 để biết thêm thông tin chi tiết.",
+          "Nhanh tay sở hữu nhà riêng 7 tầng, 7 phòng ngủ, 7 toilet, thiết kế hiện đại, phù hợp cho gia đình lớn hoặc nhóm bạn. Nhà có mặt tiền 4m, đường vào rộng 11m, thuận tiện cho xe ô tô vào tận nơi. Giá cho thuê là 20 triệu VND, diện tích 55m2, hướng cửa chính Đông Nam và ban công Đông Nam, mang lại không gian thoáng đãng và ánh sáng tự nhiên. Đặc biệt có thang máy chạy vù vùĐịa điểm tiện ích xung quanh:- Công viên thiên văn học, cách Aeon Hà Đông 1km._Ngay trục đường Lê Trọng Tấn nên giao thông rất thuận tiện_ Làm văn phòng, bán hàng online kết hợp ở đều được. Liên hệ ngay với Đặng Thuận qua số 0348 864 213 để biết thêm thông tin chi tiết.\n\n--- ĐẶC ĐIỂM ---\n • Giá: 20.000.000 VNĐ\n • Diện tích: 55 m2\n • Số phòng ngủ: 7\n • Số phòng vệ sinh: 7\n • Hướng: Đông\n • Tình trạng nội thất: PARTLY_FURNISHED"
+        ],
+        "retrieved_doc_ids": [
+          "300_chunk_na",
+          "300_chunk_1"
+        ],
+        "retrieval_scores": [
+          0.799911713602793,
+          0.7769481904224131
+        ],
+        "actual_output": "Nhà 7 tầng ở đất dịch vụ Dương Nội phù hợp để vừa ở vừa làm văn phòng hoặc bán hàng online vì các lý do sau:\n1. **Thiết kế và không gian**: Nhà có 7 phòng ngủ và 7 toilet, cho phép tổ chức không gian sống và làm việc riêng biệt, thuận tiện cho việc sinh hoạt và làm việc cùng lúc.\n2. **Vị trí và giao thông**: Nằm ngay trục đường Lê Trọng Tấn, giao thông rất thuận tiện, dễ dàng di chuyển đến các khu vực lân cận, phù hợp cho việc giao nhận hàng hóa.\n3. **Tiện ích xung quanh**: Gần công viên và các tiện ích khác, tạo môi trường sống thoải mái và thuận lợi cho việc kinh doanh online.\nNhững yếu tố này giúp nhà trở thành lựa chọn lý tưởng cho mục đích kết hợp giữa sinh sống và làm việc.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 300,
+            "propertyId": 299
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Vi sao nha 7 tang o dat dich vu Duong Noi phu hop de vua o vua lam van phong hoac ban hang online?",
+          "context_selection_query": "Vi sao nha 7 tang o dat dich vu Duong Noi phu hop de vua o vua lam van phong hoac ban hang online?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 2,
+          "context_chars": 1772,
+          "eval_context_docs_count": 2,
+          "eval_context_chars": 1772,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 3.21,
+          "answer_generation_seconds": 3.762,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:12:48.570390+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "why",
+        "domain": "real_estate",
+        "input": "Vi sao tin \"Cho thue van phong 526-528 Nguyen Van Cu phuong Bo De Ha Noi\" phu hop van hanh kinh doanh?",
+        "expected_output_outline": [
+          "Can cu ha tang: 1 tang ham, 10 tang noi, dieu hoa trung tam, PCCC, thang may",
+          "Can cu van hanh: bao ve 24/24, phu hop van phong, spa, thoi trang hoac ngan hang"
+        ],
+        "context": [
+          "postId=299, propertyId=298, listingType=Cho thuê, title=Cho thuê văn phòng 526-528 Nguyễn Văn Cừ phường Bồ Đề Hà Nội, price=30000000 VND, area=217 m2, furnishing=PARTLY_FURNISHED, address=Số 526+528 Đường Nguyễn Văn Cừ Phường Gia Thụy Quận Long Biên Hà Nội, highlights=1 tầng hầm|10 tầng nổi|điều hòa trung tâm|PCCC thành phố cấp|thang máy|bảo vệ 24/24|phù hợp văn phòng spa thời trang ngân hàng"
+        ],
+        "target_metadata": {
+          "postId": 299,
+          "propertyId": 298
+        },
+        "id": "ST_HARD_010"
+      },
+      "trace": {
+        "input": "Vi sao tin \"Cho thue van phong 526-528 Nguyen Van Cu phuong Bo De Ha Noi\" phu hop van hanh kinh doanh?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 299 ===\n- Loai tin: Cho thue\n- Gia: 30.000.000 VND\n- Dien tich: 217 m2\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 299 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Cho thuê văn phòng 526-528 Nguyễn Văn Cừ , phường Bồ Đề, Hà Nội.\nCho thuê văn phòng 526-528 Nguyễn Văn Cừ , phường Bồ Đề, Hà Nội. Chính chủ cần cho thuê tầng 7 mới xây để làm văn phòng, spa, thời trang, ngân hàng, Vị trí đặc địa, sầm uất , an ninh tốt, tiện ích xung quanh không thiếu gì . Mặt tiền rộng 10,5m, sâu 20,5m, vỉa hè rộng 9m. Có 1 tầng hầm , 10 tầng nổi. Đã có điều hòa trung tâm, PCCC thành phố cấp. Thang máy Mishibusi điều hòa trung tâm. Thiết bị vệ sinh nam nữ riêng biệt. 2 cầu thang bộ thoát hiểm. Bảo vệ 24/24. Ảnh thật . Xem miễn phí. Quý anh chị quan tâm biết thêm chi tiết LH . 0975 133 269",
+          "Cho thuê văn phòng 526-528 Nguyễn Văn Cừ , phường Bồ Đề, Hà Nội. Chính chủ cần cho thuê tầng 7 mới xây để làm văn phòng, spa, thời trang, ngân hàng, Vị trí đặc địa, sầm uất , an ninh tốt, tiện ích xung quanh không thiếu gì . Mặt tiền rộng 10,5m, sâu 20,5m, vỉa hè rộng 9m. Có 1 tầng hầm , 10 tầng nổi. Đã có điều hòa trung tâm, PCCC thành phố cấp. Thang máy Mishibusi điều hòa trung tâm. Thiết bị vệ sinh nam nữ riêng biệt. 2 cầu thang bộ thoát hiểm. Bảo vệ 24/24. Ảnh thật . Xem miễn phí. Quý anh chị quan tâm biết thêm chi tiết LH . 0975 133 269\n\n--- ĐẶC ĐIỂM ---\n • Giá: 30.000.000 VNĐ\n • Diện tích: 217 m2\n • Số phòng ngủ: N/A\n • Số phòng vệ sinh: N/A\n • Hướng: N/A\n • Tình trạng nội thất: PARTLY_FURNISHED",
+          "--- VỊ TRÍ ---\n Số 526+528 , Đường Nguyễn Văn Cừ, Phường Gia Thụy, Quận Long Biên, Hà Nội\n\n(Phường Bồ Đề, Hà Nội mới)"
+        ],
+        "retrieved_doc_ids": [
+          "299_chunk_na",
+          "299_chunk_1",
+          "299_chunk_2"
+        ],
+        "retrieval_scores": [
+          0.8067476153373718,
+          0.7981286765260307,
+          0.8043714282291291
+        ],
+        "actual_output": "Tin \"Cho thuê văn phòng 526-528 Nguyễn Văn Cừ, phường Bồ Đề, Hà Nội\" phù hợp với hoạt động kinh doanh vì các lý do sau:\n- **Vị trí đắc địa**: Nằm trong khu vực sầm uất, thuận tiện cho việc tiếp cận khách hàng.\n- **Diện tích rộng rãi**: Diện tích 217 m2, phù hợp cho nhiều loại hình kinh doanh như văn phòng, spa, thời trang, ngân hàng.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 299,
+            "propertyId": 298
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Vi sao tin \"Cho thue van phong 526-528 Nguyen Van Cu phuong Bo De Ha Noi\" phu hop van hanh kinh doanh?",
+          "context_selection_query": "Vi sao tin \"Cho thue van phong 526-528 Nguyen Van Cu phuong Bo De Ha Noi\" phu hop van hanh kinh doanh?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 3,
+          "context_chars": 1631,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 1631,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 3.541,
+          "answer_generation_seconds": 3.736,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:12:55.857683+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "why",
+        "domain": "real_estate",
+        "input": "Vì sao căn hộ 2 phòng ngủ ở Quận 1 được xem là thuận tiện cho cuộc sống cao cấp ở trung tâm?",
+        "expected_output_outline": [
+          "Nêu được các căn cứ như full nội thất, view sông, nằm ngay Quận 1, có hồ bơi, gym, an ninh 24/7",
+          "Giải thích được vì sao đây là lựa chọn tiện nghi trong khu trung tâm"
+        ],
+        "context": [
+          "postId=1, propertyId=1, listingType=Cần bán, title=Bán căn hộ 2PN Quận 1 full nội thất, price=6500000000 VND, area=75 m2, bedrooms=2, bathrooms=2, direction=Đông Nam, furnishing=FULLY_FURNISHED, city=Hồ Chí Minh, ward=Phường Bến Nghé, district=Quận 1, amenities=Máy lạnh|Tủ âm tường|Ban công|Hồ bơi|Phòng gym|Thang máy|Camera an ninh|Khóa từ|Bãi giữ xe ô tô"
+        ],
+        "target_metadata": {
+          "postId": 1,
+          "propertyId": 1
+        },
+        "id": "ST_HARD_011"
+      },
+      "trace": {
+        "input": "Vì sao căn hộ 2 phòng ngủ ở Quận 1 được xem là thuận tiện cho cuộc sống cao cấp ở trung tâm?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 2 ===\n- Loai tin: Cho thue\n- Quan/Huyen: Quận 1\n- Gia: 6.500.000.000 VND\n- Dien tich: 75 m2\n- So phong ngu: 2\n- So phong ve sinh: 2\n--- CHI TIET ---\nCăn hộ 2 phòng ngủ, full nội thất, view sông Sài Gòn, nằm trong khu phức hợp cao cấp trung tâm Quận 1.\nCho thuê căn hộ 2 phòng ngủ, nội thất cơ bản, free sử dụng hồ bơi và phòng gym. Phù hợp gia đình trẻ hoặc chuyên gia nước ngoài.\nCho thuê căn hộ 2PN Quận 1, đầy đủ tiện ích\n• Số phòng ngủ: 2\n• Số phòng vệ sinh: 2\nQuận 1, TP. Hồ Chí Minh\nQuận/Huyện: Quận 1\n• Tình trạng nội thất: FULLY_FURNISHED\n=== BẤT ĐỘNG SẢN 2 ===\n--- VỊ TRÍ ---",
+          "=== BAT DONG SAN 1 ===\n- Loai tin: Can ban\n- Quan/Huyen: Quận 1\n- Gia: 6.500.000.000 VND\n- Dien tich: 75 m2\n- So phong ngu: 2\n- So phong ve sinh: 2\n--- CHI TIET ---\nBán căn hộ 2 phòng ngủ, full nội thất cao cấp, view sông, ngay trung tâm Quận 1. Tiện ích nội khu đầy đủ: hồ bơi, gym, siêu thị, an ninh 24/7.\nCăn hộ 2 phòng ngủ, full nội thất, view sông Sài Gòn, nằm trong khu phức hợp cao cấp trung tâm Quận 1.\nBán căn hộ 2PN Quận 1, full nội thất\n• Số phòng ngủ: 2\n• Số phòng vệ sinh: 2\nQuận 1, TP. Hồ Chí Minh\nQuận/Huyện: Quận 1\n• Tình trạng nội thất: FULLY_FURNISHED\n=== BẤT ĐỘNG SẢN 1 ===\n--- VỊ TRÍ ---"
+        ],
+        "retrieved_doc_ids": [
+          "2_chunk_na",
+          "1_chunk_na"
+        ],
+        "retrieval_scores": [
+          0.8748894408411136,
+          0.8758968375890509
+        ],
+        "actual_output": "Căn hộ 2 phòng ngủ ở Quận 1 được xem là thuận tiện cho cuộc sống cao cấp ở trung tâm vì các lý do sau:\n- **Vị trí đắc địa**: Nằm ngay trung tâm Quận 1, gần các tiện ích và dịch vụ cao cấp.\n- **Tiện ích nội khu đầy đủ**: Có hồ bơi, phòng gym, và an ninh 24/7, phục vụ nhu cầu sống thoải mái và an toàn.\n- **Nội thất cao cấp**: Căn hộ được trang bị đầy đủ nội thất, tạo cảm giác sang trọng và tiện nghi cho cư dân.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 1,
+            "propertyId": 1
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Vì sao căn hộ 2 phòng ngủ ở Quận 1 được xem là thuận tiện cho cuộc sống cao cấp ở trung tâm?",
+          "context_selection_query": "Vì sao căn hộ 2 phòng ngủ ở Quận 1 được xem là thuận tiện cho cuộc sống cao cấp ở trung tâm?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 4,
+          "context_docs_count": 2,
+          "context_chars": 1208,
+          "eval_context_docs_count": 2,
+          "eval_context_chars": 1208,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 11.696,
+          "answer_generation_seconds": 4.325,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 2,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:13:11.898169+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "hard",
+        "question_type": "natural_multi_fact",
+        "domain": "real_estate",
+        "input": "Minh dang phan van can H1 tap the Nguyen Cong Tru cho nguoi thue ngan sach thap. Neu chi xet gia, dien tich, so phong va cac tien ich gan do thi vi sao can nay dang can nhac?",
+        "expected_output_outline": [
+          "Gia thue: 5.000.000 VND/thang",
+          "Dien tich: 45 m2",
+          "So phong ngu: 1",
+          "So phong ve sinh: 1",
+          "Tien ich gan: cong vien Thong Nhat, cong vien Tuoi tre Thu do, WinMart hoac benh vien lon"
+        ],
+        "context": [
+          "postId=83, propertyId=82, listingType=Cho thuê, title=Cho thuê CC 45m2 tại H1 tập thể Nguyễn Công Trứ, price=5000000 VND, area=45 m2, bedrooms=1, bathrooms=1, direction=Nam, address=H1 tập thể Nguyễn Công Trứ Đường Nguyễn Công Trứ Phường Phố Huế Quận Hai Bà Trưng Hà Nội, highlights=gần công viên Thống Nhất|gần công viên Tuổi trẻ Thủ đô|gần WinMart|gần bệnh viện lớn|minRentalPeriod=1 year"
+        ],
+        "target_metadata": {
+          "postId": 83,
+          "propertyId": 82
+        },
+        "id": "ST_HARD_012",
+        "dataset_variant": "rebalanced_v1_natural_curated",
+        "curation_note": "hand-curated natural question; expected facts preserved from source context"
+      },
+      "trace": {
+        "input": "Minh dang phan van can H1 tap the Nguyen Cong Tru cho nguoi thue ngan sach thap. Neu chi xet gia, dien tich, so phong va cac tien ich gan do thi vi sao can nay dang can nhac?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 83 ===\n- Loai tin: Cho thue\n- Gia: 5.000.000 VND\n- Dien tich: 45 m2\n- So phong ngu: 1\n- Thoi gian thue toi thieu: 1 nam\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 83 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Cho thuê CC 45m2, 5 triệu VND tại H1 tập thể Nguyễn Công Trứ, Quận Hai Bà Trưng, Hà Nội\nNhanh tay cho thuê căn hộ chung cư tại H1 tập thể Nguyễn Công trứ, Đường Nguyễn Công Trứ, Phường Hai Bà Trưng, Hà Nội (Quận Hai Bà Trưng, Hà Nội cũ) với nhiều tiện ích hấp dẫn.\n- Diện tích 45m2, thiết kế hợp lý, không gian sống thoải mái.\n- Giá thuê chỉ 5 triệu VND, phù hợp với gia đình.\n- Thời gian thuê linh hoạt, tối thiểu 1 năm. Tiện ích xung quanh:- Gần công viên Thống Nhất và công viên Tuổi trẻ Thủ đô.\n- Cách WinMart + 27 Ngô Thì Nhậm không xa.\n- Gần các bệnh viện lớn như bệnh viện Y học cổ truyền Trung ương và bệnh viện Trung ương Quân đội 108. Liên hệ ngay Hoàng Mai qua số 0903 415 181 để biết thêm chi tiết.",
+          "Nhanh tay cho thuê căn hộ chung cư tại H1 tập thể Nguyễn Công trứ, Đường Nguyễn Công Trứ, Phường Hai Bà Trưng, Hà Nội (Quận Hai Bà Trưng, Hà Nội cũ) với nhiều tiện ích hấp dẫn.\n- Thời gian thuê linh hoạt, tối thiểu 1 năm. Tiện ích xung quanh:- Gần công viên Thống Nhất và công viên Tuổi trẻ Thủ đô.\n- Giá thuê chỉ 5 triệu VND, phù hợp với gia đình.\n• Số phòng ngủ: 1\n• Số phòng vệ sinh: 1\n• Tình trạng nội thất: N/A\n- Diện tích 45m2, thiết kế hợp lý, không gian sống thoải mái.\n- Cách WinMart + 27 Ngô Thì Nhậm không xa.",
+          "--- VỊ TRÍ ---\n H1 tập thể Nguyễn Công trứ, Đường Nguyễn Công Trứ, Phường Phố Huế, Quận Hai Bà Trưng, Hà Nội\n\n(Phường Hai Bà Trưng, Hà Nội mới)"
+        ],
+        "retrieved_doc_ids": [
+          "83_chunk_na",
+          "83_chunk_1",
+          "83_chunk_2"
+        ],
+        "retrieval_scores": [
+          0.793004775881198,
+          0.7983211754752034,
+          0.7952682619967149
+        ],
+        "actual_output": "Căn hộ H1 tập thể Nguyễn Công Trứ có những điểm nổi bật sau:\n\n- **Giá thuê**: 5.000.000 VND\n- **Diện tích**: 45 m²\n- **Số phòng**: 1 phòng ngủ\n- **Tiện ích gần**: Gần công viên Thống Nhất, công viên Tuổi trẻ Thủ đô, WinMart và các bệnh viện lớn.\n\nCăn hộ này phù hợp với người thuê có ngân sách thấp nhờ giá thuê hợp lý và diện tích vừa phải, cùng với vị trí thuận lợi gần các tiện ích công cộng.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 83,
+            "propertyId": 82
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Minh dang phan van can H1 tap the Nguyen Cong Tru cho nguoi thue ngan sach thap. Neu chi xet gia, dien tich, so phong va cac tien ich gan do thi vi sao can nay dang can nhac?",
+          "context_selection_query": "Minh dang phan van can H1 tap the Nguyen Cong Tru cho nguoi thue ngan sach thap. Neu chi xet gia, dien tich, so phong va cac tien ich gan do thi vi sao can nay dang can nhac?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 3,
+          "context_chars": 1613,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 1613,
+          "context_max_chars_per_doc": 2200,
+          "retrieval_seconds": 0.683,
+          "answer_generation_seconds": 2.711,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": true,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:13:15.304884+00:00"
+        }
+      }
+    }
+  ]
+}

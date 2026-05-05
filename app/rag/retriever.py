@@ -273,6 +273,7 @@ def build_retriever(
     k: int = 12,
     filters: dict | None = None,
     base_filter: dict | None = None,
+    mode_override: str | None = None,
 ) -> Any:
     """
     Build retriever with dynamic metadata filtering.
@@ -287,7 +288,7 @@ def build_retriever(
     Returns:
         VectorStoreRetriever with appropriate filters applied
     """
-    mode = os.getenv("RAG_RETRIEVER_MODE", "hybrid").strip().lower()
+    mode = (mode_override or os.getenv("RAG_RETRIEVER_MODE", "hybrid")).strip().lower()
     if mode == "hybrid":
         return HybridRetriever(vs=vs, k=k, filters=filters, base_filter=base_filter)
 
@@ -663,7 +664,7 @@ async def lexical_search_documents(
         """
     )
 
-    lexical_timeout_seconds = _env_float("RAG_LEXICAL_TIMEOUT_SECONDS", 0.0)
+    lexical_timeout_seconds = _env_float("RAG_LEXICAL_TIMEOUT_SECONDS", 2.0)
 
     try:
         async with AsyncSessionLocal() as session:

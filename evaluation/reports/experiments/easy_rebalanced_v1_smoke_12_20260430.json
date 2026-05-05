@@ -1,0 +1,1681 @@
+{
+  "run_id": "8c4096b0-af14-4028-86aa-4e44d77d85fa",
+  "created_at": "2026-04-30T16:10:29.621657+00:00",
+  "phase": "single_turn",
+  "judge": {
+    "judge": {
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "api_base": "https://api.deepseek.com/v1",
+      "temperature": 0.0,
+      "max_tokens": 1024,
+      "timeout_seconds": 180,
+      "max_retries": 3
+    }
+  },
+  "thresholds": {
+    "single_turn": {
+      "contextual_recall": 0.65,
+      "faithfulness": 0.7,
+      "answer_relevancy": 0.7,
+      "composite_pass_threshold": 0.7
+    },
+    "conversation": {
+      "knowledge_retention": 0.75
+    }
+  },
+  "settings": {
+    "runtime": {
+      "top_k": 16,
+      "max_history_turns": 6,
+      "eval_context_max_docs": 4,
+      "planning_eval_context_max_docs": 12,
+      "eval_context_max_chars_per_doc": 1400,
+      "eval_explanatory_max_docs": 6,
+      "eval_explanatory_max_chars_per_doc": 2200,
+      "default_domain": "real_estate",
+      "judge_phase": "offline_eval"
+    },
+    "versions": {
+      "prompt_version": "rag_prompt_v1",
+      "retriever_version": "pgvector_similarity_v1",
+      "chunking_version": "chunking_v1"
+    },
+    "reporting": {
+      "save_raw_results": true,
+      "include_trace": true
+    }
+  },
+  "deepeval_timeout": {
+    "disable_timeouts": false,
+    "per_attempt_timeout_seconds": 300.0
+  },
+  "runner": {
+    "trace_max_concurrent": 1,
+    "judge_max_concurrent": 1,
+    "throttle_seconds": 0.2,
+    "sync": true
+  },
+  "experiment_config": {},
+  "summary": {
+    "cases": 12,
+    "difficulties": {
+      "easy": 12
+    },
+    "domains": {
+      "real_estate": 12
+    }
+  },
+  "timing": {
+    "trace_generation_seconds": 43.365,
+    "trace_generation_worker_seconds_total": 41.073,
+    "judge_scoring_seconds": 168.576,
+    "total_pipeline_seconds": 211.941,
+    "trace_generation_by_case": [
+      {
+        "id": "ST_EASY_001",
+        "input_preview": "Giá bán của căn nhà ở ngõ 281 Trương Định là bao nhiêu?",
+        "generation_seconds": 10.091,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 1572,
+        "retrieval_seconds": 5.08,
+        "answer_generation_seconds": 4.996,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_EASY_002",
+        "input_preview": "Nhà cho thuê ở 54/98 Thịnh Hào 3 có mấy phòng ngủ?",
+        "generation_seconds": 6.666,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 1869,
+        "retrieval_seconds": 5.042,
+        "answer_generation_seconds": 1.613,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_EASY_003",
+        "input_preview": "Giá thuê căn nhà nguyên căn thiết kế 7 căn hộ mini tại Nhổn là bao nhiêu?",
+        "generation_seconds": 4.842,
+        "retrieval_context_docs": 2,
+        "retrieval_context_chars": 1773,
+        "retrieval_seconds": 3.435,
+        "answer_generation_seconds": 1.398,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_EASY_004",
+        "input_preview": "Nhà cho thuê ở phố Quang Tiến, Tây Mỗ có mấy phòng vệ sinh?",
+        "generation_seconds": 1.799,
+        "retrieval_context_docs": 2,
+        "retrieval_context_chars": 1581,
+        "retrieval_seconds": 0.623,
+        "answer_generation_seconds": 1.164,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_EASY_005",
+        "input_preview": "Tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" co tinh trang noi that la gi?",
+        "generation_seconds": 2.306,
+        "retrieval_context_docs": 2,
+        "retrieval_context_chars": 831,
+        "retrieval_seconds": 0.629,
+        "answer_generation_seconds": 1.669,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_EASY_006",
+        "input_preview": "Lô đất D3 khu Vườn Đào đối diện Lotte Mall có diện tích bao nhiêu?",
+        "generation_seconds": 2.093,
+        "retrieval_context_docs": 2,
+        "retrieval_context_chars": 1133,
+        "retrieval_seconds": 0.637,
+        "answer_generation_seconds": 1.442,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_EASY_007",
+        "input_preview": "Giá thuê nhà nguyên căn ở Giảng Võ là bao nhiêu?",
+        "generation_seconds": 1.834,
+        "retrieval_context_docs": 2,
+        "retrieval_context_chars": 1076,
+        "retrieval_seconds": 0.639,
+        "answer_generation_seconds": 1.181,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_EASY_008",
+        "input_preview": "Mặt bằng ở số 2A ngõ 76 Trần Thái Tông có diện tích bao nhiêu?",
+        "generation_seconds": 1.725,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 1741,
+        "retrieval_seconds": 0.657,
+        "answer_generation_seconds": 1.055,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_EASY_009",
+        "input_preview": "Nhà 7 tầng tại đất dịch vụ Dương Nội có điểm nổi bật gì về tiện ích trong nhà?",
+        "generation_seconds": 3.164,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 1891,
+        "retrieval_seconds": 0.624,
+        "answer_generation_seconds": 2.53,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_EASY_010",
+        "input_preview": "Diện tích văn phòng cho thuê ở 526-528 Nguyễn Văn Cừ là bao nhiêu?",
+        "generation_seconds": 2.107,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 1631,
+        "retrieval_seconds": 0.656,
+        "answer_generation_seconds": 1.442,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_EASY_011",
+        "input_preview": "Hướng của căn hộ 2 phòng ngủ ở Quận 1 là gì?",
+        "generation_seconds": 1.639,
+        "retrieval_context_docs": 2,
+        "retrieval_context_chars": 722,
+        "retrieval_seconds": 0.672,
+        "answer_generation_seconds": 0.956,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      },
+      {
+        "id": "ST_EASY_012",
+        "input_preview": "Minh dang tim can thue tam 5 trieu o mot minh, thay can H1 tap the Nguyen Cong Tru. Ban tom tat nhanh vi tri quan, dien ",
+        "generation_seconds": 2.807,
+        "retrieval_context_docs": 3,
+        "retrieval_context_chars": 1583,
+        "retrieval_seconds": 0.677,
+        "answer_generation_seconds": 2.117,
+        "retrieval_strategy": "exact_filters",
+        "filter_extraction_skipped": true
+      }
+    ]
+  },
+  "judge_cost_profile": [
+    {
+      "id": "ST_EASY_001",
+      "input_preview": "Giá bán của căn nhà ở ngõ 281 Trương Định là bao nhiêu?",
+      "total_evaluation_cost": 0.00046262
+    },
+    {
+      "id": "ST_EASY_002",
+      "input_preview": "Nhà cho thuê ở 54/98 Thịnh Hào 3 có mấy phòng ngủ?",
+      "total_evaluation_cost": 0.00039665
+    },
+    {
+      "id": "ST_EASY_003",
+      "input_preview": "Giá thuê căn nhà nguyên căn thiết kế 7 căn hộ mini tại Nhổn là bao nhiêu?",
+      "total_evaluation_cost": 0.00039794
+    },
+    {
+      "id": "ST_EASY_004",
+      "input_preview": "Nhà cho thuê ở phố Quang Tiến, Tây Mỗ có mấy phòng vệ sinh?",
+      "total_evaluation_cost": 0.00046469
+    },
+    {
+      "id": "ST_EASY_005",
+      "input_preview": "Tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" co tinh trang noi that la gi?",
+      "total_evaluation_cost": 0.00044055
+    },
+    {
+      "id": "ST_EASY_006",
+      "input_preview": "Lô đất D3 khu Vườn Đào đối diện Lotte Mall có diện tích bao nhiêu?",
+      "total_evaluation_cost": 0.00041101
+    },
+    {
+      "id": "ST_EASY_007",
+      "input_preview": "Giá thuê nhà nguyên căn ở Giảng Võ là bao nhiêu?",
+      "total_evaluation_cost": 0.00043814
+    },
+    {
+      "id": "ST_EASY_008",
+      "input_preview": "Mặt bằng ở số 2A ngõ 76 Trần Thái Tông có diện tích bao nhiêu?",
+      "total_evaluation_cost": 0.00043078
+    },
+    {
+      "id": "ST_EASY_009",
+      "input_preview": "Nhà 7 tầng tại đất dịch vụ Dương Nội có điểm nổi bật gì về tiện ích trong nhà?",
+      "total_evaluation_cost": 0.00046592
+    },
+    {
+      "id": "ST_EASY_010",
+      "input_preview": "Diện tích văn phòng cho thuê ở 526-528 Nguyễn Văn Cừ là bao nhiêu?",
+      "total_evaluation_cost": 0.000395
+    },
+    {
+      "id": "ST_EASY_011",
+      "input_preview": "Hướng của căn hộ 2 phòng ngủ ở Quận 1 là gì?",
+      "total_evaluation_cost": 0.00034073
+    },
+    {
+      "id": "ST_EASY_012",
+      "input_preview": "Minh dang tim can thue tam 5 trieu o mot minh, thay can H1 tap the Nguyen Cong Tru. Ban tom tat nhanh vi tri quan, dien ",
+      "total_evaluation_cost": 0.00059408
+    }
+  ],
+  "scorecard": {
+    "included_metrics": [
+      "contextual_recall",
+      "faithfulness",
+      "answer_relevancy"
+    ],
+    "excluded_metrics": [],
+    "weights": {
+      "contextual_recall": 0.3333333333333333,
+      "faithfulness": 0.3333333333333333,
+      "answer_relevancy": 0.3333333333333333
+    },
+    "formulas": {
+      "metric_mean": "S_m = (1/N) * sum_{i=1..N}(s_{m,i})",
+      "metric_pass_rate": "PassRate_m = (1/N) * sum_{i=1..N}(1[s_{m,i} >= T_m])",
+      "overall_quality": "Q_single = (w_CRec*S_CRec + w_F*S_F + w_AR*S_AR) / (w_CRec + w_F + w_AR)",
+      "case_composite_score": "Q_case = (s_CRec + s_F + s_AR) / 3",
+      "case_composite_pass_rate": "PassRate_case = (1/N) * sum_{i=1..N}(1[Q_case,i >= T_case])"
+    },
+    "symbols": {
+      "S_CRec": "mean Contextual Recall score",
+      "S_F": "mean Faithfulness score",
+      "S_AR": "mean Answer Relevancy score",
+      "T_m": "metric threshold",
+      "T_case": "composite case threshold"
+    },
+    "metric_statistics": {
+      "contextual_recall": {
+        "display_name": "Contextual Recall",
+        "sample_size": 12,
+        "threshold": 0.65,
+        "mean_score": 1.0,
+        "pass_count": 12,
+        "pass_rate": 1.0
+      },
+      "faithfulness": {
+        "display_name": "Faithfulness",
+        "sample_size": 12,
+        "threshold": 0.7,
+        "mean_score": 0.895833,
+        "pass_count": 11,
+        "pass_rate": 0.916667
+      },
+      "answer_relevancy": {
+        "display_name": "Answer Relevancy",
+        "sample_size": 12,
+        "threshold": 0.7,
+        "mean_score": 0.958333,
+        "pass_count": 11,
+        "pass_rate": 0.916667
+      }
+    },
+    "case_composite_statistics": {
+      "sample_size": 12,
+      "composite_threshold": 0.7,
+      "mean_score": 0.951389,
+      "pass_count": 11,
+      "pass_rate": 0.916667,
+      "strict_all_metric_threshold_pass_count": 10,
+      "strict_all_metric_threshold_pass_rate": 0.833333
+    },
+    "overall_quality_score": 0.951389,
+    "overall_quality_percent": 95.14,
+    "score_range": "[0, 1]"
+  },
+  "deepeval_result": {
+    "test_results": [
+      {
+        "name": "ST_EASY_001",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because all sentences in the expected output are fully supported by nodes in retrieval context: sentence 1 matches node 1 and node 2 for price, and sentence 2 matches node 1 and node 2 for listing type. Great job!",
+            "evaluation_cost": 0.000118944,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"1st node: 'Gia: 14.000.000.000 VND'; 2nd node: 'Gi\\u00e1: 14.000.000.000 VN\\u0110'\",\n        \"expected_output\": \"Gi\\u00e1: 14.000.000.000 VN\\u0110\\ntin c\\u1ea7n b\\u00e1n\"\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"1st node: 'Loai tin: Can ban'; 2nd node: 'Lo\\u1ea1i: C\\u1ea7n b\\u00e1n'\",\n        \"expected_output\": \"Gi\\u00e1: 14.000.000.000 VN\\u0110\\ntin c\\u1ea7n b\\u00e1n\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.628
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context.",
+            "evaluation_cost": 0.000276584,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Bất động sản là căn hộ cần bán.\",\n    \"Giá bán là 14.000.000.000 VND.\",\n    \"Diện tích là 67 m2.\",\n    \"Số phòng ngủ là 4.\",\n    \"Số phòng vệ sinh là 3.\",\n    \"Tình trạng nội thất là FULLY_FURNISHED.\",\n    \"Nhà có 5 tầng.\",\n    \"Mặt tiền rộng 5m.\",\n    \"Nhà có 2 mặt ngõ.\",\n    \"Ô tô 7 chỗ có thể vào nhà.\",\n    \"Nhà thuộc ngõ 281 Trương Định.\",\n    \"Có thể đi qua ngõ 151 Nguyễn Đức Cảnh.\",\n    \"Cách mặt phố Nguyễn Đức Cảnh 100m.\",\n    \"Diện tích sổ công nhận là 57 m2.\",\n    \"Tầng 1 gồm sân 10m2, khách, bếp, WC.\",\n    \"Tầng 2, 3, 4 mỗi tầng có 2 phòng: 1 master và 1 phòng nhỏ.\",\n    \"Tầng 5 là sân phơi, trồng cây BBQ.\",\n    \"Cách hồ Đền Lừ 700m.\",\n    \"Cách trường C1, C2 Tân Mai 500m.\",\n    \"Liên hệ chủ nhà số O963319192.\",\n    \"Miễn tiếp trung gian môi giới.\",\n    \"Địa chỉ: ngõ 281, đường Trương Định, phường Tương Mai, quận Hoàng Mai, Hà Nội.\"\n] \n \nClaims:\n[\n    \"Giá bán của căn nhà ở ngõ 281 Trương Định là 14.000.000.000 VNĐ.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 7.674
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the actual output perfectly addresses the input question without any irrelevant statements.",
+            "evaluation_cost": 6.708799999999999e-05,
+            "verbose_logs": "Statements:\n[\n    \"Giá bán của căn nhà ở ngõ 281 Trương Định là 14.000.000.000 VNĐ.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.019
+          }
+        ]
+      },
+      {
+        "name": "ST_EASY_002",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because all sentences in the expected output are fully supported by nodes in retrieval context, specifically nodes 1, 2, and 3 directly matching the content.",
+            "evaluation_cost": 0.0001057,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"The sentence 'S\\u1ed1 ph\\u00f2ng ng\\u1ee7: 6' is directly supported by the 1st node: 'So phong ngu: 6', the 2nd node: '6 ph\\u00f2ng ng\\u1ee7', and the 3rd node: 'S\\u1ed1 ph\\u00f2ng ng\\u1ee7: 6'.\",\n        \"expected_output\": \"S\\u1ed1 ph\\u00f2ng ng\\u1ee7: 6\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.072
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context.",
+            "evaluation_cost": 0.00022033199999999998,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Bất động sản 289 là căn hộ cho thuê.\",\n    \"Giá thuê là 13.000.000 VND.\",\n    \"Diện tích là 45 m2.\",\n    \"Có 6 phòng ngủ.\",\n    \"Có 3 phòng vệ sinh.\",\n    \"Địa chỉ: 54/98 Thịnh Hào 3, đường Tôn Đức Thắng, Phường Ô Chợ Dừa, Hà Nội (địa chỉ cũ: Quận Đống Đa, Hà Nội).\",\n    \"Nhà gồm 4 tầng.\",\n    \"Nội thất cơ bản.\",\n    \"Ngõ vào rộng 3m.\",\n    \"Mặt tiền 4m.\",\n    \"Thời gian cho thuê tối thiểu hai năm.\",\n    \"Xung quanh có Bệnh viện Da liễu Hà Nội, Bệnh viện Tim Hà Nội, Siêu thị Teekiu Mart, Công viên Thống Nhất.\",\n    \"Liên hệ qua số điện thoại 0912 016 *** hoặc với MINH.\"\n] \n \nClaims:\n[\n    \"Nhà cho thuê ở 54/98 Thịnh Hào 3 có 6 phòng ngủ.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 6.564
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the actual output perfectly addresses the input question without any irrelevant statements.",
+            "evaluation_cost": 7.0616e-05,
+            "verbose_logs": "Statements:\n[\n    \"Nhà cho thuê ở 54/98 Thịnh Hào 3.\",\n    \"Có 6 phòng ngủ.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.237
+          }
+        ]
+      },
+      {
+        "name": "ST_EASY_003",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because all sentences in the expected output are fully supported by nodes in retrieval context: node 1 and node 2 provide 'Giá: 25.000.000 VNĐ' and 'Loại: Cho thuê', matching the expected output perfectly.",
+            "evaluation_cost": 0.00012124,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"1st node: 'Gia: 25.000.000 VND' and 2nd node: 'Gi\\u00e1: 25.000.000 VN\\u0110'\",\n        \"expected_output\": \"Gi\\u00e1: 25.000.000 VN\\u0110\\ntin cho thu\\u00ea\"\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"1st node: 'Loai tin: Cho thue' and 2nd node: 'Lo\\u1ea1i: Cho thu\\u00ea'\",\n        \"expected_output\": \"Gi\\u00e1: 25.000.000 VN\\u0110\\ntin cho thu\\u00ea\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.852
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context.",
+            "evaluation_cost": 0.00020630400000000004,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Bất động sản 295 là loại cho thuê, danh mục căn hộ.\",\n    \"Giá thuê là 25.000.000 VND.\",\n    \"Diện tích là 45 m2.\",\n    \"Có 7 phòng ngủ.\",\n    \"Có 7 phòng vệ sinh.\",\n    \"Nhà có kết cấu 4 tầng + 1 tầng thượng.\",\n    \"Mỗi phòng ngủ đều có nhà vệ sinh và bếp riêng.\",\n    \"Nhà nằm tại khu vực Nhổn.\",\n    \"Nhà phù hợp để đầu tư cho thuê căn hộ mini, làm homestay, ký túc xá hoặc cho thuê dài hạn.\",\n    \"Liên hệ chính chủ qua số điện thoại 0976 062 938.\",\n    \"Tình trạng nội thất là PARTLY_FURNISHED.\"\n] \n \nClaims:\n[\n    \"Giá thuê căn nhà nguyên căn thiết kế 7 căn hộ mini tại Nhổn là 25.000.000 VNĐ.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 5.635
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the actual output perfectly addresses the input query without any irrelevant statements.",
+            "evaluation_cost": 7.0392e-05,
+            "verbose_logs": "Statements:\n[\n    \"Giá thuê căn nhà nguyên căn thiết kế 7 căn hộ mini tại Nhổn là 25.000.000 VNĐ.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.482
+          }
+        ]
+      },
+      {
+        "name": "ST_EASY_004",
+        "success": false,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the expected output 'Số phòng vệ sinh: 4' is directly supported by both nodes in retrieval context: node 1 states 'So phong ve sinh: 4' and node 2 states '• Số phòng vệ sinh: 4'. Great job!",
+            "evaluation_cost": 0.000111104,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"The sentence 'S\\u1ed1 ph\\u00f2ng v\\u1ec7 sinh: 4' is directly stated in both nodes: 1st node has 'So phong ve sinh: 4' and 2nd node has '\\u2022 S\\u1ed1 ph\\u00f2ng v\\u1ec7 sinh: 4'.\",\n        \"expected_output\": \"S\\u1ed1 ph\\u00f2ng v\\u1ec7 sinh: 4\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.993
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 0.0,
+            "success": false,
+            "reason": "The score is 0.00 because the actual output claims the property is at phố Quang Tiến, Tây Mỗ, but the retrieval context states it is at Bất động sản 290, which is a direct contradiction in location.",
+            "evaluation_cost": 0.00028786800000000004,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Bất động sản 290 là căn hộ cho thuê.\",\n    \"Nhà có 5 tầng, diện tích 38m2 mỗi tầng, mặt tiền 3.2m.\",\n    \"Thiết kế gồm 1 phòng khách, 1 bếp, 3 phòng ngủ, 4 phòng vệ sinh, 1 phòng thờ + tum, sân phơi có lưới an toàn.\",\n    \"Nội thất cơ bản gồm điều hòa, giường, tủ quần áo.\",\n    \"Hướng ban công Đông - Nam.\",\n    \"Ngõ rộng, xe ba gác và ô tô 4 chỗ đỗ sát cổng.\",\n    \"Khu đông dân, thuận tiện, đường sá sạch sẽ, thông thoáng, an ninh.\",\n    \"Cách 500m có trường cấp 1 và cấp 3 Đại Mỗ, trường cấp 2 Nguyễn Quý Đức, chợ Đại Mỗ và Tây Mỗ.\",\n    \"Cách 2 km có bệnh viện Hồng Ngọc Phúc Trường Minh hoặc Vinmec và Aeon Mall Hà Đông.\",\n    \"Giá thuê là 12 triệu/tháng.\",\n    \"Số điện thoại liên hệ: 0989 532 ***.\"\n] \n \nClaims:\n[\n    \"Nhà cho thuê ở phố Quang Tiến, Tây Mỗ có 4 phòng vệ sinh.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"no\",\n        \"reason\": \"The context states the property is at B\\u1ea5t \\u0111\\u1ed9ng s\\u1ea3n 290, not ph\\u1ed1 Quang Ti\\u1ebfn, T\\u00e2y M\\u1ed7. Also, the context says 4 ph\\u00f2ng v\\u1ec7 sinh, which matches the claim, but the location contradicts.\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 8.379
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the actual output directly and completely addresses the input question without any irrelevant statements.",
+            "evaluation_cost": 6.5716e-05,
+            "verbose_logs": "Statements:\n[\n    \"Nhà cho thuê ở phố Quang Tiến, Tây Mỗ có 4 phòng vệ sinh.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.485
+          }
+        ]
+      },
+      {
+        "name": "ST_EASY_005",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the expected output 'FULLY_FURNISHED' is directly supported by the 2nd node in the retrieval context, which states 'Tình trạng nội thất: FULLY_FURNISHED'. Great job!",
+            "evaluation_cost": 8.8592e-05,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"The phrase 'FULLY_FURNISHED' appears in the 2nd node of the retrieval context: 'T\\u00ecnh tr\\u1ea1ng n\\u1ed9i th\\u1ea5t: FULLY_FURNISHED'.\",\n        \"expected_output\": \"Noi that: FULLY_FURNISHED\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.004
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context.",
+            "evaluation_cost": 0.000256396,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Bất động sản 294 là loại cho thuê.\",\n    \"Danh mục là căn hộ.\",\n    \"Địa chỉ: ngõ 285 phố Thanh Nhàn, Đường Thanh Nhàn, Phường Thanh Nhàn, Quận Hai Bà Trưng, Hà Nội.\",\n    \"Giá thuê: 7.000.000 VND.\",\n    \"Diện tích: 34 m2.\",\n    \"Số phòng ngủ: 2.\",\n    \"Số phòng vệ sinh: 2.\",\n    \"Nhà 3 tầng, tầng 2 có ban công, tầng 3 có sân phơi rộng rãi.\",\n    \"Nội thất đầy đủ: giường, tủ quần áo, tủ lạnh, máy giặt, bình nóng lạnh.\",\n    \"Tình trạng nội thất: FULLY_FURNISHED.\",\n    \"Điện nước giá nhà nước.\",\n    \"Vị trí gần 3 trường đại học lớn: Bách - Kinh - Xây.\",\n    \"Chợ ngay đối diện bên đường.\",\n    \"Gần bệnh viện lớn: Bệnh viện Bạch Mai, Thanh Nhàn.\"\n] \n \nClaims:\n[\n    \"Tình trạng nội thất của nhà cho thuê tại phố Thanh Nhàn, Hà Nội là đầy đủ nội thất (fully furnished).\",\n    \"Nội thất bao gồm giường, tủ quần áo, tủ lạnh, máy giặt, bình nóng lạnh.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 6.733
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the actual output perfectly addresses the input question without any irrelevant statements.",
+            "evaluation_cost": 9.5564e-05,
+            "verbose_logs": "Statements:\n[\n    \"Tình trạng nội thất của nhà cho thuê tại phố Thanh Nhàn, Hà Nội là đầy đủ nội thất (fully furnished).\",\n    \"Nội thất bao gồm giường, tủ quần áo, tủ lạnh, máy giặt, bình nóng lạnh.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.785
+          }
+        ]
+      },
+      {
+        "name": "ST_EASY_006",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the expected output sentence 'Diện tích: 270 m²' is fully supported by the 1st node in the retrieval context, which contains 'Dien tich: 270 m2'. Great job!",
+            "evaluation_cost": 8.7752e-05,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"The sentence 'Di\\u1ec7n t\\u00edch: 270 m\\u00b2' matches the 'Dien tich: 270 m2' in the 1st node of the retrieval context.\",\n        \"expected_output\": \"Di\\u1ec7n t\\u00edch: 270 m\\u00b2\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 2.758
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context.",
+            "evaluation_cost": 0.000259336,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Bất động sản có loại tin là cần bán.\",\n    \"Giá bán là 189.000.000.000 VND.\",\n    \"Diện tích là 270 m2.\",\n    \"Danh mục là căn hộ.\",\n    \"Đất lô D3 khu Vườn Đào, 270m2, ngay ngã tư, đối diện Lotte Mall.\",\n    \"Vị trí ngay ngã tư Lạc Long Quân, khu Tây Hồ.\",\n    \"Đối diện Lotte Mall West Lake Hanoi.\",\n    \"Lô D3 khu biệt thự Vườn Đào, phường Phú Thượng, Hà Nội.\",\n    \"Khu vực vip, dân trí cao, an ninh 24/7.\",\n    \"Đường rộng, vỉa hè thoáng, ô tô tránh nhau.\",\n    \"Giao thông kết nối thuận tiện: 3 phút ra Hồ Tây, 5 phút sang Ciputra, 15 phút tới Nội Bài.\",\n    \"Giá trị đầu tư vượt trội do đối diện Lotte Mall.\",\n    \"Phù hợp xây biệt thự ở, căn hộ dịch vụ cao cấp, văn phòng đại diện.\",\n    \"Khu vực khan hiếm quỹ đất, tính thanh khoản cao.\",\n    \"Giá bán thương lượng trực tiếp.\",\n    \"Liên hệ 0936 668 *** để xem đất và làm việc chính chủ.\"\n] \n \nClaims:\n[\n    \"Lô đất D3 khu Vườn Đào có diện tích 270 m2.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 7.662
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the actual output directly and accurately addresses the input question without any irrelevant statements.",
+            "evaluation_cost": 6.3924e-05,
+            "verbose_logs": "Statements:\n[\n    \"Lô đất D3 khu Vườn Đào có diện tích 270 m2.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 2.977
+          }
+        ]
+      },
+      {
+        "name": "ST_EASY_007",
+        "success": false,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the expected output sentence 'Giá: 30.000.000 VNĐ' is fully supported by both node 1 and node 2 in the retrieval context, which contain the same price information.",
+            "evaluation_cost": 9.867199999999999e-05,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"The sentence 'Gi\\u00e1: 30.000.000 VN\\u0110' matches the price mentioned in both nodes: 1st node 'Gia: 30.000.000 VND' and 2nd node '\\u2022 Gi\\u00e1: 30.000.000 VN\\u0110'.\",\n        \"expected_output\": \"Gi\\u00e1: 30.000.000 VN\\u0110\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.169
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context.",
+            "evaluation_cost": 0.000234528,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Bất động sản 272 là loại cho thuê.\",\n    \"Danh mục là căn hộ.\",\n    \"Giá thuê là 30.000.000 VND mỗi tháng.\",\n    \"Diện tích là 65 m2.\",\n    \"Có 5 phòng ngủ.\",\n    \"Nhà có 4 tầng.\",\n    \"Nhà nằm tại Giảng Võ, Hà Nội.\",\n    \"Nhà cho thuê nguyên căn để ở gia đình hoặc kết hợp làm văn phòng quy mô nhỏ, ít người.\",\n    \"Nhà nằm trong khu dân cư dân trí cao, có bảo vệ khu, ngõ rộng, ô tô ra vào thuận tiện.\",\n    \"Không cho thuê văn phòng đông người/quy mô lớn, căn hộ cho thuê lẻ, dịch vụ lưu trú ngắn ngày (Airbnb).\",\n    \"Mặt tiền rộng 5,8m.\",\n    \"Cầu thang cuối nhà, không có thang máy.\",\n    \"Giá thuê chưa bao gồm thuế TNCN.\"\n] \n \nClaims:\n[\n    \"Giá thuê nhà nguyên căn ở Giảng Võ là 30.000.000 VNĐ/tháng.\",\n    \"Giá thuê chưa bao gồm thuế TNCN.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 6.644
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 0.5,
+            "success": false,
+            "reason": "The score is 0.50 because the actual output includes an irrelevant statement about taxes that does not directly address the user's question about rental prices in Giảng Võ. The score is not higher due to this irrelevant information, but it is not lower because the output still contains some relevant information.",
+            "evaluation_cost": 0.00010494399999999999,
+            "verbose_logs": "Statements:\n[\n    \"Giá thuê nhà nguyên căn ở Giảng Võ là 30.000.000 VNĐ/tháng.\",\n    \"Giá chưa bao gồm thuế TNCN.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    },\n    {\n        \"verdict\": \"no\",\n        \"reason\": \"Th\\u00f4ng tin v\\u1ec1 thu\\u1ebf kh\\u00f4ng li\\u00ean quan tr\\u1ef1c ti\\u1ebfp \\u0111\\u1ebfn gi\\u00e1 thu\\u00ea nh\\u00e0.\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 4.424
+          }
+        ]
+      },
+      {
+        "name": "ST_EASY_008",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because all sentences in the expected output are fully supported by nodes in retrieval context: sentence 1 ('Diện tích: 91 m²') is supported by node 1 ('Dien tich: 91 m2') and node 2 ('Diện tích cho thuê tầng 4: 91m2'), and sentence 2 ('diện tích cho thuê') is supported by node 2 ('Diện tích cho thuê tầng 4: 91m2'). Great job!",
+            "evaluation_cost": 0.000141064,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"1st node: 'Dien tich: 91 m2'; 2nd node: 'Di\\u1ec7n t\\u00edch cho thu\\u00ea t\\u1ea7ng 4: 91m2'\",\n        \"expected_output\": \"Di\\u1ec7n t\\u00edch: 91 m\\u00b2\\ndi\\u1ec7n t\\u00edch cho thu\\u00ea\"\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"2nd node: 'Di\\u1ec7n t\\u00edch cho thu\\u00ea t\\u1ea7ng 4: 91m2'\",\n        \"expected_output\": \"Di\\u1ec7n t\\u00edch: 91 m\\u00b2\\ndi\\u1ec7n t\\u00edch cho thu\\u00ea\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 4.886
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context.",
+            "evaluation_cost": 0.000224,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Có một căn nhà cho thuê tại số 2A, ngõ 76 Trần Thái Tông, Cầu Giấy, Hà Nội.\",\n    \"Nhà có 7 tầng, mới xây, căn góc 2 mặt tiền.\",\n    \"Diện tích cho thuê tầng 4 là 91 m2.\",\n    \"Giá cho thuê là 16.000.000 VND/tháng.\",\n    \"Nhà nằm trong khu vực sầm uất, gần mặt đường Trần Thái Tông.\",\n    \"Khu vực dân trí cao, an ninh đảm bảo.\",\n    \"Giao thông thuận tiện.\",\n    \"Không gian đẹp, vuông vắn, dễ setup.\",\n    \"Phù hợp làm văn phòng, studio, spa, salon tóc, nha khoa, trung tâm tiếng Anh, lớp học, showroom, coffee.\",\n    \"Liên hệ chính chủ: Anh Trường, số điện thoại 0983 733 ***.\",\n    \"Ưu tiên khách thiện chí, xem nhà trực tiếp.\"\n] \n \nClaims:\n[\n    \"Diện tích mặt bằng ở số 2A ngõ 76 Trần Thái Tông là 91 m2.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 6.644
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the actual output directly and accurately addresses the input question without any irrelevant statements.",
+            "evaluation_cost": 6.5716e-05,
+            "verbose_logs": "Statements:\n[\n    \"Diện tích mặt bằng ở số 2A ngõ 76 Trần Thái Tông là 91 m2.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 4.007
+          }
+        ]
+      },
+      {
+        "name": "ST_EASY_009",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the expected output 'nhà có thang máy' is fully supported by nodes 1 and 2 in the retrieval context, which both mention the presence of an elevator. Great job!",
+            "evaluation_cost": 0.000111244,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"The sentence 'nh\\u00e0 c\\u00f3 thang m\\u00e1y' is directly supported by the 1st node: 'Cho thu\\u00ea g\\u1ea5p nh\\u00e0 ri\\u00eang 7 t\\u1ea7ng c\\u00f3 THANG M\\u00c1Y...' and the 2nd node: '\\u0110\\u1eb7c bi\\u1ec7t c\\u00f3 thang m\\u00e1y ch\\u1ea1y v\\u00f9 v\\u00f9'.\",\n        \"expected_output\": \"nh\\u00e0 c\\u00f3 thang m\\u00e1y\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.246
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context.",
+            "evaluation_cost": 0.00024894800000000003,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Bất động sản là căn hộ cho thuê.\",\n    \"Giá thuê là 20.000.000 VND.\",\n    \"Diện tích là 55 m2.\",\n    \"Có 7 phòng ngủ.\",\n    \"Có 7 phòng vệ sinh.\",\n    \"Nhà có 7 tầng.\",\n    \"Có thang máy.\",\n    \"Nhà có mặt tiền 4m.\",\n    \"Đường vào rộng 11m.\",\n    \"Hướng cửa chính Đông Nam.\",\n    \"Ban công hướng Đông Nam.\",\n    \"Nhà nằm tại khu đất dịch vụ 27,28 Dương Nội, Phường Dương Nội, Quận Hà Đông, Hà Nội.\",\n    \"Gần công viên thiên văn học.\",\n    \"Cách Aeon Hà Đông 1km.\",\n    \"Nằm trên trục đường Lê Trọng Tấn.\",\n    \"Liên hệ Đặng Thuận qua số 0348 864 213.\",\n    \"Tình trạng nội thất là PARTLY_FURNISHED.\"\n] \n \nClaims:\n[\n    \"Tiá»‡n Ã­ch ná»•i báº­t trong nhÃ  lÃ  thang mÃ¡y vÃ  thiáº¿t káº¿ hiá»‡n Ä‘áº¡i.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"idk\",\n        \"reason\": \"The context mentions that the house has an elevator, but does not mention a modern design. Therefore, it is unclear whether the house has a modern design.\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 6.709
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the actual output perfectly addresses the input question without any irrelevant statements, providing a comprehensive and relevant response about the standout features of the 7-story house in Duong Noi service land.",
+            "evaluation_cost": 0.000105728,
+            "verbose_logs": "Statements:\n[\n    \"Tiá»‡n Ã­ch ná»•i báº­t trong nhÃ  lÃ  thang mÃ¡y.\",\n    \"Thiáº¿t káº¿ hiá»‡n Ä‘áº¡i.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    },\n    {\n        \"verdict\": \"idk\",\n        \"reason\": \"The statement is too general; it does not specify any particular feature related to the house's interior amenities.\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 4.442
+          }
+        ]
+      },
+      {
+        "name": "ST_EASY_010",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the sentence 'Diện tích: 217 m²' in the expected output is fully supported by nodes 1 and 2 in the retrieval context, which both contain the same area information.",
+            "evaluation_cost": 0.000101276,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"The sentence 'Di\\u1ec7n t\\u00edch: 217 m\\u00b2' matches the area information in the 1st node: 'Dien tich: 217 m2' and the 2nd node: 'Di\\u1ec7n t\\u00edch: 217 m2'.\",\n        \"expected_output\": \"Di\\u1ec7n t\\u00edch: 217 m\\u00b2\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 2.99
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context.",
+            "evaluation_cost": 0.0002254,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Bất động sản có loại tin là cho thuê.\",\n    \"Giá thuê là 30.000.000 VND.\",\n    \"Diện tích là 217 m2.\",\n    \"Địa chỉ cho thuê văn phòng là 526-528 Nguyễn Văn Cừ, phường Bồ Đề, Hà Nội.\",\n    \"Tầng cho thuê là tầng 7 mới xây.\",\n    \"Mặt tiền rộng 10,5m, sâu 20,5m, vỉa hè rộng 9m.\",\n    \"Tòa nhà có 1 tầng hầm và 10 tầng nổi.\",\n    \"Có điều hòa trung tâm.\",\n    \"Có thang máy Mishibusi.\",\n    \"Thiết bị vệ sinh nam nữ riêng biệt.\",\n    \"Có 2 cầu thang bộ thoát hiểm.\",\n    \"Có bảo vệ 24/24.\",\n    \"Số điện thoại liên hệ là 0975 133 269.\",\n    \"Tình trạng nội thất là partly furnished.\"\n] \n \nClaims:\n[\n    \"Diện tích văn phòng cho thuê ở 526-528 Nguyễn Văn Cừ là 217 m2.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 6.24
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the actual output directly and fully addresses the input question without any irrelevant statements.",
+            "evaluation_cost": 6.832e-05,
+            "verbose_logs": "Statements:\n[\n    \"Diện tích văn phòng cho thuê ở 526-528 Nguyễn Văn Cừ là 217 m2.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.085
+          }
+        ]
+      },
+      {
+        "name": "ST_EASY_011",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the expected output 'Hướng: Đông Nam' is fully supported by the 2nd node in the retrieval context, which contains the exact same text. Great job!",
+            "evaluation_cost": 7.263199999999999e-05,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"The 2nd node in the retrieval context contains 'H\\u01b0\\u1edbng: \\u0110\\u00f4ng Nam'.\",\n        \"expected_output\": \"H\\u01b0\\u1edbng: \\u0110\\u00f4ng Nam\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 2.475
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because there are no contradictions between the actual output and the retrieval context.",
+            "evaluation_cost": 0.000197624,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Căn hộ có 2 phòng ngủ.\",\n    \"Căn hộ có 2 phòng vệ sinh.\",\n    \"Căn hộ có diện tích 75 m2.\",\n    \"Căn hộ được bán với giá 6.500.000.000 VND.\",\n    \"Căn hộ nằm tại Quận 1, TP. Hồ Chí Minh.\",\n    \"Căn hộ có view sông.\",\n    \"Căn hộ được bán full nội thất cao cấp.\",\n    \"Căn hộ nằm trong khu phức hợp cao cấp.\",\n    \"Tiện ích nội khu bao gồm hồ bơi, gym, siêu thị, an ninh 24/7.\",\n    \"Căn hộ có hướng Đông Nam.\",\n    \"Căn hộ thuộc phường Bến Nghé.\",\n    \"Căn hộ có thang máy.\",\n    \"Căn hộ có bãi giữ xe ô tô.\"\n] \n \nClaims:\n[\n    \"Hướng của căn hộ 2 phòng ngủ ở Quận 1 là Đông Nam.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 6.068
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the actual output directly and accurately addresses the input question about the direction of 2-bedroom apartments in District 1, with no irrelevant statements.",
+            "evaluation_cost": 7.047600000000001e-05,
+            "verbose_logs": "Statements:\n[\n    \"Hướng của căn hộ 2 phòng ngủ ở Quận 1 là Đông Nam.\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 3.417
+          }
+        ]
+      },
+      {
+        "name": "ST_EASY_012",
+        "success": true,
+        "metrics_data": [
+          {
+            "name": "Contextual Recall",
+            "threshold": 0.65,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because all sentences in the expected output are fully supported by nodes in retrieval context: node 1 provides 'Quận Hai Bà Trưng, Hà Nội', 'Diện tích 45m2', and 'Giá thuê chỉ 5 triệu VND'; node 2 provides 'Số phòng ngủ: 1' and 'Số phòng vệ sinh: 1'. Great job!",
+            "evaluation_cost": 0.000200564,
+            "verbose_logs": "Verdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"1st node: 'Qu\\u1eadn Hai B\\u00e0 Tr\\u01b0ng, H\\u00e0 N\\u1ed9i' appears in 'H1 t\\u1eadp th\\u1ec3 Nguy\\u1ec5n C\\u00f4ng Tr\\u1ee9, Qu\\u1eadn Hai B\\u00e0 Tr\\u01b0ng, H\\u00e0 N\\u1ed9i'\",\n        \"expected_output\": \"Quan/Huyen/Thanh pho: Hai Ba Trung, Ha Noi\\nDien tich: 45 m2\\nSo phong ngu: 1\\nSo phong ve sinh: 1\\nGia thue: 5.000.000 VND\"\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"1st node: 'Dien tich: 45 m2' matches 'Di\\u1ec7n t\\u00edch 45m2'\",\n        \"expected_output\": \"Quan/Huyen/Thanh pho: Hai Ba Trung, Ha Noi\\nDien tich: 45 m2\\nSo phong ngu: 1\\nSo phong ve sinh: 1\\nGia thue: 5.000.000 VND\"\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"2nd node: 'So phong ngu: 1' matches 'S\\u1ed1 ph\\u00f2ng ng\\u1ee7: 1'\",\n        \"expected_output\": \"Quan/Huyen/Thanh pho: Hai Ba Trung, Ha Noi\\nDien tich: 45 m2\\nSo phong ngu: 1\\nSo phong ve sinh: 1\\nGia thue: 5.000.000 VND\"\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"2nd node: 'So phong ve sinh: 1' matches 'S\\u1ed1 ph\\u00f2ng v\\u1ec7 sinh: 1'\",\n        \"expected_output\": \"Quan/Huyen/Thanh pho: Hai Ba Trung, Ha Noi\\nDien tich: 45 m2\\nSo phong ngu: 1\\nSo phong ve sinh: 1\\nGia thue: 5.000.000 VND\"\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": \"1st node: 'Gia thue: 5.000.000 VND' matches 'Gi\\u00e1 thu\\u00ea ch\\u1ec9 5 tri\\u1ec7u VND'\",\n        \"expected_output\": \"Quan/Huyen/Thanh pho: Hai Ba Trung, Ha Noi\\nDien tich: 45 m2\\nSo phong ngu: 1\\nSo phong ve sinh: 1\\nGia thue: 5.000.000 VND\"\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 6.011
+          },
+          {
+            "name": "Faithfulness",
+            "threshold": 0.7,
+            "score": 0.75,
+            "success": true,
+            "reason": "The score is 0.75 because the actual output incorrectly names 'Phường Hai Bà Trưng' instead of 'Phường Phố Huế' as per the retrieval context, but otherwise aligns with the context.",
+            "evaluation_cost": 0.00027118,
+            "verbose_logs": "Truths (limit=None):\n[\n    \"Căn hộ cho thuê có diện tích 45 m2.\",\n    \"Giá thuê là 5.000.000 VND.\",\n    \"Có 1 phòng ngủ.\",\n    \"Thời gian thuê tối thiểu là 1 năm.\",\n    \"Căn hộ nằm tại H1 tập thể Nguyễn Công Trứ, Đường Nguyễn Công Trứ, Phường Phố Huế, Quận Hai Bà Trưng, Hà Nội.\",\n    \"Gần công viên Thống Nhất và công viên Tuổi trẻ Thủ đô.\",\n    \"Cách WinMart + 27 Ngô Thì Nhậm không xa.\",\n    \"Gần bệnh viện Y học cổ truyền Trung ương và bệnh viện Trung ương Quân đội 108.\",\n    \"Liên hệ Hoàng Mai qua số 0903 415 181 để biết thêm chi tiết.\"\n] \n \nClaims:\n[\n    \"Vị trí: H1 tập thể Nguyễn Công Trứ, Đường Nguyễn Công Trứ, Phường Hai Bà Trưng, Quận Hai Bà Trưng, Hà Nội\",\n    \"Diện tích: 45 m²\",\n    \"Số phòng: 1 phòng ngủ\",\n    \"Giá thuê: 5.000.000 VNĐ\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"no\",\n        \"reason\": \"The claim states 'Ph\\u01b0\\u1eddng Hai B\\u00e0 Tr\\u01b0ng' but the context says 'Ph\\u01b0\\u1eddng Ph\\u1ed1 Hu\\u1ebf'.\"\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 6.719
+          },
+          {
+            "name": "Answer Relevancy",
+            "threshold": 0.7,
+            "score": 1.0,
+            "success": true,
+            "reason": "The score is 1.00 because the actual output perfectly addresses the input request, providing a concise summary of the apartment's location, area, number of rooms, and rental price without any irrelevant statements.",
+            "evaluation_cost": 0.000122332,
+            "verbose_logs": "Statements:\n[\n    \"Vị trí: H1 tập thể Nguyễn Công Trứ, Đường Nguyễn Công Trứ, Phường Hai Bà Trưng, Quận Hai Bà Trưng, Hà Nội\",\n    \"Diện tích: 45 m²\",\n    \"Số phòng: 1 phòng ngủ\",\n    \"Giá thuê: 5.000.000 VNĐ\"\n] \n \nVerdicts:\n[\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    },\n    {\n        \"verdict\": \"yes\",\n        \"reason\": null\n    }\n]",
+            "evaluation_model": "deepseek-chat (Deepseek)",
+            "duration_seconds": 4.459
+          }
+        ]
+      }
+    ],
+    "confident_link": null,
+    "run_duration": null
+  },
+  "traces": [
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "real_estate",
+        "input": "Giá bán của căn nhà ở ngõ 281 Trương Định là bao nhiêu?",
+        "expected_output_outline": [
+          "Nêu đúng giá bán: 14.000.000.000 VNĐ",
+          "Xác định đúng đây là tin cần bán",
+          "Không suy đoán nếu thiếu dữ liệu"
+        ],
+        "context": [
+          "postId=146, propertyId=145, postType=SALE, categoryName=Căn hộ, title=Chính chủ bán nhà Trương Định 67m2 5T mặt tiền 5m 2 ngõ oto vào nhà chỉ hơn 14 tỷ, price=14000000000, area=67, bedrooms=4, bathrooms=3, furnishing=FULLY_FURNISHED, address=ngõ 281 Đường Trương Định Phường Tương Mai Quận Hoàng Mai Hà Nội"
+        ],
+        "target_metadata": {
+          "postId": 146,
+          "propertyId": 145
+        },
+        "id": "ST_EASY_001"
+      },
+      "trace": {
+        "input": "Giá bán của căn nhà ở ngõ 281 Trương Định là bao nhiêu?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 146 ===\n- Loai tin: Can ban\n- Gia: 14.000.000.000 VND\n- Dien tich: 67 m2\n- So phong ngu: 4\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 146 ===\n Loại: Cần bán\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Chính chủ bán nhà Trương Định, 67m2, 5T, mặt tiền 5m, 2 ngõ, oto vào nhà chỉ hơn 14 tỷ\nNhà tôi bán đẹp nhất ngõ 281 Trương Định, mặt tiền 5m, 2 măt ngõ, oto 7 chỗ vào nhà.\n- Nhà thuộc ngõ 281 Trương Định, nhưng đi ngõ 151 Nguyễn Đức Cảnh cách mặt phố Nguyễn Đức Cảnh 100m, ngõ Oto quay đầu. Diện tích 67m2 (sổ CN 57m2) x 5T.\n- Tầng 1: Sân 10m2 + Khách + Bếp + WC.\n- Tầng 2, 3,4: Mỗi tầng 2p bao gồm 1 master, 1N nhỏ đã full nội thất.\n- Tầng 5: Sân phơi, trồng cây BBQ. Xung quanh cách hồ Đền Lừ 700m, các trường C1, C2 Tân Mai 500m tiện ích vô cùng nhiều. Liên hệ ngay chủ nhà O963319192 thương lượng. Miễn tiếp trung gian môi giới.",
+          "Nhà tôi bán đẹp nhất ngõ 281 Trương Định, mặt tiền 5m, 2 măt ngõ, oto 7 chỗ vào nhà.\n- Nhà thuộc ngõ 281 Trương Định, nhưng đi ngõ 151 Nguyễn Đức Cảnh cách mặt phố Nguyễn Đức Cảnh 100m, ngõ Oto quay đầu. Diện tích 67m2 (sổ CN 57m2) x 5T.\n- Tầng 2, 3,4: Mỗi tầng 2p bao gồm 1 master, 1N nhỏ đã full nội thất.\n• Số phòng vệ sinh: 3\n• Tình trạng nội thất: FULLY_FURNISHED\n• Giá: 14.000.000.000 VNĐ\n- Tầng 5: Sân phơi, trồng cây BBQ. Xung quanh cách hồ Đền Lừ 700m, các trường C1, C2 Tân Mai 500m tiện ích vô cùng nhiều. Liên hệ ngay chủ nhà O963319192 thương lượng. Miễn tiếp trung gian môi giới.\n• Diện tích: 67 m2",
+          "--- VỊ TRÍ ---\n ngõ 281 , Đường Trương Định, Phường Tương Mai, Quận Hoàng Mai, Hà Nội\n\n(Phường Tương Mai, Hà Nội mới)"
+        ],
+        "retrieved_doc_ids": [
+          "146_chunk_na",
+          "146_chunk_1",
+          "146_chunk_2"
+        ],
+        "retrieval_scores": [
+          0.8834070771800754,
+          0.879836573620251,
+          0.8487562627341606
+        ],
+        "actual_output": "Giá bán của căn nhà ở ngõ 281 Trương Định là 14.000.000.000 VNĐ.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 146,
+            "propertyId": 145
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Giá bán của căn nhà ở ngõ 281 Trương Định là bao nhiêu?",
+          "context_selection_query": "Giá bán của căn nhà ở ngõ 281 Trương Định là bao nhiêu?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 3,
+          "context_chars": 1572,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 1572,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 5.08,
+          "answer_generation_seconds": 4.996,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:10.009114+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "real_estate",
+        "input": "Nhà cho thuê ở 54/98 Thịnh Hào 3 có mấy phòng ngủ?",
+        "expected_output_outline": [
+          "Nêu đúng số phòng ngủ: 6",
+          "Không trả lời sang thuộc tính khác nếu không được hỏi"
+        ],
+        "context": [
+          "postId=289, propertyId=288, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà riêng 54/98 Thịnh Hào 3 13 triệu 45m2 6PN 3WC, price=13000000, area=45, bedrooms=6, bathrooms=3, direction=Nam, furnishing=PARTLY_FURNISHED, address=54/98 Thịnh Hào 3 đường Tôn Đức Thắng Phường Ô Chợ Dừa Hà Nội"
+        ],
+        "target_metadata": {
+          "postId": 289,
+          "propertyId": 288
+        },
+        "id": "ST_EASY_002"
+      },
+      "trace": {
+        "input": "Nhà cho thuê ở 54/98 Thịnh Hào 3 có mấy phòng ngủ?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 289 ===\n- Loai tin: Cho thue\n- Gia: 13.000.000 VND\n- Dien tich: 45 m2\n- So phong ngu: 6\n- So phong ve sinh: 3\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 289 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Cho thuê nhà riêng 54/98 Thịnh Hào 3, 13 triệu, 45m2, 6PN, 3WC, uy tín\nNhà riêng cho thuê tại 54/98 Thịnh Hào 3 đường Tôn Đức Thắng Phường Ô Chợ Dừa TP Hà Nội, Phố Tôn Đức Thắng, Phường Ô Chợ Dừa, Hà Nội (địa chỉ cũ: Quận Đống Đa, Hà Nội) với diện tích 45m2, gồm 4 tầng, 6 phòng ngủ và 3 toilet. Nội thất cơ bản, phù hợp cho gia đình hoặc nhóm người ở lâu dài. Ngõ vào rộng 3m, thuận tiện cho việc di chuyển, mặt tiền 4m, lý tưởng cho việc kinh doanh nhỏ hay cho thuê lại. Thời gian cho thuê linh hoạt, tối thiểu hai năm. Địa điểm xung quanh:- Bệnh viện Da liễu Hà Nội.\n- Bệnh viện Tim Hà Nội.\n- Siêu thị Teekiu Mart.\n- Công viên Thống Nhất. Liên hệ để biết thêm thông tin chi tiết qua số điện thoại 0912 016 *** hoặc với MINH .",
+          "Nhà riêng cho thuê tại 54/98 Thịnh Hào 3 đường Tôn Đức Thắng Phường Ô Chợ Dừa TP Hà Nội, Phố Tôn Đức Thắng, Phường Ô Chợ Dừa, Hà Nội (địa chỉ cũ: Quận Đống Đa, Hà Nội) với diện tích 45m2, gồm 4 tầng, 6 phòng ngủ và 3 toilet. Nội thất cơ bản, phù hợp cho gia đình hoặc nhóm người ở lâu dài. Ngõ vào rộng 3m, thuận tiện cho việc di chuyển, mặt tiền 4m, lý tưởng cho việc kinh doanh nhỏ hay cho thuê lại. Thời gian cho thuê linh hoạt, tối thiểu hai năm. Địa điểm xung quanh:- Bệnh viện Da liễu Hà Nội.\n- Bệnh viện Tim Hà Nội.\n- Siêu thị Teekiu Mart.\n- Công viên Thống Nhất. Liên hệ để biết thêm thông tin chi tiết qua số điện thoại 0912 016 *** hoặc với MINH .",
+          "54/98 Thịnh Hào 3 đường Tôn Đức Thắng Phường Ô Chợ Dừa TP Hà Nội, Phố Tôn Đức Thắng, Phường Ô Chợ Dừa, Quận Đống Đa, Hà Nội\n• Số phòng vệ sinh: 3\n• Số phòng ngủ: 6\n(Phường Ô Chợ Dừa, Hà Nội mới)\n• Diện tích: 45 m2\n• Tình trạng nội thất: PARTLY_FURNISHED"
+        ],
+        "retrieved_doc_ids": [
+          "289_chunk_na",
+          "289_chunk_1",
+          "289_chunk_2"
+        ],
+        "retrieval_scores": [
+          0.8730016166268431,
+          0.8710149757239282,
+          0.8174047091716933
+        ],
+        "actual_output": "Nhà cho thuê ở 54/98 Thịnh Hào 3 có 6 phòng ngủ.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 289,
+            "propertyId": 288
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Nhà cho thuê ở 54/98 Thịnh Hào 3 có mấy phòng ngủ?",
+          "context_selection_query": "Nhà cho thuê ở 54/98 Thịnh Hào 3 có mấy phòng ngủ?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 3,
+          "context_chars": 1869,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 1869,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 5.042,
+          "answer_generation_seconds": 1.613,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:16.676605+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "real_estate",
+        "input": "Giá thuê căn nhà nguyên căn thiết kế 7 căn hộ mini tại Nhổn là bao nhiêu?",
+        "expected_output_outline": [
+          "Nêu đúng giá thuê: 25.000.000 VNĐ",
+          "Xác định đúng đây là tin cho thuê"
+        ],
+        "context": [
+          "postId=295, propertyId=294, postType=RENT, categoryName=Căn hộ, title=Chính chủ cho thuê nguyên căn đã thiết kế phù hợp cho thuê 7 căn hộ mini tại Nhổn, price=25000000, area=45, bedrooms=7, bathrooms=7, furnishing=PARTLY_FURNISHED, address=ngõ 27 Đường Nhổn Phường Cầu Diễn Quận Nam Từ Liêm Hà Nội"
+        ],
+        "target_metadata": {
+          "postId": 295,
+          "propertyId": 294
+        },
+        "id": "ST_EASY_003"
+      },
+      "trace": {
+        "input": "Giá thuê căn nhà nguyên căn thiết kế 7 căn hộ mini tại Nhổn là bao nhiêu?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 295 ===\n- Loai tin: Cho thue\n- Gia: 25.000.000 VND\n- Dien tich: 45 m2\n- So phong ngu: 7\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 295 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Chính chủ cho thuê nguyên căn đã thiết kế phù hợp cho thuê 7 căn hộ mini, khép kín tại Nhổn\nChính Chủ Cho Thuê Nhà Nguyên Căn Thiết Kế Sẵn 7 Căn Hộ Mini Tại NhổnCho thuê nhà nguyên căn, đã thiết kế tối ưu để khai thác cho thuê căn hộ mini, phù hợp đầu tư kinh doanh hoặc vận hành mô hình cho thuê. Diện tích: (45m/ sàn)Kết cấu: 4 tầng + 1 tầng thượngGồm 7 phòng ngủ khép kín, mỗi phòng đều có nhà vệ sinh, bếp riêngTổng cộng 7 căn hộ mini độc lập, tiện cho thuê riêng từng phòngThiết kế thông minh, tối ưu công năng sử dụngKhu vực Nhổn, giao thông thuận tiện, gần trường học, khu dân cư đông đúc, nhu cầu thuê cao Nhà phù hợp:Đầu tư cho thuê căn hộ miniLàm homestay, ký túc xá, hoặc cho thuê dài hạn Liên hệ chính chủ: 0976 062 938Giá thuê: 25 triệu",
+          "Chính Chủ Cho Thuê Nhà Nguyên Căn Thiết Kế Sẵn 7 Căn Hộ Mini Tại NhổnCho thuê nhà nguyên căn, đã thiết kế tối ưu để khai thác cho thuê căn hộ mini, phù hợp đầu tư kinh doanh hoặc vận hành mô hình cho thuê. Diện tích: (45m/ sàn)Kết cấu: 4 tầng + 1 tầng thượngGồm 7 phòng ngủ khép kín, mỗi phòng đều có nhà vệ sinh, bếp riêngTổng cộng 7 căn hộ mini độc lập, tiện cho thuê riêng từng phòngThiết kế thông minh, tối ưu công năng sử dụngKhu vực Nhổn, giao thông thuận tiện, gần trường học, khu dân cư đông đúc, nhu cầu thuê cao Nhà phù hợp:Đầu tư cho thuê căn hộ miniLàm homestay, ký túc xá, hoặc cho thuê dài hạn Liên hệ chính chủ: 0976 062 938Giá thuê: 25 triệu\n\n--- ĐẶC ĐIỂM ---\n • Giá: 25.000.000 VNĐ\n • Diện tích: 45 m2\n • Số phòng ngủ: 7\n • Số phòng vệ sinh: 7\n • Hướng: N/A\n • Tình trạng nội thất: PARTLY_FURNISHED"
+        ],
+        "retrieved_doc_ids": [
+          "295_chunk_na",
+          "295_chunk_1"
+        ],
+        "retrieval_scores": [
+          0.9206575751304626,
+          0.9165505170822144
+        ],
+        "actual_output": "Giá thuê căn nhà nguyên căn thiết kế 7 căn hộ mini tại Nhổn là 25.000.000 VNĐ.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 295,
+            "propertyId": 294
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Giá thuê căn nhà nguyên căn thiết kế 7 căn hộ mini tại Nhổn là bao nhiêu?",
+          "context_selection_query": "Giá thuê căn nhà nguyên căn thiết kế 7 căn hộ mini tại Nhổn là bao nhiêu?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 2,
+          "context_chars": 1773,
+          "eval_context_docs_count": 2,
+          "eval_context_chars": 1773,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 3.435,
+          "answer_generation_seconds": 1.398,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:21.519227+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "real_estate",
+        "input": "Nhà cho thuê ở phố Quang Tiến, Tây Mỗ có mấy phòng vệ sinh?",
+        "expected_output_outline": [
+          "Nêu đúng số phòng vệ sinh: 4"
+        ],
+        "context": [
+          "postId=290, propertyId=289, postType=RENT, categoryName=Căn hộ, title=Chính chủ cho thuê nhà 5 tầng ở phố Quang Tiến Tây Mỗ Từ Liêm Hà Nội, price=16000000, area=38, bedrooms=3, bathrooms=4, direction=Đông, furnishing=FULLY_FURNISHED, address=Khu đô thị Đại Mỗ Hà Nội Đường Quang Tiến Phường Đại Mỗ Quận Nam Từ Liêm Hà Nội"
+        ],
+        "target_metadata": {
+          "postId": 290,
+          "propertyId": 289
+        },
+        "id": "ST_EASY_004"
+      },
+      "trace": {
+        "input": "Nhà cho thuê ở phố Quang Tiến, Tây Mỗ có mấy phòng vệ sinh?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 290 ===\n- Loai tin: Cho thue\n- Gia: 16.000.000 VND\n- Dien tich: 38 m2\n- So phong ngu: 3\n- So phong ve sinh: 4\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 290 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n CHÍNH CHỦ CHO THUÊ NHÀ 5 TẦNG Ở PHỐ QUANG TIẾN -TÂY MỖ - TỪ LIÊM - HÀ NỘI.\n- Diện tích 38m2x 5 tầng, mặt tiền 3.2m.\n- Thiết kế : 1 phòng khách, 1 bếp, 3 phòng ngủ, 4 phòng vệ sinh, 1 phòng thờ + tum, sân phơi có lưới an toàn.\n- Nội thất nhà cơ bản : có đủ điều hòa, giường, tủ quần áo,...\n- Hướng ban công Đông - Nam.\n- Ngõ rộng, xe ba gác và ô tô 4 chỗ đỗ sát cổng.\n- Khu đông dân, thuận tiện, đường sá đi lại sạch sẽ, thông thoáng và an ninh.\n- Xung quanh nhiều tiện ích : + Cách 500m là trường cấp 1 và cấp 3 Đại Mỗ, trường cấp 2 Nguyễn Quý Đức, chợ Đại Mỗ và Tây Mỗ sầm uất.+ Cách 2 km là bệnh viện Hồng Ngọc Phúc Trường Minh hoặc Vinmec và Aeon Mall Hà Đông.+ Giá thuê : 12 triệu/tháng.\n- Liên hệ qua sdt : 0989 532 ***.",
+          "Xung quanh nhiều tiện ích : + Cách 500m là trường cấp 1 và cấp 3 Đại Mỗ, trường cấp 2 Nguyễn Quý Đức, chợ Đại Mỗ và Tây Mỗ sầm uất.+ Cách 2 km là bệnh viện Hồng Ngọc Phúc Trường Minh hoặc Vinmec và Aeon Mall Hà Đông.+ Giá thuê : 12 triệu/tháng.\n- Thiết kế : 1 phòng khách, 1 bếp, 3 phòng ngủ, 4 phòng vệ sinh, 1 phòng thờ + tum, sân phơi có lưới an toàn.\n• Số phòng vệ sinh: 4\n• Số phòng ngủ: 3\n- Diện tích 38m2x 5 tầng, mặt tiền 3.2m.\n- Nội thất nhà cơ bản : có đủ điều hòa, giường, tủ quần áo,...\n- Ngõ rộng, xe ba gác và ô tô 4 chỗ đỗ sát cổng.\n- Khu đông dân, thuận tiện, đường sá đi lại sạch sẽ, thông thoáng và an ninh."
+        ],
+        "retrieved_doc_ids": [
+          "290_chunk_na",
+          "290_chunk_1"
+        ],
+        "retrieval_scores": [
+          0.8251446485519409,
+          0.8312504291534424
+        ],
+        "actual_output": "Nhà cho thuê ở phố Quang Tiến, Tây Mỗ có 4 phòng vệ sinh.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 290,
+            "propertyId": 289
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Nhà cho thuê ở phố Quang Tiến, Tây Mỗ có mấy phòng vệ sinh?",
+          "context_selection_query": "Nhà cho thuê ở phố Quang Tiến, Tây Mỗ có mấy phòng vệ sinh?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 2,
+          "context_chars": 1581,
+          "eval_context_docs_count": 2,
+          "eval_context_chars": 1581,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 0.623,
+          "answer_generation_seconds": 1.164,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:23.318925+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "real_estate",
+        "input": "Tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" co tinh trang noi that la gi?",
+        "expected_output_outline": [
+          "Noi that: FULLY_FURNISHED"
+        ],
+        "context": [
+          "postId=294, propertyId=293, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà riêng tại phố Thanh Nhàn Hà Nội, price=7000000, area=34, bedrooms=2, bathrooms=2, furnishing=FULLY_FURNISHED, address=ngõ 285 phố Thanh Nhàn Đường Thanh Nhàn Phường Thanh Nhàn Quận Hai Bà Trưng Hà Nội"
+        ],
+        "target_metadata": {
+          "postId": 294,
+          "propertyId": 293
+        },
+        "id": "ST_EASY_005"
+      },
+      "trace": {
+        "input": "Tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" co tinh trang noi that la gi?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 294 ===\n- Loai tin: Cho thue\n- Gia: 7.000.000 VND\n- Dien tich: 34 m2\n- So phong ngu: 2\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 294 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n CHO THUÊ NHÀ RIÊNG TẠI PHỐ THANH NHÀN, HÀ NỘI\nƯu điểm vị trí: Chỉ vài bước ra mặt phố Thanh Nhàn Gần 3 trường đại học lớn: Bách - Kinh - Xây Chợ ngay đối diện bên đường, mua bán cực tiện Gần bệnh viện lớn: Bệnh viện Bạch Mai, Thanh Nhàn Thông tin nhà: Nhà 3 tầng, tầng 2 có ban công, tầng 3 có sân phơi rộng rãi Đầy đủ nội thất: giường, tủ quần áo, tủ lạnh, máy giặt, bình nóng lạnh,... Điện nước giá nhà nước",
+          "• Tình trạng nội thất: FULLY_FURNISHED\nngõ 285 phố Thanh Nhàn, Đường Thanh Nhàn, Phường Thanh Nhàn, Quận Hai Bà Trưng, Hà Nội\n• Số phòng ngủ: 2\n• Số phòng vệ sinh: 2\n(Phường Bạch Mai, Hà Nội mới)\n• Diện tích: 34 m2"
+        ],
+        "retrieved_doc_ids": [
+          "294_chunk_na",
+          "294_chunk_1"
+        ],
+        "retrieval_scores": [
+          0.7860327149571108,
+          0.7690011538265815
+        ],
+        "actual_output": "Tình trạng nội thất của nhà cho thuê tại phố Thanh Nhàn, Hà Nội là đầy đủ nội thất (fully furnished), bao gồm giường, tủ quần áo, tủ lạnh, máy giặt, bình nóng lạnh.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 294,
+            "propertyId": 293
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" co tinh trang noi that la gi?",
+          "context_selection_query": "Tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" co tinh trang noi that la gi?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 2,
+          "context_docs_count": 2,
+          "context_chars": 831,
+          "eval_context_docs_count": 2,
+          "eval_context_chars": 831,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 0.629,
+          "answer_generation_seconds": 1.669,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:25.624822+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "real_estate",
+        "input": "Lô đất D3 khu Vườn Đào đối diện Lotte Mall có diện tích bao nhiêu?",
+        "expected_output_outline": [
+          "Nêu đúng diện tích: 270 m²"
+        ],
+        "context": [
+          "postId=240, propertyId=239, postType=SALE, categoryName=Căn hộ, title=Bán đất lô D3 khu Vườn Đào 270m2 ngay ngã tư đối diện Lotte Mall, price=189000000000, area=270, direction=Tây, furnishing=UNFURNISHED, address=685 Đường Lạc Long Quân Phường Phú Thượng Quận Tây Hồ Hà Nội"
+        ],
+        "target_metadata": {
+          "postId": 240,
+          "propertyId": 239
+        },
+        "id": "ST_EASY_006"
+      },
+      "trace": {
+        "input": "Lô đất D3 khu Vườn Đào đối diện Lotte Mall có diện tích bao nhiêu?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 240 ===\n- Loai tin: Can ban\n- Gia: 189.000.000.000 VND\n- Dien tich: 270 m2\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 240 ===\n Loại: Cần bán\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Bán đất lô D3 khu Vườn Đào, 270m2 ngay ngã tư, đối diện Lotte Mall",
+          "Bán đất lô D3 khu Vườn Đào, 270m2 ngay ngã tư, đối diện Lotte Mall. Ngay ngã tư Lạc Long Quân vị trí kim cương khu Tây Hồ. Đối diện Lotte Mall West Lake Hanoi Trung tâm thương mại lớn nhất Hà Nội. Thông tin nổi bật:Vị trí: Lô D3 khu biệt thự Vườn Đào, phường Phú Thượng, Hà Nội. Khu vực vip dân trí cao an ninh 24/7. Đường rộng, vỉa hè thoáng, ô tô tránh nhau. Giao thông kết nối cực thuận tiện:O 3 phút ra Hồ Tây. O 5 phút sang Ciputra. O 15 phút tới Nội Bài. Giá trị đầu tư vượt trội:Đối diện Lotte Mall trung tâm thương mại biểu tượng khu Tây Hồ. Tăng giá mạnh theo hạ tầng và tiện ích khu vực. Phù hợp xây biệt thự ở, căn hộ dịch vụ cao cấp, văn phòng đại diện. Khu vực khan hiếm quỹ đất tính thanh khoản cao. Giá bán: Giá đầu tư thương lượng trực tiếp.(Chi tiết diện tích sổ đỏ quy hoạch cung cấp trực tiếp). Liên hệ ngay 0936 668 *** để xem đất và làm việc chính chủ"
+        ],
+        "retrieved_doc_ids": [
+          "240_chunk_na",
+          "240_chunk_1"
+        ],
+        "retrieval_scores": [
+          0.8913536732582065,
+          0.8950261002747957
+        ],
+        "actual_output": "Lô đất D3 khu Vườn Đào có diện tích 270 m2.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 240,
+            "propertyId": 239
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Lô đất D3 khu Vườn Đào đối diện Lotte Mall có diện tích bao nhiêu?",
+          "context_selection_query": "Lô đất D3 khu Vườn Đào đối diện Lotte Mall có diện tích bao nhiêu?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 6,
+          "context_docs_count": 2,
+          "context_chars": 1133,
+          "eval_context_docs_count": 2,
+          "eval_context_chars": 1133,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 0.637,
+          "answer_generation_seconds": 1.442,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:27.718998+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "real_estate",
+        "input": "Giá thuê nhà nguyên căn ở Giảng Võ là bao nhiêu?",
+        "expected_output_outline": [
+          "Nêu đúng giá thuê: 30.000.000 VNĐ"
+        ],
+        "context": [
+          "postId=272, propertyId=271, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà riêng chính chủ tại Giảng Võ, price=30000000, area=65, bedrooms=5, bathrooms=4, furnishing=PARTLY_FURNISHED, address=Phố Giảng Võ Phường Giảng Võ Quận Ba Đình Hà Nội"
+        ],
+        "target_metadata": {
+          "postId": 272,
+          "propertyId": 271
+        },
+        "id": "ST_EASY_007"
+      },
+      "trace": {
+        "input": "Giá thuê nhà nguyên căn ở Giảng Võ là bao nhiêu?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 272 ===\n- Loai tin: Cho thue\n- Gia: 30.000.000 VND\n- Dien tich: 65 m2\n- So phong ngu: 5\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 272 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Cho thuê nhà riêng chính chủ tại Giảng Võ\nCho thuê nhà nguyên căn để ở gia đình hoặc kết hợp làm văn phòng quy mô nhỏ, ít người. Nhà nằm trong khu dân cư dân trí cao, có bảo vệ khu, ngõ rộng, ô tô ra vào thuận tiện. Không cho thuê:- Văn phòng đông người / quy mô lớn.\n- Căn hộ cho thuê lẻ.\n- Dịch vụ lưu trú ngắn ngày (Airbnb). Thông tin chi tiết:Diện tích: 65m2, mặt tiền 5,8m. Kết cấu: 4 tầng, 5 phòng ngủ. Cầu thang cuối nhà, không có thang máy. Giá thuê: 30 triệu/tháng (chưa bao gồm thuế TNCN).",
+          "Cho thuê nhà nguyên căn để ở gia đình hoặc kết hợp làm văn phòng quy mô nhỏ, ít người.\nGiá thuê: 30 triệu/tháng (chưa bao gồm thuế TNCN).\nNhà nằm trong khu dân cư dân trí cao, có bảo vệ khu, ngõ rộng, ô tô ra vào thuận tiện.\n- Căn hộ cho thuê lẻ.\n(Phường Giảng Võ, Hà Nội mới)\nCầu thang cuối nhà, không có thang máy.\n• Giá: 30.000.000 VNĐ\nKết cấu: 4 tầng, 5 phòng ngủ."
+        ],
+        "retrieved_doc_ids": [
+          "272_chunk_na",
+          "272_chunk_1"
+        ],
+        "retrieval_scores": [
+          0.9172328163842685,
+          0.8901882171630859
+        ],
+        "actual_output": "Giá thuê nhà nguyên căn ở Giảng Võ là 30.000.000 VNĐ/tháng (chưa bao gồm thuế TNCN).",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 272,
+            "propertyId": 271
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Giá thuê nhà nguyên căn ở Giảng Võ là bao nhiêu?",
+          "context_selection_query": "Giá thuê nhà nguyên căn ở Giảng Võ là bao nhiêu?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 2,
+          "context_docs_count": 2,
+          "context_chars": 1076,
+          "eval_context_docs_count": 2,
+          "eval_context_chars": 1076,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 0.639,
+          "answer_generation_seconds": 1.181,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:29.554129+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "real_estate",
+        "input": "Mặt bằng ở số 2A ngõ 76 Trần Thái Tông có diện tích bao nhiêu?",
+        "expected_output_outline": [
+          "Nêu đúng diện tích: 91 m²",
+          "Xác định đúng đây là diện tích cho thuê"
+        ],
+        "context": [
+          "postId=292, propertyId=291, postType=RENT, categoryName=Căn hộ, title=Chính chủ cần cho thuê nhà số 2A ngõ 76 Trần Thái Tông Cầu Giấy Hà Nội, price=16000000, area=91, address=Số 2A ngõ 76 Trần Thái Tông Cầu Giấy Hà Nội"
+        ],
+        "target_metadata": {
+          "postId": 292,
+          "propertyId": 291
+        },
+        "id": "ST_EASY_008"
+      },
+      "trace": {
+        "input": "Mặt bằng ở số 2A ngõ 76 Trần Thái Tông có diện tích bao nhiêu?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 292 ===\n- Loai tin: Cho thue\n- Gia: 16.000.000 VND\n- Dien tich: 91 m2\n--- CHI TIET ---\n--- THÔNG TIN CHI TIẾT ---\n Chính chủ cần cho thuê nhà số 2A, ngõ 76 Trần Thái Tông, Cầu Giấy, Hà Nội\nChính chủ cho thuê mặt bằng đẹp căn góc 2 mặt tiền. Địa chỉ: Số 2A, ngõ 76 Trần Thái Tông, Cầu Giấy, Hà Nội. Nhà 7 tầng mới xây, căn góc thoáng sáng, ô tô đỗ tận cửa, nằm trong khu vực sầm uất phù hợp nhiều mô hình kinh doanh. Diện tích cho thuê tầng 4: 91m2Giá chỉ 16tr/ tháng.\n- Khu vực dân trí cao, an ninh đảm bảo.\n- Giao thông thuận tiện, gần mặt đường Trần Thái Tông khu phố kinh doanh nhiều nhất Cầu Giấy.\n- Không gian đẹp, vuông vắn, dễ setup.\n- Phù hợp làm văn phòng, studio, spa, salon tóc, nha khoa, trung tâm tiếng Anh, lớp học, showroom, coffe. Cơ hội thuê mặt bằng vị trí vàng giá tốt!Liên hệ chính chủ: Anh Trường 0983 733 ***.(Ưu tiên khách thiện chí, xem nhà trực tiếp).",
+          "Chính chủ cho thuê mặt bằng đẹp căn góc 2 mặt tiền. Địa chỉ: Số 2A, ngõ 76 Trần Thái Tông, Cầu Giấy, Hà Nội. Nhà 7 tầng mới xây, căn góc thoáng sáng, ô tô đỗ tận cửa, nằm trong khu vực sầm uất phù hợp nhiều mô hình kinh doanh. Diện tích cho thuê tầng 4: 91m2Giá chỉ 16tr/ tháng.\n- Khu vực dân trí cao, an ninh đảm bảo.\n- Giao thông thuận tiện, gần mặt đường Trần Thái Tông khu phố kinh doanh nhiều nhất Cầu Giấy.\n- Không gian đẹp, vuông vắn, dễ setup.\n- Phù hợp làm văn phòng, studio, spa, salon tóc, nha khoa, trung tâm tiếng Anh, lớp học, showroom, coffe. Cơ hội thuê mặt bằng vị trí vàng giá tốt!Liên hệ chính chủ: Anh Trường 0983 733 ***.(Ưu tiên khách thiện chí, xem nhà trực tiếp).",
+          "=== BẤT ĐỘNG SẢN 292 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n\n--- THÔNG TIN CHI TIẾT ---\n Chính chủ cần cho thuê nhà số 2A, ngõ 76 Trần Thái Tông, Cầu Giấy, Hà Nội"
+        ],
+        "retrieved_doc_ids": [
+          "292_chunk_1",
+          "292_chunk_2",
+          "292_chunk_na"
+        ],
+        "retrieval_scores": [
+          0.8643682760753364,
+          0.8606511354446411,
+          0.8273540735244751
+        ],
+        "actual_output": "Diện tích mặt bằng ở số 2A ngõ 76 Trần Thái Tông là 91 m2.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 292,
+            "propertyId": 291
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Mặt bằng ở số 2A ngõ 76 Trần Thái Tông có diện tích bao nhiêu?",
+          "context_selection_query": "Mặt bằng ở số 2A ngõ 76 Trần Thái Tông có diện tích bao nhiêu?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 4,
+          "context_docs_count": 3,
+          "context_chars": 1741,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 1741,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 0.657,
+          "answer_generation_seconds": 1.055,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:31.281676+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "real_estate",
+        "input": "Nhà 7 tầng tại đất dịch vụ Dương Nội có điểm nổi bật gì về tiện ích trong nhà?",
+        "expected_output_outline": [
+          "Nêu đúng là nhà có thang máy"
+        ],
+        "context": [
+          "postId=300, propertyId=299, postType=RENT, categoryName=Căn hộ, title=Cho thuê gấp nhà riêng 7 tầng có THANG MÁY 7PN 7WC 55m2 tại đất dịch vụ Dương Nội 20 triệu VND, price=20000000, area=55, bedrooms=7, bathrooms=7, furnishing=PARTLY_FURNISHED, direction=Đông, address=Khu đất dịch vụ 27 28 Dương Nội Phường Dương Nội Quận Hà Đông Hà Nội"
+        ],
+        "target_metadata": {
+          "postId": 300,
+          "propertyId": 299
+        },
+        "id": "ST_EASY_009"
+      },
+      "trace": {
+        "input": "Nhà 7 tầng tại đất dịch vụ Dương Nội có điểm nổi bật gì về tiện ích trong nhà?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 300 ===\n- Loai tin: Cho thue\n- Gia: 20.000.000 VND\n- Dien tich: 55 m2\n- So phong ngu: 7\n- So phong ve sinh: 7\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 300 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Cho thuê gấp nhà riêng 7 tầng có THANG MÁY 7PN, 7WC, 55m2 tại đất dịch vụ Dương Nội, 20 triệu VND\nNhanh tay sở hữu nhà riêng 7 tầng, 7 phòng ngủ, 7 toilet, thiết kế hiện đại, phù hợp cho gia đình lớn hoặc nhóm bạn. Nhà có mặt tiền 4m, đường vào rộng 11m, thuận tiện cho xe ô tô vào tận nơi. Giá cho thuê là 20 triệu VND, diện tích 55m2, hướng cửa chính Đông Nam và ban công Đông Nam, mang lại không gian thoáng đãng và ánh sáng tự nhiên. Đặc biệt có thang máy chạy vù vùĐịa điểm tiện ích xung quanh:- Công viên thiên văn học, cách Aeon Hà Đông 1km._Ngay trục đường Lê Trọng Tấn nên giao thông rất thuận tiện_ Làm văn phòng, bán hàng online kết hợp ở đều được. Liên hệ ngay với Đặng Thuận qua số 0348 864 213 để biết thêm thông tin chi tiết.",
+          "Nhanh tay sở hữu nhà riêng 7 tầng, 7 phòng ngủ, 7 toilet, thiết kế hiện đại, phù hợp cho gia đình lớn hoặc nhóm bạn. Nhà có mặt tiền 4m, đường vào rộng 11m, thuận tiện cho xe ô tô vào tận nơi. Giá cho thuê là 20 triệu VND, diện tích 55m2, hướng cửa chính Đông Nam và ban công Đông Nam, mang lại không gian thoáng đãng và ánh sáng tự nhiên. Đặc biệt có thang máy chạy vù vùĐịa điểm tiện ích xung quanh:- Công viên thiên văn học, cách Aeon Hà Đông 1km._Ngay trục đường Lê Trọng Tấn nên giao thông rất thuận tiện_ Làm văn phòng, bán hàng online kết hợp ở đều được. Liên hệ ngay với Đặng Thuận qua số 0348 864 213 để biết thêm thông tin chi tiết.\n\n--- ĐẶC ĐIỂM ---\n • Giá: 20.000.000 VNĐ\n • Diện tích: 55 m2\n • Số phòng ngủ: 7\n • Số phòng vệ sinh: 7\n • Hướng: Đông\n • Tình trạng nội thất: PARTLY_FURNISHED",
+          "--- VỊ TRÍ ---\n Khu đất dịch vụ 27,28 Dương Nội, Phường Dương Nội, Quận Hà Đông, Hà Nội\n\n(Phường Dương Nội, Hà Nội mới)"
+        ],
+        "retrieved_doc_ids": [
+          "300_chunk_na",
+          "300_chunk_1",
+          "300_chunk_2"
+        ],
+        "retrieval_scores": [
+          0.8777507805153965,
+          0.8270117290917558,
+          0.8375627994537354
+        ],
+        "actual_output": "Tiá»‡n Ã­ch ná»•i báº­t trong nhÃ  lÃ  thang mÃ¡y vÃ  thiáº¿t káº¿ hiá»‡n Ä‘áº¡i.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 300,
+            "propertyId": 299
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Nhà 7 tầng tại đất dịch vụ Dương Nội có điểm nổi bật gì về tiện ích trong nhà?",
+          "context_selection_query": "Nhà 7 tầng tại đất dịch vụ Dương Nội có điểm nổi bật gì về tiện ích trong nhà?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 3,
+          "context_chars": 1891,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 1891,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 0.624,
+          "answer_generation_seconds": 2.53,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:34.446331+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "real_estate",
+        "input": "Diện tích văn phòng cho thuê ở 526-528 Nguyễn Văn Cừ là bao nhiêu?",
+        "expected_output_outline": [
+          "Nêu đúng diện tích: 217 m²"
+        ],
+        "context": [
+          "postId=299, propertyId=298, postType=RENT, categoryName=Căn hộ, title=Cho thuê văn phòng 526-528 Nguyễn Văn Cừ phường Bồ Đề Hà Nội, price=30000000, area=217, furnishing=PARTLY_FURNISHED, address=Số 526+528 Đường Nguyễn Văn Cừ Phường Gia Thụy Quận Long Biên Hà Nội"
+        ],
+        "target_metadata": {
+          "postId": 299,
+          "propertyId": 298
+        },
+        "id": "ST_EASY_010"
+      },
+      "trace": {
+        "input": "Diện tích văn phòng cho thuê ở 526-528 Nguyễn Văn Cừ là bao nhiêu?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 299 ===\n- Loai tin: Cho thue\n- Gia: 30.000.000 VND\n- Dien tich: 217 m2\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 299 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Cho thuê văn phòng 526-528 Nguyễn Văn Cừ , phường Bồ Đề, Hà Nội.\nCho thuê văn phòng 526-528 Nguyễn Văn Cừ , phường Bồ Đề, Hà Nội. Chính chủ cần cho thuê tầng 7 mới xây để làm văn phòng, spa, thời trang, ngân hàng, Vị trí đặc địa, sầm uất , an ninh tốt, tiện ích xung quanh không thiếu gì . Mặt tiền rộng 10,5m, sâu 20,5m, vỉa hè rộng 9m. Có 1 tầng hầm , 10 tầng nổi. Đã có điều hòa trung tâm, PCCC thành phố cấp. Thang máy Mishibusi điều hòa trung tâm. Thiết bị vệ sinh nam nữ riêng biệt. 2 cầu thang bộ thoát hiểm. Bảo vệ 24/24. Ảnh thật . Xem miễn phí. Quý anh chị quan tâm biết thêm chi tiết LH . 0975 133 269",
+          "Cho thuê văn phòng 526-528 Nguyễn Văn Cừ , phường Bồ Đề, Hà Nội. Chính chủ cần cho thuê tầng 7 mới xây để làm văn phòng, spa, thời trang, ngân hàng, Vị trí đặc địa, sầm uất , an ninh tốt, tiện ích xung quanh không thiếu gì . Mặt tiền rộng 10,5m, sâu 20,5m, vỉa hè rộng 9m. Có 1 tầng hầm , 10 tầng nổi. Đã có điều hòa trung tâm, PCCC thành phố cấp. Thang máy Mishibusi điều hòa trung tâm. Thiết bị vệ sinh nam nữ riêng biệt. 2 cầu thang bộ thoát hiểm. Bảo vệ 24/24. Ảnh thật . Xem miễn phí. Quý anh chị quan tâm biết thêm chi tiết LH . 0975 133 269\n\n--- ĐẶC ĐIỂM ---\n • Giá: 30.000.000 VNĐ\n • Diện tích: 217 m2\n • Số phòng ngủ: N/A\n • Số phòng vệ sinh: N/A\n • Hướng: N/A\n • Tình trạng nội thất: PARTLY_FURNISHED",
+          "--- VỊ TRÍ ---\n Số 526+528 , Đường Nguyễn Văn Cừ, Phường Gia Thụy, Quận Long Biên, Hà Nội\n\n(Phường Bồ Đề, Hà Nội mới)"
+        ],
+        "retrieved_doc_ids": [
+          "299_chunk_na",
+          "299_chunk_1",
+          "299_chunk_2"
+        ],
+        "retrieval_scores": [
+          0.9018448649737335,
+          0.8926578292062486,
+          0.8347687918223391
+        ],
+        "actual_output": "Diện tích văn phòng cho thuê ở 526-528 Nguyễn Văn Cừ là 217 m2.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 299,
+            "propertyId": 298
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Diện tích văn phòng cho thuê ở 526-528 Nguyễn Văn Cừ là bao nhiêu?",
+          "context_selection_query": "Diện tích văn phòng cho thuê ở 526-528 Nguyễn Văn Cừ là bao nhiêu?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 3,
+          "context_chars": 1631,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 1631,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 0.656,
+          "answer_generation_seconds": 1.442,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:36.553715+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "what",
+        "domain": "real_estate",
+        "input": "Hướng của căn hộ 2 phòng ngủ ở Quận 1 là gì?",
+        "expected_output_outline": [
+          "Nêu đúng hướng: Đông Nam"
+        ],
+        "context": [
+          "postId=1, propertyId=1, postType=SALE, categoryName=Căn hộ, title=Bán căn hộ 2PN Quận 1 full nội thất, price=6500000000, area=75, bedrooms=2, bathrooms=2, direction=Đông Nam, furnishing=FULLY_FURNISHED, district=Quận 1, ward=Phường Bến Nghé, city=Hồ Chí Minh"
+        ],
+        "target_metadata": {
+          "postId": 1,
+          "propertyId": 1
+        },
+        "id": "ST_EASY_011"
+      },
+      "trace": {
+        "input": "Hướng của căn hộ 2 phòng ngủ ở Quận 1 là gì?",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 1 ===\n- Loai tin: Can ban\n- Quan/Huyen: Quận 1\n- Gia: 6.500.000.000 VND\n- Dien tich: 75 m2\n- So phong ngu: 2\n- So phong ve sinh: 2\n--- CHI TIET ---\nBán căn hộ 2 phòng ngủ, full nội thất cao cấp, view sông, ngay trung tâm Quận 1. Tiện ích nội khu đầy đủ: hồ bơi, gym, siêu thị, an ninh 24/7.\nCăn hộ 2 phòng ngủ, full nội thất, view sông Sài Gòn, nằm trong khu phức hợp cao cấp trung tâm Quận 1.\nBán căn hộ 2PN Quận 1, full nội thất\n• Số phòng ngủ: 2\n• Số phòng vệ sinh: 2\nQuận 1, TP. Hồ Chí Minh\nQuận/Huyện: Quận 1\n=== BẤT ĐỘNG SẢN 1 ===\n• Hướng: Đông Nam\nPhường/Xã: Phường Bến Nghé\n• Diện tích: 75 m2\n• Tình trạng nội thất: FULLY_FURNISHED",
+          "• Phòng gym\n--- TIỆN ÍCH NỘI KHU ---\n• Thang máy\n• Bãi giữ xe ô tô"
+        ],
+        "retrieved_doc_ids": [
+          "1_chunk_na",
+          "1_chunk_1"
+        ],
+        "retrieval_scores": [
+          0.8871282007434432,
+          0.8071296330017085
+        ],
+        "actual_output": "Hướng của căn hộ 2 phòng ngủ ở Quận 1 là Đông Nam.",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 1,
+            "propertyId": 1
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Hướng của căn hộ 2 phòng ngủ ở Quận 1 là gì?",
+          "context_selection_query": "Hướng của căn hộ 2 phòng ngủ ở Quận 1 là gì?",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 2,
+          "context_docs_count": 2,
+          "context_chars": 722,
+          "eval_context_docs_count": 2,
+          "eval_context_chars": 722,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 0.672,
+          "answer_generation_seconds": 0.956,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:38.193568+00:00"
+        }
+      }
+    },
+    {
+      "golden": {
+        "difficulty": "easy",
+        "question_type": "natural_multi_fact",
+        "domain": "real_estate",
+        "input": "Minh dang tim can thue tam 5 trieu o mot minh, thay can H1 tap the Nguyen Cong Tru. Ban tom tat nhanh vi tri quan, dien tich, so phong va gia thue giup minh.",
+        "expected_output_outline": [
+          "Quan/Huyen/Thanh pho: Hai Ba Trung, Ha Noi",
+          "Dien tich: 45 m2",
+          "So phong ngu: 1",
+          "So phong ve sinh: 1",
+          "Gia thue: 5.000.000 VND"
+        ],
+        "context": [
+          "postId=83, propertyId=82, postType=RENT, categoryName=Căn hộ, title=Cho thuê CC 45m2 5 triệu VND tại H1 tập thể Nguyễn Công Trứ Quận Hai Bà Trưng Hà Nội, price=5000000, area=45, bedrooms=1, bathrooms=1, direction=Nam, address=H1 tập thể Nguyễn Công Trứ Đường Nguyễn Công Trứ Phường Phố Huế Quận Hai Bà Trưng Hà Nội"
+        ],
+        "target_metadata": {
+          "postId": 83,
+          "propertyId": 82
+        },
+        "id": "ST_EASY_012",
+        "dataset_variant": "rebalanced_v1_natural_curated",
+        "curation_note": "hand-curated natural question; expected facts preserved from source context"
+      },
+      "trace": {
+        "input": "Minh dang tim can thue tam 5 trieu o mot minh, thay can H1 tap the Nguyen Cong Tru. Ban tom tat nhanh vi tri quan, dien tich, so phong va gia thue giup minh.",
+        "conversation_history_used": [],
+        "rewritten_query": null,
+        "retrieval_context": [
+          "=== BAT DONG SAN 83 ===\n- Loai tin: Cho thue\n- Gia: 5.000.000 VND\n- Dien tich: 45 m2\n- So phong ngu: 1\n- Thoi gian thue toi thieu: 1 nam\n--- CHI TIET ---\n=== BẤT ĐỘNG SẢN 83 ===\n Loại: Cho thuê\n Danh mục: Căn hộ\n--- THÔNG TIN CHI TIẾT ---\n Cho thuê CC 45m2, 5 triệu VND tại H1 tập thể Nguyễn Công Trứ, Quận Hai Bà Trưng, Hà Nội\nNhanh tay cho thuê căn hộ chung cư tại H1 tập thể Nguyễn Công trứ, Đường Nguyễn Công Trứ, Phường Hai Bà Trưng, Hà Nội (Quận Hai Bà Trưng, Hà Nội cũ) với nhiều tiện ích hấp dẫn.\n- Diện tích 45m2, thiết kế hợp lý, không gian sống thoải mái.\n- Giá thuê chỉ 5 triệu VND, phù hợp với gia đình.\n- Thời gian thuê linh hoạt, tối thiểu 1 năm. Tiện ích xung quanh:- Gần công viên Thống Nhất và công viên Tuổi trẻ Thủ đô.\n- Cách WinMart + 27 Ngô Thì Nhậm không xa.\n- Gần các bệnh viện lớn như bệnh viện Y học cổ truyền Trung ương và bệnh viện Trung ương Quân đội 108. Liên hệ ngay Hoàng Mai qua số 0903 415 181 để biết thêm chi tiết.",
+          "Nhanh tay cho thuê căn hộ chung cư tại H1 tập thể Nguyễn Công trứ, Đường Nguyễn Công Trứ, Phường Hai Bà Trưng, Hà Nội (Quận Hai Bà Trưng, Hà Nội cũ) với nhiều tiện ích hấp dẫn.\n- Giá thuê chỉ 5 triệu VND, phù hợp với gia đình.\n- Thời gian thuê linh hoạt, tối thiểu 1 năm. Tiện ích xung quanh:- Gần công viên Thống Nhất và công viên Tuổi trẻ Thủ đô.\n- Diện tích 45m2, thiết kế hợp lý, không gian sống thoải mái.\n• Diện tích: 45 m2\n• Số phòng ngủ: 1\n• Số phòng vệ sinh: 1\n• Giá: 5.000.000 VNĐ",
+          "--- VỊ TRÍ ---\n H1 tập thể Nguyễn Công trứ, Đường Nguyễn Công Trứ, Phường Phố Huế, Quận Hai Bà Trưng, Hà Nội\n\n(Phường Hai Bà Trưng, Hà Nội mới)"
+        ],
+        "retrieved_doc_ids": [
+          "83_chunk_na",
+          "83_chunk_1",
+          "83_chunk_2"
+        ],
+        "retrieval_scores": [
+          0.7909558540012938,
+          0.7962239737777735,
+          0.7953104498797401
+        ],
+        "actual_output": "- **Vị trí**: H1 tập thể Nguyễn Công Trứ, Đường Nguyễn Công Trứ, Phường Hai Bà Trưng, Quận Hai Bà Trưng, Hà Nội\n- **Diện tích**: 45 m²\n- **Số phòng**: 1 phòng ngủ\n- **Giá thuê**: 5.000.000 VNĐ",
+        "metadata": {
+          "llm_model": "gpt-4o-mini",
+          "judge_phase": "offline_eval",
+          "prompt_version": "rag_prompt_v1",
+          "retriever_version": "pgvector_similarity_v1",
+          "chunking_version": "chunking_v1",
+          "top_k": 16,
+          "filters": {
+            "postId": 83,
+            "propertyId": 82
+          },
+          "extracted_filters": {},
+          "retrieval_query": "Minh dang tim can thue tam 5 trieu o mot minh, thay can H1 tap the Nguyen Cong Tru. Ban tom tat nhanh vi tri quan, dien tich, so phong va gia thue giup minh.",
+          "context_selection_query": "Minh dang tim can thue tam 5 trieu o mot minh, thay can H1 tap the Nguyen Cong Tru. Ban tom tat nhanh vi tri quan, dien tich, so phong va gia thue giup minh.",
+          "retrieval_strategy": "exact_filters",
+          "filter_extraction_skipped": true,
+          "filter_extraction_skip_reason": "target_metadata",
+          "target_metadata_eval_only": false,
+          "raw_retrieved_docs_count": 3,
+          "context_docs_count": 3,
+          "context_chars": 1583,
+          "eval_context_docs_count": 3,
+          "eval_context_chars": 1583,
+          "context_max_chars_per_doc": 1400,
+          "retrieval_seconds": 0.677,
+          "answer_generation_seconds": 2.117,
+          "planning_auto_context_used": false,
+          "is_explanatory_query": false,
+          "retrieval_augmentation_docs_added": 0,
+          "target_planning_document_id": null,
+          "planning_docs_count": 0,
+          "generated_at": "2026-04-30T16:07:41.001511+00:00"
+        }
+      }
+    }
+  ]
+}
