@@ -8,16 +8,11 @@ from pydantic import BaseModel, Field
 from langchain_core.documents import Document
 from sqlalchemy import text
 
-from ..rag.embedder import build_embeddings
-from ..rag.retriever import build_pgvector_store
+from ..rag.resources import initialize_listing_vector_store
 from ..utils.chunking import build_splitter
 from ..db.pgvector import AsyncSessionLocal
 
 router = APIRouter()
-
-_embeddings = build_embeddings()
-_vs = None
-
 
 def _int_env(name: str, default: int) -> int:
     try:
@@ -26,24 +21,21 @@ def _int_env(name: str, default: int) -> int:
         return default
 
 
-_splitter = build_splitter(
-    chunk_size=_int_env("LISTING_CHUNK_SIZE", 900),
-    chunk_overlap=_int_env("LISTING_CHUNK_OVERLAP", 120),
-)
+_splitter = None
+
+
+def _get_splitter():
+    global _splitter
+    if _splitter is None:
+        _splitter = build_splitter(
+            chunk_size=_int_env("LISTING_CHUNK_SIZE", 900),
+            chunk_overlap=_int_env("LISTING_CHUNK_OVERLAP", 120),
+        )
+    return _splitter
 
 async def initialize_vector_store():
     """Khởi tạo async vector store"""
-    global _vs
-    if _vs is None:
-        _vs = build_pgvector_store(_embeddings)
-        await _vs.__apost_init__()
-    return _vs
-
-def get_vector_store():
-    global _vs
-    if _vs is None:
-        raise RuntimeError("Vector store not initialized.")
-    return _vs
+    return await initialize_listing_vector_store()
 
 class IngestPost(BaseModel):
     postId: int
@@ -137,7 +129,7 @@ async def ingest_posts(req: IngestRequest):
     if not req.posts:
         return {"ok": True, "ingestedChunks": 0}
 
-    vs = get_vector_store()
+    vs = await initialize_listing_vector_store()
     
     docs: list[Document] = []
     for p in req.posts:
@@ -145,7 +137,7 @@ async def ingest_posts(req: IngestRequest):
         if not text:
             continue
 
-        chunks = _splitter.split_text(text)
+        chunks = _get_splitter().split_text(text)
         for idx, chunk in enumerate(chunks):
             md = dict(p.metadata or {})
             md.update({
@@ -191,8 +183,8 @@ async def update_post_embeddings(post_id: int, req: UpdatePostRequest):
             "ingestedChunks": 0
         }
     
-    vs = get_vector_store()
-    chunks = _splitter.split_text(content_text)
+    vs = await initialize_listing_vector_store()
+    chunks = _get_splitter().split_text(content_text)
     
     docs: list[Document] = []
     for idx, chunk in enumerate(chunks):

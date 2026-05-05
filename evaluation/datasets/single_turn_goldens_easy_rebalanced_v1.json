@@ -1,0 +1,1898 @@
+[
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Giá bán của căn nhà ở ngõ 281 Trương Định là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng giá bán: 14.000.000.000 VNĐ",
+      "Xác định đúng đây là tin cần bán",
+      "Không suy đoán nếu thiếu dữ liệu"
+    ],
+    "context": [
+      "postId=146, propertyId=145, postType=SALE, categoryName=Căn hộ, title=Chính chủ bán nhà Trương Định 67m2 5T mặt tiền 5m 2 ngõ oto vào nhà chỉ hơn 14 tỷ, price=14000000000, area=67, bedrooms=4, bathrooms=3, furnishing=FULLY_FURNISHED, address=ngõ 281 Đường Trương Định Phường Tương Mai Quận Hoàng Mai Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 146,
+      "propertyId": 145
+    },
+    "id": "ST_EASY_001"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Nhà cho thuê ở 54/98 Thịnh Hào 3 có mấy phòng ngủ?",
+    "expected_output_outline": [
+      "Nêu đúng số phòng ngủ: 6",
+      "Không trả lời sang thuộc tính khác nếu không được hỏi"
+    ],
+    "context": [
+      "postId=289, propertyId=288, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà riêng 54/98 Thịnh Hào 3 13 triệu 45m2 6PN 3WC, price=13000000, area=45, bedrooms=6, bathrooms=3, direction=Nam, furnishing=PARTLY_FURNISHED, address=54/98 Thịnh Hào 3 đường Tôn Đức Thắng Phường Ô Chợ Dừa Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 289,
+      "propertyId": 288
+    },
+    "id": "ST_EASY_002"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Giá thuê căn nhà nguyên căn thiết kế 7 căn hộ mini tại Nhổn là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng giá thuê: 25.000.000 VNĐ",
+      "Xác định đúng đây là tin cho thuê"
+    ],
+    "context": [
+      "postId=295, propertyId=294, postType=RENT, categoryName=Căn hộ, title=Chính chủ cho thuê nguyên căn đã thiết kế phù hợp cho thuê 7 căn hộ mini tại Nhổn, price=25000000, area=45, bedrooms=7, bathrooms=7, furnishing=PARTLY_FURNISHED, address=ngõ 27 Đường Nhổn Phường Cầu Diễn Quận Nam Từ Liêm Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 295,
+      "propertyId": 294
+    },
+    "id": "ST_EASY_003"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Nhà cho thuê ở phố Quang Tiến, Tây Mỗ có mấy phòng vệ sinh?",
+    "expected_output_outline": [
+      "Nêu đúng số phòng vệ sinh: 4"
+    ],
+    "context": [
+      "postId=290, propertyId=289, postType=RENT, categoryName=Căn hộ, title=Chính chủ cho thuê nhà 5 tầng ở phố Quang Tiến Tây Mỗ Từ Liêm Hà Nội, price=16000000, area=38, bedrooms=3, bathrooms=4, direction=Đông, furnishing=FULLY_FURNISHED, address=Khu đô thị Đại Mỗ Hà Nội Đường Quang Tiến Phường Đại Mỗ Quận Nam Từ Liêm Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 290,
+      "propertyId": 289
+    },
+    "id": "ST_EASY_004"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" co tinh trang noi that la gi?",
+    "expected_output_outline": [
+      "Noi that: FULLY_FURNISHED"
+    ],
+    "context": [
+      "postId=294, propertyId=293, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà riêng tại phố Thanh Nhàn Hà Nội, price=7000000, area=34, bedrooms=2, bathrooms=2, furnishing=FULLY_FURNISHED, address=ngõ 285 phố Thanh Nhàn Đường Thanh Nhàn Phường Thanh Nhàn Quận Hai Bà Trưng Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 294,
+      "propertyId": 293
+    },
+    "id": "ST_EASY_005"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Lô đất D3 khu Vườn Đào đối diện Lotte Mall có diện tích bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 270 m²"
+    ],
+    "context": [
+      "postId=240, propertyId=239, postType=SALE, categoryName=Căn hộ, title=Bán đất lô D3 khu Vườn Đào 270m2 ngay ngã tư đối diện Lotte Mall, price=189000000000, area=270, direction=Tây, furnishing=UNFURNISHED, address=685 Đường Lạc Long Quân Phường Phú Thượng Quận Tây Hồ Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 240,
+      "propertyId": 239
+    },
+    "id": "ST_EASY_006"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Giá thuê nhà nguyên căn ở Giảng Võ là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng giá thuê: 30.000.000 VNĐ"
+    ],
+    "context": [
+      "postId=272, propertyId=271, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà riêng chính chủ tại Giảng Võ, price=30000000, area=65, bedrooms=5, bathrooms=4, furnishing=PARTLY_FURNISHED, address=Phố Giảng Võ Phường Giảng Võ Quận Ba Đình Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 272,
+      "propertyId": 271
+    },
+    "id": "ST_EASY_007"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Mặt bằng ở số 2A ngõ 76 Trần Thái Tông có diện tích bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 91 m²",
+      "Xác định đúng đây là diện tích cho thuê"
+    ],
+    "context": [
+      "postId=292, propertyId=291, postType=RENT, categoryName=Căn hộ, title=Chính chủ cần cho thuê nhà số 2A ngõ 76 Trần Thái Tông Cầu Giấy Hà Nội, price=16000000, area=91, address=Số 2A ngõ 76 Trần Thái Tông Cầu Giấy Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 292,
+      "propertyId": 291
+    },
+    "id": "ST_EASY_008"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Nhà 7 tầng tại đất dịch vụ Dương Nội có điểm nổi bật gì về tiện ích trong nhà?",
+    "expected_output_outline": [
+      "Nêu đúng là nhà có thang máy"
+    ],
+    "context": [
+      "postId=300, propertyId=299, postType=RENT, categoryName=Căn hộ, title=Cho thuê gấp nhà riêng 7 tầng có THANG MÁY 7PN 7WC 55m2 tại đất dịch vụ Dương Nội 20 triệu VND, price=20000000, area=55, bedrooms=7, bathrooms=7, furnishing=PARTLY_FURNISHED, direction=Đông, address=Khu đất dịch vụ 27 28 Dương Nội Phường Dương Nội Quận Hà Đông Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 300,
+      "propertyId": 299
+    },
+    "id": "ST_EASY_009"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích văn phòng cho thuê ở 526-528 Nguyễn Văn Cừ là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 217 m²"
+    ],
+    "context": [
+      "postId=299, propertyId=298, postType=RENT, categoryName=Căn hộ, title=Cho thuê văn phòng 526-528 Nguyễn Văn Cừ phường Bồ Đề Hà Nội, price=30000000, area=217, furnishing=PARTLY_FURNISHED, address=Số 526+528 Đường Nguyễn Văn Cừ Phường Gia Thụy Quận Long Biên Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 299,
+      "propertyId": 298
+    },
+    "id": "ST_EASY_010"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Hướng của căn hộ 2 phòng ngủ ở Quận 1 là gì?",
+    "expected_output_outline": [
+      "Nêu đúng hướng: Đông Nam"
+    ],
+    "context": [
+      "postId=1, propertyId=1, postType=SALE, categoryName=Căn hộ, title=Bán căn hộ 2PN Quận 1 full nội thất, price=6500000000, area=75, bedrooms=2, bathrooms=2, direction=Đông Nam, furnishing=FULLY_FURNISHED, district=Quận 1, ward=Phường Bến Nghé, city=Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 1,
+      "propertyId": 1
+    },
+    "id": "ST_EASY_011"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Minh dang tim can thue tam 5 trieu o mot minh, thay can H1 tap the Nguyen Cong Tru. Ban tom tat nhanh vi tri quan, dien tich, so phong va gia thue giup minh.",
+    "expected_output_outline": [
+      "Quan/Huyen/Thanh pho: Hai Ba Trung, Ha Noi",
+      "Dien tich: 45 m2",
+      "So phong ngu: 1",
+      "So phong ve sinh: 1",
+      "Gia thue: 5.000.000 VND"
+    ],
+    "context": [
+      "postId=83, propertyId=82, postType=RENT, categoryName=Căn hộ, title=Cho thuê CC 45m2 5 triệu VND tại H1 tập thể Nguyễn Công Trứ Quận Hai Bà Trưng Hà Nội, price=5000000, area=45, bedrooms=1, bathrooms=1, direction=Nam, address=H1 tập thể Nguyễn Công Trứ Đường Nguyễn Công Trứ Phường Phố Huế Quận Hai Bà Trưng Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 83,
+      "propertyId": 82
+    },
+    "id": "ST_EASY_012",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Lô đất khu dịch vụ Đồng Mai, Yên Nghĩa được cấp phép xây tối đa mấy tầng?",
+    "expected_output_outline": [
+      "Nêu đúng số tầng tối đa: 6"
+    ],
+    "context": [
+      "postId=197, propertyId=196, postType=SALE, categoryName=Căn hộ, title=Bán lô LK16 41 khu 2 đất dịch vụ Đồng Mai Yên Nghĩa giá 7,65 tỷ, price=7650000000, area=50, address=Khu dịch vụ Đồng Mai Đường Vành Đai 4 Phường Đồng Mai Quận Hà Đông Hà Nội, extra=được cấp phép xây lên đến 6 tầng"
+    ],
+    "target_metadata": {
+      "postId": 197,
+      "propertyId": 196
+    },
+    "id": "ST_EASY_013"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Nhà ở ngõ 276 Nghi Tàm yêu cầu thời gian thuê tối thiểu bao lâu?",
+    "expected_output_outline": [
+      "Nêu đúng thời gian thuê tối thiểu: 6 tháng"
+    ],
+    "context": [
+      "postId=291, propertyId=290, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà riêng tại ngõ 276 Nghi Tàm 18 triệu 60m2 5PN 3WC, price=18000000, area=60, bedrooms=5, bathrooms=3, furnishing=PARTLY_FURNISHED, address=ngõ 276 đường Nghi Tàm Phường Tứ Liên Quận Tây Hồ Hà Nội, extra=thời gian cho thuê tối thiểu 6 tháng"
+    ],
+    "target_metadata": {
+      "postId": 291,
+      "propertyId": 290
+    },
+    "id": "ST_EASY_014"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Giá thuê của nhà số 38 khu Trung Yên là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng giá thuê: 20.000.000 VNĐ"
+    ],
+    "context": [
+      "postId=298, propertyId=297, postType=RENT, categoryName=Căn hộ, title=Số nhà 38 khu Trung Yên 20 triệu tháng chính chủ cho thuê nhà 5 tầng vị trí đẹp, price=20000000, area=80, address=Đường Trung Yên Phường Trung Hòa Quận Cầu Giấy Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 298,
+      "propertyId": 297
+    },
+    "id": "ST_EASY_015"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Nhà ở ngõ 54 Lê Quang Đạo có mấy phòng ngủ?",
+    "expected_output_outline": [
+      "Nêu đúng số phòng ngủ: 6"
+    ],
+    "context": [
+      "postId=297, propertyId=296, postType=RENT, categoryName=Căn hộ, title=Cần cho hộ gia đình thuê nhà tại ngõ 54 Lê Quang Đạo Mỹ Đình Nam Từ Liêm Hà Nội, price=16000000, area=45, bedrooms=6, bathrooms=3, address=Đường Lê Quang Đạo Phường Phú Đô Quận Nam Từ Liêm Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 297,
+      "propertyId": 296
+    },
+    "id": "ST_EASY_016"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Căn 2 phòng ngủ 1 vệ sinh ở Vinhomes D'Capitale có mấy phòng vệ sinh?",
+    "expected_output_outline": [
+      "Nêu đúng số phòng vệ sinh: 1",
+      "Không nhầm với các loại căn khác"
+    ],
+    "context": [
+      "postId=77, propertyId=76, postType=RENT, categoryName=Căn hộ, project=Vinhomes DCapitale, variant=2PN 1VS, price=16000000, area=70, bedrooms=2, bathrooms=1, direction=Tây, furnishing=FULLY_FURNISHED, address=Vinhomes DCapitale Đường Trần Duy Hưng Phường Trung Hòa Quận Cầu Giấy Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 77,
+      "propertyId": 76
+    },
+    "id": "ST_EASY_017"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Giá thuê căn hộ Orchard Park View 3PN là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng giá thuê: 21.000.000 VNĐ"
+    ],
+    "context": [
+      "postId=143, propertyId=142, postType=RENT, categoryName=Căn hộ, title=Cho thuê căn hộ Orchard Park View 3PN 2WC full nội thất giá 21 triệu tháng, price=21000000, area=85, bedrooms=3, bathrooms=2, furnishing=FULLY_FURNISHED, address=Căn hộ Orchard Park View Đường Hồng Hà Phường 9 Quận Phú Nhuận Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 143,
+      "propertyId": 142
+    },
+    "id": "ST_EASY_018"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Nhà vườn Phan Kế Bính có hướng gì?",
+    "expected_output_outline": [
+      "Nêu đúng hướng: Nam"
+    ],
+    "context": [
+      "postId=293, propertyId=292, postType=RENT, categoryName=Căn hộ, title=Cho thuê nhà vườn 163m2 Phan Kế Bính 3 tầng hợp ở và kinh doanh, price=42000000, area=163, bedrooms=6, direction=Nam, address=Đường Phan Kế Bính Phường Cống Vị Quận Ba Đình Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 293,
+      "propertyId": 292
+    },
+    "id": "ST_EASY_019"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Lô B8 đấu giá Tuần Châu, Sài Sơn có diện tích bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 95.7 m²"
+    ],
+    "context": [
+      "postId=250, propertyId=249, postType=SALE, categoryName=Căn hộ, title=Lô B8 đấu giá Tuần Châu Sài Sơn Quốc Oai 95,7m2 có 2 mặt tiền, price=9280000000, area=95.7, direction=Nam, address=Đường vành đai Tuần Châu Sunny Garden City Đường ĐT 421B Xã Sài Sơn Huyện Quốc Oai Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 250,
+      "propertyId": 249
+    },
+    "id": "ST_EASY_020"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Pháp lý của lô đất ở Phú Cát gần công nghệ cao Hòa Lạc là gì?",
+    "expected_output_outline": [
+      "Nêu đúng thông tin pháp lý: sổ đỏ mới nhất 2026, công chứng ngay"
+    ],
+    "context": [
+      "postId=205, propertyId=204, postType=SALE, categoryName=Căn hộ, title=Đất Hòa Lạc đầu tư giá F0 full thổ cư vị trí cực đẹp sát khu công nghệ cao, price=2800000000, area=100, address=Xã Phú Cát Huyện Quốc Oai Hà Nội, legalStatus=sổ đỏ mới nhất 2026 công chứng ngay"
+    ],
+    "target_metadata": {
+      "postId": 205,
+      "propertyId": 204
+    },
+    "id": "ST_EASY_021"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Tòa CHDV ở Ngọc Hà đang tạo dòng tiền khoảng bao nhiêu mỗi tháng?",
+    "expected_output_outline": [
+      "Nêu đúng dòng tiền: 150 triệu/tháng"
+    ],
+    "context": [
+      "postId=178, propertyId=177, postType=SALE, categoryName=Căn hộ, title=Siêu ngon nhà dòng tiền CCMN CHDV Ba Đình Ngọc Hà 85m2 22PKK cao cấp dòng tiền 150tr, price=18000000000, area=85, bedrooms=22, bathrooms=22, furnishing=FULLY_FURNISHED, address=Phường Ngọc Hà Quận Ba Đình Hà Nội, monthlyCashflow=150000000"
+    ],
+    "target_metadata": {
+      "postId": 178,
+      "propertyId": 177
+    },
+    "id": "ST_EASY_022"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Giá bán lô đất nền Hòa Lạc diện tích 100m2 trong tin CĐT giá đầu tư F0 là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng giá bán: 2.000.000.000 VNĐ",
+      "Có thể nêu thêm diện tích 100 m²",
+      "Xác định đúng đây là tin cần bán"
+    ],
+    "context": [
+      "postId=203, propertyId=202, postType=SALE, categoryName=Căn hộ, title=CĐT đất nền Hòa Lạc giá đầu tư F0 DT 100m2 - 300m2 nhiều vị trí đẹp và uy tín: 0903 066 ***, price=2.000.000.000 VNĐ, area=100 m², bedrooms=N/A, bathrooms=N/A, direction=Tây, furnishing=N/A, address=Đường ĐCT08(Hòa Lạc), Xã Tân Xã, Huyện Thạch Thất, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 203,
+      "propertyId": 202
+    },
+    "id": "ST_EASY_023"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Hướng cửa chính của căn hộ ở Keangnam Hanoi Landmark Tower là gì?",
+    "expected_output_outline": [
+      "Nêu đúng hướng cửa chính: Đông"
+    ],
+    "context": [
+      "postId=73, propertyId=72, postType=RENT, categoryName=Căn hộ, title=Liên hệ Em Han để thuê căn hộ tại Keangnam Hanoi Landmark Tower, price=70000000, area=156, bedrooms=3, bathrooms=2, mainDoorDirection=Đông, balconyDirection=Đông Bắc, furnishing=FULLY_FURNISHED, address=Keangnam Hanoi Landmark Tower Đường Phạm Hùng Phường Mễ Trì Quận Nam Từ Liêm Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 73,
+      "propertyId": 72
+    },
+    "id": "ST_EASY_024"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Voi can 3 phong ngu The Estella dang trong, minh can biet gia thue, dien tich, so phong va tinh trang noi that truoc khi hen xem.",
+    "expected_output_outline": [
+      "Gia thue: 35.000.000 VND",
+      "Dien tich: 125 m2",
+      "So phong ngu: 3",
+      "So phong ve sinh: 2",
+      "Noi that: PARTLY_FURNISHED"
+    ],
+    "context": [
+      "postId=142, propertyId=141, postType=RENT, categoryName=Căn hộ, title=Cho thuê căn hộ 3 phòng ngủ The Estella không nội thất giá thuê 35 triệu trống sẵn vào ngay, price=35000000, area=125, bedrooms=3, bathrooms=2, project=The Estella, address=The Estella Đường Xa Lộ Hà Nội Phường An Phú Quận 2 Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 142,
+      "propertyId": 141
+    },
+    "id": "ST_EASY_025",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Theo bao cao thuyet minh, ke hoach su dung dat nam 2025 quan Hoan Kiem co bao nhieu du an dang ky va tong dien tich tang them bao nhieu ha?",
+    "expected_output_outline": [
+      "Tong so du an dang ky la 22",
+      "Tong dien tich tang them la 4,14 ha"
+    ],
+    "context": [
+      "source=report_2025, section=3.7, totalRegisteredProjects2025=22, totalIncreasedArea=4.14 ha"
+    ],
+    "target_metadata": {
+      "totalRegisteredProjects2025": 22,
+      "totalIncreasedAreaHa": 4.14,
+      "planningDocumentId": 17
+    },
+    "id": "ST_EASY_026"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Du an dang ky moi trong ke hoach su dung dat nam 2025 cua quan Hoan Kiem co dien tich bao nhieu ha?",
+    "expected_output_outline": [
+      "Dien tich du an dang ky moi la 0,0076 ha"
+    ],
+    "context": [
+      "source=report_2025, section=3.2.2, newProjects2025=1, area=0.0076 ha"
+    ],
+    "target_metadata": {
+      "areaHa": 0.0076,
+      "planningDocumentId": 17
+    },
+    "id": "ST_EASY_027"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Chi tra loi ten phuong: du an tram y te phuong Chuong Duong trong ke hoach su dung dat nam 2025 quan Hoan Kiem thuoc phuong nao?",
+    "expected_output_outline": [
+      "Du an thuoc phuong Chuong Duong"
+    ],
+    "context": [
+      "source=report_2025, section=3.2.2, newProjects2025=1, projectName=Xay dung tram y te phuong Chuong Duong, area=0.0076 ha, location=38 pho Chuong Duong Do"
+    ],
+    "target_metadata": {
+      "projectName": "Xay dung tram y te phuong Chuong Duong, quan Hoan Kiem",
+      "ward": "Chuong Duong",
+      "planningDocumentId": 17
+    },
+    "id": "ST_EASY_028"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Ma ho so cua ke hoach su dung dat nam 2025 quan Hoan Kiem la gi?",
+    "expected_output_outline": [
+      "Ma ho so la HN-HoanKiem-KH2025"
+    ],
+    "context": [
+      "source=planning_metadata, dossierCode=HN-HoanKiem-KH2025"
+    ],
+    "target_metadata": {
+      "dossierCode": "HN-HoanKiem-KH2025",
+      "planningDocumentId": 17
+    },
+    "id": "ST_EASY_029"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Kế hoạch sử dụng đất năm 2025 của quận Hà Đông gồm bao nhiêu công trình, dự án?",
+    "expected_output_outline": [
+      "Trả lời đúng là 38 công trình, dự án",
+      "Có thể nêu thêm tổng diện tích là 266,72 ha",
+      "Không nhầm với số lượng dự án của năm 2024 hay quận khác"
+    ],
+    "context": [
+      "source=decision_ha_dong_2025, page=2, totalProjects2025=38, totalArea=266.72 ha"
+    ],
+    "target_metadata": {
+      "totalProjects2025": 38,
+      "totalArea2025Ha": 266.72,
+      "planningDocumentId": 113
+    },
+    "id": "ST_EASY_030"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Quan Ha Dong co dien tich tu nhien bao nhieu ha?",
+    "expected_output_outline": [
+      "Dien tich tu nhien cua quan Ha Dong la 4.964,23 ha"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, naturalArea=4964.23 ha"
+    ],
+    "target_metadata": {
+      "naturalAreaHa": 4964.23,
+      "planningDocumentId": 137
+    },
+    "id": "ST_EASY_031"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Năm 2025 quận Hà Đông dự kiến thu hồi bao nhiêu đất nông nghiệp và bao nhiêu đất phi nông nghiệp?",
+    "expected_output_outline": [
+      "Trả lời đúng đất nông nghiệp thu hồi là 55,76 ha",
+      "Trả lời đúng đất phi nông nghiệp thu hồi là 29,66 ha",
+      "Không nhầm với chỉ tiêu chuyển mục đích sử dụng đất"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=4, agriculturalLandRecovery2025=55.76 ha, nonAgriculturalLandRecovery2025=29.66 ha"
+    ],
+    "target_metadata": {
+      "agriculturalLandRecovery2025Ha": 55.76,
+      "nonAgriculturalLandRecovery2025Ha": 29.66,
+      "planningDocumentId": 137
+    },
+    "id": "ST_EASY_032"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Trong cong tac GPMB Vanh dai 4 qua quan Ha Dong, tong so tien phe duyet la bao nhieu?",
+    "expected_output_outline": [
+      "Tong so tien phe duyet la 778,05 ty dong"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, vanhDai4ApprovedAmount=778.05 billion VND"
+    ],
+    "target_metadata": {
+      "approvedAmountBillionVND": 778.05,
+      "planningDocumentId": 137
+    },
+    "id": "ST_EASY_033"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Du an Truong THPT cong lap tai o dat ky hieu F/THPT1 trong ke hoach su dung dat nam 2025 quan Cau Giay thuoc phuong nao?",
+    "expected_output_outline": [
+      "Du an thuoc phuong Mai Dich"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, newProject2025=Truong THPT cong lap tai o dat ky hieu F/THPT1, phuong Mai Dich, area=0.95 ha",
+      "source=decision_cau_giay_2025, appendix, projectIndex=11, projectName=Truong THPT cong lap tai o dat ky hieu F/THPT1, phuong Mai Dich"
+    ],
+    "target_metadata": {
+      "projectName": "Truong THPT cong lap tai o dat ky hieu F/THPT1, phuong Mai Dich",
+      "ward": "Mai Dich",
+      "planningDocumentId": 63
+    },
+    "id": "ST_EASY_034"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Du an Truong THPT cong lap tai o dat F/THPT1 trong ke hoach Cau Giay co dien tich bao nhieu ha?",
+    "expected_output_outline": [
+      "Dien tich du an Truong THPT cong lap tai o dat F/THPT1 la 0,95 ha"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, project=Truong THPT cong lap tai o dat F/THPT1, area=0.95 ha"
+    ],
+    "target_metadata": {
+      "projectName": "Truong THPT cong lap tai o dat F/THPT1",
+      "areaHa": 0.95,
+      "planningDocumentId": 63
+    },
+    "id": "ST_EASY_035"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Theo ke hoach su dung dat nam 2025 cua quan Cau Giay, dien tich dat chua su dung dua vao su dung la bao nhieu?",
+    "expected_output_outline": [
+      "Dat chua su dung dua vao su dung nam 2025: 0,02 ha"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, unusedLandToUse2025=0.02 ha, landType=ODT, location=Mai Dịch"
+    ],
+    "target_metadata": {
+      "unusedLandToUse2025Ha": 0.02,
+      "landType": "Đất ở tại đô thị",
+      "location": "Mai Dịch",
+      "planningDocumentId": 63
+    },
+    "id": "ST_EASY_036"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Năm 2025 quận Cầu Giấy cần thu hồi bao nhiêu đất nông nghiệp và bao nhiêu đất phi nông nghiệp?",
+    "expected_output_outline": [
+      "Trả lời đúng đất nông nghiệp cần thu hồi là 4,77 ha",
+      "Trả lời đúng đất phi nông nghiệp cần thu hồi là 1,63 ha",
+      "Không nhầm với chỉ tiêu chuyển mục đích sử dụng đất"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, agriculturalRecovery2025=4.77 ha, nonAgriculturalRecovery2025=1.63 ha"
+    ],
+    "target_metadata": {
+      "agriculturalRecovery2025Ha": 4.77,
+      "nonAgriculturalRecovery2025Ha": 1.63,
+      "planningDocumentId": 63
+    },
+    "id": "ST_EASY_037"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Theo bao cao nam 2025, thi xa Son Tay thuoc vung dia hinh nao?",
+    "expected_output_outline": [
+      "Thi xa Son Tay thuoc vung ban son dia"
+    ],
+    "context": [
+      "source=report_son_tay_2025, terrain=thi xa Son Tay thuoc vung ban son dia, dia hinh thap dan tu Tay sang Dong"
+    ],
+    "target_metadata": {
+      "terrain": "vung ban son dia",
+      "planningDocumentId": 110
+    },
+    "id": "ST_EASY_038"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Theo bao cao nam 2025, thi xa Son Tay con bao nhieu ha dat chua su dung?",
+    "expected_output_outline": [
+      "Dat chua su dung cua thi xa Son Tay la 19,69 ha"
+    ],
+    "context": [
+      "source=report_son_tay_2025, unusedLand=19.69 ha, shareOfNaturalArea=0.17 percent"
+    ],
+    "target_metadata": {
+      "unusedLandHa": 19.69,
+      "planningDocumentId": 110
+    },
+    "id": "ST_EASY_039"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Trong nam 2025, thi xa Son Tay can chuyen muc dich su dung tong cong bao nhieu ha dat?",
+    "expected_output_outline": [
+      "Tong dien tich dat can chuyen muc dich su dung la 137,48 ha"
+    ],
+    "context": [
+      "source=report_son_tay_2025, totalPurposeConversion2025=137.48 ha, agriculturalToNonAgricultural=119.43 ha, internalNonAgriculturalConversion=18.05 ha"
+    ],
+    "target_metadata": {
+      "totalPurposeConversion2025Ha": 137.48,
+      "agriculturalToNonAgriculturalHa": 119.43,
+      "internalNonAgriculturalConversionHa": 18.05,
+      "planningDocumentId": 110
+    },
+    "id": "ST_EASY_040"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Năm 2025, thị xã Sơn Tây dự kiến đưa bao nhiêu đất chưa sử dụng vào sử dụng?",
+    "expected_output_outline": [
+      "Trả lời đúng là 0,23 ha",
+      "Có thể nêu thêm đây là diện tích chủ yếu đưa vào đất công trình sự nghiệp, đất sử dụng vào mục đích công cộng và khai thác quỹ đất chưa sử dụng",
+      "Không trả lời thành 19,69 ha vì đó là diện tích đất chưa sử dụng còn lại trong năm 2025"
+    ],
+    "context": [
+      "source=report_son_tay_2025, unusedLandToUse2025=0.23 ha"
+    ],
+    "target_metadata": {
+      "unusedLandToUse2025Ha": 0.23,
+      "planningDocumentId": 110
+    },
+    "id": "ST_EASY_041"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "land_use_planning",
+    "input": "Minh can kiem tra ke hoach su dung dat 2025 cua Hai Ba Trung: so du an duoc duyet va tong dien tich la bao nhieu?",
+    "expected_output_outline": [
+      "So du an duoc phe duyet: 32",
+      "Tong dien tich: 8,6915 ha"
+    ],
+    "context": [
+      "source=decision_hai_ba_trung_2025, approvedProjects=32, approvedArea=8.6915 ha"
+    ],
+    "target_metadata": {
+      "approvedProjects2025": 32,
+      "approvedArea2025Ha": 8.6915,
+      "planningDocumentId": 90
+    },
+    "id": "ST_EASY_042",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "land_use_planning",
+    "input": "Trong nhom du an theo khoan 4 Dieu 67 cua Hai Ba Trung, hai du an tiep tuc thuc hien nam 2025 la nhung du an nao?",
+    "expected_output_outline": [
+      "Du an Mo rong Nha tang le Quoc gia so 5 Tran Thanh Tong",
+      "Du an Dau tu xay dung Mo rong tru so lam viec Bo Cong an tai so 30 Tran Binh Trong - 58 Tran Nhan Tong"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, article67Clause=Khoản 4 Điều 67 Luật Đất đai, article67Projects=Mở rộng Nhà tang lễ Quốc gia số 5 Trần Thánh Tông|Đầu tư xây dựng Mở rộng trụ sở làm việc Bộ Công an tại số 30 Trần Bình Trọng - 58 Trần Nhân Tông"
+    ],
+    "target_metadata": {
+      "article67ProjectCount": 2,
+      "planningDocumentId": 91
+    },
+    "id": "ST_EASY_043",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "land_use_planning",
+    "input": "Neu chi xet chi tieu thu hoi dat nam 2025 cua Hai Ba Trung, tong thu hoi va tung nhom dat la bao nhieu ha?",
+    "expected_output_outline": [
+      "Tong dien tich dat can thu hoi: 5,6811 ha",
+      "Dat nong nghiep can thu hoi: 0,6088 ha",
+      "Dat phi nong nghiep can thu hoi: 5,0723 ha"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, totalRecovery2025=5.6811 ha, agriculturalRecovery2025=0.6088 ha, nonAgriculturalRecovery2025=5.0723 ha"
+    ],
+    "target_metadata": {
+      "totalRecovery2025Ha": 5.6811,
+      "agriculturalRecovery2025Ha": 0.6088,
+      "nonAgriculturalRecovery2025Ha": 5.0723,
+      "planningDocumentId": 91
+    },
+    "id": "ST_EASY_044",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "land_use_planning",
+    "input": "Dien tich dat chua su dung nam 2025 cua Hai Ba Trung la bao nhieu, va dung nham voi dien tich thu hoi dat nhe?",
+    "expected_output_outline": [
+      "Dien tich dat chua su dung nam 2025: 0,13 ha"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, unusedLand2025=0.13 ha"
+    ],
+    "target_metadata": {
+      "unusedLand2025Ha": 0.13,
+      "planningDocumentId": 91
+    },
+    "id": "ST_EASY_045",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Du an Khu do thi moi Dai Kim ODT trong danh muc Hoang Mai do lien danh nao thuc hien?",
+    "expected_output_outline": [
+      "Lien danh gom Cong ty Dau tu xay dung so 2 Ha Noi va Cong ty Co phan Tap doan duoc pham Vimedimex"
+    ],
+    "context": [
+      "source=project_list_hoang_mai_2025, project=Khu do thi moi Dai Kim ODT, investor=Lien danh Cong ty Dau tu xay dung so 2 Ha Noi va Cong ty Co phan Tap doan duoc pham Vimedimex"
+    ],
+    "target_metadata": {
+      "project": "Khu do thi moi Dai Kim ODT",
+      "planningDocumentId": 135
+    },
+    "id": "ST_EASY_046"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Hiện trạng năm 2024, quận Hoàng Mai còn đất chưa sử dụng không?",
+    "expected_output_outline": [
+      "Trả lời đúng là không còn đất chưa sử dụng",
+      "Có thể nêu thêm hiện trạng 2024 gồm 803,81 ha đất nông nghiệp và 3.215,40 ha đất phi nông nghiệp",
+      "Không tự suy diễn có quỹ đất chưa sử dụng nếu tài liệu không nêu"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, naturalArea2024=4019.21 ha, agricultural2024=803.81 ha, nonAgricultural2024=3215.40 ha, unused2024=0 ha"
+    ],
+    "target_metadata": {
+      "unused2024Ha": 0,
+      "agricultural2024Ha": 803.81,
+      "nonAgricultural2024Ha": 3215.4,
+      "planningDocumentId": 133
+    },
+    "id": "ST_EASY_047"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Trong năm 2025, quận Hoàng Mai cần thu hồi bao nhiêu đất nông nghiệp?",
+    "expected_output_outline": [
+      "Trả lời đúng là 50,84 ha",
+      "Nêu rõ đây là diện tích đất nông nghiệp cần thu hồi trong năm kế hoạch 2025",
+      "Không nhầm với tổng diện tích các dự án trong kế hoạch"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, agriculturalRecovery2025=50.84 ha"
+    ],
+    "target_metadata": {
+      "agriculturalRecovery2025Ha": 50.84,
+      "planningDocumentId": 133
+    },
+    "id": "ST_EASY_048"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Dự án xây dựng trường tiểu học Yên Sở tại ô C3/TH2 nằm ở phường nào và có diện tích bao nhiêu?",
+    "expected_output_outline": [
+      "Trả lời đúng dự án nằm tại phường Yên Sở",
+      "Nêu đúng diện tích kế hoạch là 1,44 ha",
+      "Có thể nêu thêm diện tích đất thu hồi cũng là 1,44 ha"
+    ],
+    "context": [
+      "source=project_list_hoang_mai_2025, project=Xây dựng trường tiểu học Yên Sở tại ô C3/TH2, ward=Yên Sở, area=1.44 ha, recovery=1.44 ha"
+    ],
+    "target_metadata": {
+      "project": "Xây dựng trường tiểu học Yên Sở tại ô C3/TH2",
+      "ward": "Yên Sở",
+      "areaHa": 1.44,
+      "planningDocumentId": 135
+    },
+    "id": "ST_EASY_049"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Bán căn hộ 2PN Quận 1, full nội thất\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 75 m²"
+    ],
+    "context": [
+      "postId=1, propertyId=1, postType=SALE, categoryName=Căn hộ, title=Bán căn hộ 2PN Quận 1, full nội thất, price=6.500.000.000 VNĐ, area=75 m², bedrooms=2, bathrooms=2, direction=Đông Nam, furnishing=FULLY_FURNISHED, address=Quận 1, TP. Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 1,
+      "propertyId": 1
+    },
+    "id": "ST_EASY_050"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Can cho thue 2PN o Quan 1 co du thong tin co ban nao de minh can nhac: dien tich, phong ngu, ve sinh, huong va noi that?",
+    "expected_output_outline": [
+      "Dien tich: 75 m2",
+      "So phong ngu: 2",
+      "So phong ve sinh: 2",
+      "Huong: Dong Nam",
+      "Noi that: FULLY_FURNISHED"
+    ],
+    "context": [
+      "postId=2, propertyId=1, postType=RENT, categoryName=Căn hộ, title=Cho thuê căn hộ 2PN Quận 1, đầy đủ tiện ích, price=6.500.000.000 VNĐ, area=75 m², bedrooms=2, bathrooms=2, direction=Đông Nam, furnishing=FULLY_FURNISHED, address=Quận 1, TP. Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 2,
+      "propertyId": 1
+    },
+    "id": "ST_EASY_051",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Can Vinhomes Ocean Park 1 ma ban Hang gui co nhung thong so chinh nao ve gia, dien tich, phong ngu, ve sinh va noi that?",
+    "expected_output_outline": [
+      "Gia ban: 3.650.000.000 VND",
+      "Dien tich: 55 m2",
+      "So phong ngu: 2",
+      "So phong ve sinh: 1",
+      "Noi that: FULLY_FURNISHED"
+    ],
+    "context": [
+      "postId=41, propertyId=40, postType=SALE, categoryName=Căn hộ, title=Em Hằng gửi đến quý khách mua nhà tại Vinhomes Ocean Park 1 quỹ căn giá rẻ, tầng đẹp, view, price=3.650.000.000 VNĐ, area=55 m², bedrooms=2, bathrooms=1, direction=N/A, furnishing=FULLY_FURNISHED, address=Vinhomes Ocean Park Gia Lâm, Xã Dương Xá, Huyện Gia Lâm, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 41,
+      "propertyId": 40
+    },
+    "id": "ST_EASY_052",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Can ho Keangnam Hanoi Landmark Tower cho thue nay co dien tich, gia, huong va noi that ra sao? Neu thieu so phong thi noi ro la chua co du lieu.",
+    "expected_output_outline": [
+      "Dien tich: 156 m2",
+      "Gia thue: 70.000.000 VND",
+      "Huong cua chinh: Dong",
+      "Noi that: FULLY_FURNISHED",
+      "So phong ngu/phong ve sinh: chua co du lieu trong context"
+    ],
+    "context": [
+      "postId=73, propertyId=72, postType=RENT, categoryName=Căn hộ, title=Liên hệ Em Han 0969 116 *** để thuê CC tại Keangnam Hanoi Landmark Tower, price=70.000.000 VNĐ, area=156 m², bedrooms=N/A, bathrooms=N/A, direction=Đông, furnishing=FULLY_FURNISHED, address=Keangnam Hanoi Landmark Tower, Đường Phạm Hùng, Phường Mễ Trì, Quận Nam Từ Liêm, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 73,
+      "propertyId": 72
+    },
+    "id": "ST_EASY_053",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Tổng hợp quỹ căn 1.5PN, 2PN, 3N , cho thuê đẹp giá từ 15tr - 30tr tại Vinhomes D'Capitale\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 70 m²"
+    ],
+    "context": [
+      "postId=77, propertyId=76, postType=RENT, categoryName=Căn hộ, title=Tổng hợp quỹ căn 1.5PN, 2PN, 3N , cho thuê đẹp giá từ 15tr - 30tr tại Vinhomes D'Capitale, price=16.000.000 VNĐ, area=70 m², bedrooms=2, bathrooms=1, direction=Tây, furnishing=FULLY_FURNISHED, address=Vinhomes D'Capitale, Đường Trần Duy Hưng, Phường Trung Hòa, Quận Cầu Giấy, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 77,
+      "propertyId": 76
+    },
+    "id": "ST_EASY_054"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Cho thuê The Ninety, mới 100%, Studio-2-3 ngủ, từ 11tr, Miễn Dịch vụ, Có Slot Ô Tô\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 39 m²"
+    ],
+    "context": [
+      "postId=82, propertyId=81, postType=RENT, categoryName=Căn hộ, title=Cho thuê The Ninety, mới 100%, Studio-2-3 ngủ, từ 11tr, Miễn Dịch vụ, Có Slot Ô Tô, price=11.000.000 VNĐ, area=39 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=PARTLY_FURNISHED, address=The Ninety Complex, Đường Láng, Phường Thịnh Quang, Quận Đống Đa, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 82,
+      "propertyId": 81
+    },
+    "id": "ST_EASY_055"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Cho thuê CC 45m2, 5 triệu VND tại H1 tập thể Nguyễn Công Trứ, Quận Hai Bà Trưng, Hà Nội\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 45 m²"
+    ],
+    "context": [
+      "postId=83, propertyId=82, postType=RENT, categoryName=Căn hộ, title=Cho thuê CC 45m2, 5 triệu VND tại H1 tập thể Nguyễn Công Trứ, Quận Hai Bà Trưng, Hà Nội, price=5.000.000 VNĐ, area=45 m², bedrooms=1, bathrooms=1, direction=Nam, furnishing=N/A, address=H1 tập thể Nguyễn Công trứ, Đường Nguyễn Công Trứ, Phường Phố Huế, Quận Hai Bà Trưng, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 83,
+      "propertyId": 82
+    },
+    "id": "ST_EASY_056"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Tin can 2PN o thap B2 khu CT5 The Global City co cac so lieu chinh nao ve gia, dien tich, phong ngu, ve sinh va noi that?",
+    "expected_output_outline": [
+      "Gia ban: 8.867.000.000.000 VND",
+      "Dien tich: 77.5 m2",
+      "So phong ngu: 2",
+      "So phong ve sinh: 2",
+      "Noi that: PARTLY_FURNISHED"
+    ],
+    "context": [
+      "postId=120, propertyId=119, postType=SALE, categoryName=Căn hộ, title=Tặng cư dân Mas- 2% tháp B2 - Căn 2PN chỉ 8.867 tỷ - Giỏ 30 căn khu CT5 The Global City, price=8.867.000.000.000 VNĐ, area=77.5 m², bedrooms=2, bathrooms=2, direction=Tây, furnishing=PARTLY_FURNISHED, address=Masteri Park Place, Phường An Phú, Quận 2, Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 120,
+      "propertyId": 119
+    },
+    "id": "ST_EASY_057",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Trong tin The River Thu Thiem, can 1PN dang duoc neu voi gia, dien tich, so phong va noi that nhu the nao?",
+    "expected_output_outline": [
+      "Gia ban: 11.000.000.000 VND",
+      "Dien tich: 64 m2",
+      "So phong ngu: 1",
+      "So phong ve sinh: 1",
+      "Noi that: PARTLY_FURNISHED"
+    ],
+    "context": [
+      "postId=122, propertyId=121, postType=SALE, categoryName=Căn hộ, title=Bán căn hộ CC The River Thủ Thiêm (1PN- 11 tỷ)(2PN - 15.5tỷ)(3PN -24.5tỷ)(4PN, price=11.000.000.000 VNĐ, area=64 m², bedrooms=1, bathrooms=1, direction=N/A, furnishing=PARTLY_FURNISHED, address=The River Thủ Thiêm, Đường Nguyễn Cơ Thạch, Phường An Khánh, Quận 2, Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 122,
+      "propertyId": 121
+    },
+    "id": "ST_EASY_058",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Can The Estella 3 phong ngu dang cho thue trong san co gia, dien tich, so phong va noi that the nao?",
+    "expected_output_outline": [
+      "Gia thue: 35.000.000 VND",
+      "Dien tich: 125 m2",
+      "So phong ngu: 3",
+      "So phong ve sinh: 2",
+      "Noi that: PARTLY_FURNISHED"
+    ],
+    "context": [
+      "postId=142, propertyId=141, postType=RENT, categoryName=Căn hộ, title=Cho thuê căn hộ 3 phòng ngủ The Estella - Không nội thất - Giá thuê 35 triệu - Trống sẵn, price=35.000.000 VNĐ, area=125 m², bedrooms=3, bathrooms=2, direction=N/A, furnishing=PARTLY_FURNISHED, address=The Estella, Đường Xa Lộ Hà Nội, Phường An Phú, Quận 2, Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 142,
+      "propertyId": 141
+    },
+    "id": "ST_EASY_059",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Can Orchard Park View 3PN full noi that co cac thong tin chinh nao ve gia thue, dien tich, phong ngu va ve sinh?",
+    "expected_output_outline": [
+      "Gia thue: 21.000.000 VND",
+      "Dien tich: 85 m2",
+      "So phong ngu: 3",
+      "So phong ve sinh: 2",
+      "Noi that: FULLY_FURNISHED"
+    ],
+    "context": [
+      "postId=143, propertyId=142, postType=RENT, categoryName=Căn hộ, title=Cho thuê căn hộ Orchard Park View, 3PN, 2WC, full nội thất, giá: 21 triệu/tháng, 0908 435, price=21.000.000 VNĐ, area=85 m², bedrooms=3, bathrooms=2, direction=N/A, furnishing=FULLY_FURNISHED, address=Căn hộ Orchard Park View, Đường Hồng Hà, Phường 9, Quận Phú Nhuận, Hồ Chí Minh"
+    ],
+    "target_metadata": {
+      "postId": 143,
+      "propertyId": 142
+    },
+    "id": "ST_EASY_060",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Nha Truong Dinh hon 14 ty nay co nhung thong tin chinh nao ve dien tich, so phong, noi that va dia chi?",
+    "expected_output_outline": [
+      "Gia ban: 14.000.000.000 VND",
+      "Dien tich: 67 m2",
+      "So phong ngu: 4",
+      "So phong ve sinh: 3",
+      "Noi that: FULLY_FURNISHED",
+      "Dia chi: ngo 281, Duong Truong Dinh, Phuong Tuong Mai, Quan Hoang Mai, Ha Noi"
+    ],
+    "context": [
+      "postId=146, propertyId=145, postType=SALE, categoryName=Căn hộ, title=Chính chủ bán nhà Trương Định, 67m2, 5T, mặt tiền 5m, 2 ngõ, oto vào nhà chỉ hơn 14 tỷ, price=14.000.000.000 VNĐ, area=67 m², bedrooms=4, bathrooms=3, direction=N/A, furnishing=FULLY_FURNISHED, address=ngõ 281 , Đường Trương Định, Phường Tương Mai, Quận Hoàng Mai, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 146,
+      "propertyId": 145
+    },
+    "id": "ST_EASY_061",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Bán nhà phân lô ngõ 167 Tây Sơn - đại học Công Đoàn. Ngõ thông ô tô vào nhà, đang cho thuê\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 71.9 m²"
+    ],
+    "context": [
+      "postId=147, propertyId=146, postType=SALE, categoryName=Căn hộ, title=Bán nhà phân lô ngõ 167 Tây Sơn - đại học Công Đoàn. Ngõ thông ô tô vào nhà, đang cho thuê, price=23.600.000.000 VNĐ, area=71.9 m², bedrooms=N/A, bathrooms=4, direction=Nam, furnishing=FULLY_FURNISHED, address=số 47, ngách 15, ngõ 167, Đường Tây Sơn, Phường Quang Trung, Quận Đống Đa, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 147,
+      "propertyId": 146
+    },
+    "id": "ST_EASY_062"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Siêu Phẩm! Phạm Văn Đồng- Hoàng Quốc Việt- Phân Lô, Lô Góc 3 Mặt tiền, 3 ô tô tránh, 70 m2\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 70 m²"
+    ],
+    "context": [
+      "postId=164, propertyId=163, postType=SALE, categoryName=Căn hộ, title=Siêu Phẩm! Phạm Văn Đồng- Hoàng Quốc Việt- Phân Lô, Lô Góc 3 Mặt tiền, 3 ô tô tránh, 70 m2, price=31.800.000.000 VNĐ, area=70 m², bedrooms=6, bathrooms=6, direction=N/A, furnishing=N/A, address=Khu đô thị Nam Cường, Đường Phạm Văn Đồng, Phường Cổ Nhuế 1, Quận Bắc Từ Liêm, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 164,
+      "propertyId": 163
+    },
+    "id": "ST_EASY_063"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Nha ngo Bui Xuong Trach trong tin cua Thien Chi co gia, dien tich va vi tri quan/phuong the nao?",
+    "expected_output_outline": [
+      "Gia ban: 7.000.000.000 VND",
+      "Dien tich: 30 m2",
+      "Dia chi: Duong Bui Xuong Trach, Phuong Khuong Dinh, Quan Thanh Xuan, Ha Noi"
+    ],
+    "context": [
+      "postId=167, propertyId=166, postType=SALE, categoryName=Căn hộ, title=CC nhà Ngõ 1/62/29 Bùi Xương Trạch ,Thiện Chí Bán 30m2*5,5 Tầng, price=7.000.000.000 VNĐ, area=30 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Đường Bùi Xương Trạch, Phường Khương Đình, Quận Thanh Xuân, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 167,
+      "propertyId": 166
+    },
+    "id": "ST_EASY_064",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Toa CCMN/CHDV o Ngoc Ha tao dong tien nay co gia, dien tich, so phong va noi that ra sao?",
+    "expected_output_outline": [
+      "Gia ban: 18.000.000.000 VND",
+      "Dien tich: 85 m2",
+      "So phong ngu: 22",
+      "So phong ve sinh: 22",
+      "Noi that: FULLY_FURNISHED"
+    ],
+    "context": [
+      "postId=178, propertyId=177, postType=SALE, categoryName=Căn hộ, title=Siêu ngon nhà dòng tiền CCMN/CHDV - Ba Đình - Ngọc Hà 85m2, 8 tầng, 22PKK cao cấp, dòng, price=18.000.000.000 VNĐ, area=85 m², bedrooms=22, bathrooms=22, direction=N/A, furnishing=FULLY_FURNISHED, address=Phường Ngọc Hà, Quận Ba Đình, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 178,
+      "propertyId": 177
+    },
+    "id": "ST_EASY_065",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Lo LK16-41 khu dat dich vu Dong Mai can tom tat nhung so lieu nao ve gia, dien tich va vi tri?",
+    "expected_output_outline": [
+      "Gia ban: 7.650.000.000 VND",
+      "Dien tich: 50 m2",
+      "Dia chi: Khu dich vu Dong Mai, Duong Vanh Dai 4, Phuong Dong Mai, Quan Ha Dong, Ha Noi"
+    ],
+    "context": [
+      "postId=197, propertyId=196, postType=SALE, categoryName=Căn hộ, title=Bán lô LK16 - 41 khu 2 đất dịch vụ Đồng Mai, Yên Nghĩa, giá 7,65 tỷ, price=7.650.000.000 VNĐ, area=50 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Khu dịch vụ Đồng Mai, Đường Vành Đai 4, Phường Đồng Mai, Quận Hà Đông, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 197,
+      "propertyId": 196
+    },
+    "id": "ST_EASY_066",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Lo dat nen Hoa Lac gia F0 trong tin CDT co gia, dien tich, huong va dia chi the nao?",
+    "expected_output_outline": [
+      "Gia ban: 2.000.000.000 VND",
+      "Dien tich: 100 m2",
+      "Huong: Tay",
+      "Dia chi: Duong DCT08(Hoa Lac), Xa Tan Xa, Huyen Thach That, Ha Noi"
+    ],
+    "context": [
+      "postId=203, propertyId=202, postType=SALE, categoryName=Căn hộ, title=CĐT đất nền Hòa Lạc giá đầu tư F0 DT 100m2 - 300m2 nhiều vị trí đẹp và uy tín: 0903 066 ***, price=2.000.000.000 VNĐ, area=100 m², bedrooms=N/A, bathrooms=N/A, direction=Tây, furnishing=N/A, address=Đường ĐCT08(Hòa Lạc), Xã Tân Xã, Huyện Thạch Thất, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 203,
+      "propertyId": 202
+    },
+    "id": "ST_EASY_067",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "real_estate",
+    "input": "Lo dat Hoa Lac sat khu cong nghe cao o Phu Cat co gia, dien tich va vi tri hanh chinh the nao?",
+    "expected_output_outline": [
+      "Gia ban: 2.800.000.000 VND",
+      "Dien tich: 100 m2",
+      "Dia chi: Xa Phu Cat, Huyen Quoc Oai, Ha Noi"
+    ],
+    "context": [
+      "postId=205, propertyId=204, postType=SALE, categoryName=Căn hộ, title=Đất Hòa Lạc đầu tư giá F0, full thổ cư, vị trí cực đẹp, sát khu công nghệ cao. LH 0866 333, price=2.800.000.000 VNĐ, area=100 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Xã Phú Cát, Huyện Quốc Oai, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 205,
+      "propertyId": 204
+    },
+    "id": "ST_EASY_068",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Đẹp nhất Sơn Tây gia đình có việc cần bán lô đất 100m2 chỉ 1tỷ900tr rẻ hơn thị trường 300tr\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 100 m²"
+    ],
+    "context": [
+      "postId=207, propertyId=206, postType=SALE, categoryName=Căn hộ, title=Đẹp nhất Sơn Tây gia đình có việc cần bán lô đất 100m2 chỉ 1tỷ900tr rẻ hơn thị trường 300tr, price=1.000.000.000 VNĐ, area=100 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Đường Tỉnh lộ 413, Xã Xuân Sơn, Thị xã Sơn Tây, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 207,
+      "propertyId": 206
+    },
+    "id": "ST_EASY_069"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Đất nền bán gấp Chi Đông, 13,6 tỷ, 206.7m2, mặt tiền 7m, đường 18m\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 150 m²"
+    ],
+    "context": [
+      "postId=225, propertyId=224, postType=SALE, categoryName=Căn hộ, title=Đất nền bán gấp Chi Đông, 13,6 tỷ, 206.7m2, mặt tiền 7m, đường 18m, price=5.850.000.000 VNĐ, area=150 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Chi Đông, Đường Cao tốc Thăng Long Nội Bài, Thị trấn Chi Đông, Mê Linh, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 225,
+      "propertyId": 224
+    },
+    "id": "ST_EASY_070"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu hời!\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 290 m²"
+    ],
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu hời!, price=3.900.000.000 VNĐ, area=290 m², bedrooms=N/A, bathrooms=N/A, direction=Đông, furnishing=N/A, address=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230
+    },
+    "id": "ST_EASY_071"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Bán đất lô D3 khu Vườn Đào, 270m2 ngay ngã tư, đối diện Lotte Mall\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 270 m²"
+    ],
+    "context": [
+      "postId=240, propertyId=239, postType=SALE, categoryName=Căn hộ, title=Bán đất lô D3 khu Vườn Đào, 270m2 ngay ngã tư, đối diện Lotte Mall, price=189.000.000.000 VNĐ, area=270 m², bedrooms=N/A, bathrooms=N/A, direction=Tây, furnishing=UNFURNISHED, address=685, Đường Lạc Long Quân, Phường Phú Thượng, Quận Tây Hồ, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 240,
+      "propertyId": 239
+    },
+    "id": "ST_EASY_072"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn trung thực & không chênh\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 100 m²"
+    ],
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn trung thực & không chênh, price=3.900.000.000 VNĐ, area=100 m², bedrooms=N/A, bathrooms=N/A, direction=N/A, furnishing=N/A, address=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243
+    },
+    "id": "ST_EASY_073"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "real_estate",
+    "input": "Diện tích trong tin \"Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị trường\" là bao nhiêu?",
+    "expected_output_outline": [
+      "Nêu đúng diện tích: 400 m²"
+    ],
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị trường, price=0 VNĐ, area=400 m², bedrooms=N/A, bathrooms=N/A, direction=Tây, furnishing=N/A, address=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246
+    },
+    "id": "ST_EASY_074"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon viec quan Hoan Kiem lap ke hoach su dung dat nam 2025?",
+    "expected_output_outline": [
+      "Ke hoach duoc lap de dap ung nhu cau phat trien kinh te - xa hoi, quoc phong an ninh va bao ve moi truong sinh thai",
+      "Context retrieved neu danh muc nam 2025 gom 21 du an voi dien tich 4,1325 ha"
+    ],
+    "context": [
+      "source=decision_2025, section=Điều 1, totalProjects2025=22, totalArea=4.14 ha",
+      "source=report_2025, section=3.7, totalProjects2025=22, totalArea=4.14 ha"
+    ],
+    "target_metadata": {
+      "totalProjects2025": 22,
+      "totalArea2025Ha": 4.14,
+      "planningDocumentId": 16
+    },
+    "id": "ST_EASY_075"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Du an dang ky moi trong ke hoach su dung dat nam 2025 cua quan Hoan Kiem co dien tich bao nhieu ha?",
+    "expected_output_outline": [
+      "Dien tich du an Xay dung tram y te phuong Chuong Duong: 0,0076 ha"
+    ],
+    "context": [
+      "source=report_2025, section=3.2.2, newProjects2025=1, projectName=Xây dựng trạm y tế phường Chương Dương, area=0.0076 ha, location=38 phố Chương Dương Độ",
+      "source=decision_2025, appendix, projectIndex=22, projectName=Xây dựng trạm y tế phường Chương Dương, area=0.0076 ha"
+    ],
+    "target_metadata": {
+      "projectName": "Xây dựng trạm y tế phường Chương Dương, quận Hoàn Kiếm",
+      "areaHa": 0.0076,
+      "planningDocumentId": 17
+    },
+    "id": "ST_EASY_076"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon kha nang thuc hien cao cua cac du an nam 2025 quan Hoan Kiem?",
+    "expected_output_outline": [
+      "Neu duoc can cu phap ly va tinh kha thi cua danh muc du an trong bao cao"
+    ],
+    "context": [
+      "source=report_2025, section=3.2.2, newProjects2025=1, projectName=Xay dung tram y te phuong Chuong Duong, area=0.0076 ha, location=38 pho Chuong Duong Do"
+    ],
+    "target_metadata": {
+      "projectName": "Xay dung tram y te phuong Chuong Duong, quan Hoan Kiem",
+      "ward": "Chuong Duong",
+      "planningDocumentId": 17
+    },
+    "id": "ST_EASY_077"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Tru so Bo Cong an 44 Yet Kieu trong ke hoach su dung dat nam 2025 quan Hoan Kiem co dien tich bao nhieu ha?",
+    "expected_output_outline": [
+      "Dien tich tru so Bo Cong an 44 Yet Kieu la 0,1900 ha"
+    ],
+    "context": [
+      "source=report_2025, project=Tru so Bo Cong an 44 Yet Kieu, area=0.1900 ha"
+    ],
+    "target_metadata": {
+      "project": "Tru so Bo Cong an 44 Yet Kieu",
+      "projectAreaHa": 0.19,
+      "planningDocumentId": 17
+    },
+    "id": "ST_EASY_078"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Theo ke hoach su dung dat nam 2025, quan Ha Dong co tong dien tich du an la bao nhieu ha?",
+    "expected_output_outline": [
+      "Tong dien tich cac cong trinh, du an: 266,72 ha"
+    ],
+    "context": [
+      "source=decision_ha_dong_2025, page=2, totalProjects2025=38, totalArea=266.72 ha"
+    ],
+    "target_metadata": {
+      "totalProjects2025": 38,
+      "totalArea2025Ha": 266.72,
+      "planningDocumentId": 113
+    },
+    "id": "ST_EASY_079"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon moi truong nuoc mat trong ke hoach su dung dat nam 2025 cua quan Ha Dong?",
+    "expected_output_outline": [
+      "Moi truong nuoc mat chiu tac dong boi do thi hoa, cong nghiep, chat thai va khu dan cu",
+      "Song Nhue, ho va kenh muong noi thi co dau hieu o nhiem"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=5, naturalArea=4964.23 ha, wards=17"
+    ],
+    "target_metadata": {
+      "naturalAreaHa": 4964.23,
+      "wards": 17,
+      "planningDocumentId": 137
+    },
+    "id": "ST_EASY_080"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Nam 2025 quan Ha Dong du kien thu hoi bao nhieu ha dat nong nghiep?",
+    "expected_output_outline": [
+      "Dat nong nghiep thu hoi nam 2025: 55,76 ha"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, page=4, agriculturalLandRecovery2025=55.76 ha, nonAgriculturalLandRecovery2025=29.66 ha"
+    ],
+    "target_metadata": {
+      "agriculturalLandRecovery2025Ha": 55.76,
+      "nonAgriculturalLandRecovery2025Ha": 29.66,
+      "planningDocumentId": 137
+    },
+    "id": "ST_EASY_081"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Quan Ha Dong tap trung giai phong mat bang cho cac du an trong diem nao do Thanh pho giao?",
+    "expected_output_outline": [
+      "Neu dung cac du an trong diem trong bao cao Ha Dong"
+    ],
+    "context": [
+      "source=report_ha_dong_2025, pages=14-16, keyProjects=Vanh dai 4|Tram bom tieu Yen Nghia|Quoc lo 6 Ba La Xuan Mai"
+    ],
+    "target_metadata": {
+      "keyProjectsCount": 3,
+      "planningDocumentId": 137
+    },
+    "id": "ST_EASY_082"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "land_use_planning",
+    "input": "Du an truong THPT cong lap tai o dat F/THPT1 cua Cau Giay nam o phuong nao va dien tich bao nhieu?",
+    "expected_output_outline": [
+      "Phuong: Mai Dich",
+      "Dien tich du an: 0,95 ha"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, newProject2025=Truong THPT cong lap tai o dat ky hieu F/THPT1, phuong Mai Dich, area=0.95 ha",
+      "source=decision_cau_giay_2025, appendix, projectIndex=11, projectName=Truong THPT cong lap tai o dat ky hieu F/THPT1, phuong Mai Dich"
+    ],
+    "target_metadata": {
+      "projectName": "Truong THPT cong lap tai o dat ky hieu F/THPT1, phuong Mai Dich",
+      "ward": "Mai Dich",
+      "planningDocumentId": 63
+    },
+    "id": "ST_EASY_083",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Du an dang ky moi duy nhat trong ke hoach su dung dat nam 2025 cua quan Cau Giay co dien tich bao nhieu ha?",
+    "expected_output_outline": [
+      "Dien tich du an Truong THPT cong lap F/THPT1: 0,95 ha"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, newProject2025=Trường THPT công lập tại ô đất ký hiệu F/THPT1, phường Mai Dịch, area=0.95 ha",
+      "source=decision_cau_giay_2025, appendix, projectIndex=11, projectName=Trường THPT công lập tại ô đất ký hiệu F/THPT1, phường Mai Dịch"
+    ],
+    "target_metadata": {
+      "projectName": "Trường THPT công lập tại ô đất ký hiệu F/THPT1, phường Mai Dịch",
+      "areaHa": 0.95,
+      "planningDocumentId": 63
+    },
+    "id": "ST_EASY_084"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Quan Cau Giay dua bao nhieu ha dat chua su dung vao su dung trong nam 2025?",
+    "expected_output_outline": [
+      "Dat chua su dung dua vao su dung nam 2025: 0,02 ha"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, unusedLandToUse2025=0.02 ha, landType=ODT, location=Mai Dịch"
+    ],
+    "target_metadata": {
+      "unusedLandToUse2025Ha": 0.02,
+      "landType": "Đất ở tại đô thị",
+      "location": "Mai Dịch",
+      "planningDocumentId": 63
+    },
+    "id": "ST_EASY_085"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Nam 2025 quan Cau Giay can thu hoi bao nhieu ha dat nong nghiep?",
+    "expected_output_outline": [
+      "Dat nong nghiep can thu hoi: 4,77 ha"
+    ],
+    "context": [
+      "source=report_cau_giay_2025, agriculturalRecovery2025=4.77 ha, nonAgriculturalRecovery2025=1.63 ha"
+    ],
+    "target_metadata": {
+      "agriculturalRecovery2025Ha": 4.77,
+      "nonAgriculturalRecovery2025Ha": 1.63,
+      "planningDocumentId": 63
+    },
+    "id": "ST_EASY_086"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Theo bao cao nam 2025, dia hinh thi xa Son Tay co xu huong thap dan theo huong nao?",
+    "expected_output_outline": [
+      "Dia hinh Son Tay thap dan tu Tay sang Dong"
+    ],
+    "context": [
+      "source=report_son_tay_2025, terrain=thi xa Son Tay thuoc vung ban son dia, dia hinh thap dan tu Tay sang Dong"
+    ],
+    "target_metadata": {
+      "terrainTrend": "thap dan tu Tay sang Dong",
+      "planningDocumentId": 110
+    },
+    "id": "ST_EASY_087"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Theo bao cao nam 2025, dien tich dat chua su dung cua thi xa Son Tay la bao nhieu ha?",
+    "expected_output_outline": [
+      "Dat chua su dung cua thi xa Son Tay la 19,69 ha"
+    ],
+    "context": [
+      "source=report_son_tay_2025, unusedLand=19.69 ha, shareOfNaturalArea=0.17 percent"
+    ],
+    "target_metadata": {
+      "unusedLandHa": 19.69,
+      "planningDocumentId": 110
+    },
+    "id": "ST_EASY_088"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon viec nhieu du an nam 2024 cua thi xa Son Tay chuyen tiep sang 2025?",
+    "expected_output_outline": [
+      "Thu tuc phe duyet, do dac hien trang, xac dinh nguon goc dat anh huong tien do",
+      "Lap phuong an den bu va cong bo quy hoach cung anh huong tien do"
+    ],
+    "context": [
+      "source=report_son_tay_2025, totalPurposeConversion2025=137.48 ha, agriculturalToNonAgricultural=119.43 ha, internalNonAgriculturalConversion=18.05 ha"
+    ],
+    "target_metadata": {
+      "totalPurposeConversion2025Ha": 137.48,
+      "agriculturalToNonAgriculturalHa": 119.43,
+      "internalNonAgriculturalConversionHa": 18.05,
+      "planningDocumentId": 110
+    },
+    "id": "ST_EASY_089"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Nam 2025 thi xa Son Tay du kien dua bao nhieu ha dat chua su dung vao su dung?",
+    "expected_output_outline": [
+      "Dat chua su dung dua vao su dung: 0,23 ha"
+    ],
+    "context": [
+      "source=report_son_tay_2025, unusedLandToUse2025=0.23 ha"
+    ],
+    "target_metadata": {
+      "unusedLandToUse2025Ha": 0.23,
+      "planningDocumentId": 110
+    },
+    "id": "ST_EASY_090"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "land_use_planning",
+    "input": "Theo quyet dinh phe duyet, ke hoach su dung dat nam 2025 cua Hai Ba Trung co bao nhieu du an va tong dien tich bao nhieu ha?",
+    "expected_output_outline": [
+      "So du an duoc phe duyet: 32",
+      "Tong dien tich: 8,6915 ha"
+    ],
+    "context": [
+      "source=decision_hai_ba_trung_2025, approvedProjects=32, approvedArea=8.6915 ha"
+    ],
+    "target_metadata": {
+      "approvedProjects2025": 32,
+      "approvedArea2025Ha": 8.6915,
+      "planningDocumentId": 90
+    },
+    "id": "ST_EASY_091",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "land_use_planning",
+    "input": "Ban liet ke giup minh hai du an Dieu 67 duoc tiep tuc thuc hien nam 2025 o Hai Ba Trung, chi dua tren danh muc trong tai lieu.",
+    "expected_output_outline": [
+      "Mo rong Nha tang le Quoc gia so 5 Tran Thanh Tong",
+      "Dau tu xay dung Mo rong tru so lam viec Bo Cong an tai so 30 Tran Binh Trong - 58 Tran Nhan Tong"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, article67Projects=Mo rong Nha tang le Quoc gia so 5 Tran Thanh Tong|Dau tu xay dung Mo rong tru so lam viec Bo Cong an tai so 30 Tran Binh Trong - 58 Tran Nhan Tong"
+    ],
+    "target_metadata": {
+      "article67ProjectCount": 2,
+      "planningDocumentId": 91,
+      "article67Projects": [
+        "Mo rong Nha tang le Quoc gia so 5 Tran Thanh Tong",
+        "Mo rong tru so lam viec Bo Cong an tai so 30 Tran Binh Trong - 58 Tran Nhan Tong"
+      ]
+    },
+    "id": "ST_EASY_092",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "land_use_planning",
+    "input": "Nam 2025 Hai Ba Trung can thu hoi bao nhieu ha dat, gom bao nhieu dat nong nghiep va phi nong nghiep?",
+    "expected_output_outline": [
+      "Tong dien tich dat can thu hoi: 5,6811 ha",
+      "Dat nong nghiep can thu hoi: 0,6088 ha",
+      "Dat phi nong nghiep can thu hoi: 5,0723 ha"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, totalRecovery2025=5.6811 ha, agriculturalRecovery2025=0.6088 ha, nonAgriculturalRecovery2025=5.0723 ha"
+    ],
+    "target_metadata": {
+      "totalRecovery2025Ha": 5.6811,
+      "agriculturalRecovery2025Ha": 0.6088,
+      "nonAgriculturalRecovery2025Ha": 5.0723,
+      "planningDocumentId": 91
+    },
+    "id": "ST_EASY_093",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "land_use_planning",
+    "input": "Trong bao cao Hai Ba Trung, dien tich dat chua su dung nam 2025 con lai bao nhieu ha?",
+    "expected_output_outline": [
+      "Dien tich dat chua su dung nam 2025: 0,13 ha"
+    ],
+    "context": [
+      "source=report_hai_ba_trung_2025, unusedLand2025=0.13 ha"
+    ],
+    "target_metadata": {
+      "unusedLand2025Ha": 0.13,
+      "planningDocumentId": 91
+    },
+    "id": "ST_EASY_094",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Theo hien trang nam 2024, quan Hoang Mai co bao nhieu ha dat nong nghiep?",
+    "expected_output_outline": [
+      "Dat nong nghiep nam 2024 la 803,81 ha"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, naturalArea2024=4019.21 ha, agricultural2024=803.81 ha, nonAgricultural2024=3215.40 ha, unused2024=0 ha"
+    ],
+    "target_metadata": {
+      "agricultural2024Ha": 803.81,
+      "planningDocumentId": 133
+    },
+    "id": "ST_EASY_095"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon dia hinh va nhu cau thoat nuoc cua quan Hoang Mai?",
+    "expected_output_outline": [
+      "Hoang Mai la vung trung phia Nam noi thanh",
+      "Dia hinh thap dan tu Bac xuong Nam va tu Tay sang Dong"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, naturalArea2024=4019.21 ha, agricultural2024=803.81 ha, nonAgricultural2024=3215.40 ha, unused2024=0 ha"
+    ],
+    "target_metadata": {
+      "unused2024Ha": 0,
+      "agricultural2024Ha": 803.81,
+      "nonAgricultural2024Ha": 3215.4,
+      "planningDocumentId": 133
+    },
+    "id": "ST_EASY_096"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon GPMB la khau trong diem cua quan Hoang Mai?",
+    "expected_output_outline": [
+      "Hoang Mai trien khai GPMB cho 45 du an nam 2024",
+      "Co 1.571 ho duoc thong bao thu hoi dat va 1.195 phuong an duoc phe duyet"
+    ],
+    "context": [
+      "source=report_hoang_mai_2025, agriculturalRecovery2025=50.84 ha"
+    ],
+    "target_metadata": {
+      "agriculturalRecovery2025Ha": 50.84,
+      "planningDocumentId": 133
+    },
+    "id": "ST_EASY_097",
+    "dataset_variant": "rebalanced_v1_natural_curated",
+    "curation_note": "hand-curated natural question; expected facts preserved from source context"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Vi sao can giai thich ngan gon quan Hoang Mai phai tang cuong quan ly do thi va moi truong?",
+    "expected_output_outline": [
+      "Neu duoc ap luc do thi hoa, vi pham trat tu xay dung va moi truong theo tai lieu"
+    ],
+    "context": [
+      "source=project_list_hoang_mai_2025, project=Xây dựng trường tiểu học Yên Sở tại ô C3/TH2, ward=Yên Sở, area=1.44 ha, recovery=1.44 ha"
+    ],
+    "target_metadata": {
+      "project": "Xây dựng trường tiểu học Yên Sở tại ô C3/TH2",
+      "ward": "Yên Sở",
+      "areaHa": 1.44,
+      "planningDocumentId": 135
+    },
+    "id": "ST_EASY_098"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Ke hoach su dung dat nam 2025 cua quan Hoan Kiem co ma ho so nao?",
+    "expected_output_outline": [
+      "Ma ho so: HN-HoanKiem-KH2025"
+    ],
+    "context": [
+      "source=decision_2025, section=Điều 1, totalProjects2025=22, totalArea=4.14 ha",
+      "source=report_2025, section=3.7, totalProjects2025=22, totalArea=4.14 ha",
+      "source=planning_metadata, dossierCode=HN-HoanKiem-KH2025"
+    ],
+    "target_metadata": {
+      "totalProjects2025": 22,
+      "totalArea2025Ha": 4.14,
+      "dossierCode": "HN-HoanKiem-KH2025",
+      "planningDocumentId": 16
+    },
+    "id": "ST_EASY_099"
+  },
+  {
+    "difficulty": "easy",
+    "question_type": "what",
+    "domain": "land_use_planning",
+    "input": "Ke hoach su dung dat nam 2025 cua quan Cau Giay co ma ho so nao?",
+    "expected_output_outline": [
+      "Ma ho so: HN-CauGiay-KH2025"
+    ],
+    "context": [
+      "source=decision_cau_giay_2025, totalProjects2025=22, totalArea=28.36 ha",
+      "source=planning_metadata, dossierCode=HN-CauGiay-KH2025"
+    ],
+    "target_metadata": {
+      "totalProjects2025": 22,
+      "totalArea2025Ha": 28.36,
+      "dossierCode": "HN-CauGiay-KH2025",
+      "planningDocumentId": 61
+    },
+    "id": "ST_EASY_100"
+  }
+]

@@ -1,0 +1,500 @@
+[Trace] 1/100 ST_EASY_001 done in 12.673s retrieval=8.163s answer=4.454s docs=3
+[Trace] 2/100 ST_EASY_002 done in 5.797s retrieval=4.099s answer=1.683s docs=3
+[Trace] 3/100 ST_EASY_003 done in 4.091s retrieval=1.04s answer=3.033s docs=2
+[Trace] 4/100 ST_EASY_004 done in 2.687s retrieval=0.828s answer=1.843s docs=2
+[Trace] 5/100 ST_EASY_005 done in 3.498s retrieval=0.651s answer=2.835s docs=2
+[Trace] 6/100 ST_EASY_006 done in 3.565s retrieval=0.627s answer=2.927s docs=2
+[Trace] 7/100 ST_EASY_007 done in 4.734s retrieval=0.638s answer=4.085s docs=2
+[Trace] 8/100 ST_EASY_008 done in 3.918s retrieval=0.638s answer=3.269s docs=3
+[Trace] 9/100 ST_EASY_009 done in 5.732s retrieval=0.641s answer=5.081s docs=3
+[Trace] 10/100 ST_EASY_010 done in 2.354s retrieval=0.672s answer=1.672s docs=3
+[Trace] 11/100 ST_EASY_011 done in 1.959s retrieval=0.643s answer=1.304s docs=2
+[Trace] 12/100 ST_EASY_012 done in 2.822s retrieval=0.697s answer=2.111s docs=3
+[Trace] 13/100 ST_EASY_013 done in 2.08s retrieval=0.649s answer=1.42s docs=2
+[Trace] 14/100 ST_EASY_014 done in 2.385s retrieval=0.654s answer=1.718s docs=3
+[Trace] 15/100 ST_EASY_015 done in 1.6s retrieval=0.632s answer=0.957s docs=2
+[Trace] 16/100 ST_EASY_016 done in 1.633s retrieval=0.642s answer=0.98s docs=2
+[Trace] 17/100 ST_EASY_017 done in 1.915s retrieval=0.744s answer=1.164s docs=2
+[Trace] 18/100 ST_EASY_018 done in 1.987s retrieval=0.641s answer=1.332s docs=3
+[Trace] 19/100 ST_EASY_019 done in 1.502s retrieval=0.627s answer=0.869s docs=1
+[Trace] 20/100 ST_EASY_020 done in 1.875s retrieval=0.645s answer=1.22s docs=2
+[Trace] 21/100 ST_EASY_021 done in 1.974s retrieval=0.658s answer=1.304s docs=2
+[Trace] 22/100 ST_EASY_022 done in 1.966s retrieval=0.649s answer=1.305s docs=2
+[Trace] 23/100 ST_EASY_023 done in 2.209s retrieval=0.638s answer=1.557s docs=3
+[Trace] 24/100 ST_EASY_024 done in 1.924s retrieval=0.613s answer=1.302s docs=3
+[Trace] 25/100 ST_EASY_025 done in 3.538s retrieval=0.652s answer=2.869s docs=4
+[Trace] 26/100 ST_EASY_026 done in 9.025s retrieval=1.67s answer=7.328s docs=12
+[Trace] 27/100 ST_EASY_027 done in 2.603s retrieval=1.384s answer=1.201s docs=12
+[Trace] 28/100 ST_EASY_028 done in 2.616s retrieval=1.408s answer=1.195s docs=11
+[Trace] 29/100 ST_EASY_029 done in 3.062s retrieval=1.341s answer=1.698s docs=12
+[Trace] 30/100 ST_EASY_030 done in 1.604s retrieval=0.395s answer=1.176s docs=12
+[Trace] 31/100 ST_EASY_031 done in 10.617s retrieval=1.476s answer=9.104s docs=12
+[Trace] 32/100 ST_EASY_032 done in 3.43s retrieval=1.568s answer=1.79s docs=12
+[Trace] 33/100 ST_EASY_033 done in 3.132s retrieval=1.57s answer=1.528s docs=10
+[Trace] 34/100 ST_EASY_034 done in 9.218s retrieval=1.721s answer=7.484s docs=11
+[Trace] 35/100 ST_EASY_035 done in 3.512s retrieval=1.722s answer=1.751s docs=12
+[Trace] 36/100 ST_EASY_036 done in 3.359s retrieval=1.675s answer=1.661s docs=12
+[Trace] 37/100 ST_EASY_037 done in 4.377s retrieval=1.732s answer=2.598s docs=12
+[Trace] 38/100 ST_EASY_038 done in 7.095s retrieval=5.317s answer=1.747s docs=10
+[Trace] 39/100 ST_EASY_039 done in 14.98s retrieval=5.389s answer=9.552s docs=12
+[Trace] 40/100 ST_EASY_040 done in 7.637s retrieval=5.458s answer=2.151s docs=10
+[Trace] 41/100 ST_EASY_041 done in 7.916s retrieval=5.584s answer=2.286s docs=12
+[Trace] 42/100 ST_EASY_042 done in 1.38s retrieval=0.76s answer=0.619s docs=0
+[Trace] 43/100 ST_EASY_043 done in 1.089s retrieval=0.506s answer=0.582s docs=0
+[Trace] 44/100 ST_EASY_044 done in 1.054s retrieval=0.51s answer=0.542s docs=0
+[Trace] 45/100 ST_EASY_045 done in 1.202s retrieval=0.535s answer=0.665s docs=0
+[Trace] 46/100 ST_EASY_046 done in 3.614s retrieval=1.406s answer=2.18s docs=10
+[Trace] 47/100 ST_EASY_047 done in 5.076s retrieval=3.44s answer=1.596s docs=12
+[Trace] 48/100 ST_EASY_048 done in 11.981s retrieval=2.158s answer=9.782s docs=12
+[Trace] 49/100 ST_EASY_049 done in 3.477s retrieval=1.373s answer=2.048s docs=12
+[Trace] 50/100 ST_EASY_050 done in 4.392s retrieval=2.705s answer=1.676s docs=1
+[Trace] 51/100 ST_EASY_051 done in 8.126s retrieval=2.969s answer=5.145s docs=2
+[Trace] 52/100 ST_EASY_052 done in 5.178s retrieval=0.942s answer=4.219s docs=4
+[Trace] 53/100 ST_EASY_053 done in 3.259s retrieval=0.696s answer=2.553s docs=3
+[Trace] 54/100 ST_EASY_054 done in 3.032s retrieval=0.663s answer=2.359s docs=2
+[Trace] 55/100 ST_EASY_055 done in 2.771s retrieval=0.657s answer=2.105s docs=2
+[Trace] 56/100 ST_EASY_056 done in 2.098s retrieval=0.655s answer=1.431s docs=3
+[Trace] 57/100 ST_EASY_057 done in 2.589s retrieval=0.66s answer=1.916s docs=3
+[Trace] 58/100 ST_EASY_058 done in 3.701s retrieval=0.647s answer=3.034s docs=5
+[Trace] 59/100 ST_EASY_059 done in 2.151s retrieval=0.654s answer=1.483s docs=3
+[Trace] 60/100 ST_EASY_060 done in 2.922s retrieval=0.649s answer=2.258s docs=2
+[Trace] 61/100 ST_EASY_061 done in 2.603s retrieval=0.643s answer=1.947s docs=2
+[Trace] 62/100 ST_EASY_062 done in 1.818s retrieval=0.654s answer=1.15s docs=4
+[Trace] 63/100 ST_EASY_063 done in 2.507s retrieval=0.672s answer=1.822s docs=3
+[Trace] 64/100 ST_EASY_064 done in 1.956s retrieval=0.663s answer=1.281s docs=2
+[Trace] 65/100 ST_EASY_065 done in 2.467s retrieval=0.654s answer=1.799s docs=2
+[Trace] 66/100 ST_EASY_066 done in 2.311s retrieval=0.638s answer=1.66s docs=2
+[Trace] 67/100 ST_EASY_067 done in 2.699s retrieval=0.638s answer=2.047s docs=4
+[Trace] 68/100 ST_EASY_068 done in 2.237s retrieval=0.647s answer=1.577s docs=2
+[Trace] 69/100 ST_EASY_069 done in 2.11s retrieval=0.649s answer=1.453s docs=2
+[Trace] 70/100 ST_EASY_070 done in 1.811s retrieval=0.652s answer=1.144s docs=3
+[Trace] 71/100 ST_EASY_071 done in 2.187s retrieval=0.657s answer=1.514s docs=3
+[Trace] 72/100 ST_EASY_072 done in 1.622s retrieval=0.649s answer=0.962s docs=2
+[Trace] 73/100 ST_EASY_073 done in 2.443s retrieval=0.677s answer=1.751s docs=3
+[Trace] 74/100 ST_EASY_074 done in 1.759s retrieval=0.644s answer=1.081s docs=2
+[Trace] 75/100 ST_EASY_075 done in 3.596s retrieval=0.665s answer=2.916s docs=12
+[Trace] 76/100 ST_EASY_076 done in 2.952s retrieval=1.444s answer=1.489s docs=12
+[Trace] 77/100 ST_EASY_077 done in 4.804s retrieval=1.395s answer=3.365s docs=12
+[Trace] 78/100 ST_EASY_078 done in 4.63s retrieval=1.433s answer=3.176s docs=12
+[Trace] 79/100 ST_EASY_079 done in 2.079s retrieval=0.355s answer=1.711s docs=12
+[Trace] 80/100 ST_EASY_080 done in 19.753s retrieval=1.549s answer=18.177s docs=12
+[Trace] 81/100 ST_EASY_081 done in 2.824s retrieval=1.479s answer=1.303s docs=12
+[Trace] 82/100 ST_EASY_082 done in 3.412s retrieval=1.459s answer=1.923s docs=10
+[Trace] 83/100 ST_EASY_083 done in 7.91s retrieval=1.75s answer=6.114s docs=12
+[Trace] 84/100 ST_EASY_084 done in 7.065s retrieval=1.757s answer=5.288s docs=12
+[Trace] 85/100 ST_EASY_085 done in 5.247s retrieval=1.735s answer=3.475s docs=12
+[Trace] 86/100 ST_EASY_086 done in 3.291s retrieval=1.678s answer=1.571s docs=12
+[Trace] 87/100 ST_EASY_087 done in 9.473s retrieval=5.46s answer=3.978s docs=10
+[Trace] 88/100 ST_EASY_088 done in 7.21s retrieval=5.469s answer=1.694s docs=12
+[Trace] 89/100 ST_EASY_089 done in 15.723s retrieval=7.257s answer=8.406s docs=12
+[Trace] 90/100 ST_EASY_090 done in 7.789s retrieval=5.298s answer=2.446s docs=12
+[Trace] 91/100 ST_EASY_091 done in 1.242s retrieval=0.501s answer=0.74s docs=0
+[Trace] 92/100 ST_EASY_092 done in 1.512s retrieval=0.514s answer=0.996s docs=0
+[Trace] 93/100 ST_EASY_093 done in 1.323s retrieval=0.484s answer=0.836s docs=0
+[Trace] 94/100 ST_EASY_094 done in 1.224s retrieval=0.525s answer=0.697s docs=0
+[Trace] 95/100 ST_EASY_095 done in 4.626s retrieval=3.349s answer=1.228s docs=12
+[Trace] 96/100 ST_EASY_096 done in 5.445s retrieval=2.184s answer=3.126s docs=12
+[Trace] 97/100 ST_EASY_097 done in 6.53s retrieval=2.153s answer=4.339s docs=10
+[Trace] 98/100 ST_EASY_098 done in 5.44s retrieval=1.342s answer=4.048s docs=10
+[Trace] 99/100 ST_EASY_099 done in 2.256s retrieval=0.731s answer=1.514s docs=12
+[Trace] 100/100 ST_EASY_100 done in 1.842s retrieval=0.518s answer=1.316s docs=12
+[JudgeManual] 1/100 ST_EASY_001 start
+[JudgeManual] 1/100 Contextual Recall score=1.0 success=True time=3.415s
+[JudgeManual] 1/100 Faithfulness score=1.0 success=True time=6.016s
+[JudgeManual] 1/100 Answer Relevancy score=1.0 success=True time=2.651s
+[JudgeManual] 2/100 ST_EASY_002 start
+[JudgeManual] 2/100 Contextual Recall score=1.0 success=True time=2.611s
+[JudgeManual] 2/100 Faithfulness score=1.0 success=True time=5.353s
+[JudgeManual] 2/100 Answer Relevancy score=1.0 success=True time=2.869s
+[JudgeManual] 3/100 ST_EASY_003 start
+[JudgeManual] 3/100 Contextual Recall score=1.0 success=True time=3.377s
+[JudgeManual] 3/100 Faithfulness score=1.0 success=True time=4.699s
+[JudgeManual] 3/100 Answer Relevancy score=1.0 success=True time=2.814s
+[JudgeManual] 4/100 ST_EASY_004 start
+[JudgeManual] 4/100 Contextual Recall score=1.0 success=True time=3.031s
+[JudgeManual] 4/100 Faithfulness score=0.0 success=False time=7.303s
+[JudgeManual] 4/100 Answer Relevancy score=1.0 success=True time=2.679s
+[JudgeManual] 5/100 ST_EASY_005 start
+[JudgeManual] 5/100 Contextual Recall score=1.0 success=True time=2.648s
+[JudgeManual] 5/100 Faithfulness score=1.0 success=True time=5.854s
+[JudgeManual] 5/100 Answer Relevancy score=1.0 success=True time=3.467s
+[JudgeManual] 6/100 ST_EASY_006 start
+[JudgeManual] 6/100 Contextual Recall score=1.0 success=True time=2.527s
+[JudgeManual] 6/100 Faithfulness score=1.0 success=True time=6.394s
+[JudgeManual] 6/100 Answer Relevancy score=1.0 success=True time=2.81s
+[JudgeManual] 7/100 ST_EASY_007 start
+[JudgeManual] 7/100 Contextual Recall score=1.0 success=True time=3.25s
+[JudgeManual] 7/100 Faithfulness score=1.0 success=True time=5.791s
+[JudgeManual] 7/100 Answer Relevancy score=0.5 success=False time=3.879s
+[JudgeManual] 8/100 ST_EASY_008 start
+[JudgeManual] 8/100 Contextual Recall score=1.0 success=True time=4.023s
+[JudgeManual] 8/100 Faithfulness score=1.0 success=True time=4.946s
+[JudgeManual] 8/100 Answer Relevancy score=1.0 success=True time=2.812s
+[JudgeManual] 9/100 ST_EASY_009 start
+[JudgeManual] 9/100 Contextual Recall score=1.0 success=True time=2.843s
+[JudgeManual] 9/100 Faithfulness score=1.0 success=True time=6.568s
+[JudgeManual] 9/100 Answer Relevancy score=1.0 success=True time=3.659s
+[JudgeManual] 10/100 ST_EASY_010 start
+[JudgeManual] 10/100 Contextual Recall score=1.0 success=True time=2.626s
+[JudgeManual] 10/100 Faithfulness score=1.0 success=True time=6.308s
+[JudgeManual] 10/100 Answer Relevancy score=1.0 success=True time=3.016s
+[JudgeManual] 11/100 ST_EASY_011 start
+[JudgeManual] 11/100 Contextual Recall score=1.0 success=True time=2.6s
+[JudgeManual] 11/100 Faithfulness score=1.0 success=True time=4.946s
+[JudgeManual] 11/100 Answer Relevancy score=1.0 success=True time=2.581s
+[JudgeManual] 12/100 ST_EASY_012 start
+[JudgeManual] 12/100 Contextual Recall score=1.0 success=True time=5.162s
+[JudgeManual] 12/100 Faithfulness score=0.75 success=True time=5.994s
+[JudgeManual] 12/100 Answer Relevancy score=1.0 success=True time=4.179s
+[JudgeManual] 13/100 ST_EASY_013 start
+[JudgeManual] 13/100 Contextual Recall score=1.0 success=True time=2.957s
+[JudgeManual] 13/100 Faithfulness score=1.0 success=True time=4.82s
+[JudgeManual] 13/100 Answer Relevancy score=1.0 success=True time=2.689s
+[JudgeManual] 14/100 ST_EASY_014 start
+[JudgeManual] 14/100 Contextual Recall score=1.0 success=True time=3.516s
+[JudgeManual] 14/100 Faithfulness score=1.0 success=True time=6.022s
+[JudgeManual] 14/100 Answer Relevancy score=1.0 success=True time=2.769s
+[JudgeManual] 15/100 ST_EASY_015 start
+[JudgeManual] 15/100 Contextual Recall score=1.0 success=True time=3.085s
+[JudgeManual] 15/100 Faithfulness score=1.0 success=True time=6.778s
+[JudgeManual] 15/100 Answer Relevancy score=1.0 success=True time=2.648s
+[JudgeManual] 16/100 ST_EASY_016 start
+[JudgeManual] 16/100 Contextual Recall score=1.0 success=True time=3.139s
+[JudgeManual] 16/100 Faithfulness score=1.0 success=True time=4.019s
+[JudgeManual] 16/100 Answer Relevancy score=1.0 success=True time=2.753s
+[JudgeManual] 17/100 ST_EASY_017 start
+[JudgeManual] 17/100 Contextual Recall score=1.0 success=True time=2.522s
+[JudgeManual] 17/100 Faithfulness score=1.0 success=True time=6.892s
+[JudgeManual] 17/100 Answer Relevancy score=1.0 success=True time=2.829s
+[JudgeManual] 18/100 ST_EASY_018 start
+[JudgeManual] 18/100 Contextual Recall score=1.0 success=True time=3.106s
+[JudgeManual] 18/100 Faithfulness score=1.0 success=True time=4.915s
+[JudgeManual] 18/100 Answer Relevancy score=1.0 success=True time=2.606s
+[JudgeManual] 19/100 ST_EASY_019 start
+[JudgeManual] 19/100 Contextual Recall score=1.0 success=True time=2.422s
+[JudgeManual] 19/100 Faithfulness score=1.0 success=True time=4.321s
+[JudgeManual] 19/100 Answer Relevancy score=1.0 success=True time=2.525s
+[JudgeManual] 20/100 ST_EASY_020 start
+[JudgeManual] 20/100 Contextual Recall score=1.0 success=True time=2.671s
+[JudgeManual] 20/100 Faithfulness score=1.0 success=True time=5.153s
+[JudgeManual] 20/100 Answer Relevancy score=1.0 success=True time=2.643s
+[JudgeManual] 21/100 ST_EASY_021 start
+[JudgeManual] 21/100 Contextual Recall score=1.0 success=True time=2.607s
+[JudgeManual] 21/100 Faithfulness score=1.0 success=True time=6.428s
+[JudgeManual] 21/100 Answer Relevancy score=1.0 success=True time=2.869s
+[JudgeManual] 22/100 ST_EASY_022 start
+[JudgeManual] 22/100 Contextual Recall score=1.0 success=True time=2.442s
+[JudgeManual] 22/100 Faithfulness score=1.0 success=True time=4.331s
+[JudgeManual] 22/100 Answer Relevancy score=1.0 success=True time=2.463s
+[JudgeManual] 23/100 ST_EASY_023 start
+[JudgeManual] 23/100 Contextual Recall score=1.0 success=True time=3.554s
+[JudgeManual] 23/100 Faithfulness score=1.0 success=True time=5.636s
+[JudgeManual] 23/100 Answer Relevancy score=1.0 success=True time=2.669s
+[JudgeManual] 24/100 ST_EASY_024 start
+[JudgeManual] 24/100 Contextual Recall score=1.0 success=True time=2.349s
+[JudgeManual] 24/100 Faithfulness score=1.0 success=True time=5.016s
+[JudgeManual] 24/100 Answer Relevancy score=1.0 success=True time=2.264s
+[JudgeManual] 25/100 ST_EASY_025 start
+[JudgeManual] 25/100 Contextual Recall score=1.0 success=True time=5.868s
+[JudgeManual] 25/100 Faithfulness score=0.75 success=True time=6.228s
+[JudgeManual] 25/100 Answer Relevancy score=1.0 success=True time=3.451s
+[JudgeManual] 26/100 ST_EASY_026 start
+[JudgeManual] 26/100 Contextual Recall score=1.0 success=True time=3.212s
+[JudgeManual] 26/100 Faithfulness score=1.0 success=True time=7.216s
+[JudgeManual] 26/100 Answer Relevancy score=1.0 success=True time=3.557s
+[JudgeManual] 27/100 ST_EASY_027 start
+[JudgeManual] 27/100 Contextual Recall score=1.0 success=True time=3.023s
+[JudgeManual] 27/100 Faithfulness score=1.0 success=True time=7.607s
+[JudgeManual] 27/100 Answer Relevancy score=1.0 success=True time=2.777s
+[JudgeManual] 28/100 ST_EASY_028 start
+[JudgeManual] 28/100 Contextual Recall score=1.0 success=True time=2.855s
+[JudgeManual] 28/100 Faithfulness score=1.0 success=True time=7.206s
+[JudgeManual] 28/100 Answer Relevancy score=1.0 success=True time=2.979s
+[JudgeManual] 29/100 ST_EASY_029 start
+[JudgeManual] 29/100 Contextual Recall score=1.0 success=True time=2.863s
+[JudgeManual] 29/100 Faithfulness score=1.0 success=True time=7.636s
+[JudgeManual] 29/100 Answer Relevancy score=1.0 success=True time=2.784s
+[JudgeManual] 30/100 ST_EASY_030 start
+[JudgeManual] 30/100 Contextual Recall score=1.0 success=True time=2.567s
+[JudgeManual] 30/100 Faithfulness score=1.0 success=True time=8.542s
+[JudgeManual] 30/100 Answer Relevancy score=1.0 success=True time=3.36s
+[JudgeManual] 31/100 ST_EASY_031 start
+[JudgeManual] 31/100 Contextual Recall score=1.0 success=True time=2.895s
+[JudgeManual] 31/100 Faithfulness score=1.0 success=True time=7.219s
+[JudgeManual] 31/100 Answer Relevancy score=1.0 success=True time=2.553s
+[JudgeManual] 32/100 ST_EASY_032 start
+[JudgeManual] 32/100 Contextual Recall score=1.0 success=True time=2.698s
+[JudgeManual] 32/100 Faithfulness score=1.0 success=True time=15.638s
+[JudgeManual] 32/100 Answer Relevancy score=1.0 success=True time=3.638s
+[JudgeManual] 33/100 ST_EASY_033 start
+[JudgeManual] 33/100 Contextual Recall score=1.0 success=True time=2.377s
+[JudgeManual] 33/100 Faithfulness score=0.0 success=False time=14.885s
+[JudgeManual] 33/100 Answer Relevancy score=1.0 success=True time=3.051s
+[JudgeManual] 34/100 ST_EASY_034 start
+[JudgeManual] 34/100 Contextual Recall score=1.0 success=True time=3.648s
+[JudgeManual] 34/100 Faithfulness score=1.0 success=True time=12.333s
+[JudgeManual] 34/100 Answer Relevancy score=1.0 success=True time=2.774s
+[JudgeManual] 35/100 ST_EASY_035 start
+[JudgeManual] 35/100 Contextual Recall score=1.0 success=True time=2.358s
+[JudgeManual] 35/100 Faithfulness score=1.0 success=True time=21.655s
+[JudgeManual] 35/100 Answer Relevancy score=1.0 success=True time=2.486s
+[JudgeManual] 36/100 ST_EASY_036 start
+[JudgeManual] 36/100 Contextual Recall score=1.0 success=True time=3.124s
+[JudgeManual] 36/100 Faithfulness score=1.0 success=True time=19.003s
+[JudgeManual] 36/100 Answer Relevancy score=1.0 success=True time=2.365s
+[JudgeManual] 37/100 ST_EASY_037 start
+[JudgeManual] 37/100 Contextual Recall score=1.0 success=True time=2.758s
+[JudgeManual] 37/100 Faithfulness score=1.0 success=True time=13.836s
+[JudgeManual] 37/100 Answer Relevancy score=1.0 success=True time=3.249s
+[JudgeManual] 38/100 ST_EASY_038 start
+[JudgeManual] 38/100 Contextual Recall score=1.0 success=True time=2.564s
+[JudgeManual] 38/100 Faithfulness score=1.0 success=True time=24.726s
+[JudgeManual] 38/100 Answer Relevancy score=1.0 success=True time=3.346s
+[JudgeManual] 39/100 ST_EASY_039 start
+[JudgeManual] 39/100 Contextual Recall score=1.0 success=True time=3.284s
+[JudgeManual] 39/100 Faithfulness score=1.0 success=True time=17.019s
+[JudgeManual] 39/100 Answer Relevancy score=1.0 success=True time=2.949s
+[JudgeManual] 40/100 ST_EASY_040 start
+[JudgeManual] 40/100 Contextual Recall score=1.0 success=True time=3.175s
+[JudgeManual] 40/100 Faithfulness score=1.0 success=True time=13.581s
+[JudgeManual] 40/100 Answer Relevancy score=1.0 success=True time=2.64s
+[JudgeManual] 41/100 ST_EASY_041 start
+[JudgeManual] 41/100 Contextual Recall score=1.0 success=True time=3.593s
+[JudgeManual] 41/100 Faithfulness score=1.0 success=True time=29.179s
+[JudgeManual] 41/100 Answer Relevancy score=1.0 success=True time=3.486s
+[JudgeManual] 42/100 ST_EASY_042 start
+[JudgeManual] 42/100 Contextual Recall score=0.0 success=False time=2.521s
+[JudgeManual] 42/100 Faithfulness score=1.0 success=True time=3.085s
+[JudgeManual] 42/100 Answer Relevancy score=0.0 success=False time=3.2s
+[JudgeManual] 43/100 ST_EASY_043 start
+[JudgeManual] 43/100 Contextual Recall score=0.0 success=False time=2.014s
+[JudgeManual] 43/100 Faithfulness score=1 success=True time=1.499s
+[JudgeManual] 43/100 Answer Relevancy score=1.0 success=True time=2.622s
+[JudgeManual] 44/100 ST_EASY_044 start
+[JudgeManual] 44/100 Contextual Recall score=0.0 success=False time=2.404s
+[JudgeManual] 44/100 Faithfulness score=1.0 success=True time=3.121s
+[JudgeManual] 44/100 Answer Relevancy score=0.0 success=False time=2.784s
+[JudgeManual] 45/100 ST_EASY_045 start
+[JudgeManual] 45/100 Contextual Recall score=0.0 success=False time=1.948s
+[JudgeManual] 45/100 Faithfulness score=1.0 success=True time=3.12s
+[JudgeManual] 45/100 Answer Relevancy score=0.0 success=False time=3.228s
+[JudgeManual] 46/100 ST_EASY_046 start
+[JudgeManual] 46/100 Contextual Recall score=1.0 success=True time=2.46s
+[JudgeManual] 46/100 Faithfulness score=0.0 success=False time=9.326s
+[JudgeManual] 46/100 Answer Relevancy score=1.0 success=True time=3.296s
+[JudgeManual] 47/100 ST_EASY_047 start
+[JudgeManual] 47/100 Contextual Recall score=1.0 success=True time=2.827s
+[JudgeManual] 47/100 Faithfulness score=1.0 success=True time=10.07s
+[JudgeManual] 47/100 Answer Relevancy score=1.0 success=True time=2.574s
+[JudgeManual] 48/100 ST_EASY_048 start
+[JudgeManual] 48/100 Contextual Recall score=1.0 success=True time=3.97s
+[JudgeManual] 48/100 Faithfulness score=1.0 success=True time=20.547s
+[JudgeManual] 48/100 Answer Relevancy score=1.0 success=True time=4.624s
+[JudgeManual] 49/100 ST_EASY_049 start
+[JudgeManual] 49/100 Contextual Recall score=1.0 success=True time=5.259s
+[JudgeManual] 49/100 Faithfulness score=1.0 success=True time=11.315s
+[JudgeManual] 49/100 Answer Relevancy score=1.0 success=True time=4.527s
+[JudgeManual] 50/100 ST_EASY_050 start
+[JudgeManual] 50/100 Contextual Recall score=1.0 success=True time=2.405s
+[JudgeManual] 50/100 Faithfulness score=1.0 success=True time=4.468s
+[JudgeManual] 50/100 Answer Relevancy score=1.0 success=True time=2.958s
+[JudgeManual] 51/100 ST_EASY_051 start
+[JudgeManual] 51/100 Contextual Recall score=1.0 success=True time=3.725s
+[JudgeManual] 51/100 Faithfulness score=1.0 success=True time=5.304s
+[JudgeManual] 51/100 Answer Relevancy score=1.0 success=True time=6.094s
+[JudgeManual] 52/100 ST_EASY_052 start
+[JudgeManual] 52/100 Contextual Recall score=1.0 success=True time=3.858s
+[JudgeManual] 52/100 Faithfulness score=1.0 success=True time=5.586s
+[JudgeManual] 52/100 Answer Relevancy score=1.0 success=True time=3.638s
+[JudgeManual] 53/100 ST_EASY_053 start
+[JudgeManual] 53/100 Contextual Recall score=0.8 success=True time=5.092s
+[JudgeManual] 53/100 Faithfulness score=0.8333333333333334 success=True time=6.373s
+[JudgeManual] 53/100 Answer Relevancy score=1.0 success=True time=3.991s
+[JudgeManual] 54/100 ST_EASY_054 start
+[JudgeManual] 54/100 Contextual Recall score=1.0 success=True time=2.367s
+[JudgeManual] 54/100 Faithfulness score=1.0 success=True time=3.833s
+[JudgeManual] 54/100 Answer Relevancy score=1.0 success=True time=3.168s
+[JudgeManual] 55/100 ST_EASY_055 start
+[JudgeManual] 55/100 Contextual Recall score=1.0 success=True time=2.539s
+[JudgeManual] 55/100 Faithfulness score=1.0 success=True time=5.828s
+[JudgeManual] 55/100 Answer Relevancy score=1.0 success=True time=3.025s
+[JudgeManual] 56/100 ST_EASY_056 start
+[JudgeManual] 56/100 Contextual Recall score=1.0 success=True time=2.771s
+[JudgeManual] 56/100 Faithfulness score=1.0 success=True time=4.546s
+[JudgeManual] 56/100 Answer Relevancy score=1.0 success=True time=3.163s
+[JudgeManual] 57/100 ST_EASY_057 start
+[JudgeManual] 57/100 Contextual Recall score=0.8 success=True time=4.124s
+[JudgeManual] 57/100 Faithfulness score=0.8 success=True time=7.414s
+[JudgeManual] 57/100 Answer Relevancy score=1.0 success=True time=3.999s
+[JudgeManual] 58/100 ST_EASY_058 start
+[JudgeManual] 58/100 Contextual Recall score=1.0 success=True time=5.695s
+[JudgeManual] 58/100 Faithfulness score=1.0 success=True time=6.168s
+[JudgeManual] 58/100 Answer Relevancy score=0.8333333333333334 success=True time=5.905s
+[JudgeManual] 59/100 ST_EASY_059 start
+[JudgeManual] 59/100 Contextual Recall score=0.8 success=True time=4.5s
+[JudgeManual] 59/100 Faithfulness score=1.0 success=True time=4.498s
+[JudgeManual] 59/100 Answer Relevancy score=1.0 success=True time=3.949s
+[JudgeManual] 60/100 ST_EASY_060 start
+[JudgeManual] 60/100 Contextual Recall score=1.0 success=True time=4.536s
+[JudgeManual] 60/100 Faithfulness score=1.0 success=True time=6.808s
+[JudgeManual] 60/100 Answer Relevancy score=1.0 success=True time=4.357s
+[JudgeManual] 61/100 ST_EASY_061 start
+[JudgeManual] 61/100 Contextual Recall score=1.0 success=True time=6.077s
+[JudgeManual] 61/100 Faithfulness score=1.0 success=True time=7.207s
+[JudgeManual] 61/100 Answer Relevancy score=0.8 success=True time=4.09s
+[JudgeManual] 62/100 ST_EASY_062 start
+[JudgeManual] 62/100 Contextual Recall score=1.0 success=True time=2.7s
+[JudgeManual] 62/100 Faithfulness score=1.0 success=True time=4.833s
+[JudgeManual] 62/100 Answer Relevancy score=1.0 success=True time=2.58s
+[JudgeManual] 63/100 ST_EASY_063 start
+[JudgeManual] 63/100 Contextual Recall score=1.0 success=True time=2.615s
+[JudgeManual] 63/100 Faithfulness score=1.0 success=True time=4.458s
+[JudgeManual] 63/100 Answer Relevancy score=1.0 success=True time=3.236s
+[JudgeManual] 64/100 ST_EASY_064 start
+[JudgeManual] 64/100 Contextual Recall score=1.0 success=True time=3.553s
+[JudgeManual] 64/100 Faithfulness score=1.0 success=True time=4.165s
+[JudgeManual] 64/100 Answer Relevancy score=1.0 success=True time=3.019s
+[JudgeManual] 65/100 ST_EASY_065 start
+[JudgeManual] 65/100 Contextual Recall score=1.0 success=True time=4.024s
+[JudgeManual] 65/100 Faithfulness score=1.0 success=True time=6.042s
+[JudgeManual] 65/100 Answer Relevancy score=1.0 success=True time=4.327s
+[JudgeManual] 66/100 ST_EASY_066 start
+[JudgeManual] 66/100 Contextual Recall score=1.0 success=True time=4.234s
+[JudgeManual] 66/100 Faithfulness score=1.0 success=True time=4.949s
+[JudgeManual] 66/100 Answer Relevancy score=1.0 success=True time=3.616s
+[JudgeManual] 67/100 ST_EASY_067 start
+[JudgeManual] 67/100 Contextual Recall score=1.0 success=True time=4.116s
+[JudgeManual] 67/100 Faithfulness score=0.5 success=False time=7.574s
+[JudgeManual] 67/100 Answer Relevancy score=1.0 success=True time=3.743s
+[JudgeManual] 68/100 ST_EASY_068 start
+[JudgeManual] 68/100 Contextual Recall score=1.0 success=True time=3.548s
+[JudgeManual] 68/100 Faithfulness score=1.0 success=True time=5.384s
+[JudgeManual] 68/100 Answer Relevancy score=1.0 success=True time=3.701s
+[JudgeManual] 69/100 ST_EASY_069 start
+[JudgeManual] 69/100 Contextual Recall score=1.0 success=True time=3.063s
+[JudgeManual] 69/100 Faithfulness score=1.0 success=True time=5.22s
+[JudgeManual] 69/100 Answer Relevancy score=1.0 success=True time=3.285s
+[JudgeManual] 70/100 ST_EASY_070 start
+[JudgeManual] 70/100 Contextual Recall score=1.0 success=True time=2.248s
+[JudgeManual] 70/100 Faithfulness score=1.0 success=True time=6.815s
+[JudgeManual] 70/100 Answer Relevancy score=1.0 success=True time=2.727s
+[JudgeManual] 71/100 ST_EASY_071 start
+[JudgeManual] 71/100 Contextual Recall score=1.0 success=True time=2.501s
+[JudgeManual] 71/100 Faithfulness score=1.0 success=True time=5.437s
+[JudgeManual] 71/100 Answer Relevancy score=1.0 success=True time=2.678s
+[JudgeManual] 72/100 ST_EASY_072 start
+[JudgeManual] 72/100 Contextual Recall score=1.0 success=True time=2.426s
+[JudgeManual] 72/100 Faithfulness score=1.0 success=True time=6.364s
+[JudgeManual] 72/100 Answer Relevancy score=1.0 success=True time=2.696s
+[JudgeManual] 73/100 ST_EASY_073 start
+[JudgeManual] 73/100 Contextual Recall score=1.0 success=True time=2.301s
+[JudgeManual] 73/100 Faithfulness score=1.0 success=True time=12.371s
+[JudgeManual] 73/100 Answer Relevancy score=1.0 success=True time=2.979s
+[JudgeManual] 74/100 ST_EASY_074 start
+[JudgeManual] 74/100 Contextual Recall score=1.0 success=True time=2.58s
+[JudgeManual] 74/100 Faithfulness score=1.0 success=True time=3.988s
+[JudgeManual] 74/100 Answer Relevancy score=1.0 success=True time=2.804s
+[JudgeManual] 75/100 ST_EASY_075 start
+[JudgeManual] 75/100 Contextual Recall score=0.5 success=False time=3.691s
+[JudgeManual] 75/100 Faithfulness score=1.0 success=True time=17.1s
+[JudgeManual] 75/100 Answer Relevancy score=1.0 success=True time=7.078s
+[JudgeManual] 76/100 ST_EASY_076 start
+[JudgeManual] 76/100 Contextual Recall score=1.0 success=True time=2.766s
+[JudgeManual] 76/100 Faithfulness score=1.0 success=True time=7.623s
+[JudgeManual] 76/100 Answer Relevancy score=1.0 success=True time=2.974s
+[JudgeManual] 77/100 ST_EASY_077 start
+[JudgeManual] 77/100 Contextual Recall score=0.0 success=False time=3.26s
+[JudgeManual] 77/100 Faithfulness score=1.0 success=True time=16.338s
+[JudgeManual] 77/100 Answer Relevancy score=1.0 success=True time=4.963s
+[JudgeManual] 78/100 ST_EASY_078 start
+[JudgeManual] 78/100 Contextual Recall score=0.0 success=False time=3.798s
+[JudgeManual] 78/100 Faithfulness score=0.0 success=False time=16.88s
+[JudgeManual] 78/100 Answer Relevancy score=1.0 success=True time=2.728s
+[JudgeManual] 79/100 ST_EASY_079 start
+[JudgeManual] 79/100 Contextual Recall score=1.0 success=True time=3.807s
+[JudgeManual] 79/100 Faithfulness score=1.0 success=True time=5.292s
+[JudgeManual] 79/100 Answer Relevancy score=1.0 success=True time=2.803s
+[JudgeManual] 80/100 ST_EASY_080 start
+[JudgeManual] 80/100 Contextual Recall score=1.0 success=True time=4.668s
+[JudgeManual] 80/100 Faithfulness score=1.0 success=True time=6.216s
+[JudgeManual] 80/100 Answer Relevancy score=1.0 success=True time=8.334s
+[JudgeManual] 81/100 ST_EASY_081 start
+[JudgeManual] 81/100 Contextual Recall score=1.0 success=True time=2.501s
+[JudgeManual] 81/100 Faithfulness score=1.0 success=True time=10.589s
+[JudgeManual] 81/100 Answer Relevancy score=1.0 success=True time=2.746s
+[JudgeManual] 82/100 ST_EASY_082 start
+[JudgeManual] 82/100 Contextual Recall score=1.0 success=True time=3.308s
+[JudgeManual] 82/100 Faithfulness score=1.0 success=True time=6.486s
+[JudgeManual] 82/100 Answer Relevancy score=1.0 success=True time=3.583s
+[JudgeManual] 83/100 ST_EASY_083 start
+[JudgeManual] 83/100 Contextual Recall score=1.0 success=True time=4.155s
+[JudgeManual] 83/100 Faithfulness score=1.0 success=True time=26.884s
+[JudgeManual] 83/100 Answer Relevancy score=1.0 success=True time=3.148s
+[JudgeManual] 84/100 ST_EASY_084 start
+[JudgeManual] 84/100 Contextual Recall score=1.0 success=True time=3.528s
+[JudgeManual] 84/100 Faithfulness score=1.0 success=True time=6.355s
+[JudgeManual] 84/100 Answer Relevancy score=1.0 success=True time=2.613s
+[JudgeManual] 85/100 ST_EASY_085 start
+[JudgeManual] 85/100 Contextual Recall score=1.0 success=True time=2.598s
+[JudgeManual] 85/100 Faithfulness score=1.0 success=True time=28.477s
+[JudgeManual] 85/100 Answer Relevancy score=1.0 success=True time=2.649s
+[JudgeManual] 86/100 ST_EASY_086 start
+[JudgeManual] 86/100 Contextual Recall score=1.0 success=True time=2.585s
+[JudgeManual] 86/100 Faithfulness score=1.0 success=True time=15.888s
+[JudgeManual] 86/100 Answer Relevancy score=1.0 success=True time=3.355s
+[JudgeManual] 87/100 ST_EASY_087 start
+[JudgeManual] 87/100 Contextual Recall score=1.0 success=True time=2.486s
+[JudgeManual] 87/100 Faithfulness score=1.0 success=True time=10.749s
+[JudgeManual] 87/100 Answer Relevancy score=0.2222222222222222 success=False time=8.032s
+[JudgeManual] 88/100 ST_EASY_088 start
+[JudgeManual] 88/100 Contextual Recall score=1.0 success=True time=3.149s
+[JudgeManual] 88/100 Faithfulness score=1.0 success=True time=28.563s
+[JudgeManual] 88/100 Answer Relevancy score=1.0 success=True time=2.982s
+[JudgeManual] 89/100 ST_EASY_089 start
+[JudgeManual] 89/100 Contextual Recall score=1.0 success=True time=3.453s
+[JudgeManual] 89/100 Faithfulness score=0.75 success=True time=14.078s
+[JudgeManual] 89/100 Answer Relevancy score=1.0 success=True time=5.829s
+[JudgeManual] 90/100 ST_EASY_090 start
+[JudgeManual] 90/100 Contextual Recall score=1.0 success=True time=2.85s
+[JudgeManual] 90/100 Faithfulness score=1.0 success=True time=22.444s
+[JudgeManual] 90/100 Answer Relevancy score=1.0 success=True time=3.968s
+[JudgeManual] 91/100 ST_EASY_091 start
+[JudgeManual] 91/100 Contextual Recall score=0.0 success=False time=2.659s
+[JudgeManual] 91/100 Faithfulness score=1.0 success=True time=3.385s
+[JudgeManual] 91/100 Answer Relevancy score=0.0 success=False time=3.029s
+[JudgeManual] 92/100 ST_EASY_092 start
+[JudgeManual] 92/100 Contextual Recall score=0.0 success=False time=2.344s
+[JudgeManual] 92/100 Faithfulness score=1.0 success=True time=2.968s
+[JudgeManual] 92/100 Answer Relevancy score=0.0 success=False time=3.036s
+[JudgeManual] 93/100 ST_EASY_093 start
+[JudgeManual] 93/100 Contextual Recall score=0.0 success=False time=2.452s
+[JudgeManual] 93/100 Faithfulness score=1.0 success=True time=2.931s
+[JudgeManual] 93/100 Answer Relevancy score=0.0 success=False time=3.331s
+[JudgeManual] 94/100 ST_EASY_094 start
+[JudgeManual] 94/100 Contextual Recall score=0.0 success=False time=1.9s
+[JudgeManual] 94/100 Faithfulness score=1.0 success=True time=3.465s
+[JudgeManual] 94/100 Answer Relevancy score=0.0 success=False time=3.057s
+[JudgeManual] 95/100 ST_EASY_095 start
+[JudgeManual] 95/100 Contextual Recall score=1.0 success=True time=3.067s
+[JudgeManual] 95/100 Faithfulness score=1.0 success=True time=15.703s
+[JudgeManual] 95/100 Answer Relevancy score=1.0 success=True time=2.948s
+[JudgeManual] 96/100 ST_EASY_096 start
+[JudgeManual] 96/100 Contextual Recall score=0.0 success=False time=4.257s
+[JudgeManual] 96/100 Faithfulness score=1.0 success=True time=8.215s
+[JudgeManual] 96/100 Answer Relevancy score=0.6666666666666666 success=False time=7.325s
+[JudgeManual] 97/100 ST_EASY_097 start
+[JudgeManual] 97/100 Contextual Recall score=0.0 success=False time=4.282s
+[JudgeManual] 97/100 Faithfulness score=0.75 success=True time=12.921s
+[JudgeManual] 97/100 Answer Relevancy score=1.0 success=True time=7.817s
+[JudgeManual] 98/100 ST_EASY_098 start
+[JudgeManual] 98/100 Contextual Recall score=0.0 success=False time=2.683s
+[JudgeManual] 98/100 Faithfulness score=1.0 success=True time=8.615s
+[JudgeManual] 98/100 Answer Relevancy score=1.0 success=True time=5.687s
+[JudgeManual] 99/100 ST_EASY_099 start
+[JudgeManual] 99/100 Contextual Recall score=1.0 success=True time=2.744s
+[JudgeManual] 99/100 Faithfulness score=1.0 success=True time=17.255s
+[JudgeManual] 99/100 Answer Relevancy score=1.0 success=True time=3.04s
+[JudgeManual] 100/100 ST_EASY_100 start
+[JudgeManual] 100/100 Contextual Recall score=1.0 success=True time=2.608s
+[JudgeManual] 100/100 Faithfulness score=1.0 success=True time=6.687s
+[JudgeManual] 100/100 Answer Relevancy score=1.0 success=True time=2.788s

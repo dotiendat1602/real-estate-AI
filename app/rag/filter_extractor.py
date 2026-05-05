@@ -3,8 +3,6 @@ from typing import Any
 import re
 import unicodedata
 
-from langchain_core.output_parsers import JsonOutputParser
-from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
 
 class PropertyFilters(BaseModel):
@@ -127,6 +125,9 @@ async def extract_filters_from_query(question: str, llm) -> dict[str, Any]:
     Input: "Tôi muốn tìm căn hộ 3 phòng ngủ ở Hà Nội giá dưới 5 tỷ"
     Output: {"city": "Hà Nội", "bedrooms": 3, "priceMax": 5000000000, "postType": "SALE"}
     """
+    from langchain_core.output_parsers import JsonOutputParser
+    from langchain_core.prompts import ChatPromptTemplate
+
     parser = JsonOutputParser(pydantic_object=PropertyFilters)
     
     prompt = ChatPromptTemplate.from_template(FILTER_EXTRACTION_PROMPT)

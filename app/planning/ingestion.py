@@ -15,7 +15,7 @@ from pypdf import PdfReader
 from .metadata import canonicalize_planning_district
 from ..utils.chunking import build_splitter
 
-_splitter = build_splitter(chunk_size=1500, chunk_overlap=120)
+_splitter = None
 _logger = logging.getLogger(__name__)
 
 PLANNING_CHUNKING_BASELINE_FIXED = "planning_baseline_fixed"
@@ -28,6 +28,13 @@ _PLANNING_HIERARCHICAL_MODES = {
     PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT,
     PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD,
 }
+
+
+def _get_splitter():
+    global _splitter
+    if _splitter is None:
+        _splitter = build_splitter(chunk_size=1500, chunk_overlap=120)
+    return _splitter
 
 
 def _resolve_bool_env(name: str, default: bool) -> bool:
@@ -1110,7 +1117,7 @@ def _decision_structural_chunks(page_maps: list[dict[str, Any]], text: str) -> l
         if heading:
             tags.append(f"[decision_heading={heading}]")
         tagged = _clean_text("\n".join([*tags, body]))
-        pieces = [tagged] if len(tagged) <= 2200 else _splitter.split_text(tagged)
+        pieces = [tagged] if len(tagged) <= 2200 else _get_splitter().split_text(tagged)
 
         for piece in pieces:
             clean_piece = _clean_text(piece)
@@ -1170,7 +1177,7 @@ def _section_table_fallback_chunks(text: str, page_maps: list[dict[str, Any]]) -
             if not section_text:
                 continue
 
-            pieces = [section_text] if len(section_text) <= 1900 else _splitter.split_text(section_text)
+            pieces = [section_text] if len(section_text) <= 1900 else _get_splitter().split_text(section_text)
             for index, piece in enumerate(pieces):
                 clean_chunk = _clean_text(piece)
                 if not clean_chunk:
@@ -1195,7 +1202,7 @@ def _section_table_fallback_chunks(text: str, page_maps: list[dict[str, Any]]) -
     for block in table_blocks:
         row_chunks = _chunk_table_block_rows(block, rows_per_chunk=4)
         for row_chunk in row_chunks:
-            pieces = [row_chunk] if len(row_chunk) <= 2100 else _splitter.split_text(row_chunk)
+            pieces = [row_chunk] if len(row_chunk) <= 2100 else _get_splitter().split_text(row_chunk)
             for piece in pieces:
                 clean_chunk = _clean_text(piece)
                 if clean_chunk:
@@ -1213,7 +1220,7 @@ def _section_table_fallback_chunks(text: str, page_maps: list[dict[str, Any]]) -
         return chunks
 
     for page in page_maps:
-        for chunk in _splitter.split_text("\n".join(page["lines"])):
+        for chunk in _get_splitter().split_text("\n".join(page["lines"])):
             clean_chunk = _clean_text(chunk)
             if clean_chunk:
                 chunks.append(

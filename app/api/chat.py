@@ -13,12 +13,14 @@ from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 from langchain_core.documents import Document
 
-from langchain_openai import ChatOpenAI
-
-from ..rag.embedder import build_embeddings
-from ..rag.retriever import build_pgvector_store, build_retriever, lexical_search_documents
+from ..rag.llm import build_llm
+from ..rag.listing_fallback import ListingFallbackRetriever
+from ..rag.resources import (
+    initialize_listing_vector_store,
+    initialize_planning_vector_store,
+)
+from ..rag.retriever import build_retriever, lexical_search_documents
 from ..rag.filter_extractor import extract_filters_from_query
-from ..rag.chain import RagChain, build_retrieval_query
 from ..rag.planning_pipeline import (
     choose_better_planning_fallback,
     is_recovery_grouping_query,
@@ -70,10 +72,6 @@ from ..db.pgvector import get_db
 
 router = APIRouter()
 
-_embeddings = build_embeddings()
-_vs = None
-_planning_vs = None
-
 _PLANNING_KEYWORDS = [
     "quy hoach",
     "quy hoach su dung dat",
@@ -88,6 +86,22 @@ _PLANNING_KEYWORDS = [
     "muc dich su dung dat",
     "quy hoach do thi",
 ]
+
+
+async def _with_timeout(coro, *, seconds: float, label: str, fallback=None):
+    try:
+        return await asyncio.wait_for(coro, timeout=seconds)
+    except asyncio.TimeoutError:
+        print(f"[Timeout] {label} exceeded {seconds:.1f}s; using fallback.")
+        return fallback
+
+
+class _StaticDocumentsRetriever:
+    def __init__(self, docs: list[Document]) -> None:
+        self.docs = docs
+
+    async def ainvoke(self, query: str) -> list[Document]:
+        return self.docs
 
 _PLANNING_STRUCTURAL_TERMS = [
     "thua dat",
@@ -541,6 +555,15 @@ def _select_ranked_planning_docs(
     )
 
 
+def _planning_lexical_augments_enabled() -> bool:
+    return (os.getenv("RAG_PLANNING_LEXICAL_AUGMENTS_ENABLE", "") or "").strip().lower() in {
+        "1",
+        "true",
+        "yes",
+        "y",
+    }
+
+
 async def _augment_planning_text_neighbors(
     planning_vs,
     message: str,
@@ -549,6 +572,9 @@ async def _augment_planning_text_neighbors(
     selected_docs: list[Document],
     limit: int,
 ) -> list[Document]:
+    if not _planning_lexical_augments_enabled():
+        return selected_docs
+
     return await _augment_planning_text_neighbors_base(
         planning_vs,
         message,
@@ -566,6 +592,9 @@ async def _augment_planning_continuation_neighbors(
     selected_docs: list[Document],
     limit: int,
 ) -> list[Document]:
+    if not _planning_lexical_augments_enabled():
+        return selected_docs
+
     return await _augment_planning_continuation_neighbors_base(
         planning_vs,
         message,
@@ -616,6 +645,9 @@ async def _augment_planning_table_neighbors(
     selected_docs: list[Document],
     limit: int,
 ) -> list[Document]:
+    if not _planning_lexical_augments_enabled():
+        return selected_docs
+
     return await _augment_planning_table_neighbors_base(
         planning_vs,
         message,
@@ -654,6 +686,9 @@ async def _augment_planning_intent_evidence(
     pool_docs: list[Document],
     limit: int,
 ) -> list[Document]:
+    if not _planning_lexical_augments_enabled():
+        return selected_docs
+
     return await _augment_planning_intent_evidence_base(
         planning_vs,
         message,
@@ -677,6 +712,9 @@ async def _augment_planning_land_recovery_evidence(
     pool_docs: list[Document],
     limit: int,
 ) -> list[Document]:
+    if not _planning_lexical_augments_enabled():
+        return selected_docs
+
     return await _augment_planning_land_recovery_evidence_base(
         planning_vs,
         message,
@@ -697,6 +735,9 @@ async def _force_planning_specialized_evidence(
     selected_docs: list[Document],
     limit: int,
 ) -> list[Document]:
+    if not _planning_lexical_augments_enabled():
+        return selected_docs
+
     return await _force_planning_specialized_evidence_base(
         planning_vs,
         message,
@@ -1196,7 +1237,13 @@ async def _retrieve_planning_docs_for_nl_query(
 ) -> list[Document]:
     retriever_mode = (os.getenv("RAG_RETRIEVER_MODE", "hybrid") or "hybrid").strip().lower()
     lexical_disabled = (os.getenv("RAG_LEXICAL_DISABLE", "") or "").strip().lower() in {"1", "true", "yes", "y"}
-    use_lexical_probe = retriever_mode == "hybrid" and not lexical_disabled
+    planning_lexical_enabled = (os.getenv("RAG_PLANNING_LEXICAL_ENABLE", "") or "").strip().lower() in {
+        "1",
+        "true",
+        "yes",
+        "y",
+    }
+    use_lexical_probe = retriever_mode == "hybrid" and not lexical_disabled and planning_lexical_enabled
 
     district = _extract_district_from_message(message) or _extract_district_from_history(history_messages)
     plan_year = _extract_plan_year_from_message(message)
@@ -1204,7 +1251,7 @@ async def _retrieve_planning_docs_for_nl_query(
         plan_year = _extract_plan_year_from_history(history_messages)
 
     fact_query = _is_planning_fact_query(message)
-    final_k = max(4, min(top_k, 14 if fact_query else 10))
+    final_k = max(4, min(top_k, 16 if fact_query else 12))
     strict_min_docs = _planning_scope_min_docs("strict", final_k, fact_query)
     district_min_docs = _planning_scope_min_docs("district", final_k, fact_query)
     probe_k = max(20, min(120, final_k * 8))
@@ -1304,6 +1351,7 @@ async def _retrieve_planning_docs_for_nl_query(
             k=probe_k,
             filters={"chunkTypes": chunk_types},
             base_filter=base_filter,
+            mode_override="vector",
         )
 
         docs_by_identity: dict[str, Document] = {}
@@ -1316,7 +1364,7 @@ async def _retrieve_planning_docs_for_nl_query(
                 base_filter,
                 probe_k,
                 lexical_k,
-                True,
+                use_lexical_probe,
             )
             cached_result = _planning_query_cache_get(cache_key)
             used_cache = cached_result is not None
@@ -1326,7 +1374,8 @@ async def _retrieve_planning_docs_for_nl_query(
             else:
                 vector_task = asyncio.create_task(planning_retriever.ainvoke(query_text))
                 vector_docs = await vector_task
-                if use_lexical_probe:
+                should_probe_lexical = use_lexical_probe and len(vector_docs) < max(4, final_k)
+                if should_probe_lexical:
                     lexical_task = asyncio.create_task(
                         lexical_search_documents(
                             planning_vs,
@@ -1812,44 +1861,9 @@ def _build_planning_citations(docs: list[Document]) -> list[dict[str, Any]]:
 
 async def initialize_vector_store():
     """Khởi tạo async vector store - gọi từ startup event"""
-    global _vs, _planning_vs
-    if _vs is None:
-        _vs = build_pgvector_store(_embeddings)
-        # Trigger async init
-        await _vs.__apost_init__()
-    if _planning_vs is None:
-        planning_collection = os.getenv(
-            "PGVECTOR_COLLECTION_PLANNING",
-            "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
-        )
-        _planning_vs = build_pgvector_store(_embeddings, collection_name=planning_collection)
-        await _planning_vs.__apost_init__()
-    return _vs
-
-def get_vector_store():
-    """Lấy vector store đã được khởi tạo"""
-    global _vs
-    if _vs is None:
-        raise RuntimeError("Vector store not initialized. Call initialize_vector_store() first.")
-    return _vs
-
-
-def get_planning_vector_store():
-    global _planning_vs
-    if _planning_vs is None:
-        raise RuntimeError("Planning vector store not initialized. Call initialize_vector_store() first.")
-    return _planning_vs
-
-def build_llm() -> ChatOpenAI:
-    model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
-    temperature = float(os.getenv("OPENAI_TEMPERATURE", "0.2"))
-
-    return ChatOpenAI(
-        model=model,
-        temperature=temperature,
-        timeout=60,
-        max_retries=2,
-    )
+    listing_vs = await initialize_listing_vector_store()
+    await initialize_planning_vector_store()
+    return listing_vs
 
 class ChatRequest(BaseModel):
     class PlanningContext(BaseModel):
@@ -1879,6 +1893,8 @@ class ChatResponse(BaseModel):
 async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
     if not req.userId:
         raise ValueError("userId is required for chat history")
+
+    from ..rag.chain import RagChain, build_retrieval_query
     
     history_manager = MessageHistoryManager(db)
     session_id = await history_manager.get_or_create_session(req.userId, req.sessionId)
@@ -1897,27 +1913,35 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
     planning_citations: list[dict[str, Any]] = []
     planning_docs: list[Document] = []
     use_planning_mode = bool(req.planningContexts) or _has_planning_intent(req.message)
+    planning_vs = None
 
     if use_planning_mode:
         print("Planning mode enabled for retrieval.")
-        planning_vs = get_planning_vector_store()
+        planning_vs = await initialize_planning_vector_store()
         planning_retriever = build_retriever(
             planning_vs,
-            k=max(6, min(req.topK, 12)),
+            k=max(6, min(req.topK, 16)),
             filters={"chunkTypes": ["text", "table"]},
             base_filter={"documentScope": "planning"},
+            mode_override="vector",
         )
         retriever = planning_retriever
     else:
-        vs = get_vector_store()
-        retriever = build_retriever(vs, k=req.topK, filters=filters)
+        vs = await initialize_listing_vector_store()
+        retriever = ListingFallbackRetriever(
+            build_retriever(vs, k=req.topK, filters=filters),
+            query=req.message,
+            filters=filters,
+            k=req.topK,
+        )
 
     print(f"Using topK={req.topK} for retrieval.")
     print(f"retriever: {retriever}")
     chain = RagChain(llm=llm, retriever=retriever)
 
-    planning_vs = get_planning_vector_store()
     if req.planningContexts:
+        if planning_vs is None:
+            planning_vs = await initialize_planning_vector_store()
         lines: list[str] = ["=== PLANNING REPORT CONTEXT (BACKEND STORED) ==="]
         for ctx in req.planningContexts:
             docs = ctx.reportSummaries or []
@@ -1947,14 +1971,20 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
         planning_property_ids = [ctx.propertyId for ctx in req.planningContexts]
         planning_retriever = build_retriever(
             planning_vs,
-            k=max(6, min(req.topK, 12)),
+            k=max(6, min(req.topK, 16)),
             filters={"chunkTypes": ["text", "table"]},
             base_filter={
                 "documentScope": "planning",
                 "propertyId": {"$in": planning_property_ids},
             },
+            mode_override="vector",
         )
-        planning_docs = await planning_retriever.ainvoke(retrieval_message)
+        planning_docs = await _with_timeout(
+            planning_retriever.ainvoke(retrieval_message),
+            seconds=float(os.getenv("CHAT_PLANNING_RETRIEVAL_TIMEOUT_SECONDS", "25")),
+            label="planning context retrieval",
+            fallback=[],
+        )
         if planning_docs:
             planning_text = "\n\n".join(d.page_content for d in planning_docs if d.page_content)
             extra_context = f"{extra_context}\n\n=== PLANNING VECTOR CONTEXT ===\n{planning_text}" if extra_context else planning_text
@@ -1963,11 +1993,16 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
     elif use_planning_mode:
         district = _extract_district_from_message(req.message)
         plan_year = _extract_plan_year_from_message(req.message)
-        planning_docs = await _retrieve_planning_docs_for_nl_query(
-            planning_vs,
-            retrieval_message,
-            req.topK,
-            history_messages=history,
+        planning_docs = await _with_timeout(
+            _retrieve_planning_docs_for_nl_query(
+                planning_vs,
+                retrieval_message,
+                req.topK,
+                history_messages=history,
+            ),
+            seconds=float(os.getenv("CHAT_PLANNING_RETRIEVAL_TIMEOUT_SECONDS", "25")),
+            label="planning NL retrieval",
+            fallback=[],
         )
 
         if planning_docs:
@@ -1980,6 +2015,9 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
             planning_context = "\n".join(header + [planning_text])
             extra_context = f"{extra_context}\n\n{planning_context}" if extra_context else planning_context
             planning_citations = _build_planning_citations(planning_docs)
+
+    if use_planning_mode:
+        chain = RagChain(llm=llm, retriever=_StaticDocumentsRetriever(planning_docs))
 
     result = await chain.run(req.message, history=history, extra_context=extra_context)
     merged_citations = result.citations + planning_citations

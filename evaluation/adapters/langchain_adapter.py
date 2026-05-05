@@ -528,7 +528,7 @@ class LangChainEvalAdapter:
         plan_year = _extract_plan_year_from_message(message)
         district = _extract_district_from_message(message)
         fact_query = _is_planning_fact_query(message)
-        final_k = max(4, min(top_k, 14 if fact_query else 10))
+        final_k = max(4, min(top_k, 16 if fact_query else 12))
 
         docs = await asyncio.to_thread(
             _load_planning_document_docs_sync,
