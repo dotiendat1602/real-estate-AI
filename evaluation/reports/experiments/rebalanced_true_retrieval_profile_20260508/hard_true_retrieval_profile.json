@@ -1,0 +1,4638 @@
+{
+  "created_at": "2026-05-07T18:45:05.857809+00:00",
+  "phase": "single_turn_runtime_profile",
+  "dataset": "single_turn_goldens_hard_rebalanced_v1.json",
+  "cases": 100,
+  "profile_mode": {
+    "target_metadata_enabled": false,
+    "top_k": 16,
+    "trace_max_concurrent": 1,
+    "llm_model": "gpt-4o-mini",
+    "embedding_model": "intfloat/multilingual-e5-base",
+    "planning_collection": "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context"
+  },
+  "timing": {
+    "wall_seconds": 1230.154,
+    "worker_seconds_total": 1230.139
+  },
+  "summary": {
+    "difficulties": {
+      "hard": 100
+    },
+    "domains": {
+      "real_estate": 50,
+      "land_use_planning": 50
+    },
+    "target_metadata_present_count": 100,
+    "target_metadata_eval_only_count": 0,
+    "target_metadata_used_count": 0,
+    "filter_extraction_skipped_count": 45,
+    "averages": {
+      "generation_seconds": 12.301,
+      "filter_extraction_seconds": 0.855,
+      "retrieval_seconds": 6.694,
+      "answer_generation_seconds": 4.71,
+      "runtime_seconds": 12.258,
+      "context_docs_count": 8.07,
+      "context_chars": 10706.98,
+      "filter_input_tokens": 805.0,
+      "filter_output_tokens": 42.0,
+      "filter_total_tokens": 847.0,
+      "answer_input_tokens": 5060.0,
+      "answer_output_tokens": 148.7,
+      "answer_total_tokens": 5208.7,
+      "total_input_tokens": 5502.8,
+      "total_output_tokens": 171.8,
+      "total_tokens": 5674.6
+    },
+    "token_totals": {
+      "filter_input_tokens": 44277,
+      "filter_output_tokens": 2308,
+      "filter_total_tokens": 46585,
+      "answer_input_tokens": 505998,
+      "answer_output_tokens": 14872,
+      "answer_total_tokens": 520870,
+      "total_input_tokens": 550275,
+      "total_output_tokens": 17180,
+      "total_tokens": 567455
+    },
+    "by_domain": {
+      "land_use_planning": {
+        "cases": 50,
+        "runtime_seconds_avg": 16.921,
+        "retrieval_seconds_avg": 11.25,
+        "answer_total_tokens_avg": 7622.2,
+        "total_tokens_avg": 7705.8
+      },
+      "real_estate": {
+        "cases": 50,
+        "runtime_seconds_avg": 7.596,
+        "retrieval_seconds_avg": 2.138,
+        "answer_total_tokens_avg": 2795.2,
+        "total_tokens_avg": 3643.3
+      }
+    }
+  },
+  "records": [
+    {
+      "id": "ST_HARD_001",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao can nha ngo 281 Truong Dinh phu hop cho gia dinh o lau dai neu xet so phong, noi that va ngo o to?",
+      "generation_seconds": 9.695,
+      "filter_extraction_seconds": 1.477,
+      "retrieval_seconds": 2.188,
+      "answer_generation_seconds": 6.011,
+      "runtime_seconds": 9.676,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 5,
+      "context_chars": 2583,
+      "filter_extraction_token_usage": {
+        "input_tokens": 801,
+        "output_tokens": 39,
+        "total_tokens": 840,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2268,
+        "output_tokens": 152,
+        "total_tokens": 2420,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3069,
+        "output_tokens": 191,
+        "total_tokens": 3260
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_002",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao nhà cho thuê ở 54/98 Thịnh Hào 3 được xem là hợp cho gia đình đông người hoặc nhóm ở dài hạn?",
+      "generation_seconds": 7.285,
+      "filter_extraction_seconds": 1.399,
+      "retrieval_seconds": 2.049,
+      "answer_generation_seconds": 3.803,
+      "runtime_seconds": 7.251,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 5249,
+      "filter_extraction_token_usage": {
+        "input_tokens": 798,
+        "output_tokens": 40,
+        "total_tokens": 838,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3179,
+        "output_tokens": 102,
+        "total_tokens": 3281,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3977,
+        "output_tokens": 142,
+        "total_tokens": 4119
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_003",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao tin \"Chinh chu cho thue nguyen can thiet ke phu hop cho thue 7 can ho mini tai Nhon\" phu hop khai thac can ho mini?",
+      "generation_seconds": 10.638,
+      "filter_extraction_seconds": 2.03,
+      "retrieval_seconds": 2.052,
+      "answer_generation_seconds": 6.525,
+      "runtime_seconds": 10.607,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4729,
+      "filter_extraction_token_usage": {
+        "input_tokens": 808,
+        "output_tokens": 40,
+        "total_tokens": 848,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3074,
+        "output_tokens": 161,
+        "total_tokens": 3235,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3882,
+        "output_tokens": 201,
+        "total_tokens": 4083
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_004",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao tin \"Chinh chu cho thue nha 5 tang o pho Quang Tien Tay Mo\" thuan tien cho sinh hoat gia dinh?",
+      "generation_seconds": 10.566,
+      "filter_extraction_seconds": 1.613,
+      "retrieval_seconds": 2.884,
+      "answer_generation_seconds": 6.035,
+      "runtime_seconds": 10.532,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 5155,
+      "filter_extraction_token_usage": {
+        "input_tokens": 801,
+        "output_tokens": 43,
+        "total_tokens": 844,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3300,
+        "output_tokens": 150,
+        "total_tokens": 3450,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 4101,
+        "output_tokens": 193,
+        "total_tokens": 4294
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_005",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao tin \"Cho thue nha rieng tai pho Thanh Nhan Ha Noi\" hop voi nguoi hoc tap hoac lam viec gan trung tam?",
+      "generation_seconds": 8.35,
+      "filter_extraction_seconds": 1.407,
+      "retrieval_seconds": 2.833,
+      "answer_generation_seconds": 4.079,
+      "runtime_seconds": 8.319,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4422,
+      "filter_extraction_token_usage": {
+        "input_tokens": 800,
+        "output_tokens": 42,
+        "total_tokens": 842,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2935,
+        "output_tokens": 155,
+        "total_tokens": 3090,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3735,
+        "output_tokens": 197,
+        "total_tokens": 3932
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_006",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao lô đất D3 khu Vườn Đào đối diện Lotte Mall được xem là có sức hút đầu tư cao?",
+      "generation_seconds": 8.348,
+      "filter_extraction_seconds": 1.707,
+      "retrieval_seconds": 2.887,
+      "answer_generation_seconds": 3.717,
+      "runtime_seconds": 8.311,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4766,
+      "filter_extraction_token_usage": {
+        "input_tokens": 795,
+        "output_tokens": 43,
+        "total_tokens": 838,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3002,
+        "output_tokens": 154,
+        "total_tokens": 3156,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3797,
+        "output_tokens": 197,
+        "total_tokens": 3994
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_007",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao tin \"Cho thue nha rieng chinh chu tai Giang Vo\" khong phu hop Airbnb hoac van phong dong nguoi?",
+      "generation_seconds": 6.072,
+      "filter_extraction_seconds": 1.394,
+      "retrieval_seconds": 2.9,
+      "answer_generation_seconds": 1.745,
+      "runtime_seconds": 6.039,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4135,
+      "filter_extraction_token_usage": {
+        "input_tokens": 799,
+        "output_tokens": 42,
+        "total_tokens": 841,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2791,
+        "output_tokens": 66,
+        "total_tokens": 2857,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3590,
+        "output_tokens": 108,
+        "total_tokens": 3698
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_008",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao mặt bằng ở số 2A ngõ 76 Trần Thái Tông có thể phù hợp với nhiều mô hình kinh doanh khác nhau?",
+      "generation_seconds": 7.029,
+      "filter_extraction_seconds": 1.268,
+      "retrieval_seconds": 2.061,
+      "answer_generation_seconds": 3.67,
+      "runtime_seconds": 6.999,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4402,
+      "filter_extraction_token_usage": {
+        "input_tokens": 799,
+        "output_tokens": 39,
+        "total_tokens": 838,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2905,
+        "output_tokens": 128,
+        "total_tokens": 3033,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3704,
+        "output_tokens": 167,
+        "total_tokens": 3871
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_009",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao nha 7 tang o dat dich vu Duong Noi phu hop de vua o vua lam van phong hoac ban hang online?",
+      "generation_seconds": 9.323,
+      "filter_extraction_seconds": 3.012,
+      "retrieval_seconds": 2.829,
+      "answer_generation_seconds": 3.461,
+      "runtime_seconds": 9.302,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 5,
+      "context_chars": 4356,
+      "filter_extraction_token_usage": {
+        "input_tokens": 796,
+        "output_tokens": 41,
+        "total_tokens": 837,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2848,
+        "output_tokens": 152,
+        "total_tokens": 3000,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3644,
+        "output_tokens": 193,
+        "total_tokens": 3837
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_010",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao tin \"Cho thue van phong 526-528 Nguyen Van Cu phuong Bo De Ha Noi\" phu hop van hanh kinh doanh?",
+      "generation_seconds": 8.115,
+      "filter_extraction_seconds": 2.51,
+      "retrieval_seconds": 2.594,
+      "answer_generation_seconds": 2.988,
+      "runtime_seconds": 8.092,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4009,
+      "filter_extraction_token_usage": {
+        "input_tokens": 799,
+        "output_tokens": 44,
+        "total_tokens": 843,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2834,
+        "output_tokens": 155,
+        "total_tokens": 2989,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3633,
+        "output_tokens": 199,
+        "total_tokens": 3832
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_011",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao căn hộ 2 phòng ngủ ở Quận 1 được xem là thuận tiện cho cuộc sống cao cấp ở trung tâm?",
+      "generation_seconds": 6.682,
+      "filter_extraction_seconds": 1.732,
+      "retrieval_seconds": 1.01,
+      "answer_generation_seconds": 3.903,
+      "runtime_seconds": 6.645,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 5,
+      "context_chars": 3853,
+      "filter_extraction_token_usage": {
+        "input_tokens": 794,
+        "output_tokens": 42,
+        "total_tokens": 836,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2712,
+        "output_tokens": 152,
+        "total_tokens": 2864,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3506,
+        "output_tokens": 194,
+        "total_tokens": 3700
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_012",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Minh dang phan van can H1 tap the Nguyen Cong Tru cho nguoi thue ngan sach thap. Neu chi xet gia, dien tich, so phong va cac tien ich gan do thi vi sao can nay ",
+      "generation_seconds": 6.57,
+      "filter_extraction_seconds": 1.375,
+      "retrieval_seconds": 1.746,
+      "answer_generation_seconds": 3.421,
+      "runtime_seconds": 6.542,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4938,
+      "filter_extraction_token_usage": {
+        "input_tokens": 818,
+        "output_tokens": 40,
+        "total_tokens": 858,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3121,
+        "output_tokens": 134,
+        "total_tokens": 3255,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3939,
+        "output_tokens": 174,
+        "total_tokens": 4113
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_013",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao lo dat khu dich vu Dong Mai co tiem nang xay dung neu xet duong, phap ly va kha nang xay tang?",
+      "generation_seconds": 4.88,
+      "filter_extraction_seconds": 1.427,
+      "retrieval_seconds": 2.831,
+      "answer_generation_seconds": 0.613,
+      "runtime_seconds": 4.871,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 4,
+      "context_chars": 1049,
+      "filter_extraction_token_usage": {
+        "input_tokens": 798,
+        "output_tokens": 41,
+        "total_tokens": 839,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 1765,
+        "output_tokens": 3,
+        "total_tokens": 1768,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2563,
+        "output_tokens": 44,
+        "total_tokens": 2607
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_014",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao tin \"Cho thue nha rieng tai ngo 276 Nghi Tam\" vua thoang vua thuan tien di lai?",
+      "generation_seconds": 6.228,
+      "filter_extraction_seconds": 1.555,
+      "retrieval_seconds": 1.815,
+      "answer_generation_seconds": 2.834,
+      "runtime_seconds": 6.204,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 5191,
+      "filter_extraction_token_usage": {
+        "input_tokens": 795,
+        "output_tokens": 40,
+        "total_tokens": 835,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3197,
+        "output_tokens": 107,
+        "total_tokens": 3304,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3992,
+        "output_tokens": 147,
+        "total_tokens": 4139
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_015",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao nhà số 38 khu Trung Yên phù hợp cho văn phòng hoặc đào tạo hơn là thuê để ở hộ gia đình?",
+      "generation_seconds": 7.747,
+      "filter_extraction_seconds": 1.566,
+      "retrieval_seconds": 2.638,
+      "answer_generation_seconds": 3.514,
+      "runtime_seconds": 7.718,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 5111,
+      "filter_extraction_token_usage": {
+        "input_tokens": 794,
+        "output_tokens": 43,
+        "total_tokens": 837,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3174,
+        "output_tokens": 169,
+        "total_tokens": 3343,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3968,
+        "output_tokens": 212,
+        "total_tokens": 4180
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_016",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao nhà ở ngõ 54 Lê Quang Đạo có thể phù hợp cho cả nhu cầu ở và kinh doanh nhỏ?",
+      "generation_seconds": 6.765,
+      "filter_extraction_seconds": 1.31,
+      "retrieval_seconds": 2.043,
+      "answer_generation_seconds": 3.385,
+      "runtime_seconds": 6.738,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4110,
+      "filter_extraction_token_usage": {
+        "input_tokens": 795,
+        "output_tokens": 39,
+        "total_tokens": 834,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2869,
+        "output_tokens": 159,
+        "total_tokens": 3028,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3664,
+        "output_tokens": 198,
+        "total_tokens": 3862
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_017",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao can 2PN 1VS tai Vinhomes D'Capitale co the dung linh hoat de o hoac lam van phong theo tin dang?",
+      "generation_seconds": 5.426,
+      "filter_extraction_seconds": 1.438,
+      "retrieval_seconds": 0.941,
+      "answer_generation_seconds": 3.017,
+      "runtime_seconds": 5.396,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4036,
+      "filter_extraction_token_usage": {
+        "input_tokens": 801,
+        "output_tokens": 39,
+        "total_tokens": 840,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2919,
+        "output_tokens": 126,
+        "total_tokens": 3045,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3720,
+        "output_tokens": 165,
+        "total_tokens": 3885
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_018",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao tin \"Dat nen ban gap Chi Dong 13,6 ty 206.7m2 mat tien 7m duong 18m\" phu hop de o hoac kinh doanh?",
+      "generation_seconds": 9.132,
+      "filter_extraction_seconds": 2.877,
+      "retrieval_seconds": 2.875,
+      "answer_generation_seconds": 3.347,
+      "runtime_seconds": 9.099,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4519,
+      "filter_extraction_token_usage": {
+        "input_tokens": 809,
+        "output_tokens": 49,
+        "total_tokens": 858,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2960,
+        "output_tokens": 138,
+        "total_tokens": 3098,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3769,
+        "output_tokens": 187,
+        "total_tokens": 3956
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_019",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao can ho Orchard Park View phu hop voi nguoi can di chuyen san bay thuong xuyen neu xet vi tri va tien ich?",
+      "generation_seconds": 6.069,
+      "filter_extraction_seconds": 1.179,
+      "retrieval_seconds": 2.035,
+      "answer_generation_seconds": 2.833,
+      "runtime_seconds": 6.047,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 4,
+      "context_chars": 2171,
+      "filter_extraction_token_usage": {
+        "input_tokens": 799,
+        "output_tokens": 39,
+        "total_tokens": 838,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2142,
+        "output_tokens": 134,
+        "total_tokens": 2276,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2941,
+        "output_tokens": 173,
+        "total_tokens": 3114
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_020",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao nha vuon Phan Ke Binh co the ket hop o va kinh doanh neu xet dien tich, bo cuc showroom va vi tri yen tinh?",
+      "generation_seconds": 7.403,
+      "filter_extraction_seconds": 1.504,
+      "retrieval_seconds": 2.906,
+      "answer_generation_seconds": 2.973,
+      "runtime_seconds": 7.383,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 1498,
+      "filter_extraction_token_usage": {
+        "input_tokens": 801,
+        "output_tokens": 43,
+        "total_tokens": 844,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 1826,
+        "output_tokens": 156,
+        "total_tokens": 1982,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2627,
+        "output_tokens": 199,
+        "total_tokens": 2826
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_021",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao tin \"Lo B8 dau gia Tuan Chau Sai Son Quoc Oai 95,7m2 co 2 mat tien\" phu hop de xay o?",
+      "generation_seconds": 8.295,
+      "filter_extraction_seconds": 1.456,
+      "retrieval_seconds": 3.975,
+      "answer_generation_seconds": 2.833,
+      "runtime_seconds": 8.264,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4079,
+      "filter_extraction_token_usage": {
+        "input_tokens": 805,
+        "output_tokens": 46,
+        "total_tokens": 851,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2885,
+        "output_tokens": 125,
+        "total_tokens": 3010,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3690,
+        "output_tokens": 171,
+        "total_tokens": 3861
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_022",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao tin \"Dat Hoa Lac dau tu gia F0 full tho cu vi tri cuc dep sat khu cong nghe cao\" san sang cho dau tu?",
+      "generation_seconds": 7.852,
+      "filter_extraction_seconds": 1.496,
+      "retrieval_seconds": 2.787,
+      "answer_generation_seconds": 3.545,
+      "runtime_seconds": 7.828,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 3,
+      "context_chars": 2476,
+      "filter_extraction_token_usage": {
+        "input_tokens": 798,
+        "output_tokens": 39,
+        "total_tokens": 837,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2199,
+        "output_tokens": 166,
+        "total_tokens": 2365,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2997,
+        "output_tokens": 205,
+        "total_tokens": 3202
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_023",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tòa CHDV ở Ngọc Hà được xem là tài sản dòng tiền mạnh?",
+      "generation_seconds": 6.714,
+      "filter_extraction_seconds": 1.642,
+      "retrieval_seconds": 2.031,
+      "answer_generation_seconds": 3.005,
+      "runtime_seconds": 6.678,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4638,
+      "filter_extraction_token_usage": {
+        "input_tokens": 786,
+        "output_tokens": 41,
+        "total_tokens": 827,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2963,
+        "output_tokens": 112,
+        "total_tokens": 3075,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3749,
+        "output_tokens": 153,
+        "total_tokens": 3902
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_024",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao tin \"CDT dat nen Hoa Lac gia dau tu F0 DT 100m2 - 300m2\" co tiem nang dau tu?",
+      "generation_seconds": 5.855,
+      "filter_extraction_seconds": 1.497,
+      "retrieval_seconds": 0.752,
+      "answer_generation_seconds": 3.585,
+      "runtime_seconds": 5.834,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 5,
+      "context_chars": 3063,
+      "filter_extraction_token_usage": {
+        "input_tokens": 799,
+        "output_tokens": 39,
+        "total_tokens": 838,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2529,
+        "output_tokens": 150,
+        "total_tokens": 2679,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3328,
+        "output_tokens": 189,
+        "total_tokens": 3517
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_025",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Can Keangnam Hanoi Landmark Tower co phu hop voi nguoi can thue khong gian rong, du noi that va tien ich xung quanh khong? Giai thich bang cac du lieu trong tin",
+      "generation_seconds": 10.231,
+      "filter_extraction_seconds": 1.383,
+      "retrieval_seconds": 2.666,
+      "answer_generation_seconds": 6.152,
+      "runtime_seconds": 10.201,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 5069,
+      "filter_extraction_token_usage": {
+        "input_tokens": 812,
+        "output_tokens": 42,
+        "total_tokens": 854,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3124,
+        "output_tokens": 187,
+        "total_tokens": 3311,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3936,
+        "output_tokens": 229,
+        "total_tokens": 4165
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_026",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vì sao quận Hoàn Kiếm cần lập Kế hoạch sử dụng đất năm 2025?",
+      "generation_seconds": 16.527,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 12.344,
+      "answer_generation_seconds": 4.121,
+      "runtime_seconds": 16.465,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 13071,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 5851,
+        "output_tokens": 192,
+        "total_tokens": 6043,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 5851,
+        "output_tokens": 192,
+        "total_tokens": 6043
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_027",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vì sao nhiều dự án của năm 2024 phải chuyển tiếp sang kế hoạch sử dụng đất năm 2025?",
+      "generation_seconds": 29.886,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 19.29,
+      "answer_generation_seconds": 10.509,
+      "runtime_seconds": 29.799,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 27603,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 11610,
+        "output_tokens": 110,
+        "total_tokens": 11720,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 11610,
+        "output_tokens": 110,
+        "total_tokens": 11720
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_028",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vì sao báo cáo cho rằng các dự án trong Kế hoạch sử dụng đất năm 2025 của quận Hoàn Kiếm có khả năng thực hiện cao?",
+      "generation_seconds": 12.384,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 8.666,
+      "answer_generation_seconds": 3.657,
+      "runtime_seconds": 12.323,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 17474,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7051,
+        "output_tokens": 146,
+        "total_tokens": 7197,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7051,
+        "output_tokens": 146,
+        "total_tokens": 7197
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_029",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao Chuong Duong va Phuc Tan la hai phuong ngoai de song Hong can nhan manh trong quan ly dat dai Hoan Kiem?",
+      "generation_seconds": 22.094,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 9.89,
+      "answer_generation_seconds": 12.095,
+      "runtime_seconds": 21.985,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 18547,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7419,
+        "output_tokens": 176,
+        "total_tokens": 7595,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7419,
+        "output_tokens": 176,
+        "total_tokens": 7595
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_030",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vì sao quận Hà Đông cần lập Kế hoạch sử dụng đất năm 2025?",
+      "generation_seconds": 15.179,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 9.541,
+      "answer_generation_seconds": 5.567,
+      "runtime_seconds": 15.108,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 24776,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 9906,
+        "output_tokens": 154,
+        "total_tokens": 10060,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 9906,
+        "output_tokens": 154,
+        "total_tokens": 10060
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_031",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao van de moi truong nuoc mat la can cu can chu y trong ke hoach su dung dat nam 2025 cua quan Ha Dong?",
+      "generation_seconds": 13.387,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 7.595,
+      "answer_generation_seconds": 5.765,
+      "runtime_seconds": 13.36,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 28006,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 11685,
+        "output_tokens": 137,
+        "total_tokens": 11822,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 11685,
+        "output_tokens": 137,
+        "total_tokens": 11822
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_032",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao cong tac GPMB o quan Ha Dong gap kho do chinh sach boi thuong, quy trinh Luat Dat dai moi, von va ho so dat dai?",
+      "generation_seconds": 26.267,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 10.003,
+      "answer_generation_seconds": 16.213,
+      "runtime_seconds": 26.216,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 27320,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 10767,
+        "output_tokens": 213,
+        "total_tokens": 10980,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 10767,
+        "output_tokens": 213,
+        "total_tokens": 10980
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_033",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao quan Ha Dong co tiem nang phat trien du lich, dich vu gan voi gia tri van hoa?",
+      "generation_seconds": 23.248,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 8.143,
+      "answer_generation_seconds": 15.061,
+      "runtime_seconds": 23.204,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 27504,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 11063,
+        "output_tokens": 257,
+        "total_tokens": 11320,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 11063,
+        "output_tokens": 257,
+        "total_tokens": 11320
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_034",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao quan Cau Giay can lap Ke hoach su dung dat nam 2025 de tranh lang phi, chong cheo?",
+      "generation_seconds": 11.404,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 3.618,
+      "answer_generation_seconds": 7.772,
+      "runtime_seconds": 11.39,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 13434,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 5744,
+        "output_tokens": 97,
+        "total_tokens": 5841,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 5744,
+        "output_tokens": 97,
+        "total_tokens": 5841
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_035",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao phuong Mai Dich can chu y trong ke hoach su dung dat nong nghiep nam 2025 cua quan Cau Giay? Khong can tinh phan tram.",
+      "generation_seconds": 6.256,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 2.962,
+      "answer_generation_seconds": 3.278,
+      "runtime_seconds": 6.24,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 13723,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 5952,
+        "output_tokens": 138,
+        "total_tokens": 6090,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 5952,
+        "output_tokens": 138,
+        "total_tokens": 6090
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_036",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao ke hoach su dung dat 2025 cua Cau Giay vua phai xu ly du an chuyen tiep vua dieu chinh dat giao duc va dat nong nghiep?",
+      "generation_seconds": 5.765,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 2.782,
+      "answer_generation_seconds": 2.966,
+      "runtime_seconds": 5.748,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 15527,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 6448,
+        "output_tokens": 139,
+        "total_tokens": 6587,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 6448,
+        "output_tokens": 139,
+        "total_tokens": 6587
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_037",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao ke hoach su dung dat 2025 cua Cau Giay can bo sung dat cho truong hoc va giao thong?",
+      "generation_seconds": 8.444,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 4.171,
+      "answer_generation_seconds": 4.25,
+      "runtime_seconds": 8.421,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 20169,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7843,
+        "output_tokens": 149,
+        "total_tokens": 7992,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7843,
+        "output_tokens": 149,
+        "total_tokens": 7992
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_038",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vì sao thị xã Sơn Tây cần lập Kế hoạch sử dụng đất năm 2025?",
+      "generation_seconds": 6.558,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 3.856,
+      "answer_generation_seconds": 2.65,
+      "runtime_seconds": 6.506,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 14763,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 6247,
+        "output_tokens": 114,
+        "total_tokens": 6361,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 6247,
+        "output_tokens": 114,
+        "total_tokens": 6361
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_039",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vì sao thị xã Sơn Tây được xem là có nhiều lợi thế để phát triển du lịch và dịch vụ?",
+      "generation_seconds": 8.937,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 4.924,
+      "answer_generation_seconds": 3.946,
+      "runtime_seconds": 8.87,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 16653,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 6820,
+        "output_tokens": 159,
+        "total_tokens": 6979,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 6820,
+        "output_tokens": 159,
+        "total_tokens": 6979
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_040",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao nhieu du an trong ke hoach su dung dat nam 2024 cua thi xa Son Tay phai chuyen tiep sang nam 2025?",
+      "generation_seconds": 28.77,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 26.802,
+      "answer_generation_seconds": 1.953,
+      "runtime_seconds": 28.755,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 10493,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 4867,
+        "output_tokens": 77,
+        "total_tokens": 4944,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 4867,
+        "output_tokens": 77,
+        "total_tokens": 4944
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_041",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao quy mo dat nong nghiep va dat trong lua o Son Tay khien viec su dung dat can chu y toi nguon nuoc?",
+      "generation_seconds": 8.123,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 4.01,
+      "answer_generation_seconds": 4.067,
+      "runtime_seconds": 8.077,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 16953,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 6875,
+        "output_tokens": 197,
+        "total_tokens": 7072,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 6875,
+        "output_tokens": 197,
+        "total_tokens": 7072
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_042",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao ke hoach su dung dat nam 2025 cua Hai Ba Trung la co so phap ly quan trong cho giao dat, cho thue dat, chuyen muc dich va quan ly moi truong?",
+      "generation_seconds": 37.419,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 33.26,
+      "answer_generation_seconds": 4.151,
+      "runtime_seconds": 37.411,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 3,
+      "context_docs_count": 4,
+      "context_chars": 8035,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 4085,
+        "output_tokens": 210,
+        "total_tokens": 4295,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 4085,
+        "output_tokens": 210,
+        "total_tokens": 4295
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_043",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao nhom du an tiep tuc nam 2025 theo khoan 4 Dieu 67 o Hai Ba Trung cho thay nhu cau bo tri dat cho ha tang cong cong va an ninh?",
+      "generation_seconds": 56.63,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 50.321,
+      "answer_generation_seconds": 5.986,
+      "runtime_seconds": 56.307,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 32625,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 13528,
+        "output_tokens": 235,
+        "total_tokens": 13763,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 13528,
+        "output_tokens": 235,
+        "total_tokens": 13763
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_044",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao nhieu cong trinh, du an trong ke hoach su dung dat 2024 cua Hai Ba Trung phai chuyen tiep sang nam 2025?",
+      "generation_seconds": 37.017,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 30.27,
+      "answer_generation_seconds": 6.674,
+      "runtime_seconds": 36.944,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 31381,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 12900,
+        "output_tokens": 80,
+        "total_tokens": 12980,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 12900,
+        "output_tokens": 80,
+        "total_tokens": 12980
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_045",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao yeu to moi truong la rang buoc quan trong khi Hai Ba Trung bo tri su dung dat?",
+      "generation_seconds": 12.708,
+      "filter_extraction_seconds": 1.523,
+      "retrieval_seconds": 8.531,
+      "answer_generation_seconds": 2.601,
+      "runtime_seconds": 12.655,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 5311,
+      "filter_extraction_token_usage": {
+        "input_tokens": 791,
+        "output_tokens": 41,
+        "total_tokens": 832,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3319,
+        "output_tokens": 110,
+        "total_tokens": 3429,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 4110,
+        "output_tokens": 151,
+        "total_tokens": 4261
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_046",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vì sao quận Hoàng Mai cần lập Kế hoạch sử dụng đất năm 2025?",
+      "generation_seconds": 13.463,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 6.105,
+      "answer_generation_seconds": 7.302,
+      "runtime_seconds": 13.407,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 15855,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 6624,
+        "output_tokens": 179,
+        "total_tokens": 6803,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 6624,
+        "output_tokens": 179,
+        "total_tokens": 6803
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_047",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao dac diem dia hinh khien quan Hoang Mai phai chu trong thoat nuoc khi lap ke hoach su dung dat?",
+      "generation_seconds": 12.801,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 10.174,
+      "answer_generation_seconds": 2.598,
+      "runtime_seconds": 12.772,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 16533,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 6775,
+        "output_tokens": 95,
+        "total_tokens": 6870,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 6775,
+        "output_tokens": 95,
+        "total_tokens": 6870
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_048",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao cong tac giai phong mat bang la khau trong diem trong ke hoach su dung dat cua quan Hoang Mai?",
+      "generation_seconds": 11.407,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 7.43,
+      "answer_generation_seconds": 3.954,
+      "runtime_seconds": 11.384,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 16165,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 6633,
+        "output_tokens": 167,
+        "total_tokens": 6800,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 6633,
+        "output_tokens": 167,
+        "total_tokens": 6800
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_049",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao dinh huong phat trien Hoang Mai can gan ke hoach su dung dat voi ha tang, chuyen dich kinh te va moi truong?",
+      "generation_seconds": 27.005,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 18.468,
+      "answer_generation_seconds": 8.506,
+      "runtime_seconds": 26.974,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 19488,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7754,
+        "output_tokens": 187,
+        "total_tokens": 7941,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7754,
+        "output_tokens": 187,
+        "total_tokens": 7941
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_050",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cần bán \"Bán căn hộ 2PN Quận 1, full nội thất\" có thể đáng cân nhắc khi đánh giá nhanh?",
+      "generation_seconds": 5.1,
+      "filter_extraction_seconds": 1.109,
+      "retrieval_seconds": 1.072,
+      "answer_generation_seconds": 2.881,
+      "runtime_seconds": 5.062,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 5,
+      "context_chars": 4004,
+      "filter_extraction_token_usage": {
+        "input_tokens": 800,
+        "output_tokens": 42,
+        "total_tokens": 842,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2756,
+        "output_tokens": 140,
+        "total_tokens": 2896,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3556,
+        "output_tokens": 182,
+        "total_tokens": 3738
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_051",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Neu minh can thue can 2PN o Quan 1 de o thuc te, tin nay co nhung can cu nao ve dien tich, cong nang, huong va noi that?",
+      "generation_seconds": 6.779,
+      "filter_extraction_seconds": 1.834,
+      "retrieval_seconds": 0.85,
+      "answer_generation_seconds": 4.073,
+      "runtime_seconds": 6.757,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 6,
+      "context_docs_count": 4,
+      "context_chars": 2721,
+      "filter_extraction_token_usage": {
+        "input_tokens": 808,
+        "output_tokens": 43,
+        "total_tokens": 851,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2444,
+        "output_tokens": 226,
+        "total_tokens": 2670,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3252,
+        "output_tokens": 269,
+        "total_tokens": 3521
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_052",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Can Vinhomes Ocean Park 1 nay dang can nhac khi mua o diem nao neu nhin vao gia, dien tich, cong nang va noi that?",
+      "generation_seconds": 7.592,
+      "filter_extraction_seconds": 1.184,
+      "retrieval_seconds": 2.034,
+      "answer_generation_seconds": 4.352,
+      "runtime_seconds": 7.57,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 4,
+      "context_chars": 3191,
+      "filter_extraction_token_usage": {
+        "input_tokens": 801,
+        "output_tokens": 39,
+        "total_tokens": 840,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2588,
+        "output_tokens": 232,
+        "total_tokens": 2820,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3389,
+        "output_tokens": 271,
+        "total_tokens": 3660
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_053",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cho thuê \"Liên hệ Em Han 0969 116 *** để thuê CC tại Keangnam Hanoi Landmark Tower\" có thể phù hợp với người cần thuê thực tế?",
+      "generation_seconds": 7.621,
+      "filter_extraction_seconds": 1.786,
+      "retrieval_seconds": 2.919,
+      "answer_generation_seconds": 2.876,
+      "runtime_seconds": 7.581,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4997,
+      "filter_extraction_token_usage": {
+        "input_tokens": 806,
+        "output_tokens": 42,
+        "total_tokens": 848,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3090,
+        "output_tokens": 138,
+        "total_tokens": 3228,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3896,
+        "output_tokens": 180,
+        "total_tokens": 4076
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_054",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cho thuê \"Tổng hợp quỹ căn 1.5PN, 2PN, 3N , cho thuê đẹp giá từ 15tr - 30tr tại Vinhomes D'Capitale\" có thể phù hợp với người cần thuê thực tế?",
+      "generation_seconds": 9.501,
+      "filter_extraction_seconds": 1.059,
+      "retrieval_seconds": 4.697,
+      "answer_generation_seconds": 3.702,
+      "runtime_seconds": 9.458,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4799,
+      "filter_extraction_token_usage": {
+        "input_tokens": 825,
+        "output_tokens": 48,
+        "total_tokens": 873,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3248,
+        "output_tokens": 180,
+        "total_tokens": 3428,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 4073,
+        "output_tokens": 228,
+        "total_tokens": 4301
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_055",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cho thuê \"Cho thuê The Ninety, mới 100%, Studio-2-3 ngủ, từ 11tr, Miễn Dịch vụ, Có Slot Ô Tô\" có thể phù hợp với người cần thuê thực tế?",
+      "generation_seconds": 5.718,
+      "filter_extraction_seconds": 1.603,
+      "retrieval_seconds": 0.845,
+      "answer_generation_seconds": 3.234,
+      "runtime_seconds": 5.682,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 5448,
+      "filter_extraction_token_usage": {
+        "input_tokens": 818,
+        "output_tokens": 42,
+        "total_tokens": 860,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3287,
+        "output_tokens": 171,
+        "total_tokens": 3458,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 4105,
+        "output_tokens": 213,
+        "total_tokens": 4318
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_056",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cho thuê \"Cho thuê CC 45m2, 5 triệu VND tại H1 tập thể Nguyễn Công Trứ, Quận Hai Bà Trưng, Hà Nội\" có thể phù hợp với người cần thuê thực tế?",
+      "generation_seconds": 6.175,
+      "filter_extraction_seconds": 1.125,
+      "retrieval_seconds": 1.669,
+      "answer_generation_seconds": 3.342,
+      "runtime_seconds": 6.136,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 5149,
+      "filter_extraction_token_usage": {
+        "input_tokens": 818,
+        "output_tokens": 50,
+        "total_tokens": 868,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3150,
+        "output_tokens": 157,
+        "total_tokens": 3307,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3968,
+        "output_tokens": 207,
+        "total_tokens": 4175
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_057",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Can 2PN thap B2 khu CT5 The Global City co diem gi can kiem tra ky truoc khi can nhac, xet theo gia, dien tich, phong va noi that?",
+      "generation_seconds": 8.125,
+      "filter_extraction_seconds": 4.732,
+      "retrieval_seconds": 1.108,
+      "answer_generation_seconds": 2.266,
+      "runtime_seconds": 8.106,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 3,
+      "context_chars": 2560,
+      "filter_extraction_token_usage": {
+        "input_tokens": 810,
+        "output_tokens": 39,
+        "total_tokens": 849,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2241,
+        "output_tokens": 127,
+        "total_tokens": 2368,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3051,
+        "output_tokens": 166,
+        "total_tokens": 3217
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_058",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Voi tin The River Thu Thiem, hay giai thich vi sao day la can 1PN dung theo du lieu va neu cac thong so chinh can doi chieu.",
+      "generation_seconds": 7.543,
+      "filter_extraction_seconds": 1.293,
+      "retrieval_seconds": 0.952,
+      "answer_generation_seconds": 5.274,
+      "runtime_seconds": 7.519,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 9,
+      "context_docs_count": 5,
+      "context_chars": 3498,
+      "filter_extraction_token_usage": {
+        "input_tokens": 805,
+        "output_tokens": 39,
+        "total_tokens": 844,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2514,
+        "output_tokens": 168,
+        "total_tokens": 2682,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3319,
+        "output_tokens": 207,
+        "total_tokens": 3526
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_059",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Can The Estella 3PN cho thue trong san co phu hop nguoi can vao o/thue nhanh khong? Neu can cu tu gia, dien tich, so phong va noi that.",
+      "generation_seconds": 8.479,
+      "filter_extraction_seconds": 1.219,
+      "retrieval_seconds": 1.026,
+      "answer_generation_seconds": 6.209,
+      "runtime_seconds": 8.454,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 5,
+      "context_chars": 3651,
+      "filter_extraction_token_usage": {
+        "input_tokens": 810,
+        "output_tokens": 40,
+        "total_tokens": 850,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2569,
+        "output_tokens": 117,
+        "total_tokens": 2686,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3379,
+        "output_tokens": 157,
+        "total_tokens": 3536
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_060",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cho thuê \"Cho thuê căn hộ Orchard Park View, 3PN, 2WC, full nội thất, giá: 21 triệu/tháng, 0908 435\" có thể phù hợp với người cần thuê thực tế?",
+      "generation_seconds": 11.576,
+      "filter_extraction_seconds": 1.331,
+      "retrieval_seconds": 0.824,
+      "answer_generation_seconds": 9.403,
+      "runtime_seconds": 11.558,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 3,
+      "context_docs_count": 2,
+      "context_chars": 1369,
+      "filter_extraction_token_usage": {
+        "input_tokens": 818,
+        "output_tokens": 44,
+        "total_tokens": 862,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 1870,
+        "output_tokens": 190,
+        "total_tokens": 2060,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2688,
+        "output_tokens": 234,
+        "total_tokens": 2922
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_061",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cần bán \"Chính chủ bán nhà Trương Định, 67m2, 5T, mặt tiền 5m, 2 ngõ, oto vào nhà chỉ hơn 14 tỷ\" có thể đáng cân nhắc khi đánh giá nhanh?",
+      "generation_seconds": 8.977,
+      "filter_extraction_seconds": 1.611,
+      "retrieval_seconds": 1.706,
+      "answer_generation_seconds": 5.649,
+      "runtime_seconds": 8.966,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 3,
+      "context_docs_count": 2,
+      "context_chars": 1447,
+      "filter_extraction_token_usage": {
+        "input_tokens": 823,
+        "output_tokens": 48,
+        "total_tokens": 871,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 1925,
+        "output_tokens": 207,
+        "total_tokens": 2132,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2748,
+        "output_tokens": 255,
+        "total_tokens": 3003
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_062",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao nha phan lo ngo 167 Tay Son dang can nhac neu xet ngo o to, vi tri gan cac tuyen lon, dien tich va tinh trang dang cho thue?",
+      "generation_seconds": 8.798,
+      "filter_extraction_seconds": 1.488,
+      "retrieval_seconds": 2.022,
+      "answer_generation_seconds": 5.267,
+      "runtime_seconds": 8.777,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 4,
+      "context_chars": 3578,
+      "filter_extraction_token_usage": {
+        "input_tokens": 808,
+        "output_tokens": 40,
+        "total_tokens": 848,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2636,
+        "output_tokens": 139,
+        "total_tokens": 2775,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3444,
+        "output_tokens": 179,
+        "total_tokens": 3623
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_063",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cần bán \"Siêu Phẩm! Phạm Văn Đồng- Hoàng Quốc Việt- Phân Lô, Lô Góc 3 Mặt tiền, 3 ô tô tránh, 70 m2\" có thể đáng cân nhắc khi đánh giá nhanh?",
+      "generation_seconds": 7.491,
+      "filter_extraction_seconds": 1.127,
+      "retrieval_seconds": 0.832,
+      "answer_generation_seconds": 5.521,
+      "runtime_seconds": 7.48,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 4,
+      "context_docs_count": 2,
+      "context_chars": 1107,
+      "filter_extraction_token_usage": {
+        "input_tokens": 825,
+        "output_tokens": 39,
+        "total_tokens": 864,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 1742,
+        "output_tokens": 174,
+        "total_tokens": 1916,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2567,
+        "output_tokens": 213,
+        "total_tokens": 2780
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_064",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Nha ngo Bui Xuong Trach nen duoc danh gia nhanh the nao neu chi co du lieu ve gia, dien tich va vi tri?",
+      "generation_seconds": 5.331,
+      "filter_extraction_seconds": 1.066,
+      "retrieval_seconds": 2.031,
+      "answer_generation_seconds": 2.219,
+      "runtime_seconds": 5.316,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 4,
+      "context_chars": 1340,
+      "filter_extraction_token_usage": {
+        "input_tokens": 799,
+        "output_tokens": 39,
+        "total_tokens": 838,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 1791,
+        "output_tokens": 115,
+        "total_tokens": 1906,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2590,
+        "output_tokens": 154,
+        "total_tokens": 2744
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_065",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cần bán \"Siêu ngon nhà dòng tiền CCMN/CHDV - Ba Đình - Ngọc Hà 85m2, 8 tầng, 22PKK cao cấp, dòng\" có thể đáng cân nhắc khi đánh giá nhanh?",
+      "generation_seconds": 7.043,
+      "filter_extraction_seconds": 1.895,
+      "retrieval_seconds": 1.708,
+      "answer_generation_seconds": 3.405,
+      "runtime_seconds": 7.008,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 5,
+      "context_chars": 4332,
+      "filter_extraction_token_usage": {
+        "input_tokens": 821,
+        "output_tokens": 43,
+        "total_tokens": 864,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2882,
+        "output_tokens": 149,
+        "total_tokens": 3031,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3703,
+        "output_tokens": 192,
+        "total_tokens": 3895
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_066",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cần bán \"Bán lô LK16 - 41 khu 2 đất dịch vụ Đồng Mai, Yên Nghĩa, giá 7,65 tỷ\" có thể đáng cân nhắc khi đánh giá nhanh?",
+      "generation_seconds": 6.509,
+      "filter_extraction_seconds": 1.388,
+      "retrieval_seconds": 1.689,
+      "answer_generation_seconds": 3.414,
+      "runtime_seconds": 6.491,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 2,
+      "context_docs_count": 2,
+      "context_chars": 1003,
+      "filter_extraction_token_usage": {
+        "input_tokens": 815,
+        "output_tokens": 49,
+        "total_tokens": 864,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 1748,
+        "output_tokens": 164,
+        "total_tokens": 1912,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2563,
+        "output_tokens": 213,
+        "total_tokens": 2776
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_067",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cần bán \"CĐT đất nền Hòa Lạc giá đầu tư F0 DT 100m2 - 300m2 nhiều vị trí đẹp và uy tín: 0903 066 ***\" có thể đáng cân nhắc khi đánh giá nhanh?",
+      "generation_seconds": 6.928,
+      "filter_extraction_seconds": 1.111,
+      "retrieval_seconds": 0.87,
+      "answer_generation_seconds": 4.911,
+      "runtime_seconds": 6.892,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 5,
+      "context_chars": 3734,
+      "filter_extraction_token_usage": {
+        "input_tokens": 823,
+        "output_tokens": 39,
+        "total_tokens": 862,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2742,
+        "output_tokens": 203,
+        "total_tokens": 2945,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3565,
+        "output_tokens": 242,
+        "total_tokens": 3807
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_068",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Lo dat Hoa Lac o Phu Cat gan khu cong nghe cao co diem gi dang chu y neu xet gia, dien tich, phap ly/vi tri tu tin dang?",
+      "generation_seconds": 5.386,
+      "filter_extraction_seconds": 1.23,
+      "retrieval_seconds": 3.037,
+      "answer_generation_seconds": 1.109,
+      "runtime_seconds": 5.376,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 4,
+      "context_chars": 1116,
+      "filter_extraction_token_usage": {
+        "input_tokens": 805,
+        "output_tokens": 42,
+        "total_tokens": 847,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 1775,
+        "output_tokens": 24,
+        "total_tokens": 1799,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2580,
+        "output_tokens": 66,
+        "total_tokens": 2646
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_069",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cần bán \"Đẹp nhất Sơn Tây gia đình có việc cần bán lô đất 100m2 chỉ 1tỷ900tr rẻ hơn thị trường 300tr\" có thể đáng cân nhắc khi đánh giá nhanh?",
+      "generation_seconds": 7.091,
+      "filter_extraction_seconds": 1.151,
+      "retrieval_seconds": 2.854,
+      "answer_generation_seconds": 3.048,
+      "runtime_seconds": 7.053,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4688,
+      "filter_extraction_token_usage": {
+        "input_tokens": 818,
+        "output_tokens": 45,
+        "total_tokens": 863,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3204,
+        "output_tokens": 165,
+        "total_tokens": 3369,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 4022,
+        "output_tokens": 210,
+        "total_tokens": 4232
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_070",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cần bán \"Đất nền bán gấp Chi Đông, 13,6 tỷ, 206.7m2, mặt tiền 7m, đường 18m\" có thể đáng cân nhắc khi đánh giá nhanh?",
+      "generation_seconds": 8.27,
+      "filter_extraction_seconds": 1.343,
+      "retrieval_seconds": 2.839,
+      "answer_generation_seconds": 4.053,
+      "runtime_seconds": 8.235,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 5212,
+      "filter_extraction_token_usage": {
+        "input_tokens": 817,
+        "output_tokens": 49,
+        "total_tokens": 866,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3293,
+        "output_tokens": 157,
+        "total_tokens": 3450,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 4110,
+        "output_tokens": 206,
+        "total_tokens": 4316
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_071",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cần bán \"Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu hời!\" có thể đáng cân nhắc khi đánh giá nhanh?",
+      "generation_seconds": 8.495,
+      "filter_extraction_seconds": 1.535,
+      "retrieval_seconds": 2.823,
+      "answer_generation_seconds": 4.107,
+      "runtime_seconds": 8.465,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4460,
+      "filter_extraction_token_usage": {
+        "input_tokens": 818,
+        "output_tokens": 45,
+        "total_tokens": 863,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 3061,
+        "output_tokens": 157,
+        "total_tokens": 3218,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3879,
+        "output_tokens": 202,
+        "total_tokens": 4081
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_072",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vi sao lo D3 khu Vuon Dao doi dien Lotte Mall dang chu y neu xet vi tri va ket noi giao thong?",
+      "generation_seconds": 7.944,
+      "filter_extraction_seconds": 1.399,
+      "retrieval_seconds": 2.125,
+      "answer_generation_seconds": 4.377,
+      "runtime_seconds": 7.901,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 4,
+      "context_chars": 2254,
+      "filter_extraction_token_usage": {
+        "input_tokens": 795,
+        "output_tokens": 40,
+        "total_tokens": 835,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2081,
+        "output_tokens": 186,
+        "total_tokens": 2267,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2876,
+        "output_tokens": 226,
+        "total_tokens": 3102
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_073",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Vì sao tin cần bán \"Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn trung thực & không chênh\" có thể đáng cân nhắc khi đánh giá nhanh?",
+      "generation_seconds": 11.403,
+      "filter_extraction_seconds": 1.81,
+      "retrieval_seconds": 4.154,
+      "answer_generation_seconds": 5.373,
+      "runtime_seconds": 11.337,
+      "retrieval_strategy": "exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 5,
+      "context_chars": 3663,
+      "filter_extraction_token_usage": {
+        "input_tokens": 815,
+        "output_tokens": 39,
+        "total_tokens": 854,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2705,
+        "output_tokens": 163,
+        "total_tokens": 2868,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3520,
+        "output_tokens": 202,
+        "total_tokens": 3722
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_074",
+      "difficulty": "hard",
+      "domain": "real_estate",
+      "input_preview": "Lo dat biet thu 400m2 The Phoenix - Dan Phuong dang can nhac o diem nao neu xet quy mo lo dat va ket noi duong lon?",
+      "generation_seconds": 6.06,
+      "filter_extraction_seconds": 1.553,
+      "retrieval_seconds": 1.876,
+      "answer_generation_seconds": 2.624,
+      "runtime_seconds": 6.053,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 2,
+      "context_docs_count": 1,
+      "context_chars": 515,
+      "filter_extraction_token_usage": {
+        "input_tokens": 803,
+        "output_tokens": 42,
+        "total_tokens": 845,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 1512,
+        "output_tokens": 144,
+        "total_tokens": 1656,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2315,
+        "output_tokens": 186,
+        "total_tokens": 2501
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_075",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon viec quan Hoan Kiem lap ke hoach su dung dat nam 2025?",
+      "generation_seconds": 13.804,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 6.133,
+      "answer_generation_seconds": 7.647,
+      "runtime_seconds": 13.78,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 18334,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7271,
+        "output_tokens": 161,
+        "total_tokens": 7432,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7271,
+        "output_tokens": 161,
+        "total_tokens": 7432
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_076",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon viec nhieu du an nam 2024 phai chuyen tiep sang ke hoach su dung dat nam 2025?",
+      "generation_seconds": 17.001,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 6.614,
+      "answer_generation_seconds": 10.347,
+      "runtime_seconds": 16.961,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 28571,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 12461,
+        "output_tokens": 138,
+        "total_tokens": 12599,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 12461,
+        "output_tokens": 138,
+        "total_tokens": 12599
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_077",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon kha nang thuc hien cao cua cac du an nam 2025 quan Hoan Kiem?",
+      "generation_seconds": 13.966,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 9.262,
+      "answer_generation_seconds": 4.65,
+      "runtime_seconds": 13.912,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 19093,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7430,
+        "output_tokens": 181,
+        "total_tokens": 7611,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7430,
+        "output_tokens": 181,
+        "total_tokens": 7611
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_078",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao Chuong Duong va Phuc Tan can duoc chu y trong quan ly dat dai, moi truong nuoc thai va bai giua song Hong?",
+      "generation_seconds": 24.781,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 21.378,
+      "answer_generation_seconds": 3.331,
+      "runtime_seconds": 24.709,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 18427,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7328,
+        "output_tokens": 181,
+        "total_tokens": 7509,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7328,
+        "output_tokens": 181,
+        "total_tokens": 7509
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_079",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon viec quan Ha Dong lap ke hoach su dung dat nam 2025?",
+      "generation_seconds": 13.03,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 9.841,
+      "answer_generation_seconds": 3.155,
+      "runtime_seconds": 12.996,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 26312,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 10645,
+        "output_tokens": 156,
+        "total_tokens": 10801,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 10645,
+        "output_tokens": 156,
+        "total_tokens": 10801
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_080",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon moi truong nuoc mat trong ke hoach su dung dat nam 2025 cua quan Ha Dong?",
+      "generation_seconds": 11.588,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 7.275,
+      "answer_generation_seconds": 4.169,
+      "runtime_seconds": 11.444,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 28032,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 11499,
+        "output_tokens": 191,
+        "total_tokens": 11690,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 11499,
+        "output_tokens": 191,
+        "total_tokens": 11690
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_081",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon kho khan GPMB o Ha Dong ve boi thuong, quy trinh, von va ho so dat dai?",
+      "generation_seconds": 10.573,
+      "filter_extraction_seconds": 1.517,
+      "retrieval_seconds": 7.962,
+      "answer_generation_seconds": 1.082,
+      "runtime_seconds": 10.561,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 4,
+      "context_chars": 1179,
+      "filter_extraction_token_usage": {
+        "input_tokens": 802,
+        "output_tokens": 41,
+        "total_tokens": 843,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 1819,
+        "output_tokens": 3,
+        "total_tokens": 1822,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 2621,
+        "output_tokens": 44,
+        "total_tokens": 2665
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_082",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon tiem nang du lich dich vu gan voi van hoa cua quan Ha Dong?",
+      "generation_seconds": 19.747,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 10.674,
+      "answer_generation_seconds": 9.02,
+      "runtime_seconds": 19.694,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 24768,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 10695,
+        "output_tokens": 170,
+        "total_tokens": 10865,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 10695,
+        "output_tokens": 170,
+        "total_tokens": 10865
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_083",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao co the noi ke hoach su dung dat 2025 cua Cau Giay la cong cu phan bo lai dat cho giao duc, y te, co so xa hoi va du an chuyen tiep?",
+      "generation_seconds": 5.429,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 1.95,
+      "answer_generation_seconds": 3.456,
+      "runtime_seconds": 5.406,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 16300,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 6744,
+        "output_tokens": 166,
+        "total_tokens": 6910,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 6744,
+        "output_tokens": 166,
+        "total_tokens": 6910
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_084",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao phuong Mai Dich dang chu y trong cac dieu chinh dat giao duc va y te cua Cau Giay nam 2025?",
+      "generation_seconds": 6.232,
+      "filter_extraction_seconds": 1.034,
+      "retrieval_seconds": 4.069,
+      "answer_generation_seconds": 1.101,
+      "runtime_seconds": 6.204,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4584,
+      "filter_extraction_token_usage": {
+        "input_tokens": 796,
+        "output_tokens": 42,
+        "total_tokens": 838,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2986,
+        "output_tokens": 5,
+        "total_tokens": 2991,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3782,
+        "output_tokens": 47,
+        "total_tokens": 3829
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_085",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao cac bien dong dat giao duc, y te, khoa hoc va nong nghiep cho thay ke hoach 2025 cua Cau Giay dang dieu chinh nhieu nhom dat?",
+      "generation_seconds": 11.387,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 3.212,
+      "answer_generation_seconds": 7.982,
+      "runtime_seconds": 11.194,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 19926,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7960,
+        "output_tokens": 182,
+        "total_tokens": 8142,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7960,
+        "output_tokens": 182,
+        "total_tokens": 8142
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_086",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao du an mo rong tru so Bo Cong an so 47 Pham Van Dong lam tang nhu cau dat giao thong va dat an ninh o Cau Giay?",
+      "generation_seconds": 10.349,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 6.163,
+      "answer_generation_seconds": 4.107,
+      "runtime_seconds": 10.27,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 13718,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 5869,
+        "output_tokens": 206,
+        "total_tokens": 6075,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 5869,
+        "output_tokens": 206,
+        "total_tokens": 6075
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_087",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon viec thi xa Son Tay lap ke hoach su dung dat nam 2025?",
+      "generation_seconds": 12.462,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 9.495,
+      "answer_generation_seconds": 2.935,
+      "runtime_seconds": 12.43,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 19226,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7691,
+        "output_tokens": 122,
+        "total_tokens": 7813,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7691,
+        "output_tokens": 122,
+        "total_tokens": 7813
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_088",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao di tich, le hoi va lang van hoa tao loi the du lich, dich vu cho Son Tay?",
+      "generation_seconds": 8.195,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 4.982,
+      "answer_generation_seconds": 3.152,
+      "runtime_seconds": 8.134,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 17538,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7107,
+        "output_tokens": 176,
+        "total_tokens": 7283,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7107,
+        "output_tokens": 176,
+        "total_tokens": 7283
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_089",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon viec nhieu du an nam 2024 cua thi xa Son Tay chuyen tiep sang 2025?",
+      "generation_seconds": 7.415,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 4.474,
+      "answer_generation_seconds": 2.891,
+      "runtime_seconds": 7.365,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 11346,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 5028,
+        "output_tokens": 108,
+        "total_tokens": 5136,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 5028,
+        "output_tokens": 108,
+        "total_tokens": 5136
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_090",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon yeu to moi truong trong su dung dat o thi xa Son Tay?",
+      "generation_seconds": 8.659,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 5.652,
+      "answer_generation_seconds": 2.911,
+      "runtime_seconds": 8.563,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 22622,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 8697,
+        "output_tokens": 177,
+        "total_tokens": 8874,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 8697,
+        "output_tokens": 177,
+        "total_tokens": 8874
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_091",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Neu giai thich ngan gon cho lanh dao, vi sao Hai Ba Trung can lap ke hoach su dung dat nam 2025?",
+      "generation_seconds": 43.169,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 34.067,
+      "answer_generation_seconds": 9.087,
+      "runtime_seconds": 43.154,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 3,
+      "context_docs_count": 4,
+      "context_chars": 9454,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 4590,
+        "output_tokens": 172,
+        "total_tokens": 4762,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 4590,
+        "output_tokens": 172,
+        "total_tokens": 4762
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_092",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Ke hoach dat phi nong nghiep 2025 cua Hai Ba Trung phan anh ap luc ha tang va dich vu cong nhu the nao?",
+      "generation_seconds": 31.079,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 29.952,
+      "answer_generation_seconds": 1.044,
+      "runtime_seconds": 30.996,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 10,
+      "context_docs_count": 10,
+      "context_chars": 17796,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7863,
+        "output_tokens": 5,
+        "total_tokens": 7868,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7863,
+        "output_tokens": 5,
+        "total_tokens": 7868
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_093",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao nhom du an nam 2024 chuyen tiep sang 2025 o Hai Ba Trung can duoc neu rieng trong tra loi?",
+      "generation_seconds": 24.302,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 20.295,
+      "answer_generation_seconds": 3.907,
+      "runtime_seconds": 24.202,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 29463,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 11682,
+        "output_tokens": 195,
+        "total_tokens": 11877,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 11682,
+        "output_tokens": 195,
+        "total_tokens": 11877
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_094",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao moi truong la han che can nhac khi danh gia su dung dat o Hai Ba Trung?",
+      "generation_seconds": 31.181,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 25.093,
+      "answer_generation_seconds": 6.014,
+      "runtime_seconds": 31.107,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 5,
+      "context_docs_count": 5,
+      "context_chars": 11180,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 5133,
+        "output_tokens": 196,
+        "total_tokens": 5329,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 5133,
+        "output_tokens": 196,
+        "total_tokens": 5329
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_095",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon viec quan Hoang Mai lap ke hoach su dung dat nam 2025?",
+      "generation_seconds": 13.865,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 5.744,
+      "answer_generation_seconds": 8.099,
+      "runtime_seconds": 13.843,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 17065,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7072,
+        "output_tokens": 166,
+        "total_tokens": 7238,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7072,
+        "output_tokens": 166,
+        "total_tokens": 7238
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_096",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon dia hinh va nhu cau thoat nuoc cua quan Hoang Mai?",
+      "generation_seconds": 10.836,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 3.885,
+      "answer_generation_seconds": 6.855,
+      "runtime_seconds": 10.74,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 20123,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 7833,
+        "output_tokens": 106,
+        "total_tokens": 7939,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 7833,
+        "output_tokens": 106,
+        "total_tokens": 7939
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_097",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon GPMB la khau trong diem cua quan Hoang Mai?",
+      "generation_seconds": 7.731,
+      "filter_extraction_seconds": 1.052,
+      "retrieval_seconds": 4.094,
+      "answer_generation_seconds": 2.555,
+      "runtime_seconds": 7.701,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 6,
+      "context_chars": 4565,
+      "filter_extraction_token_usage": {
+        "input_tokens": 790,
+        "output_tokens": 41,
+        "total_tokens": 831,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2969,
+        "output_tokens": 123,
+        "total_tokens": 3092,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3759,
+        "output_tokens": 164,
+        "total_tokens": 3923
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_098",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon quan Hoang Mai phai tang cuong quan ly do thi va moi truong?",
+      "generation_seconds": 8.035,
+      "filter_extraction_seconds": 1.134,
+      "retrieval_seconds": 4.06,
+      "answer_generation_seconds": 2.816,
+      "runtime_seconds": 8.01,
+      "retrieval_strategy": "semantic_only",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 5,
+      "context_chars": 3757,
+      "filter_extraction_token_usage": {
+        "input_tokens": 794,
+        "output_tokens": 41,
+        "total_tokens": 835,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2619,
+        "output_tokens": 88,
+        "total_tokens": 2707,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3413,
+        "output_tokens": 129,
+        "total_tokens": 3542
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_099",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao can giai thich ngan gon ke hoach su dung dat Ha Dong la co so cho thu hoi va giao dat?",
+      "generation_seconds": 18.543,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 9.533,
+      "answer_generation_seconds": 8.981,
+      "runtime_seconds": 18.514,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 13,
+      "context_chars": 20327,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 8287,
+        "output_tokens": 179,
+        "total_tokens": 8466,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 8287,
+        "output_tokens": 179,
+        "total_tokens": 8466
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    },
+    {
+      "id": "ST_HARD_100",
+      "difficulty": "hard",
+      "domain": "land_use_planning",
+      "input_preview": "Vi sao cac dieu chinh dat giao duc, y te va chuyen muc dich dat cho thay ke hoach Cau Giay dang phan bo quy dat cho nhu cau do thi?",
+      "generation_seconds": 13.896,
+      "filter_extraction_seconds": 0.0,
+      "retrieval_seconds": 3.486,
+      "answer_generation_seconds": 10.343,
+      "runtime_seconds": 13.829,
+      "retrieval_strategy": "planning_nl",
+      "filter_extraction_skipped": true,
+      "filter_extraction_skip_reason": "planning_mode",
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 12,
+      "context_chars": 16140,
+      "filter_extraction_token_usage": {},
+      "answer_token_usage": {
+        "input_tokens": 6579,
+        "output_tokens": 215,
+        "total_tokens": 6794,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 1024
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 6579,
+        "output_tokens": 215,
+        "total_tokens": 6794
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    }
+  ]
+}

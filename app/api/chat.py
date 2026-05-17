@@ -20,7 +20,8 @@ from ..rag.resources import (
     initialize_planning_vector_store,
 )
 from ..rag.retriever import build_retriever, lexical_search_documents
-from ..rag.filter_extractor import extract_filters_from_query
+from ..rag.filter_extractor import extract_filters_from_query_with_usage
+from ..rag.llm_usage import sum_token_usage
 from ..rag.planning_pipeline import (
     choose_better_planning_fallback,
     is_recovery_grouping_query,
@@ -553,8 +554,6 @@ def _select_ranked_planning_docs(
         doc_matches_plan_year=_doc_matches_plan_year,
         planning_doc_score=_planning_doc_score,
     )
-
-
 def _planning_lexical_augments_enabled() -> bool:
     return (os.getenv("RAG_PLANNING_LEXICAL_AUGMENTS_ENABLE", "") or "").strip().lower() in {
         "1",
@@ -1442,7 +1441,6 @@ async def _retrieve_planning_docs_for_nl_query(
 
         ranked_with_scores.sort(key=lambda item: item[1], reverse=True)
         ranked = [item[0] for item in ranked_with_scores]
-
         if debug_enabled:
             top_ranked: list[dict[str, Any]] = []
             for rank, (doc, total_score, planning_score, rrf_score, lexical_rrf_score, vector_rrf_score, identity) in enumerate(
@@ -1888,6 +1886,8 @@ class ChatResponse(BaseModel):
     answer: str
     citations: list[dict[str, Any]]
     extractedFilters: dict[str, Any] = Field(default_factory=dict)
+    tokenUsage: dict[str, Any] = Field(default_factory=dict)
+    timings: dict[str, float] = Field(default_factory=dict)
 
 @router.post("/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
@@ -1906,7 +1906,7 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
     llm = build_llm()
     
     filter_query = retrieval_message if _normalize_nl(retrieval_message) != _normalize_nl(req.message) else req.message
-    filters = await extract_filters_from_query(filter_query, llm)
+    filters, filter_token_usage = await extract_filters_from_query_with_usage(filter_query, llm)
     print(f"Extracted filters: {filters}")
 
     extra_context = ""
@@ -2025,10 +2025,18 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
     
     await history_manager.add_message(session_id, "user", req.message)
     await history_manager.add_message(session_id, "assistant", result.answer)
+
+    answer_token_usage = result.token_usage or {}
     
     return ChatResponse(
         sessionId=session_id,
         answer=result.answer,
         citations=reranked_citations,
-        extractedFilters=filters
+        extractedFilters=filters,
+        tokenUsage={
+            "filter_extraction": filter_token_usage,
+            "answer_generation": answer_token_usage,
+            "total": sum_token_usage([filter_token_usage, answer_token_usage]),
+        },
+        timings=result.timings or {},
     )

@@ -1,0 +1,121 @@
+{
+  "created_at": "2026-05-07T17:47:30.680343+00:00",
+  "phase": "single_turn_runtime_profile",
+  "dataset": "single_turn_goldens_easy_rebalanced_v1.json",
+  "cases": 1,
+  "profile_mode": {
+    "target_metadata_enabled": false,
+    "top_k": 16,
+    "trace_max_concurrent": 1,
+    "llm_model": "gpt-4o-mini",
+    "embedding_model": "intfloat/multilingual-e5-base",
+    "planning_collection": "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context"
+  },
+  "timing": {
+    "wall_seconds": 11.146,
+    "worker_seconds_total": 11.146
+  },
+  "summary": {
+    "difficulties": {
+      "easy": 1
+    },
+    "domains": {
+      "real_estate": 1
+    },
+    "target_metadata_present_count": 1,
+    "target_metadata_eval_only_count": 0,
+    "target_metadata_used_count": 0,
+    "filter_extraction_skipped_count": 0,
+    "averages": {
+      "generation_seconds": 11.146,
+      "filter_extraction_seconds": 1.658,
+      "retrieval_seconds": 5.684,
+      "answer_generation_seconds": 3.779,
+      "runtime_seconds": 11.121,
+      "context_docs_count": 4.0,
+      "context_chars": 3202.0,
+      "filter_input_tokens": 786.0,
+      "filter_output_tokens": 42.0,
+      "filter_total_tokens": 828.0,
+      "answer_input_tokens": 2533.0,
+      "answer_output_tokens": 27.0,
+      "answer_total_tokens": 2560.0,
+      "total_input_tokens": 3319.0,
+      "total_output_tokens": 69.0,
+      "total_tokens": 3388.0
+    },
+    "token_totals": {
+      "filter_input_tokens": 786,
+      "filter_output_tokens": 42,
+      "filter_total_tokens": 828,
+      "answer_input_tokens": 2533,
+      "answer_output_tokens": 27,
+      "answer_total_tokens": 2560,
+      "total_input_tokens": 3319,
+      "total_output_tokens": 69,
+      "total_tokens": 3388
+    },
+    "by_domain": {
+      "real_estate": {
+        "cases": 1,
+        "runtime_seconds_avg": 11.121,
+        "retrieval_seconds_avg": 5.684,
+        "answer_total_tokens_avg": 2560.0,
+        "total_tokens_avg": 3388.0
+      }
+    }
+  },
+  "records": [
+    {
+      "id": "ST_EASY_001",
+      "difficulty": "easy",
+      "domain": "real_estate",
+      "input_preview": "Giá bán của căn nhà ở ngõ 281 Trương Định là bao nhiêu?",
+      "generation_seconds": 11.146,
+      "filter_extraction_seconds": 1.658,
+      "retrieval_seconds": 5.684,
+      "answer_generation_seconds": 3.779,
+      "runtime_seconds": 11.121,
+      "retrieval_strategy": "relaxed_exact_filters",
+      "filter_extraction_skipped": false,
+      "filter_extraction_skip_reason": null,
+      "raw_retrieved_docs_count": 16,
+      "context_docs_count": 4,
+      "context_chars": 3202,
+      "filter_extraction_token_usage": {
+        "input_tokens": 786,
+        "output_tokens": 42,
+        "total_tokens": 828,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "answer_token_usage": {
+        "input_tokens": 2533,
+        "output_tokens": 27,
+        "total_tokens": 2560,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 2432
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      },
+      "total_token_usage": {
+        "input_tokens": 3319,
+        "output_tokens": 69,
+        "total_tokens": 3388
+      },
+      "target_metadata_present": true,
+      "target_metadata_eval_only": false,
+      "target_metadata_used": false
+    }
+  ]
+}

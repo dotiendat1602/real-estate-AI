@@ -1,5 +1,14 @@
 # Offline Evaluation for RAG Conversational Chatbot
 
+Canonical long-form documentation now lives under `docs/evaluation/`:
+
+- `docs/evaluation/01-overview.md`
+- `docs/evaluation/02-datasets-and-goldens.md`
+- `docs/evaluation/03-runtime-pipeline-and-metrics.md`
+- `docs/evaluation/04-running-evaluations-and-reading-reports.md`
+- `docs/evaluation/05-rag-experiments-and-current-artifacts.md`
+- `docs/evaluation/06-deep-dive-evaluation-code.md`
+
 This package implements a complete offline evaluation workflow for the Estatein AI chatbot with:
 
 - Single-turn RAG evaluation
@@ -52,10 +61,12 @@ Main formulas:
 - `S_m = (1/N) * sum_{i=1..N}(s_{m,i})`
 - `PassRate_m = (1/N) * sum_{i=1..N}(1[s_{m,i} >= T_m])`
 - `Q_single = (w_CR*S_CR + w_F*S_F + w_AR*S_AR) / (w_CR + w_F + w_AR)`
+- `Q_case = (s_CR + s_F + s_AR) / 3`
 - `Q_conversation = S_KR`
 
 ## Notes
 
+- Current thresholds are loaded from `config/thresholds.yaml`: Contextual Recall `0.65`, Faithfulness `0.70`, Answer Relevancy `0.70`, case composite `0.70`, Knowledge Retention `0.75`.
 - Adapter logs retrieval context, doc IDs, relevance scores (when available), and generation metadata.
 - `rewritten_query` is set to null by default because current pipeline does not run explicit query rewriting.
 - Add more goldens in datasets for stronger coverage before production gating.

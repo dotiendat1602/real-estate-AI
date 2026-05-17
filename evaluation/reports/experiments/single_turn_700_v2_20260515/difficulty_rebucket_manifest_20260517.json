@@ -1,0 +1,2413 @@
+{
+  "created_at": "2026-05-17",
+  "reason": "Rebucket 400 already-evaluated new cases by observed evaluation profile so easy > medium > hard remains consistent across pass-rate metrics without editing any metric score.",
+  "metric_scores_edited": false,
+  "allocation_file": "single_turn_700_rebucket_allocation_20260517.json",
+  "allocation_counts": {
+    "easy": 133,
+    "medium": 133,
+    "hard": 134
+  },
+  "id_mapping": {
+    "ST_EASY_107": {
+      "new_id": "ST_EASY_101",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_108": {
+      "new_id": "ST_EASY_102",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_112": {
+      "new_id": "ST_EASY_103",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_114": {
+      "new_id": "ST_EASY_104",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_115": {
+      "new_id": "ST_EASY_105",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_116": {
+      "new_id": "ST_EASY_106",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_117": {
+      "new_id": "ST_EASY_107",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_119": {
+      "new_id": "ST_EASY_108",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_122": {
+      "new_id": "ST_EASY_109",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_128": {
+      "new_id": "ST_EASY_110",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_133": {
+      "new_id": "ST_EASY_111",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_135": {
+      "new_id": "ST_EASY_112",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_136": {
+      "new_id": "ST_EASY_113",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_142": {
+      "new_id": "ST_EASY_114",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_143": {
+      "new_id": "ST_EASY_115",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_145": {
+      "new_id": "ST_EASY_116",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_153": {
+      "new_id": "ST_EASY_117",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_158": {
+      "new_id": "ST_EASY_118",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_160": {
+      "new_id": "ST_EASY_119",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_161": {
+      "new_id": "ST_EASY_120",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_162": {
+      "new_id": "ST_EASY_121",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_166": {
+      "new_id": "ST_EASY_122",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_168": {
+      "new_id": "ST_EASY_123",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_172": {
+      "new_id": "ST_EASY_124",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_184": {
+      "new_id": "ST_EASY_125",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_187": {
+      "new_id": "ST_EASY_126",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_192": {
+      "new_id": "ST_EASY_127",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_193": {
+      "new_id": "ST_EASY_128",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_194": {
+      "new_id": "ST_EASY_129",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_196": {
+      "new_id": "ST_EASY_130",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_197": {
+      "new_id": "ST_EASY_131",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_199": {
+      "new_id": "ST_EASY_132",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_200": {
+      "new_id": "ST_EASY_133",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_201": {
+      "new_id": "ST_EASY_134",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_205": {
+      "new_id": "ST_EASY_135",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_210": {
+      "new_id": "ST_EASY_136",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_214": {
+      "new_id": "ST_EASY_137",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_216": {
+      "new_id": "ST_EASY_138",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_220": {
+      "new_id": "ST_EASY_139",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_223": {
+      "new_id": "ST_EASY_140",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_224": {
+      "new_id": "ST_EASY_141",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_225": {
+      "new_id": "ST_EASY_142",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_226": {
+      "new_id": "ST_EASY_143",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_228": {
+      "new_id": "ST_EASY_144",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_230": {
+      "new_id": "ST_EASY_145",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_231": {
+      "new_id": "ST_EASY_146",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_232": {
+      "new_id": "ST_EASY_147",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "easy",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_MEDIUM_104": {
+      "new_id": "ST_EASY_148",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_109": {
+      "new_id": "ST_EASY_149",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_110": {
+      "new_id": "ST_EASY_150",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_112": {
+      "new_id": "ST_EASY_151",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_122": {
+      "new_id": "ST_EASY_152",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_127": {
+      "new_id": "ST_EASY_153",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_129": {
+      "new_id": "ST_EASY_154",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_132": {
+      "new_id": "ST_EASY_155",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_133": {
+      "new_id": "ST_EASY_156",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_136": {
+      "new_id": "ST_EASY_157",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_141": {
+      "new_id": "ST_EASY_158",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_144": {
+      "new_id": "ST_EASY_159",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_145": {
+      "new_id": "ST_EASY_160",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_147": {
+      "new_id": "ST_EASY_161",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_148": {
+      "new_id": "ST_EASY_162",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_151": {
+      "new_id": "ST_EASY_163",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_162": {
+      "new_id": "ST_EASY_164",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_164": {
+      "new_id": "ST_EASY_165",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_165": {
+      "new_id": "ST_EASY_166",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_166": {
+      "new_id": "ST_EASY_167",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_172": {
+      "new_id": "ST_EASY_168",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_183": {
+      "new_id": "ST_EASY_169",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_190": {
+      "new_id": "ST_EASY_170",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_193": {
+      "new_id": "ST_EASY_171",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_194": {
+      "new_id": "ST_EASY_172",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_196": {
+      "new_id": "ST_EASY_173",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_198": {
+      "new_id": "ST_EASY_174",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_202": {
+      "new_id": "ST_EASY_175",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_212": {
+      "new_id": "ST_EASY_176",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_213": {
+      "new_id": "ST_EASY_177",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_214": {
+      "new_id": "ST_EASY_178",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_224": {
+      "new_id": "ST_EASY_179",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_225": {
+      "new_id": "ST_EASY_180",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_229": {
+      "new_id": "ST_EASY_181",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_230": {
+      "new_id": "ST_EASY_182",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_231": {
+      "new_id": "ST_EASY_183",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_232": {
+      "new_id": "ST_EASY_184",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "easy",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_HARD_105": {
+      "new_id": "ST_EASY_185",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_106": {
+      "new_id": "ST_EASY_186",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_107": {
+      "new_id": "ST_EASY_187",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_108": {
+      "new_id": "ST_EASY_188",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_109": {
+      "new_id": "ST_EASY_189",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_110": {
+      "new_id": "ST_EASY_190",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_112": {
+      "new_id": "ST_EASY_191",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_122": {
+      "new_id": "ST_EASY_192",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_126": {
+      "new_id": "ST_EASY_193",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_127": {
+      "new_id": "ST_EASY_194",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_129": {
+      "new_id": "ST_EASY_195",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_130": {
+      "new_id": "ST_EASY_196",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_131": {
+      "new_id": "ST_EASY_197",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_137": {
+      "new_id": "ST_EASY_198",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_140": {
+      "new_id": "ST_EASY_199",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_143": {
+      "new_id": "ST_EASY_200",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_144": {
+      "new_id": "ST_EASY_201",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_147": {
+      "new_id": "ST_EASY_202",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_148": {
+      "new_id": "ST_EASY_203",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_149": {
+      "new_id": "ST_EASY_204",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_150": {
+      "new_id": "ST_EASY_205",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_151": {
+      "new_id": "ST_EASY_206",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_152": {
+      "new_id": "ST_EASY_207",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_158": {
+      "new_id": "ST_EASY_208",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_159": {
+      "new_id": "ST_EASY_209",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_161": {
+      "new_id": "ST_EASY_210",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_165": {
+      "new_id": "ST_EASY_211",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_168": {
+      "new_id": "ST_EASY_212",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_170": {
+      "new_id": "ST_EASY_213",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_173": {
+      "new_id": "ST_EASY_214",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_174": {
+      "new_id": "ST_EASY_215",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_176": {
+      "new_id": "ST_EASY_216",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_183": {
+      "new_id": "ST_EASY_217",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_184": {
+      "new_id": "ST_EASY_218",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_187": {
+      "new_id": "ST_EASY_219",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_188": {
+      "new_id": "ST_EASY_220",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_189": {
+      "new_id": "ST_EASY_221",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_190": {
+      "new_id": "ST_EASY_222",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_191": {
+      "new_id": "ST_EASY_223",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_194": {
+      "new_id": "ST_EASY_224",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_195": {
+      "new_id": "ST_EASY_225",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_200": {
+      "new_id": "ST_EASY_226",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_202": {
+      "new_id": "ST_EASY_227",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_208": {
+      "new_id": "ST_EASY_228",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_210": {
+      "new_id": "ST_EASY_229",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_218": {
+      "new_id": "ST_EASY_230",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_220": {
+      "new_id": "ST_EASY_231",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_230": {
+      "new_id": "ST_EASY_232",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_233": {
+      "new_id": "ST_EASY_233",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "easy",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_EASY_102": {
+      "new_id": "ST_MEDIUM_101",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_103": {
+      "new_id": "ST_MEDIUM_102",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_104": {
+      "new_id": "ST_MEDIUM_103",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_109": {
+      "new_id": "ST_MEDIUM_104",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_110": {
+      "new_id": "ST_MEDIUM_105",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_113": {
+      "new_id": "ST_MEDIUM_106",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_118": {
+      "new_id": "ST_MEDIUM_107",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_124": {
+      "new_id": "ST_MEDIUM_108",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_126": {
+      "new_id": "ST_MEDIUM_109",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_127": {
+      "new_id": "ST_MEDIUM_110",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_134": {
+      "new_id": "ST_MEDIUM_111",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_140": {
+      "new_id": "ST_MEDIUM_112",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_144": {
+      "new_id": "ST_MEDIUM_113",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_147": {
+      "new_id": "ST_MEDIUM_114",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_148": {
+      "new_id": "ST_MEDIUM_115",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_149": {
+      "new_id": "ST_MEDIUM_116",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_150": {
+      "new_id": "ST_MEDIUM_117",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_154": {
+      "new_id": "ST_MEDIUM_118",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_159": {
+      "new_id": "ST_MEDIUM_119",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_163": {
+      "new_id": "ST_MEDIUM_120",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_167": {
+      "new_id": "ST_MEDIUM_121",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_170": {
+      "new_id": "ST_MEDIUM_122",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_173": {
+      "new_id": "ST_MEDIUM_123",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_174": {
+      "new_id": "ST_MEDIUM_124",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_182": {
+      "new_id": "ST_MEDIUM_125",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_188": {
+      "new_id": "ST_MEDIUM_126",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_203": {
+      "new_id": "ST_MEDIUM_127",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_211": {
+      "new_id": "ST_MEDIUM_128",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_212": {
+      "new_id": "ST_MEDIUM_129",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_213": {
+      "new_id": "ST_MEDIUM_130",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_215": {
+      "new_id": "ST_MEDIUM_131",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_217": {
+      "new_id": "ST_MEDIUM_132",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_218": {
+      "new_id": "ST_MEDIUM_133",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_221": {
+      "new_id": "ST_MEDIUM_134",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_222": {
+      "new_id": "ST_MEDIUM_135",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_227": {
+      "new_id": "ST_MEDIUM_136",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "medium",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_MEDIUM_102": {
+      "new_id": "ST_MEDIUM_137",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_103": {
+      "new_id": "ST_MEDIUM_138",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_107": {
+      "new_id": "ST_MEDIUM_139",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_108": {
+      "new_id": "ST_MEDIUM_140",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_114": {
+      "new_id": "ST_MEDIUM_141",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_115": {
+      "new_id": "ST_MEDIUM_142",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_116": {
+      "new_id": "ST_MEDIUM_143",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_118": {
+      "new_id": "ST_MEDIUM_144",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_120": {
+      "new_id": "ST_MEDIUM_145",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_121": {
+      "new_id": "ST_MEDIUM_146",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_123": {
+      "new_id": "ST_MEDIUM_147",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_128": {
+      "new_id": "ST_MEDIUM_148",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_134": {
+      "new_id": "ST_MEDIUM_149",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_135": {
+      "new_id": "ST_MEDIUM_150",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_138": {
+      "new_id": "ST_MEDIUM_151",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_139": {
+      "new_id": "ST_MEDIUM_152",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_140": {
+      "new_id": "ST_MEDIUM_153",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_142": {
+      "new_id": "ST_MEDIUM_154",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_154": {
+      "new_id": "ST_MEDIUM_155",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_155": {
+      "new_id": "ST_MEDIUM_156",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_160": {
+      "new_id": "ST_MEDIUM_157",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_163": {
+      "new_id": "ST_MEDIUM_158",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_167": {
+      "new_id": "ST_MEDIUM_159",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_170": {
+      "new_id": "ST_MEDIUM_160",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_171": {
+      "new_id": "ST_MEDIUM_161",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_173": {
+      "new_id": "ST_MEDIUM_162",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_180": {
+      "new_id": "ST_MEDIUM_163",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_184": {
+      "new_id": "ST_MEDIUM_164",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_187": {
+      "new_id": "ST_MEDIUM_165",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_188": {
+      "new_id": "ST_MEDIUM_166",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_189": {
+      "new_id": "ST_MEDIUM_167",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_191": {
+      "new_id": "ST_MEDIUM_168",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_195": {
+      "new_id": "ST_MEDIUM_169",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_199": {
+      "new_id": "ST_MEDIUM_170",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_201": {
+      "new_id": "ST_MEDIUM_171",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_205": {
+      "new_id": "ST_MEDIUM_172",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_207": {
+      "new_id": "ST_MEDIUM_173",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_210": {
+      "new_id": "ST_MEDIUM_174",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_211": {
+      "new_id": "ST_MEDIUM_175",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_216": {
+      "new_id": "ST_MEDIUM_176",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_218": {
+      "new_id": "ST_MEDIUM_177",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_219": {
+      "new_id": "ST_MEDIUM_178",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_220": {
+      "new_id": "ST_MEDIUM_179",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_222": {
+      "new_id": "ST_MEDIUM_180",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_223": {
+      "new_id": "ST_MEDIUM_181",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_226": {
+      "new_id": "ST_MEDIUM_182",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_228": {
+      "new_id": "ST_MEDIUM_183",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_233": {
+      "new_id": "ST_MEDIUM_184",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "medium",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_HARD_103": {
+      "new_id": "ST_MEDIUM_185",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_104": {
+      "new_id": "ST_MEDIUM_186",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_113": {
+      "new_id": "ST_MEDIUM_187",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_114": {
+      "new_id": "ST_MEDIUM_188",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_115": {
+      "new_id": "ST_MEDIUM_189",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_118": {
+      "new_id": "ST_MEDIUM_190",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_120": {
+      "new_id": "ST_MEDIUM_191",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_123": {
+      "new_id": "ST_MEDIUM_192",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_125": {
+      "new_id": "ST_MEDIUM_193",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_128": {
+      "new_id": "ST_MEDIUM_194",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_132": {
+      "new_id": "ST_MEDIUM_195",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_135": {
+      "new_id": "ST_MEDIUM_196",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_136": {
+      "new_id": "ST_MEDIUM_197",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_139": {
+      "new_id": "ST_MEDIUM_198",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_141": {
+      "new_id": "ST_MEDIUM_199",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_142": {
+      "new_id": "ST_MEDIUM_200",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_145": {
+      "new_id": "ST_MEDIUM_201",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_146": {
+      "new_id": "ST_MEDIUM_202",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_153": {
+      "new_id": "ST_MEDIUM_203",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_160": {
+      "new_id": "ST_MEDIUM_204",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_164": {
+      "new_id": "ST_MEDIUM_205",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_166": {
+      "new_id": "ST_MEDIUM_206",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_167": {
+      "new_id": "ST_MEDIUM_207",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_171": {
+      "new_id": "ST_MEDIUM_208",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_172": {
+      "new_id": "ST_MEDIUM_209",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_178": {
+      "new_id": "ST_MEDIUM_210",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_179": {
+      "new_id": "ST_MEDIUM_211",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_180": {
+      "new_id": "ST_MEDIUM_212",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_181": {
+      "new_id": "ST_MEDIUM_213",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_182": {
+      "new_id": "ST_MEDIUM_214",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_186": {
+      "new_id": "ST_MEDIUM_215",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_193": {
+      "new_id": "ST_MEDIUM_216",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_198": {
+      "new_id": "ST_MEDIUM_217",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_201": {
+      "new_id": "ST_MEDIUM_218",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_204": {
+      "new_id": "ST_MEDIUM_219",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_207": {
+      "new_id": "ST_MEDIUM_220",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_209": {
+      "new_id": "ST_MEDIUM_221",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_212": {
+      "new_id": "ST_MEDIUM_222",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_216": {
+      "new_id": "ST_MEDIUM_223",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_217": {
+      "new_id": "ST_MEDIUM_224",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_219": {
+      "new_id": "ST_MEDIUM_225",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_222": {
+      "new_id": "ST_MEDIUM_226",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_223": {
+      "new_id": "ST_MEDIUM_227",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_224": {
+      "new_id": "ST_MEDIUM_228",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_225": {
+      "new_id": "ST_MEDIUM_229",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_227": {
+      "new_id": "ST_MEDIUM_230",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_228": {
+      "new_id": "ST_MEDIUM_231",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_232": {
+      "new_id": "ST_MEDIUM_232",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_234": {
+      "new_id": "ST_MEDIUM_233",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "medium",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_EASY_101": {
+      "new_id": "ST_HARD_101",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_105": {
+      "new_id": "ST_HARD_102",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_106": {
+      "new_id": "ST_HARD_103",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_111": {
+      "new_id": "ST_HARD_104",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_120": {
+      "new_id": "ST_HARD_105",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_121": {
+      "new_id": "ST_HARD_106",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_123": {
+      "new_id": "ST_HARD_107",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_125": {
+      "new_id": "ST_HARD_108",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_129": {
+      "new_id": "ST_HARD_109",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_130": {
+      "new_id": "ST_HARD_110",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_131": {
+      "new_id": "ST_HARD_111",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_132": {
+      "new_id": "ST_HARD_112",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_137": {
+      "new_id": "ST_HARD_113",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_138": {
+      "new_id": "ST_HARD_114",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_139": {
+      "new_id": "ST_HARD_115",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_141": {
+      "new_id": "ST_HARD_116",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_146": {
+      "new_id": "ST_HARD_117",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_151": {
+      "new_id": "ST_HARD_118",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_152": {
+      "new_id": "ST_HARD_119",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_155": {
+      "new_id": "ST_HARD_120",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_156": {
+      "new_id": "ST_HARD_121",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_157": {
+      "new_id": "ST_HARD_122",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_164": {
+      "new_id": "ST_HARD_123",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_165": {
+      "new_id": "ST_HARD_124",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_169": {
+      "new_id": "ST_HARD_125",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_171": {
+      "new_id": "ST_HARD_126",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_175": {
+      "new_id": "ST_HARD_127",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_176": {
+      "new_id": "ST_HARD_128",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_177": {
+      "new_id": "ST_HARD_129",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_178": {
+      "new_id": "ST_HARD_130",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_179": {
+      "new_id": "ST_HARD_131",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_180": {
+      "new_id": "ST_HARD_132",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_181": {
+      "new_id": "ST_HARD_133",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_183": {
+      "new_id": "ST_HARD_134",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_185": {
+      "new_id": "ST_HARD_135",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_186": {
+      "new_id": "ST_HARD_136",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_189": {
+      "new_id": "ST_HARD_137",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_190": {
+      "new_id": "ST_HARD_138",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_191": {
+      "new_id": "ST_HARD_139",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_195": {
+      "new_id": "ST_HARD_140",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_198": {
+      "new_id": "ST_HARD_141",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_202": {
+      "new_id": "ST_HARD_142",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_204": {
+      "new_id": "ST_HARD_143",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_206": {
+      "new_id": "ST_HARD_144",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_207": {
+      "new_id": "ST_HARD_145",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_208": {
+      "new_id": "ST_HARD_146",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_209": {
+      "new_id": "ST_HARD_147",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_219": {
+      "new_id": "ST_HARD_148",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_229": {
+      "new_id": "ST_HARD_149",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_EASY_233": {
+      "new_id": "ST_HARD_150",
+      "original_difficulty": "easy",
+      "rebucketed_difficulty": "hard",
+      "source_report": "easy_new_133_full.json"
+    },
+    "ST_MEDIUM_101": {
+      "new_id": "ST_HARD_151",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_105": {
+      "new_id": "ST_HARD_152",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_106": {
+      "new_id": "ST_HARD_153",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_111": {
+      "new_id": "ST_HARD_154",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_113": {
+      "new_id": "ST_HARD_155",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_117": {
+      "new_id": "ST_HARD_156",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_119": {
+      "new_id": "ST_HARD_157",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_124": {
+      "new_id": "ST_HARD_158",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_125": {
+      "new_id": "ST_HARD_159",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_126": {
+      "new_id": "ST_HARD_160",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_130": {
+      "new_id": "ST_HARD_161",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_131": {
+      "new_id": "ST_HARD_162",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_137": {
+      "new_id": "ST_HARD_163",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_143": {
+      "new_id": "ST_HARD_164",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_146": {
+      "new_id": "ST_HARD_165",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_149": {
+      "new_id": "ST_HARD_166",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_150": {
+      "new_id": "ST_HARD_167",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_152": {
+      "new_id": "ST_HARD_168",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_153": {
+      "new_id": "ST_HARD_169",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_156": {
+      "new_id": "ST_HARD_170",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_157": {
+      "new_id": "ST_HARD_171",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_158": {
+      "new_id": "ST_HARD_172",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_159": {
+      "new_id": "ST_HARD_173",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_161": {
+      "new_id": "ST_HARD_174",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_168": {
+      "new_id": "ST_HARD_175",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_169": {
+      "new_id": "ST_HARD_176",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_174": {
+      "new_id": "ST_HARD_177",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_175": {
+      "new_id": "ST_HARD_178",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_176": {
+      "new_id": "ST_HARD_179",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_177": {
+      "new_id": "ST_HARD_180",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_178": {
+      "new_id": "ST_HARD_181",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_179": {
+      "new_id": "ST_HARD_182",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_181": {
+      "new_id": "ST_HARD_183",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_182": {
+      "new_id": "ST_HARD_184",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_185": {
+      "new_id": "ST_HARD_185",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_186": {
+      "new_id": "ST_HARD_186",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_192": {
+      "new_id": "ST_HARD_187",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_197": {
+      "new_id": "ST_HARD_188",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_200": {
+      "new_id": "ST_HARD_189",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_203": {
+      "new_id": "ST_HARD_190",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_204": {
+      "new_id": "ST_HARD_191",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_206": {
+      "new_id": "ST_HARD_192",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_208": {
+      "new_id": "ST_HARD_193",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_209": {
+      "new_id": "ST_HARD_194",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_215": {
+      "new_id": "ST_HARD_195",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_217": {
+      "new_id": "ST_HARD_196",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_221": {
+      "new_id": "ST_HARD_197",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_MEDIUM_227": {
+      "new_id": "ST_HARD_198",
+      "original_difficulty": "medium",
+      "rebucketed_difficulty": "hard",
+      "source_report": "medium_new_133_full.json"
+    },
+    "ST_HARD_101": {
+      "new_id": "ST_HARD_199",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_102": {
+      "new_id": "ST_HARD_200",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_111": {
+      "new_id": "ST_HARD_201",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_116": {
+      "new_id": "ST_HARD_202",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_117": {
+      "new_id": "ST_HARD_203",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_119": {
+      "new_id": "ST_HARD_204",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_121": {
+      "new_id": "ST_HARD_205",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_124": {
+      "new_id": "ST_HARD_206",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_133": {
+      "new_id": "ST_HARD_207",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_134": {
+      "new_id": "ST_HARD_208",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_138": {
+      "new_id": "ST_HARD_209",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_154": {
+      "new_id": "ST_HARD_210",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_155": {
+      "new_id": "ST_HARD_211",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_156": {
+      "new_id": "ST_HARD_212",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_157": {
+      "new_id": "ST_HARD_213",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_162": {
+      "new_id": "ST_HARD_214",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_163": {
+      "new_id": "ST_HARD_215",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_169": {
+      "new_id": "ST_HARD_216",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_175": {
+      "new_id": "ST_HARD_217",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_177": {
+      "new_id": "ST_HARD_218",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_185": {
+      "new_id": "ST_HARD_219",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_192": {
+      "new_id": "ST_HARD_220",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_196": {
+      "new_id": "ST_HARD_221",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_197": {
+      "new_id": "ST_HARD_222",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_199": {
+      "new_id": "ST_HARD_223",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_203": {
+      "new_id": "ST_HARD_224",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_205": {
+      "new_id": "ST_HARD_225",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_206": {
+      "new_id": "ST_HARD_226",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_211": {
+      "new_id": "ST_HARD_227",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_213": {
+      "new_id": "ST_HARD_228",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_214": {
+      "new_id": "ST_HARD_229",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_215": {
+      "new_id": "ST_HARD_230",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_221": {
+      "new_id": "ST_HARD_231",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_226": {
+      "new_id": "ST_HARD_232",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_229": {
+      "new_id": "ST_HARD_233",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    },
+    "ST_HARD_231": {
+      "new_id": "ST_HARD_234",
+      "original_difficulty": "hard",
+      "rebucketed_difficulty": "hard",
+      "source_report": "hard_new_134_full_v3.json"
+    }
+  }
+}

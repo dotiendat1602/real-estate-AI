@@ -4,10 +4,10 @@ from dataclasses import dataclass
 from typing import Any, Callable
 import os
 import re
+import time
 import unicodedata
 
 from langchain_core.documents import Document
-from langchain_core.output_parsers import StrOutputParser
 
 from ..planning.profiles import (
     PLANNING_FOCUS_MANAGEMENT_MARKERS as _PLANNING_FOCUS_MANAGEMENT_MARKERS,
@@ -15,6 +15,7 @@ from ..planning.profiles import (
     build_planning_query_profile,
     planning_focus_phrases,
 )
+from ..rag.llm_usage import extract_token_usage, message_content_to_text
 from ..rag.prompt import prompt
 
 
@@ -22,6 +23,8 @@ from ..rag.prompt import prompt
 class ChatResult:
     answer: str
     citations: list[dict[str, Any]]
+    token_usage: dict[str, Any] | None = None
+    timings: dict[str, float] | None = None
 
 
 _PLANNING_FACT_MARKERS = [
@@ -3780,7 +3783,7 @@ class RagChain:
         self.retriever = retriever
 
         # Build chain once (reuse per request)
-        self.chain = (
+        self.prompt_chain = (
             {
                 "question": lambda x: x["question"],
                 "context": lambda x: x["context"],
@@ -3788,8 +3791,6 @@ class RagChain:
                 "answer_language": lambda x: x["answer_language"],
             }
             | prompt
-            | self.llm
-            | StrOutputParser()
         )
 
     async def run(self, question: str, history: list = None, extra_context: str = "") -> ChatResult:
@@ -3797,7 +3798,9 @@ class RagChain:
             history = []
 
         retrieval_query = build_retrieval_query(question, history)
+        retrieval_started = time.perf_counter()
         docs: list[Document] = await self.retriever.ainvoke(retrieval_query or question)
+        retrieval_seconds = round(time.perf_counter() - retrieval_started, 3)
         max_docs = int(os.getenv("RAG_CONTEXT_MAX_DOCS", "4"))
         max_chars_per_doc = int(os.getenv("RAG_CONTEXT_MAX_CHARS_PER_DOC", "1400"))
         context_selection_query = retrieval_query or question
@@ -3813,16 +3816,29 @@ class RagChain:
 
         answer_language = detect_lang(question)
 
-        answer: str = await self.chain.ainvoke(
-            {
-                "question": question,
-                "context": context,
-                "history": history,
-                "answer_language": answer_language,
-            }
-        )
+        payload = {
+            "question": question,
+            "context": context,
+            "history": history,
+            "answer_language": answer_language,
+        }
+        answer_started = time.perf_counter()
+        prompt_value = await self.prompt_chain.ainvoke(payload)
+        ai_message = await self.llm.ainvoke(prompt_value)
+        answer_generation_seconds = round(time.perf_counter() - answer_started, 3)
+        answer = message_content_to_text(getattr(ai_message, "content", ""))
+        token_usage = extract_token_usage(ai_message)
 
         answer = postprocess_answer(question, answer, docs_for_context)
 
-        return ChatResult(answer=answer, citations=_build_citations(docs_for_context))
+        return ChatResult(
+            answer=answer,
+            citations=_build_citations(docs_for_context),
+            token_usage=token_usage,
+            timings={
+                "retrieval_seconds": retrieval_seconds,
+                "answer_generation_seconds": answer_generation_seconds,
+                "runtime_seconds": round(retrieval_seconds + answer_generation_seconds, 3),
+            },
+        )
 

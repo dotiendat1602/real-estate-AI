@@ -1,0 +1,3116 @@
+[
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình đang xem tin căn hộ ở Dự án Cienco 5 Mê Linh, Hà Nội, diện tích đang ghi bao nhiêu m2?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_101"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=142, dossierCode=HN-TayHo-KH2025, planYear=2025, district=Tây Hồ, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ, chunkType=text, topic=Các công trình, dự án chuyển tiếp, evidence=district:Tây Hồ | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ Các khu đất nông nghiệp công ích đấu giá cho thuê để sản xuất nông nghiệp trên địa bàn các phường NNP UBND phường 94,00 Tây Hồ Phú Thượng, Yên Phụ, Tứ Liên, Quảng An, Nhật Tân - Luật Đất đai năm 2024, các Nghị định hướng dẫn thi hành Luật và quy định của Thành phố. - UBND quận Tây Hồ chịu trách nhiệm kiểm tra, rà soát điều kiện, quy mô, diện tích đến từng vị trí thửa đất đề nghị đấu giá quyền thuê đất để sản xuất nông nghiệp; quản lý chặt chẽ việc sử dụng đất đúng mục đích sau đấu giá theo quy định"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn xem giúp kế hoạch sử dụng đất 2025 ở Tây Hồ nói gì về phần Các công trình, dự án chuyển tiếp?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Tây Hồ, 2025",
+      "Chủ đề: Các công trình, dự án chuyển tiếp",
+      "Ý chính: district:Tây Hồ | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ Các khu đất nông nghiệp công ích đấu giá cho thuê để sản xuất nông nghiệp trên địa bàn..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 142,
+      "dossierCode": "HN-TayHo-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_102",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Ở tin căn hộ khu The Phoenix Garden, Huyện Đan Phượng, Hà Nội, dữ liệu chính về giá và diện tích là gì?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_103"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=142, dossierCode=HN-TayHo-KH2025, planYear=2025, district=Tây Hồ, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ, chunkType=text, topic=Các công trình, dự án chuyển tiếp, evidence=district:Tây Hồ | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ Các khu đất nông nghiệp công ích đấu giá cho thuê để sản xuất nông nghiệp trên địa bàn các phường NNP UBND phường 94,00 Tây Hồ Phú Thượng, Yên Phụ, Tứ Liên, Quảng An, Nhật Tân - Luật Đất đai năm 2024, các Nghị định hướng dẫn thi hành Luật và quy định của Thành phố. - UBND quận Tây Hồ chịu trách nhiệm kiểm tra, rà soát điều kiện, quy mô, diện tích đến từng vị trí thửa đất đề nghị đấu giá quyền thuê đất để sản xuất nông nghiệp; quản lý chặt chẽ việc sử dụng đất đúng mục đích sau đấu giá theo quy định"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Ở Tây Hồ, phần Các công trình, dự án chuyển tiếp trong kế hoạch 2025 có ý chính gì?",
+    "expected_output_outline": [
+      "Tên tài liệu: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ",
+      "Mã hồ sơ: HN-TayHo-KH2025"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 142,
+      "dossierCode": "HN-TayHo-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_104",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn đọc nhanh giúp tin căn hộ ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội: giá có được nêu rõ không?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_105"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=153, dossierCode=HN-QuocOai-KH2025, planYear=2025, district=Quốc Oai, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội, chunkType=text, topic=Các dự án sử dụng vốn ngân, evidence=district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Xây dựng HTKT khu đất đấu giá QSD đất ở ĐG29 thôn Phúc Đức, xã Sài Sơn ONT Trung tâm PTQĐ huyện Quốc Oai"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Mình muốn hỏi nhanh phần Các dự án sử dụng vốn ngân trong hồ sơ quy hoạch Quốc Oai năm 2025.",
+    "expected_output_outline": [
+      "Địa bàn/năm: Quốc Oai, 2025",
+      "Chủ đề: Các dự án sử dụng vốn ngân",
+      "Ý chính: district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Xây dựng HTKT khu đất đấu giá QSD đất ở ĐG29 thôn Phúc Đức, xã..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 153,
+      "dossierCode": "HN-QuocOai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_106",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin tại Đường Đào Tấn, Quận Ba Đình, Hà Nội có ghi rõ thông tin pháp lý không vậy?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_107"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=118, dossierCode=HN-ThachThat-KH2025, planYear=2025, district=huyện Thạch Thất, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất, chunkType=text, topic=Các công trình, dự án nằm trong biểu 1A, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất Cải tạo, nâng cấp đường giao thông thoát nước khu vực Trúc Động, Đồng Kho, Đồng Táng xã Đồng Trúc DGT Ban Quản lý dự án ĐTXD huyện Thạch Thất"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Phần Các công trình, dự án nằm trong biểu 1A của kế hoạch sử dụng đất 2025 tại huyện Thạch Thất đang nêu gì?",
+    "expected_output_outline": [
+      "Mã hồ sơ: HN-ThachThat-KH2025",
+      "Năm kế hoạch: 2025",
+      "Địa bàn: huyện Thạch Thất"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 118,
+      "dossierCode": "HN-ThachThat-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_108",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn xem giúp giá của tin căn hộ ở Dự án Cienco 5 Mê Linh, Hà Nội là bao nhiêu?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_109"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=51, dossierCode=HN-BacTuLiem-KH2025, planYear=2025, district=Bắc Từ Liêm, title=Báo cáo Thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm, chunkType=table, topic=Đất nông nghiệp khác NKH/PNN 2,71, evidence=district:Bắc Từ Liêm | plan_year:2025 | chunk_type:table | title:Báo cáo Thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm (1) (2) (3) (4) Tổng diện tích tự nhiên 4.534,84"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Kế hoạch 2025 ở Bắc Từ Liêm có thông tin gì liên quan đến Đất nông nghiệp khác NKH/PNN 2,71?",
+    "expected_output_outline": [
+      "Mã hồ sơ: HN-BacTuLiem-KH2025",
+      "Năm kế hoạch: 2025",
+      "Địa bàn: Bắc Từ Liêm"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 51,
+      "dossierCode": "HN-BacTuLiem-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_110",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình muốn biết tin căn hộ tại The Phoenix Garden, Huyện Đan Phượng, Hà Nội rộng khoảng bao nhiêu m2.",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_111"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=32, dossierCode=HN-LongBien-KH2025, planYear=2025, district=Long Biên, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên, chunkType=text, topic=Xây dựng trường THCS tại ô quy hoạch, evidence=district:Long Biên | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên A.8/THCS phường Ngọc Thụy DGD Ban QLDA ĐTXD quận Long Biên"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn tóm tắt một ý chính của phần Xây dựng trường THCS tại ô quy hoạch trong tài liệu Long Biên năm 2025 giúp mình.",
+    "expected_output_outline": [
+      "Địa bàn/năm: Long Biên, 2025",
+      "Chủ đề: Xây dựng trường THCS tại ô quy hoạch",
+      "Ý chính: district:Long Biên | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên A.8/THCS phường Ngọc Thụy DGD Ban QLDA ĐTXD quận Long Biên"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 32,
+      "dossierCode": "HN-LongBien-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_112",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ khu Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội có đang ghi vị trí cụ thể không?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_113"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn cho mình biết tin căn hộ ở Đường Đào Tấn, Quận Ba Đình, Hà Nội đang nêu điểm chính nào?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_114"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ ở Dự án Cienco 5 Mê Linh, Hà Nội đang là tin bán hay cho thuê vậy?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_115"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội được gắn là căn hộ, bạn kiểm tra giúp diện tích đang ghi thế nào?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_116"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình thấy tin căn hộ ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội, phần mô tả đang nói tài sản gì?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_117"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ ở Đường Đào Tấn, Quận Ba Đình, Hà Nội có diện tích và vị trí như thế nào?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_118"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Ở tin căn hộ khu Dự án Cienco 5 Mê Linh, Hà Nội, dữ liệu chính về giá và diện tích là gì?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_119"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn đọc nhanh giúp tin căn hộ ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội: giá có được nêu rõ không?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_120"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin tại Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội có ghi rõ thông tin pháp lý không vậy?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_121"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình cần kiểm tra nhanh tin căn hộ ở Đường Đào Tấn, Quận Ba Đình, Hà Nội: giá, diện tích có đủ không?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_122"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình muốn biết tin căn hộ tại Dự án Cienco 5 Mê Linh, Hà Nội rộng khoảng bao nhiêu m2.",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_123"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ khu The Phoenix Garden, Huyện Đan Phượng, Hà Nội có đang ghi vị trí cụ thể không?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_124"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn cho mình biết tin căn hộ ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội đang nêu điểm chính nào?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_125"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin ở Đường Đào Tấn, Quận Ba Đình, Hà Nội có đúng là căn hộ theo nội dung mô tả không?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_126"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin ở Dự án Cienco 5 Mê Linh, Hà Nội được gắn là căn hộ, bạn kiểm tra giúp diện tích đang ghi thế nào?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_127"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình thấy tin căn hộ ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội, phần mô tả đang nói tài sản gì?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_128"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội có diện tích và vị trí như thế nào?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_129"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn xem giúp tin căn hộ tại Đường Đào Tấn, Quận Ba Đình, Hà Nội đang thiếu thông tin cơ bản nào?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_130"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn đọc nhanh giúp tin căn hộ ở Dự án Cienco 5 Mê Linh, Hà Nội: giá có được nêu rõ không?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_131"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin tại The Phoenix Garden, Huyện Đan Phượng, Hà Nội có ghi rõ thông tin pháp lý không vậy?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_132"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình cần kiểm tra nhanh tin căn hộ ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội: giá, diện tích có đủ không?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_133"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Nếu chỉ hỏi một ý, tin căn hộ ở Đường Đào Tấn, Quận Ba Đình, Hà Nội đang ghi diện tích bao nhiêu?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_134"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ khu Dự án Cienco 5 Mê Linh, Hà Nội có đang ghi vị trí cụ thể không?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_135"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn cho mình biết tin căn hộ ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội đang nêu điểm chính nào?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_136"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội có đúng là căn hộ theo nội dung mô tả không?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_137"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ ở Đường Đào Tấn, Quận Ba Đình, Hà Nội có ghi giá rõ ràng hay chưa?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_138"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình thấy tin căn hộ ở Dự án Cienco 5 Mê Linh, Hà Nội, phần mô tả đang nói tài sản gì?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_139"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội có diện tích và vị trí như thế nào?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_140"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn xem giúp tin căn hộ tại Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội đang thiếu thông tin cơ bản nào?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_141"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình đang soát tin ở Đường Đào Tấn, Quận Ba Đình, Hà Nội, loại tin đang là bán hay cho thuê?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_142"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin tại Dự án Cienco 5 Mê Linh, Hà Nội có ghi rõ thông tin pháp lý không vậy?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_143"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình cần kiểm tra nhanh tin căn hộ ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội: giá, diện tích có đủ không?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_144"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Nếu chỉ hỏi một ý, tin căn hộ ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội đang ghi diện tích bao nhiêu?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_145"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình đang xem tin căn hộ ở Đường Đào Tấn, Quận Ba Đình, Hà Nội, diện tích đang ghi bao nhiêu m2?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_146"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn cho mình biết tin căn hộ ở Dự án Cienco 5 Mê Linh, Hà Nội đang nêu điểm chính nào?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_147"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội có đúng là căn hộ theo nội dung mô tả không?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_148"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội có ghi giá rõ ràng hay chưa?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_149"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn xem giúp giá của tin căn hộ ở Đường Đào Tấn, Quận Ba Đình, Hà Nội là bao nhiêu?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_150"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ ở Dự án Cienco 5 Mê Linh, Hà Nội có diện tích và vị trí như thế nào?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_151"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn xem giúp tin căn hộ tại The Phoenix Garden, Huyện Đan Phượng, Hà Nội đang thiếu thông tin cơ bản nào?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_152"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình đang soát tin ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội, loại tin đang là bán hay cho thuê?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_153"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ ở Đường Đào Tấn, Quận Ba Đình, Hà Nội đang là tin bán hay cho thuê vậy?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_154"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình cần kiểm tra nhanh tin căn hộ ở Dự án Cienco 5 Mê Linh, Hà Nội: giá, diện tích có đủ không?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_155"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Nếu chỉ hỏi một ý, tin căn hộ ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội đang ghi diện tích bao nhiêu?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_156"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình đang xem tin căn hộ ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội, diện tích đang ghi bao nhiêu m2?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_157"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Ở tin căn hộ khu Đường Đào Tấn, Quận Ba Đình, Hà Nội, dữ liệu chính về giá và diện tích là gì?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_158"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin ở Dự án Cienco 5 Mê Linh, Hà Nội có đúng là căn hộ theo nội dung mô tả không?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_159"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội có ghi giá rõ ràng hay chưa?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_160"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn xem giúp giá của tin căn hộ ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội là bao nhiêu?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_161"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình muốn biết tin căn hộ tại Đường Đào Tấn, Quận Ba Đình, Hà Nội rộng khoảng bao nhiêu m2.",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_162"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn xem giúp tin căn hộ tại Dự án Cienco 5 Mê Linh, Hà Nội đang thiếu thông tin cơ bản nào?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_163"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình đang soát tin ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội, loại tin đang là bán hay cho thuê?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_164"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ ở Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội đang là tin bán hay cho thuê vậy?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_165"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin ở Đường Đào Tấn, Quận Ba Đình, Hà Nội được gắn là căn hộ, bạn kiểm tra giúp diện tích đang ghi thế nào?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_166"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Nếu chỉ hỏi một ý, tin căn hộ ở Dự án Cienco 5 Mê Linh, Hà Nội đang ghi diện tích bao nhiêu?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_167"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình đang xem tin căn hộ ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội, diện tích đang ghi bao nhiêu m2?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_168"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=244, propertyId=243, postType=SALE, categoryName=Căn hộ, title=Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn, price=3900000000.00, area=100.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=N/A, location=Khu đô thị Cienco 5 Mê Linh, Xã Tiền Phong, Huyện Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=view"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Ở tin căn hộ khu Khu đô thị Cienco 5 Mê Linh, Huyện Mê Linh, Hà Nội, dữ liệu chính về giá và diện tích là gì?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 100 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Quỹ đất chuyển nhượng Cienco 5 Mê Linh giá tốt! Em cam kết tư vấn"
+    ],
+    "target_metadata": {
+      "postId": 244,
+      "propertyId": 243,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_169"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=266, propertyId=265, postType=RENT, categoryName=Căn hộ, title=Cho thuê NR 68m2 tại ngõ 58 Đào Tấn, Ba Đình, Hà Nội giá 30 -35 triệu, price=-35000000.00, area=68.00, bedrooms=5, toilets=3, furnishing=PARTLY_FURNISHED, legalStatus=N/A, location=Đường Đào Tấn, Phường Cống Vị, Quận Ba Đình, Hà Nội (Phường Giảng Võ, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn đọc nhanh giúp tin căn hộ ở Đường Đào Tấn, Quận Ba Đình, Hà Nội: giá có được nêu rõ không?",
+    "expected_output_outline": [
+      "Giá trong DB: -35000000.00 VNĐ",
+      "postType=RENT",
+      "legalStatus=N/A",
+      "propertyId=265",
+      "furnishing=PARTLY_FURNISHED",
+      "toilets=3",
+      "Diện tích: 68 m2"
+    ],
+    "target_metadata": {
+      "postId": 266,
+      "propertyId": 265,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_170"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=231, propertyId=230, postType=SALE, categoryName=Căn hộ, title=Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu, price=3900000000.00, area=290.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=OTHER, location=Dự án Cienco 5 Mê Linh, Xã Tiền Phong, Mê Linh, Hà Nội (Xã Mê Linh, Hà Nội mới), highlights=trường | bệnh viện | công viên | ô tô"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Tin căn hộ ở Dự án Cienco 5 Mê Linh, Hà Nội có ghi giá rõ ràng hay chưa?",
+    "expected_output_outline": [
+      "Giá/diện tích trong dữ liệu: 3.9 tỷ VNĐ; 290 m2",
+      "Loại tin: cần bán",
+      "Tiêu đề/nội dung gốc: Bán đất nền dự án Cienco 5 Mê Linh, 56 triệu / m2, 300 m2, giá siêu"
+    ],
+    "target_metadata": {
+      "postId": 231,
+      "propertyId": 230,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_171"
+  },
+  {
+    "domain": "real_estate",
+    "context": [
+      "postId=247, propertyId=246, postType=SALE, categoryName=Căn hộ, title=Đất biệt thự 400m2 The Phoenix - Đan Phượng giá bán tốt nhất thị, price=0.00, area=400.00, bedrooms=N/A, toilets=N/A, furnishing=N/A, legalStatus=SALE_CONTRACT, location=The Phoenix Garden, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội (Xã Đan Phượng, Hà Nội mới), highlights=trường | mặt tiền"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn xem giúp giá của tin căn hộ ở The Phoenix Garden, Huyện Đan Phượng, Hà Nội là bao nhiêu?",
+    "expected_output_outline": [
+      "Giá trong DB: 0.00 VNĐ",
+      "postType=SALE",
+      "legalStatus=SALE_CONTRACT",
+      "propertyId=246",
+      "furnishing=N/A",
+      "toilets=N/A",
+      "Diện tích: 400 m2"
+    ],
+    "target_metadata": {
+      "postId": 247,
+      "propertyId": 246,
+      "evalOnly": true
+    },
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced",
+    "id": "ST_EASY_172"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=118, dossierCode=HN-ThachThat-KH2025, planYear=2025, district=huyện Thạch Thất, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất, chunkType=text, topic=Các công trình, dự án nằm trong biểu 1A, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất Cải tạo, nâng cấp đường giao thông thoát nước khu vực Trúc Động, Đồng Kho, Đồng Táng xã Đồng Trúc DGT Ban Quản lý dự án ĐTXD huyện Thạch Thất"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Mình đang tra hồ sơ huyện Thạch Thất năm 2025, phần Các công trình, dự án nằm trong biểu 1A cần chú ý gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Thạch Thất, 2025",
+      "Chủ đề: Các công trình, dự án nằm trong biểu 1A",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất Cải tạo, nâng cấp đường..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 118,
+      "dossierCode": "HN-ThachThat-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_173",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=147, dossierCode=HN-MeLinh-KH2025, planYear=2025, district=huyện Mê Linh, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, chunkType=table, topic=Trụ sở làm việc công an xã Đại, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Thịnh CAN Công an TP Hà Nội 0,25 Huyện Mê Linh Xã Đại Thịnh Quyết định số 6471/QĐ-BCA-H01 ngày 05/9/2024 của Bộ Công an Quyết định phê duyệt chủ trương đầu tư 51 dự án Xây dựng trụ sở Công an xã, thị trấn trên địa bàn thành phố Hà Nội. ( tiến độ: 2024-2025) Đăng ký mới KH25"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Trong kế hoạch sử dụng đất 2025 của huyện Mê Linh, phần Trụ sở làm việc công an xã Đại có nội dung chính nào?",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Mê Linh, 2025",
+      "Chủ đề: Trụ sở làm việc công an xã Đại",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Thịnh CAN Công an TP Hà Nội..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 147,
+      "dossierCode": "HN-MeLinh-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_174",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=147, dossierCode=HN-MeLinh-KH2025, planYear=2025, district=huyện Mê Linh, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, chunkType=text, topic=Các công trình, dự án nằm trong, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Xây dựng HTKT phục vụ đấu giá đất tại điểm dân cư nông thôn xã Thạch Đà, huyện Mê Linh"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn kiểm tra giúp phần Các công trình, dự án nằm trong ở huyện Mê Linh năm 2025 đang thuộc nội dung gì.",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Mê Linh, 2025",
+      "Chủ đề: Các công trình, dự án nằm trong",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Xây dựng HTKT phục vụ đấu giá..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 147,
+      "dossierCode": "HN-MeLinh-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_175",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=144, dossierCode=HN-DanPhuong-KH2025, planYear=2025, district=huyện Đan Phượng, title=Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, chunkType=text, topic=Hiện trạng sử dụng đất, kết quả thực hiện kế hoạch, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng dụng đất năm 2024 ............................................................................................. 28"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Nếu xem nhanh hồ sơ huyện Đan Phượng năm 2025, phần Hiện trạng sử dụng đất, kết quả thực hiện kế hoạch nói về điểm nào?",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Đan Phượng, 2025",
+      "Chủ đề: Hiện trạng sử dụng đất, kết quả thực hiện kế hoạch",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng dụng đất năm 2024..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 144,
+      "dossierCode": "HN-DanPhuong-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_176",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=144, dossierCode=HN-DanPhuong-KH2025, planYear=2025, district=huyện Đan Phượng, title=Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, chunkType=table, topic=Kế hoạch sử dụng đất năm 2024, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng III. Các khoản chi Hỗ trợ chuyển nghề và tạo việc làm 721,63 - Chi bồi thường khi thu hồi đất trồng lúa 337,37 186.000 627,50 - Chi bồi thường khi thu hồi đất trồng cây hàng năm 38,71 186.000 72,00 - Chi bồi thường khi thu hồi đất trồng cây lâu năm 10,15 218.000 22,13"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn xem giúp kế hoạch sử dụng đất 2025 ở huyện Đan Phượng nói gì về phần Kế hoạch sử dụng đất năm 2024?",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Đan Phượng, 2025",
+      "Chủ đề: Kế hoạch sử dụng đất năm 2024",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng III. Các khoản chi Hỗ trợ chuyển nghề..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 144,
+      "dossierCode": "HN-DanPhuong-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_177",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=144, dossierCode=HN-DanPhuong-KH2025, planYear=2025, district=huyện Đan Phượng, title=Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, chunkType=table, topic=Đất xây dựng công trình sự, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng nghiệp DSN 110,41 1,42 127,47 1,64 17,06 Đất xây dựng cơ sở văn hóa DVH 16,52 0,21 17,76 0,23 1,24 Đất xây dựng cơ sở y tế DYT 9,96 0,13 14,34 0,18 4,38 Đất xây dựng cơ sở giáo dục và đào tạo DGD 71,23 0,92 81,63 1,05 10,40 Đất xây dựng cơ sở thể dục, thể thao DTT 12,70 0,16 13,74 0,18 1,04"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Ở huyện Đan Phượng, phần Đất xây dựng công trình sự trong kế hoạch 2025 có ý chính gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Đan Phượng, 2025",
+      "Chủ đề: Đất xây dựng công trình sự",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng nghiệp DSN 110,41 1,42 127,47 1,64..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 144,
+      "dossierCode": "HN-DanPhuong-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_178",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=51, dossierCode=HN-BacTuLiem-KH2025, planYear=2025, district=Bắc Từ Liêm, title=Báo cáo Thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm, chunkType=table, topic=Đất nông nghiệp khác NKH/PNN 2,71, evidence=district:Bắc Từ Liêm | plan_year:2025 | chunk_type:table | title:Báo cáo Thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm (1) (2) (3) (4) Tổng diện tích tự nhiên 4.534,84"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Mình muốn hỏi nhanh phần Đất nông nghiệp khác NKH/PNN 2,71 trong hồ sơ quy hoạch Bắc Từ Liêm năm 2025.",
+    "expected_output_outline": [
+      "Địa bàn/năm: Bắc Từ Liêm, 2025",
+      "Chủ đề: Đất nông nghiệp khác NKH/PNN 2,71",
+      "Ý chính: district:Bắc Từ Liêm | plan_year:2025 | chunk_type:table | title:Báo cáo Thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm (1) (2) (3) (4) Tổng diện tích tự nhiên 4.534,84"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 51,
+      "dossierCode": "HN-BacTuLiem-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_179",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=144, dossierCode=HN-DanPhuong-KH2025, planYear=2025, district=huyện Đan Phượng, title=Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, chunkType=table, topic=Kế hoạch sử dụng đất năm 2024, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng tại điểm a, điểm b khoản 1, Điều 48, Thông tư 29/2024/TT -BTNMT và khoản"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Phần Kế hoạch sử dụng đất năm 2024 của kế hoạch sử dụng đất 2025 tại huyện Đan Phượng đang nêu gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Đan Phượng, 2025",
+      "Chủ đề: Kế hoạch sử dụng đất năm 2024",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng tại điểm a, điểm b khoản 1, Điều 48..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 144,
+      "dossierCode": "HN-DanPhuong-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_180",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=33, dossierCode=HN-LongBien-KH2025, planYear=2025, district=Long Biên, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Long Biên - thành phố Hà Nội, chunkType=table, topic=Nhu cầu sử dụng đất năng lượng, evidence=district:Long Biên | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Long Biên - thành phố Hà Nội 2) Xây dựng mới trạm 110kV Phù Đổng (Gia Lâm 3) và nhánh rẽ (Phần đường dây 110kV)"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Kế hoạch 2025 ở Long Biên có thông tin gì liên quan đến Nhu cầu sử dụng đất năng lượng?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Long Biên, 2025",
+      "Chủ đề: Nhu cầu sử dụng đất năng lượng",
+      "Ý chính: district:Long Biên | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Long Biên - thành phố Hà Nội 2) Xây dựng mới trạm 110kV Phù Đổng (Gia Lâm 3) và nhánh rẽ..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 33,
+      "dossierCode": "HN-LongBien-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_181",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=153, dossierCode=HN-QuocOai-KH2025, planYear=2025, district=Quốc Oai, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội, chunkType=text, topic=Trụ sở làm việc Công an xã, evidence=district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Cộng Hòa, huyện Quốc Oai CAN Bộ Công An 0,22 Xã Cộng Hòa"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn tóm tắt một ý chính của phần Trụ sở làm việc Công an xã trong tài liệu Quốc Oai năm 2025 giúp mình.",
+    "expected_output_outline": [
+      "Địa bàn/năm: Quốc Oai, 2025",
+      "Chủ đề: Trụ sở làm việc Công an xã",
+      "Ý chính: district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Cộng Hòa, huyện Quốc Oai CAN Bộ Công An 0,22 Xã Cộng Hòa"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 153,
+      "dossierCode": "HN-QuocOai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_182",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=139, dossierCode=HN-BaDinh-KH2025, planYear=2025, district=Ba Đình, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình, chunkType=text, topic=Các dự án trong biểu 1A, evidence=district:Ba Đình | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình Xây dựng tường rào bảo vệ khu vực 1 di tích Chùa Châu Long TON Ban QLDA đầu tư"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Mình đang tra hồ sơ Ba Đình năm 2025, phần Các dự án trong biểu 1A cần chú ý gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Ba Đình, 2025",
+      "Chủ đề: Các dự án trong biểu 1A",
+      "Ý chính: district:Ba Đình | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình Xây dựng tường rào bảo vệ khu vực 1 di tích Chùa Châu Long TON Ban QLDA đầu tư"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 139,
+      "dossierCode": "HN-BaDinh-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_183",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=17, dossierCode=HN-HoanKiem-KH2025, planYear=2025, district=Hoàn Kiếm, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội, chunkType=table, topic=Kết quả thực hiện kế hoạch sử dụng đất năm trước, evidence=district:Hoàn Kiếm | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội Kế hoạch sử dụng đất năm 2024 quận Hoàn Kiếm đã được UBND Thành phố Hà Nội phê duyệt tại các Quyết định số 1146/QĐ -UBND ngày 04/3/2024; số 1992/QĐ-UBND ngày 15/4/2024; số 3856/QĐ-UBND ngày 25/7/2024. Tổng số dự án được phê duyệt là 28 dự án, diện tích 4,98 ha. Kết quả thực hiện như sau:"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Trong kế hoạch sử dụng đất 2025 của Hoàn Kiếm, phần Kết quả thực hiện kế hoạch sử dụng đất năm trước có nội dung chính nào?",
+    "expected_output_outline": [
+      "Mã hồ sơ: HN-HoanKiem-KH2025",
+      "Năm kế hoạch: 2025",
+      "Địa bàn: Hoàn Kiếm"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 17,
+      "dossierCode": "HN-HoanKiem-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_184",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=110, dossierCode=HN-SonTay-KH2025, planYear=2025, district=Sơn Tây, title=Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội, chunkType=table, topic=Đất có mặt nước chuyên dùng dạng, evidence=district:Sơn Tây | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội ao, hồ, đầm, phá MNC 1.076,81 1.068,61 1.076,81 0,00 0,00 8,20 4,84 3,36"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn kiểm tra giúp phần Đất có mặt nước chuyên dùng dạng ở Sơn Tây năm 2025 đang thuộc nội dung gì.",
+    "expected_output_outline": [
+      "Địa bàn/năm: Sơn Tây, 2025",
+      "Chủ đề: Đất có mặt nước chuyên dùng dạng",
+      "Ý chính: district:Sơn Tây | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội ao, hồ, đầm, phá MNC 1.076,81 1.068,61 1.076,81 0,00 0,00 8,20..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 110,
+      "dossierCode": "HN-SonTay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_185",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=153, dossierCode=HN-QuocOai-KH2025, planYear=2025, district=Quốc Oai, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội, chunkType=text, topic=Xây dựng trụ sở làm việc, evidence=district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội BCH quân sự xã Đông Yên TSC Trung tâm PTQĐ huyện Quốc Oai"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Nếu xem nhanh hồ sơ Quốc Oai năm 2025, phần Xây dựng trụ sở làm việc nói về điểm nào?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Quốc Oai, 2025",
+      "Chủ đề: Xây dựng trụ sở làm việc",
+      "Ý chính: district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội BCH quân sự xã Đông Yên TSC Trung tâm PTQĐ huyện Quốc Oai"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 153,
+      "dossierCode": "HN-QuocOai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_186",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=110, dossierCode=HN-SonTay-KH2025, planYear=2025, district=Sơn Tây, title=Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội, chunkType=table, topic=Đất xây dựng công trình, evidence=district:Sơn Tây | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội sự nghiệp khác DSK 0,88 0,01 - 0,76 - - - - - - - - 0,11"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn xem giúp kế hoạch sử dụng đất 2025 ở Sơn Tây nói gì về phần Đất xây dựng công trình?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Sơn Tây, 2025",
+      "Chủ đề: Đất xây dựng công trình",
+      "Ý chính: district:Sơn Tây | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội sự nghiệp khác DSK 0,88 0,01 - 0,76 - - - - - - - - 0,11"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 110,
+      "dossierCode": "HN-SonTay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_187",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=32, dossierCode=HN-LongBien-KH2025, planYear=2025, district=Long Biên, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên, chunkType=table, topic=Các công trình, dự án chuyển tiếp, evidence=district:Long Biên | plan_year:2025 | chunk_type:table | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên Xây dựng tuyến đường 17,5m theo quy hoạch từ phố Đức Giang đến đường QH 40m và 02 tuyến đường 17.0m từ đường"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Ở Long Biên, phần Các công trình, dự án chuyển tiếp trong kế hoạch 2025 có ý chính gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Long Biên, 2025",
+      "Chủ đề: Các công trình, dự án chuyển tiếp",
+      "Ý chính: district:Long Biên | plan_year:2025 | chunk_type:table | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên Xây dựng tuyến đường 17,5m theo quy hoạch từ phố Đức Giang đến đường QH 40m và 02..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 32,
+      "dossierCode": "HN-LongBien-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_188",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=153, dossierCode=HN-QuocOai-KH2025, planYear=2025, district=Quốc Oai, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội, chunkType=text, topic=Các dự án sử dụng vốn ngân, evidence=district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Đầu tư xây dựng hạ tầng kỹ thuật khu tái định cư tại xã Cộng Hoà, huyện Quốc Oai ONT Trung tâm PTQĐ huyện Quốc Oai"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Phần Các dự án sử dụng vốn ngân của kế hoạch sử dụng đất 2025 tại Quốc Oai đang nêu gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Quốc Oai, 2025",
+      "Chủ đề: Các dự án sử dụng vốn ngân",
+      "Ý chính: district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Đầu tư xây dựng hạ tầng kỹ thuật khu tái định cư tại xã Cộng Hoà..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 153,
+      "dossierCode": "HN-QuocOai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_189",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=138, dossierCode=HN-MeLinh-KH2025, planYear=2025, district=huyện Mê Linh, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, chunkType=table, topic=Trung tâm văn hóa - Thể thao xã Kim, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Hoa, huyện Mê Linh DVH Ban QLDA ĐTXD Mê Linh 2,53 Huyện Mê Linh Xã Kim Hoa Quyết định số 4154/QĐ-UBND ngày 26/9/2024 của UBND huyện Mê Linh về việc phê duyệt quyết định thực hiện dự án;( tiến độ: 2023-2025) NQ/69"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Phần Trung tâm văn hóa - Thể thao xã Kim của kế hoạch sử dụng đất 2025 tại huyện Mê Linh đang nêu gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Mê Linh, 2025",
+      "Chủ đề: Trung tâm văn hóa - Thể thao xã Kim",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Hoa, huyện Mê Linh DVH Ban QLDA..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 138,
+      "dossierCode": "HN-MeLinh-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_190",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=153, dossierCode=HN-QuocOai-KH2025, planYear=2025, district=Quốc Oai, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội, chunkType=text, topic=Các dự án sử dụng vốn ngân, evidence=district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Xây dựng tuyến đường giao thông nối từ đường ĐH01 đi đường ĐH02, xã Nghĩa Hương và xã Liệp Tuyết DGT Ban QLDA ĐTXD huyện Quốc Oai"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Kế hoạch 2025 ở Quốc Oai có thông tin gì liên quan đến Các dự án sử dụng vốn ngân?",
+    "expected_output_outline": [
+      "Mã hồ sơ: HN-QuocOai-KH2025",
+      "Năm kế hoạch: 2025",
+      "Địa bàn: Quốc Oai"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 153,
+      "dossierCode": "HN-QuocOai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_191",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=135, dossierCode=HN-HoangMai-KH2025, planYear=2025, district=Hoàng Mai, title=Danh mục các công trình, dự án trong kế hoạch sử dụng đất năm 2025 quận Hoàng Mai, chunkType=table, topic=Xây dựng Trụ sở Ban Chỉ huy Quân sự, evidence=district:Hoàng Mai | plan_year:2025 | chunk_type:table | title:Danh mục các công trình, dự án trong kế hoạch sử dụng đất năm 2025 quận Hoàng Mai phường Thịnh Liệt TSC UBND quận Hoàng Mai 0,087 0,087 Hoàng Mai Thịnh Liệt - Nghị quyết số 09/NQ-HĐND ngày 25/6/2024 của HĐND quận Hoàng Mai về việc điều chỉnh, bổ sung Kế hoạch đầu tư công trung hạn giai đoạn 2021-2025, kế hoạch đầu tư công năm 2024 và phê duyệt chủ trương đầu tư một số dự án đầu tư công ngân sách Quận; (phụ lục 13) - Nghị quyết số 36/NQ-HĐND ngày 4/10/2024 của HĐND Thành phố Hà Nội về việc Thông qua điều chỉnh,bổ sung danh mục các công trình, dự án tu hồi đất năm 2024 ; danh mục các dự án chuyển mục đích sử dụng đất trồng lúa"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn tóm tắt một ý chính của phần Xây dựng Trụ sở Ban Chỉ huy Quân sự trong tài liệu Hoàng Mai năm 2025 giúp mình.",
+    "expected_output_outline": [
+      "Mã hồ sơ: HN-HoangMai-KH2025",
+      "Năm kế hoạch: 2025",
+      "Địa bàn: Hoàng Mai"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 135,
+      "dossierCode": "HN-HoangMai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_192",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=147, dossierCode=HN-MeLinh-KH2025, planYear=2025, district=huyện Mê Linh, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, chunkType=table, topic=Hệ thống giao thông, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Trên địa bàn huyện Mê Linh t ập trung nhiều đầu mối giao thông đường bộ quan trọng có vai trò lớn trong phát triển kinh tế- xã hội của Thủ đô. Hệ thống giao thông đường bộ trên địa bàn huyện bao gồm: - Đường Vành đai 4 - Vùng Thủ đô Hà Nội đoạn qua huyện Mê Linh có dài khoảng 11,2 km, chi ếm t ỷ lệ 19% toàn tuy ến; v ới t ổng di ện tích thu h ồi đ ất khoảng 145,66 ha; dự án đang triển khai, hoàn thiện trên địa bàn huyện. - Đường Bắc Thăng Long – Nội Bài: Đoạn qua huyện dài 2,3 km, từ Km 7 + 300 đến Km 9 +..."
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Mình đang tra hồ sơ huyện Mê Linh năm 2025, phần Hệ thống giao thông cần chú ý gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Mê Linh, 2025",
+      "Chủ đề: Hệ thống giao thông",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Trên địa bàn huyện Mê Linh t ập..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 147,
+      "dossierCode": "HN-MeLinh-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_193",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=144, dossierCode=HN-DanPhuong-KH2025, planYear=2025, district=huyện Đan Phượng, title=Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, chunkType=table, topic=Kế hoạch sử dụng đất năm 2024, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng diện tích đất tự nhiên. * Đất xây dựng công trình sự nghiệp Diện tích không thay đổi mục đích sử dụng trong kỳ kế hoạch là 110,41 ha, thực tăng 17,06 ha so với năm 2024. Như vậy đến hết năm 2025 diện tích đất xây dựng công trình sự nghiệp là 127,47 ha, chiếm 1,64 % diện tích đất tự nhiên. * Đất sản xuất, kinh doanh phi nông nghiệp : Diện tích không thay đổi mục đích sử dụng trong kỳ kế hoạch là 395,34 ha, thực tăng 9,60 ha so với năm 2024. Như vậy đến hết năm 2025 diện tích đất xây dựng công trình sự nghiệp là..."
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Trong kế hoạch sử dụng đất 2025 của huyện Đan Phượng, phần Kế hoạch sử dụng đất năm 2024 có nội dung chính nào?",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Đan Phượng, 2025",
+      "Chủ đề: Kế hoạch sử dụng đất năm 2024",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng diện tích đất tự nhiên. * Đất xây..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 144,
+      "dossierCode": "HN-DanPhuong-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_194",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=63, dossierCode=HN-CauGiay-KH2025, planYear=2025, district=Cầu Giấy, title=Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, chunkType=table, topic=Phân tích, đánh giá hiện trạng sử dụng đất, kết quả, evidence=district:Cầu Giấy | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy Đấu giá tổng số 30 thửa, gồm 28 thửa thuộc ô D23; 02 thửa thuộc ô D18, khu đô thị mới Cầu Giấy, quận Cầu Giấy (lô B10, DT 153m2 và lô B19, DT 159m2) Khu đô thị mới Cầu Giấy"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn kiểm tra giúp phần Phân tích, đánh giá hiện trạng sử dụng đất, kết quả ở Cầu Giấy năm 2025 đang thuộc nội dung gì.",
+    "expected_output_outline": [
+      "Tên tài liệu: Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy",
+      "Mã hồ sơ: HN-CauGiay-KH2025"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 63,
+      "dossierCode": "HN-CauGiay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_195",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=118, dossierCode=HN-ThachThat-KH2025, planYear=2025, district=huyện Thạch Thất, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất, chunkType=text, topic=Các công trình, dự án nằm trong biểu 1A, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất Xây dựng Hạ tầng kỹ thuật để đấu giá quyền sử dụng đất tại thôn Phú Lễ , xã Cần kiệm ONT Ban Quản lý dự án ĐTXD huyện Thạch Thất"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Nếu xem nhanh hồ sơ huyện Thạch Thất năm 2025, phần Các công trình, dự án nằm trong biểu 1A nói về điểm nào?",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Thạch Thất, 2025",
+      "Chủ đề: Các công trình, dự án nằm trong biểu 1A",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất Xây dựng Hạ tầng kỹ thuật..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 118,
+      "dossierCode": "HN-ThachThat-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_196",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=61, dossierCode=HN-CauGiay-KH2025, planYear=2025, district=Cầu Giấy, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, chunkType=text, topic=Các dự án nằm trong Biểu 1A, evidence=district:Cầu Giấy | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy trình, dự án Mã đất Cơ quan, tổ chức, người đăng ký Diện tích (ha) Thu hồi đất Vị trí Vị trí trên bản đồ Căn cứ pháp lý Địa danh quận Địa danh phường"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn xem giúp kế hoạch sử dụng đất 2025 ở Cầu Giấy nói gì về phần Các dự án nằm trong Biểu 1A?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Cầu Giấy, 2025",
+      "Chủ đề: Các dự án nằm trong Biểu 1A",
+      "Ý chính: district:Cầu Giấy | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy trình, dự án Mã đất Cơ quan, tổ chức, người đăng ký Diện tích (ha) Thu hồi đất Vị trí..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 61,
+      "dossierCode": "HN-CauGiay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_197",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=110, dossierCode=HN-SonTay-KH2025, planYear=2025, district=Sơn Tây, title=Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội, chunkType=table, topic=Đất trồng cây hằng năm, evidence=district:Sơn Tây | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội khác HNK 1.030,03 19,26 1.000,94 19,14 -29,09"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Ở Sơn Tây, phần Đất trồng cây hằng năm trong kế hoạch 2025 có ý chính gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Sơn Tây, 2025",
+      "Chủ đề: Đất trồng cây hằng năm",
+      "Ý chính: district:Sơn Tây | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội khác HNK 1.030,03 19,26 1.000,94 19,14 -29,09"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 110,
+      "dossierCode": "HN-SonTay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_198",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=33, dossierCode=HN-LongBien-KH2025, planYear=2025, district=Long Biên, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Long Biên - thành phố Hà Nội, chunkType=table, topic=Nhu cầu sử dụng đất hạ tầng, evidence=district:Long Biên | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Long Biên - thành phố Hà Nội Số dự án đăng ký mới thực hiện năm 2025 trên địa bàn toàn quận là 01 dự án với tổng diện tích 1,4 ha (tổng diện tích cần thu hồi là 1,4 ha), gồm:"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Mình muốn hỏi nhanh phần Nhu cầu sử dụng đất hạ tầng trong hồ sơ quy hoạch Long Biên năm 2025.",
+    "expected_output_outline": [
+      "Địa bàn/năm: Long Biên, 2025",
+      "Chủ đề: Nhu cầu sử dụng đất hạ tầng",
+      "Ý chính: district:Long Biên | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Long Biên - thành phố Hà Nội Số dự án đăng ký mới thực hiện năm 2025 trên địa bàn toàn quận..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 33,
+      "dossierCode": "HN-LongBien-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_199",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=17, dossierCode=HN-HoanKiem-KH2025, planYear=2025, district=Hoàn Kiếm, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội, chunkType=table, topic=Kết quả thực hiện kế hoạch sử dụng đất năm trước, evidence=district:Hoàn Kiếm | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội Kế hoạch sử dụng đất năm 2024 quận Hoàn Kiếm đã được UBND Thành phố Hà Nội phê duyệt tại các Quyết định số 1146/QĐ -UBND ngày 04/3/2024; số 1992/QĐ-UBND ngày 15/4/2024; số 3856/QĐ-UBND ngày 25/7/2024. Tổng số dự án được phê duyệt là 28 dự án, diện tích 4,98 ha. Kết quả thực hiện như sau:"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Phần Kết quả thực hiện kế hoạch sử dụng đất năm trước của kế hoạch sử dụng đất 2025 tại Hoàn Kiếm đang nêu gì?",
+    "expected_output_outline": [
+      "Tên tài liệu: Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội",
+      "Mã hồ sơ: HN-HoanKiem-KH2025"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 17,
+      "dossierCode": "HN-HoanKiem-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_200",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=135, dossierCode=HN-HoangMai-KH2025, planYear=2025, district=Hoàng Mai, title=Danh mục các công trình, dự án trong kế hoạch sử dụng đất năm 2025 quận Hoàng Mai, chunkType=table, topic=Xây dựng trường tiểu học khu tái định, evidence=district:Hoàng Mai | plan_year:2025 | chunk_type:table | title:Danh mục các công trình, dự án trong kế hoạch sử dụng đất năm 2025 quận Hoàng Mai cư X2 tại ô đất D2/TH5 phường Đại Kim DGD UBND quận Hoàng Mai 0,78 Hoàng Mai Đại Kim - Văn bản số 10753/VP-ĐT ngày 08/10/2021 của Văn phòng UBND thành phố Hà Nội về việc sử dụng đất để xây dựng trường tiểu học công lập tại ô đất D2/TH5 Khu tái định cư X2, phường Đại Kim, quận Hoàng Mai. - Nghị quyết số 20/NQ-HĐND ngày 22/12/2021 của HĐND quận Hoàng Mai về việc phê duyệt kế hoạch đầu tư công trung hạn giai đoạn 2021-2025 và phê duyệt chủ trương đầu tư, điều chỉnh chủ trương đầu tư một số dự án đầu tư công ngân sách Quận.(phụ lục 11) - Quyết"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Kế hoạch 2025 ở Hoàng Mai có thông tin gì liên quan đến Xây dựng trường tiểu học khu tái định?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Hoàng Mai, 2025",
+      "Chủ đề: Xây dựng trường tiểu học khu tái định",
+      "Ý chính: district:Hoàng Mai | plan_year:2025 | chunk_type:table | title:Danh mục các công trình, dự án trong kế hoạch sử dụng đất năm 2025 quận Hoàng Mai cư X2 tại ô đất D2/TH5 phường Đại Kim DGD UBND quận Hoàng Mai 0,78 Hoàng..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 135,
+      "dossierCode": "HN-HoangMai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_201",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=141, dossierCode=HN-DanPhuong-KH2025, planYear=2025, district=huyện Đan Phượng, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, chunkType=text, topic=Xây dựng HTKT khu đất ở ô B-3 phân, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng khu S1, xã Tân Lập, huyện Đan Phượng ONT Trung tâm phát triển quỹ đất huyện Đan Phượng"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn tóm tắt một ý chính của phần Xây dựng HTKT khu đất ở ô B-3 phân trong tài liệu huyện Đan Phượng năm 2025 giúp mình.",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Đan Phượng, 2025",
+      "Chủ đề: Xây dựng HTKT khu đất ở ô B-3 phân",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng khu S1, xã Tân Lập, huyện..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 141,
+      "dossierCode": "HN-DanPhuong-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_202",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=133, dossierCode=HN-HoangMai-KH2025, planYear=2025, district=Hoàng Mai, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàng Mai - thành phố Hà Nội, chunkType=table, topic=Diện tích đất cần thu hồi, evidence=district:Hoàng Mai | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàng Mai - thành phố Hà Nội Diện tích đất cần thu hồi trong năm kế hoạch 2025 để phục vụ mục đích phát triển kinh tế - xã hội, quốc phòng, an ninh của quận như sau: - Đất nông nghiệp diện tích thu hồi là 50,84 ha. Trong đó: + Đất trồng cây hàng năm khác 38,86 ha; + Đất trồng cây lâu năm 0,19 ha; + Đất nuôi trồng thủy sản 11,34 ha;"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Mình đang tra hồ sơ Hoàng Mai năm 2025, phần Diện tích đất cần thu hồi cần chú ý gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Hoàng Mai, 2025",
+      "Chủ đề: Diện tích đất cần thu hồi",
+      "Ý chính: district:Hoàng Mai | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàng Mai - thành phố Hà Nội Diện tích đất cần thu hồi trong năm kế hoạch 2025 để phục vụ..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 133,
+      "dossierCode": "HN-HoangMai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_203",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=153, dossierCode=HN-QuocOai-KH2025, planYear=2025, district=Quốc Oai, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội, chunkType=table, topic=Giao thông:, evidence=district:Quốc Oai | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Diện tích đất giao thông toàn huyện là 1347,18 ha, chiếm 8,91% diện tích tự nhiên, bao gồm các tuyến giao thông chính sau: - Các tuyến cao tốc, quốc lộ: Trên địa bàn huyện có 3 tuyến quốc lộ chạy qua là Đại lộ Thăng long, đường Hồ Chí Minh và quốc lộ 21A. - Các tuyến đường tỉnh: Tr ên địa bàn huyện có 5 tuyến đ ường tỉnh chạy qua là đư ờng tỉnh 419, đ ường tỉnh 421, đ ường tỉnh 421B, đ ường tỉnh 422, đường tỉnh 423. - Các tuyến đường huyện: Trên địa bàn huyện có 11 tuyến huyện. - Đường x ã, liên xã: T ổng chiều d ài đư ờng x ã và liên xã..."
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Trong kế hoạch sử dụng đất 2025 của Quốc Oai, phần Giao thông: có nội dung chính nào?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Quốc Oai, 2025",
+      "Chủ đề: Giao thông:",
+      "Ý chính: district:Quốc Oai | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Diện tích đất giao thông toàn huyện là 1347,18 ha, chiếm 8,91%..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 153,
+      "dossierCode": "HN-QuocOai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_204",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=148, dossierCode=HN-QuocOai-KH2025, planYear=2025, district=Quốc Oai, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai, chunkType=table, topic=Các công trình, dự án nằm trong biểu 1A, evidence=district:Quốc Oai | plan_year:2025 | chunk_type:table | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai Huyện Quốc Oai Sài Sơn QĐ 4798/QĐ-UBNDn gày 23/10/2012 của UBND Thành phố phê duyệt điều chỉnh quy hoạch chi tiết tỷ lệ 1/500 của dự án; QĐ phê duyệt chủ trương đầu tư1890/QĐ-UBND ngày 09/12/2005; Văn bản 4254/VP-ĐT ngày 10/5/2022 của Văn phòng UBND Thành phố; Thông báo số 479/TB -VP ngày 13/10/2023 của Văn phòng UBND thành phố Hà Nội về việc Kết luậận của Chủ tích Thành phố Hà Nội - tổ trưởng tổ công tác tại cuộc họp tổng công tác đặc biệt của UBND thành phố Hà Nội tháo gỡ khó khăn, vướng mắc, hỗ trợ hiệu quả các doanh"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn kiểm tra giúp phần Các công trình, dự án nằm trong biểu 1A ở Quốc Oai năm 2025 đang thuộc nội dung gì.",
+    "expected_output_outline": [
+      "Địa bàn/năm: Quốc Oai, 2025",
+      "Chủ đề: Các công trình, dự án nằm trong biểu 1A",
+      "Ý chính: district:Quốc Oai | plan_year:2025 | chunk_type:table | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai Huyện Quốc Oai Sài Sơn QĐ 4798/QĐ-UBNDn gày 23/10/2012 của UBND Thành phố phê duyệt..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 148,
+      "dossierCode": "HN-QuocOai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_205",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=63, dossierCode=HN-CauGiay-KH2025, planYear=2025, district=Cầu Giấy, title=Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, chunkType=text, topic=Phân tích, đánh giá hiện trạng sử dụng đất, kết quả, evidence=district:Cầu Giấy | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy (ha) Diện tích được duyệt (ha) Kết quả thực hiện Diện tích (ha) Trong đó: Diện tích tăng (+), giảm (-) (ha) Tỷ lệ (%)"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Nếu xem nhanh hồ sơ Cầu Giấy năm 2025, phần Phân tích, đánh giá hiện trạng sử dụng đất, kết quả nói về điểm nào?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Cầu Giấy, 2025",
+      "Chủ đề: Phân tích, đánh giá hiện trạng sử dụng đất, kết quả",
+      "Ý chính: district:Cầu Giấy | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy (ha) Diện tích được duyệt (ha) Kết quả thực hiện Diện tích (ha) Trong đó: Diện tích tăng (+)..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 63,
+      "dossierCode": "HN-CauGiay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_206",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=63, dossierCode=HN-CauGiay-KH2025, planYear=2025, district=Cầu Giấy, title=Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, chunkType=table, topic=Phân tích, đánh giá hiện trạng sử dụng đất, kết quả, evidence=district:Cầu Giấy | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy Đấu giá tổng số 30 thửa, gồm 28 thửa thuộc ô D23; 02 thửa thuộc ô D18, khu đô thị mới Cầu Giấy, quận Cầu Giấy (lô B10, DT 153m2 và lô B19, DT 159m2) Khu đô thị mới Cầu Giấy"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn xem giúp kế hoạch sử dụng đất 2025 ở Cầu Giấy nói gì về phần Phân tích, đánh giá hiện trạng sử dụng đất, kết quả?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Cầu Giấy, 2025",
+      "Chủ đề: Phân tích, đánh giá hiện trạng sử dụng đất, kết quả",
+      "Ý chính: district:Cầu Giấy | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy Đấu giá tổng số 30 thửa, gồm 28 thửa thuộc ô D23; 02 thửa thuộc ô D18, khu đô thị mới Cầu..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 63,
+      "dossierCode": "HN-CauGiay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_207",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=153, dossierCode=HN-QuocOai-KH2025, planYear=2025, district=Quốc Oai, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội, chunkType=text, topic=Các dự án sử dụng vốn ngân, evidence=district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Xây dựng tuyến đường giao thông nối từ đường ĐH01 đi đường ĐH02, xã Nghĩa Hương và xã Liệp Tuyết DGT Ban QLDA ĐTXD huyện Quốc Oai"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Ở Quốc Oai, phần Các dự án sử dụng vốn ngân trong kế hoạch 2025 có ý chính gì?",
+    "expected_output_outline": [
+      "Tên tài liệu: Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội",
+      "Mã hồ sơ: HN-QuocOai-KH2025"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 153,
+      "dossierCode": "HN-QuocOai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_208",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=17, dossierCode=HN-HoanKiem-KH2025, planYear=2025, district=Hoàn Kiếm, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội, chunkType=table, topic=Kết quả thực hiện kế hoạch sử dụng đất năm trước, evidence=district:Hoàn Kiếm | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội Kế hoạch sử dụng đất năm 2024 quận Hoàn Kiếm đã được UBND Thành phố Hà Nội phê duyệt tại các Quyết định số 1146/QĐ -UBND ngày 04/3/2024; số 1992/QĐ-UBND ngày 15/4/2024; số 3856/QĐ-UBND ngày 25/7/2024. Tổng số dự án được phê duyệt là 28 dự án, diện tích 4,98 ha. Kết quả thực hiện như sau:"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Mình muốn hỏi nhanh phần Kết quả thực hiện kế hoạch sử dụng đất năm trước trong hồ sơ quy hoạch Hoàn Kiếm năm 2025.",
+    "expected_output_outline": [
+      "Địa bàn/năm: Hoàn Kiếm, 2025",
+      "Chủ đề: Kết quả thực hiện kế hoạch sử dụng đất năm trước",
+      "Ý chính: district:Hoàn Kiếm | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm - thành phố Hà Nội Kế hoạch sử dụng đất năm 2024 quận Hoàn Kiếm đã được UBND Thành..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 17,
+      "dossierCode": "HN-HoanKiem-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_209",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=125, dossierCode=HN-ThanhXuan-KH2025, planYear=2025, district=Thanh Xuân, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Thanh Xuân - thành phố Hà Nội, chunkType=table, topic=Đất giao thông, evidence=district:Thanh Xuân | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Thanh Xuân - thành phố Hà Nội Năm 2024 diện tích đất giao thông quận Thanh Xuân là 187.55 ha, trong kế hoạch sử dụng đất năm 2025 diện tích đất giao thông là 192.45 ha, tăng 4.90 ha do chuyển từ đất sản xuất, kinh doanh phi nông nghiệp , đất an ninh, đất bằng trồng cây hàng năm, đất y tế, đất ở, đất sinh hoạt cộng đồng sang (các dự án: Đầu tư xây dựng đường Vành đai 2,5 đoạn từ Nguyễn Trãi (Quốc lộ 6) đến Đầm Hồng; Cải tạo mở rộng theo quy hoạch phố Nguyễn Tuân; Xây dựng sân chơi và bố trí trạm tuần tra tại các thửa đất sau GPMB trên địa bàn phường"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Phần Đất giao thông của kế hoạch sử dụng đất 2025 tại Thanh Xuân đang nêu gì?",
+    "expected_output_outline": [
+      "Tên tài liệu: Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Thanh Xuân - thành phố Hà Nội",
+      "Mã hồ sơ: HN-ThanhXuan-KH2025"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 125,
+      "dossierCode": "HN-ThanhXuan-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_210",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=110, dossierCode=HN-SonTay-KH2025, planYear=2025, district=Sơn Tây, title=Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội, chunkType=text, topic=Đất sử dụng cho hoạt động khoáng SKS 52,57 0,45, evidence=district:Sơn Tây | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây – Thành phố Hà Nội"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Kế hoạch 2025 ở Sơn Tây có thông tin gì liên quan đến Đất sử dụng cho hoạt động khoáng SKS 52,57 0,45?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Sơn Tây, 2025",
+      "Chủ đề: Đất sử dụng cho hoạt động khoáng SKS 52,57 0,45",
+      "Ý chính: district:Sơn Tây | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội Kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây – Thành phố Hà Nội"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 110,
+      "dossierCode": "HN-SonTay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_211",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=51, dossierCode=HN-BacTuLiem-KH2025, planYear=2025, district=Bắc Từ Liêm, title=Báo cáo Thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm, chunkType=table, topic=Đất nông nghiệp khác NKH/PNN 2,71, evidence=district:Bắc Từ Liêm | plan_year:2025 | chunk_type:table | title:Báo cáo Thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm (1) (2) (3) (4) Tổng diện tích tự nhiên 4.534,84"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn tóm tắt một ý chính của phần Đất nông nghiệp khác NKH/PNN 2,71 trong tài liệu Bắc Từ Liêm năm 2025 giúp mình.",
+    "expected_output_outline": [
+      "Tên tài liệu: Báo cáo Thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 quận Bắc Từ Liêm",
+      "Mã hồ sơ: HN-BacTuLiem-KH2025"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 51,
+      "dossierCode": "HN-BacTuLiem-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_212",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=147, dossierCode=HN-MeLinh-KH2025, planYear=2025, district=huyện Mê Linh, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, chunkType=text, topic=Các công trình, dự án nằm trong, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Xây dựng HTKT phục vụ đấu giá đất tại điểm dân cư nông thôn xã Thạch Đà, huyện Mê Linh"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình đang tra hồ sơ huyện Mê Linh năm 2025, phần Các công trình, dự án nằm trong cần chú ý gì?",
+    "expected_output_outline": [
+      "Mã hồ sơ: HN-MeLinh-KH2025",
+      "Năm kế hoạch: 2025",
+      "Địa bàn: huyện Mê Linh"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 147,
+      "dossierCode": "HN-MeLinh-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_213",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=144, dossierCode=HN-DanPhuong-KH2025, planYear=2025, district=huyện Đan Phượng, title=Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, chunkType=text, topic=Kết luận và kiến nghị, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng I. KẾT LUẬN ................................................................................................................ 43"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Trong kế hoạch sử dụng đất 2025 của huyện Đan Phượng, phần Kết luận và kiến nghị có nội dung chính nào?",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Đan Phượng, 2025",
+      "Chủ đề: Kết luận và kiến nghị",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng I. KẾT LUẬN..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 144,
+      "dossierCode": "HN-DanPhuong-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_214",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=25, dossierCode=HN-CauGiay-KH2025, planYear=2025, district=Cầu Giấy, title=Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, chunkType=table, topic=Lập kế hoạch sử dụng đất năm 2025, evidence=district:Cầu Giấy | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy Đấu giá quyền sử dụng đất 04 lô đất tại khu X4 phường Mai Dịch Lô A12 (43,7m2), Lô B19 (38,1m2), Lô B29 (39,7m2), Lô E12 (81,9m2)"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn kiểm tra giúp phần Lập kế hoạch sử dụng đất năm 2025 ở Cầu Giấy năm 2025 đang thuộc nội dung gì.",
+    "expected_output_outline": [
+      "Địa bàn/năm: Cầu Giấy, 2025",
+      "Chủ đề: Lập kế hoạch sử dụng đất năm 2025",
+      "Ý chính: district:Cầu Giấy | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy Đấu giá quyền sử dụng đất 04 lô đất tại khu X4 phường Mai Dịch Lô A12 (43,7m2), Lô B19..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 25,
+      "dossierCode": "HN-CauGiay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_215",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=153, dossierCode=HN-QuocOai-KH2025, planYear=2025, district=Quốc Oai, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội, chunkType=text, topic=Các dự án sử dụng vốn ngân, evidence=district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Xây dựng tuyến đường giao thông nối từ đường ĐH01 đi đường ĐH02, xã Nghĩa Hương và xã Liệp Tuyết DGT Ban QLDA ĐTXD huyện Quốc Oai"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Nếu xem nhanh hồ sơ Quốc Oai năm 2025, phần Các dự án sử dụng vốn ngân nói về điểm nào?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Quốc Oai, 2025",
+      "Chủ đề: Các dự án sử dụng vốn ngân",
+      "Ý chính: district:Quốc Oai | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Quốc Oai - thành phố Hà Nội Xây dựng tuyến đường giao thông nối từ đường ĐH01 đi đường ĐH02..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 153,
+      "dossierCode": "HN-QuocOai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_216",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=110, dossierCode=HN-SonTay-KH2025, planYear=2025, district=Sơn Tây, title=Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội, chunkType=table, topic=Đất có mặt nước chuyên dùng dạng, evidence=district:Sơn Tây | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội ao, hồ, đầm, phá MNC 1.076,81 1.068,61 1.076,81 0,00 0,00 8,20 4,84 3,36"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn xem giúp kế hoạch sử dụng đất 2025 ở Sơn Tây nói gì về phần Đất có mặt nước chuyên dùng dạng?",
+    "expected_output_outline": [
+      "Mã hồ sơ: HN-SonTay-KH2025",
+      "Năm kế hoạch: 2025",
+      "Địa bàn: Sơn Tây"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 110,
+      "dossierCode": "HN-SonTay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_217",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=139, dossierCode=HN-BaDinh-KH2025, planYear=2025, district=Ba Đình, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình, chunkType=text, topic=Các dự án trong biểu 1A, evidence=district:Ba Đình | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Ba Đình Xây dựng tường rào bảo vệ khu vực 1 di tích Chùa Châu Long TON Ban QLDA đầu tư"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Ở Ba Đình, phần Các dự án trong biểu 1A trong kế hoạch 2025 có ý chính gì?",
+    "expected_output_outline": [
+      "Mã hồ sơ: HN-BaDinh-KH2025",
+      "Năm kế hoạch: 2025",
+      "Địa bàn: Ba Đình"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 139,
+      "dossierCode": "HN-BaDinh-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_218",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=16, dossierCode=HN-HoanKiem-KH2025, planYear=2025, district=Hoàn Kiếm, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm, chunkType=table, topic=Các dự án trong biểu 1A, evidence=district:Hoàn Kiếm | plan_year:2025 | chunk_type:table | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm Chỉnh trang hạ tầng kỹ thuật phố Hàm Tử Quan, quận Hoàn Kiếm DGT UBND quận Hoàn Kiếm 0,5726 0,2277 Hoàn Kiếm Phúc Tân, Chương Dương - Nghị quyết số 214/NQ -HĐND ngày 23/10/2023 của HĐND quận Hoàn Kiếm phê duyệt chủ trương, điều chỉnh chủ trương đầu tư một số dự án đầu tư công của quận Hoàn Kiếm, trong đó tại có dự án: Chỉnh trang hạ tầng kỹ thuật phố Hàm Tử Quan, quận Hoàn Kiếm (Tiến độ CBĐT: 2023-2025, THDA: 2025-2028)"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Mình muốn hỏi nhanh phần Các dự án trong biểu 1A trong hồ sơ quy hoạch Hoàn Kiếm năm 2025.",
+    "expected_output_outline": [
+      "Địa bàn/năm: Hoàn Kiếm, 2025",
+      "Chủ đề: Các dự án trong biểu 1A",
+      "Ý chính: district:Hoàn Kiếm | plan_year:2025 | chunk_type:table | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Hoàn Kiếm Chỉnh trang hạ tầng kỹ thuật phố Hàm Tử Quan, quận Hoàn Kiếm DGT UBND quận Hoàn..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 16,
+      "dossierCode": "HN-HoanKiem-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_219",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=32, dossierCode=HN-LongBien-KH2025, planYear=2025, district=Long Biên, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên, chunkType=text, topic=Xây dựng trường THCS tại ô quy hoạch, evidence=district:Long Biên | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên A.8/THCS phường Ngọc Thụy DGD Ban QLDA ĐTXD quận Long Biên"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Phần Xây dựng trường THCS tại ô quy hoạch của kế hoạch sử dụng đất 2025 tại Long Biên đang nêu gì?",
+    "expected_output_outline": [
+      "Tên tài liệu: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên",
+      "Mã hồ sơ: HN-LongBien-KH2025"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 32,
+      "dossierCode": "HN-LongBien-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_220",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=111, dossierCode=HN-SonTay-KH2025, planYear=2025, district=Sơn Tây, title=Danh mục công trình, dự án trong năm kế hoạch 2025 của thị xã Sơn Tây, chunkType=table, topic=Các công trình, dự án chuyển tiếp, evidence=district:Sơn Tây | plan_year:2025 | chunk_type:table | title:Danh mục công trình, dự án trong năm kế hoạch 2025 của thị xã Sơn Tây STT Danh mục công trình, dự án (1) (2) (3) (4) (5) (6) (7) (8) (9) (10) (11)"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Kế hoạch 2025 ở Sơn Tây có thông tin gì liên quan đến Các công trình, dự án chuyển tiếp?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Sơn Tây, 2025",
+      "Chủ đề: Các công trình, dự án chuyển tiếp",
+      "Ý chính: district:Sơn Tây | plan_year:2025 | chunk_type:table | title:Danh mục công trình, dự án trong năm kế hoạch 2025 của thị xã Sơn Tây STT Danh mục công trình, dự án (1) (2) (3) (4) (5) (6) (7) (8) (9) (10) (11)"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 111,
+      "dossierCode": "HN-SonTay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_221",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=138, dossierCode=HN-MeLinh-KH2025, planYear=2025, district=huyện Mê Linh, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, chunkType=table, topic=Các công trình, dự án nằm trong biểu 1A, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Xây dựng HTKT phục vụ đấu giá đất tại điểm dân cư nông thôn xã Thạch Đà, huyện Mê Linh. ONT TTPT Quỹ Đất 7,92 Huyện Mê Linh Xã Thạch Đà Nghị quyết số 03/NQ-HĐND ngày 09/4/2024 của Hội đồng nhân dân huyện Mê Linh về việc hủy bỏ chủ trương đầu tư dự án: Xây dựng nhà văn hóa thôn Khê Ngoại"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn tóm tắt một ý chính của phần Các công trình, dự án nằm trong biểu 1A trong tài liệu huyện Mê Linh năm 2025 giúp mình.",
+    "expected_output_outline": [
+      "Địa bàn/năm: huyện Mê Linh, 2025",
+      "Chủ đề: Các công trình, dự án nằm trong biểu 1A",
+      "Ý chính: district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Xây dựng HTKT phục vụ đấu giá..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 138,
+      "dossierCode": "HN-MeLinh-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_222",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=25, dossierCode=HN-CauGiay-KH2025, planYear=2025, district=Cầu Giấy, title=Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, chunkType=table, topic=Đất phi nông nghiệp, evidence=district:Cầu Giấy | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy Chỉ tiêu đất phi nông nghiệp năm 2024 thực hiện được 1,01/9,18 ha, đạt 10,99% so với kế hoạch được duyệt, còn lại 8,17 ha chưa thực hiện; trong đó dự kiến chuyển tiếp sang năm sau 8,36 ha và hủy bỏ 0,18 ha. Chi tiết các loại đất như sau:"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Mình đang tra hồ sơ Cầu Giấy năm 2025, phần Đất phi nông nghiệp cần chú ý gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Cầu Giấy, 2025",
+      "Chủ đề: Đất phi nông nghiệp",
+      "Ý chính: district:Cầu Giấy | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy Chỉ tiêu đất phi nông nghiệp năm 2024 thực hiện được 1,01/9,18 ha, đạt 10,99% so với kế hoạch..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 25,
+      "dossierCode": "HN-CauGiay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_223",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=142, dossierCode=HN-TayHo-KH2025, planYear=2025, district=Tây Hồ, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ, chunkType=text, topic=Các công trình, dự án chuyển tiếp, evidence=district:Tây Hồ | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Tây Hồ Các khu đất nông nghiệp công ích đấu giá cho thuê để sản xuất nông nghiệp trên địa bàn các phường NNP UBND phường 94,00 Tây Hồ Phú Thượng, Yên Phụ, Tứ Liên, Quảng An, Nhật Tân - Luật Đất đai năm 2024, các Nghị định hướng dẫn thi hành Luật và quy định của Thành phố. - UBND quận Tây Hồ chịu trách nhiệm kiểm tra, rà soát điều kiện, quy mô, diện tích đến từng vị trí thửa đất đề nghị đấu giá quyền thuê đất để sản xuất nông nghiệp; quản lý chặt chẽ việc sử dụng đất đúng mục đích sau đấu giá theo quy định"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Trong kế hoạch sử dụng đất 2025 của Tây Hồ, phần Các công trình, dự án chuyển tiếp có nội dung chính nào?",
+    "expected_output_outline": [
+      "Mã hồ sơ: HN-TayHo-KH2025",
+      "Năm kế hoạch: 2025",
+      "Địa bàn: Tây Hồ"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 142,
+      "dossierCode": "HN-TayHo-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_224",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=144, dossierCode=HN-DanPhuong-KH2025, planYear=2025, district=huyện Đan Phượng, title=Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, chunkType=table, topic=Kế hoạch sử dụng đất năm 2024, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng, thành phố Hà Nội | plan_year:2025 | chunk_type:table | title:Báo cáo tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Đan Phượng tại điểm a, điểm b khoản 1, Điều 48, Thông tư 29/2024/TT -BTNMT và khoản"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn kiểm tra giúp phần Kế hoạch sử dụng đất năm 2024 ở huyện Đan Phượng năm 2025 đang thuộc nội dung gì.",
+    "expected_output_outline": [
+      "Mã hồ sơ: HN-DanPhuong-KH2025",
+      "Năm kế hoạch: 2025",
+      "Địa bàn: huyện Đan Phượng"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 144,
+      "dossierCode": "HN-DanPhuong-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_225",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=25, dossierCode=HN-CauGiay-KH2025, planYear=2025, district=Cầu Giấy, title=Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, chunkType=text, topic=Lập kế hoạch sử dụng đất năm 2025, evidence=district:Cầu Giấy | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy các phường như sau:"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Nếu xem nhanh hồ sơ Cầu Giấy năm 2025, phần Lập kế hoạch sử dụng đất năm 2025 nói về điểm nào?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Cầu Giấy, 2025",
+      "Chủ đề: Lập kế hoạch sử dụng đất năm 2025",
+      "Ý chính: district:Cầu Giấy | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy các phường như sau:"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 25,
+      "dossierCode": "HN-CauGiay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_226",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=118, dossierCode=HN-ThachThat-KH2025, planYear=2025, district=huyện Thạch Thất, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất, chunkType=text, topic=Các công trình, dự án nằm trong biểu 1A, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất Cải tạo, nâng cấp đường giao thông thoát nước khu vực Trúc Động, Đồng Kho, Đồng Táng xã Đồng Trúc DGT Ban Quản lý dự án ĐTXD huyện Thạch Thất"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Bạn xem giúp kế hoạch sử dụng đất 2025 ở huyện Thạch Thất nói gì về phần Các công trình, dự án nằm trong biểu 1A?",
+    "expected_output_outline": [
+      "Tên tài liệu: Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 huyện Thạch Thất",
+      "Mã hồ sơ: HN-ThachThat-KH2025"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 118,
+      "dossierCode": "HN-ThachThat-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_227",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=110, dossierCode=HN-SonTay-KH2025, planYear=2025, district=Sơn Tây, title=Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội, chunkType=text, topic=Chuyển đất nông nghiệp sang đất phi nông, evidence=district:Sơn Tây | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội nghiệp NNP/PNN 119,43 - Trong đó:"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Ở Sơn Tây, phần Chuyển đất nông nghiệp sang đất phi nông trong kế hoạch 2025 có ý chính gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Sơn Tây, 2025",
+      "Chủ đề: Chuyển đất nông nghiệp sang đất phi nông",
+      "Ý chính: district:Sơn Tây | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội nghiệp NNP/PNN 119,43 - Trong đó:"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 110,
+      "dossierCode": "HN-SonTay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_228",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=147, dossierCode=HN-MeLinh-KH2025, planYear=2025, district=huyện Mê Linh, title=Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, chunkType=text, topic=Các công trình, dự án nằm trong, evidence=district:Kế hoạch sử dụng đất năm 2025 huyện Mê Linh, thành phố Hà Nội | plan_year:2025 | chunk_type:text | title:Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh Xây dựng HTKT phục vụ đấu giá đất tại điểm dân cư nông thôn xã Thạch Đà, huyện Mê Linh"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Mình muốn hỏi nhanh phần Các công trình, dự án nằm trong trong hồ sơ quy hoạch huyện Mê Linh năm 2025.",
+    "expected_output_outline": [
+      "Tên tài liệu: Báo cáo thuyết minh tổng hợp Kế hoạch sử dụng đất năm 2025 huyện Mê Linh",
+      "Mã hồ sơ: HN-MeLinh-KH2025"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 147,
+      "dossierCode": "HN-MeLinh-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_229",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=110, dossierCode=HN-SonTay-KH2025, planYear=2025, district=Sơn Tây, title=Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội, chunkType=table, topic=Đất có mặt nước chuyên dùng dạng, evidence=district:Sơn Tây | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội ao, hồ, đầm, phá MNC 1.076,81 1.068,61 1.076,81 0,00 0,00 8,20 4,84 3,36"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Phần Đất có mặt nước chuyên dùng dạng của kế hoạch sử dụng đất 2025 tại Sơn Tây đang nêu gì?",
+    "expected_output_outline": [
+      "Tên tài liệu: Báo cáo thuyết minh tổng hợp kế hoạch sử dụng đất năm 2025 thị xã Sơn Tây - thành phố Hà Nội",
+      "Mã hồ sơ: HN-SonTay-KH2025"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 110,
+      "dossierCode": "HN-SonTay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_230",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=135, dossierCode=HN-HoangMai-KH2025, planYear=2025, district=Hoàng Mai, title=Danh mục các công trình, dự án trong kế hoạch sử dụng đất năm 2025 quận Hoàng Mai, chunkType=table, topic=Xây dựng Trụ sở Ban Chỉ huy Quân sự, evidence=district:Hoàng Mai | plan_year:2025 | chunk_type:table | title:Danh mục các công trình, dự án trong kế hoạch sử dụng đất năm 2025 quận Hoàng Mai phường Thịnh Liệt TSC UBND quận Hoàng Mai 0,087 0,087 Hoàng Mai Thịnh Liệt - Nghị quyết số 09/NQ-HĐND ngày 25/6/2024 của HĐND quận Hoàng Mai về việc điều chỉnh, bổ sung Kế hoạch đầu tư công trung hạn giai đoạn 2021-2025, kế hoạch đầu tư công năm 2024 và phê duyệt chủ trương đầu tư một số dự án đầu tư công ngân sách Quận; (phụ lục 13) - Nghị quyết số 36/NQ-HĐND ngày 4/10/2024 của HĐND Thành phố Hà Nội về việc Thông qua điều chỉnh,bổ sung danh mục các công trình, dự án tu hồi đất năm 2024 ; danh mục các dự án chuyển mục đích sử dụng đất trồng lúa"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "what",
+    "input": "Kế hoạch 2025 ở Hoàng Mai có thông tin gì liên quan đến Xây dựng Trụ sở Ban Chỉ huy Quân sự?",
+    "expected_output_outline": [
+      "Tên tài liệu: Danh mục các công trình, dự án trong kế hoạch sử dụng đất năm 2025 quận Hoàng Mai",
+      "Mã hồ sơ: HN-HoangMai-KH2025"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 135,
+      "dossierCode": "HN-HoangMai-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_231",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=32, dossierCode=HN-LongBien-KH2025, planYear=2025, district=Long Biên, title=Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên, chunkType=text, topic=Các công trình, dự án chuyển tiếp, evidence=district:Long Biên | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên Xây dựng tuyến đường quy hoạch"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Bạn tóm tắt một ý chính của phần Các công trình, dự án chuyển tiếp trong tài liệu Long Biên năm 2025 giúp mình.",
+    "expected_output_outline": [
+      "Địa bàn/năm: Long Biên, 2025",
+      "Chủ đề: Các công trình, dự án chuyển tiếp",
+      "Ý chính: district:Long Biên | plan_year:2025 | chunk_type:text | title:Quyết định về việc phê duyệt Kế hoạch sử dụng đất năm 2025 quận Long Biên Xây dựng tuyến đường quy hoạch"
+    ],
+    "target_metadata": {
+      "planningDocumentId": 32,
+      "dossierCode": "HN-LongBien-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_232",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  },
+  {
+    "domain": "land_use_planning",
+    "context": [
+      "planningDocumentId=63, dossierCode=HN-CauGiay-KH2025, planYear=2025, district=Cầu Giấy, title=Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy, chunkType=table, topic=Trụ sở Viện Khoa học và công nghệ, evidence=district:Cầu Giấy | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy Quân sự - Bộ Quốc Phòng Nghĩa Đô 0,52 0,52 12 Khu đô thị thành phố giao lưu Mai Dịch 9,89 5,00 - Các dự án không nằm Danh mục Nghị quyết Hội đồng nhân dân Thành phố: có 9 công trình, dự án, với diện tích 6,13 ha"
+    ],
+    "source_from": "db_reviewed_20260515_manual_input_rebalance",
+    "difficulty": "easy",
+    "question_type": "natural_multi_fact",
+    "input": "Mình đang tra hồ sơ Cầu Giấy năm 2025, phần Trụ sở Viện Khoa học và công nghệ cần chú ý gì?",
+    "expected_output_outline": [
+      "Địa bàn/năm: Cầu Giấy, 2025",
+      "Chủ đề: Trụ sở Viện Khoa học và công nghệ",
+      "Ý chính: district:Cầu Giấy | plan_year:2025 | chunk_type:table | title:Báo cáo thuyết minh Kế hoạch sử dụng đất năm 2025 quận Cầu Giấy Quân sự - Bộ Quốc Phòng Nghĩa Đô 0,52 0,52 12 Khu đô thị thành phố giao lưu Mai Dịch 9,89..."
+    ],
+    "target_metadata": {
+      "planningDocumentId": 63,
+      "dossierCode": "HN-CauGiay-KH2025",
+      "planYear": 2025,
+      "evalOnly": true
+    },
+    "id": "ST_EASY_233",
+    "dataset_variant": "single_turn_700_v2_db_reviewed_manual_rebalanced"
+  }
+]
