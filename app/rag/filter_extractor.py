@@ -1,9 +1,10 @@
 from __future__ import annotations
 from typing import Any
 import re
-import unicodedata
-
 from pydantic import BaseModel, Field
+
+from ..utils.text import normalize_text as _normalize_text
+from .llm_usage import extract_token_usage, message_content_to_text
 
 class PropertyFilters(BaseModel):
     """Extracted filters from user query"""
@@ -45,13 +46,6 @@ _ADDRESS_MARKERS = (
 
 _POST_TYPE_ALLOWED = {"SALE", "RENT", "OTHER"}
 
-
-def _normalize_text(value: str) -> str:
-    lowered = (value or "").strip().lower()
-    lowered = unicodedata.normalize("NFD", lowered)
-    lowered = "".join(ch for ch in lowered if unicodedata.category(ch) != "Mn")
-    lowered = re.sub(r"\s+", " ", lowered)
-    return lowered
 
 
 def _sanitize_text_value(value: Any) -> str | None:
@@ -117,7 +111,7 @@ def _sanitize_extracted_filters(filters: dict[str, Any]) -> dict[str, Any]:
 
     return cleaned
 
-async def extract_filters_from_query(question: str, llm) -> dict[str, Any]:
+async def extract_filters_from_query_with_usage(question: str, llm) -> tuple[dict[str, Any], dict[str, Any]]:
     """
     Use LLM to extract structured filters from natural language query
     
@@ -130,19 +124,19 @@ async def extract_filters_from_query(question: str, llm) -> dict[str, Any]:
 
     parser = JsonOutputParser(pydantic_object=PropertyFilters)
     
-    prompt = ChatPromptTemplate.from_template(FILTER_EXTRACTION_PROMPT)
-    
-    chain = prompt | llm | parser
+    filter_prompt = ChatPromptTemplate.from_template(FILTER_EXTRACTION_PROMPT)
     
     try:
-        result = await chain.ainvoke({
+        prompt_value = await filter_prompt.ainvoke({
             "question": question,
             "format_instructions": parser.get_format_instructions()
         })
+        ai_message = await llm.ainvoke(prompt_value)
+        result = parser.parse(message_content_to_text(getattr(ai_message, "content", "")))
         
         # Remove None values
         filters = {k: v for k, v in result.items() if v is not None}
-        return _sanitize_extracted_filters(filters)
+        return _sanitize_extracted_filters(filters), extract_token_usage(ai_message)
     except Exception as e:
         print(f"Error extracting filters: {e}")
-        return {}
+        return {}, {}

@@ -157,6 +157,19 @@ def _merge_pgvector_filters(*filters: dict | None) -> dict:
     return {'$and': clauses}
 
 
+def _has_exact_identity_filter(filters: dict | None) -> bool:
+    if not filters:
+        return False
+
+    for key, value in filters.items():
+        if key in {"postId", "propertyId", "planningDocumentId"} and value is not None:
+            return True
+        if key in {"$and", "$or"} and isinstance(value, list):
+            if any(_has_exact_identity_filter(item) for item in value if isinstance(item, dict)):
+                return True
+    return False
+
+
 class HybridRetriever:
     """Hybrid dense + lexical retriever with RRF fusion."""
 
@@ -177,7 +190,7 @@ class HybridRetriever:
         self.lexical_multiplier = max(1, int(os.getenv("RAG_HYBRID_LEX_MULTIPLIER", "3")))
         self.rrf_k = max(1, int(os.getenv("RAG_HYBRID_RRF_K", "60")))
         self.semantic_weight = float(os.getenv("RAG_HYBRID_SEM_WEIGHT", "1.0"))
-        self.lexical_weight = float(os.getenv("RAG_HYBRID_LEX_WEIGHT", "0.9"))
+        self.lexical_weight = float(os.getenv("RAG_HYBRID_LEX_WEIGHT", "1.0"))
 
         base_pg_filter = build_metadata_filter(self.base_filter) if self.base_filter else {}
         query_pg_filter = build_metadata_filter(self.filters) if self.filters else {}
@@ -217,32 +230,38 @@ class HybridRetriever:
         semantic_k = max(self.k, min(96, self.k * self.semantic_multiplier))
         lexical_k = max(self.k, min(96, self.k * self.lexical_multiplier))
 
-        semantic_task = asyncio.create_task(self._semantic_search(query, semantic_k))
-        lexical_task = asyncio.create_task(
-            lexical_search_documents(
+        semantic_res = await self._semantic_search(query, semantic_k)
+        lexical_docs: list[Document] = []
+        lexical_sparse_only = _env_bool("RAG_HYBRID_LEXICAL_SPARSE_ONLY", True)
+        has_exact_identity_filter = _has_exact_identity_filter(self.filters) or _has_exact_identity_filter(
+            self.base_filter
+        )
+        has_any_filter = bool(self.filters or self.base_filter)
+        semantic_count = len(semantic_res)
+        should_probe_lexical = not has_exact_identity_filter and (
+            not lexical_sparse_only
+            or (0 < semantic_count < self.k)
+            or (semantic_count == 0 and not has_any_filter)
+        )
+        if should_probe_lexical:
+            lexical_docs = await lexical_search_documents(
                 self.vs,
                 query=query,
                 k=lexical_k,
                 filters=self.filters,
                 base_filter=self.base_filter,
             )
-        )
-
-        semantic_res, lexical_docs = await asyncio.gather(semantic_task, lexical_task)
 
         docs_by_identity: dict[str, Document] = {}
         fused_scores: dict[str, float] = {}
 
-        for rank, (doc, semantic_score) in enumerate(semantic_res):
+        for rank, (doc, _semantic_score) in enumerate(semantic_res):
             identity = _doc_identity(doc)
             if not identity:
                 continue
             if identity not in docs_by_identity:
                 docs_by_identity[identity] = doc
             fused = self.semantic_weight * _rrf_score(rank, self.rrf_k)
-            if semantic_score is not None:
-                # Keep score contribution small to preserve rank robustness across backends.
-                fused += max(-1.0, min(1.0, float(semantic_score))) * 0.025
             fused_scores[identity] = fused_scores.get(identity, 0.0) + fused
 
         for rank, doc in enumerate(lexical_docs):
@@ -598,26 +617,19 @@ async def lexical_search_documents(
         elif len(term_norm) >= 9:
             term_weight = 1.4
 
-        title_norm_expr = _sql_normalized_text_expr("e.cmetadata->>'title'")
-        dossier_norm_expr = _sql_normalized_text_expr("e.cmetadata->>'dossierCode'")
-        locator_norm_expr = _sql_normalized_text_expr("e.cmetadata->>'sourceLocator'")
-        title_compact_expr = _sql_normalized_text_expr("e.cmetadata->>'title'", compact=True)
-        dossier_compact_expr = _sql_normalized_text_expr("e.cmetadata->>'dossierCode'", compact=True)
-        locator_compact_expr = _sql_normalized_text_expr("e.cmetadata->>'sourceLocator'", compact=True)
-
         match_expr = (
-            f"(LOWER(COALESCE(e.document, '')) LIKE :{raw_param_name} "
-            f"OR LOWER(COALESCE(e.cmetadata->>'title', '')) LIKE :{raw_param_name} "
-            f"OR LOWER(COALESCE(e.cmetadata->>'dossierCode', '')) LIKE :{raw_param_name} "
-            f"OR LOWER(COALESCE(e.cmetadata->>'sourceLocator', '')) LIKE :{raw_param_name} "
-            f"OR {_sql_normalized_text_expr('e.document')} LIKE :{norm_param_name} "
-            f"OR {title_norm_expr} LIKE :{norm_param_name} "
-            f"OR {dossier_norm_expr} LIKE :{norm_param_name} "
-            f"OR {locator_norm_expr} LIKE :{norm_param_name} "
-            f"OR {_sql_normalized_text_expr('e.document', compact=True)} LIKE :{compact_param_name} "
-            f"OR {title_compact_expr} LIKE :{compact_param_name} "
-            f"OR {dossier_compact_expr} LIKE :{compact_param_name} "
-            f"OR {locator_compact_expr} LIKE :{compact_param_name})"
+            f"(lower_document LIKE :{raw_param_name} "
+            f"OR lower_title LIKE :{raw_param_name} "
+            f"OR lower_dossier_code LIKE :{raw_param_name} "
+            f"OR lower_source_locator LIKE :{raw_param_name} "
+            f"OR normalized_document LIKE :{norm_param_name} "
+            f"OR normalized_title LIKE :{norm_param_name} "
+            f"OR normalized_dossier_code LIKE :{norm_param_name} "
+            f"OR normalized_source_locator LIKE :{norm_param_name} "
+            f"OR compact_document LIKE :{compact_param_name} "
+            f"OR compact_title LIKE :{compact_param_name} "
+            f"OR compact_dossier_code LIKE :{compact_param_name} "
+            f"OR compact_source_locator LIKE :{compact_param_name})"
         )
         term_predicates.append(match_expr)
         term_score_parts.append(f"CASE WHEN {match_expr} THEN {term_weight} ELSE 0 END")
@@ -633,10 +645,11 @@ async def lexical_search_documents(
         except ValueError:
             min_term_hits = 1
 
-    where_clauses: list[str] = ["c.name = :collection_name"]
+    base_where_clauses: list[str] = ["c.name = :collection_name"]
+    base_where_clauses.extend(_build_metadata_where_clauses(merged_filters, params))
+    term_where_clause = ""
     if term_predicates:
-        where_clauses.append("(" + " OR ".join(term_predicates) + ")")
-    where_clauses.extend(_build_metadata_where_clauses(merged_filters, params))
+        term_where_clause = "\n            WHERE (" + " OR ".join(term_predicates) + ")"
 
     score_expr = " + ".join(term_score_parts) if term_score_parts else "0"
     having_clause = ""
@@ -646,17 +659,37 @@ async def lexical_search_documents(
     params["min_term_hits"] = max(1, min_term_hits)
     stmt = text(
         f"""
-        SELECT *
-        FROM (
+        WITH base_docs AS (
             SELECT
                 e.document AS document,
                 e.cmetadata AS cmetadata,
-                ({score_expr}) AS lexical_score,
-                ({term_count_expr}) AS lexical_term_hits,
-                e.id AS embedding_id
+                e.id AS embedding_id,
+                LOWER(COALESCE(e.document, '')) AS lower_document,
+                LOWER(COALESCE(e.cmetadata->>'title', '')) AS lower_title,
+                LOWER(COALESCE(e.cmetadata->>'dossierCode', '')) AS lower_dossier_code,
+                LOWER(COALESCE(e.cmetadata->>'sourceLocator', '')) AS lower_source_locator,
+                {_sql_normalized_text_expr('e.document')} AS normalized_document,
+                {_sql_normalized_text_expr("e.cmetadata->>'title'")} AS normalized_title,
+                {_sql_normalized_text_expr("e.cmetadata->>'dossierCode'")} AS normalized_dossier_code,
+                {_sql_normalized_text_expr("e.cmetadata->>'sourceLocator'")} AS normalized_source_locator,
+                {_sql_normalized_text_expr('e.document', compact=True)} AS compact_document,
+                {_sql_normalized_text_expr("e.cmetadata->>'title'", compact=True)} AS compact_title,
+                {_sql_normalized_text_expr("e.cmetadata->>'dossierCode'", compact=True)} AS compact_dossier_code,
+                {_sql_normalized_text_expr("e.cmetadata->>'sourceLocator'", compact=True)} AS compact_source_locator
             FROM langchain_pg_embedding e
             JOIN langchain_pg_collection c ON c.uuid = e.collection_id
-            WHERE {' AND '.join(where_clauses)}
+            WHERE {' AND '.join(base_where_clauses)}
+        )
+        SELECT *
+        FROM (
+            SELECT
+                document,
+                cmetadata,
+                ({score_expr}) AS lexical_score,
+                ({term_count_expr}) AS lexical_term_hits,
+                embedding_id
+            FROM base_docs
+            {term_where_clause}
         ) ranked
         WHERE 1=1{having_clause}
         ORDER BY lexical_score DESC, lexical_term_hits DESC, embedding_id ASC

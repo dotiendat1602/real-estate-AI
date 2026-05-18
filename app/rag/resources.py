@@ -65,19 +65,3 @@ async def initialize_listing_vector_store():
 
 async def initialize_planning_vector_store():
     return await initialize_vector_store(planning_collection_name())
-
-
-def get_initialized_vector_store(collection_name: Optional[str] = None):
-    key = _store_key(collection_name)
-    vector_store = _vector_stores.get(key)
-    if vector_store is None:
-        raise RuntimeError("Vector store not initialized. Await initialize_vector_store() first.")
-    return vector_store
-
-
-def get_initialized_listing_vector_store():
-    return get_initialized_vector_store()
-
-
-def get_initialized_planning_vector_store():
-    return get_initialized_vector_store(planning_collection_name())

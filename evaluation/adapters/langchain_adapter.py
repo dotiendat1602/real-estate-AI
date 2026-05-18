@@ -11,7 +11,6 @@ from typing import Any
 
 from langchain_core.documents import Document
 from langchain_core.messages import AIMessage, HumanMessage
-from langchain_core.output_parsers import StrOutputParser
 
 from app.api.chat import (
     _compact_planning_docs,
@@ -19,9 +18,6 @@ from app.api.chat import (
     _extract_plan_year_from_message,
     _has_planning_intent,
     _is_planning_fact_query,
-    _load_planning_document_docs_sync,
-    _planning_doc_score,
-    _repair_mojibake,
     _rebalance_planning_chunk_mix,
     _retrieve_planning_docs_for_nl_query,
     _select_ranked_planning_docs,
@@ -35,9 +31,76 @@ from app.rag.chain import (
     sanitize_llm_text,
 )
 from app.rag.embedder import build_embeddings
-from app.rag.filter_extractor import extract_filters_from_query
+from app.rag.filter_extractor import extract_filters_from_query_with_usage
+from app.rag.llm_usage import extract_token_usage, message_content_to_text, sum_token_usage
 from app.rag.prompt import prompt
 from app.rag.retriever import build_metadata_filter, build_pgvector_store, build_retriever
+from app.utils.text import repair_mojibake as _repair_mojibake
+
+
+def _planning_sync_database_url() -> str | None:
+    raw = (os.getenv("DATABASE_URL", "") or "").strip()
+    if not raw:
+        return None
+    if raw.startswith("postgresql+asyncpg://"):
+        return "postgresql://" + raw[len("postgresql+asyncpg://") :]
+    return raw
+
+
+def _load_planning_document_docs_sync(
+    planning_document_id: int,
+    plan_year: int | None,
+    *,
+    chunk_types: tuple[str, ...] = ("text", "table"),
+    limit: int = 2500,
+) -> list[Document]:
+    """Load target planning chunks for metadata-driven eval runs only."""
+    conninfo = _planning_sync_database_url()
+    if not conninfo:
+        return []
+
+    try:
+        import psycopg
+    except Exception:
+        return []
+
+    docs: list[Document] = []
+    try:
+        with psycopg.connect(conninfo) as conn:
+            with conn.cursor() as cur:
+                query = """
+                    select document, cmetadata
+                    from ai.langchain_pg_embedding
+                    where collection_id = (
+                        select uuid from ai.langchain_pg_collection where name = %s
+                    )
+                      and cmetadata->>'planningDocumentId' = %s
+                """
+                params: list[Any] = [
+                    os.getenv(
+                        "PGVECTOR_COLLECTION_PLANNING",
+                        "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
+                    ),
+                    str(planning_document_id),
+                ]
+                if plan_year is not None:
+                    query += " and cmetadata->>'planYear' = %s"
+                    params.append(str(plan_year))
+                if chunk_types:
+                    query += " and coalesce(cmetadata->>'chunkType', 'text') = any(%s)"
+                    params.append(list(chunk_types))
+                query += """
+                    order by cast(coalesce(cmetadata->>'globalChunkIndex', cmetadata->>'chunkIndex', '0') as int)
+                    limit %s
+                """
+                params.append(max(1, limit))
+                cur.execute(query, tuple(params))
+                for document, metadata in cur.fetchall():
+                    docs.append(Document(page_content=str(document or ""), metadata=dict(metadata or {})))
+    except Exception:
+        return []
+
+    return docs
 
 
 @dataclass
@@ -145,6 +208,8 @@ class LangChainEvalAdapter:
         )
         filter_extraction_skipped = False
         filter_extraction_skip_reason: str | None = None
+        filter_extraction_token_usage: dict[str, Any] = {}
+        filter_extraction_started = time.perf_counter()
         if use_planning_mode:
             extracted_filters: dict[str, Any] = {}
             filter_extraction_skipped = True
@@ -154,7 +219,11 @@ class LangChainEvalAdapter:
             filter_extraction_skipped = True
             filter_extraction_skip_reason = "target_metadata"
         else:
-            extracted_filters = await extract_filters_from_query(filter_query, self._llm)
+            extracted_filters, filter_extraction_token_usage = await extract_filters_from_query_with_usage(
+                filter_query,
+                self._llm,
+            )
+        filter_extraction_seconds = round(time.perf_counter() - filter_extraction_started, 3)
         filters = self._merge_target_metadata_filters(extracted_filters, retrieval_target_metadata)
 
         is_explanatory_query = self._is_explanatory_question(input_text)
@@ -234,13 +303,18 @@ class LangChainEvalAdapter:
         context_text = self._format_docs(context_docs)
 
         answer_started = time.perf_counter()
-        answer = await self._generate_answer(
+        answer, answer_token_usage = await self._generate_answer(
             question=input_text,
             context=context_text,
             history=history_messages,
             context_docs=context_docs,
         )
         answer_generation_seconds = round(time.perf_counter() - answer_started, 3)
+        runtime_seconds = round(
+            filter_extraction_seconds + retrieval_seconds + answer_generation_seconds,
+            3,
+        )
+        total_token_usage = sum_token_usage([filter_extraction_token_usage, answer_token_usage])
 
         score_map = {
             self._doc_metadata_identity(doc): score
@@ -265,6 +339,8 @@ class LangChainEvalAdapter:
             "retrieval_strategy": retrieval_strategy,
             "filter_extraction_skipped": filter_extraction_skipped,
             "filter_extraction_skip_reason": filter_extraction_skip_reason,
+            "filter_extraction_seconds": filter_extraction_seconds,
+            "filter_extraction_token_usage": filter_extraction_token_usage,
             "target_metadata_eval_only": target_metadata_eval_only,
             "raw_retrieved_docs_count": len(docs),
             "context_docs_count": len(context_docs),
@@ -274,6 +350,9 @@ class LangChainEvalAdapter:
             "context_max_chars_per_doc": max_chars_per_doc,
             "retrieval_seconds": retrieval_seconds,
             "answer_generation_seconds": answer_generation_seconds,
+            "runtime_seconds": runtime_seconds,
+            "answer_token_usage": answer_token_usage,
+            "total_token_usage": total_token_usage,
             "planning_auto_context_used": use_planning_mode,
             "is_explanatory_query": is_explanatory_query,
             "retrieval_augmentation_docs_added": retrieval_augmentation_docs_added,
@@ -552,12 +631,11 @@ class LangChainEvalAdapter:
             (
                 doc,
                 self._planning_target_metadata_score(doc, target_metadata),
-                _planning_doc_score(doc, message, district, plan_year),
             )
             for doc in docs
         ]
-        ranked_with_scores.sort(key=lambda item: (item[1], item[2]), reverse=True)
-        ranked = [doc for doc, _, _ in ranked_with_scores]
+        ranked_with_scores.sort(key=lambda item: item[1], reverse=True)
+        ranked = [doc for doc, _ in ranked_with_scores]
         selected = _select_ranked_planning_docs(
             ranked,
             message,
@@ -573,7 +651,7 @@ class LangChainEvalAdapter:
         # Contextual Recall is not diluted by adjacent but conflicting totals.
         prioritized_target_docs = [
             doc
-            for doc, target_score, _ in ranked_with_scores
+            for doc, target_score in ranked_with_scores
             if target_score > 0.0
         ][: max(3, min(final_k, 8))]
         if prioritized_target_docs:
@@ -776,12 +854,12 @@ class LangChainEvalAdapter:
         context: str,
         history: list[Any],
         context_docs: list[Document],
-    ) -> str:
+    ) -> tuple[str, dict[str, Any]]:
         safe_question = sanitize_llm_text(question, max_len=3000)
         safe_context = sanitize_llm_text(context)
         safe_history = self._sanitize_history_messages(history)
         answer_language = detect_lang(safe_question)
-        chain = (
+        prompt_chain = (
             {
                 "question": lambda x: x["question"],
                 "context": lambda x: x["context"],
@@ -789,18 +867,18 @@ class LangChainEvalAdapter:
                 "answer_language": lambda x: x["answer_language"],
             }
             | prompt
-            | self._llm
-            | StrOutputParser()
         )
-        raw_answer = await chain.ainvoke(
-            {
-                "question": safe_question,
-                "context": safe_context,
-                "history": safe_history,
-                "answer_language": answer_language,
-            }
-        )
-        return postprocess_answer(safe_question, raw_answer, context_docs)
+        payload = {
+            "question": safe_question,
+            "context": safe_context,
+            "history": safe_history,
+            "answer_language": answer_language,
+        }
+        prompt_value = await prompt_chain.ainvoke(payload)
+        ai_message = await self._llm.ainvoke(prompt_value)
+        raw_answer = message_content_to_text(getattr(ai_message, "content", ""))
+        token_usage = extract_token_usage(ai_message)
+        return postprocess_answer(safe_question, raw_answer), token_usage
 
     @staticmethod
     def _sanitize_history_messages(history: list[Any]) -> list[Any]:

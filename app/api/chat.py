@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 import os
 from typing import Any, Optional
 import re
-import unicodedata
 from collections import OrderedDict
 from functools import lru_cache
 from fastapi import APIRouter, Depends
@@ -14,26 +14,22 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from langchain_core.documents import Document
 
 from ..rag.llm import build_llm
+from ..rag.citation_utils import (
+    build_planning_citations as _build_planning_citations,
+    rerank_citations as _rerank_citations,
+)
 from ..rag.listing_fallback import ListingFallbackRetriever
 from ..rag.resources import (
     initialize_listing_vector_store,
     initialize_planning_vector_store,
 )
-from ..rag.retriever import build_retriever, lexical_search_documents
-from ..rag.filter_extractor import extract_filters_from_query
-from ..rag.planning_pipeline import (
-    choose_better_planning_fallback,
-    is_recovery_grouping_query,
-)
+from ..rag.retriever import build_retriever
+from ..rag.filter_extractor import extract_filters_from_query_with_usage
+from ..rag.llm_usage import sum_token_usage
+from ..rag.planning_pipeline import choose_better_planning_fallback
 from ..planning.features import (
-    planning_admin_unit_header_hits as _planning_admin_unit_header_hits,
     planning_doc_haystack as _planning_doc_haystack,
-    planning_has_admin_unit_evidence as _planning_has_admin_unit_evidence,
-    planning_has_direct_admin_unit_count_phrase as _planning_has_direct_admin_unit_count_phrase,
-    planning_has_direct_natural_area_phrase as _planning_has_direct_natural_area_phrase,
     planning_has_explicit_project_row as _planning_has_explicit_project_row,
-    planning_has_natural_area_admin_evidence as _planning_has_natural_area_admin_evidence,
-    planning_is_toc_like_chunk as _is_planning_toc_like_chunk,
     planning_land_change_label_hits as _planning_land_change_label_hits,
     planning_registered_plan_evidence_hits as _planning_registered_plan_evidence_hits,
     strip_planning_metadata_lines as _strip_planning_metadata_lines,
@@ -43,112 +39,38 @@ from ..planning.docs import (
     planning_chunk_type as _planning_chunk_type,
     planning_doc_identity as _planning_doc_identity,
 )
-from ..planning.metadata import canonicalize_planning_district
+from ..planning.metadata import PLANNING_DISTRICT_ALIASES, canonicalize_planning_district
 from ..planning.profiles import (
+    PLANNING_KEYWORDS as _PLANNING_KEYWORDS,
+    PLANNING_LAND_ADMIN_TERMS as _PLANNING_LAND_ADMIN_TERMS,
+    PLANNING_REASON_CONTEXT_TERMS as _PLANNING_REASON_CONTEXT_TERMS,
+    PLANNING_STRUCTURAL_TERMS as _PLANNING_STRUCTURAL_TERMS,
     build_planning_query_profile,
 )
-from ..planning.augmenters import (
-    augment_planning_continuation_neighbors as _augment_planning_continuation_neighbors_base,
-    augment_planning_intent_evidence as _augment_planning_intent_evidence_base,
-    augment_planning_land_change_fact_docs as _augment_planning_land_change_fact_docs_base,
-    augment_planning_land_recovery_evidence as _augment_planning_land_recovery_evidence_base,
-    augment_planning_operational_fact_docs as _augment_planning_operational_fact_docs_base,
-    augment_planning_table_neighbors as _augment_planning_table_neighbors_base,
-    augment_planning_text_neighbors as _augment_planning_text_neighbors_base,
-)
-from ..planning.query_builders import (
-    planning_intent_rescue_queries as _planning_intent_rescue_queries_base,
-    planning_query_candidates as _planning_query_candidates_base,
-)
+from ..planning.query_builders import planning_query_candidates as _planning_query_candidates_base
+from ..planning.query_builders import district_code_fragment as _district_code_fragment
 from ..planning.ranker import (
-    planning_doc_score as _planning_doc_score_base,
     planning_query_terms as _planning_query_terms,
-    planning_specialized_evidence_score as _planning_specialized_evidence_score_base,
 )
 from ..planning.selector import select_ranked_planning_docs as _select_ranked_planning_docs_base
-from ..planning.specialized import force_planning_specialized_evidence as _force_planning_specialized_evidence_base
 from ..rag.message_history import MessageHistoryManager
+from ..rag.static_retriever import StaticDocumentsRetriever as _StaticDocumentsRetriever
+from ..utils.text import (
+    normalize_vietnamese_search_text as _normalize_nl,
+    strip_vietnamese_accents as _strip_accents,
+)
 from ..db.pgvector import get_db
 
 router = APIRouter()
-
-_PLANNING_KEYWORDS = [
-    "quy hoach",
-    "quy hoach su dung dat",
-    "ke hoach su dung dat",
-    "ke hoach",
-    "khsd",
-    "khsdd",
-    "thong tin quy hoach",
-    "loai dat",
-    "thua dat",
-    "to ban do",
-    "muc dich su dung dat",
-    "quy hoach do thi",
-]
-
+_logger = logging.getLogger(__name__)
 
 async def _with_timeout(coro, *, seconds: float, label: str, fallback=None):
     try:
         return await asyncio.wait_for(coro, timeout=seconds)
     except asyncio.TimeoutError:
-        print(f"[Timeout] {label} exceeded {seconds:.1f}s; using fallback.")
+        _logger.warning("%s exceeded %.1fs; using fallback.", label, seconds)
         return fallback
 
-
-class _StaticDocumentsRetriever:
-    def __init__(self, docs: list[Document]) -> None:
-        self.docs = docs
-
-    async def ainvoke(self, query: str) -> list[Document]:
-        return self.docs
-
-_PLANNING_STRUCTURAL_TERMS = [
-    "thua dat",
-    "to ban do",
-    "quy hoach",
-    "ke hoach su dung dat",
-    "muc dich su dung dat",
-    "loai dat",
-    "dat o",
-    "hanh lang",
-    "chi gioi",
-    "thu hoi dat",
-    "dat nong nghiep",
-    "dat phi nong nghiep",
-    "dat chua su dung",
-    "dua dat chua su dung vao su dung",
-    "dien tich tu nhien",
-    "don vi hanh chinh",
-    "luat dat dai",
-]
-
-_PLANNING_LAND_ADMIN_TERMS = [
-    "thu hoi",
-    "dat nong nghiep",
-    "dat phi nong nghiep",
-    "dat chua su dung",
-    "dien tich tu nhien",
-    "don vi hanh chinh",
-    "cong trinh",
-    "du an",
-    "luat dat dai",
-]
-
-_PLANNING_REASON_CONTEXT_TERMS = [
-    "quan ly dat dai",
-    "giai phap",
-    "ha tang",
-    "thoat nuoc",
-    "giao thong",
-    "dich vu",
-    "nha o",
-    "do thi hoa",
-    "dan so co hoc",
-    "bai giua",
-    "song hong",
-    "giai phong mat bang",
-]
 
 _PLANNING_DISTRICT_STOPWORDS = {
     "ke",
@@ -167,30 +89,12 @@ _PLANNING_DISTRICT_STOPWORDS = {
 
 _DISTRICT_PREFIX_PATTERN = re.compile(r"^(quan|huyen|thi\s+xa|thi\s+tran)\s+")
 
-def _canonical_district_name(seed: str) -> str:
-    return canonicalize_planning_district(seed, title=seed, dossier_code="") or seed
-
-
-_DISTRICT_MATCH_ALIASES: dict[str, tuple[str, ...]] = {
-    _canonical_district_name("Ba Dinh"): ("ba dinh", "quan ba dinh"),
-    _canonical_district_name("Bac Tu Liem"): ("bac tu liem", "quan bac tu liem"),
-    _canonical_district_name("Cau Giay"): ("cau giay", "quan cau giay"),
-    _canonical_district_name("Dong Da"): ("dong da", "quan dong da"),
-    _canonical_district_name("Hai Ba Trung"): ("hai ba trung", "quan hai ba trung"),
-    _canonical_district_name("Ha Dong"): ("ha dong", "quan ha dong"),
-    _canonical_district_name("Hoan Kiem"): ("hoan kiem", "quan hoan kiem"),
-    _canonical_district_name("Hoang Mai"): ("hoang mai", "quan hoang mai"),
-    _canonical_district_name("Long Bien"): ("long bien", "quan long bien"),
-    _canonical_district_name("Nam Tu Liem"): ("nam tu liem", "quan nam tu liem"),
-    _canonical_district_name("Son Tay"): ("son tay", "thi xa son tay"),
-    _canonical_district_name("Tay Ho"): ("tay ho", "quan tay ho"),
-    _canonical_district_name("Thanh Xuan"): ("thanh xuan", "quan thanh xuan"),
-}
+_DISTRICT_MATCH_ALIASES: dict[str, tuple[str, ...]] = PLANNING_DISTRICT_ALIASES
 
 _WARD_DISTRICT_HINTS: dict[str, tuple[str, ...]] = {
-    _canonical_district_name("Hoang Mai"): ("yen so",),
-    _canonical_district_name("Cau Giay"): ("mai dich",),
-    _canonical_district_name("Hoan Kiem"): ("chuong duong",),
+    "Hoàng Mai": ("yen so",),
+    "Cầu Giấy": ("mai dich",),
+    "Hoàn Kiếm": ("chuong duong",),
 }
 
 
@@ -198,48 +102,7 @@ _PLANNING_MAX_QUERY_CANDIDATES = 12
 _PLANNING_MAX_FACT_SUBQUERIES = 8
 _PLANNING_QUERY_CACHE_SIZE = 256
 
-_PLANNING_QUERY_CACHE: OrderedDict[str, tuple[list[Document], list[Document]]] = OrderedDict()
-
-_MOJIBAKE_MARKERS = ("\u00c3", "\u00c2", "\u00c4", "\u00c6", "\u00e2\u20ac", "\u2013", "\u2014", "\ufffd")
-
-
-def _repair_mojibake(text: str) -> str:
-    raw = str(text or "")
-    if not raw or not any(marker in raw for marker in _MOJIBAKE_MARKERS):
-        return raw
-
-    candidates = [raw]
-    for codec in ("latin1", "cp1252"):
-        current = raw
-        for _ in range(2):
-            try:
-                repaired = current.encode(codec).decode("utf-8")
-            except Exception:
-                break
-            candidates.append(repaired)
-            current = repaired
-
-    def _score(value: str) -> tuple[int, int]:
-        marker_hits = sum(value.count(marker) for marker in _MOJIBAKE_MARKERS)
-        replacement_hits = value.count("\ufffd")
-        return marker_hits + replacement_hits * 2, len(value)
-
-    return min(candidates, key=_score)
-
-
-def _strip_accents(text: str) -> str:
-    normalized = _repair_mojibake(text or "").replace("\u0111", "d").replace("\u0110", "D")
-    decomposed = unicodedata.normalize("NFD", normalized)
-    return "".join(ch for ch in decomposed if unicodedata.category(ch) != "Mn")
-
-
-def _normalize_nl(text: str) -> str:
-    lowered = (text or "").lower().strip()
-    lowered = _strip_accents(lowered)
-    lowered = re.sub(r"[^a-z0-9\s]", " ", lowered)
-    lowered = re.sub(r"\s+", " ", lowered)
-    return lowered.strip()
-
+_PLANNING_QUERY_CACHE: OrderedDict[str, list[Document]] = OrderedDict()
 
 def _has_planning_intent(message: str) -> bool:
     normalized = _normalize_nl(message)
@@ -250,8 +113,13 @@ def _has_planning_intent(message: str) -> bool:
     has_plan_year = _extract_plan_year_from_message(message) is not None
     has_admin_unit_hint = bool(re.search(r"\b(phuong|xa|thi tran)\b", normalized))
 
-    has_land_admin_term = any(term in normalized for term in _PLANNING_LAND_ADMIN_TERMS)
+    strong_land_admin_terms = tuple(term for term in _PLANNING_LAND_ADMIN_TERMS if term not in {"cong trinh", "du an"})
+    has_land_admin_term = any(term in normalized for term in strong_land_admin_terms)
     if has_land_admin_term and (has_district_hint or has_plan_year or has_admin_unit_hint):
+        return True
+
+    has_project_term = any(term in normalized for term in ("cong trinh", "du an"))
+    if has_project_term and has_plan_year and (has_district_hint or has_admin_unit_hint):
         return True
 
     has_reason_context_term = any(term in normalized for term in _PLANNING_REASON_CONTEXT_TERMS)
@@ -391,14 +259,6 @@ def _is_planning_fact_query(message: str) -> bool:
     return _planning_query_profile(message).fact_query
 
 
-def _is_planning_project_listing_query(message: str) -> bool:
-    return _planning_query_profile(message).project_listing
-
-
-def _is_planning_land_change_query(message: str) -> bool:
-    return _planning_query_profile(message).land_change
-
-
 def _district_tokens(district: Optional[str]) -> list[str]:
     if not district:
         return []
@@ -495,37 +355,6 @@ def _doc_matches_plan_year(doc: Document, plan_year: Optional[int]) -> bool:
     return str(plan_year) in _planning_doc_haystack(doc)
 
 
-def _planning_doc_score(doc: Document, message: str, district: Optional[str], plan_year: Optional[int]) -> float:
-    return _planning_doc_score_base(
-        doc,
-        message,
-        district,
-        plan_year,
-        doc_matches_district=_doc_matches_district,
-        doc_matches_plan_year=_doc_matches_plan_year,
-    )
-
-
-def _planning_specialized_evidence_score(
-    doc: Document,
-    message: str,
-    district: Optional[str],
-    plan_year: Optional[int],
-) -> Optional[float]:
-    return _planning_specialized_evidence_score_base(
-        doc,
-        message,
-        district,
-        plan_year,
-        doc_matches_district=_doc_matches_district,
-        doc_matches_plan_year=_doc_matches_plan_year,
-    )
-
-
-def _planning_intent_rescue_queries(message: str, district: Optional[str], plan_year: Optional[int]) -> list[str]:
-    return _planning_intent_rescue_queries_base(message, district, plan_year)
-
-
 def _planning_query_candidates(message: str, district: Optional[str], plan_year: Optional[int]) -> list[str]:
     return _planning_query_candidates_base(
         message,
@@ -551,207 +380,7 @@ def _select_ranked_planning_docs(
         plan_year,
         doc_matches_district=_doc_matches_district,
         doc_matches_plan_year=_doc_matches_plan_year,
-        planning_doc_score=_planning_doc_score,
     )
-
-
-def _planning_lexical_augments_enabled() -> bool:
-    return (os.getenv("RAG_PLANNING_LEXICAL_AUGMENTS_ENABLE", "") or "").strip().lower() in {
-        "1",
-        "true",
-        "yes",
-        "y",
-    }
-
-
-async def _augment_planning_text_neighbors(
-    planning_vs,
-    message: str,
-    district: Optional[str],
-    plan_year: Optional[int],
-    selected_docs: list[Document],
-    limit: int,
-) -> list[Document]:
-    if not _planning_lexical_augments_enabled():
-        return selected_docs
-
-    return await _augment_planning_text_neighbors_base(
-        planning_vs,
-        message,
-        district,
-        plan_year,
-        selected_docs,
-        limit,
-        planning_doc_score=_planning_doc_score,
-    )
-
-
-async def _augment_planning_continuation_neighbors(
-    planning_vs,
-    message: str,
-    selected_docs: list[Document],
-    limit: int,
-) -> list[Document]:
-    if not _planning_lexical_augments_enabled():
-        return selected_docs
-
-    return await _augment_planning_continuation_neighbors_base(
-        planning_vs,
-        message,
-        selected_docs,
-        limit,
-    )
-
-
-async def _augment_planning_land_change_fact_docs(
-    message: str,
-    district: Optional[str],
-    plan_year: Optional[int],
-    selected_docs: list[Document],
-    limit: int,
-) -> list[Document]:
-    return await _augment_planning_land_change_fact_docs_base(
-        message,
-        district,
-        plan_year,
-        selected_docs,
-        limit,
-        planning_doc_score=_planning_doc_score,
-        load_planning_document_docs=_load_planning_document_docs_sync,
-    )
-
-
-async def _augment_planning_operational_fact_docs(
-    message: str,
-    district: Optional[str],
-    plan_year: Optional[int],
-    selected_docs: list[Document],
-    limit: int,
-) -> list[Document]:
-    return await _augment_planning_operational_fact_docs_base(
-        message,
-        district,
-        plan_year,
-        selected_docs,
-        limit,
-        planning_doc_score=_planning_doc_score,
-        load_planning_document_docs=_load_planning_document_docs_sync,
-    )
-
-
-async def _augment_planning_table_neighbors(
-    planning_vs,
-    message: str,
-    selected_docs: list[Document],
-    limit: int,
-) -> list[Document]:
-    if not _planning_lexical_augments_enabled():
-        return selected_docs
-
-    return await _augment_planning_table_neighbors_base(
-        planning_vs,
-        message,
-        selected_docs,
-        limit,
-    )
-
-
-async def _augment_recovery_grouping_with_neighbors(
-    planning_vs,
-    message: str,
-    district: Optional[str],
-    plan_year: Optional[int],
-    selected_docs: list[Document],
-    limit: int,
-) -> list[Document]:
-    if not selected_docs or limit <= 0:
-        return selected_docs
-
-    return await _augment_planning_text_neighbors(
-        planning_vs,
-        message,
-        district,
-        plan_year,
-        selected_docs,
-        limit,
-    )
-
-
-async def _augment_planning_intent_evidence(
-    planning_vs,
-    message: str,
-    district: Optional[str],
-    plan_year: Optional[int],
-    selected_docs: list[Document],
-    pool_docs: list[Document],
-    limit: int,
-) -> list[Document]:
-    if not _planning_lexical_augments_enabled():
-        return selected_docs
-
-    return await _augment_planning_intent_evidence_base(
-        planning_vs,
-        message,
-        district,
-        plan_year,
-        selected_docs,
-        pool_docs,
-        limit,
-        planning_doc_score=_planning_doc_score,
-        planning_specialized_evidence_score=_planning_specialized_evidence_score,
-        planning_intent_rescue_queries=_planning_intent_rescue_queries,
-    )
-
-
-async def _augment_planning_land_recovery_evidence(
-    planning_vs,
-    message: str,
-    district: Optional[str],
-    plan_year: Optional[int],
-    selected_docs: list[Document],
-    pool_docs: list[Document],
-    limit: int,
-) -> list[Document]:
-    if not _planning_lexical_augments_enabled():
-        return selected_docs
-
-    return await _augment_planning_land_recovery_evidence_base(
-        planning_vs,
-        message,
-        district,
-        plan_year,
-        selected_docs,
-        pool_docs,
-        limit,
-        planning_doc_score=_planning_doc_score,
-    )
-
-
-async def _force_planning_specialized_evidence(
-    planning_vs,
-    message: str,
-    district: Optional[str],
-    plan_year: Optional[int],
-    selected_docs: list[Document],
-    limit: int,
-) -> list[Document]:
-    if not _planning_lexical_augments_enabled():
-        return selected_docs
-
-    return await _force_planning_specialized_evidence_base(
-        planning_vs,
-        message,
-        district,
-        plan_year,
-        selected_docs,
-        limit,
-        planning_doc_score=_planning_doc_score,
-        planning_specialized_evidence_score=_planning_specialized_evidence_score,
-        load_planning_document_docs=_load_planning_document_docs_sync,
-        load_admin_overview_sql_rescue_docs=_load_admin_overview_sql_rescue_docs,
-    )
-
-
 def _rebalance_planning_chunk_mix(
     docs: list[Document],
     *,
@@ -843,32 +472,22 @@ def _select_relevant_content_lines(
     district_aliases = set(_district_aliases_for_matching(district))
     year_token = str(plan_year) if plan_year is not None else ""
 
-    scored: list[tuple[float, int, str]] = []
+    ranked_lines: list[tuple[tuple[int, int, int, int, int, int, int], int, str]] = []
     for idx, line in enumerate(lines):
         normalized = _normalize_nl(line)
-        score = 0.0
-        if idx < 3:
-            score += 0.4
-        if query_terms:
-            score += sum(1 for term in query_terms if term in normalized) * 1.2
-        if district_aliases:
-            score += sum(1 for alias in district_aliases if alias in normalized) * 1.4
-        if year_token and year_token in normalized:
-            score += 1.0
-        if re.search(r"\b\d+(?:[\.,]\d+)?\b", normalized):
-            score += 0.35
-        if _planning_has_explicit_project_row(normalized):
-            score += 1.4
-        if planning_marker_hits := _planning_registered_plan_evidence_hits(normalized):
-            score += min(planning_marker_hits, 3) * 0.8
-        if _planning_land_change_label_hits(normalized) > 0:
-            score += 0.8
-        if any(marker in normalized for marker in ("tong so", "tong cong", "dien tich", "thu hoi", "quyet dinh", "nghi quyet")):
-            score += 0.6
-        scored.append((score, idx, line))
+        key = (
+            1 if idx < 3 else 0,
+            sum(1 for term in query_terms if term in normalized) if query_terms else 0,
+            sum(1 for alias in district_aliases if alias in normalized) if district_aliases else 0,
+            1 if year_token and year_token in normalized else 0,
+            1 if re.search(r"\b\d+(?:[\.,]\d+)?\b", normalized) else 0,
+            1 if _planning_has_explicit_project_row(normalized) else 0,
+            _planning_registered_plan_evidence_hits(normalized) + _planning_land_change_label_hits(normalized),
+        )
+        ranked_lines.append((key, idx, line))
 
-    scored.sort(key=lambda item: (item[0], -item[1]), reverse=True)
-    chosen = sorted(scored[: min(max_lines, len(scored))], key=lambda item: item[1])
+    ranked_lines.sort(key=lambda item: (item[0], -item[1]), reverse=True)
+    chosen = sorted(ranked_lines[: min(max_lines, len(ranked_lines))], key=lambda item: item[1])
     return [line for _, _, line in chosen]
 
 
@@ -962,20 +581,16 @@ def _planning_query_cache_key(
     query_text: str,
     base_filter: dict[str, Any],
     probe_k: int,
-    lexical_k: int,
-    use_lexical: bool,
 ) -> str:
     payload = {
         "query": _normalize_nl(query_text),
         "base": base_filter,
         "probe_k": probe_k,
-        "lexical_k": lexical_k,
-        "use_lexical": use_lexical,
     }
     return json.dumps(payload, ensure_ascii=False, sort_keys=True)
 
 
-def _planning_query_cache_get(key: str) -> tuple[list[Document], list[Document]] | None:
+def _planning_query_cache_get(key: str) -> list[Document] | None:
     cached = _PLANNING_QUERY_CACHE.get(key)
     if cached is None:
         return None
@@ -983,187 +598,11 @@ def _planning_query_cache_get(key: str) -> tuple[list[Document], list[Document]]
     return cached
 
 
-def _planning_query_cache_put(key: str, value: tuple[list[Document], list[Document]]) -> None:
+def _planning_query_cache_put(key: str, value: list[Document]) -> None:
     _PLANNING_QUERY_CACHE[key] = value
     _PLANNING_QUERY_CACHE.move_to_end(key)
     while len(_PLANNING_QUERY_CACHE) > _PLANNING_QUERY_CACHE_SIZE:
         _PLANNING_QUERY_CACHE.popitem(last=False)
-
-
-def _planning_sync_database_url() -> str | None:
-    raw = (os.getenv("DATABASE_URL", "") or "").strip()
-    if not raw:
-        return None
-    if raw.startswith("postgresql+asyncpg://"):
-        return "postgresql://" + raw[len("postgresql+asyncpg://") :]
-    return raw
-
-
-def _load_planning_document_docs_sync(
-    planning_document_id: int,
-    plan_year: Optional[int],
-    *,
-    chunk_types: tuple[str, ...] = ("text", "table"),
-    limit: int = 2500,
-) -> list[Document]:
-    conninfo = _planning_sync_database_url()
-    if not conninfo:
-        return []
-
-    try:
-        import psycopg
-    except Exception:
-        return []
-
-    docs: list[Document] = []
-    try:
-        with psycopg.connect(conninfo) as conn:
-            with conn.cursor() as cur:
-                year_value = str(plan_year) if plan_year is not None else None
-                query = """
-                    select document, cmetadata
-                    from ai.langchain_pg_embedding
-                    where collection_id = (
-                        select uuid from ai.langchain_pg_collection where name = %s
-                    )
-                      and cmetadata->>'planningDocumentId' = %s
-                """
-                params: list[Any] = [
-                    os.getenv(
-                        "PGVECTOR_COLLECTION_PLANNING",
-                        "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
-                    ),
-                    str(planning_document_id),
-                ]
-                if year_value is not None:
-                    query += " and cmetadata->>'planYear' = %s"
-                    params.append(year_value)
-                if chunk_types:
-                    query += " and coalesce(cmetadata->>'chunkType', 'text') = any(%s)"
-                    params.append(list(chunk_types))
-                query += """
-                    order by cast(coalesce(cmetadata->>'globalChunkIndex', cmetadata->>'chunkIndex', '0') as int)
-                    limit %s
-                """
-                params.append(max(1, limit))
-                cur.execute(query, tuple(params))
-                for document, metadata in cur.fetchall():
-                    md = dict(metadata or {})
-                    docs.append(Document(page_content=str(document or ""), metadata=md))
-    except Exception:
-        return []
-
-    return docs
-
-
-def _load_admin_overview_sql_rescue_docs_sync(
-    planning_document_id: int,
-    plan_year: Optional[int],
-    limit: int = 6,
-) -> list[Document]:
-    conninfo = _planning_sync_database_url()
-    if not conninfo:
-        return []
-
-    try:
-        import psycopg
-    except Exception:
-        return []
-
-    scored_docs: list[tuple[float, int, int, Document]] = []
-    try:
-        with psycopg.connect(conninfo) as conn:
-            with conn.cursor() as cur:
-                year_value = str(plan_year) if plan_year is not None else None
-                query = """
-                    select document, cmetadata
-                    from ai.langchain_pg_embedding
-                    where collection_id = (
-                        select uuid from ai.langchain_pg_collection where name = %s
-                    )
-                      and cmetadata->>'planningDocumentId' = %s
-                """
-                params: list[Any] = [
-                    os.getenv(
-                        "PGVECTOR_COLLECTION_PLANNING",
-                        "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
-                    ),
-                    str(planning_document_id),
-                ]
-                if year_value is not None:
-                    query += " and cmetadata->>'planYear' = %s"
-                    params.append(year_value)
-                query += """
-                      and coalesce(cmetadata->>'chunkType', 'text') in ('text', 'table')
-                    order by cast(coalesce(cmetadata->>'globalChunkIndex', cmetadata->>'chunkIndex', '0') as int)
-                    limit 2500
-                """
-                cur.execute(
-                    query,
-                    tuple(params),
-                )
-                for document, metadata in cur.fetchall():
-                    md = dict(metadata or {})
-                    doc = Document(page_content=str(document or ""), metadata=md)
-                    haystack = _planning_doc_haystack(doc)
-                    if not haystack or _is_planning_toc_like_chunk(doc.page_content or "", haystack):
-                        continue
-
-                    admin_unit_hits = _planning_admin_unit_header_hits(haystack)
-                    has_natural_area = any(
-                        marker in haystack
-                        for marker in ("dien tich tu nhien", "tong dien tich tu nhien", "co dien tich tu nhien")
-                    )
-                    has_admin_units = _planning_has_admin_unit_evidence(haystack)
-                    if not has_natural_area and not has_admin_units:
-                        continue
-
-                    score = 0.0
-                    if has_natural_area:
-                        score += 3.0
-                    if has_admin_units:
-                        score += 3.0
-                    if _planning_has_natural_area_admin_evidence(haystack):
-                        score += 6.0
-                    if _planning_has_direct_natural_area_phrase(haystack):
-                        score += 3.2
-                    if _planning_has_direct_admin_unit_count_phrase(haystack):
-                        score += 3.0
-                    if re.search(r"\b\d+(?:[\.,]\d+)?\s*ha\b", haystack):
-                        score += 1.4
-                    if re.search(r"\b(?:gom|co)\s+\d+\s+don\s+vi\s+hanh\s+chinh\b", haystack):
-                        score += 2.2
-                    if re.search(r"\b\d+\s+phuong\b", haystack) and re.search(r"\b\d+\s+xa\b", haystack):
-                        score += 1.8
-                    score += min(admin_unit_hits, 15) * 0.18
-
-                    raw_chunk_idx = md.get("globalChunkIndex") if md.get("globalChunkIndex") is not None else md.get("chunkIndex")
-                    try:
-                        chunk_idx = int(raw_chunk_idx) if raw_chunk_idx is not None else 0
-                    except (TypeError, ValueError):
-                        chunk_idx = 0
-
-                    chunk_type = str(md.get("chunkType") or "").lower().strip()
-                    type_bias = 0 if chunk_type == "text" else 1
-                    scored_docs.append((score, type_bias, chunk_idx, doc))
-    except Exception:
-        return []
-
-    scored_docs.sort(key=lambda item: (-item[0], item[1], item[2]))
-    return [doc for _, _, _, doc in scored_docs[: max(1, limit)]]
-
-
-async def _load_admin_overview_sql_rescue_docs(
-    planning_document_id: int,
-    plan_year: Optional[int],
-    limit: int = 6,
-) -> list[Document]:
-    return await asyncio.to_thread(
-        _load_admin_overview_sql_rescue_docs_sync,
-        planning_document_id,
-        plan_year,
-        limit,
-    )
 
 
 def _rrf_score(rank: int, k: int = 60) -> float:
@@ -1187,47 +626,6 @@ def _planning_scope_min_docs(scope: str, final_k: int, fact_query: bool) -> int:
     return max(1, min(final_k, default_threshold))
 
 
-def _planning_debug_enabled() -> bool:
-    raw = (os.getenv("RAG_PLANNING_DEBUG", "") or "").strip().lower()
-    return raw in {"1", "true", "yes", "on", "debug"}
-
-
-def _planning_doc_debug_fields(doc: Document) -> dict[str, Any]:
-    md = doc.metadata or {}
-    chunk_idx = md.get("globalChunkIndex") if md.get("globalChunkIndex") is not None else md.get("chunkIndex")
-    return {
-        "planningDocumentId": md.get("planningDocumentId"),
-        "chunkType": md.get("chunkType"),
-        "chunkIndex": chunk_idx,
-        "pageNumber": md.get("pageNumber"),
-        "planYear": md.get("planYear"),
-        "district": md.get("district"),
-        "sourceLocator": md.get("sourceLocator"),
-    }
-
-
-def _planning_debug_log(event: str, payload: Any) -> None:
-    if not _planning_debug_enabled():
-        return
-
-    try:
-        serialized = json.dumps(payload, ensure_ascii=False, default=str)
-    except Exception:
-        serialized = str(payload)
-    print(f"[PlanningDebug] {event}: {serialized}")
-
-
-def _planning_debug_doc_list(docs: list[Document], *, limit: int = 8) -> list[dict[str, Any]]:
-    out: list[dict[str, Any]] = []
-    for rank, doc in enumerate(docs[: max(0, limit)]):
-        fields = _planning_doc_debug_fields(doc)
-        fields["rank"] = rank + 1
-        fields["identity"] = _planning_doc_identity(doc)
-        fields["preview"] = _normalize_nl((doc.page_content or ""))[:120]
-        out.append(fields)
-    return out
-
-
 async def _retrieve_planning_docs_for_nl_query(
     planning_vs,
     message: str,
@@ -1235,16 +633,6 @@ async def _retrieve_planning_docs_for_nl_query(
     history_messages: Optional[list[dict[str, Any]]] = None,
     force_planning_document_id: Optional[int] = None,
 ) -> list[Document]:
-    retriever_mode = (os.getenv("RAG_RETRIEVER_MODE", "hybrid") or "hybrid").strip().lower()
-    lexical_disabled = (os.getenv("RAG_LEXICAL_DISABLE", "") or "").strip().lower() in {"1", "true", "yes", "y"}
-    planning_lexical_enabled = (os.getenv("RAG_PLANNING_LEXICAL_ENABLE", "") or "").strip().lower() in {
-        "1",
-        "true",
-        "yes",
-        "y",
-    }
-    use_lexical_probe = retriever_mode == "hybrid" and not lexical_disabled and planning_lexical_enabled
-
     district = _extract_district_from_message(message) or _extract_district_from_history(history_messages)
     plan_year = _extract_plan_year_from_message(message)
     if plan_year is None:
@@ -1255,41 +643,23 @@ async def _retrieve_planning_docs_for_nl_query(
     strict_min_docs = _planning_scope_min_docs("strict", final_k, fact_query)
     district_min_docs = _planning_scope_min_docs("district", final_k, fact_query)
     probe_k = max(20, min(120, final_k * 8))
-    lexical_k = max(12, min(40, probe_k // 3))
     chunk_types = ["text", "table"]
 
     query_candidates = _planning_query_candidates(message, district, plan_year)
-    debug_enabled = _planning_debug_enabled()
-    recovery_grouping_query = is_recovery_grouping_query(_normalize_nl(message))
-    project_listing_query = _is_planning_project_listing_query(message)
-
-    if debug_enabled:
-        _planning_debug_log(
-            "query_context",
-            {
-                "message": message,
-                "district": district,
-                "planYear": plan_year,
-                "factQuery": fact_query,
-                "topK": top_k,
-                "finalK": final_k,
-                "strictMinDocs": strict_min_docs,
-                "districtMinDocs": district_min_docs,
-                "probeK": probe_k,
-                "lexicalK": lexical_k,
-                "retrieverMode": retriever_mode,
-                "useLexicalProbe": use_lexical_probe,
-                "queryCandidates": query_candidates,
-                "recoveryGroupingQuery": recovery_grouping_query,
-                "projectListingQuery": project_listing_query,
-            },
-        )
 
     district_canonical = canonicalize_planning_district(district, title=district, dossier_code="") if district else None
     raw_base_candidates: list[dict[str, Any]] = []
 
     if district_canonical:
         if plan_year is not None:
+            district_code = _district_code_fragment(district_canonical)
+            if district_code:
+                raw_base_candidates.append(
+                    {
+                        "documentScope": "planning",
+                        "dossierCode": f"HN-{district_code}-KH{plan_year}",
+                    }
+                )
             raw_base_candidates.append(
                 {
                     "documentScope": "planning",
@@ -1333,19 +703,9 @@ async def _retrieve_planning_docs_for_nl_query(
         seen_base_filters.add(key)
         base_candidates.append(candidate)
 
-    if debug_enabled:
-        _planning_debug_log("base_filter_candidates", base_candidates)
-
     best_fallback: list[Document] = []
-    best_fallback_score = float("-inf")
-
-    def _fallback_doc_score(doc: Document) -> float:
-        return _planning_doc_score(doc, message, district, plan_year)
 
     for base_filter in base_candidates:
-        if debug_enabled:
-            _planning_debug_log("base_filter_start", base_filter)
-
         planning_retriever = build_retriever(
             planning_vs,
             k=probe_k,
@@ -1356,67 +716,24 @@ async def _retrieve_planning_docs_for_nl_query(
 
         docs_by_identity: dict[str, Document] = {}
         vector_rrf_boost: dict[str, float] = {}
-        lexical_rrf_boost: dict[str, float] = {}
 
         for query_text in query_candidates:
             cache_key = _planning_query_cache_key(
                 query_text,
                 base_filter,
                 probe_k,
-                lexical_k,
-                use_lexical_probe,
             )
             cached_result = _planning_query_cache_get(cache_key)
-            used_cache = cached_result is not None
 
             if cached_result is not None:
-                vector_docs, lexical_docs = cached_result
+                vector_docs = cached_result
             else:
-                vector_task = asyncio.create_task(planning_retriever.ainvoke(query_text))
-                vector_docs = await vector_task
-                should_probe_lexical = use_lexical_probe and len(vector_docs) < max(4, final_k)
-                if should_probe_lexical:
-                    lexical_task = asyncio.create_task(
-                        lexical_search_documents(
-                            planning_vs,
-                            query_text,
-                            k=lexical_k,
-                            filters={"chunkTypes": chunk_types},
-                            base_filter=base_filter,
-                        )
-                    )
-                    try:
-                        lexical_docs = await lexical_task
-                    except Exception:
-                        lexical_docs = []
-                else:
-                    lexical_docs = []
-
-                _planning_query_cache_put(cache_key, (vector_docs, lexical_docs))
-
-            if debug_enabled:
-                _planning_debug_log(
-                    "candidate_query_hits",
-                    {
-                        "baseFilter": base_filter,
-                        "query": query_text,
-                        "cache": used_cache,
-                        "vectorCount": len(vector_docs),
-                        "lexicalCount": len(lexical_docs),
-                        "vectorTop": _planning_debug_doc_list(vector_docs, limit=4),
-                        "lexicalTop": _planning_debug_doc_list(lexical_docs, limit=4),
-                    },
-                )
+                vector_docs = await planning_retriever.ainvoke(query_text)
+                _planning_query_cache_put(cache_key, vector_docs)
 
             for rank, doc in enumerate(vector_docs):
                 identity = _planning_doc_identity(doc)
                 vector_rrf_boost[identity] = vector_rrf_boost.get(identity, 0.0) + _rrf_score(rank)
-                if identity not in docs_by_identity:
-                    docs_by_identity[identity] = doc
-
-            for rank, doc in enumerate(lexical_docs):
-                identity = _planning_doc_identity(doc)
-                lexical_rrf_boost[identity] = lexical_rrf_boost.get(identity, 0.0) + _rrf_score(rank)
                 if identity not in docs_by_identity:
                     docs_by_identity[identity] = doc
 
@@ -1425,86 +742,24 @@ async def _retrieve_planning_docs_for_nl_query(
 
         docs = list(docs_by_identity.values())
         if not docs:
-            if debug_enabled:
-                _planning_debug_log("base_filter_empty", {"baseFilter": base_filter})
             continue
 
         deduped = _dedupe_planning_docs(docs)
-        ranked_with_scores: list[tuple[Document, float, float, float, float, float, str]] = []
+        ranked_with_scores: list[tuple[Document, float, str]] = []
         for d in deduped:
             identity = _planning_doc_identity(d)
-            planning_score = _planning_doc_score(d, message, district, plan_year)
-            vector_rrf_score = vector_rrf_boost.get(identity, 0.0) * 18.0
-            lexical_rrf_score = lexical_rrf_boost.get(identity, 0.0) * 42.0
-            rrf_score = vector_rrf_score + lexical_rrf_score
-            total_score = planning_score + rrf_score
-            ranked_with_scores.append((d, total_score, planning_score, rrf_score, lexical_rrf_score, vector_rrf_score, identity))
+            vector_rrf_score = vector_rrf_boost.get(identity, 0.0)
+            ranked_with_scores.append((d, vector_rrf_score, identity))
 
         ranked_with_scores.sort(key=lambda item: item[1], reverse=True)
         ranked = [item[0] for item in ranked_with_scores]
 
-        if debug_enabled:
-            top_ranked: list[dict[str, Any]] = []
-            for rank, (doc, total_score, planning_score, rrf_score, lexical_rrf_score, vector_rrf_score, identity) in enumerate(
-                ranked_with_scores[: min(24, len(ranked_with_scores))],
-                start=1,
-            ):
-                fields = _planning_doc_debug_fields(doc)
-                fields.update(
-                    {
-                        "rank": rank,
-                        "identity": identity,
-                        "score": round(total_score, 6),
-                        "planningScore": round(planning_score, 6),
-                        "rrfScore": round(rrf_score, 6),
-                        "lexicalRrfScore": round(lexical_rrf_score, 6),
-                        "vectorRrfScore": round(vector_rrf_score, 6),
-                        "districtMatch": _doc_matches_district(doc, district),
-                        "yearMatch": _doc_matches_plan_year(doc, plan_year),
-                        "tocLike": _is_planning_toc_like_chunk(doc.page_content or "", _planning_doc_haystack(doc)),
-                    }
-                )
-                top_ranked.append(fields)
-
-            _planning_debug_log(
-                "base_filter_ranked",
-                {
-                    "baseFilter": base_filter,
-                    "rawUniqueCount": len(docs),
-                    "dedupedCount": len(deduped),
-                    "rankedCount": len(ranked),
-                    "topRanked": top_ranked,
-                },
-            )
-
         strict = [d for d in ranked if _doc_matches_district(d, district) and _doc_matches_plan_year(d, plan_year)]
         relaxed = [d for d in ranked if _doc_matches_district(d, district)]
-
-        if debug_enabled:
-            _planning_debug_log(
-                "scope_pool_sizes",
-                {
-                    "baseFilter": base_filter,
-                    "strict": len(strict),
-                    "district": len(relaxed),
-                    "broad": len(ranked),
-                },
-            )
 
         for scope, pool in (("strict", strict), ("district", relaxed), ("broad", ranked)):
             if not pool:
                 continue
-
-            if debug_enabled:
-                _planning_debug_log(
-                    "scope_pool_top",
-                    {
-                        "scope": scope,
-                        "baseFilter": base_filter,
-                        "poolSize": len(pool),
-                        "poolTop": _planning_debug_doc_list(pool, limit=8),
-                    },
-                )
 
             selected = _select_ranked_planning_docs(
                 pool,
@@ -1516,163 +771,11 @@ async def _retrieve_planning_docs_for_nl_query(
             if not selected:
                 continue
 
-            if debug_enabled:
-                _planning_debug_log(
-                    "selected_initial",
-                    {
-                        "scope": scope,
-                        "baseFilter": base_filter,
-                        "selectedCount": len(selected),
-                        "selected": _planning_debug_doc_list(selected, limit=12),
-                    },
-                )
-
-            selected = await _augment_planning_intent_evidence(
-                planning_vs,
-                message,
-                district,
-                plan_year,
-                selected,
-                pool,
-                final_k,
-            )
-
-            selected = await _augment_planning_land_recovery_evidence(
-                planning_vs,
-                message,
-                district,
-                plan_year,
-                selected,
-                pool,
-                final_k,
-            )
-
-            selected = await _force_planning_specialized_evidence(
-                planning_vs,
-                message,
-                district,
-                plan_year,
-                selected,
-                final_k,
-            )
-
-            selected = await _augment_planning_continuation_neighbors(
-                planning_vs,
-                message,
-                selected,
-                final_k,
-            )
-
-            selected = await _augment_planning_land_change_fact_docs(
-                message,
-                district,
-                plan_year,
-                selected,
-                final_k,
-            )
-
-            selected = await _augment_planning_operational_fact_docs(
-                message,
-                district,
-                plan_year,
-                selected,
-                final_k,
-            )
-
-            if debug_enabled:
-                _planning_debug_log(
-                    "selected_after_intent_rescue",
-                    {
-                        "scope": scope,
-                        "baseFilter": base_filter,
-                        "selectedCount": len(selected),
-                        "selected": _planning_debug_doc_list(selected, limit=12),
-                    },
-                )
-
-            if fact_query and selected:
-                selected = await _augment_planning_text_neighbors(
-                    planning_vs,
-                    message,
-                    district,
-                    plan_year,
-                    selected,
-                    final_k,
-                )
-
-                if debug_enabled:
-                    _planning_debug_log(
-                        "selected_after_text_neighbor_augment",
-                        {
-                            "scope": scope,
-                            "baseFilter": base_filter,
-                            "selectedCount": len(selected),
-                            "selected": _planning_debug_doc_list(selected, limit=12),
-                        },
-                    )
-
-                if _is_planning_land_change_query(message):
-                    selected = await _augment_planning_land_change_fact_docs(
-                        message,
-                        district,
-                        plan_year,
-                        selected,
-                        final_k,
-                    )
-
-                selected = await _augment_planning_operational_fact_docs(
-                    message,
-                    district,
-                    plan_year,
-                    selected,
-                    final_k,
-                )
-
-            if (recovery_grouping_query or project_listing_query) and selected:
-                selected = await _augment_planning_table_neighbors(
-                    planning_vs,
-                    message,
-                    selected,
-                    final_k,
-                )
-
-            if recovery_grouping_query and selected:
-                selected = await _augment_recovery_grouping_with_neighbors(
-                    planning_vs,
-                    message,
-                    district,
-                    plan_year,
-                    selected,
-                    final_k,
-                )
-
-            if debug_enabled:
-                _planning_debug_log(
-                    "selected_after_neighbor_augment",
-                    {
-                        "scope": scope,
-                        "baseFilter": base_filter,
-                        "selectedCount": len(selected),
-                        "selected": _planning_debug_doc_list(selected, limit=12),
-                    },
-                )
-
             selected = _rebalance_planning_chunk_mix(
                 selected,
                 limit=final_k,
                 fact_query=fact_query,
             )
-
-            if debug_enabled:
-                _planning_debug_log(
-                    "selected_after_mix_rebalance",
-                    {
-                        "scope": scope,
-                        "baseFilter": base_filter,
-                        "selectedCount": len(selected),
-                        "selected": _planning_debug_doc_list(selected, limit=12),
-                    },
-                )
 
             selected = _compact_planning_docs(
                 selected,
@@ -1688,176 +791,49 @@ async def _retrieve_planning_docs_for_nl_query(
                 fact_query=fact_query,
             )
 
-            if debug_enabled:
-                compact_snapshot: list[dict[str, Any]] = []
-                for rank, doc in enumerate(selected[:12], start=1):
-                    fields = _planning_doc_debug_fields(doc)
-                    fields.update(
-                        {
-                            "rank": rank,
-                            "contentChars": len(doc.page_content or ""),
-                            "contentPreview": _normalize_nl((doc.page_content or ""))[:180],
-                        }
-                    )
-                    compact_snapshot.append(fields)
-
-                _planning_debug_log(
-                    "selected_compacted",
-                    {
-                        "scope": scope,
-                        "baseFilter": base_filter,
-                        "selectedCount": len(selected),
-                        "selected": compact_snapshot,
-                    },
-                )
-
             if scope == "strict":
                 if len(selected) >= strict_min_docs:
-                    print(
-                        "[PlanningNL] Retrieved "
-                        f"{len(selected)} strict docs (year={plan_year or 'N/A'}) "
-                        f"with base_filter={base_filter}"
+                    _logger.info(
+                        "Planning NL retrieved %s strict docs (year=%s) with base_filter=%s",
+                        len(selected),
+                        plan_year or "N/A",
+                        base_filter,
                     )
-                    if debug_enabled:
-                        _planning_debug_log(
-                            "strict_scope_return",
-                            {
-                                "baseFilter": base_filter,
-                                "selectedCount": len(selected),
-                                "minRequired": strict_min_docs,
-                            },
-                        )
                     return selected
 
-                print(
-                    "[PlanningNL] Strict scope too sparse "
-                    f"({len(selected)} docs < {strict_min_docs}); trying broader scope "
-                    f"(year={plan_year or 'N/A'})"
+                _logger.info(
+                    "Planning NL strict scope too sparse (%s docs < %s); trying broader scope (year=%s)",
+                    len(selected),
+                    strict_min_docs,
+                    plan_year or "N/A",
                 )
                 continue
 
-            best_fallback, best_fallback_score = choose_better_planning_fallback(
+            best_fallback = choose_better_planning_fallback(
                 best_fallback,
-                best_fallback_score,
                 selected,
-                _fallback_doc_score,
             )
 
             if scope == "district" and len(selected) >= district_min_docs:
-                print(
-                    "[PlanningNL] Retrieved "
-                    f"{len(selected)} district-matched docs (year={plan_year or 'N/A'}) "
-                    f"with base_filter={base_filter}"
+                _logger.info(
+                    "Planning NL retrieved %s district-matched docs (year=%s) with base_filter=%s",
+                    len(selected),
+                    plan_year or "N/A",
+                    base_filter,
                 )
-                if debug_enabled:
-                    _planning_debug_log(
-                        "district_scope_return",
-                        {
-                            "baseFilter": base_filter,
-                            "selectedCount": len(selected),
-                            "minRequired": district_min_docs,
-                        },
-                    )
                 return selected
 
     if best_fallback:
-        compact_fallback = _compact_planning_docs(
-            best_fallback,
-            message,
-            district,
-            plan_year,
-            fact_query=fact_query,
-        )
         compact_fallback = _rebalance_planning_chunk_mix(
-            compact_fallback,
+            best_fallback,
             limit=final_k,
             fact_query=fact_query,
         )
-        if debug_enabled:
-            _planning_debug_log(
-                "broad_fallback_return",
-                {
-                    "fallbackCount": len(compact_fallback),
-                    "fallbackScore": best_fallback_score,
-                    "fallbackTop": _planning_debug_doc_list(compact_fallback, limit=12),
-                },
-            )
-        print(
-            "[PlanningNL] Falling back to broad planning docs "
-            f"(year={plan_year or 'N/A'})"
-        )
+        _logger.info("Planning NL falling back to broad planning docs (year=%s)", plan_year or "N/A")
         return compact_fallback
 
-    print("[PlanningNL] No planning documents found for NL query")
+    _logger.info("Planning NL found no documents")
     return []
-
-def _tokenize(text: str) -> set[str]:
-    if not text:
-        return set()
-    parts = re.split(r"[^a-zA-Z0-9_\-\u00C0-\u1EF9]+", text.lower())
-    return {p for p in parts if len(p) >= 3}
-
-
-def _rerank_citations(message: str, citations: list[dict[str, Any]], planning_contexts: list[Any]) -> list[dict[str, Any]]:
-    if not citations:
-        return citations
-
-    q_terms = _tokenize(message)
-    planning_property_ids = {ctx.propertyId for ctx in planning_contexts}
-
-    def score(c: dict[str, Any]) -> float:
-        snippet = (c.get("snippet") or "")
-        text_terms = _tokenize(snippet)
-        overlap = len(q_terms.intersection(text_terms))
-
-        semantic_score = float(c.get("score") or 0.0)
-        planning_bonus = 2.0 if c.get("propertyId") in planning_property_ids else 0.0
-        return overlap * 1.5 + semantic_score + planning_bonus
-
-    return sorted(citations, key=score, reverse=True)
-
-
-def _build_planning_citations(docs: list[Document]) -> list[dict[str, Any]]:
-    out: list[dict[str, Any]] = []
-    seen_ids: set[str] = set()
-
-    for d in docs:
-        md = d.metadata or {}
-        doc_id = str(md.get("planningDocumentId") or "")
-        chunk_type = md.get("chunkType") or "text"
-        global_chunk_index = md.get("globalChunkIndex")
-        chunk_index = md.get("chunkIndex")
-        page_number = md.get("pageNumber")
-        key = f"{doc_id}:{chunk_type}:{global_chunk_index}:{chunk_index}:{page_number}"
-        if key in seen_ids:
-            continue
-        seen_ids.add(key)
-
-        out.append({
-            "postId": None,
-            "propertyId": md.get("propertyId"),
-            "planningDocumentId": md.get("planningDocumentId"),
-            "documentScope": md.get("documentScope"),
-            "documentType": md.get("documentType"),
-            "dossierCode": md.get("dossierCode"),
-            "city": md.get("city"),
-            "district": md.get("district"),
-            "planYear": md.get("planYear"),
-            "title": md.get("title"),
-            "sourceUrl": md.get("sourceUrl"),
-            "format": md.get("format"),
-            "chunkType": chunk_type,
-            "chunkIndex": chunk_index,
-            "globalChunkIndex": global_chunk_index,
-            "pageNumber": page_number,
-            "lineStart": md.get("lineStart"),
-            "lineEnd": md.get("lineEnd"),
-            "sourceLocator": md.get("sourceLocator"),
-            "chunker": md.get("chunker"),
-            "snippet": (d.page_content or "")[:300],
-        })
-
-    return out
 
 async def initialize_vector_store():
     """Khởi tạo async vector store - gọi từ startup event"""
@@ -1888,6 +864,8 @@ class ChatResponse(BaseModel):
     answer: str
     citations: list[dict[str, Any]]
     extractedFilters: dict[str, Any] = Field(default_factory=dict)
+    tokenUsage: dict[str, Any] = Field(default_factory=dict)
+    timings: dict[str, float] = Field(default_factory=dict)
 
 @router.post("/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
@@ -1904,28 +882,23 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
     retrieval_message = build_retrieval_query(req.message, history)
     
     llm = build_llm()
-    
-    filter_query = retrieval_message if _normalize_nl(retrieval_message) != _normalize_nl(req.message) else req.message
-    filters = await extract_filters_from_query(filter_query, llm)
-    print(f"Extracted filters: {filters}")
+
+    use_planning_mode = bool(req.planningContexts) or _has_planning_intent(req.message)
+    filters: dict[str, Any] = {}
+    filter_token_usage: dict[str, Any] = {}
+    if not use_planning_mode:
+        filter_query = retrieval_message if _normalize_nl(retrieval_message) != _normalize_nl(req.message) else req.message
+        filters, filter_token_usage = await extract_filters_from_query_with_usage(filter_query, llm)
+        _logger.debug("Extracted listing filters: %s", filters)
 
     extra_context = ""
     planning_citations: list[dict[str, Any]] = []
     planning_docs: list[Document] = []
-    use_planning_mode = bool(req.planningContexts) or _has_planning_intent(req.message)
     planning_vs = None
 
     if use_planning_mode:
-        print("Planning mode enabled for retrieval.")
         planning_vs = await initialize_planning_vector_store()
-        planning_retriever = build_retriever(
-            planning_vs,
-            k=max(6, min(req.topK, 16)),
-            filters={"chunkTypes": ["text", "table"]},
-            base_filter={"documentScope": "planning"},
-            mode_override="vector",
-        )
-        retriever = planning_retriever
+        retriever = _StaticDocumentsRetriever([])
     else:
         vs = await initialize_listing_vector_store()
         retriever = ListingFallbackRetriever(
@@ -1934,10 +907,6 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
             filters=filters,
             k=req.topK,
         )
-
-    print(f"Using topK={req.topK} for retrieval.")
-    print(f"retriever: {retriever}")
-    chain = RagChain(llm=llm, retriever=retriever)
 
     if req.planningContexts:
         if planning_vs is None:
@@ -2017,18 +986,27 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
             planning_citations = _build_planning_citations(planning_docs)
 
     if use_planning_mode:
-        chain = RagChain(llm=llm, retriever=_StaticDocumentsRetriever(planning_docs))
+        retriever = _StaticDocumentsRetriever(planning_docs)
 
+    chain = RagChain(llm=llm, retriever=retriever)
     result = await chain.run(req.message, history=history, extra_context=extra_context)
     merged_citations = result.citations + planning_citations
     reranked_citations = _rerank_citations(req.message, merged_citations, req.planningContexts)
     
     await history_manager.add_message(session_id, "user", req.message)
     await history_manager.add_message(session_id, "assistant", result.answer)
+
+    answer_token_usage = result.token_usage or {}
     
     return ChatResponse(
         sessionId=session_id,
         answer=result.answer,
         citations=reranked_citations,
-        extractedFilters=filters
+        extractedFilters=filters,
+        tokenUsage={
+            "filter_extraction": filter_token_usage,
+            "answer_generation": answer_token_usage,
+            "total": sum_token_usage([filter_token_usage, answer_token_usage]),
+        },
+        timings=result.timings or {},
     )

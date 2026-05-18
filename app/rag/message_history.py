@@ -85,10 +85,3 @@ class MessageHistoryManager:
         )
         self.db.add(message)
         await self.db.commit()
-    
-    async def clear_session(self, session_id: int) -> None:
-        """Xóa toàn bộ messages trong một session"""
-        await self.db.execute(
-            select(ChatMessage).where(ChatMessage.session_id == session_id)
-        )
-        await self.db.commit()
