@@ -13,7 +13,9 @@ Mục tiêu là đọc code theo hướng "hàm này nhận gì, làm gì, vì s
 
 ### 1.1. Nhóm normalize và nhận diện planning intent
 
-#### `_repair_mojibake(text)`
+Các helper normalize được dùng trong `chat.py` qua alias `_normalize_nl` và `_strip_accents`, implementation nằm ở `app/utils/text.py`.
+
+#### `repair_mojibake(text)`
 
 Mục đích: cố sửa chuỗi bị lỗi encoding trước khi normalize tiếng Việt.
 
@@ -25,7 +27,7 @@ Logic:
 
 1. Nếu text không chứa marker mojibake như `Ã`, `Â`, `Ä`, `�` thì trả nguyên chuỗi.
 2. Tạo danh sách candidates gồm text gốc và các bản thử decode lại theo `latin1` hoặc `cp1252` rồi decode `utf-8`.
-3. Chấm điểm candidate bằng số lượng marker lỗi còn lại.
+3. Đếm số marker lỗi còn lại của từng candidate.
 4. Trả candidate có ít marker lỗi nhất.
 
 Vai trò trong RAG:
@@ -33,18 +35,18 @@ Vai trò trong RAG:
 - Giúp `_normalize_nl()` và các hàm matching không bị fail vì text tiếng Việt lưu/truyền sai encoding.
 - Đặc biệt hữu ích với metadata hoặc nội dung tài liệu quy hoạch OCR/PDF bị lỗi.
 
-#### `_strip_accents(text)` và `_normalize_nl(text)`
+#### `strip_vietnamese_accents(text)` và `normalize_vietnamese_search_text(text)`
 
 Mục đích: chuẩn hóa text để so khớp keyword, quận/huyện, năm, marker quy hoạch.
 
-`_strip_accents()`:
+`strip_vietnamese_accents()`:
 
-1. Gọi `_repair_mojibake()`.
+1. Gọi `repair_mojibake()`.
 2. Đổi `đ/Đ` thành `d/D`.
 3. Dùng Unicode NFD để tách dấu.
 4. Bỏ các ký tự dấu.
 
-`_normalize_nl()`:
+`normalize_vietnamese_search_text()`:
 
 1. Lowercase.
 2. Bỏ dấu.
@@ -77,10 +79,11 @@ Logic theo thứ tự:
    - `has_district_hint`: có quận/huyện không.
    - `has_plan_year`: có năm dạng `20xx` không.
    - `has_admin_unit_hint`: có `phuong`, `xa`, `thi tran` không.
-4. Nếu có thuật ngữ đất/hành chính (`thu hoi`, `dat nong nghiep`, `cong trinh`, `du an`, `luat dat dai`...) và có district/year/admin hint, trả `True`.
-5. Nếu có thuật ngữ lý do/bối cảnh (`quan ly dat dai`, `ha tang`, `thoat nuoc`, `giao thong`, `gpmb`...) và có district/year/admin hint, trả `True`.
-6. Nếu không có structural term thì trả `False`.
-7. Nếu có structural term và có district/year/admin hint thì trả `True`.
+4. Nếu có thuật ngữ đất/hành chính mạnh (`thu hoi`, `dat nong nghiep`, `luat dat dai`...) và có district/year/admin hint, trả `True`.
+5. Với marker dễ trùng listing như `cong trinh`/`du an`, chỉ trả `True` khi đồng thời có năm kế hoạch và district/admin hint.
+6. Nếu có thuật ngữ lý do/bối cảnh (`quan ly dat dai`, `ha tang`, `thoat nuoc`, `giao thong`, `gpmb`...) và có district/year/admin hint, trả `True`.
+7. Nếu không có structural term thì trả `False`.
+8. Nếu có structural term và có district/year/admin hint thì trả `True`.
 
 Ý nghĩa:
 
@@ -101,7 +104,7 @@ Mục đích: tìm quận/huyện từ câu hỏi.
 Logic:
 
 1. Normalize message.
-2. Duyệt `_DISTRICT_MATCH_ALIASES`: canonical district -> alias không dấu.
+2. Duyệt `_DISTRICT_MATCH_ALIASES`, hiện dùng chung nguồn alias chuẩn `PLANNING_DISTRICT_ALIASES` với module metadata.
 3. Nếu alias xuất hiện như một cụm từ riêng trong message, trả canonical district.
 4. Nếu không match district trực tiếp, thử `_WARD_DISTRICT_HINTS`, ví dụ phường `Mai Dịch` suy ra `Cầu Giấy`.
 
@@ -182,88 +185,22 @@ Vai trò:
 
 Các hàm sau trong `chat.py` chủ yếu wrap module `app/planning/*` để truyền đúng dependency:
 
-- `_planning_doc_score()`
-- `_planning_specialized_evidence_score()`
-- `_planning_intent_rescue_queries()`
 - `_planning_query_candidates()`
 - `_select_ranked_planning_docs()`
 
 Vì sao cần wrapper:
 
-- `planning.ranker` và `planning.selector` cần hàm match district/year do API layer biết cách match metadata hiện tại.
-- Giữ logic scoring/selection tách khỏi FastAPI nhưng vẫn tái sử dụng được matcher local.
+- `planning.ranker` chỉ giữ helper tách query terms; `planning.selector` áp rule chọn tài liệu sau khi vector RRF đã xếp hạng.
+- `planning.selector` cần hàm match district/year do API layer biết cách match metadata hiện tại.
+- Giữ logic selection tách khỏi FastAPI nhưng vẫn tái sử dụng được matcher local.
 
-### 1.4. Nhóm augment planning
-
-Các hàm `_augment_*` trong `chat.py` bổ sung evidence sau selection ban đầu.
-
-Điểm chung:
-
-- Một số augment chỉ chạy nếu `_planning_lexical_augments_enabled()` bật qua `RAG_PLANNING_LEXICAL_AUGMENTS_ENABLE`.
-- Mục tiêu không phải tăng số lượng tùy tiện, mà cứu các trường hợp retrieval ban đầu lấy đúng "đầu mối" nhưng thiếu chunk liền kề hoặc thiếu dòng bảng quan trọng.
-
-#### `_augment_planning_text_neighbors()`
-
-Mục đích: lấy thêm text chunk lân cận quanh selected docs.
-
-Khi hữu ích:
-
-- Chunk hiện tại là heading hoặc đoạn mở đầu, câu trả lời nằm ở chunk sau.
-- Câu hỏi fact cần đoạn giải thích liền trước/sau.
-
-#### `_augment_planning_continuation_neighbors()`
-
-Mục đích: bổ sung chunk tiếp nối khi đoạn bị cắt ngang.
-
-Khi hữu ích:
-
-- Chunk kết thúc bằng dấu `:`, "gồm", "trong đó", "cụ thể".
-- Bảng hoặc danh sách bị chia qua chunk kế tiếp.
-
-#### `_augment_planning_land_change_fact_docs()`
-
-Mục đích: cứu evidence cho câu hỏi biến động đất/chỉ tiêu đất.
-
-Nó dùng `load_planning_document_docs` để đọc thêm chunks trong cùng tài liệu nếu selected docs thiếu các cặp fact cần thiết như:
-
-- đất nông nghiệp 2024/2025
-- đất phi nông nghiệp 2024/2025
-- đất chưa sử dụng
-
-#### `_augment_planning_operational_fact_docs()`
-
-Mục đích: cứu evidence dạng vận hành/quy trình/thực hiện, ví dụ nhiệm vụ sau phê duyệt, GPMB, báo cáo, bổ sung danh mục.
-
-#### `_augment_planning_table_neighbors()`
-
-Mục đích: bổ sung table chunks gần selected docs.
-
-Khi hữu ích:
-
-- Query dạng "gồm những dự án nào", "bao nhiêu dự án", "thu hồi/không thu hồi".
-- Selected text nói tổng quan nhưng bảng lân cận mới có dòng chi tiết.
-
-#### `_force_planning_specialized_evidence()`
-
-Mục đích: nếu selected docs chưa đủ evidence cho intent chuyên biệt, ép tìm thêm evidence có quality gate cao.
-
-Nó đặc biệt quan trọng cho các dạng:
-
-- công trình cấp thành phố
-- Điều 67
-- tổng số theo quyết định
-- admin overview
-- biến động đất
-- public purpose composition
-- project delay reason
-
-### 1.5. `_rebalance_planning_chunk_mix(docs, limit, fact_query)`
+### 1.4. `_rebalance_planning_chunk_mix(docs, limit, fact_query)`
 
 Mục đích: cân bằng `text` và `table` chunks trước khi đưa vào context.
 
 Input:
 
-- `docs`: docs đã rank/augment.
+- `docs`: docs đã rank.
 - `limit`: số docs tối đa.
 - `fact_query`: câu hỏi fact/numeric hay không.
 
@@ -285,7 +222,7 @@ Vì sao cần:
 - Nếu chỉ lấy table, LLM thiếu bối cảnh.
 - Nếu chỉ lấy text, LLM thiếu số liệu/dòng dự án cụ thể.
 
-### 1.6. `_select_relevant_content_lines()`
+### 1.5. `_select_relevant_content_lines()`
 
 Mục đích: chọn các dòng quan trọng trong một planning chunk dài.
 
@@ -296,21 +233,19 @@ Input:
 - `district`, `plan_year`: hint để ưu tiên dòng.
 - `max_lines`: số dòng tối đa.
 
-Scoring từng dòng:
+Khóa sắp xếp từng dòng:
 
-- Dòng đầu chunk được bonus nhẹ để giữ bối cảnh.
-- Term từ câu hỏi xuất hiện: +1.2 mỗi term.
-- Alias district xuất hiện: +1.4 mỗi alias.
-- Năm kế hoạch xuất hiện: +1.0.
-- Có số: +0.35.
-- Là dòng dự án rõ: +1.4.
-- Có marker danh mục đăng ký/nghị quyết: bonus.
-- Có marker biến động đất: bonus.
-- Có từ như `tong so`, `tong cong`, `dien tich`, `thu hoi`, `quyet dinh`, `nghi quyet`: bonus.
+- Dòng đầu chunk để giữ bối cảnh.
+- Số term từ câu hỏi xuất hiện trong dòng.
+- Số alias district khớp với dòng.
+- Năm kế hoạch có xuất hiện hay không.
+- Dòng có số liệu hay không.
+- Dòng có dạng dự án/công trình rõ hay không.
+- Số marker evidence quy hoạch như danh mục đăng ký, nghị quyết hoặc biến động đất.
 
-Sau scoring:
+Sau khi tạo khóa:
 
-1. Sort theo score giảm dần.
+1. Sort theo khóa relevance giảm dần.
 2. Chọn top `max_lines`.
 3. Sort lại theo thứ tự xuất hiện ban đầu để context vẫn đọc được.
 
@@ -319,7 +254,7 @@ Vai trò:
 - Giảm token noise trong planning context.
 - Giữ các dòng có khả năng chứa answer.
 
-### 1.7. `_compact_planning_doc()` và `_compact_planning_docs()`
+### 1.6. `_compact_planning_doc()` và `_compact_planning_docs()`
 
 #### `_compact_planning_doc()`
 
@@ -357,7 +292,7 @@ Logic:
 3. Tạo key bằng `planningDocumentId`, `chunkType`, chunk index và prefix normalized content.
 4. Dedupe rồi trả list.
 
-### 1.8. Cache planning query
+### 1.7. Cache planning query
 
 Các hàm:
 
@@ -367,12 +302,7 @@ Các hàm:
 
 Mục đích:
 
-- Cache kết quả vector/lexical theo:
-  - query normalized
-  - base filter
-  - `probe_k`
-  - `lexical_k`
-  - có dùng lexical hay không
+- Cache kết quả vector retrieval theo query normalized, base filter và `probe_k`.
 
 Implementation:
 
@@ -385,46 +315,7 @@ Vai trò:
 - Planning retrieval chạy nhiều query candidates và nhiều scopes.
 - Cache giảm gọi vector store lặp lại trong cùng process.
 
-### 1.9. SQL rescue loading
-
-#### `_load_planning_document_docs_sync()`
-
-Mục đích: đọc trực tiếp chunks của một `planningDocumentId` từ DB.
-
-Khi dùng:
-
-- Augmenters cần quét cả tài liệu hoặc chunks cùng tài liệu để tìm evidence bị vector retrieval bỏ sót.
-
-Logic:
-
-1. Resolve sync DB URL từ `DATABASE_URL`.
-2. Import `psycopg`; nếu không có thì trả `[]`.
-3. Query `ai.langchain_pg_embedding` theo collection planning và `planningDocumentId`.
-4. Optional filter `planYear`.
-5. Optional filter `chunkType`.
-6. Order theo `globalChunkIndex/chunkIndex`.
-7. Convert rows thành `Document`.
-
-#### `_load_admin_overview_sql_rescue_docs_sync()`
-
-Mục đích: rescue riêng cho câu hỏi tổng quan hành chính/diện tích tự nhiên.
-
-Khác hàm trên ở chỗ nó score ngay trong Python sau khi load:
-
-- Có `dien tich tu nhien`: bonus.
-- Có đơn vị hành chính: bonus.
-- Có evidence direct count phrase: bonus.
-- Có số ha: bonus.
-- Có pattern `x phuong` và `y xa`: bonus.
-- Loại TOC-like chunks.
-
-Sau đó sort theo:
-
-1. Score giảm dần.
-2. Ưu tiên text hơn table.
-3. Chunk index tăng dần.
-
-### 1.10. `_retrieve_planning_docs_for_nl_query()`
+### 1.8. `_retrieve_planning_docs_for_nl_query()`
 
 Đây là hàm dài và quan trọng nhất trong planning runtime.
 
@@ -444,28 +335,20 @@ Input:
 
 Output:
 
-- `list[Document]` đã selected, augmented, compacted và rebalanced.
+- `list[Document]` đã selected, compacted và rebalanced.
 
 Các pha xử lý:
 
-#### Pha 1: đọc config và derive context
+#### Pha 1: derive query context
 
-Hàm đọc:
+Hàm tính:
 
-- `RAG_RETRIEVER_MODE`
-- `RAG_LEXICAL_DISABLE`
-- `RAG_PLANNING_LEXICAL_ENABLE`
-
-Sau đó tính:
-
-- `use_lexical_probe`: chỉ bật nếu retriever mode là hybrid, lexical không bị disable, và planning lexical enabled.
 - `district`: từ message hoặc history.
 - `plan_year`: từ message hoặc history.
 - `fact_query`: profile intent cho câu hỏi fact/numeric.
 - `final_k`: giới hạn docs cuối, fact query tối đa 16, non-fact tối đa 12.
 - `strict_min_docs`, `district_min_docs`: số docs tối thiểu để accept scope.
-- `probe_k`: số docs lấy từ vector mỗi query, lớn hơn final để có pool rerank.
-- `lexical_k`: số docs lexical nếu cần.
+- `probe_k`: số docs lấy từ vector mỗi query, lớn hơn final để có pool cho RRF rank và filter scope.
 
 #### Pha 2: sinh query candidates
 
@@ -489,12 +372,13 @@ Mục tiêu:
 
 Hàm thử nhiều filter từ hẹp tới rộng:
 
-1. `documentScope=planning + district + planYear`
-2. `documentScope=planning + district`
-3. nếu `force_planning_document_id`: document id + year
-4. nếu `force_planning_document_id`: document id
-5. `documentScope=planning + planYear`
-6. `documentScope=planning`
+1. `documentScope=planning + dossierCode` nếu suy ra được district canonical và năm.
+2. `documentScope=planning + district + planYear`
+3. `documentScope=planning + district`
+4. nếu `force_planning_document_id`: document id + year
+5. nếu `force_planning_document_id`: document id
+6. `documentScope=planning + planYear`
+7. `documentScope=planning`
 
 Sau đó dedupe filters bằng JSON string.
 
@@ -514,39 +398,22 @@ Với mỗi `base_filter`:
    - `mode_override="vector"`
 2. Với từng `query_text`:
    - Tạo cache key.
-   - Nếu cache hit, dùng lại `(vector_docs, lexical_docs)`.
+   - Nếu cache hit, dùng lại `vector_docs`.
    - Nếu cache miss:
      - gọi `planning_retriever.ainvoke(query_text)`
-     - nếu vector trả quá ít và lexical probe bật, gọi `lexical_search_documents()`
      - lưu cache.
 3. Mỗi doc được dedupe theo `_planning_doc_identity()`.
-4. Lưu RRF boost riêng cho vector và lexical:
-   - vector rank boost dùng `_rrf_score(rank)`.
-   - lexical rank boost cũng dùng RRF nhưng sau đó được nhân trọng số lớn hơn.
+4. Lưu vector RRF boost theo rank để giữ tín hiệu semantic rank trong pool.
 
-Vì sao lexical chỉ probe khi vector ít:
-
-- Lexical SQL LIKE có thể tốn DB.
-- Khi vector đã đủ pool, ưu tiên semantic retrieval.
-- Lexical được dùng như cơ chế cứu query chứa số, mã hồ sơ, cụm từ OCR.
-
-#### Pha 5: rerank pool
+#### Pha 5: xếp hạng pool
 
 Sau khi thu docs:
 
 1. Dedupe bằng `_dedupe_planning_docs()`.
-2. Với mỗi doc:
-   - `planning_score = _planning_doc_score(...)`
-   - `vector_rrf_score = vector_rrf_boost * 18`
-   - `lexical_rrf_score = lexical_rrf_boost * 42`
-   - `total_score = planning_score + vector_rrf_score + lexical_rrf_score`
-3. Sort giảm dần theo `total_score`.
+2. Lấy RRF score đã cộng từ thứ hạng vector của các query candidates.
+3. Sort giảm dần theo RRF score.
 
-Ý nghĩa trọng số:
-
-- `planning_score` là logic domain-aware.
-- Vector RRF giữ rank semantic.
-- Lexical RRF được nhân cao hơn vì lexical thường bắt được mã/số/cụm chính xác.
+Điểm quan trọng: runtime không còn cộng điểm document bằng marker/keyword thủ công. Metadata như `dossierCode`, `district`, `planYear` được dùng ở bước filter và chia scope; heading/TOC yếu được xử lý như quality gate trong selector.
 
 #### Pha 6: chia scope pool
 
@@ -558,29 +425,14 @@ Từ ranked docs, tạo:
 
 Sau đó duyệt theo thứ tự strict -> district -> broad.
 
-#### Pha 7: select, augment, rebalance, compact
+#### Pha 7: select, rebalance, compact
 
 Với mỗi scope pool:
 
 1. `_select_ranked_planning_docs()` chọn docs tốt nhất theo intent.
-2. Chạy augmenters:
-   - intent evidence
-   - land recovery evidence
-   - specialized evidence
-   - continuation neighbors
-   - land change fact docs
-   - operational fact docs
-3. Nếu là fact query:
-   - thêm text neighbors.
-   - nếu land change query, chạy land change augment thêm lần nữa.
-   - chạy operational augment thêm lần nữa.
-4. Nếu recovery grouping hoặc project listing:
-   - thêm table neighbors.
-5. Nếu recovery grouping:
-   - thêm recovery grouping neighbors.
-6. `_rebalance_planning_chunk_mix()`.
-7. `_compact_planning_docs()`.
-8. Rebalance lần nữa sau compact.
+2. `_rebalance_planning_chunk_mix()`.
+3. `_compact_planning_docs()`.
+4. Rebalance lần nữa sau compact.
 
 Vì sao rebalance trước và sau compact:
 
@@ -606,12 +458,14 @@ Nếu scope là `broad`:
 
 Cuối cùng:
 
-- Nếu có `best_fallback`, compact + rebalance rồi return.
+- Nếu có `best_fallback`, chỉ rebalance rồi return vì candidate này đã được compact ở pha chọn trước đó.
 - Nếu không có docs nào, return `[]`.
 
-### 1.11. `_build_planning_citations()` và `_rerank_citations()`
+### 1.11. Planning citations
 
-#### `_build_planning_citations(docs)`
+Hai helper citation đã được tách khỏi `chat.py` sang `app/rag/citation_utils.py`; `chat.py` chỉ import alias để merge vào response.
+
+#### `build_planning_citations(docs)`
 
 Mục đích: tạo citation metadata từ planning docs.
 
@@ -633,15 +487,15 @@ Fields citation:
 - `pageNumber`, `lineStart`, `lineEnd`, `sourceLocator`
 - `snippet`
 
-#### `_rerank_citations(message, citations, planning_contexts)`
+#### `rerank_citations(message, citations, planning_contexts)`
 
 Mục đích: sắp lại citations để nguồn liên quan hơn đứng trước.
 
-Score:
+Ordering:
 
-- overlap giữa tokens trong message và snippet: `overlap * 1.5`
-- `semantic_score` nếu citation có field `score`
-- bonus nếu citation propertyId nằm trong `planningContexts`
+- ưu tiên citation thuộc planning context cụ thể nếu request có `planningContexts`;
+- sau đó dùng `score` có sẵn từ retriever nếu citation có field này;
+- nếu không có score, giữ thứ tự xuất hiện ban đầu.
 
 ### 1.12. `chat(req, db)`
 
@@ -683,7 +537,7 @@ Luồng chi tiết:
 7. Nếu planning mode:
    - Init planning vector store.
    - Build planning retriever tạm với `documentScope=planning`, chunk types text/table.
-   - Lúc này `retriever` chỉ là placeholder ban đầu; sau khi lấy `planning_docs`, code thay bằng `_StaticDocumentsRetriever`.
+   - Lúc này `retriever` chỉ là placeholder ban đầu; sau khi lấy `planning_docs`, code thay bằng `StaticDocumentsRetriever` từ `app/rag/static_retriever.py`.
 
 8. Nếu listing mode:
    - Init listing vector store.
@@ -715,15 +569,15 @@ Luồng chi tiết:
       - Build planning citations.
 
 11. Nếu planning mode:
-    - Rebuild chain bằng `RagChain(llm, _StaticDocumentsRetriever(planning_docs))`.
-    - Lý do: planning docs đã được retrieve/augment/compact riêng, không muốn `RagChain` gọi retriever thường thêm lần nữa.
+    - Rebuild chain bằng `RagChain(llm, StaticDocumentsRetriever(planning_docs))`.
+    - Lý do: planning docs đã được retrieve/compact riêng, không muốn `RagChain` gọi retriever thường thêm lần nữa.
 
 12. Chạy generation.
     - `result = await chain.run(req.message, history=history, extra_context=extra_context)`.
 
 13. Citations.
     - `merged_citations = result.citations + planning_citations`.
-    - `_rerank_citations(...)`.
+    - `rerank_citations(...)` từ `app/rag/citation_utils.py`.
 
 14. Lưu history.
     - Lưu message user.
@@ -744,7 +598,19 @@ Luồng chi tiết:
 
 ## 2. `app/rag/chain.py`
 
-`chain.py` là tầng chuẩn bị context và gọi LLM. Nếu `chat.py` quyết định lấy docs nào, thì `chain.py` quyết định đưa docs vào prompt thế nào và chỉnh câu trả lời ra sao.
+`chain.py` hien la thin orchestrator cho RAG runtime. Neu `chat.py` quyet dinh lay docs nao, thi cac module RAG runtime quyet dinh rewrite query, compact context, goi LLM va postprocess answer.
+
+Module split hien tai:
+
+- `app/rag/chain.py`: orchestration, prompt call, timings, citations.
+- `app/rag/query_rewrite.py`: `build_retrieval_query()`.
+- `app/rag/query_intents.py`: intent flags dung chung cho context va postprocess.
+- `app/rag/context_preparation.py`: `prepare_docs_for_context()`, evidence contract cho planning fact query, structured listing context.
+- `app/rag/answer_processing.py`: `postprocess_answer()` va `detect_lang()`.
+- `app/rag/listing_processing.py`: suitability/listing helper dung chung.
+- `app/rag/citation_utils.py`: planning citation builder va citation reranker dung o API response.
+- `app/rag/static_retriever.py`: retriever tra docs co san cho planning mode.
+- `app/utils/text.py`: normalize/sanitize text dung chung, gom ca sua mojibake; `app/rag/text_utils.py` chi re-export de giu import cu.
 
 ### 2.1. `build_retrieval_query(question, history)`
 
@@ -764,8 +630,8 @@ Logic:
 7. Nếu cần rewrite, trả dạng:
 
 ```text
-Bất động sản đang được nhắc tới: <anchor>
-Câu hỏi hiện tại: <current>
+Bat dong san dang duoc nhac toi: <anchor>
+Cau hoi hien tai: <current>
 ```
 
 Vai trò:
@@ -773,7 +639,7 @@ Vai trò:
 - Query "còn giá thì sao?" sẽ retrieve đúng listing đã hỏi trước đó.
 - Query planning follow-up cũng lấy lại district/year qua context.
 
-### 2.2. `postprocess_answer(question, answer, context_docs)`
+### 2.2. `postprocess_answer(question, answer)`
 
 Mục đích: làm sạch và chuẩn hóa answer sau LLM.
 
@@ -789,22 +655,19 @@ Các bước chính:
 6. Nếu user không hỏi diện tích, gọi `_strip_unrequested_area_suffix()`.
 7. Chạy `_PRE_CONTEXT_ANSWER_TRANSFORMS`.
    - Các transform này chỉ cần question + answer.
-   - Ví dụ chuẩn hóa câu trả lời dự án đăng ký mới, thu hồi đất, GPMB, Điều 67.
-8. Chạy `_CONTEXT_ANSWER_TRANSFORMS`.
-   - Các transform này dùng thêm `context_docs`.
-   - Có thể dựng answer trực tiếp từ context khi LLM trả chưa chuẩn.
-9. Chạy `_POST_CONTEXT_ANSWER_TRANSFORMS`.
+   - Ví dụ chuẩn hóa câu trả lời dự án đăng ký mới, thu hồi đất, GPMB.
+8. Chạy `_POST_CONTEXT_ANSWER_TRANSFORMS`.
    - Chỉnh wording cuối cùng cho planning/listing.
-10. Nếu là planning fact hoặc câu hỏi đất nông nghiệp/phi nông nghiệp/chưa sử dụng:
+9. Nếu là planning fact hoặc câu hỏi đất nông nghiệp/phi nông nghiệp/chưa sử dụng:
     - `_strip_unrequested_planning_extra_lines()` loại dòng ngoài phạm vi hỏi.
-11. Nếu là suitability query mà không hỏi giá:
+10. Nếu là suitability query mà không hỏi giá:
     - `_strip_unrequested_price_lines()`.
-12. Nếu hỏi tiện ích trong nhà:
+11. Nếu hỏi tiện ích trong nhà:
     - `_strip_outdoor_detail_lines()`.
     - `_normalize_indoor_amenities_answer()`.
-13. Nếu suitability query:
+12. Nếu suitability query:
     - `_condense_suitability_answer()` rút gọn.
-14. Nếu không phải planning fact, trả cleaned.
+13. Nếu không phải planning fact, trả cleaned.
 15. Nếu planning fact nhưng answer là "không biết/không đủ dữ liệu", trả cleaned.
 16. Trả cleaned.
 
@@ -838,34 +701,23 @@ Các flags chính:
 
 Vai trò:
 
-- `_line_relevance_score()` dùng flags để chọn dòng context.
+- `_line_relevance_key()` dùng flags để chọn dòng context.
 - `postprocess_answer()` dùng flags để bỏ thông tin không được hỏi.
 - `_build_structured_listing_context()` dùng flags để chọn highlights phù hợp.
 
-### 2.4. `_line_relevance_score(line, query_terms, number_terms, intents)`
+### 2.4. `_line_relevance_key(line, query_terms, number_terms, intents)`
 
-Mục đích: chấm điểm một dòng listing context trước khi compact.
+Mục đích: tạo khóa sắp xếp một dòng listing context trước khi compact, không dùng trọng số thực nghiệm kiểu cộng/trừ điểm.
 
-Điểm cộng:
+Khóa gồm các tín hiệu:
 
-- Term trong câu hỏi xuất hiện: +1.25 mỗi term.
-- Số trong câu hỏi xuất hiện: +2.2 mỗi số.
-- Dòng header context: +2.5.
-- Dòng có hint như phòng ngủ, diện tích, nội thất, tiện ích, quy hoạch: +1.0.
-- Suitability/study/explanatory markers match intent: bonus.
-- Business marker được bonus nếu user hỏi business/investment/suitability.
-
-Điểm trừ:
-
-- Có số điện thoại/liên hệ: -5.
-- Giá xuất hiện khi user không hỏi giá: -3.
-- Dòng `loại`, `danh mục`: -2.2.
-- Header trang trí không liên quan: -1.8.
-- Hướng xuất hiện khi user không hỏi hướng: -1.8.
-- Diện tích xuất hiện trong suitability query không hỏi diện tích: -1.8.
-- Boilerplate listing: -2.4.
-- Address-like line khi user không hỏi location: -2.2.
-- Study/work query bị noise bởi nội thất rời như giường/tủ/máy giặt: -1.8.
+- Ít noise hơn: hạn chế dòng liên hệ, boilerplate, giá/hướng/vị trí khi user không hỏi.
+- Có header context hay không.
+- Số term từ câu hỏi xuất hiện trong dòng.
+- Số trong câu hỏi xuất hiện trong dòng.
+- Số marker khớp intent như suitability, study/work, explanatory.
+- Số hint thông tin phổ biến như phòng ngủ, diện tích, nội thất, tiện ích.
+- Business marker nếu user hỏi kinh doanh/đầu tư/phù hợp.
 
 Vai trò:
 
@@ -885,8 +737,8 @@ Logic:
 6. Dedupe line theo normalized text.
 7. Extract query terms và intents.
 8. Giữ dòng header đầu tiên nếu có để LLM biết listing nào.
-9. Chấm điểm từng dòng bằng `_line_relevance_score()`.
-10. Sort theo score.
+9. Tạo khóa sắp xếp từng dòng bằng `_line_relevance_key()`.
+10. Sort theo khóa relevance.
 11. Chọn tối đa `max_lines`, không vượt `max_chars`.
 12. Nếu không chọn được gì, fallback prefix content.
 
@@ -949,12 +801,12 @@ Logic:
 4. Với mỗi dòng:
    - bỏ dòng quá ngắn.
    - đếm marker hits.
-   - nếu có số, bonus.
-   - nếu có `tong so`, `dien tich`, `du an`, `ha`, bonus.
-   - dòng quá dài bị trừ nhẹ.
-   - chỉ giữ dòng score >= 2.3.
+   - ghi nhận dòng có số liệu hay không.
+   - ghi nhận dòng có core fact như `tong so`, `dien tich`, `du an`, `cong trinh`, `ha` hay không.
+   - ghi nhận dòng đủ ngắn để đưa vào fact contract hay không.
 5. Sort candidates theo:
-   - score giảm dần
+   - marker hits giảm dần
+   - ưu tiên dòng có số liệu/core fact/ngắn gọn
    - doc rank tăng dần
    - line index tăng dần
 6. Dedupe dòng.
@@ -974,43 +826,9 @@ Vai trò:
 - System prompt có rule: nếu context có `EVIDENCE CONTRACT`, planning/numeric claims chỉ dùng facts `[F#]`.
 - Đây là guardrail để LLM không lấy số phụ hoặc suy diễn từ đoạn dài.
 
-### 2.8. `_build_planning_context_summary(question, docs)`
+### 2.8. `prepare_docs_for_context(question, docs, max_docs, max_chars_per_doc)`
 
-Mục đích: tạo summary ngắn từ planning docs theo intent, đặt trước context để LLM thấy answer-critical facts sớm.
-
-Các intent được xử lý:
-
-- admin overview
-- city-level listing
-- land change
-- public purpose composition
-- registered plan composition
-- implementation carry-forward
-- project delay reason
-- project structure
-- GPMB
-- environment constraint
-- plan necessity
-- focus management/focus area
-- sector land demand
-- drainage/transport
-
-Logic chung:
-
-1. Join docs thành `combined_text`.
-2. Normalize.
-3. Tùy intent, gọi `_planning_pick_summary_lines()` hoặc extractor chuyên biệt.
-4. Nếu tìm đủ dòng, trả câu summary bắt đầu bằng `Tom tat ...`.
-5. Nếu không đủ evidence, trả `None`.
-
-Vai trò:
-
-- Planning context thường dài và lẫn bảng.
-- Summary giúp LLM ưu tiên đúng dòng khi câu hỏi là phân tích/why/how.
-
-### 2.9. `prepare_docs_for_context(question, docs, max_docs, max_chars_per_doc)`
-
-Đây là hàm quan trọng nhất trong `chain.py` trước khi gọi LLM.
+`prepare_docs_for_context()` hien nam trong `app/rag/context_preparation.py`; day la ham quan trong nhat truoc khi goi LLM.
 
 Mục đích:
 
@@ -1042,16 +860,13 @@ Pha 3: select docs
 Nếu planning_only:
 
 - Không rerank lại sâu.
-- Lấy `deduped[:max_docs]` vì planning retrieval ở `chat.py` đã rank/augment/compact.
+- Lấy `deduped[:max_docs]` vì planning retrieval ở `chat.py` đã rank/compact.
 
 Nếu không planning_only:
 
-1. Score từng doc bằng `_doc_relevance_score()`.
-2. Sort giảm dần.
-3. Lấy top score.
-4. Tính `min_keep_score = max(0.8, top_score * 0.38)`.
-5. Chỉ giữ doc nếu không quá thấp so với top.
-6. Fallback giữ doc đầu nếu selection rỗng.
+1. Giữ nguyên thứ tự retriever sau dedupe.
+2. Lấy `deduped[:max_docs]`.
+3. Không rerank lại ở tầng chain bằng keyword score; nguồn rank chính là retriever/fallback trước đó.
 
 Pha 4: compact từng doc
 
@@ -1059,7 +874,6 @@ Với planning doc:
 
 1. Dùng content đã có.
 2. Planning char limit ít nhất 2600.
-3. Nếu non-fact, có thể thêm planning summary.
 
 Với listing doc:
 
@@ -1075,12 +889,10 @@ Sau đó:
 - Dedupe compacted content.
 - Append vào `prepared`.
 
-Pha 5: planning summary/evidence contract
+Pha 5: evidence contract cho planning fact query
 
 Nếu `prepared` có docs và planning_only:
 
-- Nếu không phải planning fact:
-  - `_apply_global_planning_context_summaries()`.
 - Nếu là planning fact:
   - `_build_planning_evidence_contract()`.
   - Nếu contract có, insert contract thành doc đầu tiên với metadata `isPlanningEvidenceContract=True`.
@@ -1095,7 +907,7 @@ Vai trò:
 - Listing context được làm giàu bằng metadata.
 - Planning context được giữ theo rank đã tính ở `chat.py` nhưng thêm guardrail evidence contract.
 
-### 2.10. `_build_citations(docs)`
+### 2.9. `_build_citations(docs)`
 
 Mục đích: tạo citations từ docs thật sự đưa vào prompt.
 
@@ -1113,7 +925,7 @@ Vai trò:
 
 - Citation phản ánh docs context sau compact/selection, không phải toàn bộ raw retrieval.
 
-### 2.11. `RagChain.__init__()`
+### 2.10. `RagChain.__init__()`
 
 Mục đích: khởi tạo chain prompt.
 
@@ -1131,7 +943,7 @@ Nó tạo `prompt_chain` mapping:
 
 rồi pipe vào `prompt` từ `app/rag/prompt.py`.
 
-### 2.12. `RagChain.run(question, history, extra_context)`
+### 2.11. `RagChain.run(question, history, extra_context)`
 
 Mục đích: chạy full RAG generation sau khi API đã chọn retriever.
 
@@ -1158,7 +970,7 @@ Luồng chi tiết:
 13. Gọi LLM: `self.llm.ainvoke(prompt_value)`.
 14. Lấy text answer bằng `message_content_to_text()`.
 15. Extract token usage.
-16. `postprocess_answer(question, answer, docs_for_context)`.
+16. `postprocess_answer(question, answer)`.
 17. Return `ChatResult`:
     - answer
     - citations từ `_build_citations(docs_for_context)`
@@ -1169,7 +981,7 @@ Luồng chi tiết:
 
 - `question` đưa cho LLM vẫn là câu gốc, không phải retrieval query rewrite. Điều này giúp answer không bị lộ câu rewrite.
 - `retrieval_query` chỉ dùng để lấy context.
-- `extra_context` là cơ chế để `chat.py` nhét planning summary/backend context vào prompt ngoài docs retriever.
+- `extra_context` là cơ chế để `chat.py` đưa backend planning context và planning vector context vào prompt ngoài docs retriever.
 
 ## 3. Mapping trách nhiệm giữa `chat.py` và `chain.py`
 
@@ -1207,13 +1019,7 @@ Khi cần debug vì câu trả lời sai, đi theo thứ tự sau:
    - district/year extract đúng không?
    - query candidates có chứa phrasing phù hợp không?
    - base filter strict có quá hẹp không?
-   - `RAG_PLANNING_DEBUG=true` để xem:
-     - `query_context`
-     - `base_filter_candidates`
-     - `candidate_query_hits`
-     - `base_filter_ranked`
-     - `selected_*`
-   - selected docs sau augment có đủ text/table không?
+   - selected docs có đủ text/table không?
    - compact có cắt mất dòng answer không?
 
 4. Nếu retrieval đúng nhưng answer sai:
@@ -1224,5 +1030,5 @@ Khi cần debug vì câu trả lời sai, đi theo thứ tự sau:
 5. Nếu citations sai:
    - kiểm tra docs trong `docs_for_context`.
    - kiểm tra planning citations merge từ `chat.py`.
-   - kiểm tra `_rerank_citations()` overlap snippet.
+   - kiểm tra `rerank_citations()` có nhận score/citation metadata đúng không.
 

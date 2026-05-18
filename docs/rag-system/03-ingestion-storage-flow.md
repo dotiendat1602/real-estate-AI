@@ -57,10 +57,13 @@ WHERE cmetadata->>'postId' = :post_id
 
 ## Planning ingest: `/api/planning/ingest-documents`
 
+Phần dưới mô tả luồng ở mức pipeline. Nếu cần giải thích sâu từng chiến lược OCR/chunking/metadata để đưa vào báo cáo, xem thêm [06-deep-dive-ingestion-chunking.md](06-deep-dive-ingestion-chunking.md).
+
 File chính:
 
 - API: `app/api/planning.py`
 - Build documents: `app/planning/ingestion.py`
+- Config/env resolver: `app/planning/ingestion_config.py`
 
 ### Data model
 
@@ -208,4 +211,3 @@ Planning:
 - GET `/api/planning/ingested-documents/{planning_document_id}/chunks`
 
 Các endpoint này query trực tiếp `langchain_pg_embedding` để xem số chunk, metadata mẫu và text preview.
-

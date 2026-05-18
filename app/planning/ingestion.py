@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import io
 import logging
-import os
 import re
 import time
 from dataclasses import dataclass
@@ -12,22 +11,29 @@ import httpx
 from langchain_core.documents import Document
 from pypdf import PdfReader
 
+from .ingestion_config import (
+    PLANNING_CHUNKING_BASELINE_FIXED,
+    PLANNING_CHUNKING_HIERARCHICAL_LEAF,
+    PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD,
+    PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT,
+    is_hierarchical_chunking_mode as _is_hierarchical_chunking_mode,
+    resolve_http_verify as _resolve_http_verify,
+    resolve_ingest_require_full as _resolve_ingest_require_full,
+    resolve_ingest_soft_timeout_seconds as _resolve_ingest_soft_timeout_seconds,
+    resolve_ocr_progress_every_pages as _resolve_ocr_progress_every_pages,
+    resolve_pdf_force_ocr_on_low_quality as _resolve_pdf_force_ocr_on_low_quality,
+    resolve_pdf_ocr_fallback_enabled as _resolve_pdf_ocr_fallback_enabled,
+    resolve_pdf_ocr_max_pages as _resolve_pdf_ocr_max_pages,
+    resolve_pdf_ocr_render_scale as _resolve_pdf_ocr_render_scale,
+    resolve_pdf_text_quality_min_score as _resolve_pdf_text_quality_min_score,
+    resolve_planning_chunking_mode as _resolve_planning_chunking_mode,
+    resolve_ssl_allow_insecure_fallback as _resolve_ssl_allow_insecure_fallback,
+)
 from .metadata import canonicalize_planning_district
 from ..utils.chunking import build_splitter
 
 _splitter = None
 _logger = logging.getLogger(__name__)
-
-PLANNING_CHUNKING_BASELINE_FIXED = "planning_baseline_fixed"
-PLANNING_CHUNKING_HIERARCHICAL_LEAF = "planning_hierarchical_leaf"
-PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT = "planning_hierarchical_parent_context"
-PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD = "planning_hierarchical_parent_child"
-
-_PLANNING_HIERARCHICAL_MODES = {
-    PLANNING_CHUNKING_HIERARCHICAL_LEAF,
-    PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT,
-    PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD,
-}
 
 
 def _get_splitter():
@@ -35,126 +41,6 @@ def _get_splitter():
     if _splitter is None:
         _splitter = build_splitter(chunk_size=1500, chunk_overlap=120)
     return _splitter
-
-
-def _resolve_bool_env(name: str, default: bool) -> bool:
-    raw = os.getenv(name)
-    if raw is None:
-        return default
-    return raw.strip().lower() in {"1", "true", "yes", "on"}
-
-
-def _resolve_planning_chunking_mode() -> str:
-    raw = (
-        os.getenv("PLANNING_CHUNKING_MODE") or PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT
-    ).strip().lower()
-    aliases = {
-        "baseline": PLANNING_CHUNKING_BASELINE_FIXED,
-        "fixed": PLANNING_CHUNKING_BASELINE_FIXED,
-        "hierarchical_leaf": PLANNING_CHUNKING_HIERARCHICAL_LEAF,
-        "hierarchical_parent_context": PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT,
-        "hierarchical_parent_child": PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD,
-    }
-    resolved = aliases.get(raw, raw)
-    valid = {PLANNING_CHUNKING_BASELINE_FIXED, *_PLANNING_HIERARCHICAL_MODES}
-    if resolved not in valid:
-        _logger.warning(
-            "Unknown PLANNING_CHUNKING_MODE=%s. Falling back to %s",
-            raw,
-            PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT,
-        )
-        return PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT
-    return resolved
-
-
-def _is_hierarchical_chunking_mode(mode: str) -> bool:
-    return mode in _PLANNING_HIERARCHICAL_MODES
-
-
-def _resolve_http_verify() -> bool | str:
-    if not _resolve_bool_env("PLANNING_INGEST_SSL_VERIFY", True):
-        _logger.warning("Planning ingest SSL verification is disabled by PLANNING_INGEST_SSL_VERIFY=false")
-        return False
-
-    ca_bundle = (
-        os.getenv("PLANNING_INGEST_CA_BUNDLE")
-        or os.getenv("REQUESTS_CA_BUNDLE")
-        or os.getenv("CURL_CA_BUNDLE")
-        or ""
-    ).strip()
-
-    if not ca_bundle:
-        return True
-
-    if not os.path.exists(ca_bundle):
-        _logger.warning(
-            "CA bundle path does not exist. Falling back to system trust store. path=%s",
-            ca_bundle,
-        )
-        return True
-
-    return ca_bundle
-
-
-def _resolve_ssl_allow_insecure_fallback() -> bool:
-    return _resolve_bool_env("PLANNING_INGEST_SSL_ALLOW_INSECURE_FALLBACK", False)
-
-
-def _resolve_pdf_ocr_fallback_enabled() -> bool:
-    return _resolve_bool_env("PLANNING_PDF_OCR_FALLBACK_ENABLED", True)
-
-
-def _resolve_pdf_ocr_max_pages() -> int:
-    raw = os.getenv("PLANNING_PDF_OCR_MAX_PAGES", "0").strip()
-    try:
-        value = int(raw)
-        return max(0, value)
-    except Exception:
-        return 0
-
-
-def _resolve_pdf_ocr_render_scale() -> float:
-    raw = os.getenv("PLANNING_PDF_OCR_RENDER_SCALE", "1.25").strip()
-    try:
-        value = float(raw)
-        return max(0.5, min(value, 3.0))
-    except Exception:
-        return 1.25
-
-
-def _resolve_pdf_text_quality_min_score() -> float:
-    raw = os.getenv("PLANNING_PDF_TEXT_QUALITY_MIN_SCORE", "0.42").strip()
-    try:
-        value = float(raw)
-        return max(0.0, min(value, 1.0))
-    except Exception:
-        return 0.42
-
-
-def _resolve_pdf_force_ocr_on_low_quality() -> bool:
-    return _resolve_bool_env("PLANNING_PDF_FORCE_OCR_ON_LOW_QUALITY", True)
-
-
-def _resolve_ingest_soft_timeout_seconds() -> int:
-    raw = os.getenv("PLANNING_INGEST_SOFT_TIMEOUT_SECONDS", "0").strip()
-    try:
-        value = int(raw)
-        return max(0, value)
-    except Exception:
-        return 0
-
-
-def _resolve_ingest_require_full() -> bool:
-    return _resolve_bool_env("PLANNING_INGEST_REQUIRE_FULL", False)
-
-
-def _resolve_ocr_progress_every_pages() -> int:
-    raw = os.getenv("PLANNING_OCR_PROGRESS_EVERY_PAGES", "5").strip()
-    try:
-        value = int(raw)
-        return max(0, value)
-    except Exception:
-        return 5
 
 
 def _extract_rapidocr_lines(ocr_output: Any) -> list[str]:

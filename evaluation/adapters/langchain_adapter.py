@@ -18,9 +18,6 @@ from app.api.chat import (
     _extract_plan_year_from_message,
     _has_planning_intent,
     _is_planning_fact_query,
-    _load_planning_document_docs_sync,
-    _planning_doc_score,
-    _repair_mojibake,
     _rebalance_planning_chunk_mix,
     _retrieve_planning_docs_for_nl_query,
     _select_ranked_planning_docs,
@@ -38,6 +35,72 @@ from app.rag.filter_extractor import extract_filters_from_query_with_usage
 from app.rag.llm_usage import extract_token_usage, message_content_to_text, sum_token_usage
 from app.rag.prompt import prompt
 from app.rag.retriever import build_metadata_filter, build_pgvector_store, build_retriever
+from app.utils.text import repair_mojibake as _repair_mojibake
+
+
+def _planning_sync_database_url() -> str | None:
+    raw = (os.getenv("DATABASE_URL", "") or "").strip()
+    if not raw:
+        return None
+    if raw.startswith("postgresql+asyncpg://"):
+        return "postgresql://" + raw[len("postgresql+asyncpg://") :]
+    return raw
+
+
+def _load_planning_document_docs_sync(
+    planning_document_id: int,
+    plan_year: int | None,
+    *,
+    chunk_types: tuple[str, ...] = ("text", "table"),
+    limit: int = 2500,
+) -> list[Document]:
+    """Load target planning chunks for metadata-driven eval runs only."""
+    conninfo = _planning_sync_database_url()
+    if not conninfo:
+        return []
+
+    try:
+        import psycopg
+    except Exception:
+        return []
+
+    docs: list[Document] = []
+    try:
+        with psycopg.connect(conninfo) as conn:
+            with conn.cursor() as cur:
+                query = """
+                    select document, cmetadata
+                    from ai.langchain_pg_embedding
+                    where collection_id = (
+                        select uuid from ai.langchain_pg_collection where name = %s
+                    )
+                      and cmetadata->>'planningDocumentId' = %s
+                """
+                params: list[Any] = [
+                    os.getenv(
+                        "PGVECTOR_COLLECTION_PLANNING",
+                        "planning_documents__multilingual_e5_base_ghr1__planning_hierarchical_parent_context",
+                    ),
+                    str(planning_document_id),
+                ]
+                if plan_year is not None:
+                    query += " and cmetadata->>'planYear' = %s"
+                    params.append(str(plan_year))
+                if chunk_types:
+                    query += " and coalesce(cmetadata->>'chunkType', 'text') = any(%s)"
+                    params.append(list(chunk_types))
+                query += """
+                    order by cast(coalesce(cmetadata->>'globalChunkIndex', cmetadata->>'chunkIndex', '0') as int)
+                    limit %s
+                """
+                params.append(max(1, limit))
+                cur.execute(query, tuple(params))
+                for document, metadata in cur.fetchall():
+                    docs.append(Document(page_content=str(document or ""), metadata=dict(metadata or {})))
+    except Exception:
+        return []
+
+    return docs
 
 
 @dataclass
@@ -568,12 +631,11 @@ class LangChainEvalAdapter:
             (
                 doc,
                 self._planning_target_metadata_score(doc, target_metadata),
-                _planning_doc_score(doc, message, district, plan_year),
             )
             for doc in docs
         ]
-        ranked_with_scores.sort(key=lambda item: (item[1], item[2]), reverse=True)
-        ranked = [doc for doc, _, _ in ranked_with_scores]
+        ranked_with_scores.sort(key=lambda item: item[1], reverse=True)
+        ranked = [doc for doc, _ in ranked_with_scores]
         selected = _select_ranked_planning_docs(
             ranked,
             message,
@@ -589,7 +651,7 @@ class LangChainEvalAdapter:
         # Contextual Recall is not diluted by adjacent but conflicting totals.
         prioritized_target_docs = [
             doc
-            for doc, target_score, _ in ranked_with_scores
+            for doc, target_score in ranked_with_scores
             if target_score > 0.0
         ][: max(3, min(final_k, 8))]
         if prioritized_target_docs:
@@ -816,7 +878,7 @@ class LangChainEvalAdapter:
         ai_message = await self._llm.ainvoke(prompt_value)
         raw_answer = message_content_to_text(getattr(ai_message, "content", ""))
         token_usage = extract_token_usage(ai_message)
-        return postprocess_answer(safe_question, raw_answer, context_docs), token_usage
+        return postprocess_answer(safe_question, raw_answer), token_usage
 
     @staticmethod
     def _sanitize_history_messages(history: list[Any]) -> list[Any]:

@@ -42,7 +42,7 @@ Phần dưới mô tả luồng ở mức pipeline. Nếu cần đọc chi tiế
    - initialize_listing_vector_store()
    - build_retriever() + ListingFallbackRetriever()
 10. Tạo RagChain.
-11. Planning mode đổi retriever thành _StaticDocumentsRetriever(planning_docs)
+11. Planning mode đổi retriever thành StaticDocumentsRetriever(planning_docs)
     để không retrieve lại một lần nữa.
 12. RagChain.run(req.message, history, extra_context).
 13. Merge citations + rerank citations.
@@ -58,6 +58,7 @@ Planning mode được bật khi:
 
 - Backend gửi `planningContexts`.
 - Message có các marker như quy hoạch, kế hoạch sử dụng đất, thu hồi đất, chỉ tiêu, phê duyệt, HĐND, dự án quy hoạch...
+- Riêng `dự án`/`công trình` là marker dễ trùng với listing; chúng chỉ bật planning mode khi đi cùng năm kế hoạch và hint địa bàn/xã-phường.
 
 ## Listing RAG flow
 
@@ -114,7 +115,7 @@ planningContexts
   -> build_retriever(planning_vs, base_filter={documentScope, propertyId IN [...]})
   -> retrieve planning docs theo retrieval_message
   -> append "PLANNING VECTOR CONTEXT"
-  -> _build_planning_citations()
+  -> build_planning_citations()
   -> RagChain với StaticDocumentsRetriever(planning_docs)
 ```
 
@@ -129,34 +130,29 @@ Khi user hỏi quy hoạch nhưng không có `planningContexts`, code gọi:
 Luồng trong hàm này:
 
 ```text
-1. Đọc mode/env:
-   - RAG_RETRIEVER_MODE
-   - RAG_LEXICAL_DISABLE
-   - RAG_PLANNING_LEXICAL_ENABLE
-2. Extract district và planYear từ message/history.
-3. Phân loại fact query.
-4. Tính final_k, probe_k, lexical_k.
-5. Sinh query_candidates.
-6. Sinh base_filter candidates:
+1. Extract district và planYear từ message/history.
+2. Phân loại fact query.
+3. Tính final_k, probe_k.
+4. Sinh query_candidates.
+5. Sinh base_filter candidates:
+   - planning + dossierCode chính xác nếu suy ra được district canonical và năm
    - planning + district + year
    - planning + district
    - planning + force planningDocumentId + year
    - planning + force planningDocumentId
    - planning + year
    - planning broad
-7. Với từng base_filter:
+6. Với từng base_filter:
    - vector retrieval cho từng query candidate
-   - optional lexical probe nếu vector quá ít
    - cache kết quả query
    - dedupe docs
-   - score bằng planning_doc_score + RRF boost
+   - cộng RRF theo thứ hạng vector của từng query candidate
    - chia strict/district/broad pool
    - select_ranked_planning_docs()
-   - augment specialized evidence + neighbor docs
    - rebalance text/table
    - compact docs
    - nếu đủ min docs thì return
-8. Nếu không đủ strict/district: chọn best broad fallback.
+7. Nếu không đủ strict/district: chọn best broad fallback.
 ```
 
 ## Query expansion planning
@@ -167,10 +163,11 @@ Nó tạo query phụ theo intent:
 
 - biến động chỉ tiêu đất 2024/2025
 - danh mục dự án/công trình
+- nhóm công trình/dự án trong `biểu 1A`
 - thu hồi đất/chuyển mục đích
 - GPMB
 - đất công cộng
-- Điều 67/78/79
+- Điều 67
 - công trình cấp thành phố
 - tổng số theo quyết định phê duyệt
 - diện tích tự nhiên, đơn vị hành chính
@@ -179,28 +176,16 @@ Việc query nhiều biến thể giúp vector search không phụ thuộc hoàn
 
 ## Ranking và selection planning
 
-Planning retrieval dùng nhiều lớp điểm:
+Planning retrieval hiện không dùng lớp score thủ công cho từng document. Thứ tự chính đến từ vector retrieval và Reciprocal Rank Fusion khi cùng một document xuất hiện qua nhiều query candidates.
 
-- Vector rank RRF boost.
-- Lexical rank RRF boost nếu lexical probe bật.
-- `_planning_doc_score()`/`planning_doc_score()` dựa trên:
-  - quận/năm có match không
-  - query terms và intent markers
-  - số liệu/numeric rows
-  - chunk text/table
-  - marker chuyên biệt theo intent
-  - loại bỏ TOC/heading/incomplete chunks
-- `select_ranked_planning_docs()` cân bằng text/table theo intent.
+Sau đó `select_ranked_planning_docs()` chỉ làm các bước dễ giải thích:
 
-Sau selection, các augmenters bổ sung tài liệu:
+- giữ thứ tự RRF đã có;
+- bỏ chunk giống mục lục;
+- đẩy doc lệch quận/năm hoặc chunk heading yếu xuống sau;
+- cân bằng text/table theo dạng câu hỏi.
 
-- text neighbors
-- continuation neighbors
-- table neighbors
-- land change fact docs
-- operational fact docs
-- specialized evidence
-- recovery grouping neighbors
+Sau selection, pipeline cân bằng lại text/table chunks trước khi compact context.
 
 ## Context preparation trong `RagChain`
 
@@ -214,13 +199,13 @@ context += extra_context nếu có
 prompt -> llm -> postprocess_answer()
 ```
 
-Với planning mode, retriever là `_StaticDocumentsRetriever(planning_docs)`, nên `RagChain` chỉ chuẩn hóa/compact và prompt, không đi search lại.
+Với planning mode, retriever là `StaticDocumentsRetriever(planning_docs)` trong `app/rag/static_retriever.py`, nên `RagChain` chỉ chuẩn hóa/compact và prompt, không đi search lại.
 
 `prepare_docs_for_context()`:
 
 - Dedupe document.
 - Với listing: scoring relevance, build structured listing context nếu có metadata.
-- Với planning: giữ thứ tự đã rank, cắt ký tự, có thể thêm planning summary hoặc evidence contract.
+- Với planning: giữ thứ tự đã rank, cắt ký tự; fact query có thể thêm evidence contract.
 - Sanitize text trước khi gửi LLM.
 
 ## Citations
@@ -228,11 +213,11 @@ Với planning mode, retriever là `_StaticDocumentsRetriever(planning_docs)`, n
 Citation được build ở 2 nơi:
 
 - `RagChain._build_citations()` cho docs đưa vào context.
-- `chat._build_planning_citations()` cho planning docs lấy ngoài chain.
+- `app/rag/citation_utils.py::build_planning_citations()` cho planning docs lấy ngoài chain.
 
-Sau đó `chat()` merge và `_rerank_citations()`:
+Sau đó `chat()` merge và `app/rag/citation_utils.py::rerank_citations()`:
 
-- Ưu tiên citation overlap term với câu hỏi.
+- Ưu tiên score có sẵn từ retriever nếu citation có `score`.
 - Ưu tiên citation planning property nếu có `planningContexts`.
 - Dedupe theo key metadata planning/listing.
 

@@ -1,10 +1,9 @@
 from __future__ import annotations
 from typing import Any
 import re
-import unicodedata
-
 from pydantic import BaseModel, Field
 
+from ..utils.text import normalize_text as _normalize_text
 from .llm_usage import extract_token_usage, message_content_to_text
 
 class PropertyFilters(BaseModel):
@@ -47,13 +46,6 @@ _ADDRESS_MARKERS = (
 
 _POST_TYPE_ALLOWED = {"SALE", "RENT", "OTHER"}
 
-
-def _normalize_text(value: str) -> str:
-    lowered = (value or "").strip().lower()
-    lowered = unicodedata.normalize("NFD", lowered)
-    lowered = "".join(ch for ch in lowered if unicodedata.category(ch) != "Mn")
-    lowered = re.sub(r"\s+", " ", lowered)
-    return lowered
 
 
 def _sanitize_text_value(value: Any) -> str | None:
@@ -118,11 +110,6 @@ def _sanitize_extracted_filters(filters: dict[str, Any]) -> dict[str, Any]:
         cleaned["areaMin"], cleaned["areaMax"] = cleaned["areaMax"], cleaned["areaMin"]
 
     return cleaned
-
-async def extract_filters_from_query(question: str, llm) -> dict[str, Any]:
-    filters, _ = await extract_filters_from_query_with_usage(question, llm)
-    return filters
-
 
 async def extract_filters_from_query_with_usage(question: str, llm) -> tuple[dict[str, Any], dict[str, Any]]:
     """

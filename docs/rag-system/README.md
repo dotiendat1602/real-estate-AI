@@ -9,6 +9,7 @@ Các file tài liệu:
 - [03-ingestion-storage-flow.md](03-ingestion-storage-flow.md): luồng ingest bài đăng và tài liệu quy hoạch vào pgvector.
 - [04-function-catalog.md](04-function-catalog.md): catalog các hàm/class chính và mục đích của từng hàm theo module.
 - [05-deep-dive-chat-chain.md](05-deep-dive-chat-chain.md): giải thích sâu các hàm dài trong `app/api/chat.py` và `app/rag/chain.py`.
+- [06-deep-dive-ingestion-chunking.md](06-deep-dive-ingestion-chunking.md): giải thích sâu listing/planning ingestion, OCR, chunking modes, metadata và ảnh hưởng đến retrieval.
 
 Tài liệu đánh giá offline được tách riêng tại [../evaluation/README.md](../evaluation/README.md). Phần đó giải thích dataset, golden, trace, metric, scorecard, runner và các report benchmark thay vì runtime phục vụ request thật.
 
@@ -17,7 +18,7 @@ Tài liệu đánh giá offline được tách riêng tại [../evaluation/READM
 RAG trong service có 2 miền dữ liệu:
 
 1. **Listing RAG**: hỏi đáp/tìm kiếm bất động sản từ bài đăng đã ingest hoặc từ fallback SQL trực tiếp sang bảng backend.
-2. **Planning RAG**: hỏi đáp tài liệu quy hoạch/kế hoạch sử dụng đất. Nhánh này có retrieval phức tạp hơn: nhận diện intent, sinh nhiều query ứng viên, lọc theo quận/năm, rerank, augment bằng chunk lân cận, compact context rồi mới đưa vào LLM.
+2. **Planning RAG**: hỏi đáp tài liệu quy hoạch/kế hoạch sử dụng đất. Nhánh này có retrieval phức tạp hơn: nhận diện intent, sinh nhiều query ứng viên, ưu tiên đúng hồ sơ qua `dossierCode` khi suy ra được quận+năm, xếp hạng bằng vector RRF, cân bằng text/table, compact context rồi mới đưa vào LLM.
 
 Luồng runtime chung:
 
@@ -45,14 +46,14 @@ User
 | Chat API | `app/api/chat.py` | Entry point `/api/chat`, chọn mode listing/planning, điều phối retrieval và generation. |
 | Listing ingest API | `app/api/ingest.py` | Chunk bài đăng, add/update/delete embedding cho listing. |
 | Planning ingest/explain API | `app/api/planning.py` | Ingest tài liệu quy hoạch, xem chunks, explain planning cho property. |
-| RAG chain | `app/rag/chain.py` | Chuẩn bị context, build prompt, gọi LLM, hậu xử lý câu trả lời, citations. |
+| RAG chain | `app/rag/chain.py` + helper modules | `chain.py` chi orchestration; context/query/postprocess da tach sang `context_preparation.py`, `query_rewrite.py`, `answer_processing.py`. |
 | Retriever | `app/rag/retriever.py` | Tạo PGVector store, metadata filter, hybrid/vector retriever, lexical SQL search. |
 | Vector resources | `app/rag/resources.py` | Cache embeddings và vector store cho listing/planning collection. |
 | Embeddings | `app/rag/embedder.py` | HuggingFace embeddings, E5 query/passage prefix, local cache snapshot. |
 | LLM | `app/rag/llm.py` | Tạo ChatOpenAI theo env. |
 | Prompt | `app/rag/prompt.py` | System prompt và template bắt buộc chỉ dùng context. |
 | Planning ingestion | `app/planning/ingestion.py` | Download PDF/TXT, extract/OCR, chunk theo cấu trúc, metadata, enrich text. |
-| Planning ranking | `app/planning/ranker.py`, `selector.py`, `query_builders.py`, `features.py` | Intent profile, query expansion, scoring, selection và quality gates. |
+| Planning retrieval/selection | `app/planning/ranker.py`, `selector.py`, `query_builders.py`, `features.py` | Query expansion, term extraction, metadata/quality gates và selection text/table. |
 | DB | `app/db/pgvector.py`, `app/db/models.py` | Async SQLAlchemy session và ORM cho chat/session/embedding model cũ. |
 
 ## Các collection pgvector

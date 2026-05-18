@@ -20,9 +20,6 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | `initialize_vector_store(collection_name)` | Khởi tạo PGVector async cho collection, dùng lock để tránh race. |
 | `initialize_listing_vector_store()` | Khởi tạo collection listing mặc định. |
 | `initialize_planning_vector_store()` | Khởi tạo collection planning. |
-| `get_initialized_vector_store(collection_name)` | Lấy vector store đã init, lỗi nếu chưa init. |
-| `get_initialized_listing_vector_store()` | Lấy listing vector store đã init. |
-| `get_initialized_planning_vector_store()` | Lấy planning vector store đã init. |
 
 ## `app/rag/embedder.py`
 
@@ -74,7 +71,7 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | `_merge_raw_filters(base_filter, filters)` | Gộp raw filters cho lexical SQL, đổi `chunkTypes` thành `chunkType $in`. |
 | `_append_in_clause(...)` | Thêm SQL `IN` clause cho metadata JSONB. |
 | `_build_metadata_where_clauses(filters, params)` | Sinh SQL where clauses cho metadata filters. |
-| `lexical_search_documents(...)` | SQL lexical retrieval trên `document`, `title`, `dossierCode`, `sourceLocator` với metadata-aware filters và timeout. |
+| `lexical_search_documents(...)` | SQL lexical retrieval trên `document`, `title`, `dossierCode`, `sourceLocator` với metadata-aware filters, CTE normalize một lần và timeout. |
 
 ## `app/rag/filter_extractor.py`
 
@@ -86,7 +83,6 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | `_looks_like_address_fragment(value)` | Chặn city/district nếu LLM trả nhầm địa chỉ cụ thể. |
 | `_to_positive_int(value)` | Parse số nguyên dương. |
 | `_sanitize_extracted_filters(filters)` | Làm sạch filter LLM, validate post type, bedrooms, min/max. |
-| `extract_filters_from_query(question, llm)` | API đơn giản trả filters. |
 | `extract_filters_from_query_with_usage(question, llm)` | Prompt LLM parse filters JSON, trả filters và token usage. |
 
 ## `app/rag/listing_fallback.py`
@@ -110,7 +106,6 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | `get_or_create_session(user_id, session_id)` | Validate session cũ thuộc user hoặc tạo session mới. |
 | `get_messages(session_id, limit)` | Lấy messages gần nhất, convert sang LangChain `HumanMessage`/`AIMessage`. |
 | `add_message(session_id, role, content)` | Lưu message mới. |
-| `clear_session(session_id)` | Intended clear session; hiện code chỉ execute select rồi commit, chưa delete thực sự. |
 
 ## `app/rag/llm_usage.py`
 
@@ -122,7 +117,16 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | `_dict_get(value, key)` | Safe get cho dict. |
 | `_coerce_int(value)` | Parse int optional. |
 
-## `app/rag/chain.py`
+## RAG runtime modules
+
+Sau refactor, `app/rag/chain.py` chi giu orchestration va public import surface. Logic dai duoc tach sang cac module sau:
+
+- `app/rag/query_rewrite.py`: rewrite retrieval query cho follow-up.
+- `app/rag/query_intents.py`: nhan dien intent listing/planning dung chung.
+- `app/rag/context_preparation.py`: dedupe, select, compact context, citation, planning evidence contract.
+- `app/rag/answer_processing.py`: postprocess answer va detect language.
+- `app/rag/listing_processing.py`: helper suitability/listing dung chung cho context va answer.
+- `app/utils/text.py`: normalize/sanitize text dung chung, gom ca sua mojibake va normalize tieng Viet cho matching; `app/rag/text_utils.py` chi re-export de giu import cu.
 
 ### Data model và retrieval query
 
@@ -147,23 +151,18 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | `_build_query_intents(question)` | Nhận diện intent listing như price/area/amenity/suitability. |
 | `_dedupe_repeated_blocks(text)` | Loại text block lặp. |
 | `_split_long_line(line)` | Chia dòng quá dài. |
-| `_line_relevance_score(...)` | Chấm điểm dòng content theo câu hỏi. |
+| `_line_relevance_key(...)` | Tạo khóa sắp xếp dòng content theo câu hỏi. |
 | `_compact_doc_content(question, content, max_chars, max_lines)` | Rút gọn document thô theo dòng liên quan nhất. |
 | `_doc_identity(doc)` | Key dedupe context. |
 | `_is_planning_context_doc(doc)` | Kiểm tra doc thuộc planning. |
-| `_doc_relevance_score(question, doc)` | Chấm relevance listing/non-planning doc. |
 | `_build_structured_listing_context(question, doc)` | Tạo context listing có cấu trúc từ metadata + snippet. |
 | `_merge_context_snippets(primary, secondary, max_chars)` | Gộp structured context với raw excerpt. |
 | `_planning_context_lines(context_text)` | Tách dòng planning context. |
-| `_planning_pick_summary_lines(...)` | Chọn dòng planning có marker liên quan. |
 | `_planning_pick_focus_phrase_lines(...)` | Chọn dòng có focus phrase trong planning. |
 | `_planning_contract_markers(question)` | Xác định marker cần đưa vào evidence contract. |
 | `_planning_evidence_source_label(doc)` | Tạo label nguồn cho planning fact. |
 | `_build_planning_evidence_contract(question, docs, max_facts)` | Tạo EVIDENCE CONTRACT để khóa numeric/planning claims. |
-| `_build_planning_context_summary(question, docs)` | Tạo summary ngắn theo intent planning. |
-| `_augment_planning_context_summary(question, compacted, doc)` | Gắn summary vào doc nếu hữu ích. |
-| `_apply_global_planning_context_summaries(question, docs)` | Gắn summary tổng vào doc đầu. |
-| `prepare_docs_for_context(question, docs, max_docs, max_chars_per_doc)` | Dedupe, select, compact, build evidence contract, chuẩn bị docs cho prompt. |
+| `prepare_docs_for_context(question, docs, max_docs, max_chars_per_doc)` | Dedupe, giữ thứ tự retriever/planning rank, compact, build evidence contract, chuẩn bị docs cho prompt. |
 | `_build_citations(docs)` | Build citations từ docs context. |
 | `_format_docs(docs)` | Join page_content đã sanitize thành context string. |
 
@@ -177,22 +176,31 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 
 ### Postprocess answer
 
-`app/rag/chain.py` có nhiều hàm hậu xử lý để sửa wording, loại thông tin không được hỏi, và chuẩn hóa câu trả lời planning/listing. Các nhóm chính:
+`app/rag/answer_processing.py` co cac ham hau xu ly de sua wording, loai thong tin khong duoc hoi, va chuan hoa cau tra loi planning/listing. Cac nhom chinh:
 
 | Nhóm hàm | Mục đích |
 |---|---|
 | `_looks_uncertain_or_no_data`, `_strip_unrequested_price_lines`, `_strip_unrequested_area_suffix` | Loại câu trả lời thiếu dữ liệu hoặc thông tin giá/diện tích không được hỏi. |
 | `_extract_named_project_line`, `_extract_flexible_project_line` | Tìm tên dự án trong answer. |
-| `_normalize_single_new_project_answer`, `_normalize_project_composition_wording`, `_normalize_gpmb_listing`, `_normalize_hdnd_grouping_answer` | Chuẩn hóa câu trả lời theo intent dự án/quy hoạch. |
-| `_normalize_planning_reporting_chain`, `_normalize_post_approval_execution_answer`, `_normalize_article67_listing` | Chỉnh wording cho các câu hỏi quy trình/phê duyệt/Điều 67. |
-| `_extract_context_natural_area_ha`, `_extract_context_admin_unit_breakdown`, `_extract_context_admin_unit_count` | Trích fact diện tích tự nhiên/đơn vị hành chính từ context. |
-| `_normalize_admin_overview_answer`, `_normalize_city_level_listing_from_context`, `_normalize_article67_answer_from_context` | Dựng answer trực tiếp từ context cho một số fact planning. |
-| `_extract_land_change_pair`, `_normalize_land_change_answer`, `_normalize_land_use_variation_recaps` | Xử lý câu hỏi biến động chỉ tiêu đất. |
-| `_extract_registered_plan_total_fact`, `_extract_registered_plan_added_fact`, `_extract_registered_plan_resolution_count`, `_extract_registered_plan_resolution_area`, `_normalize_registered_plan_composition_from_context` | Xử lý số liệu danh mục đăng ký/kế hoạch. |
-| `_normalize_focus_management_answer`, `_normalize_focus_management_from_context`, `_normalize_public_purpose_composition_ratios`, `_normalize_auction_scope_focus` | Chuẩn hóa các câu hỏi phân tích chuyên biệt. |
+| `_normalize_single_new_project_answer` | Chuẩn hóa câu trả lời theo intent dự án/quy hoạch. |
+| `_normalize_planning_reporting_chain`, `_normalize_post_approval_execution_answer` | Chỉnh wording cho các câu hỏi quy trình/phê duyệt. |
+| `_strip_non_auction_scope_lines`, `_strip_no_detail_tail`, `_focus_waste_overlap_reasoning`, `_normalize_unused_land_area_answer` | Rule t?ng qu?t cho m?t s? c?u tr? l?i planning c?n b? d?ng l?ch intent ho?c chu?n h?a di?n t?ch. |
 | `_extract_price_from_text`, `_extract_area_from_text`, `_extract_bedrooms_from_text`, `_extract_bathrooms_from_text`, `_extract_min_rental_period_from_text`, `_extract_monthly_cashflow_from_text`, `_extract_district_from_text`, `_extract_direction_from_text` | Extract field listing từ text. |
 | `_structured_highlights`, `_condense_suitability_answer`, `_normalize_indoor_amenities_answer`, `_normalize_indoor_amenities_relevancy` | Làm câu trả lời listing gọn và đúng intent. |
-| `postprocess_answer(question, answer, context_docs)` | Hàm tổng gọi các normalizer phù hợp sau khi LLM trả lời. |
+| `postprocess_answer(question, answer)` | Hàm tổng gọi các normalizer phù hợp sau khi LLM trả lời. |
+
+## `app/rag/static_retriever.py`
+
+| Ham/class | Muc dich |
+|---|---|
+| `StaticDocumentsRetriever` | Retriever nho tra lai danh sach docs co san; dung khi planning retrieval da chon docs rieng truoc khi goi `RagChain`. |
+
+## `app/rag/citation_utils.py`
+
+| Ham/class | Muc dich |
+|---|---|
+| `rerank_citations(message, citations, planning_contexts)` | Sap xep citation theo score co san tu retriever va planning property context, khong cham diem keyword overlap. |
+| `build_planning_citations(docs)` | Build citation giau metadata cho planning docs. |
 
 ## `app/api/chat.py`
 
@@ -201,7 +209,6 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | Hàm/class | Mục đích |
 |---|---|
 | `_with_timeout(coro, seconds, label, fallback)` | Bọc coroutine với timeout, trả fallback nếu quá thời gian. |
-| `_StaticDocumentsRetriever` | Retriever giả trả danh sách docs có sẵn, dùng cho planning mode sau khi retrieval đã làm riêng. |
 | `initialize_vector_store()` | Startup init listing + planning vector store. |
 | `ChatRequest`, `ChatRequest.PlanningContext` | Schema request `/api/chat`. |
 | `ChatResponse` | Schema response `/api/chat`. |
@@ -211,22 +218,17 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 
 | Hàm/class | Mục đích |
 |---|---|
-| `_canonical_district_name(seed)` | Map district text về canonical name nội bộ. |
-| `_repair_mojibake(text)` | Cố sửa text lỗi encoding. |
-| `_strip_accents(text)` | Bỏ dấu tiếng Việt cho matching. |
-| `_normalize_nl(text)` | Normalize natural language string. |
+| `_strip_accents`, `_normalize_nl` | Alias import từ `app/utils/text.py` để bỏ dấu/sửa mojibake/normalize text cho matching. |
 | `_has_planning_intent(message)` | Nhận diện câu hỏi quy hoạch. |
 | `_planning_query_profile(message)` | Lấy profile intent planning. |
-| `_extract_district_from_message(message)` | Extract quận/huyện từ message. |
+| `_extract_district_from_message(message)` | Extract quận/huyện từ message bằng alias chuẩn dùng chung với planning metadata. |
 | `_extract_plan_year_from_message(message)` | Extract năm 20xx từ message. |
 | `_history_role(item)`, `_history_content(item)` | Đọc role/content từ history. |
 | `_extract_district_from_history(history_messages)` | Lấy district từ history nếu current query thiếu. |
 | `_extract_plan_year_from_history(history_messages)` | Lấy plan year từ history nếu current query thiếu. |
 | `_is_planning_fact_query(message)` | Nhận diện câu hỏi fact/numeric planning. |
-| `_is_planning_project_listing_query(message)` | Nhận diện câu hỏi list dự án/công trình. |
-| `_is_planning_land_change_query(message)` | Nhận diện câu hỏi biến động chỉ tiêu đất. |
 
-### Matching/scoring/filtering planning
+### Matching/filtering planning
 
 | Hàm/class | Mục đích |
 |---|---|
@@ -234,52 +236,23 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | `_district_aliases_for_matching(district)` | Sinh alias district để match content/metadata. |
 | `_doc_matches_district(doc, district)` | Kiểm tra doc có thuộc district không. |
 | `_doc_matches_plan_year(doc, plan_year)` | Kiểm tra doc có đúng năm kế hoạch không. |
-| `_planning_doc_score(doc, message, district, plan_year)` | Wrapper scoring planning document. |
-| `_planning_specialized_evidence_score(...)` | Wrapper score evidence chuyên biệt. |
-| `_planning_intent_rescue_queries(...)` | Wrapper sinh rescue queries theo intent. |
 | `_planning_query_candidates(...)` | Wrapper sinh query candidates. |
 | `_select_ranked_planning_docs(...)` | Wrapper selector cho docs đã rank. |
 | `_rrf_score(rank, k)` | RRF score local cho planning retrieval. |
 | `_planning_scope_min_docs(scope, final_k, fact_query)` | Tính số docs tối thiểu để accept strict/district scope. |
 
-### Planning augment/compact/cache/debug
+### Planning compact/cache
 
 | Hàm/class | Mục đích |
 |---|---|
-| `_planning_lexical_augments_enabled()` | Đọc env bật lexical augment planning. |
-| `_augment_planning_text_neighbors(...)` | Bổ sung text chunks lân cận. |
-| `_augment_planning_continuation_neighbors(...)` | Bổ sung chunk tiếp nối khi đoạn bị cắt. |
-| `_augment_planning_land_change_fact_docs(...)` | Bổ sung docs chứa fact biến động đất. |
-| `_augment_planning_operational_fact_docs(...)` | Bổ sung docs fact vận hành/quy trình. |
-| `_augment_planning_table_neighbors(...)` | Bổ sung table chunks gần chunk đã chọn. |
-| `_augment_recovery_grouping_with_neighbors(...)` | Bổ sung neighbor cho câu hỏi nhóm thu hồi/không thu hồi. |
-| `_augment_planning_intent_evidence(...)` | Bổ sung evidence theo intent. |
-| `_augment_planning_land_recovery_evidence(...)` | Bổ sung evidence thu hồi đất. |
-| `_force_planning_specialized_evidence(...)` | Ép thêm evidence chuyên biệt nếu retrieval thường thiếu. |
 | `_rebalance_planning_chunk_mix(selected, limit, fact_query)` | Cân bằng text/table và limit docs. |
 | `_select_relevant_content_lines(...)` | Chọn dòng liên quan trong chunk planning. |
 | `_compact_planning_doc(...)` | Compact một planning doc. |
 | `_compact_planning_docs(...)` | Compact danh sách planning docs. |
 | `_planning_query_cache_key(...)` | Tạo cache key cho query planning. |
-| `_planning_query_cache_get(key)` | Lấy cache vector/lexical result. |
+| `_planning_query_cache_get(key)` | Lấy cache vector result. |
 | `_planning_query_cache_put(key, value)` | Lưu cache result. |
-| `_planning_sync_database_url()` | Resolve DB URL sync cho SQL rescue. |
-| `_load_planning_document_docs_sync(...)` | Load toàn bộ chunks một planning document bằng SQL sync. |
-| `_load_admin_overview_sql_rescue_docs_sync(...)` | SQL rescue docs cho câu hỏi tổng quan hành chính. |
-| `_load_admin_overview_sql_rescue_docs(...)` | Async wrapper cho SQL rescue. |
-| `_planning_debug_enabled()` | Đọc env debug planning. |
-| `_planning_doc_debug_fields(doc)` | Chuẩn hóa fields debug. |
-| `_planning_debug_log(event, payload)` | Print debug event planning. |
-| `_planning_debug_doc_list(docs, limit)` | Tạo danh sách doc debug ngắn. |
-| `_retrieve_planning_docs_for_nl_query(...)` | Pipeline retrieval planning NL đầy đủ: query expansion, filter scopes, vector/lexical, rerank, augment, compact, fallback. |
-
-### Citation
-
-| Hàm/class | Mục đích |
-|---|---|
-| `_tokenize(text)` | Tách token cho rerank citation. |
-| `_rerank_citations(message, citations, planning_contexts)` | Rerank citation theo overlap và planning property. |
-| `_build_planning_citations(docs)` | Build citation giàu metadata cho planning docs. |
+| `_retrieve_planning_docs_for_nl_query(...)` | Pipeline retrieval planning NL: query expansion, exact dossier filter khi biết district+năm, filter scopes, vector retrieval, RRF rank, compact, fallback. |
 
 ## `app/api/ingest.py`
 
@@ -308,6 +281,16 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | `ingest_planning_documents(req)` | Orchestrate replace/skip/build docs/add embeddings cho planning documents. |
 | `explain_planning(req)` | Dùng summary property + planning retriever + RagChain để giải thích quy hoạch. |
 
+## `app/planning/ingestion_config.py`
+
+| Ham/class | Muc dich |
+|---|---|
+| `resolve_planning_chunking_mode`, `is_hierarchical_chunking_mode` | Doc config chunking mode cho planning ingest. |
+| `resolve_http_verify`, `resolve_ssl_allow_insecure_fallback` | Config TLS khi download tai lieu planning. |
+| `resolve_pdf_ocr_fallback_enabled`, `resolve_pdf_ocr_max_pages`, `resolve_pdf_ocr_render_scale` | Config OCR fallback cho PDF. |
+| `resolve_pdf_text_quality_min_score`, `resolve_pdf_force_ocr_on_low_quality` | Config danh gia chat luong text layer PDF. |
+| `resolve_ingest_soft_timeout_seconds`, `resolve_ingest_require_full`, `resolve_ocr_progress_every_pages` | Config timeout/full ingest/OCR progress. |
+
 ## `app/planning/ingestion.py`
 
 ### Config/extract/OCR
@@ -315,11 +298,7 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | Hàm/class | Mục đích |
 |---|---|
 | `_get_splitter()` | Splitter fallback cho planning fixed chunks. |
-| `_resolve_bool_env`, `_resolve_planning_chunking_mode`, `_is_hierarchical_chunking_mode` | Đọc config chunking. |
-| `_resolve_http_verify`, `_resolve_ssl_allow_insecure_fallback` | Config TLS download tài liệu. |
-| `_resolve_pdf_ocr_fallback_enabled`, `_resolve_pdf_ocr_max_pages`, `_resolve_pdf_ocr_render_scale` | Config OCR fallback. |
-| `_resolve_pdf_text_quality_min_score`, `_resolve_pdf_force_ocr_on_low_quality` | Config đánh giá quality text layer PDF. |
-| `_resolve_ingest_soft_timeout_seconds`, `_resolve_ingest_require_full`, `_resolve_ocr_progress_every_pages` | Config timeout/full ingest/OCR progress. |
+| `_resolve_*` aliases | Import tu `app/planning/ingestion_config.py` de giu code ingest chinh tap trung vao extract/OCR/chunking. |
 | `_extract_rapidocr_lines(ocr_output)` | Chuẩn hóa output RapidOCR thành lines. |
 | `_ocr_lines_with_stripes(ocr_engine, arr)` | OCR fallback chia ảnh thành stripes nếu OCR trang đầy đủ fail. |
 | `PlanningIngestPayload` | Dataclass payload chuẩn hóa từ API request. |
@@ -364,6 +343,7 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 
 | Hàm/class | Mục đích |
 |---|---|
+| `PLANNING_DISTRICT_ALIASES` | Nguồn alias địa bàn chuẩn dùng chung cho canonicalize và extract district runtime. |
 | `_strip_accents(text)` | Bỏ dấu để match district. |
 | `_normalize_text(text)` | Normalize district/title/dossier. |
 | `_compact_token(text)` | Compact token không dấu, không ký tự đặc biệt. |
@@ -377,7 +357,6 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | `_normalize_text(text)` | Normalize identity text. |
 | `dedupe_planning_docs(docs)` | Dedupe planning docs theo document id/chunk/page/content prefix. |
 | `planning_doc_identity(doc)` | Tạo identity đầy đủ cho planning doc. |
-| `planning_doc_pid_idx(doc)` | Lấy `(planningDocumentId, chunkIndex)` dạng int optional. |
 | `planning_chunk_type(doc)` | Lấy `chunkType` lowercase. |
 
 ## `app/planning/query_builders.py`
@@ -386,7 +365,6 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 |---|---|
 | `_normalize_text(text)` | Normalize query. |
 | `district_code_fragment(district)` | Tạo fragment mã quận, ví dụ phục vụ query dossier `HN-...-KH2025`. |
-| `planning_specialized_limit(message)` | Tính số evidence chuyên biệt nên lấy theo intent. |
 | `planning_fact_subqueries(message)` | Sinh query phụ từ terms/focus/năm. |
 | `planning_intent_rescue_queries(message, district, plan_year)` | Sinh rescue queries theo intent planning cụ thể. |
 | `planning_query_candidates(message, district, plan_year, max_query_candidates, max_fact_subqueries)` | Kết hợp original query, rescue query, fact subquery, district/year variants. |
@@ -395,33 +373,24 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 
 | Hàm/class | Mục đích |
 |---|---|
-| `_normalize_ranker_text(text)` | Normalize text cho scoring. |
-| `_planning_query_profile(message)` | Cache profile intent planning. |
 | `planning_query_terms(message, max_terms)` | Tách terms quan trọng, bỏ stopwords. |
-| `planning_neighbor_offsets(doc, message)` | Quyết định cần lấy chunk lân cận nào theo intent/doc signal. |
-| `planning_rescue_query_score(doc, query_text)` | Score doc theo rescue query terms, numeric, entity, marker. |
-| `planning_specialized_evidence_score(...)` | Score/quality gate evidence chuyên biệt theo từng intent. |
-| `planning_intent_markers(message)` | Sinh set marker cần có trong doc theo intent. |
-| `planning_intent_alignment_score(doc, intent_markers, query_years)` | Score mức align doc với intent/năm. |
-| `planning_doc_score(doc, message, district, plan_year, ...)` | Score tổng quát planning doc trước selection. |
 
 ## `app/planning/selector.py`
 
 | Hàm/class | Mục đích |
 |---|---|
-| `_normalize_selector_text(text)` | Normalize text cho selector. |
-| `select_ranked_planning_docs(...)` | Chọn docs tốt nhất từ ranked pool, áp priority theo intent, cân bằng text/table, ưu tiên evidence bắt buộc. |
+| `select_ranked_planning_docs(...)` | Chọn docs từ pool đã rank bằng vector RRF, bỏ TOC/heading yếu, đẩy lệch quận/năm xuống sau và cân bằng text/table. |
 
 ## `app/planning/features.py`
 
 | Nhóm hàm | Mục đích |
 |---|---|
-| Normalize/metadata: `_strip_accents`, `_normalize_text`, `is_planning_metadata_line`, `strip_planning_metadata_lines`, `planning_doc_haystack`, `planning_doc_content_norm` | Chuẩn hóa content/metadata để scoring không bị noise descriptor. |
-| Chunk type/quality: `planning_chunk_type_hint`, `planning_is_heading_or_incomplete_chunk`, `planning_is_tabular_header_fragment`, `planning_is_toc_like_chunk`, `planning_continuation_signal` | Nhận diện chunk bảng/heading/TOC/đoạn thiếu. |
-| Numeric/entity evidence: `planning_count_pattern_score`, `planning_named_entity_hits`, `planning_has_explicit_project_row` | Chấm tín hiệu số liệu và dòng dự án. |
-| Admin overview: `planning_admin_unit_header_hits`, `planning_has_admin_unit_evidence`, `planning_has_direct_admin_unit_count_phrase`, `planning_has_direct_natural_area_phrase`, `planning_has_natural_area_admin_evidence` | Tìm evidence diện tích tự nhiên và đơn vị hành chính. |
-| Planning intent evidence: `planning_explanatory_evidence_hits`, `planning_registered_plan_evidence_hits`, `planning_has_registered_resolution_count_evidence` | Tìm evidence giải thích/danh mục đăng ký/nghị quyết. |
-| Land change: `planning_land_change_label_hits`, `planning_has_land_pair_evidence`, `planning_has_unused_zero_evidence`, `has_land_split_markers` | Tìm evidence biến động đất/chỉ tiêu đất chưa sử dụng. |
+| Normalize/metadata: `is_planning_metadata_line`, `strip_planning_metadata_lines`, `planning_doc_haystack` | Chuẩn hóa content/metadata để matching/filtering không bị noise descriptor. |
+| Chunk type/quality: `planning_is_heading_or_incomplete_chunk`, `planning_is_toc_like_chunk` | Nhận diện chunk heading/TOC. |
+| Numeric/entity evidence: `planning_named_entity_hits`, `planning_has_explicit_project_row` | Nhận diện dòng dự án và entity rõ ràng. |
+| Admin overview: `planning_admin_unit_header_hits`, `planning_has_direct_admin_unit_count_phrase`, `planning_has_direct_natural_area_phrase` | Tìm evidence diện tích tự nhiên và đơn vị hành chính. |
+| Planning intent evidence: `planning_explanatory_evidence_hits`, `planning_registered_plan_evidence_hits` | Tìm evidence giải thích/danh mục đăng ký. |
+| Land change: `planning_land_change_label_hits` | Tìm evidence biến động đất/chỉ tiêu đất chưa sử dụng. |
 
 ## `app/planning/profiles.py`
 
@@ -429,11 +398,6 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 |---|---|
 | `normalize_planning_text(text)` | Normalize text planning. |
 | `strip_accents(text)` | Bỏ dấu dùng chung cho planning modules. |
-| `planning_marker_hits(haystack, markers)` | Đếm marker hits. |
-| `planning_asks_reason(normalized)` | Detect câu hỏi “vì sao/lý do”. |
-| `planning_has_structure_composition_request(normalized)` | Detect câu hỏi cấu thành/phân loại. |
-| `planning_has_result_grouping_request(normalized)` | Detect câu hỏi nhóm kết quả. |
-| `planning_has_registered_plan_request(normalized)` | Detect câu hỏi danh mục đăng ký kế hoạch. |
 | `planning_focus_phrases(message)` | Extract focus phrases từ message. |
 | `PlanningQueryProfile` | Dataclass/structure chứa các flags intent planning. |
 | `build_planning_query_profile(message, planning_intent)` | Build profile intent tổng hợp cho planning ranker/selector/query builder. |
@@ -442,13 +406,7 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 
 | Hàm/class | Mục đích |
 |---|---|
-| `_has_grouping_project_context(normalized_blob)` | Kiểm tra context có liên quan nhóm dự án thu hồi/không thu hồi. |
-| `_has_large_grouping_project_count(normalized_blob)` | Kiểm tra có count dự án lớn đáng tin trong grouping. |
-| `is_recovery_grouping_query(normalized_message)` | Detect query phân nhóm thu hồi/không thu hồi. |
-| `recovery_grouping_signal_score(normalized_blob)` | Score chất lượng evidence grouping. |
-| `has_min_recovery_grouping_evidence(normalized_blob)` | Quality gate bắt buộc cho grouping evidence. |
-| `score_planning_fallback_candidate(docs, doc_score_fn)` | Score fallback docs theo top docs. |
-| `choose_better_planning_fallback(current_docs, current_score, candidate_docs, doc_score_fn)` | Chọn fallback tốt hơn giữa các scope/base filters. |
+| `choose_better_planning_fallback(current_docs, candidate_docs)` | Chọn fallback giàu context hơn giữa các scope/base filters, giữ thứ tự vector-ranked đã có. |
 
 ## `app/db/pgvector.py`
 
@@ -466,4 +424,3 @@ File này liệt kê các hàm/class phục vụ RAG và mục đích của chú
 | `PostEmbedding` | ORM model cũ cho bảng `ai.post_embeddings`; runtime hiện chủ yếu dùng LangChain tables. |
 | `ChatSession` | ORM model lưu session chat. |
 | `ChatMessage` | ORM model lưu từng message user/assistant. |
-

@@ -6,3 +6,6 @@ __pycache__/
 .deepeval
 
 build
+
+docs/
+evaluation/reports

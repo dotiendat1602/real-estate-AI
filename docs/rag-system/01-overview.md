@@ -36,7 +36,7 @@ Mục đích: hỏi đáp tài liệu quy hoạch/kế hoạch sử dụng đấ
 Nguồn context:
 
 - Tài liệu PDF/TXT được ingest qua `/api/planning/ingest-documents`.
-- Metadata quan trọng: `documentScope=planning`, `planningDocumentId`, `district`, `planYear`, `chunkType`, `globalChunkIndex`, `pageNumber`, `sourceLocator`.
+- Metadata quan trọng: `documentScope=planning`, `planningDocumentId`, `dossierCode`, `district`, `districtCanonical`, `districtRaw`, `planYear`, `chunkType`, `sectionHeading`, `hierarchyPath`, `globalChunkIndex`, `pageNumber`, `sourceLocator`.
 
 Luồng chính:
 
@@ -45,16 +45,15 @@ Luồng chính:
   -> _has_planning_intent() hoặc request có planningContexts
   -> initialize_planning_vector_store()
   -> _retrieve_planning_docs_for_nl_query()
-  -> rerank/select/augment/compact planning docs
+  -> vector RRF/select/rebalance/compact planning docs
   -> RagChain với _StaticDocumentsRetriever(planning_docs)
 ```
 
 Planning RAG khác listing RAG ở chỗ retrieval không chỉ vector similarity. Nó còn:
 
 - Sinh nhiều query ứng viên theo intent.
-- Thử nhiều scope filter: strict district+year, district-only, year-only, broad.
-- Rerank bằng score thủ công dựa trên marker, năm, quận, loại chunk, số liệu, entity.
-- Bổ sung neighbor chunks để tránh mất dòng bảng hoặc đoạn giải thích liền kề.
+- Khi suy ra được quận/huyện và năm, ưu tiên filter chính xác theo `dossierCode`; sau đó mới thử strict district+year, district-only, year-only, broad.
+- Xếp hạng pool bằng Reciprocal Rank Fusion từ vector search; các rule còn lại chủ yếu là filter metadata, bỏ mục lục/heading yếu và cân bằng text/table trước khi đưa vào prompt.
 - Compact context để giảm noise trước khi đưa vào prompt.
 
 ## Startup và cache resource
@@ -95,7 +94,7 @@ Planning RAG khác listing RAG ở chỗ retrieval không chỉ vector similarit
 | `OPENAI_TEMPERATURE` | Temperature, mặc định `0.2`. |
 | `RAG_RETRIEVER_MODE` | `hybrid` hoặc vector similarity thường. |
 | `RAG_LEXICAL_DISABLE` | Tắt lexical retrieval SQL. |
-| `RAG_PLANNING_LEXICAL_ENABLE` | Bật lexical probe riêng cho planning NL retrieval. |
+| `RAG_HYBRID_LEXICAL_SPARSE_ONLY` | Chỉ gọi lexical trong hybrid retriever khi semantic trả thiếu `k` docs; mặc định bật. |
 | `RAG_CONTEXT_MAX_DOCS` | Số docs tối đa đưa vào context trong `RagChain`. |
 | `RAG_CONTEXT_MAX_CHARS_PER_DOC` | Số ký tự tối đa mỗi doc context. |
 | `CHAT_PLANNING_RETRIEVAL_TIMEOUT_SECONDS` | Timeout retrieval planning trong `/api/chat`. |
