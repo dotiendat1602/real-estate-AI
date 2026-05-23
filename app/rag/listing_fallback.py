@@ -1,21 +1,38 @@
 from __future__ import annotations
 
-import re
 from typing import Any
 
 from langchain_core.documents import Document
 from sqlalchemy import text
 
 from ..db.pgvector import AsyncSessionLocal
+from ..utils.text import normalize_vietnamese_search_text, repair_mojibake
 
 
 def _contains_any(value: str, needles: tuple[str, ...]) -> bool:
-    lowered = (value or "").lower()
-    return any(needle in lowered for needle in needles)
+    lowered = repair_mojibake(value or "").lower()
+    normalized = normalize_vietnamese_search_text(lowered)
+    return any(
+        repair_mojibake(needle).lower() in lowered
+        or normalize_vietnamese_search_text(needle) in normalized
+        for needle in needles
+    )
 
 
 def _clean(value: Any) -> str:
-    return str(value or "").strip()
+    return repair_mojibake(str(value or "")).strip()
+
+
+def _as_list(value: Any) -> list[Any]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return value
+    if isinstance(value, tuple):
+        return list(value)
+    if isinstance(value, str):
+        return [item.strip() for item in value.strip("{}").split(",") if item.strip()]
+    return [value]
 
 
 def _format_price(value: Any) -> str:
@@ -28,6 +45,50 @@ def _format_price(value: Any) -> str:
     if number >= 1_000_000:
         return f"{number / 1_000_000:.0f} triệu"
     return f"{number:,.0f} VNĐ"
+
+
+async def _filter_approved_listing_docs(docs: list[Document]) -> list[Document]:
+    post_ids: set[int] = set()
+    for doc in docs:
+        post_id = (doc.metadata or {}).get("postId")
+        try:
+            if post_id is not None:
+                post_ids.add(int(post_id))
+        except (TypeError, ValueError):
+            continue
+
+    if not post_ids:
+        return docs
+
+    async with AsyncSessionLocal() as session:
+        rows = (
+            await session.execute(
+                text(
+                    """
+                    SELECT id
+                    FROM posts
+                    WHERE id = ANY(:post_ids)
+                      AND deleted_at IS NULL
+                      AND post_status = 'APPROVED'
+                    """
+                ),
+                {"post_ids": list(post_ids)},
+            )
+        ).fetchall()
+
+    approved_ids = {int(row._mapping["id"]) for row in rows}
+    filtered: list[Document] = []
+    for doc in docs:
+        post_id = (doc.metadata or {}).get("postId")
+        if post_id is None:
+            filtered.append(doc)
+            continue
+        try:
+            if int(post_id) in approved_ids:
+                filtered.append(doc)
+        except (TypeError, ValueError):
+            continue
+    return filtered
 
 
 def _append_text_filter(
@@ -48,9 +109,8 @@ def _append_text_filter(
 def _has_structured_listing_intent(query: str, filters: dict[str, Any]) -> bool:
     if filters:
         return True
-    query_lc = (query or "").lower()
     return _contains_any(
-        query_lc,
+        query or "",
         (
             "bài đăng",
             "bai dang",
@@ -89,18 +149,26 @@ async def search_listing_documents(
     filters = dict(filters or {})
     clauses = [
         "post.deleted_at IS NULL",
-        "(post.post_status = 'APPROVED' OR post.source = 'BATDONGSAN')",
+        "post.post_status = 'APPROVED'",
         "p.deleted_at IS NULL",
         "p.status = 'ACTIVE'",
     ]
     params: dict[str, Any] = {"limit": max(1, min(int(k), 20))}
+
+    post_id = filters.get("postId")
+    if post_id is not None:
+        try:
+            params["post_id"] = int(post_id)
+            clauses.append("post.id = :post_id")
+        except (TypeError, ValueError):
+            pass
 
     post_type = _clean(filters.get("postType")).upper()
     query_lc = (query or "").lower()
     if post_type in {"SALE", "RENT", "OTHER"}:
         clauses.append("post.post_type = :post_type")
         params["post_type"] = post_type
-    elif _contains_any(query_lc, ("cho thuê", "thue", "thuê")):
+    elif _contains_any(query_lc, ("cho thuê", "cho thue", "thuê", "thue")):
         clauses.append("post.post_type = 'RENT'")
     elif _contains_any(query_lc, ("bán", "ban", "mua")):
         clauses.append("post.post_type = 'SALE'")
@@ -148,7 +216,13 @@ async def search_listing_documents(
     )
 
     if _contains_any(query_lc, ("căn hộ", "can ho", "chung cư", "chung cu")):
-        clauses.append("(lower(coalesce(cat.category_name, '')) LIKE '%căn hộ%' OR lower(coalesce(cat.category_name, '')) LIKE '%chung cư%' OR lower(coalesce(post.post_title, '')) LIKE '%căn hộ%')")
+        clauses.append(
+            "("
+            "lower(coalesce(cat.category_name, '')) LIKE '%căn hộ%' "
+            "OR lower(coalesce(cat.category_name, '')) LIKE '%chung cư%' "
+            "OR lower(coalesce(post.post_title, '')) LIKE '%căn hộ%'"
+            ")"
+        )
 
     if _contains_any(query_lc, ("thang máy", "thang may", "elevator")):
         clauses.append(
@@ -179,6 +253,39 @@ async def search_listing_documents(
           JOIN amenities a ON a.id = pa.amenity_id
           WHERE pa.deleted_at IS NULL AND a.deleted_at IS NULL
           GROUP BY pa.property_id
+        ),
+        nearby_utilities AS (
+          SELECT
+            pu.property_id,
+            string_agg(
+              CONCAT(
+                u.utility_category::text,
+                ': ',
+                COALESCE(u.utility_name, ''),
+                CASE
+                  WHEN pu.distance_m IS NOT NULL THEN CONCAT(' (cách ', ROUND(pu.distance_m::numeric, 0)::text, 'm)')
+                  ELSE ''
+                END,
+                CASE
+                  WHEN pu.travel_time_s IS NOT NULL THEN CONCAT(', khoảng ', CEIL(pu.travel_time_s / 60.0)::int::text, ' phút')
+                  ELSE ''
+                END,
+                CASE
+                  WHEN u.location IS NOT NULL AND u.location <> '' THEN CONCAT(', ', u.location)
+                  ELSE ''
+                END,
+                CASE
+                  WHEN pu.note IS NOT NULL AND pu.note <> '' THEN CONCAT(', ', pu.note)
+                  ELSE ''
+                END
+              ),
+              E'\n' ORDER BY pu.distance_m NULLS LAST, u.utility_name
+            ) AS utility_details,
+            array_agg(DISTINCT u.utility_category::text) AS utility_categories
+          FROM property_utilities pu
+          JOIN utilities u ON u.id = pu.utility_id
+          WHERE pu.deleted_at IS NULL AND u.deleted_at IS NULL
+          GROUP BY pu.property_id
         )
         SELECT
           post.id AS post_id,
@@ -197,14 +304,21 @@ async def search_listing_documents(
           d.name AS district,
           w.name AS ward,
           cat.category_name,
-          amenities.amenity_names
+          amenities.amenity_names,
+          nearby_utilities.utility_details,
+          nearby_utilities.utility_categories,
+          creator.name AS owner_name,
+          creator.phone AS owner_phone,
+          creator.email AS owner_email
         FROM posts post
         JOIN properties p ON p.id = post.property_id
+        LEFT JOIN users creator ON creator.id = post.created_by_id
         LEFT JOIN provinces pr ON pr.id = p.province_id
         LEFT JOIN districts d ON d.id = p.district_id
         LEFT JOIN wards w ON w.id = p.ward_id
         LEFT JOIN categories cat ON cat.category_id = p.category_id
         LEFT JOIN amenities ON amenities.property_id = p.id
+        LEFT JOIN nearby_utilities ON nearby_utilities.property_id = p.id
         WHERE {" AND ".join(clauses)}
         ORDER BY {order_clause}
         LIMIT :limit
@@ -228,12 +342,12 @@ async def search_listing_documents(
     for row in rows:
         r = dict(row._mapping)
         location_parts = [r.get("location"), r.get("ward"), r.get("district"), r.get("province")]
-        location = ", ".join(part for part in location_parts if part)
+        location = ", ".join(_clean(part) for part in location_parts if part)
         content = "\n".join(
             [
-                f"=== BẤT ĐỘNG SẢN {r.get('post_id')} ===",
+                f"LISTING_ID: {r.get('post_id')}",
                 f"Loại: {'Cần bán' if r.get('post_type') == 'SALE' else 'Cho thuê' if r.get('post_type') == 'RENT' else 'Khác'}",
-                f"Danh mục: {r.get('category_name') or 'N/A'}",
+                f"Danh mục: {_clean(r.get('category_name')) or 'N/A'}",
                 "",
                 "--- THÔNG TIN CHI TIẾT ---",
                 _clean(r.get("post_title")),
@@ -245,13 +359,21 @@ async def search_listing_documents(
                 f"Diện tích: {r.get('area') or 'N/A'} m²",
                 f"Số phòng ngủ: {r.get('bedrooms') or 'N/A'}",
                 f"Số phòng vệ sinh: {r.get('toilets') or 'N/A'}",
-                f"Nội thất: {r.get('furniture_status') or 'N/A'}",
+                f"Nội thất: {_clean(r.get('furniture_status')) or 'N/A'}",
                 "",
                 "--- VỊ TRÍ ---",
                 location or "N/A",
                 "",
                 "--- TIỆN ÍCH ---",
-                r.get("amenity_names") or "N/A",
+                _clean(r.get("amenity_names")) or "N/A",
+                "",
+                "--- TIỆN ÍCH XUNG QUANH ---",
+                _clean(r.get("utility_details")) or "N/A",
+                "",
+                "--- LIÊN HỆ NGƯỜI ĐĂNG ---",
+                f"Tên: {_clean(r.get('owner_name')) or 'N/A'}",
+                f"Số điện thoại: {_clean(r.get('owner_phone')) or 'N/A'}",
+                f"Email: {_clean(r.get('owner_email')) or 'N/A'}",
             ]
         )
         docs.append(
@@ -261,16 +383,23 @@ async def search_listing_documents(
                     "postId": r.get("post_id"),
                     "propertyId": r.get("property_id"),
                     "postType": r.get("post_type"),
-                    "postTitle": r.get("post_title"),
-                    "title": r.get("post_title"),
-                    "city": r.get("province"),
-                    "district": r.get("district"),
-                    "ward": r.get("ward"),
-                    "location": r.get("location"),
+                    "postStatus": "APPROVED",
+                    "postTitle": _clean(r.get("post_title")),
+                    "title": _clean(r.get("post_title")),
+                    "sourceUrl": f"/posts/{r.get('post_id')}",
+                    "city": _clean(r.get("province")),
+                    "district": _clean(r.get("district")),
+                    "ward": _clean(r.get("ward")),
+                    "location": _clean(r.get("location")),
                     "price": float(r["price"]) if r.get("price") is not None else None,
                     "area": float(r["area"]) if r.get("area") is not None else None,
                     "bedrooms": r.get("bedrooms"),
-                    "categoryName": r.get("category_name"),
+                    "categoryName": _clean(r.get("category_name")),
+                    "utilityCategories": _as_list(r.get("utility_categories")),
+                    "nearbyUtilities": _clean(r.get("utility_details")),
+                    "ownerName": _clean(r.get("owner_name")),
+                    "ownerPhone": _clean(r.get("owner_phone")),
+                    "ownerEmail": _clean(r.get("owner_email")),
                     "snippet": content[:300],
                     "retrievalSource": "db_listing_fallback",
                 },
@@ -288,7 +417,7 @@ class ListingFallbackRetriever:
         self.k = max(1, int(k))
 
     async def ainvoke(self, query: str) -> list[Document]:
-        docs = await self.primary.ainvoke(query)
+        docs = await _filter_approved_listing_docs(await self.primary.ainvoke(query))
         use_structured_fallback = _has_structured_listing_intent(self.query or query, self.filters)
         if len(docs) >= min(3, self.k) and not use_structured_fallback:
             return docs

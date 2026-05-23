@@ -4,15 +4,15 @@ Entry point chính nằm ở `app/api/chat.py::chat`.
 
 ## Request/response model
 
-`ChatRequest` gồm:
+`ChatRequest` gom:
 
-- `userId`: bắt buộc để lấy/lưu history.
-- `sessionId`: optional, nếu không có sẽ tạo session mới.
-- `message`: câu hỏi người dùng.
-- `topK`: số document muốn retrieve, default từ `TOP_K_DEFAULT` hoặc `16`.
-- `planningContexts`: context quy hoạch đã có từ backend cho property cụ thể.
+- `userId`: bat buoc de lay/luu history.
+- `sessionId`: optional, neu khong co se tao session moi.
+- `message`: cau hoi nguoi dung.
 
-`ChatResponse` gồm:
+`topK` khong con la public request field; runtime lay tu env `TOP_K_DEFAULT`.
+
+`ChatResponse` gom:
 
 - `sessionId`
 - `answer`
@@ -20,7 +20,6 @@ Entry point chính nằm ở `app/api/chat.py::chat`.
 - `extractedFilters`
 - `tokenUsage`
 - `timings`
-
 ## Luồng chi tiết trong `chat()`
 
 Phần dưới mô tả luồng ở mức pipeline. Nếu cần đọc chi tiết từng khối logic trong `chat.py` và `chain.py`, xem thêm [05-deep-dive-chat-chain.md](05-deep-dive-chat-chain.md).
@@ -30,36 +29,31 @@ Phần dưới mô tả luồng ở mức pipeline. Nếu cần đọc chi tiế
 2. MessageHistoryManager.get_or_create_session().
 3. MessageHistoryManager.get_messages(limit=6).
 4. build_retrieval_query(req.message, history).
-5. build_llm().
-6. extract_filters_from_query_with_usage().
-7. Xác định use_planning_mode.
-8. Nếu planning mode:
+5. Lay top_k tu TOP_K_DEFAULT.
+6. build_llm().
+7. Xac dinh use_planning_mode bang _has_planning_intent(req.message).
+8. Neu listing mode: extract_filters_from_query_with_usage().
+9. Neu planning mode:
    - initialize_planning_vector_store()
-   - build planning retriever tạm
-   - nếu có planningContexts: retrieve theo propertyId
-   - nếu không có planningContexts: retrieve theo NL query
-9. Nếu listing mode:
+   - retrieve planning docs theo natural-language query
+10. Neu listing mode:
    - initialize_listing_vector_store()
    - build_retriever() + ListingFallbackRetriever()
-10. Tạo RagChain.
-11. Planning mode đổi retriever thành StaticDocumentsRetriever(planning_docs)
-    để không retrieve lại một lần nữa.
-12. RagChain.run(req.message, history, extra_context).
-13. Merge citations + rerank citations.
-14. Lưu user/assistant messages.
-15. Trả ChatResponse.
+11. Tao RagChain.
+12. Planning mode doi retriever thanh StaticDocumentsRetriever(planning_docs).
+13. RagChain.run().
+14. Merge citations + planning citations.
+15. Luu user/assistant message.
+16. Tra ChatResponse.
 ```
 
-## Nhận diện planning mode
+## Nhan dien planning mode
 
-`use_planning_mode = bool(req.planningContexts) or _has_planning_intent(req.message)`
+`use_planning_mode = _has_planning_intent(req.message)`
 
-Planning mode được bật khi:
+Planning mode duoc bat khi message co cac marker nhu quy hoach, ke hoach su dung dat, thu hoi dat, chi tieu, phe duyet, HDND, du an quy hoach...
 
-- Backend gửi `planningContexts`.
-- Message có các marker như quy hoạch, kế hoạch sử dụng đất, thu hồi đất, chỉ tiêu, phê duyệt, HĐND, dự án quy hoạch...
-- Riêng `dự án`/`công trình` là marker dễ trùng với listing; chúng chỉ bật planning mode khi đi cùng năm kế hoạch và hint địa bàn/xã-phường.
-
+Rieng `du an`/`cong trinh` la marker de trung voi listing; chung chi bat planning mode khi di cung nam ke hoach va hint dia ban/xa-phuong.
 ## Listing RAG flow
 
 Khi không phải planning:
@@ -68,7 +62,7 @@ Khi không phải planning:
 build_llm()
   -> extract_filters_from_query_with_usage()
   -> initialize_listing_vector_store()
-  -> build_retriever(vs, k=req.topK, filters=filters)
+  -> build_retriever(vs, k=top_k, filters=filters)
   -> ListingFallbackRetriever(primary, query, filters, k)
   -> RagChain.run()
 ```
@@ -105,27 +99,11 @@ semantic search PGVector
 
 Nếu query có intent listing rõ hoặc kết quả vector ít, `ListingFallbackRetriever` gọi `search_listing_documents()` để query SQL trực tiếp bảng domain. Fallback này thường cho context giàu cấu trúc hơn vì lấy cả property fields, amenities, location, price, area.
 
-## Planning RAG flow khi có `planningContexts`
-
-Trường hợp backend đã biết property và gửi summary:
-
-```text
-planningContexts
-  -> tạo extra_context "PLANNING REPORT CONTEXT"
-  -> build_retriever(planning_vs, base_filter={documentScope, propertyId IN [...]})
-  -> retrieve planning docs theo retrieval_message
-  -> append "PLANNING VECTOR CONTEXT"
-  -> build_planning_citations()
-  -> RagChain với StaticDocumentsRetriever(planning_docs)
-```
-
-Mục tiêu của nhánh này: câu trả lời vừa dựa vào summary backend, vừa lấy chunk tài liệu quy hoạch liên quan đến property đó.
-
 ## Planning RAG flow từ natural language
 
-Khi user hỏi quy hoạch nhưng không có `planningContexts`, code gọi:
+Khi user hỏi quy hoạch nhưng không có `planning docs`, code gọi:
 
-`_retrieve_planning_docs_for_nl_query(planning_vs, retrieval_message, req.topK, history_messages=history)`
+`_retrieve_planning_docs_for_nl_query(planning_vs, retrieval_message, top_k, history_messages=history)`
 
 Luồng trong hàm này:
 
@@ -157,7 +135,7 @@ Luồng trong hàm này:
 
 ## Query expansion planning
 
-`_planning_query_candidates()` trong `chat.py` wrap `app/planning/query_builders.py::planning_query_candidates()`.
+`_planning_query_candidates()` trong `app/rag/planning_retrieval.py` wrap `app/planning/query_builders.py::planning_query_candidates()`.
 
 Nó tạo query phụ theo intent:
 
@@ -183,9 +161,9 @@ Sau đó `select_ranked_planning_docs()` chỉ làm các bước dễ giải th�
 - giữ thứ tự RRF đã có;
 - bỏ chunk giống mục lục;
 - đẩy doc lệch quận/năm hoặc chunk heading yếu xuống sau;
-- cân bằng text/table theo dạng câu hỏi.
+- Khong can bang text/table bang rule rieng.
 
-Sau selection, pipeline cân bằng lại text/table chunks trước khi compact context.
+Sau selection, pipeline compact planning docs theo thu tu da chon truoc khi dua vao context.
 
 ## Context preparation trong `RagChain`
 
@@ -204,8 +182,8 @@ Với planning mode, retriever là `StaticDocumentsRetriever(planning_docs)` tro
 `prepare_docs_for_context()`:
 
 - Dedupe document.
-- Với listing: scoring relevance, build structured listing context nếu có metadata.
-- Với planning: giữ thứ tự đã rank, cắt ký tự; fact query có thể thêm evidence contract.
+- Voi listing: giu thu tu retriever, compact theo thu tu tu nhien va build structured listing context neu co metadata.
+- Voi planning: giu thu tu da rank va cat ky tu, khong them contract phu hay score dong thu cong.
 - Sanitize text trước khi gửi LLM.
 
 ## Citations
@@ -218,7 +196,7 @@ Citation được build ở 2 nơi:
 Sau đó `chat()` merge và `app/rag/citation_utils.py::rerank_citations()`:
 
 - Ưu tiên score có sẵn từ retriever nếu citation có `score`.
-- Ưu tiên citation planning property nếu có `planningContexts`.
+- Uu tien citation planning document neu co `planningDocumentId`.
 - Dedupe theo key metadata planning/listing.
 
 ## Token usage và timing

@@ -42,18 +42,18 @@ Luồng chính:
 
 ```text
 /api/chat
-  -> _has_planning_intent() hoặc request có planningContexts
+  -> _has_planning_intent()
   -> initialize_planning_vector_store()
   -> _retrieve_planning_docs_for_nl_query()
-  -> vector RRF/select/rebalance/compact planning docs
+  -> vector RRF/select/compact planning docs
   -> RagChain với _StaticDocumentsRetriever(planning_docs)
 ```
 
 Planning RAG khác listing RAG ở chỗ retrieval không chỉ vector similarity. Nó còn:
 
-- Sinh nhiều query ứng viên theo intent.
+- Sinh query candidates toi gian tu cau hoi goc, district/year va dossier code khi du thong tin.
 - Khi suy ra được quận/huyện và năm, ưu tiên filter chính xác theo `dossierCode`; sau đó mới thử strict district+year, district-only, year-only, broad.
-- Xếp hạng pool bằng Reciprocal Rank Fusion từ vector search; các rule còn lại chủ yếu là filter metadata, bỏ mục lục/heading yếu và cân bằng text/table trước khi đưa vào prompt.
+- Xep hang pool bang Reciprocal Rank Fusion tu vector search; cac rule con lai chu yeu la filter metadata va bo muc luc/heading yeu.
 - Compact context để giảm noise trước khi đưa vào prompt.
 
 ## Startup và cache resource
@@ -73,7 +73,6 @@ Planning RAG khác listing RAG ở chỗ retrieval không chỉ vector similarit
 `app/rag/prompt.py` định nghĩa system prompt với các ràng buộc chính:
 
 - Chỉ dùng `CONTEXT`.
-- Nếu có `EVIDENCE CONTRACT`, planning/numeric claims chỉ dùng facts được label.
 - Trả lời theo ngôn ngữ người dùng.
 - Không bịa thuộc tính thiếu.
 - Planning fact phải bám theo tài liệu được truy xuất.

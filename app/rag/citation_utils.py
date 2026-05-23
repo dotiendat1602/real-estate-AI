@@ -6,21 +6,16 @@ from langchain_core.documents import Document
 
 
 def rerank_citations(
-    message: str,
     citations: list[dict[str, Any]],
-    planning_contexts: list[Any],
 ) -> list[dict[str, Any]]:
     """Order citations by source ranking metadata instead of keyword overlap."""
     if not citations:
         return citations
 
-    planning_property_ids = {ctx.propertyId for ctx in planning_contexts}
-
     def sort_key(item: tuple[int, dict[str, Any]]) -> tuple[int, float, int]:
         index, citation = item
-        is_requested_planning_context = int(citation.get("propertyId") in planning_property_ids)
         retriever_score = float(citation.get("score") or 0.0)
-        return (is_requested_planning_context, retriever_score, -index)
+        return (int(citation.get("planningDocumentId") is not None), retriever_score, -index)
 
     return [citation for _, citation in sorted(enumerate(citations), key=sort_key, reverse=True)]
 

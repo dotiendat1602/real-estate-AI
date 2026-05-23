@@ -12,13 +12,12 @@ from typing import Any
 from langchain_core.documents import Document
 from langchain_core.messages import AIMessage, HumanMessage
 
-from app.api.chat import (
+from app.rag.planning_retrieval import (
     _compact_planning_docs,
     _extract_district_from_message,
     _extract_plan_year_from_message,
     _has_planning_intent,
     _is_planning_fact_query,
-    _rebalance_planning_chunk_mix,
     _retrieve_planning_docs_for_nl_query,
     _select_ranked_planning_docs,
 )
@@ -657,23 +656,11 @@ class LangChainEvalAdapter:
         if prioritized_target_docs:
             selected = self._dedupe_docs([*prioritized_target_docs, *selected])[:final_k]
 
-        selected = _rebalance_planning_chunk_mix(
-            selected,
-            limit=final_k,
-            fact_query=fact_query,
-        )
         selected = _compact_planning_docs(
             selected,
-            message,
-            district,
-            plan_year,
             fact_query=fact_query,
         )
-        return _rebalance_planning_chunk_mix(
-            selected,
-            limit=final_k,
-            fact_query=fact_query,
-        )
+        return selected[:final_k]
 
     @classmethod
     def _planning_target_metadata_score(cls, doc: Document, target_metadata: dict[str, Any]) -> float:

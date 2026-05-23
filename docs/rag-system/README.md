@@ -18,7 +18,7 @@ Tài liệu đánh giá offline được tách riêng tại [../evaluation/READM
 RAG trong service có 2 miền dữ liệu:
 
 1. **Listing RAG**: hỏi đáp/tìm kiếm bất động sản từ bài đăng đã ingest hoặc từ fallback SQL trực tiếp sang bảng backend.
-2. **Planning RAG**: hỏi đáp tài liệu quy hoạch/kế hoạch sử dụng đất. Nhánh này có retrieval phức tạp hơn: nhận diện intent, sinh nhiều query ứng viên, ưu tiên đúng hồ sơ qua `dossierCode` khi suy ra được quận+năm, xếp hạng bằng vector RRF, cân bằng text/table, compact context rồi mới đưa vào LLM.
+2. **Planning RAG**: hoi dap tai lieu quy hoach/ke hoach su dung dat. Nhanh nay nhan dien intent, uu tien dung ho so qua `dossierCode` khi suy ra duoc quan+nam, xep hang bang vector retrieval + RRF tren query candidates toi gian, roi compact context truoc khi dua vao LLM.
 
 Luồng runtime chung:
 

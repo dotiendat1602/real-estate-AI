@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from typing import Any
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from pydantic import BaseModel, Field
 
 from langchain_core.documents import Document
@@ -46,19 +46,12 @@ class IngestRequest(BaseModel):
     posts: list[IngestPost] = Field(default_factory=list)
 
 class UpdatePostRequest(BaseModel):
-    postId: int
     content: str
     metadata: dict[str, Any] = Field(default_factory=dict)
 
 @router.get("/ingest/posts")
 async def list_ingested_posts(limit: int = 50, offset: int = 0):
-    """
-    Liệt kê post đã ingest:
-    - postId
-    - số chunks
-    - embedding_id (chunkIndex = 0)
-    - sample metadata
-    """
+    """Internal lookup for listing embeddings already stored in pgvector."""
     async with AsyncSessionLocal() as session:
         q = text("""
             WITH agg AS (
@@ -95,17 +88,13 @@ async def list_ingested_posts(limit: int = 50, offset: int = 0):
 
 @router.get("/ingest/posts/{post_id}")
 async def get_ingested_post(post_id: int, limit: int = 50, offset: int = 0):
-    """
-    Xem tất cả chunks embeddings của 1 post.
-    Trả chunkIndex + metadata. (Nếu có cột document/text thì bạn bật thêm ở SELECT)
-    """
+    """Internal lookup for chunks of one ingested listing post."""
     async with AsyncSessionLocal() as session:
         q = text("""
             SELECT
               id,
               (cmetadata->>'chunkIndex')::int AS chunk_index,
               cmetadata
-              -- , document  -- bật nếu bảng có cột này
             FROM langchain_pg_embedding
             WHERE cmetadata->>'postId' = :post_id
             ORDER BY chunk_index ASC
@@ -158,11 +147,6 @@ async def update_post_embeddings(post_id: int, req: UpdatePostRequest):
     Update embeddings của một post.
     Workflow: Xóa embeddings cũ → Tạo embeddings mới
     """
-    if req.postId != post_id:
-        raise HTTPException(
-            status_code=400, 
-            detail=f"postId mismatch: URL={post_id}, body={req.postId}"
-        )
     
     # 1. Xóa embeddings cũ
     async with AsyncSessionLocal() as session:

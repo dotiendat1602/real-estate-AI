@@ -98,6 +98,7 @@ def build_metadata_filter(filters: dict) -> dict:
         'city',
         'district',
         'postType',
+        'postStatus',
         'bedrooms',
         'postId',
         'planningDocumentId',
