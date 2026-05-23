@@ -123,7 +123,7 @@ Sau refactor, `app/rag/chain.py` chi giu orchestration va public import surface.
 
 - `app/rag/query_rewrite.py`: rewrite retrieval query cho follow-up.
 - `app/rag/query_intents.py`: nhan dien intent listing/planning dung chung.
-- `app/rag/context_preparation.py`: dedupe, select, compact context, citation, planning evidence contract.
+- `app/rag/context_preparation.py`: dedupe, giu thu tu retriever/planning rank, compact context va build citation.
 - `app/rag/answer_processing.py`: postprocess answer va detect language.
 - `app/rag/listing_processing.py`: helper suitability/listing dung chung cho context va answer.
 - `app/utils/text.py`: normalize/sanitize text dung chung, gom ca sua mojibake va normalize tieng Viet cho matching; `app/rag/text_utils.py` chi re-export de giu import cu.
@@ -142,29 +142,27 @@ Sau refactor, `app/rag/chain.py` chi giu orchestration va public import surface.
 | `_is_anchor_rich_message(message)` | Kiểm tra message trước có đủ anchor listing/location/số liệu. |
 | `build_retrieval_query(question, history)` | Rewrite query follow-up bằng cách ghép anchor trước đó. |
 
-### Chuẩn bị context và citations
+### Chuan bi context va citations
+
+| Ham/class | Muc dich |
+|---|---|
+| `detect_lang(text)` | Xac dinh ngon ngu tra loi. |
+| `_dedupe_repeated_blocks(text)` | Loai text block lap. |
+| `_split_long_line(line)` | Chia dong qua dai. |
+| `_compact_doc_content(question, content, max_chars, max_lines)` | Rut gon document tho theo thu tu tu nhien sau khi dedupe. |
+| `_doc_identity(doc)` | Key dedupe context. |
+| `_is_planning_context_doc(doc)` | Kiem tra doc thuoc planning. |
+| `_listing_raw_evidence(question, doc)` | Tao raw excerpt ngan cho structured listing context. |
+| `prepare_docs_for_context(question, docs, max_docs, max_chars_per_doc)` | Dedupe, giu thu tu retriever/planning rank, compact, chuan bi docs cho prompt. |
+| `build_citations(docs)` | Build citations tu docs context. |
+| `format_docs(docs)` | Join page_content da sanitize thanh context string. |
+
+## `app/rag/listing_context.py`
 
 | Hàm/class | Mục đích |
 |---|---|
-| `detect_lang(text)` | Xác định ngôn ngữ trả lời. |
-| `_extract_query_terms(question, max_terms)` | Tách terms từ câu hỏi cho scoring listing. |
-| `_build_query_intents(question)` | Nhận diện intent listing như price/area/amenity/suitability. |
-| `_dedupe_repeated_blocks(text)` | Loại text block lặp. |
-| `_split_long_line(line)` | Chia dòng quá dài. |
-| `_line_relevance_key(...)` | Tạo khóa sắp xếp dòng content theo câu hỏi. |
-| `_compact_doc_content(question, content, max_chars, max_lines)` | Rút gọn document thô theo dòng liên quan nhất. |
-| `_doc_identity(doc)` | Key dedupe context. |
-| `_is_planning_context_doc(doc)` | Kiểm tra doc thuộc planning. |
-| `_build_structured_listing_context(question, doc)` | Tạo context listing có cấu trúc từ metadata + snippet. |
-| `_merge_context_snippets(primary, secondary, max_chars)` | Gộp structured context với raw excerpt. |
-| `_planning_context_lines(context_text)` | Tách dòng planning context. |
-| `_planning_pick_focus_phrase_lines(...)` | Chọn dòng có focus phrase trong planning. |
-| `_planning_contract_markers(question)` | Xác định marker cần đưa vào evidence contract. |
-| `_planning_evidence_source_label(doc)` | Tạo label nguồn cho planning fact. |
-| `_build_planning_evidence_contract(question, docs, max_facts)` | Tạo EVIDENCE CONTRACT để khóa numeric/planning claims. |
-| `prepare_docs_for_context(question, docs, max_docs, max_chars_per_doc)` | Dedupe, giữ thứ tự retriever/planning rank, compact, build evidence contract, chuẩn bị docs cho prompt. |
-| `_build_citations(docs)` | Build citations từ docs context. |
-| `_format_docs(docs)` | Join page_content đã sanitize thành context string. |
+| `build_structured_listing_context(question, doc, raw_evidence_builder)` | Tạo context listing có cấu trúc từ metadata + snippet. |
+| `merge_context_snippets(primary, secondary, max_chars)` | Gộp structured context với raw excerpt. |
 
 ### LLM chain
 
@@ -176,18 +174,14 @@ Sau refactor, `app/rag/chain.py` chi giu orchestration va public import surface.
 
 ### Postprocess answer
 
-`app/rag/answer_processing.py` co cac ham hau xu ly de sua wording, loai thong tin khong duoc hoi, va chuan hoa cau tra loi planning/listing. Cac nhom chinh:
+`app/rag/answer_processing.py` chi giu hau xu ly chung, khong con rewrite hep theo tung mau cau hoi planning/listing.
 
-| Nhóm hàm | Mục đích |
+| Nhom ham | Muc dich |
 |---|---|
-| `_looks_uncertain_or_no_data`, `_strip_unrequested_price_lines`, `_strip_unrequested_area_suffix` | Loại câu trả lời thiếu dữ liệu hoặc thông tin giá/diện tích không được hỏi. |
-| `_extract_named_project_line`, `_extract_flexible_project_line` | Tìm tên dự án trong answer. |
-| `_normalize_single_new_project_answer` | Chuẩn hóa câu trả lời theo intent dự án/quy hoạch. |
-| `_normalize_planning_reporting_chain`, `_normalize_post_approval_execution_answer` | Chỉnh wording cho các câu hỏi quy trình/phê duyệt. |
-| `_strip_non_auction_scope_lines`, `_strip_no_detail_tail`, `_focus_waste_overlap_reasoning`, `_normalize_unused_land_area_answer` | Rule t?ng qu?t cho m?t s? c?u tr? l?i planning c?n b? d?ng l?ch intent ho?c chu?n h?a di?n t?ch. |
-| `_extract_price_from_text`, `_extract_area_from_text`, `_extract_bedrooms_from_text`, `_extract_bathrooms_from_text`, `_extract_min_rental_period_from_text`, `_extract_monthly_cashflow_from_text`, `_extract_district_from_text`, `_extract_direction_from_text` | Extract field listing từ text. |
-| `_structured_highlights`, `_condense_suitability_answer`, `_normalize_indoor_amenities_answer`, `_normalize_indoor_amenities_relevancy` | Làm câu trả lời listing gọn và đúng intent. |
-| `postprocess_answer(question, answer)` | Hàm tổng gọi các normalizer phù hợp sau khi LLM trả lời. |
+| `_strip_unrequested_price_lines` | Bo dong gia khi user hoi suitability nhung khong hoi gia. |
+| `_strip_unrequested_contact_lines` | Bo thong tin lien he neu user khong hoi lien he. |
+| `_strip_spaciousness_extra_lines` | Voi cau hoi khong gian rong/thoang, bo vai dong tien ich xung quanh khong truc tiep lien quan. |
+| `postprocess_answer(question, answer)` | Loai generic closing lines va goi cac bo loc chung o tren. |
 
 ## `app/rag/static_retriever.py`
 
@@ -199,7 +193,7 @@ Sau refactor, `app/rag/chain.py` chi giu orchestration va public import surface.
 
 | Ham/class | Muc dich |
 |---|---|
-| `rerank_citations(message, citations, planning_contexts)` | Sap xep citation theo score co san tu retriever va planning property context, khong cham diem keyword overlap. |
+| `rerank_citations(citations)` | Sap xep citation theo planning document va score co san tu retriever, khong cham diem keyword overlap. |
 | `build_planning_citations(docs)` | Build citation giau metadata cho planning docs. |
 
 ## `app/api/chat.py`
@@ -210,9 +204,11 @@ Sau refactor, `app/rag/chain.py` chi giu orchestration va public import surface.
 |---|---|
 | `_with_timeout(coro, seconds, label, fallback)` | Bọc coroutine với timeout, trả fallback nếu quá thời gian. |
 | `initialize_vector_store()` | Startup init listing + planning vector store. |
-| `ChatRequest`, `ChatRequest.PlanningContext` | Schema request `/api/chat`. |
+| `ChatRequest` | Schema request `/api/chat`: `userId`, `sessionId`, `message`. |
 | `ChatResponse` | Schema response `/api/chat`. |
 | `chat(req, db)` | Entry point full runtime RAG. |
+
+## `app/rag/planning_retrieval.py`
 
 ### Intent và extraction planning
 
@@ -245,13 +241,15 @@ Sau refactor, `app/rag/chain.py` chi giu orchestration va public import surface.
 
 | Hàm/class | Mục đích |
 |---|---|
-| `_rebalance_planning_chunk_mix(selected, limit, fact_query)` | Cân bằng text/table và limit docs. |
-| `_select_relevant_content_lines(...)` | Chọn dòng liên quan trong chunk planning. |
 | `_compact_planning_doc(...)` | Compact một planning doc. |
 | `_compact_planning_docs(...)` | Compact danh sách planning docs. |
 | `_planning_query_cache_key(...)` | Tạo cache key cho query planning. |
 | `_planning_query_cache_get(key)` | Lấy cache vector result. |
 | `_planning_query_cache_put(key, value)` | Lưu cache result. |
+| `_resolve_planning_retrieval_context(...)` | Gom district/year/fact_query/final_k/probe_k/query candidates cho một request. |
+| `_planning_base_filter_candidates(...)` | Sinh base filters từ hẹp tới rộng, có dedupe. |
+| `_rank_planning_docs_for_filter(...)` | Retrieve theo query candidates và xếp hạng bằng RRF từ vector rank. |
+| `_planning_scope_pools(...)` | Chia ranked docs thành strict/district/broad pools. |
 | `_retrieve_planning_docs_for_nl_query(...)` | Pipeline retrieval planning NL: query expansion, exact dossier filter khi biết district+năm, filter scopes, vector retrieval, RRF rank, compact, fallback. |
 
 ## `app/api/ingest.py`
@@ -261,7 +259,7 @@ Sau refactor, `app/rag/chain.py` chi giu orchestration va public import surface.
 | `_int_env(name, default)` | Parse positive int env. |
 | `_get_splitter()` | Lazy init listing splitter theo env chunk size/overlap. |
 | `initialize_vector_store()` | Init listing vector store. |
-| `IngestPost`, `IngestRequest`, `UpdatePostRequest` | Pydantic schemas cho ingest/update listing. |
+| `IngestPost`, `IngestRequest`, `UpdatePostRequest` | Pydantic schemas cho ingest/update listing; update lay `post_id` tu path. |
 | `list_ingested_posts(limit, offset)` | List post đã ingest và số chunks. |
 | `get_ingested_post(post_id, limit, offset)` | Xem chunks/metadata của một post. |
 | `ingest_posts(req)` | Split content bài đăng, add documents vào listing vector store. |
@@ -365,10 +363,8 @@ Sau refactor, `app/rag/chain.py` chi giu orchestration va public import surface.
 |---|---|
 | `_normalize_text(text)` | Normalize query. |
 | `district_code_fragment(district)` | Tạo fragment mã quận, ví dụ phục vụ query dossier `HN-...-KH2025`. |
-| `planning_fact_subqueries(message)` | Sinh query phụ từ terms/focus/năm. |
-| `planning_intent_rescue_queries(message, district, plan_year)` | Sinh rescue queries theo intent planning cụ thể. |
-| `planning_query_candidates(message, district, plan_year, max_query_candidates, max_fact_subqueries)` | Kết hợp original query, rescue query, fact subquery, district/year variants. |
-
+| `planning_query_candidates(message, district, plan_year, max_query_candidates)` | Sinh candidates t?i gi?n: c?u h?i g?c, bi?n th? c? district/year v? dossier code khi ?? th?ng tin. |
+| `planning_query_candidates(message, district, plan_year, max_query_candidates)` | Sinh candidates toi gian: cau hoi goc, bien the co district/year va dossier code khi du thong tin. |
 ## `app/planning/ranker.py`
 
 | Hàm/class | Mục đích |
@@ -379,8 +375,8 @@ Sau refactor, `app/rag/chain.py` chi giu orchestration va public import surface.
 
 | Hàm/class | Mục đích |
 |---|---|
-| `select_ranked_planning_docs(...)` | Chọn docs từ pool đã rank bằng vector RRF, bỏ TOC/heading yếu, đẩy lệch quận/năm xuống sau và cân bằng text/table. |
-
+| `select_ranked_planning_docs(...)` | Ch?n docs t? pool ?? rank b?ng vector RRF, b? TOC/heading y?u v? ??y l?ch qu?n/n?m xu?ng sau. |
+| `select_ranked_planning_docs(...)` | Chon docs tu pool da rank bang vector RRF, bo TOC/heading yeu va day lech quan/nam xuong sau. |
 ## `app/planning/features.py`
 
 | Nhóm hàm | Mục đích |

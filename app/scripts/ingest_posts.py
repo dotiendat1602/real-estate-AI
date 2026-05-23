@@ -27,8 +27,6 @@ async def main():
 
         q = {
             "message": "Tìm căn hộ 2 phòng ngủ ở Cầu Giấy khoảng 3 tỷ",
-            "filters": {"city": "Hà Nội", "district": "Cầu Giấy", "type": "apartment"},
-            "topK": 12,
         }
         r2 = await client.post(f"{AI_BASE}/api/chat", json=q)
         print("CHAT STATUS:", r2.status_code)
