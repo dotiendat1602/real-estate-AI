@@ -8,6 +8,7 @@ from langchain_core.documents import Document
 
 from .text_utils import normalize_text as _normalize_text
 from .listing_processing import structured_highlights as _structured_highlights
+from ..utils.text import repair_mojibake
 
 _DIRECTION_LABELS = {
     "dong": "Dong",
@@ -19,6 +20,200 @@ _DIRECTION_LABELS = {
     "tay nam": "Tay Nam",
     "tay bac": "Tay Bac",
 }
+
+_UTILITY_GROUP_MARKERS = {
+    "education": (
+        "education",
+        "giao duc",
+        "truong",
+        "truong hoc",
+        "mau giao",
+        "tieu hoc",
+        "thcs",
+        "thpt",
+        "dai hoc",
+        "hoc vien",
+    ),
+    "shopping": (
+        "commercial shopping",
+        "shopping",
+        "thuong mai",
+        "sieu thi",
+        "trung tam thuong mai",
+        "mall",
+        "aeon",
+        "winmart",
+        "vinmart",
+    ),
+    "park": ("park plaza", "park", "cong vien", "quang truong"),
+    "healthcare": ("healthcare", "y te", "benh vien", "phong kham"),
+    "transport": ("transport", "giao thong", "xe buyt", "bus", "metro", "ben xe"),
+    "finance": ("financial", "tai chinh", "ngan hang", "atm"),
+    "dining": ("dining", "an uong", "nha hang", "cafe"),
+    "entertainment": ("entertainment", "giai tri", "rap phim"),
+    "sports": ("sports", "the thao", "san bong"),
+    "parking": ("parking", "bai do xe"),
+}
+
+_UTILITY_GROUP_LABELS = {
+    "education": "truong hoc",
+    "shopping": "sieu thi/trung tam thuong mai",
+    "park": "cong vien",
+    "healthcare": "y te",
+    "transport": "giao thong",
+    "finance": "tai chinh",
+    "dining": "an uong",
+    "entertainment": "giai tri",
+    "sports": "the thao",
+    "parking": "bai do xe",
+}
+
+
+def _clean_text(value: Any) -> str:
+    return repair_mojibake(str(value or "")).strip()
+
+
+def _normalized_repaired(value: Any) -> str:
+    return _normalize_text(repair_mojibake(str(value or "")))
+
+
+def _utility_groups_for_text(value: Any) -> set[str]:
+    normalized = _normalized_repaired(value)
+    if not normalized:
+        return set()
+    return {
+        group
+        for group, markers in _UTILITY_GROUP_MARKERS.items()
+        if any(marker in normalized for marker in markers)
+    }
+
+
+def _requested_utility_groups(question: str) -> set[str]:
+    requested = _utility_groups_for_text(question)
+    normalized = _normalized_repaired(question)
+    if not requested:
+        return set()
+
+    # Only treat utility group words as restrictive when the user is asking
+    # about nearby facilities, not when the same words appear in a listing title.
+    has_nearby_signal = any(
+        marker in normalized
+        for marker in ("gan", "xung quanh", "tien ich", "cach", "quanh day", "lan can")
+    )
+    if not has_nearby_signal:
+        return set()
+    return requested
+
+
+def _format_distance_meters(value: Any) -> str | None:
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return None
+    if number <= 0:
+        return None
+    if number >= 1000:
+        km = number / 1000
+        return f"cach {km:.1f} km".replace(".0", "")
+    return f"cach {int(round(number))} m"
+
+
+def _format_utility_item(item: dict[str, Any]) -> str:
+    name = _clean_text(item.get("name"))
+    category_label = _clean_text(item.get("categoryLabel") or item.get("category"))
+    parts = [name]
+    if category_label:
+        parts.append(category_label)
+    distance = _format_distance_meters(item.get("distanceM"))
+    if distance:
+        parts.append(distance)
+    travel_time = item.get("travelTimeS")
+    try:
+        if travel_time:
+            parts.append(f"khoang {max(1, int((int(travel_time) + 59) / 60))} phut")
+    except (TypeError, ValueError):
+        pass
+    location = _clean_text(item.get("location"))
+    if location:
+        parts.append(location)
+    return " - ".join(part for part in parts if part)
+
+
+def _dedupe_utility_lines(lines: list[str], limit: int = 6) -> list[str]:
+    out: list[str] = []
+    seen: set[str] = set()
+    seen_names: set[str] = set()
+    for line in lines:
+        cleaned = _clean_text(line).strip(" -" + "\u2022")
+        if not cleaned:
+            continue
+        key = _normalized_repaired(cleaned)
+        name_key = _normalized_repaired(re.split(r"\s*(?:-|:|\()", cleaned, maxsplit=1)[0])
+        if not key or key in seen or (name_key and name_key in seen_names):
+            continue
+        seen.add(key)
+        if name_key:
+            seen_names.add(name_key)
+        out.append(cleaned)
+        if len(out) >= limit:
+            break
+    return out
+
+
+def _nearby_utility_lines(question: str, md: dict[str, Any], content: str) -> tuple[list[str], set[str]]:
+    requested_groups = _requested_utility_groups(question)
+    if not requested_groups:
+        return [], set()
+
+    lines: list[str] = []
+    found_groups: set[str] = set()
+
+    utilities_top = md.get("utilitiesTop")
+    if isinstance(utilities_top, list):
+        for item in utilities_top:
+            if not isinstance(item, dict):
+                continue
+            searchable = " ".join(
+                _clean_text(item.get(field))
+                for field in ("name", "category", "categoryLabel", "location", "note")
+            )
+            matched = _utility_groups_for_text(searchable) & requested_groups
+            if not matched:
+                continue
+            found_groups.update(matched)
+            lines.append(_format_utility_item(item))
+
+    nearby_utilities = md.get("nearbyUtilities")
+    if isinstance(nearby_utilities, str):
+        for line in nearby_utilities.splitlines():
+            matched = _utility_groups_for_text(line) & requested_groups
+            if matched:
+                found_groups.update(matched)
+                lines.append(line)
+
+    for raw_line in (content or "").replace("<br/>", "\n").replace("<br>", "\n").splitlines():
+        matched = _utility_groups_for_text(raw_line) & requested_groups
+        if not matched:
+            continue
+        found_groups.update(matched)
+        lines.append(raw_line)
+
+    return _dedupe_utility_lines(lines), found_groups
+
+
+def _filter_raw_evidence_for_utility_question(question: str, raw_evidence: str) -> str:
+    requested_groups = _requested_utility_groups(question)
+    if not requested_groups or not raw_evidence:
+        return raw_evidence
+
+    kept: list[str] = []
+    for raw_line in raw_evidence.splitlines():
+        matched_groups = _utility_groups_for_text(raw_line)
+        if matched_groups and not (matched_groups & requested_groups):
+            continue
+        kept.append(raw_line)
+
+    return "\n".join(kept).strip()
 
 def _format_price_vnd(value: Any) -> str | None:
     if value is None:
@@ -304,6 +499,10 @@ def build_structured_listing_context(
     if bathrooms:
         lines.append(f"- So phong ve sinh: {bathrooms}")
 
+    floor_number = _format_numeric_value(md.get("floorNumber"))
+    if floor_number:
+        lines.append(f"- So tang: {floor_number}")
+
     furnishing = str(md.get("furnishing") or "").strip()
     if furnishing:
         lines.append(f"- Noi that: {furnishing}")
@@ -326,11 +525,48 @@ def build_structured_listing_context(
     if cashflow:
         lines.append(f"- Dong tien: {cashflow}/thang")
 
+    planning_status = str(md.get("planningStatus") or "").strip()
+    if planning_status:
+        planning_parts = [f"trang thai {planning_status}"]
+        risk_level = str(md.get("planningRiskLevel") or "").strip()
+        confidence_level = str(md.get("planningConfidenceLevel") or "").strip()
+        planning_period = str(md.get("planningPeriod") or "").strip()
+        dossier_code = str(md.get("planningDossierCode") or "").strip()
+        dossier_name = str(md.get("planningDossierName") or "").strip()
+        current_land_type = str(md.get("planningCurrentLandType") or "").strip()
+        planned_land_type = str(md.get("planningPlannedLandType") or "").strip()
+        explanation = str(md.get("planningExplanation") or "").strip()
+        if risk_level:
+            planning_parts.append(f"rui ro {risk_level}")
+        if confidence_level:
+            planning_parts.append(f"do tin cay {confidence_level}")
+        if planning_period:
+            planning_parts.append(f"ky {planning_period}")
+        if dossier_code or dossier_name:
+            planning_parts.append(f"ho so {dossier_code} {dossier_name}".strip())
+        if current_land_type or planned_land_type:
+            planning_parts.append(
+                f"loai dat hien trang/quy hoach: {current_land_type or 'N/A'} / {planned_land_type or 'N/A'}"
+            )
+        if explanation:
+            planning_parts.append(f"ghi chu {explanation}")
+        lines.append(f"- Doi chieu quy hoach cua can nay: {'; '.join(planning_parts)}")
+
     highlights = _structured_highlights(question, md.get("highlights"), prefer_broad=True)
     if highlights:
         lines.append(f"- Diem noi bat: {highlights}")
 
+    nearby_utility_lines, found_utility_groups = _nearby_utility_lines(question, md, doc.page_content or "")
+    requested_utility_groups = _requested_utility_groups(question)
+    if nearby_utility_lines:
+        lines.append(f"- Tien ich xung quanh lien quan: {'; '.join(nearby_utility_lines)}")
+    missing_utility_groups = requested_utility_groups - found_utility_groups
+    if missing_utility_groups:
+        missing_labels = ", ".join(_UTILITY_GROUP_LABELS.get(group, group) for group in sorted(missing_utility_groups))
+        lines.append(f"- Chua co thong tin ve {missing_labels} trong du lieu tien ich xung quanh.")
+
     raw_evidence = raw_evidence_builder(question, doc) if raw_evidence_builder else ""
+    raw_evidence = _filter_raw_evidence_for_utility_question(question, raw_evidence)
     if raw_evidence:
         lines.append("--- CHI TIET ---")
         lines.append(raw_evidence)

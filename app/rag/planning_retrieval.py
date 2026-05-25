@@ -10,7 +10,9 @@ from functools import lru_cache
 from typing import Any, Optional
 
 from langchain_core.documents import Document
+from sqlalchemy import text
 
+from ..db.pgvector import AsyncSessionLocal
 from ..planning.features import (
     planning_doc_haystack as _planning_doc_haystack,
     strip_planning_metadata_lines as _strip_planning_metadata_lines,
@@ -614,6 +616,51 @@ async def _rank_planning_docs_for_filter(
     )
 
 
+async def _filter_docs_with_existing_public_planning_records(docs: list[Document]) -> list[Document]:
+    doc_ids: set[int] = set()
+    for doc in docs:
+        raw_id = (doc.metadata or {}).get("planningDocumentId")
+        try:
+            if raw_id is not None:
+                doc_ids.add(int(raw_id))
+        except (TypeError, ValueError):
+            continue
+
+    if not doc_ids:
+        return docs
+
+    try:
+        async with AsyncSessionLocal() as session:
+            rows = (
+                await session.execute(
+                    text("SELECT id FROM public.planning_documents WHERE id = ANY(:ids)"),
+                    {"ids": list(doc_ids)},
+                )
+            ).fetchall()
+    except Exception:
+        _logger.exception("Failed to validate planningDocumentId values against public.planning_documents")
+        return docs
+
+    existing_ids = {int(row._mapping["id"]) for row in rows}
+    filtered: list[Document] = []
+    dropped_ids: set[int] = set()
+    for doc in docs:
+        raw_id = (doc.metadata or {}).get("planningDocumentId")
+        try:
+            doc_id = int(raw_id)
+        except (TypeError, ValueError):
+            filtered.append(doc)
+            continue
+        if doc_id in existing_ids:
+            filtered.append(doc)
+        else:
+            dropped_ids.add(doc_id)
+
+    if dropped_ids:
+        _logger.info("Dropped stale planning vector docs not present in public.planning_documents: %s", sorted(dropped_ids))
+    return filtered
+
+
 def _planning_scope_pools(
     ranked_docs: list[Document],
     district: str | None,
@@ -650,6 +697,7 @@ async def _retrieve_planning_docs_for_nl_query(
             ctx.query_candidates,
             ctx.probe_k,
         )
+        ranked = await _filter_docs_with_existing_public_planning_records(ranked)
         if not ranked:
             continue
 

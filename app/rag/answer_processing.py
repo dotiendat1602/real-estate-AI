@@ -4,6 +4,7 @@ import re
 
 from .query_intents import build_query_intents as _build_query_intents
 from .text_utils import normalize_text as _normalize_text
+from ..utils.text import repair_mojibake
 
 _UNREQUESTED_PRICE_LINE_MARKERS = (
     "gia ban",
@@ -28,6 +29,19 @@ _SPACIOUSNESS_MARKERS = (
     "khong gian",
     "dien tich",
 )
+
+_NEARBY_AMENITY_GROUP_MARKERS = {
+    "education": ("education", "giao duc", "truong", "truong hoc", "mau giao", "tieu hoc", "thcs", "thpt", "dai hoc"),
+    "shopping": ("commercial shopping", "shopping", "thuong mai", "sieu thi", "trung tam thuong mai", "mall", "aeon", "winmart", "vinmart"),
+    "park": ("park plaza", "park", "cong vien", "quang truong"),
+    "healthcare": ("healthcare", "y te", "benh vien", "phong kham"),
+    "transport": ("transport", "giao thong", "xe buyt", "bus", "metro", "ben xe"),
+    "finance": ("financial", "tai chinh", "ngan hang", "atm"),
+    "dining": ("dining", "an uong", "nha hang", "cafe"),
+    "entertainment": ("entertainment", "giai tri", "rap phim"),
+    "sports": ("sports", "the thao", "san bong"),
+    "parking": ("parking", "bai do xe"),
+}
 
 
 def _strip_unrequested_price_lines(answer: str) -> str:
@@ -140,6 +154,43 @@ def _strip_spaciousness_extra_lines(question: str, answer: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", "\n".join(kept_lines)).strip()
 
 
+def _nearby_amenity_groups_for_text(value: str) -> set[str]:
+    normalized = _normalize_text(repair_mojibake(value or ""))
+    if not normalized:
+        return set()
+    return {
+        group
+        for group, markers in _NEARBY_AMENITY_GROUP_MARKERS.items()
+        if any(marker in normalized for marker in markers)
+    }
+
+
+def _requested_nearby_amenity_groups(question: str) -> set[str]:
+    normalized = _normalize_text(repair_mojibake(question or ""))
+    if not any(marker in normalized for marker in ("gan", "xung quanh", "tien ich", "cach", "lan can")):
+        return set()
+    return _nearby_amenity_groups_for_text(question)
+
+
+def _strip_unrequested_nearby_amenity_lines(question: str, answer: str) -> str:
+    requested_groups = _requested_nearby_amenity_groups(question)
+    if not requested_groups:
+        return answer
+
+    kept_lines: list[str] = []
+    changed = False
+    for raw_line in (answer or "").splitlines():
+        line_groups = _nearby_amenity_groups_for_text(raw_line)
+        if line_groups and not (line_groups & requested_groups):
+            changed = True
+            continue
+        kept_lines.append(raw_line)
+
+    if not changed:
+        return answer
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(kept_lines)).strip()
+
+
 def _keep_non_empty(previous: str, candidate: str) -> str:
     cleaned_candidate = (candidate or "").strip()
     return cleaned_candidate if cleaned_candidate else previous
@@ -174,6 +225,7 @@ def postprocess_answer(question: str, answer: str) -> str:
         cleaned = _keep_non_empty(cleaned, _strip_unrequested_price_lines(cleaned))
 
     cleaned = _keep_non_empty(cleaned, _strip_unrequested_contact_lines(question, cleaned))
+    cleaned = _keep_non_empty(cleaned, _strip_unrequested_nearby_amenity_lines(question, cleaned))
     cleaned = _keep_non_empty(cleaned, _strip_spaciousness_extra_lines(question, cleaned))
 
     return cleaned

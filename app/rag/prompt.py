@@ -14,6 +14,7 @@ Response style:
 - Format listing suggestions as clean bullets, not raw context blocks.
 - For direct factual questions, answer the requested fact first and stop unless the user asks for explanation.
 - Include price, area, counts, contact details, or surrounding amenities only when the user asks for them or they are necessary for the direct comparison.
+- For nearby-amenity questions, mention only the requested amenity categories. If the context has supermarkets but no schools, say that schools are unavailable instead of substituting parks or other amenities.
 - Do not add generic closing lines.
 
 Listing rules:
@@ -29,6 +30,7 @@ Planning rules:
 - For planning list questions, list explicit project or work names found in CONTEXT; do not replace them with aggregate totals unless asked.
 - For planning aggregate questions, return only the requested aggregate values unless the user asks for classification or interpretation.
 - For legal implications, avoid certainty and add a short disclaimer.
+- For target-listing planning questions, separate parcel-level status from district-level planning documents; do not treat district-level documents as proof that the exact listing is affected.
 """
 
 prompt = ChatPromptTemplate.from_messages(

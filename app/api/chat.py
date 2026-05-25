@@ -13,7 +13,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..rag.llm import build_llm
 from ..rag.citation_utils import (
-    build_planning_citations as _build_planning_citations,
+    dedupe_citations as _dedupe_citations,
     rerank_citations as _rerank_citations,
 )
 from ..rag.listing_fallback import ListingFallbackRetriever
@@ -50,10 +50,17 @@ _POST_ID_PATTERNS = (
 _FOLLOW_UP_ANCHOR_TERMS = (
     "căn này",
     "can nay",
+    "can nha nay",
+    "nha nay",
+    "ngoi nha nay",
+    "can ho nay",
+    "mat bang nay",
+    "lo dat nay",
     "bđs này",
     "bds nay",
     "bất động sản này",
     "bat dong san nay",
+    "tin nay",
     "chủ nhà",
     "chu nha",
     "liên lạc",
@@ -66,6 +73,12 @@ _FOLLOW_UP_ANCHOR_TERMS = (
     "quy hoach",
     "hay có",
     "hay co",
+)
+
+_FOLLOW_UP_ANCHOR_PATTERN = re.compile(
+    r"\b(?:can(?:\s+nha|\s+ho)?|nha|ngoi\s+nha|bat\s+dong\s+san|bds|tin|mat\s+bang|lo\s+dat)\s+"
+    r"(?:nay|do|kia)\b",
+    re.IGNORECASE,
 )
 
 
@@ -107,6 +120,18 @@ def _extract_post_id_from_text(text_value: str) -> int | None:
             return int(match.group(1))
         except (TypeError, ValueError):
             continue
+
+    normalized = _normalize_nl(text_value or "")
+    normalized_match = re.search(
+        r"\b(?:can(?:\s+nha|\s+ho)?|nha|bat\s+dong\s+san|bds|post|tin)\s*#?\s*(\d{2,})\b",
+        normalized,
+        flags=re.IGNORECASE,
+    )
+    if normalized_match:
+        try:
+            return int(normalized_match.group(1))
+        except (TypeError, ValueError):
+            return None
     return None
 
 
@@ -120,7 +145,10 @@ def _extract_contextual_post_id(
         return explicit
 
     normalized = _normalize_nl(message or "")
-    if not any(term in normalized for term in _FOLLOW_UP_ANCHOR_TERMS):
+    has_follow_up_anchor = any(term in normalized for term in _FOLLOW_UP_ANCHOR_TERMS) or bool(
+        _FOLLOW_UP_ANCHOR_PATTERN.search(normalized)
+    )
+    if not has_follow_up_anchor:
         return None
 
     for preferred_role in ("human", "ai", "assistant"):
@@ -155,6 +183,7 @@ async def _load_post_context_document(db: AsyncSession, post_id: int) -> Documen
                   p.area,
                   p."bedroomNumber" AS bedrooms,
                   p."toiletNumber" AS toilets,
+                  p."floorNumber" AS floor_number,
                   p.lat,
                   p.lon,
                   p.location,
@@ -274,9 +303,17 @@ async def _load_post_context_document(db: AsyncSession, post_id: int) -> Documen
             "price": float(r["price"]) if r.get("price") is not None else None,
             "area": float(r["area"]) if r.get("area") is not None else None,
             "bedrooms": r.get("bedrooms"),
+            "floorNumber": r.get("floor_number"),
             "retrievalSource": "db_exact_post_context",
             "planningStatus": r.get("planning_status"),
             "planningRiskLevel": r.get("risk_level"),
+            "planningConfidenceLevel": r.get("confidence_level"),
+            "planningExplanation": r.get("explanation"),
+            "planningPeriod": r.get("ky_quy_hoach"),
+            "planningDossierCode": r.get("ma_ho_so"),
+            "planningDossierName": _clean_cell(r.get("ten_ho_so")),
+            "planningCurrentLandType": r.get("ten_loai_dat_ht"),
+            "planningPlannedLandType": r.get("ten_loai_dat_qh"),
         },
     )
 
@@ -332,6 +369,124 @@ def _filter_citations_to_answered_listings(
             continue
 
     return filtered or citations
+
+
+def _filter_citations_to_contextual_post(
+    citations: list[dict[str, Any]],
+    contextual_post_id: int | None,
+    *,
+    include_planning: bool,
+) -> list[dict[str, Any]]:
+    if contextual_post_id is None or not citations:
+        return citations
+
+    filtered: list[dict[str, Any]] = []
+    for citation in citations:
+        post_id = citation.get("postId")
+        planning_document_id = citation.get("planningDocumentId")
+
+        if post_id is None:
+            if include_planning and planning_document_id is not None:
+                filtered.append(citation)
+            continue
+
+        try:
+            if int(post_id) == int(contextual_post_id):
+                filtered.append(citation)
+        except (TypeError, ValueError):
+            continue
+
+    return filtered or citations
+
+
+def _citation_listing_overlap_score(answer: str, citation: dict[str, Any]) -> int:
+    normalized_answer = _normalize_nl(answer or "")
+    if not normalized_answer:
+        return 0
+
+    score = 0
+    title = _normalize_nl(str(citation.get("postTitle") or citation.get("title") or ""))
+    if title:
+        title_tokens = [token for token in title.split() if len(token) >= 3]
+        score += sum(2 for token in title_tokens[:20] if token in normalized_answer)
+
+    for field in ("location", "ward", "district", "city", "categoryName"):
+        value = _normalize_nl(str(citation.get(field) or ""))
+        if value and value in normalized_answer:
+            score += 4
+
+    for field in ("area", "bedrooms", "floorNumber"):
+        value = citation.get(field)
+        if value in (None, ""):
+            continue
+        raw_number = str(value).split(".")[0]
+        if raw_number and re.search(rf"\b{re.escape(raw_number)}\b", normalized_answer):
+            score += 2
+
+    price = citation.get("price")
+    if price not in (None, ""):
+        try:
+            price_value = float(price)
+            if price_value >= 1_000_000 and str(int(price_value / 1_000_000)) in normalized_answer:
+                score += 2
+        except (TypeError, ValueError):
+            pass
+
+    return score
+
+
+def _looks_like_single_listing_answer(question: str, answer: str) -> bool:
+    normalized_question = _normalize_nl(question or "")
+    normalized_answer = _normalize_nl(answer or "")
+    if not normalized_answer:
+        return False
+
+    link_count = len(re.findall(r"/posts/\d+", answer or "", flags=re.IGNORECASE))
+    if link_count > 1:
+        return False
+
+    multi_listing_markers = (
+        "cac can",
+        "nhung can",
+        "mot so can",
+        "danh sach",
+        "lua chon",
+        "phuong an",
+    )
+    if any(marker in normalized_answer for marker in multi_listing_markers):
+        return False
+
+    if any(marker in normalized_answer for marker in ("co mot can", "mot can", "hien tai co mot")):
+        return True
+
+    return "mot can" in normalized_question or link_count == 1
+
+
+def _filter_citations_to_single_answered_listing(
+    question: str,
+    answer: str,
+    citations: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    if not citations or not _looks_like_single_listing_answer(question, answer):
+        return citations
+
+    listing_citations = [citation for citation in citations if citation.get("postId") is not None]
+    if len(listing_citations) <= 1:
+        return citations
+
+    best = max(
+        enumerate(listing_citations),
+        key=lambda item: (_citation_listing_overlap_score(answer, item[1]), -item[0]),
+    )[1]
+
+    filtered: list[dict[str, Any]] = []
+    for citation in citations:
+        if citation.get("postId") is None:
+            filtered.append(citation)
+            continue
+        if citation is best:
+            filtered.append(citation)
+    return filtered or [best]
 
 
 async def initialize_vector_store():
@@ -402,7 +557,6 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
             )
 
     extra_context = ""
-    planning_citations: list[dict[str, Any]] = []
     planning_docs: list[Document] = []
     planning_vs = None
 
@@ -424,8 +578,6 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
         )
 
     if use_planning_mode:
-        district = _extract_district_from_message(req.message)
-        plan_year = _extract_plan_year_from_message(req.message)
         planning_docs = await _with_timeout(
             _retrieve_planning_docs_for_nl_query(
                 planning_vs,
@@ -439,15 +591,20 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
         )
 
         if planning_docs:
-            planning_text = "\n\n".join(d.page_content for d in planning_docs if d.page_content)
+            district = _extract_district_from_message(retrieval_message) or _extract_district_from_message(req.message)
+            plan_year = _extract_plan_year_from_message(retrieval_message) or _extract_plan_year_from_message(req.message)
             header = [
-                "=== PLANNING VECTOR CONTEXT (AUTO FROM NATURAL LANGUAGE QUERY) ===",
+                "=== PLANNING ANSWER GUIDANCE ===",
                 f"District hint: {district or 'N/A'}",
                 f"Plan year hint: {plan_year if plan_year is not None else 'N/A'}",
+                (
+                    "If the question asks whether the target listing is affected by planning, "
+                    "use the target listing's parcel-level planning status first. "
+                    "Treat retrieved planning documents as district-level support unless they explicitly name the target address."
+                ),
             ]
-            planning_context = "\n".join(header + [planning_text])
-            extra_context = f"{extra_context}\n\n{planning_context}" if extra_context else planning_context
-            planning_citations = _build_planning_citations(planning_docs)
+            planning_guidance = "\n".join(header)
+            extra_context = f"{extra_context}\n\n{planning_guidance}" if extra_context else planning_guidance
 
     if use_planning_mode:
         if exact_post_context_doc:
@@ -455,11 +612,41 @@ async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
         retriever = _StaticDocumentsRetriever(planning_docs)
 
     chain = RagChain(llm=llm, retriever=retriever)
-    result = await chain.run(req.message, history=history, extra_context=extra_context)
+    context_max_docs = int(
+        os.getenv(
+            "RAG_PLANNING_CONTEXT_MAX_DOCS" if use_planning_mode else "RAG_LISTING_CONTEXT_MAX_DOCS",
+            os.getenv("RAG_CONTEXT_MAX_DOCS", "4"),
+        )
+    )
+    context_max_chars_per_doc = int(
+        os.getenv(
+            "RAG_PLANNING_CONTEXT_MAX_CHARS_PER_DOC" if use_planning_mode else "RAG_LISTING_CONTEXT_MAX_CHARS_PER_DOC",
+            os.getenv("RAG_CONTEXT_MAX_CHARS_PER_DOC", "1400"),
+        )
+    )
+    result = await chain.run(
+        req.message,
+        history=history,
+        extra_context=extra_context,
+        max_docs=context_max_docs,
+        max_chars_per_doc=context_max_chars_per_doc,
+    )
+    merged_citations = _filter_citations_to_contextual_post(
+        result.citations,
+        contextual_post_id,
+        include_planning=use_planning_mode,
+    )
     merged_citations = _filter_citations_to_answered_listings(
         result.answer,
-        result.citations + planning_citations,
+        merged_citations,
     )
+    merged_citations = _dedupe_citations(merged_citations)
+    if not use_planning_mode:
+        merged_citations = _filter_citations_to_single_answered_listing(
+            req.message,
+            result.answer,
+            merged_citations,
+        )
     reranked_citations = _rerank_citations(merged_citations)
     
     await history_manager.add_message(session_id, "user", req.message)
