@@ -107,6 +107,7 @@ def build_metadata_filter(filters: dict) -> dict:
         'dossierCode',
         'chunkType',
         'propertyId',
+        'floorNumber',
     ]
     for field in exact_match_fields:
         if field in filters:
@@ -125,6 +126,11 @@ def build_metadata_filter(filters: dict) -> dict:
         clauses.append({'area': {'$gte': filters['areaMin']}})
     if 'areaMax' in filters:
         clauses.append({'area': {'$lte': filters['areaMax']}})
+
+    if 'floorMin' in filters:
+        clauses.append({'floorNumber': {'$gte': filters['floorMin']}})
+    if 'floorMax' in filters:
+        clauses.append({'floorNumber': {'$lte': filters['floorMax']}})
 
     # Range/equality filter for plan year.
     if 'planYear' in filters:
@@ -338,6 +344,7 @@ _LEXICAL_NUMERIC_FIELDS = {
     "price",
     "area",
     "bedrooms",
+    "floorNumber",
 }
 
 _LEXICAL_STOPWORDS = {

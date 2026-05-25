@@ -11,6 +11,10 @@ from .listing_context import (
     build_structured_listing_context as _build_structured_listing_context,
     merge_context_snippets as _merge_context_snippets,
 )
+from .citation_utils import (
+    build_planning_citations as _build_planning_citations,
+    source_url_with_page as _source_url_with_page,
+)
 
 _CONTEXT_DOC_HEADER_PREFIXES = (
     "=== BAT DONG SAN",
@@ -260,11 +264,15 @@ def prepare_docs_for_context(
 
 def build_citations(docs: list[Document]) -> list[dict[str, Any]]:
     out = []
+    planning_docs: list[Document] = []
     seen_post_ids = set()
     
     for d in docs:
         md = d.metadata or {}
         post_id = md.get("postId")
+        if md.get("planningDocumentId") is not None and post_id is None:
+            planning_docs.append(d)
+            continue
         
         # Deduplicate by postId (avoid showing same post multiple times)
         if post_id and post_id in seen_post_ids:
@@ -279,7 +287,12 @@ def build_citations(docs: list[Document]) -> list[dict[str, Any]]:
             "planningDocumentId": md.get("planningDocumentId"),
             "title": md.get("title"),
             "postTitle": md.get("postTitle"),
-            "sourceUrl": md.get("sourceUrl") or (f"/posts/{post_id}" if post_id else None),
+            "sourceUrl": (
+                _source_url_with_page(md.get("sourceUrl"), md.get("pageNumber"))
+                if md.get("planningDocumentId") is not None
+                else md.get("sourceUrl") or (f"/posts/{post_id}" if post_id else None)
+            ),
+            "sourceUrlRaw": md.get("sourceUrl") if md.get("planningDocumentId") is not None else None,
             "format": md.get("format"),
             "documentScope": md.get("documentScope"),
             "documentType": md.get("documentType"),
@@ -302,10 +315,14 @@ def build_citations(docs: list[Document]) -> list[dict[str, Any]]:
             "price": md.get("price"),
             "area": md.get("area"),
             "bedrooms": md.get("bedrooms"),
+            "floorNumber": md.get("floorNumber"),
             "amenities": md.get("amenities", []),
             "snippet": repair_mojibake(d.page_content or "")[:300],
         })
     
+    if planning_docs:
+        out.extend(_build_planning_citations(planning_docs))
+
     return out
 
 

@@ -272,12 +272,10 @@ Sau refactor, `app/rag/chain.py` chi giu orchestration va public import surface.
 |---|---|
 | `initialize_vector_store()` | Init planning vector store. |
 | `PlanningIngestDocument`, `PlanningIngestRequest` | Schemas ingest tài liệu quy hoạch. |
-| `PlanningExplainSummary`, `PlanningExplainDocument`, `PlanningExplainRequest`, `PlanningExplainResponse` | Schemas endpoint explain planning. |
 | `_planning_collection_name()` | Lấy tên collection planning. |
 | `list_ingested_planning_documents(limit, offset)` | List tài liệu planning đã ingest và thống kê chunks. |
 | `get_ingested_planning_document_chunks(planning_document_id, limit, offset)` | Xem chunks của một tài liệu planning. |
 | `ingest_planning_documents(req)` | Orchestrate replace/skip/build docs/add embeddings cho planning documents. |
-| `explain_planning(req)` | Dùng summary property + planning retriever + RagChain để giải thích quy hoạch. |
 
 ## `app/planning/ingestion_config.py`
 

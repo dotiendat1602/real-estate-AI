@@ -131,6 +131,7 @@ def _has_structured_listing_intent(query: str, filters: dict[str, Any]) -> bool:
             "gia",
             "phòng ngủ",
             "phong ngu",
+            "tang",
             "hà nội",
             "ha noi",
             "hà đông",
@@ -199,6 +200,16 @@ async def search_listing_documents(
         clauses.append('p."bedroomNumber" >= :bedrooms')
         params["bedrooms"] = filters["bedrooms"]
 
+    if filters.get("floorNumber") is not None:
+        clauses.append('p."floorNumber" = :floor_number')
+        params["floor_number"] = filters["floorNumber"]
+    if filters.get("floorMin") is not None:
+        clauses.append('p."floorNumber" >= :floor_min')
+        params["floor_min"] = filters["floorMin"]
+    if filters.get("floorMax") is not None:
+        clauses.append('p."floorNumber" <= :floor_max')
+        params["floor_max"] = filters["floorMax"]
+
     _append_text_filter(
         clauses,
         params,
@@ -238,6 +249,12 @@ async def search_listing_documents(
     order_parts: list[str] = []
     if filters.get("bedrooms") is not None:
         order_parts.append('CASE WHEN p."bedroomNumber" = :bedrooms THEN 0 ELSE 1 END')
+    if filters.get("floorNumber") is not None:
+        order_parts.append('CASE WHEN p."floorNumber" = :floor_number THEN 0 ELSE 1 END')
+    elif filters.get("floorMin") is not None and filters.get("floorMax") is not None:
+        target_floor = int((int(filters["floorMin"]) + int(filters["floorMax"])) / 2)
+        params["target_floor"] = target_floor
+        order_parts.append('ABS(p."floorNumber" - :target_floor) ASC NULLS LAST')
     if _contains_any(query_lc, ("giá tốt", "gia tot", "rẻ", "re")):
         order_parts.append("p.price ASC NULLS LAST")
     order_parts.append("post.created_at DESC")
@@ -298,6 +315,7 @@ async def search_listing_documents(
           p.area,
           p."bedroomNumber" AS bedrooms,
           p."toiletNumber" AS toilets,
+          p."floorNumber" AS floor_number,
           p.furniture_status AS furniture_status,
           p.location,
           pr.name AS province,
@@ -394,6 +412,7 @@ async def search_listing_documents(
                     "price": float(r["price"]) if r.get("price") is not None else None,
                     "area": float(r["area"]) if r.get("area") is not None else None,
                     "bedrooms": r.get("bedrooms"),
+                    "floorNumber": r.get("floor_number"),
                     "categoryName": _clean(r.get("category_name")),
                     "utilityCategories": _as_list(r.get("utility_categories")),
                     "nearbyUtilities": _clean(r.get("utility_details")),

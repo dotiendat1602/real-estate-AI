@@ -45,7 +45,7 @@ User
 | FastAPI app/startup | `app/main.py` | Load `.env`, đăng ký router, preload vector stores. |
 | Chat API | `app/api/chat.py` | Entry point `/api/chat`, chọn mode listing/planning, điều phối retrieval và generation. |
 | Listing ingest API | `app/api/ingest.py` | Chunk bài đăng, add/update/delete embedding cho listing. |
-| Planning ingest/explain API | `app/api/planning.py` | Ingest tài liệu quy hoạch, xem chunks, explain planning cho property. |
+| Planning ingest API | `app/api/planning.py` | Ingest tài liệu quy hoạch và xem chunks đã ingest. Câu hỏi AI về quy hoạch đi qua `/api/chat`. |
 | RAG chain | `app/rag/chain.py` + helper modules | `chain.py` chi orchestration; context/query/postprocess da tach sang `context_preparation.py`, `query_rewrite.py`, `answer_processing.py`. |
 | Retriever | `app/rag/retriever.py` | Tạo PGVector store, metadata filter, hybrid/vector retriever, lexical SQL search. |
 | Vector resources | `app/rag/resources.py` | Cache embeddings và vector store cho listing/planning collection. |

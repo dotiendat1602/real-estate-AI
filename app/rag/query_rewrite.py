@@ -109,10 +109,10 @@ def _looks_follow_up_question(question: str) -> bool:
     if normalized.startswith(("neu ", "vay ", "the ", "con ", "va ")):
         return True
 
-    token_count = len(normalized.split())
+    word_count = len(normalized.split())
     has_location_signal = any(marker in normalized for marker in _QUERY_LOCATION_HINT_MARKERS)
     has_number_signal = bool(re.search(r"\d+(?:/\d+)?", question or ""))
-    return token_count <= 10 and not has_location_signal and not has_number_signal
+    return word_count <= 10 and not has_location_signal and not has_number_signal
 
 
 def _is_anchor_rich_message(message: str) -> bool:

@@ -13,7 +13,6 @@ from pypdf import PdfReader
 
 from .ingestion_config import (
     PLANNING_CHUNKING_BASELINE_FIXED,
-    PLANNING_CHUNKING_HIERARCHICAL_LEAF,
     PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD,
     PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT,
     is_hierarchical_chunking_mode as _is_hierarchical_chunking_mode,
@@ -836,7 +835,6 @@ def build_planning_hierarchical_chunks(
                 "chunkType": chunk_type or ("table" if _is_projectish_line(body) else "text"),
                 "pageNumber": page_number,
                 "chunker": {
-                    PLANNING_CHUNKING_HIERARCHICAL_LEAF: "PlanningHierarchicalLeaf",
                     PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT: "PlanningHierarchicalParentContext",
                     PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD: "PlanningHierarchicalParentChild",
                 }[mode],
@@ -1523,6 +1521,8 @@ async def build_planning_documents(payload: PlanningIngestPayload) -> tuple[list
         chunk_type = item.get("chunkType") or ("table" if _is_table_chunk(chunk) else "text")
         preferred_page = item.get("pageNumber")
         page_number, line_start, line_end = _locate_chunk_line_span(chunk, page_maps, preferred_page=preferred_page)
+        if page_number is None and isinstance(preferred_page, int) and not isinstance(preferred_page, bool):
+            page_number = preferred_page
 
         if chunk_type == "table":
             table_count += 1

@@ -10,10 +10,7 @@ from sqlalchemy import text
 
 from ..db.pgvector import AsyncSessionLocal
 from ..planning.ingestion import PlanningIngestPayload, build_planning_documents
-from ..planning.metadata import canonicalize_planning_district
-from ..rag.llm import build_llm
 from ..rag.resources import initialize_planning_vector_store, planning_collection_name
-from ..rag.retriever import build_retriever
 
 router = APIRouter()
 _logger = logging.getLogger(__name__)
@@ -40,39 +37,6 @@ class PlanningIngestRequest(BaseModel):
     replaceExisting: bool = True
     skipIfExists: bool = True
     documents: list[PlanningIngestDocument] = Field(default_factory=list)
-
-
-class PlanningExplainSummary(BaseModel):
-    planningStatus: str
-    riskLevel: Optional[str] = None
-    landUseCurrent: Optional[str] = None
-    landUsePlanned: Optional[str] = None
-    dossierCode: Optional[str] = None
-    dossierName: Optional[str] = None
-    checkedAt: Optional[str] = None
-
-
-class PlanningExplainDocument(BaseModel):
-    title: str
-    format: Optional[str] = None
-    docType: Optional[str] = None
-    sourcePath: Optional[str] = None
-    sourceUrl: Optional[str] = None
-    rawMeta: dict[str, Any] = Field(default_factory=dict)
-
-
-class PlanningExplainRequest(BaseModel):
-    propertyId: int
-    question: Optional[str] = None
-    summary: PlanningExplainSummary
-    documents: list[PlanningExplainDocument] = Field(default_factory=list)
-
-
-class PlanningExplainResponse(BaseModel):
-    answer: str
-    disclaimer: str
-    highlights: list[str]
-    citations: list[dict[str, Any]] = Field(default_factory=list)
 
 
 def _planning_collection_name() -> str:
@@ -399,86 +363,3 @@ async def ingest_planning_documents(req: PlanningIngestRequest):
     }
 
 
-@router.post("/planning/explain", response_model=PlanningExplainResponse)
-async def explain_planning(req: PlanningExplainRequest):
-    from ..rag.chain import RagChain
-
-    llm = build_llm()
-    vs = await initialize_planning_vector_store()
-
-    user_question = (req.question or "").strip()
-    if not user_question:
-        user_question = "Hay giai thich tong quan tinh hinh quy hoach cua bat dong san nay"
-
-    context_filters: dict[str, Any] = {
-        "documentScope": "planning",
-        "propertyId": req.propertyId,
-    }
-
-    district = canonicalize_planning_district(
-        req.summary.dossierName,
-        title=req.summary.dossierName,
-        dossier_code=req.summary.dossierCode,
-    )
-    plan_year = None
-    for d in req.documents:
-        if d.rawMeta and isinstance(d.rawMeta, dict):
-            if not district and d.rawMeta.get("district"):
-                district = canonicalize_planning_district(
-                    d.rawMeta.get("district"),
-                    title=d.title,
-                    dossier_code=req.summary.dossierCode,
-                )
-            if d.rawMeta.get("planYear"):
-                try:
-                    plan_year = int(d.rawMeta.get("planYear"))
-                except Exception:
-                    plan_year = None
-
-    if district:
-        context_filters["district"] = district
-    if req.summary.dossierCode:
-        context_filters["dossierCode"] = req.summary.dossierCode
-    if plan_year is not None:
-        context_filters["planYear"] = plan_year
-
-    retriever = build_retriever(vs, k=10, filters=None, base_filter=context_filters)
-    chain = RagChain(llm=llm, retriever=retriever)
-
-    report_lines = []
-    for idx, d in enumerate(req.documents[:10], start=1):
-        report_lines.append(f"{idx}. {d.title} ({d.format or 'unknown'})")
-
-    extra_context = "\n".join(
-        [
-            "=== PLANNING SUMMARY ===",
-            f"Property ID: {req.propertyId}",
-            f"Planning status: {req.summary.planningStatus}",
-            f"Risk level: {req.summary.riskLevel or 'UNKNOWN'}",
-            f"Land use current: {req.summary.landUseCurrent or 'N/A'}",
-            f"Land use planned: {req.summary.landUsePlanned or 'N/A'}",
-            f"Dossier: {req.summary.dossierCode or 'N/A'} - {req.summary.dossierName or 'N/A'}",
-            f"Checked at: {req.summary.checkedAt or 'N/A'}",
-            "Documents:",
-            *(report_lines or ["- N/A"]),
-        ]
-    )
-
-    result = await chain.run(user_question, history=[], extra_context=extra_context)
-
-    answer = result.answer.strip()
-    highlights = [line.strip("- ").strip() for line in answer.splitlines() if line.strip()][:3]
-    if not highlights:
-        highlights = ["Chua trich xuat duoc diem noi bat tu ngu canh quy hoach"]
-
-    disclaimer = (
-        "Thong tin quy hoach chi de tham khao. Nguoi dung can doi chieu ho so chinh thuc "
-        "tai co quan nha nuoc co tham quyen truoc khi ra quyet dinh giao dich."
-    )
-
-    return PlanningExplainResponse(
-        answer=answer,
-        disclaimer=disclaimer,
-        highlights=highlights,
-        citations=result.citations,
-    )

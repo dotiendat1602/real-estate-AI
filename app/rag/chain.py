@@ -43,7 +43,15 @@ class RagChain:
             | prompt
         )
 
-    async def run(self, question: str, history: list | None = None, extra_context: str = "") -> ChatResult:
+    async def run(
+        self,
+        question: str,
+        history: list | None = None,
+        extra_context: str = "",
+        *,
+        max_docs: int | None = None,
+        max_chars_per_doc: int | None = None,
+    ) -> ChatResult:
         if history is None:
             history = []
 
@@ -52,14 +60,18 @@ class RagChain:
         docs = await self.retriever.ainvoke(retrieval_query or question)
         retrieval_seconds = round(time.perf_counter() - retrieval_started, 3)
 
-        max_docs = int(os.getenv("RAG_CONTEXT_MAX_DOCS", "4"))
-        max_chars_per_doc = int(os.getenv("RAG_CONTEXT_MAX_CHARS_PER_DOC", "1400"))
+        resolved_max_docs = int(max_docs) if max_docs is not None else int(os.getenv("RAG_CONTEXT_MAX_DOCS", "4"))
+        resolved_max_chars_per_doc = (
+            int(max_chars_per_doc)
+            if max_chars_per_doc is not None
+            else int(os.getenv("RAG_CONTEXT_MAX_CHARS_PER_DOC", "1400"))
+        )
         context_selection_query = retrieval_query or question
         docs_for_context = prepare_docs_for_context(
             context_selection_query,
             docs,
-            max_docs=max_docs,
-            max_chars_per_doc=max_chars_per_doc,
+            max_docs=resolved_max_docs,
+            max_chars_per_doc=resolved_max_chars_per_doc,
         )
         context = _format_docs(docs_for_context)
         if extra_context:

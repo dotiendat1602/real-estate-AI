@@ -140,7 +140,6 @@ Luồng chi tiết:
 Các mode trong `app/planning/ingestion.py`:
 
 - `planning_baseline_fixed`
-- `planning_hierarchical_leaf`
 - `planning_hierarchical_parent_context`
 - `planning_hierarchical_parent_child`
 

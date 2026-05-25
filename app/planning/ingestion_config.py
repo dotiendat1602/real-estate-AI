@@ -6,12 +6,10 @@ import os
 _logger = logging.getLogger(__name__)
 
 PLANNING_CHUNKING_BASELINE_FIXED = "planning_baseline_fixed"
-PLANNING_CHUNKING_HIERARCHICAL_LEAF = "planning_hierarchical_leaf"
 PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT = "planning_hierarchical_parent_context"
 PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD = "planning_hierarchical_parent_child"
 
 _PLANNING_HIERARCHICAL_MODES = {
-    PLANNING_CHUNKING_HIERARCHICAL_LEAF,
     PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT,
     PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD,
 }
@@ -31,7 +29,6 @@ def resolve_planning_chunking_mode() -> str:
     aliases = {
         "baseline": PLANNING_CHUNKING_BASELINE_FIXED,
         "fixed": PLANNING_CHUNKING_BASELINE_FIXED,
-        "hierarchical_leaf": PLANNING_CHUNKING_HIERARCHICAL_LEAF,
         "hierarchical_parent_context": PLANNING_CHUNKING_HIERARCHICAL_PARENT_CONTEXT,
         "hierarchical_parent_child": PLANNING_CHUNKING_HIERARCHICAL_PARENT_CHILD,
     }
